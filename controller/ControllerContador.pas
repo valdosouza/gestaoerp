@@ -2,7 +2,7 @@ unit ControllerContador;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_funcoes,ControllerEmpresa, tblContador,
+      ControllerEmpresa, tblContador,
       Un_Msg;
 
 

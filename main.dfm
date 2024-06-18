@@ -1,23 +1,19 @@
-object FrMain: TFrMain
-  Left = 0
-  Top = 0
+inherited FrMain: TFrMain
   Caption = 'Sistema de Gest'#227'o Empresarial'
   ClientHeight = 587
   ClientWidth = 1199
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
   Menu = MnuOper
-  OldCreateOrder = False
-  OnShow = FormShow
+  ExplicitWidth = 1205
+  ExplicitHeight = 636
   PixelsPerInch = 96
   TextHeight = 13
+  inherited Menu: TMainMenu
+    Left = 24
+    Top = 16
+  end
   object MnuOper: TMainMenu
-    Left = 128
-    Top = 42
+    Left = 104
+    Top = 18
     object MnuArqOpe: TMenuItem
       Caption = '&Arquivo'
       Hint = 'Cadastros em Geral'
@@ -598,8 +594,8 @@ object FrMain: TFrMain
     end
   end
   object MnuFin: TMainMenu
-    Left = 188
-    Top = 34
+    Left = 164
+    Top = 18
     object MnuArqFin: TMenuItem
       Caption = '&Arquivo'
       object MnuArqFPagtoFin: TMenuItem
@@ -726,8 +722,8 @@ object FrMain: TFrMain
     end
   end
   object MnuBco: TMainMenu
-    Left = 328
-    Top = 50
+    Left = 224
+    Top = 26
     object MnuArqBco: TMenuItem
       Caption = '&Arquivo'
       object MnuArqBancoBco: TMenuItem
@@ -794,8 +790,8 @@ object FrMain: TFrMain
     end
   end
   object MnuPsl: TMainMenu
-    Left = 456
-    Top = 138
+    Left = 288
+    Top = 26
     object MnuPslArquivo: TMenuItem
       Caption = '&Arquivo'
       object MnuPslArqColaborador: TMenuItem

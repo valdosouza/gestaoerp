@@ -3,7 +3,7 @@ Unit ControllerCustoPedido;
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,tblCartao,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblCustoPedido,ControllerProduto ;
+      Un_sistema,Un_Regra_Negocio, tblCustoPedido,ControllerProduto ;
 
 Type
   TControllerCustoPedido = Class(TControllerBase)

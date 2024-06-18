@@ -2,7 +2,7 @@ unit ControllerIcmsFCP;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes,Un_Regra_Negocio, Data.DB,
+      Un_Regra_Negocio, Data.DB,
       tblIcmsFCP,Generics.Collections;
 
 

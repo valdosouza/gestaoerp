@@ -2,7 +2,7 @@ unit ControllerExtintor;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblArquivo ,prmExtintores,
+      Un_sistema,Un_Regra_Negocio, tblArquivo ,prmExtintores,
       Un_RL_ReportListExtintores;
 
 

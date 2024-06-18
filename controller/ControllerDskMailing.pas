@@ -20,12 +20,8 @@ interface
 
 implementation
 
-uses tblMailing;
 
-procedure Register;
-begin
-  RegisterComponents('Setes', [TMailing]);
-end;
+
 
 constructor TControllerDskMailing.Create(AOwner: TComponent);
 begin

@@ -40,7 +40,7 @@ Type
 
 implementation
 
-uses Un_sistema,Un_funcoes, Un_Regra_Negocio;
+uses Un_sistema, Un_Regra_Negocio;
 
 procedure TControllerMedida.AlteraMedidaEspecial(NEW_MED,OLD_MED:String);
 Var

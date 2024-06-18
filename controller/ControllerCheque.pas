@@ -2,7 +2,7 @@ unit ControllerCheque;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblArquivo ,
+      Un_sistema,Un_Regra_Negocio, tblArquivo ,
       Un_RL_ReportChequeEnvioFornecedor, Un_RL_ReportChequeSimples, Un_RL_ReportCheque,
       Un_RL_ReportChequeRastrearOrigem,Un_RL_ReportChequeRastrearDestino,
       UN_RL_ReportChequeEnvioBanco, Un_RL_ReportChequeDisponivelCaixa,

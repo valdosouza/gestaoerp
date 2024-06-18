@@ -2,7 +2,7 @@ unit ControllerRetornoNFS;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes, tblREtornoNFS ,
+      Un_sistema, tblREtornoNFS ,
       ControllerLoteNfse, ControllerRpsNfse,ControllerNFSEletronica,
       ObjInvoiceReturnService,ControllerGestaoWeb,
       Generics.Collections;

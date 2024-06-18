@@ -2,7 +2,7 @@ unit ControllerMercadoria;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblMercadoria ,Un_MSg,ControllerProduto,
+      Un_sistema,Un_Regra_Negocio, tblMercadoria ,Un_MSg,ControllerProduto,
       ControllerEstoque;
 
 Type

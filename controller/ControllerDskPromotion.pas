@@ -3,7 +3,7 @@ unit ControllerDskPromotion;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblDskpromotion ,Un_MSg,
+      Un_sistema,Un_Regra_Negocio, tblDskpromotion ,Un_MSg,
       System.Generics.Collections, ControllerDskPromotionItems,
       ObjPromotion,tblDskPromotionItems,tblPromotionItems;
 

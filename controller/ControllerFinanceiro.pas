@@ -3,7 +3,7 @@ unit ControllerFinanceiro;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes, tblFinanceiro ,ObjFinancialBills,
+      Un_sistema, tblFinanceiro ,ObjFinancialBills,
       Generics.Collections, ControllerMovimentoFinanceiro, System.AnsiStrings,
       ControllerGestaoWeb, ControllerFormaPagamento;
 
@@ -35,7 +35,7 @@ Type
     function insere:boolean;
     procedure AlteraVencimentoValor;
     function deleteFinanceiroErro:Boolean;
-    procedure getListSincronia(Data:TDAteTime;Tipo:String);
+    procedure getListSincronia(pData:TDAteTime;Tipo:String);
     procedure ClearDataObjecto;
     function cancelaBaixaByQuitacao:Boolean;
     function cancelaBaixa:Boolean;
@@ -520,7 +520,7 @@ begin
   End;
 end;
 
-procedure TControllerFinanceiro.getListSincronia(Data: TDAteTime; Tipo: String);
+procedure TControllerFinanceiro.getListSincronia(pData: TDAteTime; Tipo: String);
 var
   Lc_Qry : TSTQuery;
   LITem : TFinanceiro;
@@ -537,7 +537,7 @@ begin
       ));
 
       sql.add(' ORDER BY UPDATED_AT asc ');
-      ParamByName('UPDATED_AT').AsDateTime := Data;
+      ParamByName('UPDATED_AT').AsDateTime := pData;
       Active := True;
       FetchAll;
       First;

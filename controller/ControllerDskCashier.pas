@@ -3,7 +3,7 @@ unit ControllerDskCashier;
 interface
 
 uses STDatabase,Classes, STQuery,Vcl.Grids ,SysUtils,ControllerBase,objCashier,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio,  tblDskCashier, tblDskCashierItems ,
+      Un_sistema,Un_Regra_Negocio,  tblDskCashier, tblDskCashierItems ,
       Un_MSg, Generics.Collections;
 
 Type
@@ -26,7 +26,7 @@ Type
     function atualiza:Boolean;
     function VerificaCaixaAberto:Boolean;Overload;
 
-    function VerificaCaixaFechadoAtual(Data:TDate): Boolean;
+    function VerificaCaixaFechadoAtual(pData:TDate): Boolean;
     function AbrirCaixa:Boolean;
     function FecharCaixa(ListaValores:TStringGrid):Boolean;
     procedure FillDataObjeto(PcRegistro:TDskCashier);
@@ -114,7 +114,7 @@ begin
 end;
 
 
-function TControllerDskCashier.VerificaCaixaFechadoAtual(Data:TDate): Boolean;
+function TControllerDskCashier.VerificaCaixaFechadoAtual(pData:TDate): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
@@ -127,7 +127,7 @@ begin
               ' and ( dt_record =:dt_record ) '+
               ' and ( HR_END is not null) ' );
       ParamByName('tb_user_id').AsInteger := Registro.Usuario;
-      ParamByName('dt_record').AsDate := Data;
+      ParamByName('dt_record').AsDate := pData;
       Active := True;
       FetchAll;
       if (recordCount > 0) then

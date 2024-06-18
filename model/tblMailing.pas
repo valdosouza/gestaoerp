@@ -4,56 +4,57 @@ interface
 
 Uses TEntity,CAtribEntity;
 
-implementation
-
 Type
   //nome da classe de entidade
   [TableName('tb_mailing')]
   TMailing = Class(TGenericEntity)
   private
-    FID: AnsiString;
-    FEMAIL: AnsiString;
-    FKIND: AnsiString;
-    FNEWS: AnsiString;
+    FNEWS: String;
+    FEMAIL: String;
+    FID: Integer;
+    FKIND: String;
+    procedure setFEMAIL(const Value: String);
+    procedure setFID(const Value: Integer);
+    procedure setFKIND(const Value: String);
+    procedure setFNEWS(const Value: String);
 
-    procedure setFID(value: AnsiString);
-    procedure setFEMAIL(value: AnsiString);
-    procedure setFKIND(value: AnsiString);
-    procedure setFNEWS(value: AnsiString);
 
   public
     [KeyField('id')]
     [FieldName('id')]
-    property id: AnsiString read FID write setFID;
+    property Codigo: Integer read FID write setFID;
     [FieldName('email')]
-    property email: AnsiString read FEMAIL write setFEMAIL;
+    property email: String read FEMAIL write setFEMAIL;
     [FieldName('kind')]
-    property kind: AnsiString read FKIND write setFKIND;
+    property kind: String read FKIND write setFKIND;
     [FieldName('news')]
-    property news: AnsiString read FNEWS write setFNEWS;
+    property news: String read FNEWS write setFNEWS;
 
   End;
-  { TMailing }
 
-procedure TMailing.setFEMAIL(value: AnsiString);
+{ TMailing }
+implementation
+
+{ TMailing }
+
+procedure TMailing.setFEMAIL(const Value: String);
 begin
-  FEMAIL := value;
-
+  FEMAIL := Value;
 end;
 
-procedure TMailing.setFID(value: AnsiString);
+procedure TMailing.setFID(const Value: Integer);
 begin
-  FID := value;
+  FID := Value;
 end;
 
-procedure TMailing.setFKIND(value: AnsiString);
+procedure TMailing.setFKIND(const Value: String);
 begin
-  FKIND := value;
+  FKIND := Value;
 end;
 
-procedure TMailing.setFNEWS(value: AnsiString);
+procedure TMailing.setFNEWS(const Value: String);
 begin
-  FNEWS := value;
+  FNEWS := Value;
 end;
 
 end.

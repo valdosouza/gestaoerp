@@ -2,7 +2,7 @@ unit ControllerAdicaoImportacao;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblAdicaoImportacao ,Un_MSg;
+      Un_sistema,Un_Regra_Negocio, tblAdicaoImportacao ,Un_MSg;
 
 Type
   TControllerAdicaoImportacao = Class(TControllerBase)

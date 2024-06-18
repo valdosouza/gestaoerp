@@ -3,8 +3,7 @@ unit ControllerPreco;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblPreco ,Un_MSg,
-      Generics.Collections;
+      tblPreco ,Un_MSg,   Generics.Collections;
 
 Type
   TListaPreco = TObjectList<TPreco>;

@@ -3,7 +3,7 @@ unit ControllerCliente;
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
       tblCliente ,Generics.Collections, tblCustomer,
-      ControllerEmpresa,ControllerColaborador, un_funcoes,ObjCustomer,tbladdress,tblphone,
+      ControllerEmpresa,ControllerColaborador, ObjCustomer,tbladdress,tblphone,
   Vcl.StdCtrls;
 
 

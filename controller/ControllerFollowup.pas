@@ -2,7 +2,7 @@ unit ControllerFollowup;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,tblFollowup, Generics.Collections;
+      Un_sistema,tblFollowup, Generics.Collections;
 
 
 Type

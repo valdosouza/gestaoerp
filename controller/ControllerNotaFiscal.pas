@@ -2,7 +2,7 @@ unit ControllerNotaFiscal;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes, tblNotaFiscal ,Un_MSg,
+      Un_sistema, tblNotaFiscal ,Un_MSg,
      Generics.Collections, StrUtils,objInvoiceMerchandise,
      ControllerPedido, ControllerObsNota,ControllerDskCfop,tblRetornoNfe,
      tblOrderItemIcms, tblOrderItemIpi, tblOrderItemPis, tblOrderItemCofins,

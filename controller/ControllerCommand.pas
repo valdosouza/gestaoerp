@@ -2,7 +2,7 @@ unit ControllerCommand;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,tblCommand;
+      Un_sistema,tblCommand;
 
 
 Type

@@ -2,7 +2,7 @@ unit ControllerBase;
 
 interface
 
-uses Classes,SysUtils, DskGenericDao,STTransaction,STScript,
+uses Classes,SysUtils, GenericORM,STTransaction,STScript,
      UnFunctions, Windows,Gauges, Un_DM, STQuery,
     STDatabase, IBX.IBScript;
 
@@ -91,7 +91,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add (TDskGenericDAO._Select(Obj,''));
+        SQL.Add (TGenericORM._Select(Obj,''));
         Active := True;
         FetchAll;
         result := ( RecordCount > 0 );
@@ -136,7 +136,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TDskGenericDAO._Delete(Obj) );
+        SQL.Add ( TGenericORM._Delete(Obj) );
         ExecSQL;
       End;
     Except on E: Exception do
@@ -171,7 +171,7 @@ end;
 function TControllerBase.clearObj<T>(Obj: T): Boolean;
 begin
   Try
-    TDskGenericDAO._Clear(Obj);
+    TGenericORM._Clear(Obj);
     Result := True;
   except
     Result := False;
@@ -259,7 +259,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TDskGenericDAO._getLastInsert( Obj ) );
+        SQL.Add ( TGenericORM._getLastInsert( Obj ) );
         Active := True;
       End;
       Result := StrToIntDef(Lc_Qry.FieldByName('id').AsString,0);
@@ -307,7 +307,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TDskGenericDAO._getNextByField( Obj,Field, Intitution  ) );
+        SQL.Add ( TGenericORM._getNextByField( Obj,Field, Intitution  ) );
         Active := True;
         Result := StrToIntDef( FieldByName(Field).AsString,0) + 1;
       End;
@@ -321,7 +321,7 @@ end;
 
 function TControllerBase.getSqlCommandReplaceObj<T>(Obj: T): String;
 begin
-  Result := TDskGenericDAO._Replace(Obj);
+  Result := TGenericORM._Replace(Obj);
 end;
 
 function TControllerBase.insertObj<T>(Obj: T): Boolean;
@@ -334,7 +334,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TDskGenericDAO._Insert(Obj) );
+        SQL.Add ( TGenericORM._Insert(Obj) );
         ExecSQL;
       End;
     Except on E: Exception do
@@ -369,7 +369,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TDskGenericDAO._Replace(Obj) );
+        SQL.Add ( TGenericORM._Replace(Obj) );
         ExecSQL;
       End;
     Except on E: Exception do
@@ -470,7 +470,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TDskGenericDAO._Update(Obj) );
+        SQL.Add ( TGenericORM._Update(Obj) );
         ExecSQL;
       End;
     Except on E: Exception do
@@ -484,12 +484,12 @@ end;
 procedure TControllerBase.get<T>(Qry: TSTQuery;Obj: T) ;
 begin
   clearObj(Obj);
-  TDskGenericDAO._get(Qry,Obj);
+  TGenericORM._get(Qry,Obj);
 end;
 
 procedure TControllerBase.ClonarObj<T>(ObjOri, ObjClone: T);
 begin
-  TDskGenericDAO._assign(ObjOri,ObjClone);
+  TGenericORM._assign(ObjOri,ObjClone);
 end;
 
 procedure TControllerBase._getByKey<T>(Obj: T);
@@ -502,14 +502,14 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add (TDskGenericDAO._Select(Obj,''));
+        SQL.Add (TGenericORM._Select(Obj,''));
         Active := True;
         FetchAll;
         exist  := ( RecordCount > 0 );
         if exist then
         Begin
           clearObj(Obj);
-          TDskGenericDAO._get(Lc_Qry,Obj) ;
+          TGenericORM._get(Lc_Qry,Obj) ;
         End;
       End;
     Except on E: Exception do

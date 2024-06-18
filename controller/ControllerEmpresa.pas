@@ -2,7 +2,7 @@ unit ControllerEmpresa;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblEmpresa ,ControllerEndereco,
+       tblEmpresa ,ControllerEndereco,
       Generics.Collections, objcustomer, ControllerColaborador,objEntityFiscal,
       tblphone,tblAddress;
 

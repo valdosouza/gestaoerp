@@ -2,7 +2,7 @@ unit ControllerDskPhone;
 
 interface
 uses STDatabase,Classes, STQuery,  SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblPhone ,Un_MSg,
+      Un_sistema,Un_Regra_Negocio, tblPhone ,Un_MSg,
       Generics.Collections, Vcl.Forms;
 
 Type

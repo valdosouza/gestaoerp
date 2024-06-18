@@ -2,7 +2,7 @@ unit ControllerDocumentoImportacao;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblDocumentoImportacao ,Un_MSg;
+      Un_sistema,Un_Regra_Negocio, tblDocumentoImportacao ,Un_MSg;
 
 Type
   TControllerDocumentoImportacao = Class(TControllerBase)

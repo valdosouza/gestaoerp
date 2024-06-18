@@ -32,7 +32,7 @@ Type
 
 implementation
 
-uses Un_sistema, Un_funcoes,Un_Regra_Negocio;
+uses Un_sistema, Un_Regra_Negocio;
 
 constructor TControllerCtrlEstoqueZerado.Create(AOwner: TComponent);
 begin

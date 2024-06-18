@@ -3,8 +3,7 @@ unit ControllerEstoque;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblEstoque ,Un_MSg,tblestoques,
-      Generics.Collections,ControllerCtrlEstoque;
+      tblEstoque ,Un_MSg,tblestoques, Generics.Collections,ControllerCtrlEstoque;
 
 Type
   TListaEstoque = TObjectList<TEstoque>;

@@ -2,7 +2,7 @@ unit ControllerTransportadora;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tbltransportadora,
+      Un_sistema,Un_Regra_Negocio, tbltransportadora,
       ControllerFornecedor, tblPhone,tblAddress;
 
 

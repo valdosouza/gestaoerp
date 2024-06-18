@@ -2,7 +2,7 @@ unit ControllerArquivo;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes, tblArquivo ,Data.DB,Generics.Collections,
+      Un_sistema, tblArquivo ,Data.DB,Generics.Collections,
       synacode,objFile;
 
 

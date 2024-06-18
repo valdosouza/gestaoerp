@@ -2,7 +2,7 @@ unit ControllerProductSimilar;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblProductSimilar ,Un_MSg;
+       tblProductSimilar ,Un_MSg;
 
 Type
   TControllerProductSimilar = Class(TControllerBase)

@@ -2,7 +2,7 @@ unit ControllerRpsNfse;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblRpsNfse ;
+      Un_sistema,Un_Regra_Negocio, tblRpsNfse ;
 
 
 Type

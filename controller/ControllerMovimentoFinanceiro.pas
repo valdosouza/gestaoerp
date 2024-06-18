@@ -34,7 +34,7 @@ Type
     function getByID:Boolean;
     procedure getList;
     function DeletaByQuitacao:Boolean;
-    procedure getListSincronia(Data:TDAteTime;Tipo:String);
+    procedure getListSincronia(pData:TDAteTime;Tipo:String);
     procedure ClearDataObjecto;
     procedure FillDataObjeto(PcRegistro:TMovimentoFinanceiro);
     function GetVinculoCaixaBancoByTransferencia:Boolean;
@@ -44,7 +44,7 @@ Type
 
 implementation
 
-uses un_funcoes, Un_Regra_Negocio;
+uses  Un_Regra_Negocio;
 
 function TControllerMovimentoFinanceiro.atualiza: boolean;
 begin
@@ -285,7 +285,7 @@ begin
 
 end;
 
-procedure TControllerMovimentoFinanceiro.getListSincronia(Data: TDAteTime;
+procedure TControllerMovimentoFinanceiro.getListSincronia(pData: TDAteTime;
   Tipo: String);
 var
   Lc_Qry : TSTQuery;
@@ -303,7 +303,7 @@ begin
       ));
 
       sql.add(' ORDER BY UPDATED_AT asc ');
-      ParamByName('UPDATED_AT').AsDateTime := Data;
+      ParamByName('UPDATED_AT').AsDateTime :=  pData;
       Active := True;
       FetchAll;
       First;

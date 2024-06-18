@@ -2,7 +2,7 @@ unit ControllerProductionForeCast;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblProductionForeCast ,
+      Un_sistema,Un_Regra_Negocio, tblProductionForeCast ,
          Generics.Collections, Un_MSg, ControllerProduto;
 
 Type

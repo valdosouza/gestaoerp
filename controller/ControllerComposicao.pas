@@ -3,7 +3,7 @@ unit ControllerComposicao;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      Un_funcoes, tblCtrlEstoque , Un_MSg,
+      tblCtrlEstoque , Un_MSg,
       System.Generics.Collections, ControllerSyncTable, TEntity,CAtribEntity;
 
 Type

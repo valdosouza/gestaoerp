@@ -33,7 +33,7 @@ Type
 
 implementation
 
-uses un_funcoes, Un_Regra_Negocio;
+uses  Un_Regra_Negocio;
 
 function TControllerMovimentoLote.atualiza: boolean;
 begin

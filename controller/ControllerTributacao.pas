@@ -31,7 +31,7 @@ implementation
 
 { TControllerTributacao }
 
-uses Un_Funcoes,Un_Regra_Negocio;
+uses Un_Regra_Negocio;
 
 procedure TControllerTributacao.Clear;
 begin

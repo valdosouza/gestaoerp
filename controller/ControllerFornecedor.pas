@@ -2,7 +2,7 @@ unit ControllerFornecedor;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblFornecedor, ControllerEmpresa ,
+      Un_sistema,Un_Regra_Negocio, tblFornecedor, ControllerEmpresa ,
       ControllerEndereco,ObjProvider,tblPhone,tblAddress, Un_Msg,
       Generics.Collections;
 

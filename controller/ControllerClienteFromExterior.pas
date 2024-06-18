@@ -3,7 +3,7 @@ unit ControllerClienteFromExterior;
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblClienteFromExterior, Generics.Collections;
+       tblClienteFromExterior, Generics.Collections;
 Type
 
   TControllerClienteFromExterior = Class(TControllerBase)

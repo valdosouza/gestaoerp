@@ -2,7 +2,7 @@ unit ControllerProduction;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblProduction ,Un_MSg,
+      Un_sistema,Un_Regra_Negocio, tblProduction ,Un_MSg,
       ControllerProductionForeCast, ControllerProductionRealized,ControllerCtrlEstoque;
 
 Type

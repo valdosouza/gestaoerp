@@ -24,7 +24,7 @@ implementation
 
 { ControllerPizzaria }
 
-uses un_sistema,Un_funcoes,Un_Regra_Negocio, UnFunctions;
+uses un_sistema,Un_Regra_Negocio, UnFunctions;
 
 procedure TControllerPizzaria.Clear;
 begin

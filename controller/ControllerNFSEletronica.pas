@@ -2,7 +2,7 @@
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblNFSEletronica ,
+      Un_sistema,Un_Regra_Negocio, tblNFSEletronica ,
       pcnConversao,Vcl.ExtCtrls,ACBrDFeSSL,blcksock, Vcl.Forms,
       ControllerEstabelecimento,synacode, ACBrNFSeX, ACBrNFSeXConversao,
   System.AnsiStrings;

@@ -3,7 +3,7 @@
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,tblCartao,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblBoletoBancario ,ACBrBoleto,
+      Un_sistema,Un_Regra_Negocio, tblBoletoBancario ,ACBrBoleto,
        Generics.Collections, ControllerContaBancaria,ControllerBoletoEletronico,
       ACBrBoletoFCFortesFr, ACBrBoletoConversao, ControllerFinanceiro,
       ControllerEspecieDoc,ControllerCarteiraCobranca, ControllerCliente,

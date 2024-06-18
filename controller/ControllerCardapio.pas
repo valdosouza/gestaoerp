@@ -3,7 +3,7 @@ unit ControllerCardapio;
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblCardapio, ControllerGrupos,
+      Un_sistema,Un_Regra_Negocio, tblCardapio, ControllerGrupos,
       Un_MSg, ControllerMedida,ControllerPreco,ControllerEstoque;
 
 

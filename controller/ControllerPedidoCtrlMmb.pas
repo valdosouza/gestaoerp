@@ -25,7 +25,7 @@ Type
 
 implementation
 
-uses Un_funcoes,Un_sistema, Un_Regra_Negocio;
+uses Un_sistema, Un_Regra_Negocio;
 
 constructor TControllerPedidoCtrlMmb.Create(AOwner: TComponent);
 begin

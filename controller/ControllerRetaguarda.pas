@@ -39,7 +39,7 @@ implementation
 
 { TControllerRetaguarda }
 
-uses un_sistema, un_funcoes, Un_Regra_Negocio;
+uses un_sistema,  Un_Regra_Negocio;
 
 function  TControllerRetaguarda.ConfiguraBancoRetaguarda:Boolean;
 Var

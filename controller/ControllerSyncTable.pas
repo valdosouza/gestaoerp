@@ -28,7 +28,7 @@ implementation
 
 { TControllerEmpresa }
 
-uses un_sistema, un_funcoes, Un_Regra_Negocio;
+uses un_sistema,  Un_Regra_Negocio;
 
 constructor TControllerSynctable.Create(AOwner: TComponent);
 begin

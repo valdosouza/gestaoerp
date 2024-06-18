@@ -3,7 +3,7 @@ unit ControllerCotacao;
 interface
 
 uses STDatabase,STQuery, Classes, SysUtils,ControllerBase,
-      tblCotacao,  Generics.Collections, ControllerItensCotacao, un_Padrao, Un_Funcoes,
+      tblCotacao,  Generics.Collections, ControllerItensCotacao, un_Padrao, 
     UnFunctions,System.Math, Un_Msg;
 Type
   TListCotacao = TObjectList<TCotacao>;

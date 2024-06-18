@@ -34,7 +34,7 @@ Type
 
 implementation
 
-uses Un_sistema, Un_funcoes,Un_Regra_Negocio;
+uses Un_sistema, Un_Regra_Negocio;
 
 function TControllerNcm.ComandoIBScript(Lista:TStrings): boolean;
 Var

@@ -2,7 +2,7 @@ unit ControllerDevolIPI;
 
 interface
 uses STDatabase,Classes, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblDevolIpi ,Un_MSg,
+      Un_sistema,Un_Regra_Negocio, tblDevolIpi ,Un_MSg,
       Datasnap.DBClient, STQuery;
 
 Type

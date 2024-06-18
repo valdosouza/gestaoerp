@@ -2,7 +2,7 @@ unit ControllerLoteNfse;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblLoteNfse ;
+      Un_sistema,Un_Regra_Negocio, tblLoteNfse ;
 
 
 Type

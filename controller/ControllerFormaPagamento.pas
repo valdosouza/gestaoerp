@@ -2,7 +2,7 @@ unit ControllerFormaPagamento;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblFormaPagamento ,
+       tblFormaPagamento ,
       Generics.Collections, ControllerPayTypeHasInterm;
 
 

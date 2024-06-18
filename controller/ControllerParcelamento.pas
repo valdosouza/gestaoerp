@@ -2,7 +2,7 @@ unit ControllerParcelamento;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblParcelamento ,
+       tblParcelamento ,
       Generics.Collections;
 Type
   TListParcelamento = TObjectList<TParcelamento>;

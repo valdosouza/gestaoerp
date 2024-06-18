@@ -3,7 +3,7 @@ unit ControllerTefMovimento;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio,  tblTefMovimento, Un_MSg;
+      Un_sistema,Un_Regra_Negocio,  tblTefMovimento, Un_MSg;
 
 Type
   TControllerTefMovimento = Class(TControllerBase)

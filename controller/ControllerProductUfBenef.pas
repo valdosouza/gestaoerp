@@ -2,7 +2,7 @@ unit ControllerProductUfBenef;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes,Data.DB,
+      Data.DB,
       tblProductUfBenef,Generics.Collections;
 
 

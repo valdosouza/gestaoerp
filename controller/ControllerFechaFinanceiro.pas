@@ -2,7 +2,7 @@ unit ControllerFechaFinanceiro;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblFechaFinanceiro ;
+      Un_sistema,Un_Regra_Negocio, tblFechaFinanceiro ;
 
 
 Type

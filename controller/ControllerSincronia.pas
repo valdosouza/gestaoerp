@@ -2,7 +2,7 @@ unit ControllerSincronia;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes, tblSincronia ,ControllerDskRestMenu,
+      Un_sistema, tblSincronia ,ControllerDskRestMenu,
       Generics.Collections, controllerSyncTable, ControllerEstoque;
 
 

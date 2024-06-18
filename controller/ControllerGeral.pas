@@ -2,7 +2,7 @@ unit ControllerGeral;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblGeral ,Generics.Collections;
+      tblGeral ,Generics.Collections;
 
 
 Type

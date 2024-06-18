@@ -3,7 +3,7 @@ unit ControllerCtrlEstoque;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      Un_funcoes, tblCtrlEstoque ,Un_MSg,ControllerCtrlEstoqueZerado,
+      tblCtrlEstoque ,Un_MSg,ControllerCtrlEstoqueZerado,
       System.Generics.Collections, ControllerSyncTable, ControllerComposicao,
   tblSyncTable;
 

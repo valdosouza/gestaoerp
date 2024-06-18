@@ -3,7 +3,7 @@ unit ControllerVehicle;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblVehicle ,Un_MSg,
+      Un_sistema,Un_Regra_Negocio, tblVehicle ,Un_MSg,
       Forms, ControllerUf, ControllerPedido,ControllerNotaFiscal,
       ControllerVehicleBrand,ControllerVehicleModel;
 
@@ -30,7 +30,7 @@ Type
 
 implementation
 
-uses RN_Estoque, RN_Produto, Un_VehicleSo;
+uses RN_Estoque, RN_Produto;
 
 procedure TControllerVehicle.clear;
 begin

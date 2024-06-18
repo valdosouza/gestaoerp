@@ -2,7 +2,7 @@ unit ControllerProductionRealized;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblProductionrealized ,
+      Un_sistema,Un_Regra_Negocio, tblProductionrealized ,
       Generics.Collections, Un_MSg, ControllerProduto;
 
 Type

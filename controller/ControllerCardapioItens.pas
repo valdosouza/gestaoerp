@@ -3,7 +3,7 @@ unit ControllerCardapioItens;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblMedida ,Un_MSg;
+      Un_sistema,Un_Regra_Negocio, tblMedida ,Un_MSg;
 
 Type
   TControllerMedida = Class(TControllerBase)

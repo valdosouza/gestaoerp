@@ -29,7 +29,7 @@ Type
 
 implementation
 
-uses Un_sistema, Un_funcoes,Un_Regra_Negocio;
+uses Un_sistema, Un_Regra_Negocio;
 
 constructor TControllerNcmControle.Create(AOwner: TComponent);
 begin

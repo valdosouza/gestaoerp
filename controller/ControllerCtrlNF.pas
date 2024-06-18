@@ -2,7 +2,7 @@ unit ControllerCtrlNF;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_sistema,Un_funcoes,Un_Regra_Negocio, tblCtrlNF ;
+      Un_sistema,Un_Regra_Negocio, tblCtrlNF ;
 
 Type
   TControllerCtrlNF = Class(TControllerBase)

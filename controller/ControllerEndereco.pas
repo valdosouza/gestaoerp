@@ -46,7 +46,7 @@ implementation
 
 { TControllerEndereco}
 
-uses Un_Regra_Negocio, Un_Funcoes, UnFunctions;
+uses Un_Regra_Negocio,  UnFunctions;
 
 procedure TControllerEndereco.clear;
 begin

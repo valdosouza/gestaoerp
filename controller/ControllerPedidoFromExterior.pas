@@ -3,7 +3,7 @@ unit ControllerPedidoFromExterior;
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      Un_funcoes, tblPedidoFromExterior, Generics.Collections;
+       tblPedidoFromExterior, Generics.Collections;
 Type
 
   TControllerPedidoFromExterior = Class(TControllerBase)

@@ -3,7 +3,7 @@ unit ControllerEspecieDoc;
 interface
 
 uses  STDatabase, Classes, STQuery, SysUtils, ControllerBase, tblCartao,
-      Un_sistema, Un_funcoes, Un_Regra_Negocio, tblEspecieDoc ;
+      Un_sistema,  Un_Regra_Negocio, tblEspecieDoc ;
 
 Type
   TControllerEspecieDoc = Class(TControllerBase)
