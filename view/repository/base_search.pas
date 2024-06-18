@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_base, Data.DB, Datasnap.Provider,
   Datasnap.DBClient, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
-  Vcl.ExtCtrls, Vcl.Menus, Vcl.StdCtrls, STQuery,Un_DM;
+  Vcl.ExtCtrls, Vcl.Menus, Vcl.StdCtrls, STQuery,Un_DM, System.UITypes;
+
 
 type
   TBaseSearch = class(TFr_Base)
@@ -35,17 +36,7 @@ type
   protected
     FSelecionar: Boolean;
     FSelecionado: Boolean;
-
     SelectTxt : String;
-    InnerJoinTxt : String;
-    WhereTxt : String;
-
-    UnionSelectTxt : String;
-    UnionInnerJoinTxt : String;
-    UnionWhereTxt : String;
-
-    OrderByTxt : String;
-    GroupByTxt : String;
 
     procedure setFSelecionar(const Value: Boolean);
     procedure setFSelecionado(const Value: Boolean);
@@ -55,12 +46,8 @@ type
     procedure IniciaVariaveis;Override;
     procedure FormataTela;Override;
 
-
     procedure SelectSql;Virtual;
-    procedure InnerJoinSql;Virtual;
-    procedure WhereSql;Virtual;
-    procedure OrderBySql;Virtual;
-    procedure GroupBySql;Virtual;
+
     procedure SetParameters(Param: TSTQuery);Virtual;
     function validateGetView:Boolean;Virtual;
     procedure GetView;Virtual;
@@ -166,31 +153,8 @@ begin
     Active := False;
     sql.Clear;
     SelectTxt := '';
-    InnerJoinTxt := '';
-    WhereTxt := '';
-    UnionSelectTxt := '';
-    UnionInnerJoinTxt := '';
-    UnionWhereTxt := '';
-    OrderByTxt := '';
     SelectSql;
-    InnerJoinSql;
-    WhereSql;
-    GroupBySql;
-    OrderBySql;
     SQL.Add(SelectTxt);
-    SQL.Add(InnerJoinTxt);
-    SQL.Add(WhereTxt);
-    if Trim(UnionSelectTxt) <> '' then
-    Begin
-      SQL.Add(' Union ');
-      SQL.Add(UnionSelectTxt);
-    End;
-    if Trim(UnionInnerJoinTxt) <> '' then
-      SQL.Add(UnionInnerJoinTxt);
-    if Trim(UnionWhereTxt) <> ''     then
-      SQL.Add(UnionWhereTxt);
-    SQL.Add(GroupByTxt);
-    SQL.Add(OrderByTxt);
     SetParameters(DM.Qr_Crud);
     Prepare;
     Active := True;
@@ -279,10 +243,6 @@ begin
   FSelecionado := True;
 end;
 
-procedure TBaseSearch.GroupBySql;
-begin
-  //
-end;
 
 procedure TBaseSearch.IniciaVariaveis;
 begin
@@ -300,15 +260,7 @@ begin
   cds_search.Close;
 end;
 
-procedure TBaseSearch.InnerJoinSql;
-begin
-  //
-end;
 
-procedure TBaseSearch.OrderBySql;
-begin
-  //
-end;
 
 procedure TBaseSearch.returnRegister;
 begin
@@ -316,10 +268,6 @@ begin
 end;
 
 
-procedure TBaseSearch.WhereSql;
-begin
-  //
-end;
 
 procedure TBaseSearch.Sb_Sair_0Click(Sender: TObject);
 begin
