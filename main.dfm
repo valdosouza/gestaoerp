@@ -726,8 +726,8 @@ object FrMain: TFrMain
     end
   end
   object MnuBco: TMainMenu
-    Left = 264
-    Top = 34
+    Left = 328
+    Top = 50
     object MnuArqBco: TMenuItem
       Caption = '&Arquivo'
       object MnuArqBancoBco: TMenuItem
@@ -794,8 +794,8 @@ object FrMain: TFrMain
     end
   end
   object MnuPsl: TMainMenu
-    Left = 336
-    Top = 50
+    Left = 456
+    Top = 138
     object MnuPslArquivo: TMenuItem
       Caption = '&Arquivo'
       object MnuPslArqColaborador: TMenuItem
