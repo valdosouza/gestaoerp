@@ -7,7 +7,7 @@ interface
 uses
    ACBrdevice,FavoritoButtons,ControllerBase,
    ACBrBase, ACBrBoleto, ACBrUtil, ACBrBoletoFCFortesFr,
-   Un_DM, UN_MSG,  RDprint, ACBrGAV,Winapi.WinSpool, Vcl.StdCtrls, Vcl.DBCtrls,
+   Un_DM, UN_MSG,  ACBrGAV,Winapi.WinSpool, Vcl.StdCtrls, Vcl.DBCtrls,
   Vcl.Imaging.jpeg, Classes, Vcl.Grids, STQuery, Vcl.Forms,
   SysUtils, Variants, Data.DB, System.Math, UITypes,
   Vcl.Dialogs, Types, IniFiles, Vcl.ExtCtrls, Vcl.Graphics, STDatabase,

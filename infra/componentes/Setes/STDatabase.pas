@@ -37,7 +37,6 @@ end;
 procedure TSTDatabase.setFDatabaseName(const Value: String);
 begin
   FDatabaseName := Value;
-
 end;
 
 end.
