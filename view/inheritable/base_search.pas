@@ -8,7 +8,6 @@ uses
   Datasnap.DBClient, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.StdCtrls, STQuery,Un_DM, System.UITypes;
 
-
 type
   TBaseSearch = class(TFr_Base)
     Pnl_Fundo: TPanel;
@@ -38,22 +37,19 @@ type
 
     procedure setFSelecionar(const Value: Boolean);
     procedure setFSelecionado(const Value: Boolean);
-
+    //Start
     procedure ImagemBotao;Override;
     procedure CriarVariaveis;Override;
     procedure IniciaVariaveis;Override;
     procedure FormataTela;Override;
-
-    procedure SelectSql;Virtual;
-
-    procedure SetParameters;Virtual;
+    //Search operations
     function validateGetView:Boolean;Virtual;
     procedure GetView;Virtual;
     procedure Search;Virtual;
     procedure totalizer;Virtual;
     procedure SetRegister;Virtual;
     procedure returnRegister;Virtual;
-
+    //TEclas
     procedure execShorCutKeyF2;Override;
     procedure execShorCutKeyF7;Override;
     procedure execShorCutKeyF8;Override;
@@ -72,8 +68,6 @@ implementation
 {$R *.dfm}
 
 uses Un_Msg;
-
-
 
 procedure TBaseSearch.CriarVariaveis;
 begin
@@ -121,7 +115,7 @@ end;
 
 procedure TBaseSearch.FormataTela;
 begin
-
+  //pode ser implementada nas descendencias
 end;
 
 procedure TBaseSearch.FormKeyDown(Sender: TObject; var Key: Word;
@@ -145,26 +139,9 @@ end;
 
 procedure TBaseSearch.Search;
 begin
-  cds_search.Active := False;
-  with DM.Qr_Crud do
-  Begin
-    Active := False;
-    sql.Clear;
-    SelectSql;
-    SetParameters;
-    Prepare;
-    Active := True;
-    FetchAll;
-    Lb_ResultadoPesquisa.Caption := 'Resultado da pesquisa : ' + IntTostr(recordCount) + ' registro(s)';
-    Repaint;
-  End;
-  cds_search.Active := True;
+  Lb_ResultadoPesquisa.Caption := concat('Resultado da pesquisa : ', IntToStr(cds_search.RecordCount),'(s) registros');
 end;
 
-procedure TBaseSearch.SelectSql;
-begin
-  //será implementada nas descendencias
-end;
 
 procedure TBaseSearch.setFSelecionado(const Value: Boolean);
 begin
@@ -192,15 +169,7 @@ begin
     CarregaImagemBotao(SB_Visualizar,'VISUALIZAR');
     SB_Visualizar.Caption:= 'Visualizar - F8';
   End;
-
-
   CarregaImagemBotao(Sb_Sair_0,'SAIR');
-
-end;
-
-procedure TBaseSearch.SetParameters;
-begin
-
 end;
 
 procedure TBaseSearch.SetRegister;
@@ -208,10 +177,9 @@ begin
   //será implementada nas descendencias
 end;
 
-
 procedure TBaseSearch.totalizer;
 begin
-
+  //pode ser implementada nas descendencias
 end;
 
 function TBaseSearch.validateGetView: Boolean;
@@ -239,7 +207,6 @@ begin
   FSelecionado := True;
 end;
 
-
 procedure TBaseSearch.IniciaVariaveis;
 begin
   inherited;
@@ -256,14 +223,10 @@ begin
   cds_search.Close;
 end;
 
-
-
 procedure TBaseSearch.returnRegister;
 begin
-  //
+  //será implementada nas descendencias
 end;
-
-
 
 procedure TBaseSearch.Sb_Sair_0Click(Sender: TObject);
 begin

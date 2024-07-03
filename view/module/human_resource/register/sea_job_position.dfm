@@ -52,9 +52,9 @@ inherited SeaJobPosition: TSeaJobPosition
     Width = 740
     Height = 50
     ExplicitHeight = 50
-    object Label1: TLabel
+    object Lb_Descricao: TLabel
       Left = 8
-      Top = 4
+      Top = 3
       Width = 46
       Height = 13
       Caption = 'Descri'#231#227'o'

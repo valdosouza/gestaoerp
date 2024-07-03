@@ -178,7 +178,7 @@ end;
 
 procedure TBaseRegistry.Delete;
 begin
-  //A implementação será feita na descendencia
+  Close;
 end;
 
 procedure TBaseRegistry.FormataTela;

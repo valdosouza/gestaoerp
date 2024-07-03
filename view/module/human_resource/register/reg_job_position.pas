@@ -74,8 +74,8 @@ end;
 
 procedure TRegJobPosition.Delete;
 begin
-  inherited;
   JobPosition.delete;
+  inherited;
 end;
 
 procedure TRegJobPosition.FinalizaVariaveis;

@@ -10,25 +10,18 @@ uses
 
 type
   TSeaJobPosition = class(TBaseSearch)
-    Label1: TLabel;
+    Lb_Descricao: TLabel;
     E_Descricao: TEdit;
     cds_searchCodigo: TIntegerField;
     cds_searchDescricao: TStringField;
   private
+
   protected
-    procedure ImagemBotao;Override;
     procedure CriarVariaveis;Override;
     procedure FinalizaVariaveis;Override;
-    procedure IniciaVariaveis;Override;
-    procedure FormataTela;Override;
     procedure Search;Override;
-    procedure SelectSql;Override;
-    procedure SetParameters;Override;
-    function validateGetView:Boolean;Override;
     procedure GetView;Override;
     procedure SetRegister;Override;
-    procedure returnRegister;Override;
-
   public
     { Public declarations }
     JobPosition : TControllerCargo;
@@ -55,33 +48,17 @@ begin
   FreeAndNil(JobPosition);
 end;
 
-procedure TSeaJobPosition.FormataTela;
-begin
-  inherited;
-
-end;
-
 procedure TSeaJobPosition.GetView;
+var
+  Lc_form : TRegJobPosition;
 begin
-  inherited;
-
-end;
-
-procedure TSeaJobPosition.ImagemBotao;
-begin
-  inherited;
-
-end;
-
-procedure TSeaJobPosition.IniciaVariaveis;
-begin
-  inherited;
-
-end;
-
-procedure TSeaJobPosition.returnRegister;
-begin
-  inherited;
+  Try
+    Lc_form := TRegJobPosition.Create(self);
+    Lc_form.CodigoRegistro := cds_searchCodigo.AsInteger;
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
 
 end;
 
@@ -103,18 +80,7 @@ begin
     cds_searchCodigo.AsInteger := JobPosition.Lista[I].Codigo;
     cds_searchDescricao.AsString := JobPosition.Lista[I].Descricao;
   End;
-end;
-
-procedure TSeaJobPosition.SelectSql;
-begin
   inherited;
-
-end;
-
-procedure TSeaJobPosition.SetParameters;
-begin
-  inherited;
-
 end;
 
 procedure TSeaJobPosition.SetRegister;
@@ -123,24 +89,12 @@ var
 begin
   Try
     Lc_form := TRegJobPosition.Create(self);
+    Lc_form.CodigoRegistro := 0;
     Lc_form.ShowModal;
   Finally
     FreeAndNil(Lc_form);
   End;
 end;
 
-function TSeaJobPosition.validateGetView: Boolean;
-var
-  Lc_form : TRegJobPosition;
-begin
-  Try
-    Lc_form := TRegJobPosition.Create(self);
-    Lc_form.CodigoRegistro := cds_searchCodigo.AsInteger;
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
-
-end;
 
 end.
