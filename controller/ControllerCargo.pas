@@ -2,8 +2,8 @@ unit ControllerCargo;
 
 interface
 
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      tblCargo ,Un_MSg,Generics.Collections;
+uses STDatabase,Classes, STQuery, SysUtils,ControllerBase, tblCargo ,Un_MSg,
+    Generics.Collections, prm_job_position;
 
 Type
   TListaCargo = TObjectList<TCargo>;
@@ -11,6 +11,8 @@ Type
   TControllerCargo = Class(TControllerBase)
 
   private
+    FParametros: TPrmJobPosition;
+    procedure setFParametros(const Value: TPrmJobPosition);
 
   public
     Registro : TCargo;
@@ -26,17 +28,28 @@ Type
     function getList:Boolean;
     function replace:boolean;
     Function GetcargoVendedor : Integer;
+    function Clear:Boolean;
+    function Search:Boolean;
+    property Parametros : TPrmJobPosition read FParametros write setFParametros;
+
   End;
 
 implementation
 
 uses Un_sistema, Un_Regra_Negocio;
 
+function TControllerCargo.Clear: Boolean;
+begin
+  clearObj(Registro);
+  Parametros.Clear;
+end;
+
 constructor TControllerCargo.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TCargo.Create;
   Lista := TListaCargo.Create;
+  Parametros := TPrmJobPosition.Create;
 end;
 
 function TControllerCargo.delete: boolean;
@@ -51,8 +64,9 @@ end;
 
 destructor TControllerCargo.Destroy;
 begin
-  Lista.DisposeOf;
-  Registro.DisposeOf;
+  FreeAndNil(FParametros);
+  FreeAndNil(Lista);
+  FreeAndNil(Registro);
   inherited;
 end;
 
@@ -88,6 +102,49 @@ begin
   Except
     Result := False;
   End;
+end;
+
+function TControllerCargo.Search: Boolean;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TCargo;
+begin
+  Try
+    Lc_Qry := GeraQuery;
+    with Lc_Qry do
+    Begin
+      sql.add(concat('SELECT * ',
+                      'FROM TB_CARGO ',
+                      'WHERE CRG_CODIGO IS NOT NULL '
+      ));
+      if Parametros.FieldName.Descricao <> '' then
+        sql.add(' AND ( CRG_DESCRICAO LIKE :CRG_DESCRICAO ) ');
+
+      if Parametros.FieldName.Descricao <> '' then
+        ParamByName('CRG_DESCRICAO').AsString := concat('%',Parametros.FieldName.Descricao,'%');
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+      while not eof do
+      Begin
+        LITem := TCargo.Create;
+        get(Lc_Qry,LITem);
+        Lista.add(LITem);
+        next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+
+
+end;
+
+procedure TControllerCargo.setFParametros(const Value: TPrmJobPosition);
+begin
+  FParametros := Value;
 end;
 
 function TControllerCargo.update: boolean;

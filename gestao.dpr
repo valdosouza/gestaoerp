@@ -1,4 +1,4 @@
-program gestao;
+program Gestao;
 
 uses
   Vcl.Forms,
@@ -7,7 +7,10 @@ uses
   Un_Base in 'view\inheritable\Un_Base.pas' {Fr_Base},
   base_search in 'view\inheritable\base_search.pas' {BaseSearch},
   base_registry in 'view\inheritable\base_registry.pas' {BaseRegistry},
-  UN_TabelasEmListas in 'UN_TabelasEmListas.pas' {DM_ListaConsultas: TDataModule};
+  UN_TabelasEmListas in 'UN_TabelasEmListas.pas' {DM_ListaConsultas: TDataModule},
+  sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
+  prm_job_position in 'parameter\prm_job_position.pas',
+  reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition};
 
 {$R *.res}
 

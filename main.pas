@@ -292,6 +292,7 @@ type
     procedure Pessoal1Click(Sender: TObject);
     procedure Pessoal2Click(Sender: TObject);
     procedure Pessoal3Click(Sender: TObject);
+    procedure MnuPslArqCargoClick(Sender: TObject);
   private
     procedure MenuOperacao;
     procedure MenuBanco;
@@ -320,9 +321,22 @@ implementation
 
 {$R *.dfm}
 
-uses un_dm;
+uses un_dm, sea_job_position;
 
 { TForm1 }
+
+procedure TFrMain.MnuPslArqCargoClick(Sender: TObject);
+Var
+  Lc_form : TSeaJobPosition;
+begin
+  Try
+    Lc_form := TSeaJobPosition.Create(Self);
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
 
 procedure TFrMain.MnuPslBancarioClick(Sender: TObject);
 begin
@@ -393,6 +407,7 @@ procedure TFrMain.InitVariable;
 begin
   MenuOperacao;
   GB_NM_Empresa := 'Teste';
+  Gb_Nivel := 1;//Setado como 1 por que no sistema original passamos pelo autenticação para defini-lo
 end;
 
 procedure TFrMain.MenuBanco;

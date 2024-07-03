@@ -2,7 +2,7 @@ inherited FrMain: TFrMain
   Caption = 'Sistema de Gest'#227'o Empresarial'
   ClientHeight = 587
   ClientWidth = 1199
-  Menu = MnuOper
+  Menu = MnuPsl
   ExplicitWidth = 1205
   ExplicitHeight = 636
   PixelsPerInch = 96
@@ -799,6 +799,7 @@ inherited FrMain: TFrMain
       end
       object MnuPslArqCargo: TMenuItem
         Caption = 'Cargos'
+        OnClick = MnuPslArqCargoClick
       end
       object MenuItem4: TMenuItem
         Caption = '-'

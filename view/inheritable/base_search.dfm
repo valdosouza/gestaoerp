@@ -23,7 +23,7 @@ inherited BaseSearch: TBaseSearch
     object Lb_ResultadoPesquisa: TLabel
       Left = 2
       Top = 2
-      Width = 116
+      Width = 875
       Height = 14
       Align = alTop
       Caption = 'Resultado da pesquisa :'
@@ -33,6 +33,7 @@ inherited BaseSearch: TBaseSearch
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
+      ExplicitWidth = 116
     end
     object DBG_Pesquisa: TDBGrid
       Left = 2
@@ -179,11 +180,5 @@ inherited BaseSearch: TBaseSearch
     ProviderName = 'DSP'
     Left = 152
     Top = 202
-  end
-  object DSP: TDataSetProvider
-    DataSet = DM.Qr_Crud
-    Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 152
-    Top = 160
   end
 end

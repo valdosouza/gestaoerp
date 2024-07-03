@@ -15,7 +15,6 @@ type
     Pnl_Parametros: TPanel;
     ds_search: TDataSource;
     cds_search: TClientDataSet;
-    DSP: TDataSetProvider;
     Sb_Sair_0: TSpeedButton;
     SB_Visualizar: TSpeedButton;
     SB_Buscar: TSpeedButton;
@@ -36,7 +35,6 @@ type
   protected
     FSelecionar: Boolean;
     FSelecionado: Boolean;
-    SelectTxt : String;
 
     procedure setFSelecionar(const Value: Boolean);
     procedure setFSelecionado(const Value: Boolean);
@@ -48,7 +46,7 @@ type
 
     procedure SelectSql;Virtual;
 
-    procedure SetParameters(Param: TSTQuery);Virtual;
+    procedure SetParameters;Virtual;
     function validateGetView:Boolean;Virtual;
     procedure GetView;Virtual;
     procedure Search;Virtual;
@@ -152,10 +150,8 @@ begin
   Begin
     Active := False;
     sql.Clear;
-    SelectTxt := '';
     SelectSql;
-    SQL.Add(SelectTxt);
-    SetParameters(DM.Qr_Crud);
+    SetParameters;
     Prepare;
     Active := True;
     FetchAll;
@@ -202,7 +198,7 @@ begin
 
 end;
 
-procedure TBaseSearch.SetParameters(Param: TSTQuery);
+procedure TBaseSearch.SetParameters;
 begin
 
 end;

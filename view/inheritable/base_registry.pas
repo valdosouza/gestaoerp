@@ -81,7 +81,8 @@ uses  RN_Permissao, UN_Sistema;
 
 procedure TBaseRegistry.Change;
 begin
-//
+  EditionState := 'E';
+  EditionControl;
 end;
 
 procedure TBaseRegistry.Cancel;
@@ -199,7 +200,8 @@ end;
 
 procedure TBaseRegistry.Save;
 begin
-  //A implementação será feita na descendencia
+  EditionState := 'B';
+  EditionControl;
 end;
 
 procedure TBaseRegistry.IniciaVariaveis;
@@ -214,7 +216,9 @@ end;
 
 procedure TBaseRegistry.Insert;
 begin
-  //A implementação será feita na descendencia
+  ClearAllFields;
+  EditionState := 'I';
+  EditionControl;
 end;
 
 function TBaseRegistry.ValidateChange: boolean;
