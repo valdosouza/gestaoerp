@@ -10,6 +10,9 @@ inherited SeaJobPosition: TSeaJobPosition
     Top = 59
     Width = 740
     Height = 398
+    ExplicitTop = 59
+    ExplicitWidth = 740
+    ExplicitHeight = 398
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 736
     end
@@ -34,23 +37,30 @@ inherited SeaJobPosition: TSeaJobPosition
     inherited pnl_pesq_right: TPanel
       Left = 646
       Height = 380
+      ExplicitLeft = 646
+      ExplicitHeight = 380
       inherited Sb_Sair_0: TSpeedButton
         Top = 317
+        ExplicitTop = 317
       end
       inherited SB_Visualizar: TSpeedButton
         Top = 254
+        ExplicitTop = 254
       end
       inherited SB_Buscar: TSpeedButton
         Top = 191
+        ExplicitTop = 191
       end
       inherited SB_Cadastrar: TSpeedButton
         Top = 128
+        ExplicitTop = 128
       end
     end
   end
   inherited Pnl_Parametros: TPanel
     Width = 740
     Height = 50
+    ExplicitWidth = 740
     ExplicitHeight = 50
     object Lb_Descricao: TLabel
       Left = 8

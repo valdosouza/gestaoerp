@@ -15,7 +15,7 @@ type
     cds_searchCodigo: TIntegerField;
     cds_searchDescricao: TStringField;
   private
-
+    procedure openRegister(pCodigo:Integer);
   protected
     procedure CriarVariaveis;Override;
     procedure FinalizaVariaveis;Override;
@@ -49,17 +49,21 @@ begin
 end;
 
 procedure TSeaJobPosition.GetView;
+begin
+  openRegister(cds_searchCodigo.AsInteger);
+end;
+
+procedure TSeaJobPosition.openRegister(pCodigo: Integer);
 var
   Lc_form : TRegJobPosition;
 begin
   Try
     Lc_form := TRegJobPosition.Create(self);
-    Lc_form.CodigoRegistro := cds_searchCodigo.AsInteger;
+    Lc_form.CodigoRegistro := pCodigo;
     Lc_form.ShowModal;
   Finally
     FreeAndNil(Lc_form);
   End;
-
 end;
 
 procedure TSeaJobPosition.Search;
@@ -84,16 +88,8 @@ begin
 end;
 
 procedure TSeaJobPosition.SetRegister;
-var
-  Lc_form : TRegJobPosition;
 begin
-  Try
-    Lc_form := TRegJobPosition.Create(self);
-    Lc_form.CodigoRegistro := 0;
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  openRegister(0);
 end;
 
 
