@@ -162,6 +162,8 @@ begin
   DM.IBD_Gestao.Params.Add('DriverID=FB');
   DM.IBD_Gestao.Params.Add('Port=3350');
   }
+
+  //Rodrigo Prado - teste
   DM.IBD_Gestao.Connected := True;
 end;
 
