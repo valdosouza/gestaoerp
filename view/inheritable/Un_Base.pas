@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,  Data.Db, Vcl.Menus,Vcl.DBCtrls,
   STDataSet, STQuery, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, QEdit_Setes, ACBrGIF,ControllerGeral;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Mask, QEdit_Setes, ControllerGeral;
 
 type
   TFr_Base = class(TForm)

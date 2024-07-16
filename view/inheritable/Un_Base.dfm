@@ -13,14 +13,12 @@ object Fr_Base: TFr_Base
   Font.Style = []
   KeyPreview = True
   Menu = Menu
-  OldCreateOrder = False
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object Menu: TMainMenu
     Left = 64
