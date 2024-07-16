@@ -4,7 +4,7 @@ interface
 
 uses Classes,SysUtils, GenericORM,STTransaction,STScript,
      UnFunctions, Windows,Gauges, Un_DM, STQuery,
-    STDatabase, IBX.IBScript;
+    STDatabase ;
 
 Type
   TControllerBase = Class(TComponent)
