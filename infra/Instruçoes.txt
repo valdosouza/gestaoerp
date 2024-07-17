@@ -1,0 +1,67 @@
+1 passo - Ver a tarefa e ler com todo o cuidado.
+2 - criar as telas conforme a descrição da tarefa
+	
+	menu file
+	new 
+	other
+	inheritable items
+		base_search
+		base_register
+
+      Exemplos:
+	un_ext_motivo 
+		duas Telas(simuladas) dentro de um pageControl
+		Tela de pesquisa 
+		Tela de cadastro
+
+	Refazer
+		Criando duas telas
+		Tela de pesquisa 
+			sea (ext_motive)  tradução é pesquisa
+			cargo em inglês job title
+			sea_ext_motive
+
+		Tela de cadastro
+			reg (register) tradução é cadastro
+			reg_ext_motive
+	
+	Extintor Motivo
+		sea_ext_motive  (.pas)
+		SeaExtMotive
+		
+		reg_ext_motive (.pas)
+		RegExtMotive
+	Copiar e colar os componentes
+
+3 - Trocar componentes TDB por T
+	clique no form como botão direito do mouse no menu suspenso view as text
+	USar o Ctrl + R para fazer o Replace
+	clique no texto como botão direito do mouse no menu suspenso view as form
+	nas mensagem que aparecer dizendo que o componente não existe, confirmar a retirada.
+
+4 - Testar 
+	Criar um botão no main chamando a tela .
+
+5 - Ir no GitHub e marcar que parte da tarefa esta pronta
+
+
+6 - Criar a branch
+	abrir o cmd como adm
+	ir ate o diretório do projeto
+	git pull
+	git checkout -b user_copia 
+	
+7 - Copiar as telas para o projeto gestaoerp...
+	por que é aqui que deve ser feito o push via pull rquest
+	
+8 - git add .
+    git commit -a -m "Copia da Tela de Usuário para o novo padrão"
+    git push -u origin user_copia
+
+9 - Abrir o pull Request
+	Entrar no site e seguir os passos
+	lembrar do reviwer e do assign
+
+	
+
+
