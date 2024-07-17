@@ -279,6 +279,7 @@ type
     MnuPslRelComissao: TMenuItem;
     MnuPslRelVales: TMenuItem;
     MenuPslMenuFiscal: TMenuItem;
+    MnuPslArqUsuario: TMenuItem;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -293,6 +294,7 @@ type
     procedure Pessoal2Click(Sender: TObject);
     procedure Pessoal3Click(Sender: TObject);
     procedure MnuPslArqCargoClick(Sender: TObject);
+    procedure MnuPslArqUsuarioClick(Sender: TObject);
   private
     procedure MenuOperacao;
     procedure MenuBanco;
@@ -321,7 +323,7 @@ implementation
 
 {$R *.dfm}
 
-uses un_dm, sea_job_position;
+uses un_dm, sea_job_position, sea_users;
 
 { TForm1 }
 
@@ -336,6 +338,16 @@ begin
     FreeAndNil(Lc_form);
   End;
 
+end;
+
+procedure TFrMain.MnuPslArqUsuarioClick(Sender: TObject);
+begin
+  with TSeaUsers.Create(Self) do
+  Try
+    ShowModal;
+  Finally
+    Free;
+  End;
 end;
 
 procedure TFrMain.MnuPslBancarioClick(Sender: TObject);
