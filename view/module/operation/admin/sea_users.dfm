@@ -151,6 +151,7 @@ inherited SeaUsers: TSeaUsers
       Height = 440
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clCream
+      DataSource = ds_search
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -169,7 +170,7 @@ inherited SeaUsers: TSeaUsers
       Columns = <
         item
           Expanded = False
-          FieldName = 'USU_CODIGO'
+          FieldName = 'codigo'
           Title.Caption = 'C'#243'digo'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clNavy
@@ -180,7 +181,7 @@ inherited SeaUsers: TSeaUsers
         end
         item
           Expanded = False
-          FieldName = 'USU_NOME'
+          FieldName = 'nome'
           Title.Caption = 'Nome'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clNavy
@@ -266,6 +267,14 @@ inherited SeaUsers: TSeaUsers
         ParentFont = False
         TabOrder = 1
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchnome: TStringField
+      FieldName = 'nome'
     end
   end
 end

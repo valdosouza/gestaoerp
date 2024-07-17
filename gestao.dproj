@@ -139,6 +139,15 @@
             <Form>RegJobPosition</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="view\module\operation\admin\reg_users.pas">
+            <Form>RegUsers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\sea_users.pas">
+            <Form>SeaUsers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="parameter\prm_users.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

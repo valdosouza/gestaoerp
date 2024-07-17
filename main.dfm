@@ -801,6 +801,10 @@ inherited FrMain: TFrMain
         Caption = 'Cargos'
         OnClick = MnuPslArqCargoClick
       end
+      object MnuPslArqUsuario: TMenuItem
+        Caption = 'Usuario - teste'
+        OnClick = MnuPslArqUsuarioClick
+      end
       object MenuItem4: TMenuItem
         Caption = '-'
       end

@@ -3,7 +3,7 @@ unit ControllerUsuario;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblUsuario , Un_MSg,System.Generics.Collections,MD5, ControllerColaborador;
+      tblUsuario , Un_MSg,System.Generics.Collections,MD5, ControllerColaborador, prm_users;
 
 Type
   TListaUsuario = TObjectList<TUsuario>;
@@ -11,6 +11,8 @@ Type
   TControllerUsuario = Class(TControllerBase)
 
   private
+    FParametros: TPrmUsers;
+    procedure setFParametros(const Value: TPrmUsers);
   public
     Registro : TUsuario;
     Lista : TListaUsuario;
@@ -30,6 +32,9 @@ Type
     function ResetaSenha:boolean;
     function Replace:boolean;
     function Autentica : Boolean;
+    function Clear:Boolean;
+    function Search:Boolean;
+    property Parametros : TPrmUsers read FParametros write setFParametros;
   End;
 
 implementation
@@ -64,12 +69,19 @@ begin
   End;
 end;
 
+function TControllerUsuario.Clear: Boolean;
+begin
+  clearObj(Registro);
+  Parametros.Clear;
+end;
+
 constructor TControllerUsuario.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TUsuario.Create;
   Lista := TListaUsuario.Create;
   Colaborador := TControllerColaborador.create(Self);
+  Parametros := TPrmUsers.Create;
 end;
 
 function TControllerUsuario.delete: boolean;
@@ -87,6 +99,8 @@ begin
   Colaborador.DisposeOf;
   Registro.DisposeOf;
   Lista.DisposeOf;
+
+  FreeAndNil(FParametros);
   inherited;
 end;
 
@@ -141,6 +155,53 @@ begin
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_USUARIO');
   SaveObj(Registro);
+end;
+
+function TControllerUsuario.Search: Boolean;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TUsuario;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_USUARIO where USU_ATIVO = ''S'' ';
+
+      if Parametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND USU_CODIGO = :USU_CODIGO';
+        ParamByName('USU_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      end;
+
+      if Parametros.FieldName.Nome <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND USU_NOME LIKE :USU_NOME';
+        ParamByName('USU_NOME').AsString := Concat('%',Parametros.FieldName.Nome,'%');
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TUsuario.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerUsuario.setFParametros(const Value: TPrmUsers);
+begin
+  FParametros := Value;
 end;
 
 function TControllerUsuario.update: boolean;

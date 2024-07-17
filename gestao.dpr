@@ -10,7 +10,10 @@ uses
   UN_TabelasEmListas in 'UN_TabelasEmListas.pas' {DM_ListaConsultas: TDataModule},
   sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
   prm_job_position in 'parameter\prm_job_position.pas',
-  reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition};
+  reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition},
+  reg_users in 'view\module\operation\admin\reg_users.pas' {RegUsers},
+  sea_users in 'view\module\operation\admin\sea_users.pas' {SeaUsers},
+  prm_users in 'parameter\prm_users.pas';
 
 {$R *.res}
 
@@ -20,5 +23,7 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
+  Application.CreateForm(TRegUsers, RegUsers);
+  Application.CreateForm(TSeaUsers, SeaUsers);
   Application.Run;
 end.
