@@ -89,8 +89,8 @@ function TControllerBoletoEletronico.getFirst: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     BEgin
       Active := False;

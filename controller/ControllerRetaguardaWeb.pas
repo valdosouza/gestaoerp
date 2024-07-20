@@ -83,12 +83,12 @@ Var
   I : Integer;
   LcInsertSincronia : String;
 begin
+  DataBase := FBancoRetaguarda;
+  Lc_Qry := GeraQuery;
+  LcListaTrigger := TControllerTrigger.Create(nil);
+  LcListaTrigger.getlistretaguarda;
+  LcInsertSincronia := ' INSERT INTO TB_SINCRONIA(SRC_CODIGO, SRC_TABELA, SRC_CHAVE, SRC_OPER,SRC_REGISTRO, SRC_TIME) VALUES( ';
   Try
-    DataBase := FBancoRetaguarda;
-    Lc_Qry := GeraQuery;
-    LcListaTrigger := TControllerTrigger.Create(nil);
-    LcListaTrigger.getlistretaguarda;
-    LcInsertSincronia := ' INSERT INTO TB_SINCRONIA(SRC_CODIGO, SRC_TABELA, SRC_CHAVE, SRC_OPER,SRC_REGISTRO, SRC_TIME) VALUES( ';
     for I := 0 to LcListaTrigger.Lista.Count - 1 do
     Begin
       if Trim( LcListaTrigger.Lista[I].Tabela)<> '' then
@@ -192,8 +192,8 @@ procedure TControllerRetaguardaWeb.getFirst;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT first 1 * ',

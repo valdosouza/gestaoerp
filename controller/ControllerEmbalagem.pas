@@ -110,8 +110,8 @@ procedure TControllerEmbalagem.getbyDescricao;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -155,8 +155,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEmbalagem;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

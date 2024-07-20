@@ -85,8 +85,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TFornecedor;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -129,12 +129,12 @@ function TControllerFornecedor.VerificaSeExste(Fc_Cd_Codigo,
   fc_documento: string; Msg: Boolean): Integer;
 Var
   Lc_Qry : TSTQuery;
-  LcBase : TControllerBase;
   Lc_SqlTxt : String;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
+    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt:=' select EMP_CODIGO,EMP_NOME '+
@@ -169,10 +169,9 @@ begin
       end;
     End;
   Finally
-    LcBase.FinalizaQuery(Lc_Qry);
-    LcBase.DisposeOf;
+    FinalizaQuery(Lc_Qry);
+    DisposeOf;
   End;
-
 end;
 
 end.

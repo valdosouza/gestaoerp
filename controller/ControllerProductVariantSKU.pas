@@ -98,8 +98,8 @@ procedure TControllerProductVariantSKU.getById;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -125,8 +125,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TProductVariantSKU;
 begin
+  Result := True;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

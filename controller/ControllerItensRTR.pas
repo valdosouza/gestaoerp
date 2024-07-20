@@ -76,8 +76,9 @@ function TControllerItensRTR.updateQtdeLasItem(Pc_Cd_Pedido,Pc_Nr_Item:Integer;P
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry DO
     Begin
       sql.add(concat(

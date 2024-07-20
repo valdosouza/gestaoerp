@@ -79,8 +79,8 @@ procedure TControllerDskConsignment.getByCustomer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select * ',
@@ -104,8 +104,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TDskConsignment;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

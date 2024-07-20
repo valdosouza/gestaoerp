@@ -109,8 +109,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCargo;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -167,8 +167,8 @@ function TControllerCargo.GetcargoVendedor: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select CRG_CODIGO ',
@@ -201,8 +201,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCargo;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

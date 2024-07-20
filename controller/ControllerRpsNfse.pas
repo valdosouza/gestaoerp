@@ -34,8 +34,9 @@ function TControllerRpsNfse.deletebyNF: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -75,8 +76,8 @@ Var
 begin
   if Registro.Numero = 0 then
   Begin
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         sql.add('SELECT max(numero) numero '+

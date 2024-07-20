@@ -78,8 +78,9 @@ function TControllerEstoques.IsPrincipal: Boolean;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -154,8 +155,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEstoques;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -183,8 +184,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEstoques;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

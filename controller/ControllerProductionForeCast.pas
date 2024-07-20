@@ -88,8 +88,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TProductionForeCast;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT opp.* ',
@@ -120,8 +120,9 @@ function TControllerProductionForeCast.getSaldoLoteInfo: Real;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

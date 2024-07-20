@@ -59,8 +59,9 @@ function TControllerDskPromotionItems.deleteByPromotion: boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('delete ',
@@ -97,8 +98,8 @@ procedure TControllerDskPromotionItems.getbyProduct;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -126,8 +127,8 @@ Var
   Lc_Qry : TSTQuery;
   LITem : TDskPromotionItems;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -158,8 +159,8 @@ procedure TControllerDskPromotionItems.getProductDuplicated;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

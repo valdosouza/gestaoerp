@@ -53,10 +53,10 @@ Var
   LcQtdeAplicada : Real;
   ListaLote : TStringList;
 begin
+  Result := False;
+  Lc_Qry := GeraQuery;
   Try
-    Result := False;
     ListaLote := TStringList.Create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -146,8 +146,9 @@ Var
   Lc_Qry : TSTQuery;
   LcReg : TCtrlLote;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       //Exclui o movimento
@@ -178,8 +179,9 @@ Var
   Lc_Qry : TSTQuery;
   LcReg : TCtrlLote;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -253,8 +255,9 @@ Var
   Lc_Qry : TSTQuery;
   LcReg : TCtrlLote;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -288,8 +291,9 @@ function TControllerCtrlLote.getLoteByVinculo(Vinculo:Integer): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     clearObj(Registro);
     with Lc_Qry do
     Begin
@@ -316,8 +320,9 @@ function TControllerCtrlLote.getSaldo(loteId, produtoId: Integer): REal;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -365,8 +370,9 @@ function TControllerCtrlLote.VerificaExistenciaNumeroLote: Boolean;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -396,8 +402,9 @@ function TControllerCtrlLote.verificaLoteUsado: Boolean;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(

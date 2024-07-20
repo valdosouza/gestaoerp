@@ -39,8 +39,9 @@ function TControllerFechaFinanceiro.getSaldoAnterior(Codigo: Integer;
 Var
   Lc_Qry: TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Sql.Add('SELECT FIRST 1 SET_VALUE '+

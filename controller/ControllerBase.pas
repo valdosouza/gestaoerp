@@ -4,7 +4,7 @@ interface
 
 uses Classes,SysUtils, GenericORM,STTransaction,STScript,
      UnFunctions, Windows,Gauges, Un_DM, STQuery,
-    STDatabase ;
+    STDatabase,FireDAC.Stan.Param ;
 
 Type
   TControllerBase = Class(TComponent)
@@ -85,9 +85,9 @@ function TControllerBase.existObj<T>(Obj: T): Boolean;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -130,9 +130,9 @@ function TControllerBase.deleteObj<T>(Obj: T): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -151,8 +151,8 @@ procedure TControllerBase.AtivarAllTrighers;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -189,8 +189,8 @@ procedure TControllerBase.DesativarAllTrighers;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -253,9 +253,9 @@ function TControllerBase.getLastInsert<T>(Obj: T): Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -275,9 +275,9 @@ function TControllerBase.getMaxTable(Field,Tab: String): Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -301,9 +301,9 @@ function TControllerBase.getNextByField<T>(Obj: T; Field: String;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -328,9 +328,9 @@ function TControllerBase.insertObj<T>(Obj: T): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -363,9 +363,9 @@ procedure TControllerBase.replaceObj<T>(Obj: T);
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -432,8 +432,8 @@ var
   Lc_SqlTxt: string;
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       CachedUpdates := True;
@@ -464,9 +464,9 @@ function TControllerBase.updateObj<T>(Obj: T): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -496,9 +496,9 @@ procedure TControllerBase._getByKey<T>(Obj: T);
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Clear;
@@ -526,8 +526,8 @@ var
   Lc_SqlTxt: string;
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       CachedUpdates := True;

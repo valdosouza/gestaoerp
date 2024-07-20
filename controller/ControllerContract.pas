@@ -38,8 +38,8 @@ procedure TControllerContract.ComboKind(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -142,8 +142,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TContract;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

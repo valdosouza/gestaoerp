@@ -114,8 +114,8 @@ procedure TControllerMarcaProduto.getbyDescricao;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -148,11 +148,9 @@ end;
 function TControllerMarcaProduto.GetCNPJFactory(MarcaID: Integer): String;
 Var
   Lc_Qry:TSTQuery;
-  LcBase : TControllerBase;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -171,8 +169,8 @@ begin
         Result := '';
     end;
   Finally
-    LcBase.FinalizaQuery(Lc_Qry);
-    LcBase.DisposeOf;
+    FinalizaQuery(Lc_Qry);
+    DisposeOf;
   End;
 end;
 
@@ -194,8 +192,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TMarcaProduto;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

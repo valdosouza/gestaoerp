@@ -91,8 +91,8 @@ procedure TControllerPedido.alteraStatus;
 Var
   Lc_Qry: TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -143,9 +143,11 @@ begin
     Lc_VL_Desconto_Ant := 0;
     Lc_Cd_Item_Ant := 0;
     LcBreak := FAlse;
+    //Cria a Qry de Atualização
+    Lc_Upt := GEraQuery;
     //Cria a Consulta
+    Lc_Qry := geraQuery;
     Try
-      Lc_Qry := geraQuery;
       WITH Lc_Qry do
       Begin
         SQL.Clear;
@@ -173,8 +175,6 @@ begin
         end;
         Lc_VL_Pedido:= RoundABNT(Lc_VL_Pedido,-2);
 
-        //Cria a Qry de Atualização
-        Lc_Upt := GEraQuery;
         Lc_Upt.SQL.Clear;
         Lc_SqlTxt := 'UPDATE TB_ITENS_NFL SET ' +
                      'ITF_AQ_DESC=:ITF_AQ_DESC, ' +
@@ -232,9 +232,9 @@ begin
   End
   else
   Begin
+    //Cria a Qry de Atualização
+    Lc_Upt := GEraQuery;
     Try
-     //Cria a Qry de Atualização
-      Lc_Upt := GEraQuery;
       Lc_Upt.SQL.Clear;
       Lc_Upt.SQL.Add(concat(
                    'UPDATE TB_ITENS_NFL SET ',
@@ -264,8 +264,9 @@ function TControllerPedido.AtualizaPedidoConsumidor: Boolean;
 Var
   Lc_Qry: TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -306,8 +307,10 @@ Var
   Lc_Seq : Integer;
   Lc_setAll : Boolean;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
+  Lc_Upd := GeraQuery;
   Try
-    Lc_Upd := GeraQuery;
     with Lc_Upd do
     Begin
       SQL.Add(concat(
@@ -316,7 +319,7 @@ Begin
                 ' WHERE (ITF_CODIGO=:ITF_CODIGO) '
       ));
     End;
-    Lc_Qry := GeraQuery;
+
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -388,8 +391,8 @@ Var
 Begin
   if Registro.CodigoWeb > 0 then
   Begin
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         Active := False;
@@ -430,8 +433,8 @@ Begin
     getIdByCodigoWeb;
   if Registro.Codigo > 0 then
   Begin
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         sql.Clear;
@@ -459,8 +462,8 @@ procedure TControllerPedido.deleteByCodigoWeb(Id: Integer);
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       //Restaurante
@@ -505,8 +508,8 @@ procedure TControllerPedido.enviaLixeira;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -529,8 +532,8 @@ Begin
   Result := False;
   if ( Registro.Codigo > 0 ) then
   Begin
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add(' select PED_CODIGO '+
@@ -564,8 +567,8 @@ Begin
   Result := False;
   if ( Registro.CodigoWeb > 0 ) then
   Begin
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add(concat(
@@ -613,8 +616,8 @@ function TControllerPedido.LiberaEmUso: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE tb_pedido SET PED_emuso = null where ped_codigo =:ped_codigo');
@@ -672,8 +675,9 @@ function TControllerPedido.UpdateObjInternet(): boolean;
 Var
   LcQry : TSTQuery;
 begin
+  Result := True;
+  LcQry := GeraQuery;
   try
-    LcQry := GeraQuery;
     with LcQry do
     Begin
       sql.Clear;
@@ -796,8 +800,8 @@ procedure TControllerPedido.getIdByNumero();
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -824,8 +828,9 @@ function TControllerPedido.getIdNota: Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(' select NFL_CODIGO '+
@@ -846,8 +851,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPedido;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -894,8 +899,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPedido;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -978,8 +983,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPedido;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('select first 1 usu_codigo ',
@@ -1002,9 +1007,9 @@ function TControllerPedido.getIdEmpresa:Integer;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Result := 0;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('select PED_CODEMP ',
@@ -1025,8 +1030,8 @@ procedure TControllerPedido.getByCodigoWeb;
 var
   Lc_Qry: TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(Concat(
@@ -1053,8 +1058,9 @@ function TControllerPedido.getByEmpresa:Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -1081,8 +1087,8 @@ procedure TControllerPedido.nextNumber(Metodo:String);
 var
   Lc_Qry: TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       getbyId;
@@ -1142,8 +1148,8 @@ procedure TControllerPedido.GravaCredito;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE TB_PEDIDO SET '+
@@ -1165,8 +1171,9 @@ Begin
   Result := False;
   if ( Registro.Codigo > 0 ) then
   Begin
+    Result := True;
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         Active := False;
@@ -1208,8 +1215,9 @@ Begin
   Result := False;
   if ( Registro.Codigo > 0 ) then
   Begin
+    Result := True;
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         Active := False;
@@ -1240,8 +1248,9 @@ Begin
   Result := False;
   if ( Registro.Codigo > 0 ) then
   Begin
+    Result := True;
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         Active := False;
@@ -1277,8 +1286,9 @@ begin
   Result := False;
   if ( Registro.Codigo > 0 ) then
   Begin
+    Result := True;
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         Active := False;
@@ -1353,8 +1363,9 @@ var
   Lc_Qry: TSTQuery;
   Lc_Valor :REal;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -1390,8 +1401,9 @@ var
   LcValor : Real;
   LcStrValor : String;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;

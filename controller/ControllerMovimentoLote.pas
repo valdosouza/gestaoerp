@@ -46,8 +46,9 @@ var
   Lc_Entrada : Real;
   Lc_Saida : Real;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -102,9 +103,10 @@ var
   I:Integer;
   Lc_Cd_Lote : Integer;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
+  Lc_Upt := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
-    Lc_Upt := GeraQuery;
     with Lc_Qry do
     Begin
       For I := 0 to (Pc_Lst_Lote.Count -1) do
@@ -162,9 +164,10 @@ function TControllerMovimentoLote.CorrigeItemExcluido: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
     Lst_Lote.Clear;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -206,9 +209,10 @@ function TControllerMovimentoLote.deleteByVinculo: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
     Lst_Lote.Clear;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -257,8 +261,9 @@ Var
   Lc_Qry : TSTQuery;
   Item : TMovimentoLote;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -289,8 +294,9 @@ function TControllerMovimentoLote.getFirstByLote: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -319,8 +325,9 @@ function TControllerMovimentoLote.getSaldoMovimento(vinculoId,produtoId: Integer
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(

@@ -100,8 +100,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TIfoodOrderTotal;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

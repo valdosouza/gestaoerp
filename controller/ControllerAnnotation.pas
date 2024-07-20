@@ -111,8 +111,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TAnnotation;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

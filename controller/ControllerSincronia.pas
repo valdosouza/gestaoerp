@@ -64,8 +64,9 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -93,8 +94,8 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -133,8 +134,9 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -179,8 +181,8 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -235,8 +237,8 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -259,8 +261,8 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -301,8 +303,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TSincronia;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin  //Seleciona REgistros do Servidor
       sql.add( concat(
@@ -339,8 +342,8 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -428,8 +431,8 @@ var
   LcLista : TSincronia;
 begin
  //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -479,8 +482,8 @@ var
   LcLista : TSincronia;
 begin
   //Seleciona REgistros do Servidor
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -534,8 +537,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TSincronia;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin  //Seleciona REgistros do Servidor
       sql.add( concat(

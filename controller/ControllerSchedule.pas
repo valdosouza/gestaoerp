@@ -105,9 +105,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TSchedule;
 begin
+  Result := False;
+  Lc_Qry := GeraQuery;
   Try
-    Result := False;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -145,8 +145,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TSchedule;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

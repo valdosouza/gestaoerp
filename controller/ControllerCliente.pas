@@ -197,8 +197,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TCliente;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -226,9 +226,9 @@ var
   Lc_Qry : TSTQuery;
   Lc_Filter: TStrings;
 begin
+  Lc_Qry := GeraQuery;
+  Lc_Filter := TStringList.Create;
   Try
-    Lc_Filter := TStringList.Create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

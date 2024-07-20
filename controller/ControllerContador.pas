@@ -53,8 +53,9 @@ function TControllerContador.getCNPJ: String;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -85,8 +86,9 @@ function TControllerContador.getEmail:String;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -117,8 +119,8 @@ Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -161,8 +163,9 @@ Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt:=' select EMP_CODIGO,EMP_NOME '+

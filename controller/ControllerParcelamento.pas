@@ -47,8 +47,8 @@ procedure TControllerParcelamento.deletebyPedido;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('DELETE FROM TB_PARCELAMENTO WHERE PAR_CODPED=:PED_CODIGO');
@@ -73,8 +73,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TParcelamento;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -109,9 +110,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TParcelamento;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Result := 0;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

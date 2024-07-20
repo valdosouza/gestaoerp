@@ -74,8 +74,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TNcm;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('DELETE FROM TB_NCM '));
@@ -140,8 +141,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TNcm;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

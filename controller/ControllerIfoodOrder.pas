@@ -56,8 +56,8 @@ procedure TControllerIfoodOrder.AtualizarOrderAgendada;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -79,8 +79,8 @@ procedure TControllerIfoodOrder.AtualizarStatus;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('UPDATE TB_IFOOD_ORDER SET ',
@@ -186,8 +186,9 @@ var
   Lc_Qry : TSTQuery;
   Lc_Contador : Integer;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -226,8 +227,8 @@ procedure TControllerIfoodOrder.getByIDSetes;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -273,8 +274,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TIfoodOrder;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

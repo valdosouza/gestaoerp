@@ -87,8 +87,9 @@ function TControllerDskCashier.VerificaCaixaAberto: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('select id,dt_record  from tb_cashier '+
@@ -118,8 +119,9 @@ function TControllerDskCashier.VerificaCaixaFechadoAtual(pData:TDate): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('select id,dt_record,HR_END  from tb_cashier '+
@@ -210,8 +212,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TDskCashier;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -251,8 +253,8 @@ procedure TControllerDskCashier.getSincronia;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

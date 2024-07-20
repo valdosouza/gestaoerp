@@ -1,9 +1,8 @@
 unit ControllerSyncTable;
 
 interface
-uses STDatabase,Classes,  SysUtils,ControllerBase,
-      tblSyncTable ,
-      Generics.Collections, STQuery;
+uses STDatabase,Classes,  SysUtils,ControllerBase,FireDAC.Stan.Param,
+      tblSyncTable ,  Generics.Collections, STQuery;
 
 
 Type
@@ -61,10 +60,10 @@ function TControllerSyncTable.setTimeToWEb: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    //13/12/2017 01:37:38
-    Lc_Qry := GeraQuery;
-    with Lc_Qry do
+   //13/12/2017 01:37:38
+   with Lc_Qry do
     Begin
       Active := False;
       sql.Clear;
@@ -92,9 +91,8 @@ function TControllerSynctable.update: boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    //13/12/2017 01:37:38
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -129,10 +127,9 @@ function TControllerSyncTable.getTime: TSyncTable;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := TSyncTable.create;
+  Lc_Qry := GeraQuery;
   Try
-    //13/12/2017 01:37:38
-    Result := TSyncTable.create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -170,7 +167,14 @@ end;
 
 function TControllerSynctable.insert: boolean;
 begin
-  insertObj(Registro);
+  try
+    Result := True;
+    insertObj(Registro);
+  Except
+    Result := False;
+  end;
+
+
 end;
 
 end.

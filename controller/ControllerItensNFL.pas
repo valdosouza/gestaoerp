@@ -70,8 +70,9 @@ function TControllerItensNFL.atualizaFaturamento: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -98,8 +99,9 @@ function TControllerItensNFL.atualizaParcial: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('UPDATE tb_itens_nfl SET ',
@@ -155,8 +157,8 @@ procedure TControllerItensNFL.deleteByPedido;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('DELETE FROM tb_itens_nfl ',
@@ -195,9 +197,9 @@ function TControllerItensNFL.ExisteItemNoPedido(
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Result := True;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat('SELECT it.* ' ,
@@ -222,8 +224,8 @@ procedure TControllerItensNFL.getByProduct;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -249,8 +251,8 @@ procedure TControllerItensNFL.getByFactoryProduct(ProdutoFab:String);
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT i.* ',
@@ -283,8 +285,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TItensNFL;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -318,8 +320,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TItensNFL;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -350,8 +352,9 @@ function TControllerItensNFL.getSequencia: Integer;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -404,9 +407,10 @@ function TControllerItensNFL.salvaByIdInternet: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
     //Fiz errado no controle errado tendo uma função para isso no controller pedido  - analiando se vale a pena manter
-    Lc_Qry := GeraQuery;
     with Lc_Qry,Registro do
     Begin
       sql.add(concat(
@@ -476,8 +480,8 @@ procedure TControllerItensNFL.setITF_Estoque;
 var
   Lc_Qry: TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;

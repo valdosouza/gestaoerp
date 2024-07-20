@@ -71,8 +71,8 @@ function TControllerMdfeUnloadLocal.getchave: TStringList;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;
@@ -117,8 +117,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMdfeUnloadLocal;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;

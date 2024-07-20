@@ -75,8 +75,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMdfeNfe;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;

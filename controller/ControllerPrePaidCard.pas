@@ -66,8 +66,9 @@ function TControllerPrePaidCard.deleteByOrder: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -165,8 +166,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -193,8 +195,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -235,8 +238,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -277,8 +281,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := Date;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -310,8 +315,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -347,8 +353,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -374,8 +381,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPrePaidCard;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

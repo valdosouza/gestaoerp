@@ -50,8 +50,8 @@ procedure TControllerImage.DeleteitemProduto(Botao,Produto:Integer);
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;

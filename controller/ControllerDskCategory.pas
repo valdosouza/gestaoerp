@@ -69,8 +69,9 @@ function TControllerDskCategory.getAutoCreateByGrupo(Institute:Integer;Pc_Grupo:
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -106,8 +107,9 @@ function TControllerDskCategory.getAutoCreateBySubGrupo(Institute:Integer;NivelP
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -153,8 +155,9 @@ Var
   Lc_Qry : TSTQuery;
   LcCat : TDskCategory;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

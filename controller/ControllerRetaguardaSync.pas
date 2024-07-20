@@ -143,9 +143,10 @@ function TControllerRetaguardaSync.getTime: TDateTime;
 Var
   Lc_Qry: TSTQuery;
 begin
+  Result := Now;
+  Lc_Qry := GeraQuery;
   Try
     // 13/12/2017 01:37:38
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;

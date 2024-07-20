@@ -69,8 +69,9 @@ function TControllerMovimentoFinanceiro.DeletaByQuitacao: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('DELETE  ',
@@ -99,8 +100,8 @@ procedure TControllerMovimentoFinanceiro.DeleteVinculoCaixaBancoByTransferencia;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -175,8 +176,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMovimentoFinanceiro;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -202,8 +203,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMovimentoFinanceiro;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -235,8 +236,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMovimentoFinanceiro;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -291,8 +292,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMovimentoFinanceiro;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -326,8 +327,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMovimentoFinanceiro;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -362,8 +363,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMovimentoFinanceiro;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -395,8 +396,9 @@ function TControllerMovimentoFinanceiro.GetVinculoCaixaBancoByTransferencia: Boo
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -445,8 +447,8 @@ procedure TControllerMovimentoFinanceiro.UpdateConferido;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

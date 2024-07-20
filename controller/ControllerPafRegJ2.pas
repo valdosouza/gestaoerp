@@ -109,8 +109,9 @@ var
   LITem : TPafRegJ2;
   Lc_Nr_Item : Integer;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

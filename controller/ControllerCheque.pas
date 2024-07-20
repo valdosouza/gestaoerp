@@ -73,8 +73,8 @@ procedure TControllerCheque.Destinar;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry, Registro do
     Begin
       sql.Add('UPDATE TB_CHEQUES SET '+
@@ -106,8 +106,8 @@ procedure TControllerCheque.DesvincularTerceiro;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry, Registro do
     Begin
       sql.Add('UPDATE TB_CHEQUES SET '+
@@ -132,8 +132,8 @@ procedure TControllerCheque.UpdateDevolvido;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry,Registro do
     Begin
       sql.Add('UPDATE TB_CHEQUES SET '+
@@ -154,8 +154,8 @@ procedure TControllerCheque.updateEstado;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry,Registro do
     Begin
       sql.Add('UPDATE TB_CHEQUES SET '+
@@ -176,8 +176,8 @@ procedure TControllerCheque.Resgate;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry,Registro do
     Begin
       sql.Add('UPDATE TB_CHEQUES SET '+
@@ -202,8 +202,8 @@ procedure TControllerCheque.Deposito;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry,Registro do
     Begin
       sql.Add('UPDATE TB_CHEQUES SET '+

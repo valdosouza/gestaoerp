@@ -41,8 +41,9 @@ function TControllerRegraTributacao.DeleteAll: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add('DELETE FROM TB_TRIBUTACAO');
@@ -68,8 +69,8 @@ procedure TControllerRegraTributacao.getRegra;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Sql.add('select TRB_CODIGO '+

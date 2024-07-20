@@ -71,8 +71,8 @@ procedure TControllerVehicleOs.getByCotacao;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add('SELECT * FROM TB_VEHICLE_SO '+
@@ -94,8 +94,8 @@ procedure TControllerVehicleOs.getByPedido;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add('SELECT * FROM TB_VEHICLE_SO '+

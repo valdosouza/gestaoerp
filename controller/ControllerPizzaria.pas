@@ -94,8 +94,9 @@ function TControllerPizzaria.getMedidaAbreviatura(medidaID: Integer): String;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(Concat(
@@ -120,9 +121,9 @@ function TControllerPizzaria.getByCodigo(pCodigo: Integer): TProduto;
 var
   Lc_Qry: TSTQuery;
 begin
+  REsult := TProduto.Create;
+  Lc_Qry := GeraQuery;
   Try
-    REsult := TProduto.Create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(Concat(
@@ -148,9 +149,9 @@ function TControllerPizzaria.getByDescricao(pProduto,pMedida,pGrupo:STring):TPro
 var
   Lc_Qry: TSTQuery;
 begin
+  REsult := TProduto.Create;
+  Lc_Qry := GeraQuery;
   Try
-    REsult := TProduto.Create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(Concat(

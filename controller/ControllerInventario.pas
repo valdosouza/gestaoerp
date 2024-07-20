@@ -84,8 +84,8 @@ Var
   Lc_DataInicial : TDate;
   Lc_Operacao : String;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -131,8 +131,8 @@ Var
   Lc_DataInicial : TDate;
   Lc_Operacao : String;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       ///SELECT DOS DOCUMENTOS FATURADOS E SEM COMPOSIÇÃO
@@ -407,8 +407,9 @@ Var
   Lc_DataInicial : TDate;
   Lc_Operacao : String;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       ///SELECT DOS DOCUMENTOS FATURADOS E SEM COMPOSIÇÃO
@@ -655,8 +656,9 @@ Var
   Lc_SqlTxt : String;
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT IVT_QT_ATUAL '+
@@ -719,8 +721,9 @@ function TControllerInventario.UltimaDataInventarioProduto:TDate;
 Var
   Lc_Qry: TSTQuery;
 begin
+  Result := Date;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
 
@@ -752,8 +755,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TInventario;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -803,8 +807,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TInventario;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

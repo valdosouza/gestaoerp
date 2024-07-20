@@ -3,7 +3,7 @@ unit ControllerComposicao;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      tblCtrlEstoque , Un_MSg,
+      tblCtrlEstoque , Un_MSg,FireDAC.Stan.Param,
       System.Generics.Collections, ControllerSyncTable, TEntity,CAtribEntity;
 
 Type
@@ -80,8 +80,8 @@ Var
   Lc_Qry : TSTQuery;
   Lcreg : TComposicao;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;

@@ -36,8 +36,9 @@ function TControllerVendedor.deleteByItemPedido: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -79,8 +80,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TVendedor;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

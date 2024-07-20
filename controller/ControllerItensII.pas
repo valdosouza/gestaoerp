@@ -54,8 +54,8 @@ procedure TControllerItensII.getByItemNota;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -77,8 +77,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TItensII;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -122,8 +122,9 @@ function TControllerItensII.nextCodigo: Integer;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;

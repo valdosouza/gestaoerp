@@ -40,9 +40,9 @@ begin
   end;
 end;
 procedure GeralogCrashlytics(Origem,msg:String);
-Var
-  LcCrash : TCrashlytics;
-  LcJson : String;
+//Var
+//  LcCrash : TCrashlytics;
+//  LcJson : String;
 begin
 //  Try
 //    Try
