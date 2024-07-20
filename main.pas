@@ -17,7 +17,6 @@ type
     Representada1: TMenuItem;
     Contatos1: TMenuItem;
     MnuRamodeAtividade: TMenuItem;
-    N17: TMenuItem;
     Cidades1: TMenuItem;
     Estados1: TMenuItem;
     N13: TMenuItem;
@@ -66,7 +65,7 @@ type
     MnuTafOper: TMenuItem;
     ImportarXMLdaNFe1: TMenuItem;
     N26: TMenuItem;
-    ransformao1: TMenuItem;
+    MnuRecibo: TMenuItem;
     AjustaPreo1: TMenuItem;
     Promoes1: TMenuItem;
     N6: TMenuItem;
@@ -279,7 +278,10 @@ type
     MnuPslRelComissao: TMenuItem;
     MnuPslRelVales: TMenuItem;
     MenuPslMenuFiscal: TMenuItem;
-    MnuPslArqUsuario: TMenuItem;
+    Compromissos1: TMenuItem;
+    N15: TMenuItem;
+    CarteiradeCobrana1: TMenuItem;
+    N21: TMenuItem;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -294,7 +296,15 @@ type
     procedure Pessoal2Click(Sender: TObject);
     procedure Pessoal3Click(Sender: TObject);
     procedure MnuPslArqCargoClick(Sender: TObject);
-    procedure MnuPslArqUsuarioClick(Sender: TObject);
+    procedure Impressoras1Click(Sender: TObject);
+    procedure MotivoCondenaoReprovao1Click(Sender: TObject);
+    procedure LojaVirtual1Click(Sender: TObject);
+    procedure Compromissos1Click(Sender: TObject);
+    procedure CarteiradeCobrana1Click(Sender: TObject);
+    procedure CartoEletrnico1Click(Sender: TObject);
+    procedure MnuArqHistBcoClick(Sender: TObject);
+    procedure MnuAjdManuUsuOperClick(Sender: TObject);
+    procedure MnuReciboClick(Sender: TObject);
   private
     procedure MenuOperacao;
     procedure MenuBanco;
@@ -323,7 +333,9 @@ implementation
 
 {$R *.dfm}
 
-uses un_dm, sea_job_position, sea_users;
+uses un_dm, sea_job_position, sea_printers, sea_ext_motive,reg_virtual_shop,reg_commitment,
+      reg_billing_portfolio,sea_electronic_card,sea_banking_history, sea_users,
+      sea_receipt;
 
 { TForm1 }
 
@@ -331,23 +343,13 @@ procedure TFrMain.MnuPslArqCargoClick(Sender: TObject);
 Var
   Lc_form : TSeaJobPosition;
 begin
+  Lc_form := TSeaJobPosition.Create(Self);
   Try
-    Lc_form := TSeaJobPosition.Create(Self);
     Lc_form.ShowModal;
   Finally
     FreeAndNil(Lc_form);
   End;
 
-end;
-
-procedure TFrMain.MnuPslArqUsuarioClick(Sender: TObject);
-begin
-  with TSeaUsers.Create(Self) do
-  Try
-    ShowModal;
-  Finally
-    Free;
-  End;
 end;
 
 procedure TFrMain.MnuPslBancarioClick(Sender: TObject);
@@ -365,6 +367,18 @@ begin
   MenuOperacao;
 end;
 
+procedure TFrMain.MotivoCondenaoReprovao1Click(Sender: TObject);
+Var
+  Lc_form : TSeaExtMotive;
+begin
+  Lc_form := TSeaExtMotive.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+end;
+
 procedure TFrMain.Pessoal1Click(Sender: TObject);
 begin
   MenuPessoal
@@ -378,6 +392,44 @@ end;
 procedure TFrMain.Pessoal3Click(Sender: TObject);
 begin
   MenuPessoal;
+end;
+
+procedure TFrMain.MnuReciboClick(Sender: TObject);
+Var
+  Lc_form : TSeaReceipt;
+begin
+  Lc_form := TSeaReceipt.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
+
+procedure TFrMain.MnuAjdManuUsuOperClick(Sender: TObject);
+Var
+  Lc_form : TSeaUsers;
+begin
+  Lc_form := TSeaUsers.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+end;
+
+procedure TFrMain.MnuArqHistBcoClick(Sender: TObject);
+Var
+  Lc_form : TSeaBankingHistory;
+begin
+  Lc_form := TSeaBankingHistory.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
 end;
 
 procedure TFrMain.MnuModBancoOperClick(Sender: TObject);
@@ -410,9 +462,58 @@ begin
   MenuOperacao;
 end;
 
+procedure TFrMain.CarteiradeCobrana1Click(Sender: TObject);
+Var
+  Lc_form : TRegBillingPortfolio;
+begin
+  Lc_form := TRegBillingPortfolio.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+end;
+
+procedure TFrMain.CartoEletrnico1Click(Sender: TObject);
+Var
+  Lc_form : TSeaEletronicCard;
+begin
+  Lc_form := TSeaEletronicCard.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+end;
+
+procedure TFrMain.Compromissos1Click(Sender: TObject);
+Var
+  Lc_form : TRegCommitment;
+begin
+  Lc_form := TRegCommitment.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
+
 procedure TFrMain.FormShow(Sender: TObject);
 begin
   InitVariable;
+end;
+
+procedure TFrMain.Impressoras1Click(Sender: TObject);
+Var
+  Lc_form : TSeaPrinters;
+begin
+  Lc_form := TSeaPrinters.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
 end;
 
 procedure TFrMain.InitVariable;
@@ -420,6 +521,18 @@ begin
   MenuOperacao;
   GB_NM_Empresa := 'Teste';
   Gb_Nivel := 1;//Setado como 1 por que no sistema original passamos pelo autenticação para defini-lo
+end;
+
+procedure TFrMain.LojaVirtual1Click(Sender: TObject);
+Var
+  Lc_form : TRegVirtualShop;
+begin
+  Lc_form := TRegVirtualShop.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
 end;
 
 procedure TFrMain.MenuBanco;

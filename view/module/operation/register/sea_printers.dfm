@@ -2,8 +2,9 @@ inherited SeaPrinters: TSeaPrinters
   Caption = 'Pesquisa de Impressora'
   ClientHeight = 392
   ClientWidth = 586
-  ExplicitWidth = 598
-  ExplicitHeight = 455
+  ExplicitWidth = 592
+  ExplicitHeight = 441
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
@@ -12,9 +13,6 @@ inherited SeaPrinters: TSeaPrinters
     ExplicitTop = 79
     ExplicitWidth = 574
     ExplicitHeight = 301
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 576
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 484
       Height = 292

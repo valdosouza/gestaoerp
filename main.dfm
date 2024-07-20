@@ -38,7 +38,7 @@ inherited FrMain: TFrMain
       object MnuRamodeAtividade: TMenuItem
         Caption = 'Ramo de Atividade'
       end
-      object N17: TMenuItem
+      object N21: TMenuItem
         Caption = '-'
       end
       object Cidades1: TMenuItem
@@ -76,6 +76,7 @@ inherited FrMain: TFrMain
       end
       object MotivoCondenaoReprovao1: TMenuItem
         Caption = 'Motivo Condena'#231#227'o/Reprova'#231#227'o'
+        OnClick = MotivoCondenaoReprovao1Click
       end
       object NvelManunteo1: TMenuItem
         Caption = 'N'#237'vel Manuten'#231#227'o'
@@ -191,8 +192,9 @@ inherited FrMain: TFrMain
       object N26: TMenuItem
         Caption = '-'
       end
-      object ransformao1: TMenuItem
+      object MnuRecibo: TMenuItem
         Caption = 'Recibo'
+        OnClick = MnuReciboClick
       end
       object AjustaPreo1: TMenuItem
         Caption = 'Ajusta Pre'#231'o'
@@ -463,8 +465,16 @@ inherited FrMain: TFrMain
       end
       object LojaVirtual1: TMenuItem
         Caption = 'Loja Virtual'
+        OnClick = LojaVirtual1Click
       end
       object N40: TMenuItem
+        Caption = '-'
+      end
+      object Compromissos1: TMenuItem
+        Caption = 'Compromissos'
+        OnClick = Compromissos1Click
+      end
+      object N15: TMenuItem
         Caption = '-'
       end
       object Contabilidade1: TMenuItem
@@ -493,6 +503,7 @@ inherited FrMain: TFrMain
       end
       object MnuAjdManuUsuOper: TMenuItem
         Caption = 'Usu'#225'rios'
+        OnClick = MnuAjdManuUsuOperClick
       end
       object Perfil2: TMenuItem
         Caption = 'Perfil do Usu'#225'rio'
@@ -511,6 +522,7 @@ inherited FrMain: TFrMain
       end
       object Impressoras1: TMenuItem
         Caption = 'Impressoras'
+        OnClick = Impressoras1Click
       end
       object N41: TMenuItem
         Caption = '-'
@@ -734,9 +746,15 @@ inherited FrMain: TFrMain
       end
       object MnuArqHistBco: TMenuItem
         Caption = '&Hist'#243'ricos'
+        OnClick = MnuArqHistBcoClick
       end
       object CartoEletrnico1: TMenuItem
         Caption = 'Cart'#227'o Eletr'#244'nico'
+        OnClick = CartoEletrnico1Click
+      end
+      object CarteiradeCobrana1: TMenuItem
+        Caption = 'Carteira de Cobran'#231'a'
+        OnClick = CarteiradeCobrana1Click
       end
       object BoletoEletronico1: TMenuItem
         Caption = 'Boleto Eletr'#244'nico'
@@ -800,10 +818,6 @@ inherited FrMain: TFrMain
       object MnuPslArqCargo: TMenuItem
         Caption = 'Cargos'
         OnClick = MnuPslArqCargoClick
-      end
-      object MnuPslArqUsuario: TMenuItem
-        Caption = 'Usuario - teste'
-        OnClick = MnuPslArqUsuarioClick
       end
       object MenuItem4: TMenuItem
         Caption = '-'

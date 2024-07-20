@@ -2,14 +2,15 @@ inherited RegUsers: TRegUsers
   Caption = 'Cadastro de Usu'#225'rios'
   ClientHeight = 475
   ClientWidth = 621
-  ExplicitWidth = 633
-  ExplicitHeight = 538
+  ExplicitWidth = 627
+  ExplicitHeight = 524
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 411
     Width = 621
-    ExplicitTop = 402
-    ExplicitWidth = 615
+    ExplicitTop = 411
+    ExplicitWidth = 621
     inherited SB_Inserir: TSpeedButton
       Left = -6
       ExplicitLeft = -6
@@ -38,8 +39,8 @@ inherited RegUsers: TRegUsers
   inherited pnl_fundo: TPanel
     Width = 621
     Height = 411
-    ExplicitWidth = 615
-    ExplicitHeight = 402
+    ExplicitWidth = 621
+    ExplicitHeight = 411
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -49,7 +50,6 @@ inherited RegUsers: TRegUsers
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 611
       object Label4: TLabel
         Left = 120
         Top = 50
@@ -257,7 +257,6 @@ inherited RegUsers: TRegUsers
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 1
-      ExplicitWidth = 611
       object Label15: TLabel
         AlignWithMargins = True
         Left = 5
@@ -292,7 +291,6 @@ inherited RegUsers: TRegUsers
         ParentFont = False
         PasswordChar = '*'
         TabOrder = 0
-        ExplicitWidth = 601
       end
     end
     object RegUsers: TGroupBox
@@ -303,8 +301,6 @@ inherited RegUsers: TRegUsers
       Align = alClient
       Caption = 'Configura'#231#245'es para Envio de e-mail'
       TabOrder = 2
-      ExplicitWidth = 611
-      ExplicitHeight = 246
       object Label5: TLabel
         Left = 7
         Top = 19
@@ -562,8 +558,6 @@ inherited RegUsers: TRegUsers
         Align = alBottom
         Caption = 'Quero receber notifica'#231#227'o de tentativas ou login efetuado'
         TabOrder = 9
-        ExplicitTop = 227
-        ExplicitWidth = 607
       end
     end
   end

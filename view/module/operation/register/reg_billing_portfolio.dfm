@@ -1,15 +1,16 @@
-inherited RegBillingPortifolio: TRegBillingPortifolio
+inherited RegBillingPortfolio: TRegBillingPortfolio
   Caption = 'Cadastro de Carteiras de Cobran'#231'a '
   ClientHeight = 206
   ClientWidth = 494
-  ExplicitWidth = 506
-  ExplicitHeight = 269
+  ExplicitWidth = 500
+  ExplicitHeight = 255
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 142
     Width = 494
-    ExplicitTop = 133
-    ExplicitWidth = 488
+    ExplicitTop = 142
+    ExplicitWidth = 494
     inherited SB_Inserir: TSpeedButton
       Left = 12
       Width = 77
@@ -56,8 +57,8 @@ inherited RegBillingPortifolio: TRegBillingPortifolio
   inherited pnl_fundo: TPanel
     Width = 494
     Height = 142
-    ExplicitWidth = 488
-    ExplicitHeight = 133
+    ExplicitWidth = 494
+    ExplicitHeight = 142
     object Pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegBillingPortifolio: TRegBillingPortifolio
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 484
-      ExplicitHeight = 129
       object Label_1: TLabel
         Left = 5
         Top = 40
