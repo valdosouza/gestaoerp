@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask;
 
 type
-  TRegBillingPortifolio = class(TBaseRegistry)
+  TRegBillingPortfolio = class(TBaseRegistry)
     Pnl_fundos: TPanel;
     Label_1: TLabel;
     Label6: TLabel;
@@ -24,7 +24,7 @@ type
   end;
 
 var
-  RegBillingPortifolio: TRegBillingPortifolio;
+  RegBillingPortfolio: TRegBillingPortfolio;
 
 implementation
 

@@ -2,16 +2,15 @@ inherited RegVirtualShop: TRegVirtualShop
   Caption = 'Loja Virtual'
   ClientHeight = 487
   ClientWidth = 602
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 614
-  ExplicitHeight = 550
+  ExplicitWidth = 608
+  ExplicitHeight = 536
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 487
     Width = 602
     Height = 0
-    ExplicitTop = 478
+    ExplicitTop = 487
     ExplicitWidth = 602
     ExplicitHeight = 0
     inherited SB_Inserir: TSpeedButton
@@ -58,7 +57,7 @@ inherited RegVirtualShop: TRegVirtualShop
     Width = 602
     Height = 487
     ExplicitWidth = 602
-    ExplicitHeight = 478
+    ExplicitHeight = 487
     object Pnl_Edicao: TPanel
       Left = 2
       Top = 2
@@ -68,12 +67,11 @@ inherited RegVirtualShop: TRegVirtualShop
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitHeight = 474
       object Label54: TLabel
         Left = 5
         Top = 4
-        Width = 122
-        Height = 14
+        Width = 121
+        Height = 13
         Caption = 'WebServices dispon'#237'veis'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -85,8 +83,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label55: TLabel
         Left = 4
         Top = 41
-        Width = 143
-        Height = 14
+        Width = 141
+        Height = 13
         Caption = 'Caminho do WebService  - url'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -98,8 +96,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label40: TLabel
         Left = 5
         Top = 155
-        Width = 122
-        Height = 14
+        Width = 125
+        Height = 13
         Caption = 'Nome da Tabela de Pre'#231'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -111,8 +109,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label37: TLabel
         Left = 5
         Top = 116
-        Width = 101
-        Height = 14
+        Width = 100
+        Height = 13
         Caption = 'Diret'#243'rio de Imagens '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -124,8 +122,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label2: TLabel
         Left = 5
         Top = 203
-        Width = 177
-        Height = 14
+        Width = 175
+        Height = 13
         Caption = 'ID - Identificador do Google Analytics'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -137,8 +135,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label3: TLabel
         Left = 5
         Top = 79
-        Width = 61
-        Height = 14
+        Width = 64
+        Height = 13
         Caption = 'T'#237'tulo do Site'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -150,8 +148,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label4: TLabel
         Left = 162
         Top = 4
-        Width = 99
-        Height = 14
+        Width = 93
+        Height = 13
         Caption = 'Site na WEb (www)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -163,8 +161,8 @@ inherited RegVirtualShop: TRegVirtualShop
       object Label5: TLabel
         Left = 4
         Top = 251
-        Width = 365
-        Height = 14
+        Width = 349
+        Height = 13
         Caption = 
           'e-mail para controlar o pagamento eletronico - BCash (www.bchas.' +
           'com.br)'
@@ -295,7 +293,6 @@ inherited RegVirtualShop: TRegVirtualShop
         Align = alBottom
         Caption = 'Proxy'
         TabOrder = 9
-        ExplicitTop = 346
         object Label10: TLabel
           Left = 8
           Top = 12
@@ -414,7 +411,6 @@ inherited RegVirtualShop: TRegVirtualShop
         BevelInner = bvRaised
         BevelOuter = bvLowered
         TabOrder = 10
-        ExplicitTop = 404
         DesignSize = (
           594
           68)

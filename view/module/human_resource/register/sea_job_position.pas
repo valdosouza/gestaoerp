@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_search, Data.DB, Vcl.StdCtrls,
   Datasnap.Provider, Datasnap.DBClient, Vcl.Menus, Vcl.Buttons, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, ControllerCargo, reg_job_position;
+  Vcl.DBGrids, Vcl.ExtCtrls, ControllerCargo;
 
 type
   TSeaJobPosition = class(TBaseSearch)
@@ -15,8 +15,9 @@ type
     cds_searchCodigo: TIntegerField;
     cds_searchDescricao: TStringField;
   private
-    procedure openRegister(pCodigo:Integer);
+
   protected
+    procedure openRegister(pCodigo:Integer);override;
     procedure CriarVariaveis;Override;
     procedure FinalizaVariaveis;Override;
     procedure Search;Override;
@@ -33,6 +34,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses reg_job_position;
 
 { TSeaJobPosition }
 

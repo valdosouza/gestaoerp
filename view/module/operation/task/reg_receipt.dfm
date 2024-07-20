@@ -1,66 +1,71 @@
-inherited RegRecives: TRegRecives
+inherited RegReceipt: TRegReceipt
   Caption = 'Cadastro de Recibo'
-  ClientHeight = 295
-  ClientWidth = 648
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 660
-  ExplicitHeight = 358
+  ClientHeight = 304
+  ClientWidth = 656
+  ExplicitWidth = 662
+  ExplicitHeight = 353
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 235
-    Width = 648
+    Top = 244
+    Width = 656
     Height = 60
-    ExplicitTop = 239
+    ExplicitTop = 235
     ExplicitWidth = 648
     ExplicitHeight = 60
     inherited SB_Inserir: TSpeedButton
-      Left = 21
+      Left = 29
       Height = 50
       ExplicitLeft = 21
+      ExplicitHeight = 50
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 125
+      Left = 133
       Height = 50
       ExplicitLeft = 125
+      ExplicitHeight = 50
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 229
+      Left = 237
       Height = 50
       ExplicitLeft = 229
+      ExplicitHeight = 50
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 437
+      Left = 445
       Height = 50
       ExplicitLeft = 437
+      ExplicitHeight = 50
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 541
+      Left = 549
       Height = 50
       ExplicitLeft = 541
+      ExplicitHeight = 50
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 333
+      Left = 341
       Height = 50
       ExplicitLeft = 333
+      ExplicitHeight = 50
     end
   end
   inherited pnl_fundo: TPanel
-    Width = 648
-    Height = 235
-    ExplicitWidth = 642
-    ExplicitHeight = 230
+    Width = 656
+    Height = 244
+    ExplicitWidth = 648
+    ExplicitHeight = 235
     object Panel1: TPanel
       Left = 2
       Top = 2
-      Width = 644
-      Height = 231
+      Width = 652
+      Height = 240
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 638
-      ExplicitHeight = 226
+      ExplicitWidth = 644
+      ExplicitHeight = 231
       object Label12: TLabel
         Left = 4
         Top = 3
@@ -182,8 +187,8 @@ inherited RegRecives: TRegRecives
         Top = 18
         Width = 93
         Height = 22
-        Date = 40527.000000000000000000
-        Time = 0.438675127319584100
+        Date = 40527.438675127320000000
+        Time = 40527.438675127320000000
         TabOrder = 2
       end
     end

@@ -7,13 +7,7 @@ uses
   Un_Base in 'view\inheritable\Un_Base.pas' {Fr_Base},
   base_search in 'view\inheritable\base_search.pas' {BaseSearch},
   base_registry in 'view\inheritable\base_registry.pas' {BaseRegistry},
-  UN_TabelasEmListas in 'UN_TabelasEmListas.pas' {DM_ListaConsultas: TDataModule},
-  sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
-  prm_job_position in 'parameter\prm_job_position.pas',
-  reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition},
-  reg_users in 'view\module\operation\admin\reg_users.pas' {RegUsers},
-  sea_users in 'view\module\operation\admin\sea_users.pas' {SeaUsers},
-  prm_users in 'parameter\prm_users.pas';
+  UN_TabelasEmListas in 'UN_TabelasEmListas.pas';
 
 {$R *.res}
 
@@ -23,7 +17,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TRegUsers, RegUsers);
-  Application.CreateForm(TSeaUsers, SeaUsers);
   Application.Run;
 end.

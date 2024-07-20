@@ -1,64 +1,57 @@
-inherited SeaRecives: TSeaRecives
+inherited SeaReceipt: TSeaReceipt
   Caption = 'Pesquisa de Recibo'
-  ClientHeight = 298
-  ClientWidth = 648
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 660
-  ExplicitHeight = 361
+  ClientHeight = 375
+  ClientWidth = 678
+  ExplicitWidth = 684
+  ExplicitHeight = 424
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 73
-    Width = 642
-    Height = 222
-    ExplicitTop = 71
-    ExplicitWidth = 636
-    ExplicitHeight = 242
+    Width = 672
+    Height = 299
+    ExplicitTop = 73
+    ExplicitWidth = 672
+    ExplicitHeight = 299
     inherited Lb_ResultadoPesquisa: TLabel
-      Width = 638
-      Height = 16
-      ExplicitTop = 0
-      ExplicitWidth = 638
-      ExplicitHeight = 16
+      Width = 668
     end
     inherited DBG_Pesquisa: TDBGrid
-      Top = 18
-      Width = 546
-      Height = 202
+      Width = 576
+      Height = 281
     end
     inherited pnl_pesq_right: TPanel
-      Left = 548
-      Top = 18
-      Height = 202
-      ExplicitLeft = 542
-      ExplicitHeight = 224
+      Left = 578
+      Height = 281
+      ExplicitLeft = 578
+      ExplicitHeight = 281
       inherited Sb_Sair_0: TSpeedButton
-        Top = 139
+        Top = 218
         ExplicitTop = 170
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 76
+        Top = 155
         ExplicitTop = 107
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 13
+        Top = 92
         ExplicitTop = 44
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -50
+        Top = 29
         ExplicitTop = -19
       end
     end
   end
   inherited Pnl_Parametros: TPanel
-    Width = 642
+    Width = 672
     Height = 64
-    ExplicitWidth = 642
+    ExplicitWidth = 672
     ExplicitHeight = 64
     object GroupBox4: TGroupBox
       Left = 2
       Top = -1
-      Width = 638
+      Width = 668
       Height = 63
       Align = alBottom
       Caption = ' Digite sua op'#231#227'o de busca'
@@ -69,7 +62,6 @@ inherited SeaRecives: TSeaRecives
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitTop = -6
       object Label50: TLabel
         Left = 174
         Top = 15
@@ -134,8 +126,8 @@ inherited SeaRecives: TSeaRecives
         Top = 34
         Width = 79
         Height = 22
-        Date = 39580.000000000000000000
-        Time = 0.356281493062852000
+        Date = 39580.356281493060000000
+        Time = 39580.356281493060000000
         TabOrder = 1
       end
       object E_Data_Fim: TDateTimePicker
@@ -143,8 +135,8 @@ inherited SeaRecives: TSeaRecives
         Top = 33
         Width = 82
         Height = 22
-        Date = 39580.000000000000000000
-        Time = 0.356281493062852000
+        Date = 39580.356281493060000000
+        Time = 39580.356281493060000000
         TabOrder = 2
       end
       object e_nomebusca: TEdit

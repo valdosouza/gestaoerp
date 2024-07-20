@@ -1,5 +1,5 @@
-unit sea_recives;
-
+unit sea_receipt;
+     
 interface
 
 uses
@@ -9,7 +9,7 @@ uses
   Vcl.ComCtrls, Vcl.Mask;
 
 type
-  TSeaRecives = class(TBaseSearch)
+  TSeaReceipt = class(TBaseSearch)
     GroupBox4: TGroupBox;
     Label50: TLabel;
     Label51: TLabel;
@@ -22,16 +22,35 @@ type
     chck_buscaEmitente: TCheckBox;
     chck_buscaSacado: TCheckBox;
   private
-    { Private declarations }
+  protected
+    procedure openRegister(pCodigo:Integer);override;
   public
     { Public declarations }
   end;
 
 var
-  SeaRecives: TSeaRecives;
+  SeaRecives: TSeaReceipt;
 
 implementation
 
 {$R *.dfm}
+
+uses reg_receipt;
+
+{ TSeaReceipt }
+
+procedure TSeaReceipt.openRegister(pCodigo: Integer);
+var
+  Lc_form : TRegReceipt;
+begin
+  Try
+    Lc_form := TRegReceipt.Create(self);
+    Lc_form.CodigoRegistro := pCodigo;
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
 
 end.

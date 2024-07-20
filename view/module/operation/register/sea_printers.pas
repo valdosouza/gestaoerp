@@ -13,7 +13,8 @@ type
     Label28: TLabel;
     E_BuscaImpressora: TEdit;
   private
-    { Private declarations }
+  protected
+    procedure openRegister(pCodigo:Integer);override;
   public
     { Public declarations }
   end;
@@ -24,5 +25,24 @@ var
 implementation
 
 {$R *.dfm}
+
+{ TSeaPrinters }
+
+uses reg_printers;
+
+procedure TSeaPrinters.openRegister(pCodigo: Integer);
+var
+  Lc_form : TRegPrinters;
+begin
+  Try
+    Lc_form := TRegPrinters.Create(self);
+    Lc_form.CodigoRegistro := pCodigo;
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+
+end;
 
 end.

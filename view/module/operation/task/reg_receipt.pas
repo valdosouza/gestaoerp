@@ -1,4 +1,4 @@
-unit reg_recives;
+unit reg_receipt;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask;
 
 type
-  TRegRecives = class(TBaseRegistry)
+  TRegReceipt = class(TBaseRegistry)
     Panel1: TPanel;
     Label12: TLabel;
     Label13: TLabel;
@@ -29,7 +29,7 @@ type
   end;
 
 var
-  RegRecives: TRegRecives;
+  RegReceipt: TRegReceipt;
 
 implementation
 
