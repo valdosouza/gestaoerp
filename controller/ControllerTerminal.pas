@@ -70,8 +70,9 @@ function TControllerTerminal.liberaMenu: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -122,8 +123,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TTerminal;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

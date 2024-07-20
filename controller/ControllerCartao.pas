@@ -61,8 +61,8 @@ function TControllerCartao.getByCodigoQuitacao: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;

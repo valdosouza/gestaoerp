@@ -208,12 +208,12 @@ end;
 procedure TControllerDskRestMenu.DesativarItemByCodigo(Produto: Integer);
 Var
   I : Integer;
-  Lc_Upt : TSTQuery;
+  Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Upt := GeraQuery;
-    with Lc_Upt do
+    with Lc_Qry do
     Begin
       sql.Clear;
       sql.Add(concat(
@@ -226,7 +226,7 @@ begin
       ExecSQL;
     End;
   Finally
-    FinalizaQuery(Lc_Upt);
+    FinalizaQuery(Lc_Qry);
   End;
 end;
 
@@ -234,12 +234,12 @@ procedure TControllerDskRestMenu.DesativarItemByName(Produto: String;
   GRupo: Integer);
 Var
   I : Integer;
-  Lc_Upt : TSTQuery;
+  Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Upt := GeraQuery;
-    with Lc_Upt do
+    with Lc_Qry do
     Begin
       sql.Clear;
       sql.Add(concat(
@@ -254,7 +254,7 @@ begin
       ExecSQL;
     End;
   Finally
-    FinalizaQuery(Lc_Upt);
+    FinalizaQuery(Lc_Qry);
   End;
 
 end;
@@ -385,12 +385,12 @@ end;
 procedure TControllerDskRestMenu.PausarHabilitarItemByCodigo(Pausa:String;Produto: Integer);
 Var
   I : Integer;
-  Lc_Upt : TSTQuery;
+  Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Upt := GeraQuery;
-    with Lc_Upt do
+    with Lc_Qry do
     Begin
       sql.Clear;
       sql.Add(concat(
@@ -403,7 +403,7 @@ begin
       ExecSQL;
     End;
   Finally
-    FinalizaQuery(Lc_Upt);
+    FinalizaQuery(Lc_Qry);
   End;
 
 end;
@@ -412,12 +412,12 @@ procedure TControllerDskRestMenu.PausarHabilitarItemByName(Pausa:String;Produto:
   GRupo: Integer);
 Var
   I : Integer;
-  Lc_Upt : TSTQuery;
+  Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Upt := GeraQuery;
-    with Lc_Upt do
+    with Lc_Qry do
     Begin
       sql.Clear;
       sql.Add(concat(
@@ -432,7 +432,7 @@ begin
       ExecSQL;
     End;
   Finally
-    FinalizaQuery(Lc_Upt);
+    FinalizaQuery(Lc_Qry);
   End;
 end;
 
@@ -444,12 +444,12 @@ end;
 procedure TControllerDskRestMenu.ReOrdenaSequenciaCodigo;
 Var
   I : Integer;
-  Lc_Upt : TSTQuery;
+  Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Upt := GeraQuery;
-    with Lc_Upt do
+    with Lc_Qry do
     Begin
       sql.Clear;
       sql.Add(concat(
@@ -490,7 +490,7 @@ begin
 
     End;
   Finally
-    FinalizaQuery(Lc_Upt);
+    FinalizaQuery(Lc_Qry);
   End;
 end;
 
@@ -524,8 +524,9 @@ function TControllerDskRestMenu.temmovimento: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -563,8 +564,9 @@ Var
   Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;
@@ -592,8 +594,9 @@ Var
   Lc_Qry : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;
@@ -621,8 +624,9 @@ function TControllerDskRestMenu.getbyBarCode: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -655,8 +659,9 @@ Function TControllerDskRestMenu.getByDescricao(descricao: String):Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -689,8 +694,9 @@ Var
   Lc_Qry : TSTQuery;
   LcItem : TProduto;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -726,8 +732,9 @@ function TControllerDskRestMenu.getbyFactoryProduct:Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -755,8 +762,9 @@ function TControllerDskRestMenu.getCusto: Real;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -778,8 +786,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TProduto;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -803,8 +812,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TProduto;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -863,8 +872,8 @@ procedure TControllerDskRestMenu.getMenuToSincronia;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(

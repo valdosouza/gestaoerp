@@ -78,8 +78,8 @@ procedure TControllerProductVariant.ListarCor(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -105,8 +105,8 @@ procedure TControllerProductVariant.ListarTamanho(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -159,8 +159,8 @@ procedure TControllerProductVariant.getById;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -186,8 +186,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TProductVariant;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -213,8 +213,8 @@ procedure TControllerProductVariant.getList(Cds: TClientDataSet);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -259,8 +259,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TProductVariant;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

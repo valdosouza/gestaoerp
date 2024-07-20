@@ -34,7 +34,7 @@ type
   protected
     FSelecionar: Boolean;
     FSelecionado: Boolean;
-
+    procedure openRegister(pCodigo:Integer);virtual;
     procedure setFSelecionar(const Value: Boolean);
     procedure setFSelecionado(const Value: Boolean);
     //Start
@@ -221,6 +221,11 @@ begin
     SB_Visualizar.Caption:= 'Visualizar - F8';
   End;
   cds_search.Close;
+end;
+
+procedure TBaseSearch.openRegister(pCodigo: Integer);
+begin
+//
 end;
 
 procedure TBaseSearch.returnRegister;

@@ -216,8 +216,9 @@ function TControllerColaborador.temPedido: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select PED_CODVDO ',
@@ -250,8 +251,9 @@ function TControllerColaborador.VerificaExistenciaUsuario(
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select * ',
@@ -283,9 +285,9 @@ function TControllerColaborador.getByUser: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Result := True;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select *  ',
@@ -308,8 +310,9 @@ function TControllerColaborador.getByUsuario: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -364,9 +367,9 @@ function TControllerColaborador.getDocByID: String;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Result := '';
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select CLB_CPF ',
@@ -388,9 +391,9 @@ function TControllerColaborador.getIDByDoc: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Result := 0;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select CLB_CODIGO ',
@@ -413,8 +416,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TColaborador;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -442,8 +446,9 @@ function TControllerColaborador.getVendedorAppDelivery: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select CLB_CODIGO ',
@@ -480,8 +485,9 @@ function TControllerColaborador.getVendedorIfood: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select CLB_CODIGO ',
@@ -518,8 +524,9 @@ function TControllerColaborador.getVendedorTray: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select CLB_CODIGO ',
@@ -556,9 +563,9 @@ function TControllerColaborador.getByDoc: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Result := True;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat('select *  ',

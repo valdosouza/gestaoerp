@@ -136,9 +136,8 @@ var
   Lc_Qry : TSTQuery;
   LcPos : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
-
     Lc_Qry.SQL.Add(concat(
               'SELECT ARQ_CONTEUDO, ARQ_CODVCL ',
               'FROM TB_ARQUIVOS ',
@@ -233,9 +232,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TArquivo;
 begin
+  Lc_Qry := GeraQuery;
   Try
     Result := '';
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -260,9 +259,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TArquivo;
 begin
+  Lc_Qry := GeraQuery;
   Try
     Result := '';
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -287,8 +286,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TArquivo;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(Concat(
@@ -316,8 +315,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TArquivo;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add( getListSQL );
@@ -350,8 +349,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TArquivo;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       if NFirst > 0 then
@@ -550,8 +549,8 @@ BEGIN
    6 - Arquivo de XML da Nota Fiscal de Serviço eletronica
    7 - Arquivo de XML da MDFE
   }
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -593,8 +592,8 @@ BEGIN
    6 - Arquivo de XML da Nota Fiscal de Serviço eletronica
    7 - Arquivo de XML da MFDE
   }
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -635,8 +634,8 @@ function TControllerArquivo.VerificaCodigoVinculoCartaCorrecao(
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select CCE_CODIGO from TB_CARTA_CORRECAO WHERE CCE_CODNFL =:CCE_CODNFL');
@@ -658,8 +657,8 @@ function TControllerArquivo.VerificaCodigoVinculoNFCeArquivo(
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select NFC_CODIGO from TB_RETORNO_NFC WHERE NFC_CODNFL =:NFC_CODNFL');
@@ -680,8 +679,8 @@ function TControllerArquivo.VerificaCodigoVinculoNFeArquivo(Fc_cd_Nota: Integer)
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select NFE_CODIGO from TB_RETORNO_NFE WHERE NFE_CODNFL =:NFE_CODNFL');

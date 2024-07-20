@@ -47,9 +47,9 @@ var
   Lc_Senha: string;
   Lc_Qry : TSTQuery;
 begin
+  Result := False;
+  Lc_Qry := GeraQuery;
   Try
-    Result := False;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Autentica := 'SELECT * FROM TB_USUARIO tb_usuario '+
@@ -130,8 +130,9 @@ function TControllerUsuario.ResetaSenha: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -218,8 +219,9 @@ function TControllerUsuario.getByCard: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -250,8 +252,9 @@ function TControllerUsuario.getByLogin: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -278,8 +281,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TUsuario;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -308,9 +312,9 @@ function TControllerUsuario.getVendedorID: Integer;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Result := 0;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

@@ -114,8 +114,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TRetornoNFCe;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -138,8 +138,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TRetornoNFCe;
 begin
+  Result := True;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT NFC.* ',
@@ -182,9 +182,9 @@ function TControllerRetornoNFCe.getNext: Integer;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Result := 0;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -210,8 +210,8 @@ procedure TControllerRetornoNFCe.getSincronia;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -267,8 +267,9 @@ function TControllerRetornoNFCe.SalvaRetorno: Boolean;
 Var
   Lc_Qry:TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -297,8 +298,9 @@ function TControllerRetornoNFCe.UpdateFileXMl: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('UPDATE TB_RETORNO_NFC SET ',
@@ -318,8 +320,9 @@ function TControllerRetornoNFCe.VerificaPendentesNumeradas: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

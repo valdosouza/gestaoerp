@@ -52,8 +52,8 @@ procedure TControllerEmpresa.AtualizaBanco;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -436,8 +436,8 @@ procedure TControllerEmpresa.getByDocumento;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -467,8 +467,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEmpresa;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -496,8 +497,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEmpresa;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

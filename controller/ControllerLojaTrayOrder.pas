@@ -66,17 +66,21 @@ Var
   LcQry : TSTQuery;
 begin
   LcQry := GeraQuery;
-  with LcQry do
-  Begin
-    Active := False;
-    sql.Add(concat(
-              'select Max(lto.modified) hora ',
-              'from tb_loja_tray_order lto '
-    ));
-    Active := True;
-    FetchAll;
-    Result := StrToDateTimeDef(FieldByNAme('hora').AsString,Now);
-  End;
+  try
+    with LcQry do
+    Begin
+      Active := False;
+      sql.Add(concat(
+                'select Max(lto.modified) hora ',
+                'from tb_loja_tray_order lto '
+      ));
+      Active := True;
+      FetchAll;
+      Result := StrToDateTimeDef(FieldByNAme('hora').AsString,Now);
+    End;
+  finally
+    FinalizaQuery(LcQry);
+  end;
 end;
 
 function TControllerLojaTrayOrder.salva: boolean;

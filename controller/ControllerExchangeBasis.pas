@@ -57,8 +57,9 @@ function TControllerExchangeBasis.deleteByOrdem: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('DELETE FROM tb_exchange_basis ',
@@ -113,8 +114,9 @@ function TControllerExchangeBasis.updateExtra: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -151,8 +153,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TExchangeBasis;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -183,8 +185,9 @@ function TControllerExchangeBasis.getNext: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;

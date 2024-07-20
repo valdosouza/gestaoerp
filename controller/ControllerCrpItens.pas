@@ -116,8 +116,8 @@ Var
   Lc_Qry : TSTQuery;
   LcItem : TCrpItens;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -143,8 +143,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TCrpItens;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

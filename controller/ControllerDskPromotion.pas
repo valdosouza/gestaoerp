@@ -95,8 +95,9 @@ function TControllerDskPromotion.tempromocao: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -166,8 +167,8 @@ procedure TControllerDskPromotion.getById;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -195,8 +196,8 @@ procedure TControllerDskPromotion.getbyProduct(product,institutionID:Integer);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -231,8 +232,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TDskPromotion;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

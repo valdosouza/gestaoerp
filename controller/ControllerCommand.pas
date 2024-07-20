@@ -48,8 +48,9 @@ procedure TControllerCommand.getByComanda;
 Var
   Lc_Qry :TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -85,8 +86,8 @@ procedure TControllerCommand.getByComandaLivre;
 Var
   Lc_Qry :TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -149,8 +150,9 @@ function TControllerCommand.veriryDuplicity: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

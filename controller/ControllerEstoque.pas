@@ -109,8 +109,9 @@ var
   Lc_Qry : TSTQuery;
   item : TEstoques;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -210,8 +211,9 @@ Function TControllerEstoque.getIdByEstoqueProduto:Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -240,8 +242,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEstoque;
 begin
+
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -282,8 +285,8 @@ var
   Lc_Qry : TSTQuery;
   item : TEstoques;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -345,8 +348,9 @@ function TControllerEstoque.getByCodigo: Boolean;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;

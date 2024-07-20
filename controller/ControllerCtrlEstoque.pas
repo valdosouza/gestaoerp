@@ -3,7 +3,7 @@ unit ControllerCtrlEstoque;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      tblCtrlEstoque ,Un_MSg,ControllerCtrlEstoqueZerado,
+      tblCtrlEstoque ,Un_MSg,ControllerCtrlEstoqueZerado,FireDAC.Stan.Param,
       System.Generics.Collections, ControllerSyncTable, ControllerComposicao,
   tblSyncTable;
 
@@ -132,8 +132,8 @@ Var
   Lc_Qry : TSTQuery;
   Lc_Sequencia : Integer;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -157,8 +157,8 @@ procedure TControllerCtrlEstoque.AtivarTrighers;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('ALTER TRIGGER TG_ESTOQUE_DELETE ACTIVE;');
@@ -197,8 +197,8 @@ procedure TControllerCtrlEstoque.DesativarTrighers;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('ALTER TRIGGER TG_ESTOQUE_DELETE INACTIVE;');
@@ -223,8 +223,8 @@ Var
   LcITem : TCtrlEstoque;
   I : Integer;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -296,8 +296,8 @@ Var
   Lc_SqlTxt : String;
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -329,8 +329,9 @@ function TControllerCtrlEstoque.deleteByProduto: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -350,8 +351,9 @@ function TControllerCtrlEstoque.getByID: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -375,8 +377,9 @@ function TControllerCtrlEstoque.getDescricaoProduto: String;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -398,8 +401,9 @@ function TControllerCtrlEstoque.getIDbyControls:Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -431,8 +435,9 @@ function TControllerCtrlEstoque.getIDbyControlsProducts: Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -467,8 +472,8 @@ Var
   Lc_Qry : TSTQuery;
   LcItem : TProdutoSimples;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -538,8 +543,8 @@ Var
   Lc_Qry : TSTQuery;
   LcItem : TProdutoSimples;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -742,8 +747,8 @@ Var
   LcCtrlEstoque : TControllerCtrlEstoque;
   LcReg : TCtrlEstoque;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -817,8 +822,8 @@ procedure TControllerCtrlEstoque.getlistDuplicados;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -860,6 +865,7 @@ Var
   Lc_Qry:TSTQuery;
   LcReg :  TCtrlEstoque;
 begin
+  Lc_Qry := GeraQuery;
   TRY
     LcSyT := TControllerSyncTable.Create(nil);
     with LcSyT.Registro do
@@ -869,7 +875,6 @@ begin
       Sentido := 'W';
     End;
     LcSyncTable := LcSyT.getTime;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;
@@ -900,8 +905,9 @@ function TControllerCtrlEstoque.getSaldo: Real;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -953,13 +959,11 @@ function TControllerCtrlEstoque.RecontagemListarMovimento: Boolean;
 Var
   Lc_SqlTxt : String;
   Lc_Qry : TSTQuery;
-  LcBase : TControllerBase;
   Lc_item : TCtrlEstoque;
 Begin
+  Result := False;
+  Lc_Qry := GeraQuery;
   Try
-    Result := False;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       ///SELECT DOS DOCUMENTOS FATURADOS E SEM COMPOSIÇÃO
@@ -1211,21 +1215,19 @@ Begin
       end;
     end;
   Finally
-    LcBase.FinalizaQuery(Lc_Qry);
-    LcBase.DisposeOf;
+    FinalizaQuery(Lc_Qry);
+    DisposeOf;
   End;
 end;
 
 procedure TControllerCtrlEstoque.LimparTodoHistoricoByProduto;
 Var
   Lc_Qry : TSTQuery;
-  LcBase : TControllerBase;
   Lc_Data : TDate;
 begin
+  Lc_Qry := GeraQuery;
   Try
     //Verifica o ultimo inventario registrado no sistema
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -1240,21 +1242,19 @@ begin
       ExecSQL;
     End;
   Finally
-    LcBase.FinalizaQuery(Lc_Qry);
-    LcBase.DisposeOf;
+    FinalizaQuery(Lc_Qry);
+    DisposeOf;
   End;
 end;
 
 function TControllerCtrlEstoque.ListarMovimento: Boolean;
 Var
   Lc_Qry : TSTQuery;
-  LcBase : TControllerBase;
   LcItem : TCtrlEstoque;
 Begin
+  Result := False;
+  Lc_Qry := GeraQuery;
   Try
-    Result := False;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       ///SELECT DOS DOCUMENTOS FATURADOS E SEM COMPOSIÇÃO
@@ -1288,9 +1288,10 @@ Var
   Lc_Qry : TSTQuery;
   LcItem : TProdutoMovimentado;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
     Result := False;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       ///SELECT DOS DOCUMENTOS FATURADOS E SEM COMPOSIÇÃO
@@ -1440,8 +1441,8 @@ Var
   Lc_Qry : TSTQuery;
   LcReg : TCtrlEstoque;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -1495,13 +1496,11 @@ end;
 procedure TControllerCtrlEstoque.RecontagemDeletarByProduto;
 Var
   Lc_Qry : TSTQuery;
-  LcBase : TControllerBase;
   Lc_Data : TDate;
 begin
+  Lc_Qry := GeraQuery;
   Try
     //Verifica o ultimo inventario registrado no sistema
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       if not Transaction.InTransaction then Transaction.StartTransaction;
@@ -1545,8 +1544,8 @@ begin
       ExecSQL;
     End;
   Finally
-    LcBase.FinalizaQuery(Lc_Qry);
-    LcBase.DisposeOf;
+    FinalizaQuery(Lc_Qry);
+    DisposeOf;
   End;
 end;
 
@@ -1568,9 +1567,9 @@ Var
   Lc_Qry : TSTQuery;
   LcReg : TCtrlEstoque;
 Begin
+  Lc_Qry := GeraQuery;
   Try
     //Insere os novos registros referente a este item
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     BEgin
       Active := false;
@@ -1753,8 +1752,9 @@ function TControllerCtrlEstoque.UpdateByID: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;

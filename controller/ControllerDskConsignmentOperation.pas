@@ -72,8 +72,9 @@ function TControllerDskConsignmentOperation.getBalanceByProduct(
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := geraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -121,8 +122,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TDskConsignmentOperation;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -159,8 +160,9 @@ function TControllerDskConsignmentOperation.getTotalValue: REal;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -206,8 +208,9 @@ function TControllerDskConsignmentOperation.getTotalValueByProduct(
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(

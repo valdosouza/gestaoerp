@@ -318,8 +318,8 @@ Var
   Lc_Upt : TSTQuery;
   Lc_Contatdor : Integer;
 begin
+ Lc_Upt := GeraQuery;
   Try
-    Lc_Upt := GeraQuery;
     with Lc_Upt do
     Begin
       sql.Clear;
@@ -395,8 +395,9 @@ function TControllerDskRestGroupHasAttribute.temmovimento: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -431,8 +432,9 @@ function TControllerDskRestGroupHasAttribute.getbyBarCode: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -465,8 +467,9 @@ Function TControllerDskRestGroupHasAttribute.getByDescricao(descricao: String):I
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -499,8 +502,9 @@ Var
   Lc_Qry : TSTQuery;
   LcItem : TProduto;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -536,8 +540,9 @@ function TControllerDskRestGroupHasAttribute.getbyFactoryProduct:Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -565,8 +570,9 @@ function TControllerDskRestGroupHasAttribute.getCusto: Real;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -588,8 +594,10 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TProduto;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
+
     with Lc_Qry do
     Begin
       active := False;
@@ -613,8 +621,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TProduto;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -673,8 +681,8 @@ procedure TControllerDskRestGroupHasAttribute.getMenuToSincronia;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(

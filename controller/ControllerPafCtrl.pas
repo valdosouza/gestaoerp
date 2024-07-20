@@ -79,10 +79,10 @@ var
   Lc_Qry : TSTQuery;
   RegA2 : TControllerPafRegA2;
 begin
+  result := False;
+  RegA2 := TControllerPafRegA2.create(nil);
+  Lc_Qry := GeraQuery;
   Try
-    result := False;
-    RegA2 := TControllerPafRegA2.create(nil);
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -183,8 +183,9 @@ function TControllerPafCtrl.forceClosure: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -227,8 +228,9 @@ function TControllerPafCtrl.setClosure: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -281,8 +283,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPafCtrl;
 begin
+  Result := Date;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -314,8 +317,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPafCtrl;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -341,8 +344,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPafCtrl;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -378,8 +382,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TInterface;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

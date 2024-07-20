@@ -153,8 +153,9 @@ function TControllerFormaPagamento.ValidaLimiteFormaPagamento(
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -176,8 +177,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TFormaPagamento;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -222,8 +223,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TFormaPagamento;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -250,8 +251,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TFormaPagamento;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -279,8 +280,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TFormaPagamento;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

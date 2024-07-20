@@ -90,8 +90,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TRetornoNFe;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -114,8 +114,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TRetornoNFe;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT NFE.* ',
@@ -159,8 +159,8 @@ procedure TControllerRetornoNFe.getSincronia;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -220,8 +220,9 @@ function TControllerRetornoNFe.UpdateFileXMl: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('UPDATE TB_RETORNO_NFE SET ',

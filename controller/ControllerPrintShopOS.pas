@@ -34,8 +34,8 @@ procedure TControllerPrintShopOS.ComboFabricante(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -61,8 +61,8 @@ procedure TControllerPrintShopOS.ComboFaca(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -88,8 +88,8 @@ procedure TControllerPrintShopOS.ComboMaterial(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -185,8 +185,9 @@ function TControllerPrintShopOS.getByPedido: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

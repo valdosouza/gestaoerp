@@ -52,23 +52,27 @@ Var
   LcItem : TDskImages;
 begin
   LcQry := GeraQuery;
-  with LcQry do
-  Begin
-    sql.Clear;
-    sql.Add(CONCAT(
-            'SELECT * ',
-            'FROM TB_IMAGES '
-    ));
-    Active := True;
-    First;
-    Lista.Clear;
-    while not eof do
+  Try
+    with LcQry do
     Begin
-      LcItem := TDskImages.Create;
-      get(LcQry,LcItem);
-      Lista.Add(LcItem);
-      next;
+      sql.Clear;
+      sql.Add(CONCAT(
+              'SELECT * ',
+              'FROM TB_IMAGES '
+      ));
+      Active := True;
+      First;
+      Lista.Clear;
+      while not eof do
+      Begin
+        LcItem := TDskImages.Create;
+        get(LcQry,LcItem);
+        Lista.Add(LcItem);
+        next;
+      End;
     End;
+  Finally
+    FinalizaQuery(LcQry);
   End;
 end;
 
@@ -78,25 +82,29 @@ Var
   LcItem : TDskImages;
 begin
   LcQry := GeraQuery;
-  with LcQry do
-  Begin
-    sql.Clear;
-    sql.Add(CONCAT(
-            'SELECT * ',
-            'FROM TB_IMAGES ',
-            ' WHERE (TABLE_ID =:TABLE_ID ) '
-    ));
-    ParamByName('TABLE_ID').AsInteger := Registro.VinculoTabela;
-    Active := True;
-    First;
-    Lista.Clear;
-    while not eof do
+  Try
+    with LcQry do
     Begin
-      LcItem := TDskImages.Create;
-      get(LcQry,LcItem);
-      Lista.Add(LcItem);
-      next;
+      sql.Clear;
+      sql.Add(CONCAT(
+              'SELECT * ',
+              'FROM TB_IMAGES ',
+              ' WHERE (TABLE_ID =:TABLE_ID ) '
+      ));
+      ParamByName('TABLE_ID').AsInteger := Registro.VinculoTabela;
+      Active := True;
+      First;
+      Lista.Clear;
+      while not eof do
+      Begin
+        LcItem := TDskImages.Create;
+        get(LcQry,LcItem);
+        Lista.Add(LcItem);
+        next;
+      End;
     End;
+  Finally
+    FinalizaQuery(LcQry);
   End;
 
 end;

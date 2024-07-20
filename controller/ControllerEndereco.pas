@@ -88,8 +88,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEndereco;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -160,9 +161,9 @@ var
   Lc_Qry : TSTQuery;
   Lc_aux:String;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   TRy
-    Result:=true;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Sql.Clear;
@@ -183,8 +184,8 @@ procedure TControllerEndereco.getById;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add('SELECT e.* '+
@@ -212,9 +213,9 @@ Var
   lc_Aux : Integer;
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   TRy
     //Guarda a informação da empresa caso o resultado seja zero
-    Lc_Qry := GeraQuery;
     lc_Aux := Registro.CodigoEmpresa;
     with Lc_Qry do
     Begin
@@ -262,8 +263,9 @@ function TControllerEndereco.getByAllFones: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -294,8 +296,8 @@ procedure TControllerEndereco.getByDocumento(Documento:String);
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add('SELECT e.* '+
@@ -324,8 +326,8 @@ procedure TControllerEndereco.getIdByFone;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -359,8 +361,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TEndereco;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -387,8 +390,9 @@ function TControllerEndereco.getPrincipal: Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.add(' SELECT END_CODIGO '+

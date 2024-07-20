@@ -41,8 +41,8 @@ procedure TControllerFurnitureOS.ComboBrand(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -68,8 +68,8 @@ procedure TControllerFurnitureOS.ComboEnvironment(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -95,8 +95,8 @@ procedure TControllerFurnitureOS.ComboEquipment(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -123,8 +123,8 @@ procedure TControllerFurnitureOS.ComboModel(Combo: TComboBox);
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -209,9 +209,8 @@ procedure TControllerFurnitureOS.getbySearch;
 var
   Lc_Qry : TSTQuery;
 begin
-
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -266,8 +265,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TFurnitureOS;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

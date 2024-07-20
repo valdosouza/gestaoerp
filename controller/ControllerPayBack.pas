@@ -76,8 +76,9 @@ function TControllerPayBack.deleteByOrder: boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -123,10 +124,10 @@ var
   Lc_vl_debito : Real;
   Lc_vl_saldo : Real;
 begin
+  Parametros.DataInicial  := StrToDate('01/01/2000');
+  Parametros.DataFinal    := Date - self.Parametros.Dias;
+  Lc_Qry := GeraQuery;
   Try
-    Parametros.DataInicial  := StrToDate('01/01/2000');
-    Parametros.DataFinal    := Date - self.Parametros.Dias;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -166,13 +167,13 @@ var
   Lc_vl_debito : Real;
   Lc_vl_saldo : Real;
 begin
+  Parametros.Periodo := True;
+  Expired.Registro.CodigoCliente := FCodigoCliente;
+  Parametros.DataInicial  := Expired.getLast;
+  Parametros.DataFinal    := Date - self.Parametros.Dias;
+  Parametros.PayBack.Cliente := FCodigoCliente;
+  Lc_Qry := GeraQuery;
   Try
-    Parametros.Periodo := True;
-    Expired.Registro.CodigoCliente := FCodigoCliente;
-    Parametros.DataInicial  := Expired.getLast;
-    Parametros.DataFinal    := Date - self.Parametros.Dias;
-    Parametros.PayBack.Cliente := FCodigoCliente;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -285,8 +286,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -314,8 +316,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -341,8 +344,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -369,8 +373,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -411,8 +416,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -453,8 +459,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := Date;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -485,8 +492,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -512,8 +520,9 @@ function TControllerPayBack.getListByCustomer: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -549,8 +558,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -576,8 +586,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TPayBack;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

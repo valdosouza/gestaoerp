@@ -46,8 +46,8 @@ procedure TControllerMedida.AlteraMedidaEspecial(NEW_MED,OLD_MED:String);
 Var
   Lc_Qry :TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -70,8 +70,8 @@ procedure TControllerMedida.AtivarDesativar;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -99,8 +99,8 @@ procedure TControllerMedida.AtivarDesativarProdutos(medidaId: Integer;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -240,8 +240,8 @@ procedure TControllerMedida.getbyDescricao;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       {Cuidado ao mexer nesta funçao, se colocar o get aqui dentro vai ter problema
@@ -269,8 +269,8 @@ procedure TControllerMedida.getbyDescricaoMedidaCardapio;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
     {Cuidado ao mexer nesta funçao, se colocar o get aqui dentro vai ter problema
@@ -300,8 +300,8 @@ procedure TControllerMedida.getbyMedidaEspecial;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -346,8 +346,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TMedida;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -380,8 +381,8 @@ procedure TControllerMedida.getoSincronia;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;

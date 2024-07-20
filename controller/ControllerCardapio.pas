@@ -114,8 +114,8 @@ procedure TControllerCardapio.AtualizaPrecoTamanhoMultiplo;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -154,8 +154,8 @@ procedure TControllerCardapio.AtualizaPrecoTamanhoMultiploSimples;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -207,8 +207,8 @@ function TControllerCardapio.deleteEstoqueSabor: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('DELETE  '+
@@ -234,8 +234,8 @@ function TControllerCardapio.deletePrecoSabor: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('DELETE  '+
@@ -260,8 +260,8 @@ function TControllerCardapio.deleteSabor: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('DELETE  '+
@@ -286,8 +286,8 @@ function TControllerCardapio.SalvaSaborPropagaTamanho:boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('SELECT MED_CODIGO '+
@@ -322,8 +322,8 @@ function TControllerCardapio.SalvaSaborByD:boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('UPDATE TB_PRODUTO SET '+
@@ -375,8 +375,8 @@ Var
   Lc_Sequencia : Integer;
 Begin
   //Cria a consulta local para Inserir Sabores
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -428,8 +428,8 @@ function TControllerCardapio.AlteraSaborMultploTamanho:boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT PRO_CODIGO, PRO_CODMED '+
@@ -459,9 +459,9 @@ Function TControllerCardapio.getOneToCopyByGrupo:TCardapio;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
     Result := TCardapio.Create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('select first 1 p.* '+
@@ -486,8 +486,8 @@ function TControllerCardapio.hasBotao: Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT DISTINCT tb_itens_btn.ibt_codbtn '+
@@ -513,8 +513,8 @@ Function TControllerCardapio.SalvaTamanhoPropagaSabor:boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('select DISTINCT p.pro_descricao, PRO_CODSBG '+
@@ -599,8 +599,8 @@ procedure TControllerCardapio.getbyDG;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -630,8 +630,8 @@ procedure TControllerCardapio.getbyDMG;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -666,9 +666,9 @@ function TControllerCardapio.getIdByDMG(Descricao : String):Integer;
 var
   Lc_Qry :TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
     //DMG - Descricao - Medida - GRupo
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -703,8 +703,8 @@ Var
   Lc_Qry : TSTQuery;
 Begin
   //Cria a consulta local para Inserir Sabores
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with LC_Qry do
     Begin
       Active := False;
@@ -742,8 +742,8 @@ Var
   Lc_Qry : TSTQuery;
 Begin
   //Cria a consulta local para Inserir Sabores
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -766,9 +766,9 @@ procedure TControllerCardapio.DeleteBotao(Botao:Integer);
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
     //Cria a consulta local para Inserir Sabores
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -786,9 +786,9 @@ procedure TControllerCardapio.DeleteBotaodoProduto(ProdutoID: Integer);
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
     //Cria a consulta local para Inserir Sabores
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -808,8 +808,8 @@ function TControllerCardapio.Movimentacao: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add('SELECT COUNT(ITF_CODIGO) REG '+

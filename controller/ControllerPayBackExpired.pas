@@ -47,8 +47,9 @@ function TControllerPayBackExpired.getLast: TDate;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := Date;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

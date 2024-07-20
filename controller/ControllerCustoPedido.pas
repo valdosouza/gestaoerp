@@ -96,8 +96,9 @@ function TControllerCustoPedido.getCustoProduto(NumeroNota: String;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry :=  GeraQuery;
     witH Lc_Qry do
     Begin
       sql.add('SELECT SUM(CTP_VL_REAL)  TOTAL '+
@@ -125,8 +126,9 @@ function TControllerCustoPedido.getMaxCodigo: Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry :=  GeraQuery;
     witH Lc_Qry do
     Begin
       sql.add('select max(CTP_CODIGO) id '+
@@ -160,8 +162,9 @@ function TControllerCustoPedido.deleteOrigensAutomatica:Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry :=  GeraQuery;
     witH Lc_Qry do
     Begin
       sql.add('delete from tb_custo_pedido '+

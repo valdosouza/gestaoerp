@@ -48,8 +48,9 @@ function TControllerItensICMS.delete: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('DELETE ',
@@ -74,8 +75,8 @@ procedure TControllerItensICMS.getByItemNota;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -97,8 +98,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TItensICMS;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',
@@ -135,8 +136,9 @@ function TControllerItensICMS.nextCodigo:Integer;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;

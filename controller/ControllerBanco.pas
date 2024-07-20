@@ -35,8 +35,8 @@ function TControllerBanco.getNumber(Codigo: Integer):Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(

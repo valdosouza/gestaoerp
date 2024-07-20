@@ -68,8 +68,9 @@ function TControllerRestaurante.salvaRecebimento: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE TB_RESTAURANTE SET '+

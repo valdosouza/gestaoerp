@@ -101,8 +101,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TMdfeStateRoute ;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Clear;

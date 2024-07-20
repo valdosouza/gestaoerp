@@ -54,18 +54,18 @@ var
 begin
   if Vl_Desconto > 0 then
   Begin
-    TRy
-      //Zerando as variaveis
-       Lc_VL_Cotacao := 0;
-       Lc_Vl_Subtotal :=0;
-       Lc_Aq_Proporcao :=0;
-       Lc_VL_Desconto :=0;
-       Lc_VL_TL_Desconto :=0;
+    //Zerando as variaveis
+     Lc_VL_Cotacao := 0;
+     Lc_Vl_Subtotal :=0;
+     Lc_Aq_Proporcao :=0;
+     Lc_VL_Desconto :=0;
+     Lc_VL_TL_Desconto :=0;
 
-      //Cria a Qry de Atualização
-      Lc_Upt := GeraQuery;
-      //Cria a Consulta
-      Lc_Qry := GeraQuery;
+    //Cria a Qry de Atualização
+    Lc_Upt := GeraQuery;
+    //Cria a Consulta
+    Lc_Qry := GeraQuery;
+    TRy
       WITH Lc_Qry do
       Begin
         Active := False;
@@ -166,8 +166,8 @@ procedure TControllerCotacao.enviaLixeira;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -200,8 +200,9 @@ function TControllerCotacao.LiberaEmUso: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE tb_COTACAO SET CTC_emuso = NULL where CTC_codigo =:CTC_codigo');
@@ -235,8 +236,8 @@ begin
     Lc_Ano_Numero := Copy(registro.Numero,Length(registro.Numero)-1,2);
     Lc_Alterar := (Lc_Ano_Numero <> Copy(Lc_Ano,3,2));
   end;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -300,8 +301,8 @@ procedure TControllerCotacao.UpdateEnvio;
 var
   Lc_Qry :TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with  Lc_Qry do
     Begin
       SQL.Clear;
@@ -323,11 +324,11 @@ function TControllerCotacao.using(Operation: string): Boolean;
 Var
   Lc_Qry :TSTQuery;
 begin
-  Result := False;
+  Result := True;
   if ( Registro.Codigo > 0 ) then
   Begin
+    Lc_Qry := GeraQuery;
     Try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         Active := False;
@@ -389,8 +390,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TCotacao;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

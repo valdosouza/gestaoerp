@@ -58,8 +58,9 @@ function TControllerEstabelecimento.GetCNPJByTipoZero: String;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
    try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       CachedUpdates := True;
@@ -99,8 +100,9 @@ function TControllerEstabelecimento.GetTipoEmissao: Integer;
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
    try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       CachedUpdates := True;
@@ -128,10 +130,10 @@ var
   St_Image : TStream;
   Lc_jpg : TJPEGImage;
 begin
+  St_Image := nil;
+  Lc_jpg := TJPEGImage.Create;
+  Lc_Qry := GeraQuery;
    try
-    St_Image := nil;
-    Lc_jpg := TJPEGImage.Create;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       CachedUpdates := True;

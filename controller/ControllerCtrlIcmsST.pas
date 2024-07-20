@@ -1,7 +1,7 @@
 unit ControllerCtrlIcmsST;
 
 interface
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
+uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblCtrlIcmsST ,  Generics.Collections;
 
 
@@ -36,8 +36,9 @@ Var
   Lc_Qry : TSTQuery;
   LCItem : TCtrlIcmsST;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -81,8 +82,9 @@ function TControllerCtrlIcmsST.deleteByOrigem: boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -112,8 +114,9 @@ Var
   Lc_Qry : TSTQuery;
   LCItem : TCtrlIcmsST;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -156,8 +159,9 @@ Var
   Lc_Qry : TSTQuery;
   LCItem : TCtrlIcmsST;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -188,8 +192,9 @@ Var
   Lc_Qry : TSTQuery;
   LCItem : TCtrlIcmsST;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -236,8 +241,9 @@ Var
   LCItem : TCtrlIcmsST;
   I,F : Integer;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     Lc_Qry.sql.Clear;
     Lc_Qry.sql.Add(concat(
                   'select                                                                       ',

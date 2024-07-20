@@ -37,12 +37,12 @@ Var
   I : Integer;
   LcInsertSincronia : String;
 begin
+  DataBase := FBancoPDV;
+  Lc_Qry := GeraQuery;
+  LcListaTrigger := TControllerTrigger.Create(nil);
+  LcListaTrigger.getlistPDV;
+  LcInsertSincronia := ' INSERT INTO TB_SINCRONIA(SRC_CODIGO, SRC_TABELA, SRC_CHAVE, SRC_OPER,SRC_REGISTRO, SRC_TIME) VALUES( ';
   Try
-    DataBase := FBancoPDV;
-    Lc_Qry := GeraQuery;
-    LcListaTrigger := TControllerTrigger.Create(nil);
-    LcListaTrigger.getlistPDV;
-    LcInsertSincronia := ' INSERT INTO TB_SINCRONIA(SRC_CODIGO, SRC_TABELA, SRC_CHAVE, SRC_OPER,SRC_REGISTRO, SRC_TIME) VALUES( ';
     for I := 0 to LcListaTrigger.Lista.Count - 1 do
     Begin
       if Trim( LcListaTrigger.Lista[I].Tabela)<> '' then

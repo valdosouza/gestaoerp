@@ -55,8 +55,9 @@ function TControllerIFood.getRefreshToken: String;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(
@@ -89,8 +90,8 @@ procedure TControllerIFood.postRefreshToken;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.Add(concat(

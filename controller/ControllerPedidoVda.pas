@@ -33,8 +33,8 @@ procedure TControllerPedidoVda.AtualizaVendedor;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.add(concat(
@@ -70,8 +70,8 @@ procedure TControllerPedidoVda.DeleteAddressDelivery;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.add(concat(
@@ -182,8 +182,9 @@ function TControllerPedidoVda.SaveAddressDelivery: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.add(concat(

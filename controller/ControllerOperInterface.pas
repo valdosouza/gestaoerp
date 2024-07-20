@@ -72,8 +72,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TOperInterface;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -123,8 +124,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TOperInterface;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

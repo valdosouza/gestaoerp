@@ -70,10 +70,10 @@ procedure TControllerMedida.getbyDescricaoMedidaCardapio;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
     {Cuidado ao mexer nesta funçao, se colocar o get aqui dentro vai ter problema
       na alteração dos sabores - se precisar deste dos para validar coloque o get fora }
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -101,8 +101,8 @@ procedure TControllerMedida.getbyMedidaEspecial;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT * '+

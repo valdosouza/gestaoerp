@@ -44,8 +44,8 @@ procedure TControllerTefMovimento.encerraPendentes;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -75,23 +75,23 @@ procedure TControllerTefMovimento.ConcluiPendentes;
 Var
   Lc_Qry : TSTQuery;
 begin
-  Try
   Lc_Qry := GeraQuery;
-  with Lc_Qry do
-  Begin
-    Active := False;
-    SQL.Clear;
-    sql.Add(concat('update TB_TEF_MOVIMENTO set ',
-                   'STATUS =:STATUS ',
-                   'WHERE ( TB_USER_ID =:TB_USER_ID )',
-                   ' AND ( TB_INSTITUTION_ID =:TB_INSTITUTION_ID )',
-                   ' AND ( STATUS = ''P'' )')
-            );
-    ParamByName('STATUS').AsString := 'F';
-    ParamByName('TB_USER_ID').AsInteger := Registro.Usuario;
-    ParamByName('TB_INSTITUTION_ID').AsInteger := Registro.Estabelecimento;
-    ExecSQL;
-  End;
+  Try
+    with Lc_Qry do
+    Begin
+      Active := False;
+      SQL.Clear;
+      sql.Add(concat('update TB_TEF_MOVIMENTO set ',
+                     'STATUS =:STATUS ',
+                     'WHERE ( TB_USER_ID =:TB_USER_ID )',
+                     ' AND ( TB_INSTITUTION_ID =:TB_INSTITUTION_ID )',
+                     ' AND ( STATUS = ''P'' )')
+              );
+      ParamByName('STATUS').AsString := 'F';
+      ParamByName('TB_USER_ID').AsInteger := Registro.Usuario;
+      ParamByName('TB_INSTITUTION_ID').AsInteger := Registro.Estabelecimento;
+      ExecSQL;
+    End;
   finally
     FinalizaQuery(Lc_Qry);
   end;
@@ -101,23 +101,24 @@ function TControllerTefMovimento.getByStatus(Status:String):Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
-  Try
+  Result := True;
   Lc_Qry := GeraQuery;
-  with Lc_Qry do
-  Begin
-    Active := False;
-    SQL.Clear;
-    sql.Add(concat('select status ',
-                   'from TB_TEF_MOVIMENTO ',
-                   'WHERE ( STATUS =:STATUS )',
-                   ' and (TB_USER_ID =:TB_USER_ID )')
-            );
-    ParamByName('STATUS').AsString := Status;
-    ParamByName('TB_USER_ID').AsInteger := Registro.Usuario;
-    Active := True;
-    FetchAll;
-    Result := ( recordCount > 0 );
-  End;
+  Try
+    with Lc_Qry do
+    Begin
+      Active := False;
+      SQL.Clear;
+      sql.Add(concat('select status ',
+                     'from TB_TEF_MOVIMENTO ',
+                     'WHERE ( STATUS =:STATUS )',
+                     ' and (TB_USER_ID =:TB_USER_ID )')
+              );
+      ParamByName('STATUS').AsString := Status;
+      ParamByName('TB_USER_ID').AsInteger := Registro.Usuario;
+      Active := True;
+      FetchAll;
+      Result := ( recordCount > 0 );
+    End;
   finally
     FinalizaQuery(Lc_Qry);
   end;
@@ -127,22 +128,22 @@ procedure TControllerTefMovimento.finaliza;
 Var
   Lc_Qry : TSTQuery;
 begin
-  try
   Lc_Qry := GeraQuery;
-  with Lc_Qry do
-  Begin
-    Active := False;
-    SQL.Clear;
-    sql.Add(concat('update TB_TEF_MOVIMENTO set ',
-                   'STATUS =:STATUS ',
-                   'WHERE ( TB_PEDIDO_ID =:TB_PEDIDO_ID )',
-                   ' AND ( TB_INSTITUTION_ID =:TB_INSTITUTION_ID )')
-            );
-    ParamByName('STATUS').AsString := 'F';
-    ParamByName('TB_PEDIDO_ID').AsInteger := Registro.CodigoPedido;
-    ParamByName('TB_INSTITUTION_ID').AsInteger := Registro.Estabelecimento;
-    ExecSQL;
-  End;
+  try
+    with Lc_Qry do
+    Begin
+      Active := False;
+      SQL.Clear;
+      sql.Add(concat('update TB_TEF_MOVIMENTO set ',
+                     'STATUS =:STATUS ',
+                     'WHERE ( TB_PEDIDO_ID =:TB_PEDIDO_ID )',
+                     ' AND ( TB_INSTITUTION_ID =:TB_INSTITUTION_ID )')
+              );
+      ParamByName('STATUS').AsString := 'F';
+      ParamByName('TB_PEDIDO_ID').AsInteger := Registro.CodigoPedido;
+      ParamByName('TB_INSTITUTION_ID').AsInteger := Registro.Estabelecimento;
+      ExecSQL;
+    End;
   finally
     FinalizaQuery(Lc_Qry);
   end;

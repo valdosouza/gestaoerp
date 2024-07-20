@@ -38,8 +38,8 @@ Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
       Begin
       if (IBGE > 0) then
@@ -141,8 +141,8 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCidade;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

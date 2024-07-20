@@ -161,8 +161,9 @@ function TControllerPreco.deleteByID: boolean;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -181,8 +182,9 @@ function TControllerPreco.deleteByTabela: boolean;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -207,8 +209,9 @@ Function TControllerPreco.getIdByTabelaProduto:Integer;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -241,8 +244,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TPreco;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -281,8 +284,8 @@ procedure TControllerPreco.getByTabelaProduto;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;
@@ -310,8 +313,8 @@ procedure TControllerPreco.getByCodigo;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       exist := False;

@@ -41,8 +41,8 @@ procedure TControllerSubGrupos.AtivarDesativarProdutos(subgrupoId:Integer;oper: 
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -173,8 +173,9 @@ function TControllerSubGrupos.getByDescricao(pGRupo:Integer;PSubgrupo: String): 
 var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -206,8 +207,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TSubGrupos;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -236,8 +237,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TSubGrupos;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

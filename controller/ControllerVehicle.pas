@@ -103,8 +103,9 @@ function TControllerVehicle.getMarcaModelo: String;
 Var
   Lc_Qry: TSTQuery;
 Begin
+  Result := '';
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     BEgin
       Active := False;

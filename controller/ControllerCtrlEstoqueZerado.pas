@@ -73,12 +73,24 @@ end;
 
 function TControllerCtrlEstoqueZerado.migra: boolean;
 begin
-  SaveObj(Registro);
+  try
+    Result := True;
+    SaveObj(Registro);
+  Except
+    Result := False;
+  end;
+
+
 end;
 
 function TControllerCtrlEstoqueZerado.replace: boolean;
 begin
-  replaceObj(Registro);
+  try
+    Result := True;
+    replaceObj(Registro);
+  Except
+    Result := False;
+  end;
 end;
 
 function TControllerCtrlEstoqueZerado.salva: boolean;
@@ -119,8 +131,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCtrlEstoqueZerado;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

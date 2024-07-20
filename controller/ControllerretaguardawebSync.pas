@@ -75,9 +75,9 @@ procedure TControllerretaguardawebSync.resetDataRecebimento;
 Var
   Lc_Qry: TSTQuery;
 begin
+  DataBase := FBancoPDV;
+  Lc_Qry := GeraQuery;
   Try
-    DataBase := FBancoPDV;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;

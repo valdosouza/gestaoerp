@@ -59,8 +59,9 @@ function TControllerTabelaPreco.DefinePrincipal: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE TB_TABELA_PRECO SET '+
@@ -89,8 +90,8 @@ procedure TControllerTabelaPreco.DeleteItens;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -175,8 +176,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TTabelaPreco;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -216,8 +217,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TTabelaPreco;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -251,8 +252,9 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TTabelaPreco;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

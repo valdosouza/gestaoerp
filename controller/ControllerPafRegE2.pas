@@ -104,8 +104,8 @@ begin
   getList(Lc_itens);
   if Lista.Count = 0 then
   Begin
+    Lc_Qry := GeraQuery;
     try
-      Lc_Qry := GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add(concat(
@@ -186,8 +186,9 @@ var
   i: Integer;
   Lc_itens_Lista : String;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(
@@ -215,8 +216,9 @@ var
   i: Integer;
   Lc_itens_Lista : String;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat(

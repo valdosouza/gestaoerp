@@ -195,9 +195,9 @@ Var
 Begin
   if (Registro.CodigoQuitacao > 0 ) then
   Begin
+    Lc_Qry := GeraQuery;
     Try
       Lc_Referencia := NotasReferenciadas(Registro.CodigoQuitacao);
-      Lc_Qry := GeraQuery;
       with Lc_Qry  do
       Begin
         sql.Add('SELECT DISTINCT NFL_NUMERO '+
@@ -431,8 +431,8 @@ procedure TControllerBoletoBancario.AlteraVencimentoValor;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE TB_FINANCEIRO SET '+
@@ -454,8 +454,8 @@ procedure TControllerBoletoBancario.getByCodigoQuitacao;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry  do
     Begin
       sql.Add('SELECT * '+
@@ -491,8 +491,8 @@ function TControllerBoletoBancario.NotasReferenciadas(
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry  do
     Begin
       sql.Add('SELECT DISTINCT NFL_NUMERO '+
@@ -593,8 +593,8 @@ function TControllerBoletoBancario.PedidosReferenciados(
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry  do
     Begin
       sql.Add('SELECT DISTINCT PED_NUMERO '+
@@ -631,8 +631,8 @@ Var
   Lc_I : Integer;
   LcReg : TBoletoBancario;
 Begin
+  Lc_Qry := GeraQuery;
   TRy
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     BEgin
       Active := False;

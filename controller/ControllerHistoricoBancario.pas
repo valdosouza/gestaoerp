@@ -56,8 +56,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : THistoricoBancario;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;

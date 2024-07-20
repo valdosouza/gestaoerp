@@ -38,8 +38,9 @@ Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select UFE_CODIGO FROM TB_UF WHERE UFE_SIGLA=:UFE_SIGLA');
@@ -129,8 +130,9 @@ var
   Lc_Qry : TSTQuery;
   LITem : TUf;
 begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(concat('SELECT * ',

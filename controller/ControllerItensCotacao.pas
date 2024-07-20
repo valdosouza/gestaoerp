@@ -78,9 +78,9 @@ function TControllerItensCotacao.ExisteItemNoCotacao: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    Result := True;
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -111,8 +111,8 @@ var
   Lc_Qry : TSTQuery;
   LcLista : TItensCotacao;
 begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       active := False;
@@ -155,8 +155,9 @@ function TControllerItensCotacao.nextCodigo: Integer;
 var
   Lc_Qry: TSTQuery;
 begin
+  Result := 0;
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
