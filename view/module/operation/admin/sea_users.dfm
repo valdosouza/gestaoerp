@@ -2,8 +2,9 @@ inherited SeaUsers: TSeaUsers
   Caption = 'Pesquisas de Usu'#225'rios'
   ClientHeight = 532
   ClientWidth = 658
-  ExplicitWidth = 670
-  ExplicitHeight = 595
+  ExplicitWidth = 664
+  ExplicitHeight = 581
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
@@ -12,9 +13,6 @@ inherited SeaUsers: TSeaUsers
     ExplicitTop = 71
     ExplicitWidth = 646
     ExplicitHeight = 449
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 648
-    end
     object Label22: TLabel [1]
       Left = 1
       Top = 65

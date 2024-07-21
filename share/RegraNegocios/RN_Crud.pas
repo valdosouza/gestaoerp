@@ -20,9 +20,9 @@ Var
   Lc_I : Integer;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     Result := TStringList.create;
     with Lc_Qry do
     Begin
@@ -72,9 +72,9 @@ Var
   LcBase : TControllerBase;
   Lc_I : Integer;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('DELETE From ' + Fc_Tabela + ' where ');

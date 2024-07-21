@@ -63,6 +63,7 @@ uses Un_Regra_Negocio, UN_Sistema;
 
 function TControllerItensNFL.atualiza: boolean;
 begin
+  Result := true;
   UpdateObj(Registro);
 end;
 
@@ -86,7 +87,7 @@ begin
       ParamByName('ITF_CODIGO').AsInteger     := Registro.Codigo;
       ParamByName('ITF_CODNFL').AsInteger     := Registro.CodigoNota;
       ParamByName('ITF_VL_CUSTO').AsFloat     := Registro.ValorCusto;
-      ParamByName('ITF_SENTIDO').AsAnsiString := Registro.Sentido;
+      ParamByName('ITF_SENTIDO').AsString := Registro.Sentido;
       ParamByName('ITF_IMP_APROX').asFloat    := Registro.ImpostoAproximado;
       ExecSQL;
     end;
@@ -145,9 +146,9 @@ end;
 
 function TControllerItensNFL.delete: Boolean;
 begin
+  Result := true;
   try
     deleteObj(Registro);
-    Result := True;
   except
     Result := False;
   end;
@@ -206,7 +207,7 @@ Begin
                      ' FROM TB_ITENS_NFL it ' ,
                      ' WHERE ITF_CODPRO =:PRO_CODIGO AND (ITF_CODPED=:ITF_CODPED) and (ITF_OPER=:ITF_OPER) '
       ));
-      ParamByName('ITF_OPER').AsAnsiString := Pc_Tp_Operacao;
+      ParamByName('ITF_OPER').AsString := Pc_Tp_Operacao;
       ParamByName('ITF_CODPED').AsInteger := registro.CodigoPedido;
       ParamByName('PRO_CODIGO').AsInteger := registro.CodigoProduto;
       Active := True;
@@ -382,6 +383,7 @@ end;
 
 function TControllerItensNFL.insere: boolean;
 begin
+  Result := true;
   Registro.Codigo := nextCodigo;
   if registro.Sequencia = 0 then
     registro.Sequencia := getSequencia;
@@ -390,11 +392,13 @@ end;
 
 function TControllerItensNFL.migra: Boolean;
 begin
+  Result := true;
   InsertObj(Registro);
 end;
 
 function TControllerItensNFL.salva: boolean;
 begin
+  Result := true;
   if registro.Codigo = 0 then
     Registro.Codigo := nextCodigo;
   if registro.Sequencia = 0 then

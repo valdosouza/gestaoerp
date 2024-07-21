@@ -43,6 +43,7 @@ uses Un_Regra_Negocio,Un_sistema;
 
 function TControllerFormaPagamento.autocreate(Descricao: String): boolean;
 begin
+  Result := True;
   Registro.codigo := 0;
   Registro.Descricao := Descricao;
   getByDescricao;
@@ -80,9 +81,9 @@ end;
 
 function TControllerFormaPagamento.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -99,11 +100,11 @@ end;
 
 function TControllerFormaPagamento.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Fc_Generator('GN_FORMAPAGTO','','FPT_CODIGO');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -111,14 +112,15 @@ end;
 
 function TControllerFormaPagamento.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerFormaPagamento.Replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -126,6 +128,7 @@ end;
 
 function TControllerFormaPagamento.save: boolean;
 begin
+  Result := True;
   if Registro.Codigo  = 0 then
       Registro.Codigo := Fc_Generator('GN_FORMAPAGTO','TB_FORMAPAGTO','FPT_CODIGO');
   Try
@@ -140,9 +143,9 @@ end;
 
 function TControllerFormaPagamento.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -175,7 +178,6 @@ end;
 procedure TControllerFormaPagamento.getByDescricao;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TFormaPagamento;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -221,7 +223,6 @@ end;
 procedure TControllerFormaPagamento.getByPartDescription;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TFormaPagamento;
 begin
   Lc_Qry := GeraQuery;
   Try

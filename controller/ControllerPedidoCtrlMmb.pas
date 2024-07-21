@@ -43,13 +43,14 @@ end;
 
 function TControllerPedidoCtrlMmb.salva: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerPedidoCtrlMmb.Insere:boolean;
 begin
+  Result := True;
   Try
-    Result := True;
     InsertObj(Registro);
   Except
     Result := False
@@ -59,8 +60,8 @@ end;
 
 function TControllerPedidoCtrlMmb.Atualiza:boolean;
 begin
+  Result := True;
   Try
-    Result := True;
     UpdateObj(Registro);
   Except
     Result := False
@@ -69,9 +70,9 @@ end;
 
 function TControllerPedidoCtrlMmb.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;

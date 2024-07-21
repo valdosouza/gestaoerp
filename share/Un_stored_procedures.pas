@@ -221,9 +221,9 @@ Function Fc_AtualizaItensNfl(Pc_Transacao : TSTTransaction;
 Var
   Lc_Item : TControllerItensNFL;
 begin
+  Lc_Item := TControllerItensNFL.Create(nil);
   Try
     Try
-      Lc_Item := TControllerItensNFL.Create(nil);
       with Lc_Item.Registro do
       Begin
         Codigo            := Pc_Cd_Item;
@@ -349,8 +349,8 @@ procedure Pc_Comissao(Pc_Transacao : TSTTransaction;
 Var
   LcComissao : TControllerComissao;
 begin
+  LcComissao := TControllerComissao.create(nil);
   TRy
-    LcComissao := TControllerComissao.create(nil);
     with LcComissao.registro do
     BEgin
       Codigo          := 0;
@@ -393,22 +393,22 @@ procedure Pc_Fr_FichaTecnica(Pc_Operacao : String;
 Var
    Lc_Sp_FichaTecnica : TSTStoredProc;
 begin
+  Lc_Sp_FichaTecnica := TSTStoredProc.create(nil);
   try
-    Lc_Sp_FichaTecnica := TSTStoredProc.create(nil);
     with Lc_Sp_FichaTecnica do
     Begin
       Database := DM.IBD_Gestao;
       Transaction := GeraStored;
       StoredProcName :=  'SP_FICHA_TECNICA';
       if Pc_Operacao = 'I' then Pc_Cd_ficha := Fc_Generator('GN_FICHA_TECNICA','','FTC_CODIGO');
-      ParamByName('FTC_OPER_REG').AsAnsiString := Pc_Operacao;
+      ParamByName('FTC_OPER_REG').AsString := Pc_Operacao;
       ParamByName('FTC_CODIGO').AsInteger := Pc_Cd_ficha;
       ParamByName('FTC_CODICT').AsInteger := Pc_Cd_Ict;
       ParamByName('FTC_CODITF').AsInteger := Pc_Cd_Itf;
-      ParamByName('FTC_TIPO').AsAnsiString := Pc_Tipo;
+      ParamByName('FTC_TIPO').AsString := Pc_Tipo;
       ParamByName('FTC_CODVCL').AsInteger := Pc_CodVcl;
-      ParamByName('FTC_DESC_INSUMO').AsAnsiString := Pc_Produto;
-      ParamByName('FTC_UND').AsAnsiString := Pc_Unidade;
+      ParamByName('FTC_DESC_INSUMO').AsString := Pc_Produto;
+      ParamByName('FTC_UND').AsString := Pc_Unidade;
       ParamByName('FTC_VL_UNIT').AsFloat := Pc_Vl_Unit;
       ParamByName('FTC_CS_UNIT').AsFloat := Pc_Cs_Unit;
       ParamByName('FTC_TX_PARTIC').AsFloat := Pc_Tx_Partic;
@@ -452,24 +452,24 @@ procedure Pc_Financeiro(Pc_Transacao : TSTTransaction;
 Var
    Lc_Sp_Financeiro : TSTStoredProc;
 begin
+  Lc_Sp_Financeiro := TSTStoredProc.create(nil);
   TRy
-    Lc_Sp_Financeiro := TSTStoredProc.create(nil);
     with Lc_Sp_Financeiro do
     Begin
       Database := DM.IBD_Gestao;
       Transaction := GeraStored;
       StoredProcName :=  'SP_FINANCEIRO';
       ForcedRefresh := True;
-      ParamByName('FIN_OPER_REG').AsAnsiString := Pc_Oper_reg;
+      ParamByName('FIN_OPER_REG').AsString := Pc_Oper_reg;
       ParamByName('FIN_CODIGO').AsInteger := Pc_CODIGO;
       ParamByName('FIN_CODEMP').AsInteger := Pc_CODEMP;
       ParamByName('FIN_DATA').AsDate := Pc_DATA;
       ParamByName('FIN_CODPED').AsInteger := Pc_CODPED;
       ParamByName('FIN_CODNFL').AsInteger := Pc_CODNFL;
       ParamByName('FIN_CODFPG').AsInteger := Pc_CODFPG;
-      ParamByName('FIN_PRAZO').AsAnsiString := Pc_PRAZO;
+      ParamByName('FIN_PRAZO').AsString := Pc_PRAZO;
       ParamByName('FIN_DT_VENCIMENTO').AsDate := Pc_DT_VENCIMENTO;
-      ParamByName('FIN_NUMERO').AsAnsiString := Pc_NUMERO;
+      ParamByName('FIN_NUMERO').AsString := Pc_NUMERO;
       ParamByName('FIN_VL_PARCELA').AsFloat := Pc_VL_PARCELA;
       ParamByName('FIN_VL_JUROS').AsFloat := Pc_VL_JUROS;
       ParamByName('FIN_VL_MORA').AsFloat := Pc_VL_MORA;
@@ -477,21 +477,21 @@ begin
       ParamByName('FIN_VL_PAGO').AsFloat := Pc_VL_PAGO;
       if (Pc_Oper_reg = 'I') and (Pc_BAIXA = 'N') then
         begin
-        ParamByName('FIN_DT_PAGTO').AsAnsiString := '';
-        ParamByName('FIN_DT_BAIXA').AsAnsiString := '';
+        ParamByName('FIN_DT_PAGTO').AsString := '';
+        ParamByName('FIN_DT_BAIXA').AsString := '';
         end
       else
         begin
         ParamByName('FIN_DT_PAGTO').AsDate := Pc_DT_PAGTO;
         ParamByName('FIN_DT_BAIXA').AsDate := Pc_DT_BAIXA;
         end;
-      ParamByName('FIN_BAIXA').AsAnsiString := Pc_BAIXA;
+      ParamByName('FIN_BAIXA').AsString := Pc_BAIXA;
       ParamByName('FIN_NR_PARCELA').AsInteger := Pc_NR_PARCELA;
-      ParamByName('FIN_TIPO').AsAnsiString := Pc_TIPO;
-      ParamByName('FIN_SITUACAO').AsAnsiString := Pc_SITUACAO;
+      ParamByName('FIN_TIPO').AsString := Pc_TIPO;
+      ParamByName('FIN_SITUACAO').AsString := Pc_SITUACAO;
       ParamByName('FIN_CODQTC').AsInteger := Pc_CODQTC;
-      ParamByName('FIN_OPERACAO').AsAnsiString := PC_Operacao;
-      ParamByName('FIN_ETAPA').AsAnsiString := pc_Etapa;
+      ParamByName('FIN_OPERACAO').AsString := PC_Operacao;
+      ParamByName('FIN_ETAPA').AsString := pc_Etapa;
       ParamByName('FIN_CODMHA').AsInteger := Gb_CodMha;
       ParamByName('FIN_CODCHQ').AsInteger := Pc_cd_Cheque;
       Try
@@ -525,8 +525,8 @@ procedure Pc_Log_Sistema( pc_log_codmha    : Integer;
 Var
   Lc_Log_Operacao : TSTStoredProc;
 begin
+  Lc_Log_Operacao := TSTStoredProc.create(nil);
   Try
-    Lc_Log_Operacao := TSTStoredProc.create(nil);
     with Lc_Log_Operacao do
     Begin
       Database := DM.IBD_Gestao;
@@ -538,10 +538,10 @@ begin
       ParamByName('LOG_CODMHA').AsInteger     := pc_log_codmha;        //--> Código da Empresa
       ParamByName('LOG_CODUSU').AsInteger     := pc_log_codusu;        //--> Código do Usuário
       ParamByName('Log_timestamp').AsDateTime :=  pc_log_timeStamp;     //--> A hora e data Atual
-      ParamByName('LOG_INTERFACE').AsAnsiString   := pc_log_interface;     //--> Nome da tela
+      ParamByName('LOG_INTERFACE').AsString   := pc_log_interface;     //--> Nome da tela
       ParamByName('LOG_REGISTRO').AsInteger    := pc_log_registro;     //--> Chave prmimara da Tabela Relacionada
-      ParamByName('LOG_OPERACAO').AsAnsiString    := copy(pc_log_operacao,1,30);      //--> Tipo de Modificação
-      ParamByName('LOG_DESCRICAO').AsAnsiString   := Copy(pc_log_descricao,1,100);     //--> Descrição operação realizada
+      ParamByName('LOG_OPERACAO').AsString    := copy(pc_log_operacao,1,30);      //--> Tipo de Modificação
+      ParamByName('LOG_DESCRICAO').AsString   := Copy(pc_log_descricao,1,100);     //--> Descrição operação realizada
       Try
        if not Transaction.InTransaction then  Transaction.StartTransaction;
         ExecProc;
@@ -588,12 +588,13 @@ procedure Pc_Movim_Financeiro(Pc_Transacao : TSTTransaction;
 Var
    Lc_Sp_Movim_Finaceiro : TSTStoredProc;
 begin
+  Lc_Sp_Movim_Finaceiro := TSTStoredProc.create(nil);
   Try
     IF Gb_DataCaixa = 0 then
     Begin
       Fc_VerificaCaixaAberto(False);
     End;
-    Lc_Sp_Movim_Finaceiro := TSTStoredProc.create(nil);
+
     with Lc_Sp_Movim_Finaceiro do
       Begin
       Database := DM.IBD_Gestao;
@@ -681,16 +682,16 @@ begin
     Begin
     Transaction := Pc_Transacao;
     ParamByName('NFL_CODIGO').AsInteger := pc_Cd_Nota;
-    ParamByName('NFL_TIPO').AsAnsiString := Pc_Tp_Operacao;
+    ParamByName('NFL_TIPO').AsString := Pc_Tp_Operacao;
     ParamByName('NFL_FINALIDADE').AsInteger := Pc_Finalidade;
     if Pc_Tp_Operacao = 'EM' then
-      ParamByName('NFL_NUMERO').AsAnsiString :=Pc_Nr_Nota
+      ParamByName('NFL_NUMERO').AsString :=Pc_Nr_Nota
     else
       begin
       if (StrToIntDef(Pc_Nr_Nota,0) > 0) then
-        ParamByName('NFL_NUMERO').AsAnsiString :=Pc_Nr_Nota
+        ParamByName('NFL_NUMERO').AsString :=Pc_Nr_Nota
       else
-        ParamByName('NFL_NUMERO').AsAnsiString := ''
+        ParamByName('NFL_NUMERO').AsString := ''
     end;
     ParamByName('NFL_SERIE').AsInteger := Pc_Serie;
     ParamByName('NFL_CODNAT').AsInteger := Pc_Cd_CFOP;
@@ -700,12 +701,12 @@ begin
     if Length(Pc_Dt_Saida)>0 then
     Begin
       ParamByName('NFL_HR_SAIDA').AsTime := Pc_Time;
-      ParamByName('NFL_DT_SAIDA').AsAnsiString := Pc_Dt_Saida;
+      ParamByName('NFL_DT_SAIDA').AsString := Pc_Dt_Saida;
     end
     else
     begin
-      ParamByName('NFL_HR_SAIDA').AsAnsiString := '';
-      ParamByName('NFL_DT_SAIDA').AsAnsiString := '';
+      ParamByName('NFL_HR_SAIDA').AsString := '';
+      ParamByName('NFL_DT_SAIDA').AsString := '';
     end;
 
     ParamByName('NFL_BS_ICMS').AsFloat := Pc_VL_Bs_ICMS;
@@ -721,20 +722,20 @@ begin
     ParamByName('NFL_CODTRP').AsInteger := Pc_Cd_Transporte;
     ParamByName('NFL_CTA_FRETE').AsInteger := Pc_Cta_Frete;
     ParamByName('NFL_QT_PRODUTO').AsFloat := Pc_Qt_Produto;
-    ParamByName('NFL_ESPECIE').AsAnsiString := Copy(Pc_Especie,1,10);
-    ParamByName('NFL_MARCA').AsAnsiString := Copy(Pc_Marca,1,10);
-    ParamByName('NFL_PESO_BRUTO').AsAnsiString := Copy(PC_PesoBruto,1,10);
-    ParamByName('NFL_PESO_LIQ').AsAnsiString := Copy(PC_PesoLiq,1,10);
-    ParamByName('NFL_CTRL_RETORNO').AsAnsiString := Pc_Ctrl_Retorno;
-    ParamByName('NFL_NFL_VINCULO').AsAnsiString := Pc_Nfl_Vinculo;
-    ParamByName('NFL_STATUS').AsAnsiString := Pc_Status;
+    ParamByName('NFL_ESPECIE').AsString := Copy(Pc_Especie,1,10);
+    ParamByName('NFL_MARCA').AsString := Copy(Pc_Marca,1,10);
+    ParamByName('NFL_PESO_BRUTO').AsString := Copy(PC_PesoBruto,1,10);
+    ParamByName('NFL_PESO_LIQ').AsString := Copy(PC_PesoLiq,1,10);
+    ParamByName('NFL_CTRL_RETORNO').AsString := Pc_Ctrl_Retorno;
+    ParamByName('NFL_NFL_VINCULO').AsString := Pc_Nfl_Vinculo;
+    ParamByName('NFL_STATUS').AsString := Pc_Status;
     ParamByName('NFL_VL_TL_SRV').AsFloat := Pc_VL_TL_Servicos;
     ParamByName('NFL_VL_ISS').AsFloat := Pc_VL_ISS;
     Pc_Nr_Volume := IntToStr(StrToIntDef(Pc_Nr_Volume,0));
-    ParamByName('NFL_VOL_NUMERO').AsAnsiString := Copy(Pc_Nr_Volume,1,8);
-    ParamByName('NFL_PLC_VEICULO').AsAnsiString := PC_PlacaVeiculo;
-    ParamByName('NFL_PLC_UF').AsAnsiString := Pc_Uf_Veiculo;
-    ParamByName('NFL_PLC_RNTC').AsAnsiString := Copy(Pc_RNTC,1,20);
+    ParamByName('NFL_VOL_NUMERO').AsString := Copy(Pc_Nr_Volume,1,8);
+    ParamByName('NFL_PLC_VEICULO').AsString := PC_PlacaVeiculo;
+    ParamByName('NFL_PLC_UF').AsString := Pc_Uf_Veiculo;
+    ParamByName('NFL_PLC_RNTC').AsString := Copy(Pc_RNTC,1,20);
     ParamByName('NFL_CODMHA').AsInteger := Pc_CodMha;
     ExecProc;
     end;
@@ -754,9 +755,9 @@ Var
   LcBase : TControllerBase;
   Lc_Sqltxt : sTRING;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       if Pc_Operacao = 'I' then

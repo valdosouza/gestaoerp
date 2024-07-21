@@ -45,7 +45,8 @@ end;
 
 function TControllerObsNota.delete: boolean;
 begin
-
+  Result := TRue;
+  deleteObj(Registro);
 end;
 
 destructor TControllerObsNota.Destroy;
@@ -95,8 +96,8 @@ end;
 
 function TControllerObsNota.insert: boolean;
 begin
+  Result := TRue;
   try
-    Result := TRue;
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_OBS_NFE');
     insertObj(Registro);
@@ -107,16 +108,17 @@ end;
 
 function TControllerObsNota.migra: Boolean;
 begin
+  Result := TRue;
   InsertObj(Registro);
 end;
 
 function TControllerObsNota.salva: boolean;
 begin
+  Result := TRue;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_OBS_NFE');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -125,7 +127,8 @@ end;
 
 function TControllerObsNota.update: boolean;
 begin
-
+  result := True;
+  updateObj(Registro)
 end;
 
 end.

@@ -44,13 +44,13 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select EMP_CODIGO FROM TB_EMPRESA WHERE EMP_CNPJ=:EMP_CNPJ');
-      ParamByName('EMP_CNPJ').AsAnsiString := Fc_CNPJ;
+      ParamByName('EMP_CNPJ').AsString := Fc_CNPJ;
       Active := True;
       FetchAll;
       IF (Recordcount > 0) then
@@ -71,18 +71,18 @@ Var
 Begin
   if StrToIntDef(Trim(Fc_cd_Empresa),0) > 0 then
   Begin
+    LcBase := TControllerBase.create(nil);
+    Lc_Qry := LcBase.GeraQuery;
     Try
-      LcBase := TControllerBase.create(nil);
-      Lc_Qry := LcBase.GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add('SELECT ' + Fc_Campo +'  FROM TB_EMPRESA WHERE EMP_CODIGO=:EMP_CODIGO ');
-        ParamByName('EMP_CODIGO').AsAnsiString := Fc_cd_Empresa;
+        ParamByName('EMP_CODIGO').AsString := Fc_cd_Empresa;
         Active := True;
         FetchAll;
         if (RecordCount>0) then
         Begin
-          Result := FieldByname(fc_campo).AsAnsiString
+          Result := FieldByname(fc_campo).AsString
         end
         else
         Begin
@@ -106,9 +106,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select END_CODIGO FROM TB_ENDERECO WHERE END_CODEMP=:END_CODEMP');
@@ -135,78 +135,93 @@ begin
   Result := True;
   LcBase := TControllerBase.create(nil);
   Lc_Qry := LcBase.GeraQuery;
-  with Lc_Qry do
-  Begin
-    Sql.Add('SELECT '+
-            '  EMP_SUB_TRIB, '+
-            '  EMP_INSC_EST, '+
-            '  EMP_CNPJ, '+
-            '  CDD_DESCRICAO, '+
-            '  CDD_IBGE, '+
-            '  END_CEP, '+
-            '  END_ENDER, '+
-            '  END_NUMERO, '+
-            '  END_BAIRRO, '+
-            '  END_FONE, '+
-            '  END_FAX, '+
-            '  END_COMERCIAL, '+
-            '  END_COMPLEM, '+
-            '  END_PAIS, '+
-            '  UFE_SIGLA '+
-            'FROM TB_EMPRESA tb_empresa '+
-            '   INNER JOIN TB_ENDERECO tb_endereco '+
-            '   ON (tb_endereco.END_CODEMP = tb_empresa.EMP_CODIGO) '+
-            '   INNER JOIN TB_CIDADE tb_cidade '+
-            '   ON (tb_cidade.CDD_CODIGO = tb_endereco.END_CODCDD) '+
-            '   INNER JOIN TB_UF tb_uf '+
-            '   ON (tb_uf.UFE_CODIGO = tb_endereco.END_CODUFE) '+
-            '   INNER JOIN TB_PAIS tb_pais '+
-            '   ON (tb_pais.PAI_CODBACEN = tb_endereco.END_PAIS) '+
-            'WHERE (EMP_CODIGO=:EMP_CODIGO) AND (END_PRINCIPAL = ''S'') ');
-    ParamByName('EMP_CODIGO').AsInteger := Fc_Cd_Empresa;
-    Active := True;
-    FetchAll;
-    if recordcount = 0 then
+  Try
+    with Lc_Qry do
     Begin
-      MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Cadastro do cliente incompleto!'+EOLN+
-                     'Verifique e tente novamente'+EOLN,
-                     ['OK'],[bEscape],mpErro);
-      result := False;
-      LcBase.FinalizaQuery(Lc_Qry);
-      LcBase.DisposeOf;
-      Exit;
-    end;
-
-    if FieldByName('END_PAIS').AsInteger = 1058 then
-    Begin
-      //valida O cnpj do Destinario
-      Lc_Aux := FieldByName('EMP_CNPJ').AsAnsiString;
-      If (Length(Lc_Aux) = 14) then
+      Sql.Add('SELECT '+
+              '  EMP_SUB_TRIB, '+
+              '  EMP_INSC_EST, '+
+              '  EMP_CNPJ, '+
+              '  CDD_DESCRICAO, '+
+              '  CDD_IBGE, '+
+              '  END_CEP, '+
+              '  END_ENDER, '+
+              '  END_NUMERO, '+
+              '  END_BAIRRO, '+
+              '  END_FONE, '+
+              '  END_FAX, '+
+              '  END_COMERCIAL, '+
+              '  END_COMPLEM, '+
+              '  END_PAIS, '+
+              '  UFE_SIGLA '+
+              'FROM TB_EMPRESA tb_empresa '+
+              '   INNER JOIN TB_ENDERECO tb_endereco '+
+              '   ON (tb_endereco.END_CODEMP = tb_empresa.EMP_CODIGO) '+
+              '   INNER JOIN TB_CIDADE tb_cidade '+
+              '   ON (tb_cidade.CDD_CODIGO = tb_endereco.END_CODCDD) '+
+              '   INNER JOIN TB_UF tb_uf '+
+              '   ON (tb_uf.UFE_CODIGO = tb_endereco.END_CODUFE) '+
+              '   INNER JOIN TB_PAIS tb_pais '+
+              '   ON (tb_pais.PAI_CODBACEN = tb_endereco.END_PAIS) '+
+              'WHERE (EMP_CODIGO=:EMP_CODIGO) AND (END_PRINCIPAL = ''S'') ');
+      ParamByName('EMP_CODIGO').AsInteger := Fc_Cd_Empresa;
+      Active := True;
+      FetchAll;
+      if recordcount = 0 then
       Begin
-        if not Fc_Valida_CNPJ(Lc_Aux,'Destinatário') then
-        begin
-          Result := False;
-          LcBase.FinalizaQuery(Lc_Qry);
-          LcBase.DisposeOf;
-          exit;
+        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
+                       'Cadastro do cliente incompleto!'+EOLN+
+                       'Verifique e tente novamente'+EOLN,
+                       ['OK'],[bEscape],mpErro);
+        result := False;
+        LcBase.FinalizaQuery(Lc_Qry);
+        LcBase.DisposeOf;
+        Exit;
+      end;
+
+      if FieldByName('END_PAIS').AsInteger = 1058 then
+      Begin
+        //valida O cnpj do Destinario
+        Lc_Aux := FieldByName('EMP_CNPJ').AsString;
+        If (Length(Lc_Aux) = 14) then
+        Begin
+          if not Fc_Valida_CNPJ(Lc_Aux,'Destinatário') then
+          begin
+            Result := False;
+            LcBase.FinalizaQuery(Lc_Qry);
+            LcBase.DisposeOf;
+            exit;
+          end;
+
+          //Valida Inscrição do Destinatario
+          Lc_Aux := RemoveCaracterInformado(FieldByName('EMP_INSC_EST').AsString,['.',',','/','-']);
+
+          if not Fc_Valida_Insc_Estadual(Lc_Aux, FieldByName('UFE_SIGLA').AsString, 'Destinatário') then
+          begin
+            Result := False;
+            LcBase.FinalizaQuery(Lc_Qry);
+            LcBase.DisposeOf;
+            exit;
+          end;
+        end
+        else
+        Begin
+          if not Fc_Valida_CPF(Lc_Aux,'Destinatário') then
+          begin
+            Result := False;
+            LcBase.FinalizaQuery(Lc_Qry);
+            LcBase.DisposeOf;
+            exit;
+          end;
         end;
 
-        //Valida Inscrição do Destinatario
-        Lc_Aux := RemoveCaracterInformado(FieldByName('EMP_INSC_EST').AsAnsiString,['.',',','/','-']);
-
-        if not Fc_Valida_Insc_Estadual(Lc_Aux, FieldByName('UFE_SIGLA').AsAnsiString, 'Destinatário') then
+        //Valida Cidade do IBGE e se o endereço está completo
+        if (Length(FieldByName('CDD_DESCRICAO').AsString) = 0) then
         begin
-          Result := False;
-          LcBase.FinalizaQuery(Lc_Qry);
-          LcBase.DisposeOf;
-          exit;
-        end;
-      end
-      else
-      Begin
-        if not Fc_Valida_CPF(Lc_Aux,'Destinatário') then
-        begin
+          MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
+                         'Cidade IBGE Destinatário não encontrado !'+EOLN+
+                         'Verifique e tente novamente'+EOLN,
+                         ['OK'],[bEscape],mpErro);
           Result := False;
           LcBase.FinalizaQuery(Lc_Qry);
           LcBase.DisposeOf;
@@ -214,11 +229,24 @@ begin
         end;
       end;
 
-      //Valida Cidade do IBGE e se o endereço está completo
-      if (Length(FieldByName('CDD_DESCRICAO').AsAnsiString) = 0) then
+      //Valida o numero predial do endereco do Destinatario
+      if (Length(FieldByName('END_ENDER').AsString) = 0) then
       begin
         MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Cidade IBGE Destinatário não encontrado !'+EOLN+
+                       'Endereço do Destinatário não encontrado !'+EOLN+
+                       'Verifique e tente novamente'+EOLN,
+                       ['OK'],[bEscape],mpErro);
+        LcBase.FinalizaQuery(Lc_Qry);
+        LcBase.DisposeOf;
+        Result := False;
+        exit;
+      end;
+
+      //Valida o numero predial do endereco do Destinatario
+      if (Length(FieldByName('END_NUMERO').AsString) = 0) then
+      begin
+        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
+                       'Número predial do Destinatário não encontrado !'+EOLN+
                        'Verifique e tente novamente'+EOLN,
                        ['OK'],[bEscape],mpErro);
         Result := False;
@@ -226,49 +254,24 @@ begin
         LcBase.DisposeOf;
         exit;
       end;
-    end;
 
-    //Valida o numero predial do endereco do Destinatario
-    if (Length(FieldByName('END_ENDER').AsAnsiString) = 0) then
-    begin
-      MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Endereço do Destinatário não encontrado !'+EOLN+
-                     'Verifique e tente novamente'+EOLN,
-                     ['OK'],[bEscape],mpErro);
-      LcBase.FinalizaQuery(Lc_Qry);
-      LcBase.DisposeOf;
-      Result := False;
-      exit;
-    end;
-
-    //Valida o numero predial do endereco do Destinatario
-    if (Length(FieldByName('END_NUMERO').AsAnsiString) = 0) then
-    begin
-      MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Número predial do Destinatário não encontrado !'+EOLN+
-                     'Verifique e tente novamente'+EOLN,
-                     ['OK'],[bEscape],mpErro);
-      Result := False;
-      LcBase.FinalizaQuery(Lc_Qry);
-      LcBase.DisposeOf;
-      exit;
-    end;
-
-    //Valida o bairro  do emitente
-    if (FieldByName('END_BAIRRO').AsAnsiString = '') then
-    begin
-      MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Bairro do Destinatário não encontrado !'+EOLN+
-                     'Verifique e tente novamente'+EOLN,
-                     ['OK'],[bEscape],mpErro);
-      Result := False;
-      LcBase.FinalizaQuery(Lc_Qry);
-      LcBase.DisposeOf;
-      exit;
-    end;
-  end;
-  LcBase.FinalizaQuery(Lc_Qry);
-  LcBase.DisposeOf;
+      //Valida o bairro  do emitente
+      if (FieldByName('END_BAIRRO').AsString = '') then
+      begin
+        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
+                       'Bairro do Destinatário não encontrado !'+EOLN+
+                       'Verifique e tente novamente'+EOLN,
+                       ['OK'],[bEscape],mpErro);
+        Result := False;
+        LcBase.FinalizaQuery(Lc_Qry);
+        LcBase.DisposeOf;
+        exit;
+      end;
+    end;
+  Finally
+    LcBase.FinalizaQuery(Lc_Qry);
+    LcBase.DisposeOf;
+  End;
 end;
 
 
@@ -278,9 +281,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt: String;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt:=' select EMP_CODIGO '+
@@ -289,7 +292,7 @@ begin
       SQL.Add(Lc_SqlTxt);
       ParamByName('EMP_CODIGO').AsInteger:= Fc_Cd_Codigo;
       fc_documento := RemoveCaracterInformado(fc_documento, ['.',',','/','-']);
-      ParamByName('EMP_CNPJ').AsAnsiString:= fc_documento;
+      ParamByName('EMP_CNPJ').AsString:= fc_documento;
       Active:=TRUE;
       FetchAll;
       if (RecordCount > 0) then
@@ -323,9 +326,9 @@ begin
 //    if Lc_Form.Qr_Pesquisa.RecordCount > 0 then
 //    Begin
 //      Result.It_Dados[0,0] := 'EMP_CODIGO';
-//      Result.It_Dados[1,0] := Lc_Form.Qr_Pesquisa.FieldByName('EMP_CODIGO').AsAnsiString;
+//      Result.It_Dados[1,0] := Lc_Form.Qr_Pesquisa.FieldByName('EMP_CODIGO').AsString;
 //      Result.It_Dados[0,1] := 'EMP_NOME';
-//      Result.It_Dados[1,1] := Lc_Form.Qr_Pesquisa.FieldByName('EMP_NOME').AsAnsiString;
+//      Result.It_Dados[1,1] := Lc_Form.Qr_Pesquisa.FieldByName('EMP_NOME').AsString;
 //    end;
 //  Finally
 //    Lc_Form.DisposeOf;
@@ -360,12 +363,12 @@ Begin
       if Fc_Chbx_Nome.Checked then
       Begin
         IF (Locate('EMP_NOME',Fc_Nm_Empresa,[])) then
-          Result := FieldByName('EMP_CODIGO').AsAnsiString;
+          Result := FieldByName('EMP_CODIGO').AsString;
       end
       else
       Begin
         if (Locate('EMP_FANTASIA',Fc_Nm_Empresa,[])) then
-          Result := FieldByName('EMP_CODIGO').AsAnsiString;
+          Result := FieldByName('EMP_CODIGO').AsString;
       end;
     end;
   end;
@@ -431,9 +434,9 @@ begin
       while not Eof do
       begin
         if Pc_Order = 'EMP_NOME' then
-          Pc_Lista.Items.Add(FieldByName('EMP_NOME').AsAnsiString)
+          Pc_Lista.Items.Add(FieldByName('EMP_NOME').AsString)
         else
-          Pc_Lista.Items.Add(FieldByName('EMP_FANTASIA').AsAnsiString);
+          Pc_Lista.Items.Add(FieldByName('EMP_FANTASIA').AsString);
         Next;
       end;
     end;
@@ -442,22 +445,20 @@ end;
 
 procedure Pc_AtualizaUltimaMovimentacao(Pc_Data_Ini,Pc_Data_Fim:TDateTime; Pc_Progresso:TGAuge);
 Var
-  lc_aux :String;
   Lc_Qry:TSTQuery;
   Lc_Upd:TSTQuery;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Upd := LcBase.GeraQuery;
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Upd := LcBase.GeraQuery;
     with Lc_Upd do
     Begin
       Sql.Add('UPDATE TB_EMPRESA SET '+
               'EMP_DT_ULT_MOV =:EMP_DT_ULT_MOV '+
               'WHERE EMP_CODIGO=:EMP_CODIGO ');
     end;
-
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Sql.Add(concat(
@@ -503,33 +504,35 @@ Begin
   if (Trim(Fc_Numero) <> '') then
   BEgin
     Lc_Val_Insc_Est := TACBrValidador.Create(nil);
-    Lc_Val_Insc_Est.TipoDocto := docInscEst;
-    Lc_Val_Insc_Est.IgnorarChar := './-';
-    Lc_Val_Insc_Est.Documento := Fc_Numero;
-    Lc_Val_Insc_Est.Complemento := Fc_Estado;
+    Try
+      Lc_Val_Insc_Est.TipoDocto := docInscEst;
+      Lc_Val_Insc_Est.IgnorarChar := './-';
+      Lc_Val_Insc_Est.Documento := Fc_Numero;
+      Lc_Val_Insc_Est.Complemento := Fc_Estado;
 
-    if not Lc_Val_Insc_Est.Validar then
-      Begin
-      Result := False;
-      MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Inscrição Estadual do ' + Fc_Tipo + ' é inválida.'+EOLN+
-                     'Verifique antes de Continuar' + EOLN,
-                     ['OK'],[bEscape],mpAlerta);
-      end;
-    FreeAndNil(Lc_Val_Insc_Est);
+      if not Lc_Val_Insc_Est.Validar then
+        Begin
+        Result := False;
+        MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+                       'Inscrição Estadual do ' + Fc_Tipo + ' é inválida.'+EOLN+
+                       'Verifique antes de Continuar' + EOLN,
+                       ['OK'],[bEscape],mpAlerta);
+        end;
+    Finally
+      FreeAndNil(Lc_Val_Insc_Est);
+    End;
   end;
 end;
 
 
 function Fc_EmpresaExiste(Fc_Cd_Codigo,fc_documento: string;Msg:Boolean):Integer;
 var
-  Lc_SqlTxt: string;
   LcEmpresa : TControllerEmpresa;
 begin
+  Result:= 0;
+  LcEmpresa := TControllerEmpresa.Create(nil);
+  LcEmpresa.Registro.CpfCNPJ := fc_documento;
   try
-    Result:= 0;
-    LcEmpresa := TControllerEmpresa.Create(nil);
-    LcEmpresa.Registro.CpfCNPJ := fc_documento;
     LcEmpresa.getByDocumento;
     if LcEmpresa.exist then
     Begin
@@ -557,9 +560,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT CLI_OBS_NF '+
@@ -571,7 +574,7 @@ begin
       Active := True;
       FetchAll;
       if not FieldByName('CLI_OBS_NF').isNull then
-        Result := Trim(FieldByName('CLI_OBS_NF').AsAnsiString)
+        Result := Trim(FieldByName('CLI_OBS_NF').AsString)
       else
         Result := '';
     End;

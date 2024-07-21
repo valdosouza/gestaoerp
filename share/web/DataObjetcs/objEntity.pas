@@ -24,8 +24,8 @@ Type
 
 
   public
-      constructor Create;
-      destructor Destroy;
+      Constructor Create;
+      Destructor Destroy;
       procedure clear;virtual;
       property TipoEntidade : String read FTipoEntidade write setFTipoEntidade;
       property Entidade : TEntity read FEntity write setFEntity;

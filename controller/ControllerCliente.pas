@@ -120,9 +120,6 @@ begin
 end;
 
 procedure TControllerCliente.fillDataObjeto(pCliente: TCliente;pObj:TObjCustomer);
-Var
-  LcPhone : TPhone;
-  LcAddress : TAddress;
 begin
   Empresa.Registro.Codigo := pCliente.Codigo;
   Empresa.getAllBykey;
@@ -173,8 +170,8 @@ function TControllerCliente.getByFieldName(strTable, field,
 var
     Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := getbyField(strTable,Field,Content);
   Try
-    Lc_Qry := getbyField(strTable,Field,Content);
     exist  := ( Lc_Qry.RecordCount > 0 );
     if exist then
     Begin
@@ -299,10 +296,6 @@ begin
 end;
 
 procedure TControllerCliente.saveObjWeb(pCustomer: TObjCustomer);
-Var
-  LcEndereco : TAddress;
-  LcFone : TPhone;
-  I : Integer;
 begin
   empresa.saveObjWeb(pCustomer.Fiscal);
   with Empresa.Registro do

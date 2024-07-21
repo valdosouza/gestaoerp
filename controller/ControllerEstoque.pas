@@ -13,8 +13,6 @@ Type
 
   private
     FTerminal: Integer;
-    function Auditoria(Fc_Cd_Produto, Fc_Cd_Estoque: Integer;
-      Fc_DataFinal: TDate): Boolean;
     procedure setFTerminal(const Value: Integer);
 
   public
@@ -46,11 +44,6 @@ implementation
 
 uses UN_Sistema, Un_Regra_Negocio;
 
-function TControllerEstoque.Auditoria(Fc_Cd_Produto, Fc_Cd_Estoque: Integer;
-  Fc_DataFinal: TDate): Boolean;
-begin
-
-end;
 
 procedure TControllerEstoque.Clear;
 begin
@@ -78,11 +71,11 @@ end;
 
 function TControllerEstoque.salva: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_Estoque');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False
   End;
@@ -95,8 +88,8 @@ end;
 
 function TControllerEstoque.update: boolean;
 begin
+  Result := True;
   Try
-    Result := True;
     UpdateObj(Registro);
   Except
     Result := False
@@ -107,7 +100,6 @@ end;
 function TControllerEstoque.updateBalance: boolean;
 var
   Lc_Qry : TSTQuery;
-  item : TEstoques;
 begin
   Result := True;
   Lc_Qry := GeraQuery;
@@ -137,7 +129,7 @@ Var
   Lc_QtdeZerar : Real;
   Lc_Sentido : String;
 begin
-
+  Result := True;
   if ( Self.registro.QtdeDisp <> 0) then
   Begin
     if ( Self.registro.QtdeDisp > 0) then
@@ -194,9 +186,9 @@ end;
 
 function TControllerEstoque.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -315,11 +307,11 @@ end;
 
 function TControllerEstoque.Insert: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_ESTOQUE');
     insertObj(Registro);
-    Result := True;
   Except
     Result := False
   End;
@@ -328,17 +320,18 @@ end;
 
 function TControllerEstoque.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 
 function TControllerEstoque.replace: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_ESTOQUE');
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False
   End;

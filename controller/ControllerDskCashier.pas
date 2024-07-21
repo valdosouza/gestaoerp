@@ -154,9 +154,9 @@ Var
   lc_cashierItems : TDskCashierItems;
   I : Integer;
 begin
+  lc_cashierItems := TDskCashierItems.Create;
   try
    //Informa os valores que estavam no caixa no fechamento
-   lc_cashierItems := TDskCashierItems.Create;
     Try
       Result := True;
       lc_cashierItems.CodigoCaixa   := Registro.Codigo;

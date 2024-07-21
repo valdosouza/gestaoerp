@@ -34,6 +34,7 @@ uses Un_Regra_Negocio;
 
 function TControllerItensICMS.atualiza: boolean;
 begin
+  Result := true;
   UpdateObj(Registro);
 end;
 
@@ -157,17 +158,20 @@ end;
 
 function TControllerItensICMS.insere: boolean;
 begin
+  Result := true;
   Registro.Codigo := Generator('GN_ITENS_ICMS');// nextCodigo;
   InsertObj(Registro);
 end;
 
 function TControllerItensICMS.migra: Boolean;
 begin
+  Result := true;
   InsertObj(Registro);
 end;
 
 function TControllerItensICMS.salva: boolean;
 begin
+  Result := true;
   SaveObj(Registro);
 end;
 

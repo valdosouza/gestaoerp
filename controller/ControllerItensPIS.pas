@@ -31,6 +31,7 @@ uses Un_Regra_Negocio;
 
 function TControllerItensPIS.atualiza: boolean;
 begin
+  Result := True;
   UpdateObj(Registro);
 end;
 
@@ -127,8 +128,8 @@ end;
 
 function TControllerItensPIS.insere: boolean;
 begin
+  Result := True;
   try
-    Result := TRue;
     Registro.Codigo := Generator('GN_ITENS_PIS'); //nextCodigo;
     InsertObj(Registro);
   Except
@@ -161,6 +162,7 @@ end;
 
 function TControllerItensPIS.salva: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 

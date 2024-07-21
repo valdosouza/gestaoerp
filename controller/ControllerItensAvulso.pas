@@ -29,6 +29,7 @@ end;
 
 function TControllerItensAvulso.delete: boolean;
 begin
+  Result := True;
   deleteObj(registro);
 end;
 
@@ -40,9 +41,9 @@ end;
 
 function TControllerItensAvulso.insere: boolean;
 begin
+  Result := True;
   try
     insertObj(Registro);
-    Result := True;
   except
     Result := False;
   end;

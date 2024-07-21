@@ -36,7 +36,6 @@ uses Un_sistema, Un_Regra_Negocio;
 function TControllerUf.BuscaCodigo(sigla: String): Integer;
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
 begin
   Result := 0;
   Lc_Qry := GeraQuery;
@@ -95,6 +94,7 @@ end;
 
 function TControllerUf.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 

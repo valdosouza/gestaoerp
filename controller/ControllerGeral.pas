@@ -85,13 +85,15 @@ end;
 
 function TControllerGeral.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
+
 function TControllerGeral.salva: boolean;
 begin
+  Result := True;
   TRy
     SaveObj(Registro);
-    Result := True;
   except
     Result := False;
   End;
@@ -99,6 +101,7 @@ end;
 
 function TControllerGeral.Seleciona: boolean;
 begin
+  Result := True;
   REsult := existObj(Registro);
 end;
 

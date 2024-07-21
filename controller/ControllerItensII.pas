@@ -32,6 +32,7 @@ uses Un_Regra_Negocio;
 
 function TControllerItensII.atualiza: boolean;
 begin
+  Result := True;
   UpdateObj(Registro);
 end;
 
@@ -108,8 +109,8 @@ end;
 
 function TControllerItensII.insere: boolean;
 begin
+  Result := True;
   try
-    Result := TRue;
     Registro.Codigo := nextCodigo;
     InsertObj(Registro);
   Except
@@ -143,6 +144,7 @@ end;
 
 function TControllerItensII.salva: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 

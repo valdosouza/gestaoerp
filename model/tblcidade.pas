@@ -21,7 +21,7 @@ Type
     procedure setFCDD_IBGE(const Value: Integer);
     procedure setFCDD_ISS_ALIQ(const Value: Real);
     procedure setFCDD_UF(const Value: String);
-  published
+  public
 
     [KeyField('CDD_CODIGO')]
     [FieldName('CDD_CODIGO')]

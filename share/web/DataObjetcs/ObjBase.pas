@@ -22,8 +22,8 @@ Type
     procedure setFEstabelecimentoCNPJ(const Value: String);
 
   public
-    constructor Create;Virtual;
-    destructor Destroy;override;
+    Constructor Create;Virtual;
+    Destructor Destroy;override;
 
     property Pagina : Integer read FPagina write setFPagina;
     property Estabelecimento : Integer Read FEstabelecimento write setFEstabelecimento;

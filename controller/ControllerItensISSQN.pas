@@ -29,6 +29,7 @@ uses Un_Regra_Negocio;
 
 function TControllerItensISSQN.atualiza: boolean;
 begin
+  Result := True;
   UpdateObj(Registro);
 end;
 
@@ -105,8 +106,8 @@ end;
 
 function TControllerItensISSQN.insere: boolean;
 begin
+  Result := True;
   try
-    Result := TRue;
     Registro.Codigo := Generator('GN_ITENS_ISSQN');//nextCodigo;
     InsertObj(Registro);
   Except
@@ -139,6 +140,7 @@ end;
 
 function TControllerItensISSQN.salva: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 

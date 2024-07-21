@@ -22,7 +22,7 @@ Type
     procedure setFCodigo(const Value: Integer);
     procedure setFDescricao(const Value: String);
     procedure setFMedida(const Value: String);
-  published
+  public
     property Codigo : Integer read FCodigo write setFCodigo;
     property Descricao : String read FDescricao write setFDescricao;
     property Medida: String read FMedida write setFMedida;
@@ -82,7 +82,6 @@ Type
     procedure AtualizaCusto;
     procedure AtualizaUltimoCusto;
     procedure AtualizaCategoria;
-    Procedure ListarMovimentoComEstoque;
     function getByExternalCodeIfood(CodigoMedida, Codigoitem:Integer):TProdutoPizza;
   End;
 
@@ -267,20 +266,15 @@ begin
   MovimentoEStoque := TControllerCtrlEstoque.Create(Self);
   Obj     := TObjMerchandise.create;
   TabelaPreco :=  TControllerTabelaPreco.Create(Self);
-
-
-
-
-
 end;
 
 function TControllerProduto.delete: boolean;
 begin
+  Result := True;
   Try
     MovimentoEStoque.Registro.Produto := Registro.Codigo;
     MovimentoEStoque.deleteByProduto;
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -347,23 +341,15 @@ end;
 procedure TControllerProduto.FillDataObjects(prod: TProduto;
   ObjMer: TObjMerchandise; institutioWebId: Integer);
 var
-  I,J : Integer;
   LcOriMarca : TControllerMarcaProduto;
   LcOriMedida : TControllerMedida;
   LcOriEmbalagem : TControllerEmbalagem;
-  LcOriListaEstoque : TControllerEstoques;
-  LcOriListaPreco : TControllerTabelaPreco;
-  LcDestPrice : TPrice;
-  LcObjEstoque : TObjStockList;
-  LcObjPreco : TObjPriceList;
-  LcCtrlGrupo : TControllerGrupos;
-  LcIdCategory : Integer;
 begin
+  LcOriMarca := TControllerMarcaProduto.Create(Self);
+  LcOriMedida := TControllerMedida.Create(Self);
+  LcOriEmbalagem := TControllerEmbalagem.Create(Self);
+  clearObj(ObjMer);
   Try
-    LcOriMarca := TControllerMarcaProduto.Create(Self);
-    LcOriMedida := TControllerMedida.Create(Self);
-    LcOriEmbalagem := TControllerEmbalagem.Create(Self);
-    clearObj(ObjMer);
     with ObjMer do
     BEgin
       Estabelecimento := institutioWebId;
@@ -462,6 +448,7 @@ end;
 
 function TControllerProduto.insert: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_PRODUTO');
@@ -470,19 +457,9 @@ begin
       Registro.CodigoFabrica := IntToStr(Registro.Codigo);
 
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
-end;
-
-procedure TControllerProduto.ListarMovimentoComEstoque;
-var
-  Lc_Qry : TSTQuery;
-  LcLista : TProduto;
-begin
-
-
 end;
 
 procedure TControllerProduto.MarcaPromocao(Codigo: Integer;Ativa:Boolean);
@@ -515,6 +492,7 @@ end;
 
 function TControllerProduto.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
@@ -573,9 +551,9 @@ end;
 
 function TControllerProduto.replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -583,6 +561,7 @@ end;
 
 function TControllerProduto.save: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_PRODUTO');
 
@@ -594,6 +573,7 @@ end;
 
 function TControllerProduto.saveDatawebObjeto(DObj: TObjMerchandise): Boolean;
 begin
+  Result := True;
   with registro do
   Begin
     Codigo                := DObj.Produto.Codigo;
@@ -683,9 +663,9 @@ end;
 
 function TControllerProduto.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -927,9 +907,9 @@ begin
                    'OR ((pr.PRO_CODIGOBAR=:PRO_CODIGOBAR) AND (pr.PRO_CODIGOBAR<> '''') AND (pr.PRO_CODIGOBAR IS NOT NULL))  '+
                    'AND (pr.PRO_ATIVO = ''S'') ';
       SQL.Add(Lc_SqlTxt);
-      ParamByName('PFR_CODFOR').AsAnsiString := Fc_Cd_Fornecedor;
-      ParamByName('PFR_PRODUTO').AsAnsiString := Fc_cd_Produto;
-      ParamByName('PRO_CODIGOBAR').AsAnsiString := Fc_Cd_Barras;
+      ParamByName('PFR_CODFOR').AsString := Fc_Cd_Fornecedor;
+      ParamByName('PFR_PRODUTO').AsString := Fc_cd_Produto;
+      ParamByName('PRO_CODIGOBAR').AsString := Fc_Cd_Barras;
       Active := True;
       FetchAll;
       exist := (recordCount > 0);

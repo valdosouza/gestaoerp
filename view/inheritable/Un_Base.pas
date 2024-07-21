@@ -72,7 +72,7 @@ uses ControllerBase, Un_DM,main;
 
 procedure TFr_Base.EditionControler(T: TComponent);
 Var
-  I,J:Integer;
+  I:Integer;
 begin
   with T do
   Begin
@@ -216,7 +216,7 @@ end;
 
 procedure TFr_Base.ClearFields(T: TComponent);
 Var
-  I,J:Integer;
+  I:Integer;
 begin
   with T do
   Begin
@@ -272,9 +272,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       sql.add(Concat(
@@ -282,7 +282,7 @@ Begin
                 'FROM TB_OPER_INTERFACE ',
                 'WHERE OPF_DESCRICAO =:OPF_DESCRICAO '
       ));
-      ParamByName('OPF_DESCRICAO').AsAnsiString :=  Fc_Operacao;
+      ParamByName('OPF_DESCRICAO').AsString :=  Fc_Operacao;
       Active := True;
       FetchAll;
       First;

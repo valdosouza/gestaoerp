@@ -34,7 +34,6 @@ implementation
 function TControllerCtrlIcmsST.ChecarQtdeDisp: Integer;
 Var
   Lc_Qry : TSTQuery;
-  LCItem : TCtrlIcmsST;
 begin
   Result := 0;
   Lc_Qry := GeraQuery;
@@ -75,6 +74,7 @@ end;
 
 function TControllerCtrlIcmsST.delete: boolean;
 begin
+  Result := True;
   deleteObj(Registro)
 end;
 
@@ -225,8 +225,8 @@ end;
 
 function TControllerCtrlIcmsST.insere: boolean;
 begin
+  Result := True;
   Try
-    REsult := True;
     if registro.codigo = 0 then
       registro.codigo := Generator('GN_CTRL_ICMS_ST');
     InsertObj(Registro);
@@ -299,8 +299,8 @@ end;
 
 function TControllerCtrlIcmsST.atualiza:Boolean;
 begin
+  Result := True;
   Try
-    REsult := True;
     updateObj(Registro);
   Except
     REsult := False

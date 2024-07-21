@@ -25,9 +25,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT Sum(tb_produto.pro_peso * itf_qtde) PESO '+
@@ -53,9 +53,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt:=' select EMP_CODIGO,EMP_NOME '+
@@ -67,9 +67,9 @@ begin
         Lc_SqlTxt:= Lc_SqlTxt + ' and (EMP_CODIGO<>:EMP_CODIGO) ';
       SQL.Add(Lc_SqlTxt);
       IF (Trim(Fc_Cd_Codigo) <> '') then
-        ParamByName('EMP_CODIGO').AsAnsiString:= Fc_Cd_Codigo;
+        ParamByName('EMP_CODIGO').AsString:= Fc_Cd_Codigo;
       fc_documento := RemoveCaracterInformado(fc_documento, ['.',',','/','-']);
-      ParamByName('EMP_CNPJ').AsAnsiString:= fc_documento;
+      ParamByName('EMP_CNPJ').AsString:= fc_documento;
       Active:=TRUE;
       FetchAll;
       if (RecordCount > 0) then
@@ -78,7 +78,7 @@ begin
         Begin
           MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
                          'Uma Transportadora com este CPF/CNPJ já existe.'+EOLN+
-                          FieldByName('EMP_CODIGO').AsAnsiString + ' - ' + FieldByName('EMP_NOME').AsAnsiString+EOLN+
+                          FieldByName('EMP_CODIGO').AsString + ' - ' + FieldByName('EMP_NOME').AsString+EOLN+
                          'Verifique e tente novamente.' +EOLN,
                          ['OK'], [bEscape], mpErro);
         End;

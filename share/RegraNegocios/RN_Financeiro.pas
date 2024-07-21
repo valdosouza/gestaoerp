@@ -60,9 +60,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT FIN_VL_PARCELA, FIN_DT_VENCIMENTO '+
@@ -102,9 +102,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT FIN_VL_PARCELA, FIN_DT_VENCIMENTO '+
@@ -139,9 +139,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT Distinct CHQ_NR_BANCO, CHQ_AGENCIA, CHQ_NUMERO, CHQ_EMITENTE, CHQ_VALOR '+
@@ -176,9 +176,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   TRy
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT Distinct CHQ_NR_BANCO, CHQ_AGENCIA, CHQ_NUMERO, CHQ_EMITENTE, CHQ_VALOR, CHQ_VL_AMORT '+
@@ -218,9 +218,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
 
@@ -232,7 +232,7 @@ Begin
                    '((FIN_TIPO = ''RA'') or (FIN_TIPO = ''RM'')) and (FIN_OPERACAO = ''D'') '+
                    ' AND (FPT_DESCRICAO=:FPT_DESCRICAO) AND FIN_CODMHA=:FIN_CODMHA ';
       SQL.Add(Lc_SqlTxt);
-      ParamByName('FPT_DESCRICAO').AsAnsiString := Fc_FormaPAgto;
+      ParamByName('FPT_DESCRICAO').AsString := Fc_FormaPAgto;
       ParamByName('FIN_CODEMP').AsInteger:= Fc_cd_Cliente;
       ParamByName('FIN_CODMHA').AsInteger:= Gb_CodMha;
       Active := True;
@@ -265,7 +265,7 @@ procedure Pc_GeraContasReceber(Pc_Transacao : TSTTransaction;
 var
    Lc_St_Parcela: string;
    Lc_Vl_Parcela: Real;
-   Lc_I, Lc_J: Integer;
+   Lc_I: Integer;
    Lc_Prazo: string;
    Lc_Nr_Duplicata : String;
 
@@ -341,9 +341,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'insert into TB_BOLETO '+
@@ -355,12 +355,12 @@ Begin
       SQL.Add(Lc_SqlTxt);
       ParamByName('BLT_CODIGO').asinteger := Fc_Generator('GN_BOLETO','TB_BOLETO','BLT_CODIGO');
       ParamByName('BLT_CODEMP').asinteger := Pc_CODEMP;
-      ParamByName('BLT_NUMERO').AsAnsiString := Pc_NUMERO;
+      ParamByName('BLT_NUMERO').AsString := Pc_NUMERO;
       ParamByName('BLT_DATA').AsDate := Pc_DATA;
       ParamByName('BLT_CODCTB').asinteger := Pc_CODCTB;
-      ParamByName('BLT_DESCONTO').AsAnsiString := Pc_DESCONTO;
+      ParamByName('BLT_DESCONTO').AsString := Pc_DESCONTO;
       ParamByName('BLT_TX_DESCONTO').asfloat := 0;
-      ParamByName('BLT_BAIXA').AsAnsiString := Pc_BAIXA;
+      ParamByName('BLT_BAIXA').AsString := Pc_BAIXA;
       ParamByName('BLT_VALOR').asfloat := Pc_VALOR;
       ParamByName('BLT_CODQTC').asinteger := Pc_CODQTC;
       ParamByName('BLT_VL_TARIFA').asfloat := 0;
@@ -382,9 +382,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   TRy
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'UPDATE TB_FINANCEIRO SET '+
@@ -392,9 +392,9 @@ Begin
                    'WHERE FIN_CODIGO =:FIN_CODIGO ';
       SQL.Add(Lc_SqlTxt);
       if Pc_Situacao then
-        ParamByName('FIN_BAIXA').AsAnsiString := 'N'
+        ParamByName('FIN_BAIXA').AsString := 'N'
       else
-        ParamByName('FIN_BAIXA').AsAnsiString := 'I';
+        ParamByName('FIN_BAIXA').AsString := 'I';
       ParamByName('FIN_CODIGO').asinteger := Pc_Cd_Financeiro;
       ExecSql;
     End;
@@ -413,9 +413,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql_Txt := 'DELETE FROM TB_FINANCEIRO '+
@@ -441,9 +441,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'update tb_financeiro SET '+
@@ -468,9 +468,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Active := False;
@@ -560,9 +560,8 @@ Var
   Lc_CentroCusto : Integer;
   Lc_StrDupl : String;
 Begin
+  Lc_Cartao := TControllerCartao.Create(nil);
   try
-    Lc_Cartao := TControllerCartao.Create(nil);
-
     if (Fc_Tb_Geral('L','FIN_OB_INFO_CARTAO_FATURAMENTO','N') = 'N') then
     begin
       with Lc_Cartao do

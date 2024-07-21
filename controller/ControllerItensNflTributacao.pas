@@ -37,9 +37,9 @@ end;
 
 function TControllerItensNflTributacao.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -53,9 +53,9 @@ end;
 
 function TControllerItensNflTributacao.insert: boolean;
 begin
+  Result := True;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -63,9 +63,9 @@ end;
 
 function TControllerItensNflTributacao.save: boolean;
 begin
+  Result := True;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -73,6 +73,7 @@ end;
 
 function TControllerItensNflTributacao.getByKey: Boolean;
 begin
+  Result := True;
   _getByKey(Registro);
 end;
 

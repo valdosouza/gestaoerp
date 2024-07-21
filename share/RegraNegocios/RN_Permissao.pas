@@ -18,17 +18,17 @@ var
   Lc_SqlTxt: string;
   LcBase : TControllerBase;
 begin
+  Result := True;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    Result := True;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT 1 '+
                    'FROM TB_INTERFACE IFC '+
                    'WHERE (IFC_SISTEMA = ''S'') AND (IFC.IFC_FR_NAME=:IFC_FR_NAME) ';
       SQL.Add(Lc_SqlTxt);
-      ParamByName('IFC_FR_NAME').AsAnsiString := Fc_Interface;
+      ParamByName('IFC_FR_NAME').AsString := Fc_Interface;
       Active := True;
       FetchAll;
 
@@ -63,8 +63,8 @@ begin
                        ' AND OPF.OPF_DESCRICAO=:OPF_DESCRICAO  ';
           SQL.Add(Lc_SqlTxt);
           ParamByName('PER_CODUSU').AsInteger := Fc_cd_Usuario;
-          ParamByName('IFC_FR_NAME').AsAnsiString := Fc_Interface;
-          ParamByName('OPF_DESCRICAO').AsAnsiString := Fc_Privilegio;
+          ParamByName('IFC_FR_NAME').AsString := Fc_Interface;
+          ParamByName('OPF_DESCRICAO').AsString := Fc_Privilegio;
           Active := True;
           FetchAll;
           if (Fc_Interface <> 'Fr_Nota_Fiscal_3_X') then
@@ -94,14 +94,11 @@ begin
 end;
 function Fc_AutenticaUsuario(Fc_Usuario,Fc_Senha:String): Boolean;
 var
-  Lc_Autentica: string;
-  Lc_Senha: string;
-  Lc_Qry : TSTQuery;
   Lc_usuario : TControllerUsuario;
 begin
+  Result := False;
+  Lc_usuario := TControllerUsuario.create(nil);
   Try
-    Result := False;
-    Lc_usuario := TControllerUsuario.create(nil);
     Lc_usuario.Registro.Login := Fc_Usuario;
     Lc_usuario.Registro.Senha := Fc_Senha;
     Lc_usuario.Autentica;

@@ -232,9 +232,9 @@ end;
 
 
 procedure Pc_DefineEmpresaAtiva(Pc_Cd_Empresa:Integer);
-Var
-  Lc_Qry : TSTQuery;
-  LcBase : TControllerBase;
+//Var
+//  Lc_Qry : TSTQuery;
+//  LcBase : TControllerBase;
 Begin
   {
   with Fr_Principal do
@@ -260,7 +260,7 @@ Begin
           end
           else
           Begin
-            GB_NM_Empresa := FieldByname('EMP_FANTASIA').AsAnsiString;
+            GB_NM_Empresa := FieldByname('EMP_FANTASIA').AsString;
             Gb_CodMha := FieldByname('EMP_CODIGO').AsInteger;
             Pc_AtivaEstabelecimento;
           end;
@@ -274,7 +274,7 @@ Begin
     Begin
       Gb_CodMha := Pc_Cd_Empresa;
       Pc_AtivaEstabelecimento;
-      GB_NM_Empresa := DM.Qr_Estabelecimento.FieldByname('EMP_FANTASIA').AsAnsiString;
+      GB_NM_Empresa := DM.Qr_Estabelecimento.FieldByname('EMP_FANTASIA').AsString;
       Gb_CodMha := DM.Qr_Estabelecimento.FieldByname('EMP_CODIGO').AsInteger;
     end;
     Fc_BuscaImagemEmpresa(Fr_Principal.Img_Principal.Picture, 'PAINEL');
@@ -307,8 +307,8 @@ begin
 end;
 
 Procedure Pc_HabilitarMultiEmpresa(Pc_Name_LookCombox:TDBLookupComboBox; Pc_CheckMultEmpresa:TCheckBox);
-Var
-  Lc_Nivel : Integer;
+//Var
+//  Lc_Nivel : Integer;
 begin
   {
   //Guarda o nivel atual do Usuario
@@ -353,9 +353,9 @@ var
   Lc_SqlTxt: string;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT ETS_CODIGO ' +
@@ -390,9 +390,9 @@ var
    Lc_SqlTxt: string;
    LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT EMP_CNPJ, INT_WWW,INT_WEBSERVICE,INT_CODWSR,INT_FTP_PATH,INT_DIR_IMAGES ' +
@@ -403,11 +403,11 @@ begin
       SQL.Add(Lc_SqlTxt);
       ParamByName('INT_CODMHA').AsInteger := Pc_Cd_Empresa;
       Active := True;
-      Gb_site         := FieldByname('INT_WWW').AsAnsiString;
-      Gb_webservice   := Lc_Qry.FieldByname('INT_WEBSERVICE').AsAnsiString;
-      gb_Web_Path_img := Lc_Qry.FieldByname('INT_DIR_IMAGES').AsAnsiString;
+      Gb_site         := FieldByname('INT_WWW').AsString;
+      Gb_webservice   := Lc_Qry.FieldByname('INT_WEBSERVICE').AsString;
+      gb_Web_Path_img := Lc_Qry.FieldByname('INT_DIR_IMAGES').AsString;
       Gb_Cd_WsR       := Lc_Qry.FieldByname('INT_CODWSR').AsInteger;
-      Gb_CNPJ         := Lc_Qry.FieldByname('EMP_CNPJ').AsAnsiString;
+      Gb_CNPJ         := Lc_Qry.FieldByname('EMP_CNPJ').AsString;
     end;
   finally
     LcBase.FinalizaQuery(Lc_Qry);
@@ -422,17 +422,17 @@ var
   Lc_jpg : TJPEGImage;
   LcBase : TControllerBase;
 begin
+  St_Image := nil;
+  Lc_jpg := TJPEGImage.Create;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
    try
-    St_Image := nil;
-    Lc_jpg := TJPEGImage.Create;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT IMG_IMAGEM FROM TB_IMG_EMPRESA '+
                    'WHERE (IMG_CODEMP=:IMG_CODEMP) AND (IMG_DESCRICAO =:IMG_DESCRICAO) ');
       ParamByName('IMG_CODEMP').AsInteger := Gb_CodMha;
-      ParamByName('IMG_DESCRICAO').AsAnsiString := Pc_Descricao;
+      ParamByName('IMG_DESCRICAO').AsString := Pc_Descricao;
       Active := True;
       FetchAll;
 
@@ -459,16 +459,16 @@ var
   St_Image:TStream;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Result := Nil;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
-    Result := Nil;
     with Lc_Qry do
       Begin
       SQL.Add('SELECT IMG_IMAGEM FROM TB_IMG_EMPRESA '+
                    'WHERE (IMG_CODEMP=:IMG_CODEMP) AND (IMG_DESCRICAO =:IMG_DESCRICAO) ');
       ParamByName('IMG_CODEMP').AsInteger := Gb_CodMha;
-      ParamByName('IMG_DESCRICAO').AsAnsiString := Pc_Descricao;
+      ParamByName('IMG_DESCRICAO').AsString := Pc_Descricao;
       Active := True;
       FetchAll;
 
@@ -491,16 +491,16 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Result := TStream.Create;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
-    Result := TStream.Create;
     with Lc_Qry do
       Begin
       SQL.Add('SELECT IMG_IMAGEM FROM TB_IMG_EMPRESA '+
                    'WHERE (IMG_CODEMP=:IMG_CODEMP) AND (IMG_DESCRICAO =:IMG_DESCRICAO) ');
       ParamByName('IMG_CODEMP').AsInteger := Gb_CodMha;
-      ParamByName('IMG_DESCRICAO').AsAnsiString := Pc_Descricao;
+      ParamByName('IMG_DESCRICAO').AsString := Pc_Descricao;
       Active := True;
       FetchAll;
 
@@ -531,11 +531,11 @@ Var
   Lc_Qry :TSTQuery;
   LcBase : TControllerBase;
 BEgin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Pc_Lista.Items.Clear;
+  Pc_Lista.Clear;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
-    Pc_Lista.Items.Clear;
-    Pc_Lista.Clear;
     with Lc_Qry do
     Begin
       SQL.add(concat(
@@ -563,10 +563,10 @@ Var
   Lc_Qry :TSTQuery;
   LcBase : TControllerBase;
 BEgin
+  Result := True;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    Result := True;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -606,9 +606,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase :TControllerBase;
 BEgin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT USU_CODIGO FROM TB_USUARIO tb_usuario               '+
@@ -648,9 +648,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase :TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -675,12 +675,11 @@ end;
 function Fc_BuscaCodigoCidade(fc_IBGE:Integer; Fc_Descricao,Fc_UF:String): Integer;
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       if (fc_IBGE > 0) then
@@ -693,8 +692,8 @@ begin
         SQL.Add('select CDD_CODIGO '+
                 'FROM TB_CIDADE '+
                 'WHERE CDD_DESCRICAO=:CDD_DESCRICAO AND CDD_UF =:CDD_UF');
-        ParamByName('CDD_DESCRICAO').AsAnsiString := UpperCase( Fc_Descricao );
-        ParamByName('CDD_UF').AsAnsiString := UpperCase( Fc_UF );
+        ParamByName('CDD_DESCRICAO').AsString := UpperCase( Fc_Descricao );
+        ParamByName('CDD_UF').AsString := UpperCase( Fc_UF );
         end;
       Active := True;
       FetchAll;
@@ -727,16 +726,15 @@ end;
 function Fc_BuscaCodigoCFOP(fc_CFOP:String): Integer;
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       SQL.Add('select NAT_CODIGO FROM TB_NATUREZA WHERE NAT_CFOP=:NAT_CFOP');
-      ParamByName('NAT_CFOP').AsAnsiString := fc_CFOP;
+      ParamByName('NAT_CFOP').AsString := fc_CFOP;
       Active := True;
       FetchAll;
       IF (Recordcount > 0) then
@@ -753,16 +751,15 @@ end;
 function Fc_BuscaCodigoCSOSN(Fc_CSOSN:String): Integer;
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select TBI_CODIGO FROM TB_TRIB_ICMS_SN WHERE TBI_GRUPO=:TBI_GRUPO');
-      ParamByName('TBI_GRUPO').AsAnsiString := fc_CSOSN;
+      ParamByName('TBI_GRUPO').AsString := fc_CSOSN;
       Active := True;
       FetchAll;
       IF (Recordcount > 0) then
@@ -779,16 +776,15 @@ end;
 function Fc_BuscaCodigoModalFrete(fc_Frete:String): Integer;
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select MDF_CODIGO FROM TB_MODAL_FRETE WHERE MDF_GRUPO=:MDF_GRUPO');
-      ParamByName('MDF_GRUPO').AsAnsiString := fc_Frete;
+      ParamByName('MDF_GRUPO').AsString := fc_Frete;
       Active := True;
       FetchAll;
       IF (Recordcount > 0) then
@@ -807,13 +803,12 @@ function Fc_ProdutosVendidos(Fc_DataIni,Fc_DataFim:TDAte):String;
 Var
   Lc_Qry : TSTQuery;
   Lc_Upd : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Lc_Upd := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
-    Lc_Upd := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       //Cria a tabela de atualizãção
@@ -867,15 +862,15 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       sql_txt:= ' select PRO_CODIGO FROM TB_PRODUTO '+
                 ' WHERE PRO_DESCRICAO = :PRO_DESCRICAO ';
       SQL.Add(sql_txt);
-      ParamByName('PRO_DESCRICAO').AsAnsiString:= Fc_Produto;
+      ParamByName('PRO_DESCRICAO').AsString:= Fc_Produto;
       Open;
       FetchAll;
       if (RecordCount >= 1) then
@@ -895,9 +890,9 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       sql_txt:= ' select PRO_DESCRICAO FROM TB_PRODUTO '+
@@ -907,7 +902,7 @@ begin
       Open;
       FetchAll;
       if (RecordCount >= 1) then
-        Result := FieldByName('PRO_DESCRICAO').AsAnsiString
+        Result := FieldByName('PRO_DESCRICAO').AsString
       else
         Result := '';
     end;
@@ -923,9 +918,9 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       if Trim(Fc_Medida)<> '' then
@@ -933,14 +928,14 @@ begin
         sql_txt:= ' select MED_CODIGO FROM TB_MEDIDA '+
                   ' WHERE MED_DESCRICAO = :MED_DESCRICAO ';
         SQL.Add(sql_txt);
-        ParamByName('MED_DESCRICAO').AsAnsiString:= Fc_Medida;
+        ParamByName('MED_DESCRICAO').AsString:= Fc_Medida;
         end
       else
         Begin
         sql_txt:= ' select MED_CODIGO FROM TB_MEDIDA '+
                   ' WHERE MED_ESPECIAL = :MED_ESPECIAL ';
         SQL.Add(sql_txt);
-        ParamByName('MED_ESPECIAL').AsAnsiString:= Fc_Especial;
+        ParamByName('MED_ESPECIAL').AsString:= Fc_Especial;
         end;
       Open;
       FetchAll;
@@ -969,11 +964,11 @@ begin
         SQL.Add(sql_txt);
         Result := Fc_Generator('GN_MEDIDA','TB_MEDIDA','MED_CODIGO');
         ParamByName('MED_CODIGO').AsInteger := Result;
-        ParamByName('MED_DESCRICAO').AsAnsiString := Fc_Medida;
-        ParamByName('MED_ABREVIATURA').AsAnsiString := Copy(Fc_Medida,1,3);
+        ParamByName('MED_DESCRICAO').AsString := Fc_Medida;
+        ParamByName('MED_ABREVIATURA').AsString := Copy(Fc_Medida,1,3);
         ParamByName('MED_ESCALA').AsInteger := 0;
         ParamByName('MED_PROPORCAO').AsFloat := 100;
-        ParamByName('MED_ESPECIAL').AsAnsiString := Fc_Especial;
+        ParamByName('MED_ESPECIAL').AsString := Fc_Especial;
         ExecSQL;
       end;
     end;
@@ -990,15 +985,15 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       sql_txt:= ' select MRC_CODIGO FROM TB_MARCA_PRODUTO '+
                 ' WHERE MRC_DESCRICAO = :MRC_DESCRICAO ';
       SQL.Add(sql_txt);
-      ParamByName('MRC_DESCRICAO').AsAnsiString:= Fc_Marca;
+      ParamByName('MRC_DESCRICAO').AsString:= Fc_Marca;
       Open;
       FetchAll;
       First;
@@ -1020,7 +1015,7 @@ begin
         SQL.Add(sql_txt);
         Result := Fc_Generator('GN_MARCAPRODUTO','TB_MARCA_PRODUTO','MRC_CODIGO');
         ParamByName('MRC_CODIGO').AsInteger := Result;
-        ParamByName('MRC_DESCRICAO').AsAnsiString := Fc_Marca;
+        ParamByName('MRC_DESCRICAO').AsString := Fc_Marca;
         ParamByName('MRC_CODFAB').AsInteger := 0;
         ExecSQL;
         end;
@@ -1038,15 +1033,15 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       sql_txt:= ' select EMB_CODIGO FROM TB_EMBALAGEM '+
                 ' WHERE EMB_DESCRICAO = :EMB_DESCRICAO ';
       SQL.Add(sql_txt);
-      ParamByName('EMB_DESCRICAO').AsAnsiString:= Fc_Embalagem;
+      ParamByName('EMB_DESCRICAO').AsString:= Fc_Embalagem;
       Open;
       FetchAll;
       First;
@@ -1069,8 +1064,8 @@ begin
         SQL.Add(sql_txt);
         Result := Fc_Generator('GN_EMBALAGEM','TB_EMBALAGEM','EMB_CODIGO');
         ParamByName('EMB_CODIGO').AsInteger := Result;
-        ParamByName('EMB_DESCRICAO').AsAnsiString := Fc_Embalagem;
-        ParamByName('EMB_ABREVIATURA').AsAnsiString := Fc_Abreviatura;
+        ParamByName('EMB_DESCRICAO').AsString := Fc_Embalagem;
+        ParamByName('EMB_ABREVIATURA').AsString := Fc_Abreviatura;
         ExecSQL;
       end;
     end;
@@ -1087,15 +1082,15 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       sql_txt:= ' select GRP_CODIGO FROM TB_GRUPOS '+
                 ' WHERE GRP_DESCRICAO = :GRP_DESCRICAO ';
       SQL.Add(sql_txt);
-      ParamByName('GRP_DESCRICAO').AsAnsiString:= Fc_Grupo;
+      ParamByName('GRP_DESCRICAO').AsString:= Fc_Grupo;
       Open;
       FetchAll;
       First;
@@ -1116,7 +1111,7 @@ begin
         SQL.Add(sql_txt);
         Result := Fc_Generator('GN_GRUPO','TB_GRUPOS','GRP_CODIGO');
         ParamByName('GRP_CODIGO').AsInteger := Result;
-        ParamByName('GRP_DESCRICAO').AsAnsiString := Fc_Grupo;
+        ParamByName('GRP_DESCRICAO').AsString := Fc_Grupo;
         ExecSQL;
       end;
     end;
@@ -1133,9 +1128,9 @@ var
   sql_txt:String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+   Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       sql_txt:= ' select SBG_CODIGO FROM TB_SUBGRUPOS '+
@@ -1144,8 +1139,8 @@ begin
                 ' WHERE GRP_DESCRICAO = :GRP_DESCRICAO '+
                 ' AND SBG_DESCRICAO=:SBG_DESCRICAO' ;
       SQL.Add(sql_txt);
-      ParamByName('SBG_DESCRICAO').AsAnsiString:= fC_SubGrupo;
-      ParamByName('GRP_DESCRICAO').AsAnsiString:= Fc_Grupo;
+      ParamByName('SBG_DESCRICAO').AsString:= fC_SubGrupo;
+      ParamByName('GRP_DESCRICAO').AsString:= Fc_Grupo;
       Open;
       FetchAll;
       First;
@@ -1169,7 +1164,7 @@ begin
         Result := Fc_Generator('GN_SUBGRUPO','TB_SUBGRUPOS','SBG_CODIGO');
         ParamByName('SBG_CODIGO').AsInteger := Result;
         ParamByName('SBG_CODGRP').AsInteger := Fc_ProcuraRegistraGrupo(Fc_Grupo);
-        ParamByName('SBG_DESCRICAO').AsAnsiString := fC_SubGrupo;
+        ParamByName('SBG_DESCRICAO').AsString := fC_SubGrupo;
         ExecSQL;
       end;
     end;
@@ -1186,10 +1181,11 @@ var
   Lc_Qry_Insere :TSTQuery;
   LcBase : TControllerBase;
 begin
+  //Cria a Consulta de Tabelas Disponiveis
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry_Tabelas := LcBase.GeraQuery;
+  Lc_Qry_Insere := LcBase.GeraQuery;
   Try
-    //Cria a Consulta de Tabelas Disponiveis
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry_Tabelas := LcBase.GeraQuery;
     with Lc_Qry_Tabelas do
     BEgin
       Lc_SqlTxt := 'SELECT TPR_CODIGO, TPR_MAR_LRC, TPR_CASA_DECIMAL '+
@@ -1210,7 +1206,7 @@ begin
       IF (RecordCount > 0) then
       Begin
         //Inclui o Sql que vai inserir a tabela para cada produto
-        Lc_Qry_Insere := LcBase.GeraQuery;
+
         Lc_SqlTxt := 'insert into "TB_PRECO" ('+
                      '    "PRC_CODIGO" '+
                      '  , "PRC_CODTPR" '+
@@ -1372,7 +1368,6 @@ end;
 function Fc_VL_Desconto(fc_Tipo: Char;Fc_Vl_Total:REal; Fc_Aq_Desconto:Real;Fc_Vl_Desconto:Real): Real;
 var
    Lc_Aliq_Perm: real;
-   Lc_Aliq_Desc: Real;
 begin
   Lc_Aliq_Perm := StrToFloatDef(Fc_Tb_Geral('L', 'VDA_G_DESC_MAX_GERAL', ''),0);
   if (fc_Tipo = 'V') then
@@ -1414,16 +1409,17 @@ Var
   Lc_Dt_Devolucao : TDate;
   LcBase : TControllerBase;
 Begin
+  Lc_Dt_Devolucao := Date;
+  Lc_Cd_Dsp_Aguardando := 0;
+  Lc_Qtde_Aguardando := 0;
+  Lc_Cd_Dsp_Pendente := 0;
+  Lc_Qtde_Pendente := 0;
+  Lc_Cd_Dsp_Separada := 0;
+  Lc_Qtde_Separada := 0;
+  Lc_Qtde_saldo := 0;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    Lc_Cd_Dsp_Aguardando := 0;
-    Lc_Qtde_Aguardando := 0;
-    Lc_Cd_Dsp_Pendente := 0;
-    Lc_Qtde_Pendente := 0;
-    Lc_Cd_Dsp_Separada := 0;
-    Lc_Qtde_Separada := 0;
-    Lc_Qtde_saldo := 0;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT DSP_CODIGO,DSP_CODPRO, DSP_QTDE, DSP_SITUACAO, DSP_DT_REALIZADA '+
@@ -1434,7 +1430,7 @@ Begin
       //Quarda a quantidade Aguardando e o codigo
       Active := False;
       ParamByName('ITF_CODIGO').AsInteger   := Pc_Cd_Item;
-      ParamByName('DSP_SITUACAO').AsAnsiString  := 'A';
+      ParamByName('DSP_SITUACAO').AsString  := 'A';
       Active := True;
       Lc_Cd_Dsp_Aguardando  := FieldbyName('DSP_CODIGO').AsInteger;
       Lc_Qtde_Aguardando    := FieldbyName('DSP_QTDE').AsFloat;
@@ -1442,7 +1438,7 @@ Begin
       //Quarda a quantidade Se houver produto Pendente de Liberação
       Active := False;
       ParamByName('ITF_CODIGO').AsInteger   := Pc_Cd_Item;
-      ParamByName('DSP_SITUACAO').AsAnsiString  := 'P';
+      ParamByName('DSP_SITUACAO').AsString  := 'P';
       Active := True;
       Lc_Cd_Dsp_Pendente  := FieldbyName('DSP_CODIGO').AsInteger;
       Lc_Qtde_Pendente    := FieldbyName('DSP_QTDE').AsFloat;
@@ -1450,7 +1446,7 @@ Begin
       //Quarda a quantidade Se houver produto Separado/Entregue
       Active := False;
       ParamByName('ITF_CODIGO').AsInteger   := Pc_Cd_Item;
-      ParamByName('DSP_SITUACAO').AsAnsiString  := 'S';
+      ParamByName('DSP_SITUACAO').AsString  := 'S';
       Active := True;
       Lc_Cd_Dsp_Separada  := FieldbyName('DSP_CODIGO').AsInteger;
       Lc_Qtde_Separada    := FieldbyName('DSP_QTDE').AsFloat;
@@ -1542,9 +1538,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(Nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(Nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'UPDATE TB_DESPACHO SET '+
@@ -1573,9 +1569,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(Nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(Nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'DELETE FROM TB_DESPACHO  ';
@@ -1602,9 +1598,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(Nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(Nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'UPDATE TB_DESPACHO SET '+
@@ -1629,9 +1625,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(Nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(Nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'SELECT DSP_SITUACAO '+
@@ -1642,7 +1638,7 @@ begin
         Lc_Sql := Lc_Sql + '  AND (DSP_SITUACAO =:DSP_SITUACAO) ';
       SQL.Add(Lc_Sql);
       if Trim(Fc_Estagio)<> '' then
-        ParamByName('DSP_SITUACAO').AsAnsiString := Fc_Estagio;
+        ParamByName('DSP_SITUACAO').AsString := Fc_Estagio;
       ParamByName('DSP_CODPED').AsInteger := Fc_cd_Pedido;
       Active := True;
       FetchAll;
@@ -1661,9 +1657,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(Nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(Nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'SELECT CHQ_NUMERO '+
@@ -1674,7 +1670,7 @@ begin
       Active := True;
       FetchAll;
       if recordCount > 0 then
-        Result := FieldByname('CHQ_NUMERO').AsAnsiString
+        Result := FieldByname('CHQ_NUMERO').AsString
       else
         Result := 'Nº CHEQUE NÃO ENCONTRADO';
     end;
@@ -1687,13 +1683,12 @@ end;
 //-------------------------Módulo de Compras -------------------------------------------------
 Function Fc_Dt_Ultima_Compra(Fc_Cd_Empresa:Integer):String;
 var
-  Lc_Sql: String;
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(Nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(Nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -1751,9 +1746,9 @@ Var
   Lc_Aux : String;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT Sum(NFL_VL_ICMS_SUBST) as VL_VENDA '+
@@ -1841,7 +1836,7 @@ Begin
 
       if (Trim(Fc_NM_Cliente) <> '') then
         Begin
-        ParamByName('CLI_NOME').AsAnsiString := '%' + Fc_Nm_Cliente + '%';
+        ParamByName('CLI_NOME').AsString := '%' + Fc_Nm_Cliente + '%';
         end;
 
       if (Fc_Cd_Transportadora >0) then
@@ -1861,7 +1856,7 @@ Begin
 
       if (Trim(Fc_End_Regiao) <> '') then
         Begin
-        ParamByName('END_REGIAO').AsAnsiString:= '%' + Fc_End_Regiao + '%';
+        ParamByName('END_REGIAO').AsString:= '%' + Fc_End_Regiao + '%';
         end;
 
       if (Fc_cd_Estabelecimento>0) then
@@ -1895,12 +1890,11 @@ Function Fc_Vl_Frete_Cotacao(Fc_Numero:String;
 Var
   Lc_Qry:TSTQuery;
   Lc_SqlTxt : String;
-  Lc_Aux : String;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt :=
@@ -1958,7 +1952,7 @@ Begin
 
       if (Trim(Fc_Numero) <> '') then
         Begin
-        ParamByName('CTC_NUMERO').AsAnsiString := '%' + Fc_Numero + '%';
+        ParamByName('CTC_NUMERO').AsString := '%' + Fc_Numero + '%';
         end
       else
         Begin
@@ -1975,7 +1969,7 @@ Begin
 
         if (Trim(Fc_NM_Cliente) <> '') then
           Begin
-          ParamByName('CTC_FANTASIA').AsAnsiString := '%' + Fc_Nm_Cliente + '%';
+          ParamByName('CTC_FANTASIA').AsString := '%' + Fc_Nm_Cliente + '%';
           end;
 
         if (Fc_Cd_VendedorCliente >0) then
@@ -1990,7 +1984,7 @@ Begin
 
         if (Trim(Fc_End_Regiao) <> '') then
           Begin
-          ParamByName('END_REGIAO').AsAnsiString:= '%' + Fc_End_Regiao + '%';
+          ParamByName('END_REGIAO').AsString:= '%' + Fc_End_Regiao + '%';
           end;
         end;
 
@@ -2075,9 +2069,9 @@ Var
   Lc_Qry:TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     BEgin
       Lc_SqlTxt := 'SELECT NFE_CODSIT, NFE_ARQUIVO FROM TB_RETORNO_NFE WHERE (NFE_CODNFL=:NFE_CODNFL)';
@@ -2085,8 +2079,8 @@ begin
       ParamByName('NFE_CODNFL').AsInteger := Fc_Cd_Nota;
       Active := True;
       FetchAll;
-      Lc_Tamanho := length(FieldByName('NFE_ARQUIVO').AsAnsiString)-51;
-      Result := copy(FieldByName('NFE_ARQUIVO').AsAnsiString,Lc_Tamanho,length(FieldByName('NFE_ARQUIVO').AsAnsiString));
+      Lc_Tamanho := length(FieldByName('NFE_ARQUIVO').AsString)-51;
+      Result := copy(FieldByName('NFE_ARQUIVO').AsString,Lc_Tamanho,length(FieldByName('NFE_ARQUIVO').AsString));
 
     end;
   Finally
@@ -2103,9 +2097,9 @@ var
   Lc_Qry:TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     BEgin
       SQL.Add('select NFE_ARQUIVO                    ');
@@ -2114,7 +2108,7 @@ begin
       ParamByName('NFE_CODNFL').AsInteger := pc_cod_nota;
       Active := True;
       FetchAll;
-      Result:= Lc_Qry.fieldbyname('NFE_ARQUIVO').AsAnsiString;
+      Result:= Lc_Qry.fieldbyname('NFE_ARQUIVO').AsString;
     end;
   Finally
     LcBase.FinalizaQuery(Lc_Qry);
@@ -2129,9 +2123,9 @@ Var
   Lc_Nr_Pedido : Integer;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       Lc_SqlTxt := 'SELECT PED_NUMERO FROM TB_PEDIDO '+
@@ -2160,12 +2154,11 @@ end;
 procedure Pc_Retornodevolucao(Pc_Dataset:TSTQuery);
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
       Begin
       SQL.Add('DELETE FROM TB_ITENS_DEV WHERE ITD_CODITF_DEST =:ITF_CODIGO');
@@ -2222,8 +2215,8 @@ begin
                            FieldByName('ITF_AQ_DESC').AsFloat,
                            FieldByName('ITF_VL_DESC').AsFloat,
                            FieldByName('ITF_AQ_COM').AsFloat,
-                           FieldByName('ITF_OPER').AsAnsiString,
-                           FieldByName('ITF_ESTOQUE').AsAnsiString,
+                           FieldByName('ITF_OPER').AsString,
+                           FieldByName('ITF_ESTOQUE').AsString,
                            'N',
                            FieldByName('ITF_AQ_IPI').AsFloat,
                            FieldByName('ITF_AQ_ICMS').AsFloat,
@@ -2239,12 +2232,11 @@ end;
 procedure Pc_ApagaICMS_FCP(Pc_Cd_Nota:Integer);
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.add('DELETE FROM TB_ICMS_FCP WHERE TB_NOTA_FISCAL_ID=:TB_NOTA_FISCAL_ID ');
@@ -2294,7 +2286,7 @@ begin
                            FieldByName('ITF_VL_DESC').AsFloat,
                            FieldByName('ITF_AQ_COM').AsFloat,
                            'D',
-                           FieldByName('ITF_ESTOQUE').AsAnsiString,
+                           FieldByName('ITF_ESTOQUE').AsString,
                            'N',
                            FieldByName('ITF_AQ_IPI').AsFloat,
                            FieldByName('ITF_AQ_ICMS').AsFloat,
@@ -2312,9 +2304,9 @@ var
   lc_qry:TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  lc_qry:= LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    lc_qry:= LcBase.GeraQuery;
     with lc_qry do
     Begin
       SQL.Add(' delete from tb_itens_icms where ICM_CODNFL =:ICM_CODNFL');
@@ -2340,9 +2332,9 @@ var
   lc_qry:TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  lc_qry:= LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    lc_qry:= LcBase.GeraQuery;
     with lc_qry do
     Begin
       SQL.Add('Select NEG_CODIGO FROM TB_NEGOCIO WHERE (NEG_EXCLUSIVO = ''S'')');
@@ -2351,9 +2343,9 @@ begin
       while not eof do
       Begin
         if bof then
-          Result := fieldByName('NEG_CODIGO').AsAnsiString
+          Result := fieldByName('NEG_CODIGO').AsString
         else
-          Result := Result + ',' + fieldByName('NEG_CODIGO').AsAnsiString;
+          Result := Result + ',' + fieldByName('NEG_CODIGO').AsString;
         next;
       end;
     end;
@@ -2369,6 +2361,7 @@ function  Fc_LocalizaComponente(Fc_Parent : TComponent; Pc_Alvo:TClass):TCompone
 Var
   Lc_I : Integer;
 Begin
+  Result := Nil;
   for Lc_I := 0 to Fc_Parent.ComponentCount - 1 do
   begin
     if (Fc_Parent.Components[Lc_I].ClassType = Pc_Alvo) then
@@ -2387,21 +2380,22 @@ function  Fc_LocalizaComponentePorNome(Fc_Parent : TComponent; Pc_Alvo:TClass;Pc
 Var
   Lc_I : Integer;
 Begin
+  Result := Nil;
   for Lc_I := 0 to Fc_Parent.ComponentCount - 1 do
-    begin
+  begin
     if (Fc_Parent.Components[Lc_I].ClassType = Pc_Alvo) then
-      begin
+    begin
       if (copy(Fc_Parent.Components[Lc_I].Name,1,Pc_tamanho) = Pc_Nome) then
-        Begin
+      Begin
         Result := Fc_Parent.Components[Lc_I];
         Break;
-        end;
-      end
-    else
-      begin
-      continue;
       end;
+    end
+    else
+    begin
+      continue;
     end;
+  end;
 end;
 
 function Fc_VerificaItemGridSelecionado(Pc_Grid : TStringGrid;pc_Coluna:Integer):Boolean;
@@ -2441,22 +2435,12 @@ end;
 
 procedure Pc_AbreGavetaViaImpressaoBematech(Aporta:String);
 Var
-  Lc_Finaliza: TextFile;
   s_cmdtx : String;
-  i_retorno : Integer;
-
-  lComando : AnsiString;
+  lComando : String;
   lRetorno : Integer;
-  lPorta: AnsiString;
-
+  lPorta: String;
 Begin
-{
-  //Aciona a Guilhotina
-  AssignFile(Lc_Finaliza,APorta);
-  Rewrite(Lc_Finaliza);
-  Writeln(Lc_Finaliza,concat(#27 ,#118 , #140));
-  CloseFile(Lc_Finaliza);
-}
+  lRetorno := 0;
   try
     try
       lPorta := Fc_Aq_Geral('L','CONTROLE DE FRENTE','FRT_P_GVT_PORTA', 'USB');
@@ -2470,14 +2454,13 @@ Begin
     Begin
       //Abrir Gaveta
       lComando := concat(#27 ,#118 , #140);
-      lRetorno := ComandoTX( lComando, Length( lComando ));
+      ComandoTX( lComando, Length( lComando ));
     End;
   finally
     FechaPorta();
   end;
-
-    s_cmdtx:=#27+#118#140;
- i_retorno:=ComandoTX(s_cmdtx,length (s_cmdtx));
+  s_cmdtx:=#27+#118#140;
+  ComandoTX(s_cmdtx,length (s_cmdtx));
 end;
 
 procedure Pc_AbreGavetaViaImpressaoDiebold(Aporta:String);
@@ -2485,16 +2468,8 @@ var
   Handle: THandle;
   CaracteresImpressos: DWORD;
   Documento: TDocInfo1;
-  TextoAnsiString : AnsiString;
+  TextoString : String;
   TextoUnicode: string;
-  //-------
-  subtotal, total: currency;
-  traco: string;
-  Lc_I,Lc_Salto : Integer;
-  Lc_Linha : Integer;
-  Lc_Nr_Colunas : Integer;
-  Lc_Finaliza: TextFile;
-  TextToPrint : String;
 begin
   if not OpenPrinter(PChar('IM4X3T/TSP143'), Handle, nil) then
   begin
@@ -2510,8 +2485,8 @@ begin
   StartPagePrinter(Handle);
 
   TextoUnicode := #27#69 + '';
-  TextoAnsiString := AnsiString(TextoUnicode);
-  WritePrinter(Handle, PAnsiChar(TextoAnsiString), Length(TextoAnsiString), CaracteresImpressos);
+  TextoString := String(TextoUnicode);
+  WritePrinter(Handle, PAnsiChar(TextoString), Length(TextoString), CaracteresImpressos);
 
   //Apenas notifica o Windows que a página finalizou.
   //Nenhum controle é aplicado a impressora.
@@ -2527,13 +2502,13 @@ end;
 
 procedure Pc_AbreGavetaBematech(ModeloBematech:Integer);
 Var
-  lComando : AnsiString;
+  lComando : String;
   lRetorno : Integer;
-  lPorta: AnsiString;
+  lPorta: String;
 begin
+  lRetorno := ConfiguraModeloImpressora( ModeloBematech );
   try
     try
-      lRetorno := ConfiguraModeloImpressora( ModeloBematech );
       lPorta := Fc_Aq_Geral('L','CONTROLE DE FRENTE','FRT_P_GVT_PORTA', 'USB');
       FechaPorta();
       lRetorno := IniciaPorta( lPorta);
@@ -2546,7 +2521,7 @@ begin
     Begin
       //Abrir Gaveta
       lComando := concat(#27 ,#118 , #140);
-      lRetorno := ComandoTX( lComando, Length( lComando ));
+      ComandoTX( lComando, Length( lComando ));
     End;
   finally
     FechaPorta();
@@ -2636,9 +2611,9 @@ Begin
 End;
 
 procedure Pc_AbreGaveta;
-Var
-  Lc_Gvta : Integer;
-  LcModelo : Integer;
+//Var
+//  Lc_Gvta : Integer;
+//  LcModelo : Integer;
 begin
     ShowMessage('Verificar');
   {
@@ -2736,16 +2711,14 @@ End;
 
 procedure Pc_AcionaGuilhotinaBematech(ModeloBematech:Integer);
 Var
-  lComando : String;
   lRetorno : Integer;
   ArquivoIni: TIniFile;
   Lc_NameArq: string;
   Lc_Porta: string;
 begin
-  // Abre arquivo de configuracao
+  Lc_NameArq := GbPathExe + 'mp2032.ini';
+  ArquivoIni := TIniFile.Create(Lc_NameArq);
   try
-    Lc_NameArq := GbPathExe + 'mp2032.ini';
-    ArquivoIni := TIniFile.Create(Lc_NameArq);
     Lc_Porta := '1';
     Lc_Porta := ArquivoIni.ReadString('Sistema', 'ControlePorta', Lc_Porta);
     lRetorno := IniciaPorta(Lc_Porta );

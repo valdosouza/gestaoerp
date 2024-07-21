@@ -16,8 +16,8 @@ Type
     procedure setFVendedor(const Value: TSalesMan);
 
   public
-    constructor Create;
-    destructor Destroy;
+    Constructor create;
+    Destructor destroy;
     procedure clear;
     property Vendedor : TSalesMan read FVendedor write setFVendedor;
     property Colaborador : TCollaborator read FColaborador write setFColaborador;

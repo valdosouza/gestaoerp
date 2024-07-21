@@ -30,8 +30,8 @@ Type
     function clearObj<T: class>(Obj: T):Boolean;
 
   public
-    constructor Create;
-    destructor Destroy;override;
+    constructor create;
+    destructor destroy;override;
     procedure Clear;Virtual;
     property Estabelecimento: Integer read FEstabelecimento write setFEstabelecimento;
     property Usuario: Integer read FUsuario write setFUsuario;

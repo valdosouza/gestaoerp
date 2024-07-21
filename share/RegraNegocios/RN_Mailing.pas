@@ -60,10 +60,10 @@ Begin
     //Tratamento de Algumas Variaveis
 
     //Passagem de Parametros
-    ParamByName('MLG_CODEMP').AsAnsiString := Fc_CODEMP;
-    ParamByName('MLG_TIPO').AsAnsiString := Fc_TIPO;
-    ParamByName('MLG_EMAIL').AsAnsiString := Fc_EMAIL;
-    ParamByName('MLG_NOME').AsAnsiString := Fc_NOME;
+    ParamByName('MLG_CODEMP').AsString := Fc_CODEMP;
+    ParamByName('MLG_TIPO').AsString := Fc_TIPO;
+    ParamByName('MLG_EMAIL').AsString := Fc_EMAIL;
+    ParamByName('MLG_NOME').AsString := Fc_NOME;
       Try
         ExecSQL;
         if DM.IB_Transacao.InTransaction then DM.IB_Transacao.CommitRetaining;
@@ -81,7 +81,6 @@ end;
 procedure Pc_ListaEmailParaEnvio(Pc_cd_Empresa:String;Pc_Tipos : array of string;Pc_Lista:TStringList);
 Var
   Lc_Qry:TSTQuery;
-  Lc_Codigo : Integer;
   Lc_I : Integer;
   Lc_SqlTxt : String;
 Begin
@@ -114,12 +113,12 @@ Begin
       Lc_SqlTxt := Lc_SqlTxt + ')';
     end;
     SQL.add(Lc_SqlTxt);
-    ParamByName('EMP_CODIGO').AsAnsiString := Pc_cd_Empresa;
+    ParamByName('EMP_CODIGO').AsString := Pc_cd_Empresa;
     Active := True;
     First;
     while not eof do
     Begin
-      Pc_Lista.Add(' ' + FieldByName('MLG_EMAIL').AsAnsiString);
+      Pc_Lista.Add(' ' + FieldByName('MLG_EMAIL').AsString);
       next;
     end;
   end;

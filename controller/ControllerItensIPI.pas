@@ -32,6 +32,7 @@ uses Un_Regra_Negocio;
 
 function TControllerItensIPI.atualiza: boolean;
 begin
+  Result := true;
   UpdateObj(Registro);
 end;
 
@@ -157,17 +158,20 @@ end;
 
 function TControllerItensIPI.insere: boolean;
 begin
+  Result := true;
   Registro.Codigo := Generator('GN_ITENS_IPI'); //nextCodigo;
   InsertObj(Registro);
 end;
 
 function TControllerItensIPI.migra: Boolean;
 begin
+  Result := true;
   InsertObj(Registro);
 end;
 
 function TControllerItensIPI.salva: boolean;
 begin
+  Result := true;
   SaveObj(Registro);
 end;
 

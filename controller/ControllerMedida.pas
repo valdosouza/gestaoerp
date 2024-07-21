@@ -157,9 +157,9 @@ end;
 
 function TControllerMedida.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -189,11 +189,11 @@ end;
 
 function TControllerMedida.insere: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_MEDIDA');
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -201,14 +201,15 @@ end;
 
 function TControllerMedida.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerMedida.replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -216,6 +217,7 @@ end;
 
 function TControllerMedida.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_MEDIDA');
   SaveObj(Registro);
@@ -223,9 +225,9 @@ end;
 
 function TControllerMedida.update: Boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;

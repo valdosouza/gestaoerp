@@ -104,6 +104,7 @@ var
   Lc_I : Integer;
   Lc_Aux : String;
 begin
+  Result := True;
   //Verifica Coenexão com a Internet
   if Fc_PingConectadoSetes then
   Begin;

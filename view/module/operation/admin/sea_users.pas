@@ -24,8 +24,9 @@ type
     cds_searchcodigo: TIntegerField;
     cds_searchnome: TStringField;
   private
-    procedure openRegister(pCodigo: Integer);
+
   protected
+    procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
     procedure FinalizaVariaveis; override;
     procedure Search; override;

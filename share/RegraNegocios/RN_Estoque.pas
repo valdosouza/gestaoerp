@@ -51,9 +51,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
 
@@ -80,10 +80,10 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Lc_Qry_Upt := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
-    Lc_Qry_Upt := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT ETS_CODIGO '+
@@ -146,9 +146,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       if (Fc_Cd_Estoque > 0) then
@@ -186,9 +186,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT CET_OPERACAO, SUM(CET_QTDE) SALDO '+
@@ -211,7 +211,7 @@ begin
       Lc_Positivo := 0;
       while not eof do
       Begin
-        if (FieldByName('CET_OPERACAO').AsAnsiString = 'S') then
+        if (FieldByName('CET_OPERACAO').AsString = 'S') then
           Lc_negativo := Lc_negativo + FieldByName('SALDO').AsFloat
         else
           Lc_Positivo := Lc_Positivo + FieldByName('SALDO').AsFloat;
@@ -229,11 +229,10 @@ procedure Pc_Delete_Estoque(Pc_Vinculo : String;
                             Pc_Cd_Controle :Integer;
                             Pc_Cd_Item_Ctrl:Integer);
 Var
-  Lc_SqlTxt : String;
   LcCtrlEstoque : TControllerCtrlEstoque;
 Begin
+  LcCtrlEstoque := TControllerCtrlEstoque.Create(nil);
   try
-    LcCtrlEstoque := TControllerCtrlEstoque.Create(nil);
     LcCtrlEstoque.Desregistra(Pc_Vinculo,
                               Pc_Cd_Controle,
                               Pc_Cd_Item_Ctrl);
@@ -253,9 +252,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT CET_OPERACAO, SUM(CET_QTDE) SALDO '+
@@ -276,7 +275,7 @@ begin
       Lc_Positivo := 0;
       while not eof do
       Begin
-        if (FieldByName('CET_OPERACAO').AsAnsiString = 'S') then
+        if (FieldByName('CET_OPERACAO').AsString = 'S') then
           Lc_negativo := Lc_negativo + FieldByName('SALDO').AsFloat
         else
           Lc_Positivo := Lc_Positivo + FieldByName('SALDO').AsFloat;
@@ -319,9 +318,9 @@ Var
   LcBase : TControllerBase;
 Lc_SqlTxt:sTRING;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT EST_CODIGO   '+
@@ -333,7 +332,7 @@ begin
       Active := True;
       FetchAll;
       if RecordCount > 0 then
-        Result := FieldByName('EST_CODIGO').AsAnsiString
+        Result := FieldByName('EST_CODIGO').AsString
       else
        Result := '0';
     End;
@@ -348,10 +347,9 @@ Var
   LcCtrlEstoque : TControllerCtrlEstoque;
   I : Integer;
 Begin
-  //exit;
+  Result := False;
+  LcCtrlEstoque := TControllerCtrlEstoque.create(nil);
   Try
-    Result := False;
-    LcCtrlEstoque := TControllerCtrlEstoque.create(nil);
     with LcCtrlEstoque do
     begin
       getlistByPedido(Fc_Cd_Pedido,Fc_Faturado);

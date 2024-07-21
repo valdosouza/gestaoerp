@@ -38,6 +38,7 @@ end;
 
 function TControllerItensRTR.delete: boolean;
 begin
+  Result := True;
   deleteObj(Registro);
 end;
 
@@ -54,9 +55,9 @@ end;
 
 function TControllerItensRTR.insere: boolean;
 begin
+  Result := True;
   try
     insertObj(Registro);
-    Result := True;
   except
     Result := False;
   end;
@@ -64,9 +65,9 @@ end;
 
 function TControllerItensRTR.update: boolean;
 begin
+  Result := True;
   try
     updateObj(Registro);
-    Result := True;
   except
     Result := False;
   end;

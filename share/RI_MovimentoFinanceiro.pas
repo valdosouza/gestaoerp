@@ -21,10 +21,10 @@ function Fc_VerificaCaixaAberto(msg:Boolean):Boolean;
 Var
   Lc_Cashier : TControllerDskCashier;
 begin
+  Result := False;
+  Lc_Cashier := TControllerDskCashier.Create(nil);
+  Lc_Cashier.Registro.Usuario := GB_Cd_Usuario;
   Try
-    Result := False;
-    Lc_Cashier := TControllerDskCashier.Create(nil);
-    Lc_Cashier.Registro.Usuario := GB_Cd_Usuario;
     if Lc_Cashier.VerificaCaixaAberto then
     Begin
       Gb_CodigoCaixa := Lc_Cashier.Registro.Codigo;
@@ -51,9 +51,9 @@ function Fc_VerificaCaixaFechadoAtual(): Boolean;
 Var
   Lc_Cashier : TControllerDskCashier;
 begin
+  Lc_Cashier := TControllerDskCashier.Create(nil);
+  Lc_Cashier.Registro.Usuario := GB_Cd_Usuario;
   Try
-    Lc_Cashier := TControllerDskCashier.Create(nil);
-    Lc_Cashier.Registro.Usuario := GB_Cd_Usuario;
     if Lc_Cashier.VerificaCaixaFechadoAtual(Date) then
     Begin
       REsult := True;

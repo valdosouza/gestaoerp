@@ -38,9 +38,9 @@ uses Un_Regra_Negocio;
 
 function TControllerRetornoNFe.atualiza: boolean;
 begin
+  Result := True;
   try
     updateObj(Registro);
-    REsult := True;
   except
     REsult := False;
   end;
@@ -88,7 +88,6 @@ end;
 procedure TControllerRetornoNFe.getByNotaFiscal;
 var
   Lc_Qry : TSTQuery;
-  LITem : TRetornoNFe;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -195,22 +194,24 @@ end;
 
 function TControllerRetornoNFe.insere: boolean;
 begin
+  Result := True;
   Registro.Codigo := Generator('GN_RETORNO_NFE');
   InsertObj(Registro);
 end;
 
 function TControllerRetornoNFe.migra: Boolean;
 begin
-    InsertObj(Registro);
+  Result := True;
+  InsertObj(Registro);
 end;
 
 function TControllerRetornoNFe.salva: boolean;
 begin
+  Result := True;
   try
     if registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_RETORNO_NFE');
     SaveObj(Registro);
-    Result := True;
   except
     Result := False;
   end;

@@ -45,9 +45,9 @@ end;
 
 function TControllerExchangeBasis.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -82,9 +82,9 @@ end;
 
 function TControllerExchangeBasis.insert: boolean;
 begin
+  Result := True;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -92,9 +92,9 @@ end;
 
 function TControllerExchangeBasis.save: boolean;
 begin
+  Result := True;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -102,9 +102,9 @@ end;
 
 function TControllerExchangeBasis.update: Boolean;
 begin
+  Result := True;
   try
     updateObj(Registro);
-    result := True;
   except
     result := False;
   end;
@@ -146,6 +146,7 @@ end;
 
 function TControllerExchangeBasis.getByKey: Boolean;
 begin
+  Result := True;
   _getByKey(Registro);
 end;
 procedure TControllerExchangeBasis.getlistPendente;

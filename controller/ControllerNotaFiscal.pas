@@ -160,6 +160,8 @@ Var
 Begin
   Result := True;
   Lc_Qry := GeraQuery;
+  Lc_cd_Nota := 0;
+  Lc_cd_Pedido := 0;
   Try
     With Lc_Qry do
     BEgin
@@ -311,8 +313,8 @@ Begin
               ' NFL_NFL_VINCULO = :NFL_NFL_VINCULO ',
               ' where nfl_codigo  =:nfl_codigo '
       ));
-      ParamByName('nfl_ctrl_retorno').AsAnsiString:= Registro.ControlaRetorno;
-      ParamByName('NFL_NFL_VINCULO').AsAnsiString := Registro.NotaVinculada;
+      ParamByName('nfl_ctrl_retorno').AsString:= Registro.ControlaRetorno;
+      ParamByName('NFL_NFL_VINCULO').AsString := Registro.NotaVinculada;
       ExecSQL;
     end;
   Finally
@@ -338,9 +340,9 @@ end;
 
 function TControllerNotaFiscal.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -619,8 +621,6 @@ Begin
 end;
 
 procedure TControllerNotaFiscal.FillDataObjeto(PcRegistro: TNotaFiscal);
-Var
-  LcII : TOrderItemII;
 begin
   //Order
   if PcRegistro.CodigoPedido > 0 then
@@ -969,17 +969,20 @@ end;
 
 function TControllerNotaFiscal.insere: boolean;
 begin
+  Result := True;
   Registro.Codigo := Generator('GN_NOTA_FISCAL');
   InsertObj(Registro);
 end;
 
 function TControllerNotaFiscal.migra: Boolean;
 begin
+  Result := True;
   InsertObj(Registro);
 end;
 
 function TControllerNotaFiscal.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_NOTA_FISCAL');
   SaveObj(Registro);
@@ -1017,9 +1020,9 @@ end;
 
 function TControllerNotaFiscal.update: boolean;
 begin
+  Result := True;
   try
     updateObj(Registro);
-    Result := True;
   Except
     Result := False;
   end;
@@ -1051,7 +1054,6 @@ end;
 function TControllerNotaFiscal.updateDataHora: boolean;
 var
   Lc_Qry : TSTQuery;
-  LITem : TNotaFiscal;
 begin
   Result := True;
   Lc_Qry := GeraQuery;
@@ -1074,8 +1076,6 @@ begin
 end;
 
 function TControllerNotaFiscal.valorFinanceiro: Real;
-var
-  Lc_Qry: TSTQuery;
 begin
   getbyId;
   pedido.Registro.Codigo := Registro.CodigoPedido;
@@ -1125,7 +1125,6 @@ end;
 function TControllerNotaFiscal.getCFOPByCodigo(Id: Integer): String;
 var
   Lc_Qry : TSTQuery;
-  LITem : TNotaFiscal;
 begin
   Result := '';
   Lc_Qry := GeraQuery;
@@ -1149,7 +1148,6 @@ end;
 
 function TControllerNotaFiscal.getCFOPByItems: String;
 Var
-  SqlTxt : String;
   Lc_Qry : TSTQuery;
 Begin
   Result := '';
@@ -1184,7 +1182,6 @@ end;
 
 function TControllerNotaFiscal.getCodigoNotaByPedido: Integer;
 Var
-  SqlTxt : String;
   Lc_Qry : TSTQuery;
 Begin
   Result := 0;
@@ -1248,7 +1245,6 @@ End;
 function TControllerNotaFiscal.getCSOSNByCodigo(Id: Integer): String;
 var
   Lc_Qry : TSTQuery;
-  LITem : TNotaFiscal;
 begin
   Result := '';
   Lc_Qry := GeraQuery;
@@ -1273,7 +1269,6 @@ end;
 function TControllerNotaFiscal.getCSTByCodigo(Id: Integer): String;
 var
   Lc_Qry : TSTQuery;
-  LITem : TNotaFiscal;
 begin
   Result := '';
   Lc_Qry := GeraQuery;
@@ -1432,7 +1427,6 @@ end;
 procedure TControllerNotaFiscal.getSincronia;
 var
   Lc_Qry : TSTQuery;
-  LITem : TNotaFiscal;
 begin
   Lc_Qry := GeraQuery;
   TRy
@@ -1475,7 +1469,6 @@ end;
 function TControllerNotaFiscal.getTotalValue: Real;
 var
   Lc_Qry : TSTQuery;
-  LITem : TNotaFiscal;
 begin
   Result := 0;
   Lc_Qry := GeraQuery;
