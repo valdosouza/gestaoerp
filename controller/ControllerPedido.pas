@@ -1,13 +1,13 @@
 unit ControllerPedido;
 
 interface
-uses ACBrUtil,STDatabase,Classes, STQuery, SysUtils,ControllerBase,
+uses  STDatabase,Classes, STQuery, SysUtils,ControllerBase,
       tblPedido ,Un_MSg,ControllerPedidoCtrlMmb,Datasnap.DBClient,
       ControllerEmpresa,ControllerEndereco, ControllerCliente,ControllerGestaoWeb,
       ControllerItensNFL, Generics.Collections, ControllerParcelamento,
       ControllerColaborador, System.Math,objOrderSale,tblOrderItem,ObjCustomer,
-      ControllerFormaPagamento,ControllerCtrlEstoque, AnsiStrings,ControllerRestaurante,
-      FireDAC.Stan.Param;
+      ControllerFormaPagamento,ControllerCtrlEstoque, ControllerRestaurante,
+      FireDAC.Stan.Param, ACBrUtil.Math;
 
 Type
   TListaPedido = TObjectList<TPedido>;
@@ -107,7 +107,7 @@ Begin
       SQL.Add('WHERE (PED_CODIGO =:PED_CODIGO)');
 
       ParamByName('PED_CODIGO').AsInteger := Registro.Codigo;
-      ParamByName('PED_FATURADO').AsAnsiString := Registro.Faturado;
+      ParamByName('PED_FATURADO').AsString := Registro.Faturado;
       ExecSQL;
     end;
   finally
@@ -309,6 +309,7 @@ Var
   Lc_setAll : Boolean;
 Begin
   Result := True;
+  Lc_setAll  := true;
   Lc_Qry := GeraQuery;
   Lc_Upd := GeraQuery;
   Try
@@ -517,7 +518,7 @@ Begin
       SQL.Add('UPDATE TB_PEDIDO '+
               'SET PED_FATURADO=:PED_FATURADO '+
               'WHERE (PED_CODIGO =:PED_CODIGO)');
-      ParamByName('PED_FATURADO').AsAnsiString := 'A';
+      ParamByName('PED_FATURADO').AsString := 'A';
       ParamByName('PED_CODIGO').AsInteger := Registro.Codigo;
       ExecSQL;
     end;
@@ -898,7 +899,6 @@ end;
 procedure TControllerPedido.getSincronia;
 var
   Lc_Qry : TSTQuery;
-  LITem : TPedido;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -982,7 +982,6 @@ end;
 procedure TControllerPedido.getUsuario;
 var
   Lc_Qry : TSTQuery;
-  LITem : TPedido;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -1404,6 +1403,9 @@ var
 begin
   Result := 0;
   Lc_Qry := GeraQuery;
+  Lc_Subtotal := 0;
+  LcValor := 0;
+  LcStrValor := '';
   Try
     with Lc_Qry do
     Begin

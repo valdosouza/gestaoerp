@@ -37,6 +37,7 @@ uses Un_sistema, Un_Regra_Negocio;
 
 function TControllerCargo.Clear: Boolean;
 begin
+  Result := True;
   clearObj(Registro);
   Parametros.Clear;
 end;
@@ -51,9 +52,9 @@ end;
 
 function TControllerCargo.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -69,11 +70,11 @@ end;
 
 function TControllerCargo.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_CARGO');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -81,21 +82,23 @@ end;
 
 function TControllerCargo.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerCargo.replace: boolean;
 begin
+  Result := True;
   replaceObj(Registro);
 end;
 
 function TControllerCargo.salva: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_CARGO');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -106,6 +109,7 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCargo;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
@@ -146,9 +150,9 @@ end;
 
 function TControllerCargo.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -198,6 +202,7 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCargo;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do

@@ -22,8 +22,8 @@ Type
     procedure setFOrder(const Value: TOrder);
 
   public
-    constructor Create;
-    destructor Destroy;
+    constructor create;
+    destructor destroy;
     property Order : TOrder read FOrder write setFOrder;
     property NF : Tinvoice read FNF write setFNF;
     property Observacoes : TlistaObs read FObservacoes write setFObservacoes;

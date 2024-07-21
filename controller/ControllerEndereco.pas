@@ -74,9 +74,9 @@ end;
 
 function TControllerEndereco.Delete: Boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -85,7 +85,6 @@ end;
 function TControllerEndereco.DeleteAllEmpresa: Boolean;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TEndereco;
 begin
   Result := True;
   Lc_Qry := GeraQuery;
@@ -105,6 +104,7 @@ end;
 
 function TControllerEndereco.AutoEndereco: Boolean;
 begin
+  Result := True;
   with Registro  do
   Begin
     Codigo            := 0;
@@ -126,6 +126,7 @@ end;
 
 function TControllerEndereco.salva: boolean;
 begin
+  Result := True;
   if existObj(Registro) then
   Begin
     UpdateObj(Registro);
@@ -147,9 +148,9 @@ end;
 
 function TControllerEndereco.Update: Boolean;
 begin
+  Result := True;
   try
     UpdateObj(Registro);
-    Result := True;
   except
     Result := False;
   end;
@@ -245,6 +246,7 @@ end;
 
 function TControllerEndereco.getAll: Boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     getByEmpresa
   else
@@ -410,6 +412,7 @@ end;
 
 function TControllerEndereco.insert: Boolean;
 begin
+  Result := True;
   try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_ENDERECO')
@@ -430,6 +433,7 @@ end;
 
 function TControllerEndereco.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 

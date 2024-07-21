@@ -60,9 +60,9 @@ end;
 
 function TControllerColaborador.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -179,11 +179,11 @@ end;
 
 function TControllerColaborador.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_COLABORADOR');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -191,14 +191,15 @@ end;
 
 function TControllerColaborador.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerColaborador.Replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -206,6 +207,7 @@ end;
 
 function TControllerColaborador.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_COLABORADOR');
   SaveObj(Registro);
@@ -238,9 +240,9 @@ end;
 
 function TControllerColaborador.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;

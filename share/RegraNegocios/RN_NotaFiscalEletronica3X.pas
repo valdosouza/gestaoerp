@@ -72,9 +72,10 @@ Var
   Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  Result := 0;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery; 
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -102,9 +103,9 @@ Var
   Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -132,9 +133,9 @@ Var
   Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -247,9 +248,9 @@ Var
   qr_aux:TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  qr_aux := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    qr_aux := LcBase.GeraQuery;
     with qr_aux do
     BEgin
       SQL.Clear;
@@ -282,11 +283,11 @@ Var
   Lc_Qry:TSTQuery;
   LcBase : TControllerBase;
 Begin
+  LcBase := TControllerBase.create(nil);
+  //faz a cnsulta na tabela de retono
+  Result := True;
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    //faz a cnsulta na tabela de retono
-    Result := True;
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -335,12 +336,11 @@ Begin
     result := False;
     exit;
   end;
-
-  try
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  try
     //faz a cnsulta na tabela de retono
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
-    with Lc_Qry do
+    with Lc_Qry do
     Begin
       SQL.Clear;
       SQL.Add(' SELECT end_bairro,end_cep, end_numero, end_ender FROM tb_endereco ');
@@ -416,9 +416,9 @@ Var
   Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -471,13 +471,12 @@ function Fc_BuscaEventoManifestacao(Fc_Chave:String):Boolean;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  Result := False;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    Result := False;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -499,14 +498,13 @@ function Fc_BuscaCodigoDescricaoCFOP(Fc_CFOP:String):TStringList;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  Result := TStringList.Create;
+  Result.Clear;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    Result := TStringList.Create;
-    Result.Clear;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -539,14 +537,13 @@ function Fc_BuscaCodigoReferenciaCFOP(Fc_CFOP:String):TStringList;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  Result := TStringList.Create;
+  Result.Clear;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   TRy
-    Result := TStringList.Create;
-    Result.Clear;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -584,9 +581,9 @@ Var
   Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -614,9 +611,9 @@ Var
   Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -642,12 +639,11 @@ procedure Pc_VincularCodigosCFOP(Fc_Cd_CFOP_Origem,Fc_Cd_CFOP_Destino:String);
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Clear;
@@ -705,10 +701,10 @@ var
   Lc_aux:String;
   LcBase : TControllerBase;
 begin
+  Result:=true;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   TRy
-    Result:=true;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Sql.Clear;
@@ -729,11 +725,10 @@ end;
 
 procedure Pc_SalvarArquivoTexto(Pc_Path,Pc_File, Texto:String);
 var
-  txt: textfile;
   Lc_Memo:TStringList;
 begin
+  Lc_Memo := TStringList.Create;
   Try
-    Lc_Memo := TStringList.Create;
     Lc_Memo.Append(Texto);
     Lc_Memo.SaveToFile(Pc_Path + '\' + Pc_File);
   Finally
@@ -743,9 +738,10 @@ end;
 
 function Fc_AnexarXmlNFe(Pc_Tipo:Integer;Pc_Cd_Nota:Integer;Pc_Path,Pc_FileXMl:String):Boolean;
 Var
-  Lc_Cd_Vinculo : Integer;
+  Lc_Cd_Vinculo  : Integer;
 Begin
   Result := False;
+  Lc_Cd_Vinculo := 0;
   case pc_tipo of
     1: Lc_Cd_Vinculo := Fc_VerificaCodigoVinculoNfeArquivo(Pc_Cd_Nota);
     2: Lc_Cd_Vinculo := Fc_VerificaCodigoVinculoCartaCorrecao(Pc_Cd_Nota);

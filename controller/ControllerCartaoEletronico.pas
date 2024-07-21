@@ -41,9 +41,9 @@ end;
 
 function TControllerCartaoEletronico.delete: boolean;
 begin
+  Result := True;
   Try
     deleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -58,9 +58,9 @@ end;
 
 function TControllerCartaoEletronico.insert: boolean;
 begin
+  Result := True;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -68,9 +68,9 @@ end;
 
 function TControllerCartaoEletronico.save: boolean;
 begin
+  Result := True;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -79,6 +79,7 @@ end;
 
 function TControllerCartaoEletronico.getAllByKey: boolean;
 begin
+  Result := True;
   getByKey;
 end;
 
@@ -86,6 +87,7 @@ function TControllerCartaoEletronico.getbyFormaPagto: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do

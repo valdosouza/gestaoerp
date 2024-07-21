@@ -61,12 +61,8 @@ begin
 end;
 
 procedure TFormMsg.Pc_Aciona_Escolha(Sender: TObject);
-  Var
-    Lc_Botao : TBitBtn;
 begin
-  Lc_Botao := TBitBtn.Create(Self);
-  Lc_Botao := TBitBtn(Sender);
-  It_Cd_Escolha := Lc_Botao.Tag;
+  It_Cd_Escolha := TBitBtn(Sender).Tag;
   Close;
 end;
 
@@ -74,7 +70,6 @@ end;
 procedure TFormMsg.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := Cafree;
-  Sender := nil;
 end;
 
 procedure TFormMsg.FormKeyPress(Sender: TObject; var Key: Char);
@@ -114,9 +109,9 @@ var
 begin
   {Muda do cursor que esta no momento para o cursor Default}
   Lc_OldCursor := Screen.Cursor;
+  Screen.Cursor := crDefault;
+  Formulario := TFormMsg.CreateNew(Application);
   Try
-    Screen.Cursor := crDefault;
-    Formulario := TFormMsg.CreateNew(Application);
     {Ajusta os parametros do formulario que acabou de ser criado!}
     with Formulario do
     begin

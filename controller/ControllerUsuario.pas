@@ -45,7 +45,6 @@ uses Un_sistema, Un_Regra_Negocio;
 function TControllerUsuario.Autentica: Boolean;
 var
   Lc_Autentica: string;
-  Lc_Senha: string;
   Lc_Qry : TSTQuery;
 begin
   Result := False;
@@ -72,6 +71,7 @@ end;
 
 function TControllerUsuario.Clear: Boolean;
 begin
+  Result := True;
   clearObj(Registro);
   Parametros.Clear;
 end;
@@ -87,9 +87,9 @@ end;
 
 function TControllerUsuario.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -107,11 +107,11 @@ end;
 
 function TControllerUsuario.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_USUARIO');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -119,11 +119,13 @@ end;
 
 function TControllerUsuario.Migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerUsuario.Replace: boolean;
 begin
+  Result := True;
   replaceObj(Registro);
 end;
 
@@ -154,6 +156,7 @@ end;
 
 function TControllerUsuario.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_USUARIO');
   SaveObj(Registro);
@@ -164,6 +167,7 @@ var
   Lc_Qry : TSTQuery;
   LITem : TUsuario;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
@@ -208,9 +212,9 @@ end;
 
 function TControllerUsuario.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;

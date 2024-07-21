@@ -18,8 +18,8 @@ Type
     procedure setFJuridica(const Value: TCompany);
     procedure setFNoDocNumber(const Value: TNoDocNumber);
   public
-    constructor Create;
-    destructor Destroy;
+    Constructor create;
+    Destructor destroy;
     procedure clear;
     property Entidade : TObjEntity read FEntidade write setFEntidade;
     property Fisica : TPerson read FFisica write setFFisica;

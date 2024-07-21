@@ -23,8 +23,8 @@ function Fc_PegaParteFormaPgto(Fc_Descricao: String): Integer;
 var
   LcForma : TControllerFormaPagamento;
 begin
+  LcForma := TControllerFormaPagamento.Create(nil);
   try
-    LcForma := TControllerFormaPagamento.Create(nil);
     LcForma.Registro.Descricao := Fc_Descricao;
     LcForma.getByPartDescription;
     if not LcForma.exist then
@@ -40,8 +40,8 @@ function Fc_PegaFormaPgto(Fc_Descricao: String): Integer;
 var
   LcForma : TControllerFormaPagamento;
 begin
+  LcForma := TControllerFormaPagamento.Create(nil);
   try
-    LcForma := TControllerFormaPagamento.Create(nil);
     LcForma.Registro.Descricao := Fc_Descricao;
     LcForma.getByDescricao;
     if not LcForma.exist then
@@ -66,9 +66,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -95,9 +95,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(

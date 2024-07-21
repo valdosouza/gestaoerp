@@ -53,9 +53,9 @@ begin
       while not Eof do
       begin
         if Pc_Order = 'EMP_NOME' then
-          Pc_Lista.Items.Add(FieldByName('EMP_NOME').AsAnsiString)
+          Pc_Lista.Items.Add(FieldByName('EMP_NOME').AsString)
         else
-          Pc_Lista.Items.Add(FieldByName('EMP_FANTASIA').AsAnsiString);
+          Pc_Lista.Items.Add(FieldByName('EMP_FANTASIA').AsString);
         Next;
       end;
     end;
@@ -70,9 +70,9 @@ Var
 Begin
   if StrToIntDef(Trim(Fc_cd_Empresa),0) > 0 then
   Begin
+    LcBase := TControllerBase.create(nil);
+    Lc_Qry := LcBase.GeraQuery;
     Try
-      LcBase := TControllerBase.create(nil);
-      Lc_Qry := LcBase.GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add('SELECT ' + Fc_Campo  +
@@ -80,12 +80,12 @@ Begin
                 '  INNER JOIN TB_FORNECEDOR '+
                 ' ON (FOR_CODEMP = EMP_CODIGO) '+
                 'WHERE EMP_CODIGO=:EMP_CODIGO ');
-        ParamByName('EMP_CODIGO').AsAnsiString := Fc_cd_Empresa;
+        ParamByName('EMP_CODIGO').AsString := Fc_cd_Empresa;
         Active := True;
         FetchAll;
         if (RecordCount>0) then
         Begin
-          Result := FieldByname(FC_CAMPO).AsAnsiString
+          Result := FieldByname(FC_CAMPO).AsString
         end
         else
         Begin

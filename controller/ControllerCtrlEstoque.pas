@@ -219,7 +219,6 @@ procedure TControllerCtrlEstoque.Desregistra(Vinculo: String; Cd_Controle,
   Cd_Item_Ctrl: Integer);
 Var
   Lc_Qry :TSTQuery;
-  LcOperacao : String;
   LcITem : TCtrlEstoque;
   I : Integer;
 begin
@@ -296,6 +295,7 @@ Var
   Lc_SqlTxt : String;
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
@@ -312,7 +312,7 @@ Begin
       SQL.ADD(Lc_SqlTxt);
 
       //Passagem de Parametros
-      ParamByName('CET_VINCULO').AsAnsiString := Registro.Vinculo;
+      ParamByName('CET_VINCULO').AsString := Registro.Vinculo;
 
       if ( Registro.Ordem > 0) then
         ParamByName('CET_CONTROLE').AsInteger := Registro.Ordem
@@ -744,7 +744,6 @@ Var
   Lc_SqlTxt : String;
   Lc_Qry : TSTQuery;
   Lc_Complemento : String;
-  LcCtrlEstoque : TControllerCtrlEstoque;
   LcReg : TCtrlEstoque;
 Begin
   Lc_Qry := GeraQuery;
@@ -1223,7 +1222,6 @@ end;
 procedure TControllerCtrlEstoque.LimparTodoHistoricoByProduto;
 Var
   Lc_Qry : TSTQuery;
-  Lc_Data : TDate;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -1436,7 +1434,6 @@ end;
 
 procedure TControllerCtrlEstoque.Recontagem;
 Var
-  Lc_SqlTxt : String;
   Lc_Qtde : String;
   Lc_Qry : TSTQuery;
   LcReg : TCtrlEstoque;
@@ -1496,7 +1493,6 @@ end;
 procedure TControllerCtrlEstoque.RecontagemDeletarByProduto;
 Var
   Lc_Qry : TSTQuery;
-  Lc_Data : TDate;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -1562,7 +1558,6 @@ end;
 
 procedure TControllerCtrlEstoque.Registra;
 Var
-  Lc_SqlTxt : String;
   Lc_Qtde : String;
   Lc_Qry : TSTQuery;
   LcReg : TCtrlEstoque;

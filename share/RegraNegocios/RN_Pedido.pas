@@ -75,9 +75,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('UPDATE TB_PEDIDO SET '+
@@ -116,18 +116,18 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT PED_CODIGO FROM TB_PEDIDO WHERE (PED_TIPO=:PED_TIPO) AND (PED_NUMERO=:PED_NUMERO) ');
       //Passagem de parametro
-      ParamByName('PED_TIPO').AsAnsiString := Fc_Tipo;
-      ParamByName('PED_NUMERO').AsAnsiString := Fc_Nr_Pedido;
+      ParamByName('PED_TIPO').AsString := Fc_Tipo;
+      ParamByName('PED_NUMERO').AsString := Fc_Nr_Pedido;
       Active := True;
       FetchAll;
-      Result := StrToIntDef(FieldByName('PED_CODIGO').AsAnsiString,0);
+      Result := StrToIntDef(FieldByName('PED_CODIGO').AsString,0);
     End;
   Finally
     LcBase.FinalizaQuery(Lc_Qry);
@@ -140,8 +140,9 @@ var
   Lc_TipoItem : String;
   PedidoCopia : TControllerPedido;
 begin
+  Result := 0;
+  PedidoCopia := TControllerPedido.Create(nil);
   TRy
-    PedidoCopia := TControllerPedido.Create(nil);
     PedidoCopia.Registro.Codigo := Fc_Cd_Pedido;
     PedidoCopia.Registro.CodigoEstabelecimento := Gb_Codmha;
     PedidoCopia.getbyId;
@@ -235,7 +236,6 @@ procedure Pc_CopiaItensPedido(Pc_Cd_Pedido: Integer;
 var
   Lc_Qry: TSTQuery;
   Lc_SqlTxt: string;
-  Lc_Cd_Item : Integer;
   Lc_Vl_Unitario : Real;
   Lc_AQ_DESC : Real;
   Lc_VL_DESC : Real;
@@ -245,10 +245,10 @@ var
   lcItem : TControllerItensNfl;
   LcCtrlEstoque : TControllerCtrlEstoque;
 begin
+  LcCtrlEstoque := TControllerCtrlEstoque.create(nil);
+  Lc_Qry := LcCtrlEstoque.GeraQuery;
+  lcItem := TControllerItensNfl.create(nil);
   TRy
-    LcCtrlEstoque := TControllerCtrlEstoque.create(nil);
-    Lc_Qry := LcCtrlEstoque.GeraQuery;
-    lcItem := TControllerItensNfl.create(nil);
     With Lc_Qry,lcItem.registro do
     Begin
       Lc_SqlTxt := 'SELECT tb_itens_nfl.*, IPI_VL_BC, IPI_AQ_NR '+
@@ -414,11 +414,11 @@ var
   Lc_TipoItem : String;
   ObjEmpresa : TControllerEmpresa;
   PedidoCopia : TControllerPedido;
-  Lc_cd_Empresa : Integer;
 begin
+  Result := True;
+  PedidoCopia := TControllerPedido.Create(nil);
+  ObjEmpresa := TControllerEmpresa.create(nil);
   Try
-    Result := True;
-    PedidoCopia := TControllerPedido.Create(nil);
     PedidoCopia.Registro.Codigo := Fc_Cd_Pedido;
     PedidoCopia.Registro.CodigoEstabelecimento := Gb_Codmha;
     PedidoCopia.getbyId;
@@ -457,7 +457,6 @@ begin
       Numero := 0;
       if (Fc_Tipo > 0) then Tipo := Fc_Tipo;
       Data := DATE;
-      ObjEmpresa := TControllerEmpresa.create(nil);
       ObjEmpresa.Registro.Codigo := Empresa;
       ObjEmpresa.GetById;
       Empresa := Fc_BuscaCodigoEmpresa(FcDataBase,FcTransaction, ObjEmpresa.Registro.CpfCNPJ);
@@ -527,11 +526,11 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 Begin
+  Result:= True;
+  lc_obs := TStringList.Create;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    Result:= True;
-    lc_obs := TStringList.Create;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Fc_Itens do
     Begin
       Lc_Qry.SQL.Add('SELECT PRO_CODIGO,EST_QTDE, PRO_EST_NEG '+
@@ -543,7 +542,7 @@ Begin
       First;
       while not Eof do
       Begin
-        IF (FieldByName('ITF_ESTOQUE').AsAnsiString = 'S') then
+        IF (FieldByName('ITF_ESTOQUE').AsString = 'S') then
         Begin
           if FieldByName('PRO_EST_NEG').AsString = 'N' then
           Begin
@@ -560,7 +559,7 @@ Begin
            if LcSaldo <0 then
             Begin
               Result := False;
-              lc_obs.Add(FieldByName('ITF_CODPRO').AsAnsiString + ' - ' + FieldByName('PRO_DESCRICAO').AsAnsiString + ' = ' + FloatToStrF(Lc_Qry.FieldByName('EST_QTDE').AsFloat,ffFixed,10,2));
+              lc_obs.Add(FieldByName('ITF_CODPRO').AsString + ' - ' + FieldByName('PRO_DESCRICAO').AsString + ' = ' + FloatToStrF(Lc_Qry.FieldByName('EST_QTDE').AsFloat,ffFixed,10,2));
             end;
           End;
         End;
@@ -603,9 +602,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('update "TB_PEDIDO" '+
@@ -647,8 +646,8 @@ function Fc_VerificaEstabelecimentoDestino(FcDataBase : TSTDatabase;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Lc_Qry := TSTQuery.Create(nil);
   Try
-    Lc_Qry := TSTQuery.Create(nil);
     with Lc_Qry do
     Begin
       Database := FcDataBase;
@@ -688,8 +687,8 @@ Begin
     Result := False;
     Exit;
   End;
+  Lc_Qry := TSTQuery.Create(nil);
   Try
-    Lc_Qry := TSTQuery.Create(nil);
     with Lc_Qry do
     Begin
       Database := FcDataBase;
@@ -720,9 +719,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('update "TB_PEDIDO" '+
@@ -733,7 +732,7 @@ begin
 
       //Passagem de Parametros
       ParamByName('PED_CODIGO').AsInteger := CODIGO;
-      ParamByName('PED_OBS').AsAnsiString := Obs.Text;
+      ParamByName('PED_OBS').AsString := Obs.Text;
       ExecSQL;
     End;
   Finally

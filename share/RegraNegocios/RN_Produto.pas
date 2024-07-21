@@ -30,9 +30,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
 
@@ -40,11 +40,11 @@ begin
                    'FROM TB_PRODUTO '+
                    'WHERE (PRO_CODIGO=:PRO_CODIGO) ';
       SQL.Add(Lc_SqlTxt);
-      ParamByName('PRO_CODIGO').AsAnsiString := Fc_cd_Produto;
+      ParamByName('PRO_CODIGO').AsString := Fc_cd_Produto;
       Active := True;
       FetchAll;
       First;
-      Result := FieldByName('DESCRICAO').AsAnsiString;
+      Result := FieldByName('DESCRICAO').AsString;
     End;
   Finally
     LcBase.FinalizaQuery(Lc_Qry);
@@ -59,9 +59,9 @@ Var
 begin
   if Trim(pro_codigo) <> '' then
   Begin
+    LcBase := TControllerBase.create(nil);
+    Lc_Qry := LcBase.GeraQuery;
     Try
-      LcBase := TControllerBase.create(nil);
-      Lc_Qry := LcBase.GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add('delete '+
@@ -93,9 +93,9 @@ Var
   Lc_Qry:TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('DELETE FROM TB_PROD_FORN WHERE (PFR_CODPRO IS NOT NULL) ');
@@ -105,9 +105,9 @@ begin
         SQL.Add('AND (PFR_CODFOR =:PFR_CODFOR) ');
       //Passagem de parametros
       if Trim(Fc_Cd_Produto)<> '' then
-        ParamByName('PFR_CODPRO').AsAnsiString  := Fc_Cd_Produto;
+        ParamByName('PFR_CODPRO').AsString  := Fc_Cd_Produto;
       if Trim(Fc_Cd_Fornecedor)<> '' then
-        ParamByName('PFR_CODFOR').AsAnsiString  := Fc_Cd_Fornecedor;
+        ParamByName('PFR_CODFOR').AsString  := Fc_Cd_Fornecedor;
       ExecSQL;
       if DM.IBT_Crud.InTransaction then DM.IBT_Crud.Commit;
     End;
@@ -120,12 +120,11 @@ end;
 PROCEDURE Pc_Copia_ProdForn(Pc_cd_Prod_novo,Pc_cd_Prod_Ant:Integer);
 var
   Lc_Qry: TSTQuery;
-  Lc_SqlTxt: string;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('  SELECT PFR_CODFOR, PFR_PRODUTO FROM tb_prod_forn  '+
@@ -137,8 +136,8 @@ begin
       while not Eof do
       begin
         Pc_VincularCodigoProdutoFornecedor(IntToStr(Pc_cd_Prod_novo),
-                                           fieldbyname('PFR_CODFOR').AsAnsiString,
-                                           fieldbyname('PFR_PRODUTO').AsAnsiString);
+                                           fieldbyname('PFR_CODFOR').AsString,
+                                           fieldbyname('PFR_PRODUTO').AsString);
         Next;
       end;
       End;
@@ -154,10 +153,11 @@ var
   Lc_Escala : Real;
   LcBase : TControllerBase;
 begin
+  Result := True;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+
   Try
-    Result := True;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select MED_ESCALA '+
@@ -197,9 +197,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT  max(nf.nfl_dt_emissao) DATA '+
@@ -216,7 +216,7 @@ begin
       FetchAll;
       First;
       IF (RecordCount > 0) then
-        Result := FieldByName('DATA').AsAnsiString
+        Result := FieldByName('DATA').AsString
       else
         Result := '';
     End;
@@ -232,10 +232,10 @@ var
   Lc_Dias : Integer;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Lc_Dias := StrToIntDef(Fc_Tb_Geral('L','PRO_P_INATIVIDADE','0'),90);
   Try
-    Lc_Dias := StrToIntDef(Fc_Tb_Geral('L','PRO_P_INATIVIDADE','0'),90);
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT  max(nf.nfl_dt_emissao) DATA '+
@@ -252,7 +252,7 @@ begin
       FetchAll;
       First;
       IF (RecordCount > 0) then
-        Result := FieldByName('DATA').AsAnsiString
+        Result := FieldByName('DATA').AsString
       else
         Result := '';
     End;
@@ -265,13 +265,12 @@ end;
 procedure Pc_VerificaDadosNCM;
 var
   Lc_Qry: TSTQuery;
-  Lc_Dias : Integer;
   //Lc_Form : TFr_Pesq_NCM;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select NCM_CHAVE '+
@@ -314,7 +313,7 @@ Begin
     Qr_ListaProduto.First;
     while not Qr_ListaProduto.Eof do
     Begin
-      Pc_Lista.Items.Add(Qr_ListaProduto.FieldByname('PRO_DESCRICAO').AsAnsiString);
+      Pc_Lista.Items.Add(Qr_ListaProduto.FieldByname('PRO_DESCRICAO').AsString);
       Qr_ListaProduto.Next;
     end;
   end;
@@ -329,11 +328,15 @@ var
   Lc_Vl_Venda : Real;
   LcBase : TControllerBase;
 begin
-  Try
-    LcBase := TControllerBase.create(nil);
+  LcBase := TControllerBase.create(nil);
+  //Cria a Consulta de Tabelas Disponiveis
+  Lc_Qry_Tabelas := LcBase.GeraQuery;
+  //Consulta que cria um Tabela para cada item
+  Lc_Qry_Precos := LcBase.GeraQuery;
 
-    //Cria a Consulta de Tabelas Disponiveis
-    Lc_Qry_Tabelas := LcBase.GeraQuery;
+  //Cria a Sql que insere a registro de preco
+  Lc_Qry_Insere := LcBase.GeraQuery;
+  Try
     Lc_SqlTxt := 'SELECT TPR_CODIGO ' +
                  'FROM TB_TABELA_PRECO tb_tabela '+
                  'WHERE ( TPR_ATIVA = ''S'' ) ';
@@ -342,11 +345,7 @@ begin
     Lc_Qry_Tabelas.FetchAll;
     Lc_Qry_Tabelas.First;
 
-    //Consulta que cria um Tabela para cada item
-    Lc_Qry_Precos := LcBase.GeraQuery;
 
-    //Cria a Sql que insere a registro de preco
-    Lc_Qry_Insere := LcBase.GeraQuery;
 
     //consulta Tabela de cada produto
     Lc_SqlTxt := 'SELECT PRC_CODIGO, PRC_VL_VDA ' +
@@ -408,9 +407,9 @@ var
   Lc_Tp_Descricao : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SQL := 'SELECT PRO_CODIGO, PRO_DESCRICAO FROM TB_PRODUTO '+

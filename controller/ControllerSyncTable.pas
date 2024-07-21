@@ -53,6 +53,7 @@ end;
 
 function TControllerSynctable.save: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
@@ -60,6 +61,7 @@ function TControllerSyncTable.setTimeToWEb: Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
    //13/12/2017 01:37:38
@@ -91,6 +93,7 @@ function TControllerSynctable.update: boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do

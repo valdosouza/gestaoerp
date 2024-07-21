@@ -100,9 +100,9 @@ end;
 
 function TControllerSubGrupos.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -127,11 +127,11 @@ end;
 
 function TControllerSubGrupos.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_SUBGRUPO');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -139,14 +139,15 @@ end;
 
 function TControllerSubGrupos.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerSubGrupos.Replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -154,6 +155,7 @@ end;
 
 function TControllerSubGrupos.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_SUBGRUPO');
   SaveObj(Registro);
@@ -161,9 +163,9 @@ end;
 
 function TControllerSubGrupos.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -205,7 +207,6 @@ end;
 procedure TControllerSubGrupos.getById;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TSubGrupos;
 begin
   Lc_Qry := GeraQuery;
   Try

@@ -47,9 +47,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT DSP_CODIGO FROM TB_DESPACHO '+
@@ -108,12 +108,11 @@ procedure Pc_DeletaDespacho(Pc_Cd_Item,Pc_Cd_Despacho: Integer);
 var
   Lc_Sql: String;
   Lc_Qtde : real;
-  Lc_Cd_Despacho : Integer;
   Lc_Qry : TSTQuery;
 begin
   Lc_Qry := TSTQuery.Create(Application);
   with Lc_Qry do
-    Begin
+  Begin
     Connection := DM.IBD_Gestao;
     Transaction := DM.IBT_Atualiza;
 
@@ -201,9 +200,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'INSERT INTO TB_DESPACHO( '+
@@ -230,7 +229,7 @@ begin
       ParamByName('DSP_CODPRO').AsInteger := Pc_Cd_Produto;
       ParamByName('DSP_DT_PREVISTA').AsDate := Pc_Dt_Prevista;
       ParamByName('DSP_QTDE').AsFloat := Pc_Qtde;
-      ParamByName('DSP_SITUACAO').AsAnsiString := Pc_Situacao;
+      ParamByName('DSP_SITUACAO').AsString := Pc_Situacao;
       ExecSQL;
     End;
   Finally
@@ -246,9 +245,9 @@ var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_Sql := 'UPDATE TB_DESPACHO SET '+
@@ -274,47 +273,50 @@ var
 begin
   Lc_Qry := TSTQuery.Create(Application);
   Lc_Del := TSTQuery.Create(Application);
-  with Lc_Qry do
+  Try
+    with Lc_Qry do
     Begin
-    Connection := DM.IBD_Gestao;
-    Transaction := DM.IBT_Atualiza;
-    CachedUpdates := True;
-    Active := False;
-    SQL.Clear;
-    Lc_Sql := 'SELECT ITF_CODIGO '+
-              'FROM TB_ITENS_NFL '+
-              'WHERE ITF_CODPED =:PED_CODIGO ';
-    SQL.Add(Lc_Sql);
-    ParamByName('PED_CODIGO').AsInteger := Pc_cd_Pedido;
-    Active := TRUE;
-    end;
-
-  with Lc_Del do
-    Begin
-    Connection := DM.IBD_Gestao;
-    Transaction := DM.IBT_Atualiza;
-    CachedUpdates := True;
-    Active := False;
-    SQL.Clear;
-    Lc_Sql := 'DELETE FROM TB_DESPACHO '+
-              'WHERE DSP_CODITF=:ITF_CODIGO ';
-    SQL.Add(Lc_Sql);
-    Lc_Qry.Active := True;
-    Lc_Qry.First;
-    while not Lc_Qry.Eof do
-    Begin
-
-      Active := fALSE;
-      ParamByName('ITF_CODIGO').AsInteger := Lc_Qry.FieldByName('ITF_CODIGO').AsInteger;
-      ExecSQL;
-      if DM.IBT_Atualiza.active then DM.IBT_Atualiza.CommitRetaining;
-      Lc_Qry.Next;
+      Connection := DM.IBD_Gestao;
+      Transaction := DM.IBT_Atualiza;
+      CachedUpdates := True;
+      Active := False;
+      SQL.Clear;
+      Lc_Sql := 'SELECT ITF_CODIGO '+
+                'FROM TB_ITENS_NFL '+
+                'WHERE ITF_CODPED =:PED_CODIGO ';
+      SQL.Add(Lc_Sql);
+      ParamByName('PED_CODIGO').AsInteger := Pc_cd_Pedido;
+      Active := TRUE;
       end;
-    end;
-  Lc_Qry.Close;
-  FreeAndNil(Lc_Qry);
-  Lc_Del.Close;
-  FreeAndNil(Lc_Del);
+
+    with Lc_Del do
+      Begin
+      Connection := DM.IBD_Gestao;
+      Transaction := DM.IBT_Atualiza;
+      CachedUpdates := True;
+      Active := False;
+      SQL.Clear;
+      Lc_Sql := 'DELETE FROM TB_DESPACHO '+
+                'WHERE DSP_CODITF=:ITF_CODIGO ';
+      SQL.Add(Lc_Sql);
+      Lc_Qry.Active := True;
+      Lc_Qry.First;
+      while not Lc_Qry.Eof do
+      Begin
+
+        Active := fALSE;
+        ParamByName('ITF_CODIGO').AsInteger := Lc_Qry.FieldByName('ITF_CODIGO').AsInteger;
+        ExecSQL;
+        if DM.IBT_Atualiza.active then DM.IBT_Atualiza.CommitRetaining;
+        Lc_Qry.Next;
+        end;
+      end;
+  Finally
+    Lc_Qry.Close;
+    FreeAndNil(Lc_Qry);
+    Lc_Del.Close;
+    FreeAndNil(Lc_Del);
+  End;
 end;
 
 end.

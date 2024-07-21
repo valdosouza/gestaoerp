@@ -83,11 +83,11 @@ end;
 
 function TControllerComissao.insert: boolean;
 begin
+  Result := True;
   try
     if Registro.Codigo = 0 then
        Registro.Codigo := Generator('GN_COMISSAO');
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -95,11 +95,11 @@ end;
 
 function TControllerComissao.save: boolean;
 begin
+  Result := True;
   try
     if Registro.Codigo = 0 then
        Registro.Codigo := Generator('GN_COMISSAO');
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -108,6 +108,7 @@ end;
 
 function TControllerComissao.getById: Boolean;
 begin
+  Result := True;
   _getByKey(Registro);
 end;
 

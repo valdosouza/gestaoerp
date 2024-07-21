@@ -38,6 +38,7 @@ end;
 
 function TControllerGestaoWeb.getByKey: Boolean;
 begin
+  Result := True;
   _getByKey(Registro);
 end;
 
@@ -102,10 +103,10 @@ end;
 
 function TControllerGestaoWeb.insert: boolean;
 begin
+  Result := True;
   try
     Registro.WebID := getNext;
     insertObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -113,6 +114,7 @@ end;
 
 function TControllerGestaoWeb.setToExport: Boolean;
 begin
+  Result := True;
   _getByKey(Registro);
   if not exist then
   Begin

@@ -48,6 +48,7 @@ uses  Un_Regra_Negocio;
 
 function TControllerMovimentoFinanceiro.atualiza: boolean;
 begin
+  result := True;
   UpdateObj(Registro);
 end;
 
@@ -88,9 +89,9 @@ end;
 
 function TControllerMovimentoFinanceiro.delete: boolean;
 begin
+  result := True;
   try
     deleteObj(Registro);
-    Result := true;
   except
     Result := FAlse;
   end;
@@ -168,13 +169,13 @@ end;
 
 function TControllerMovimentoFinanceiro.getByID: Boolean;
 begin
+  result := True;
   _getByKey(Registro);
 end;
 
 procedure TControllerMovimentoFinanceiro.getByQuitacao;
 var
   Lc_Qry : TSTQuery;
-  LITem : TMovimentoFinanceiro;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -190,7 +191,7 @@ begin
       FetchAll;
       exist := RecordCount > 0;
       if exist then
-        get(Lc_Qry,LITem);
+        get(Lc_Qry,Registro);
       Close;
     end;
   Finally
@@ -427,17 +428,20 @@ end;
 
 function TControllerMovimentoFinanceiro.insere: boolean;
 begin
+  result := True;
   Registro.Codigo := nextCodigo;
   InsertObj(Registro);
 end;
 
 function TControllerMovimentoFinanceiro.migra: Boolean;
 begin
+  result := True;
   InsertObj(Registro);
 end;
 
 function TControllerMovimentoFinanceiro.salva: boolean;
 begin
+  result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := nextCodigo;
   SaveObj(Registro);

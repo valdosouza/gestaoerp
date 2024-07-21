@@ -47,9 +47,9 @@ end;
 
 function TControllerEmbalagem.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -64,11 +64,11 @@ end;
 
 function TControllerEmbalagem.insert: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_EMBALAGEM');
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -76,14 +76,15 @@ end;
 
 function TControllerEmbalagem.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerEmbalagem.replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -91,6 +92,7 @@ end;
 
 function TControllerEmbalagem.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_EMBALAGEM');
   SaveObj(Registro);
@@ -98,9 +100,9 @@ end;
 
 function TControllerEmbalagem.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;

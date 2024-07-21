@@ -271,7 +271,7 @@ Begin
     SQl.add('ORDER BY PRO_DESCRICAO');
     //passagem de parametros
     if (length(Pc_Tipo) > 0) then
-      paramByName('PRO_TIPO').AsAnsiString := Pc_Tipo;
+      paramByName('PRO_TIPO').AsString := Pc_Tipo;
     Active := true;
     FetchAll;
   end;

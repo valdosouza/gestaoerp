@@ -13,8 +13,8 @@ Type
     procedure setFFiscal(const Value: TObjEntityFiscal);
 
   public
-    constructor Create;
-    destructor Destroy;
+    Constructor create;
+    Destructor destroy;
     procedure clear;
     property Colaborador : TCollaborator read FColaborador write setFColaborador;
     property Fiscal : TObjEntityFiscal read FFiscal write setFFiscal;

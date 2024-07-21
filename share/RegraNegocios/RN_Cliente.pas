@@ -33,9 +33,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('insert into "TB_CLIENTE"( '+
@@ -73,9 +73,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('SELECT CLI_JUST_XML_NFE from TB_CLIENTE WHERE CLI_CODEMP =:EMP_CODIGO ');
@@ -96,9 +96,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt:=' select EMP_CODIGO,EMP_NOME '+
@@ -159,8 +159,8 @@ Var
 begin
   if Pc_Check_On.Checked then
   Begin
+    Lc_Filter := TStringList.Create;
     Try
-      Lc_Filter := TStringList.Create;
       Pc_AbreListaCliente(Pc_Order);
       Pc_Check_Off.Checked := False;
       Pc_Check_Off.Enabled := true;
@@ -208,9 +208,9 @@ Var
 Begin
   if StrToIntDef(Trim(Fc_cd_Empresa),0) > 0 then
   Begin
+    LcBase := TControllerBase.create(nil);
+    Lc_Qry := LcBase.GeraQuery;
     Try
-      LcBase := TControllerBase.create(nil);
-      Lc_Qry := LcBase.GeraQuery;
       with Lc_Qry do
       Begin
         SQL.Add('SELECT ' + Fc_Campo  +
@@ -303,8 +303,8 @@ Begin
   //VerIfica o Saldo restante do Cliente
   If (Fc_Tb_Geral('L','FIN_G_BLOQ_LIMITE','') = 'S')then
   Begin
+    Lc_Forma := TControllerFormaPagamento.create(nil);
     Try
-      Lc_Forma := TControllerFormaPagamento.create(nil);
       //Caso o limite não seja liberado para esta forma de pagamento prossegue
       if not Lc_Forma.ValidaLimiteFormaPagamento(Cd_FormaPagto) then
       Begin

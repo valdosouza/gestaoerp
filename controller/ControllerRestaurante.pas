@@ -42,6 +42,7 @@ end;
 
 function TControllerRestaurante.delete: boolean;
 begin
+  Result := True;
   deleteObj(registro);
 end;
 
@@ -61,6 +62,7 @@ end;
 
 function TControllerRestaurante.salva: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 

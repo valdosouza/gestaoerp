@@ -77,10 +77,10 @@ end;
 
 function TControllerTabelaPreco.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteItens;
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -117,11 +117,11 @@ end;
 
 function TControllerTabelaPreco.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_TABELA_PRECO');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -130,14 +130,15 @@ end;
 
 function TControllerTabelaPreco.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerTabelaPreco.replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -145,11 +146,11 @@ end;
 
 function TControllerTabelaPreco.save: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_TABELA_PRECO');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -157,9 +158,9 @@ end;
 
 function TControllerTabelaPreco.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -250,7 +251,6 @@ end;
 function TControllerTabelaPreco.getPrincipal: Integer;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TTabelaPreco;
 begin
   Result := 0;
   Lc_Qry := GeraQuery;

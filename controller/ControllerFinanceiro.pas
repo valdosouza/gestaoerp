@@ -76,9 +76,9 @@ end;
 
 function TControllerFinanceiro.Atualiza: boolean;
 begin
+  result := True;
   try
     UpdateObj(Registro);
-    result := TRue;
   except
     result := False;
   end;
@@ -277,9 +277,9 @@ end;
 
 function TControllerFinanceiro.delete: boolean;
 begin
+  result := True;
   try
     deleteObj(Registro);
-    Result := True;
   finally
     Result := False;
   end;
@@ -565,6 +565,7 @@ end;
 
 function TControllerFinanceiro.insere: boolean;
 begin
+  result := True;
   if Registro.codigo = 0 then
     Registro.codigo := Generator('GN_FINANCEIRO');
   InsertObj(Registro);
@@ -572,11 +573,13 @@ end;
 
 function TControllerFinanceiro.migra: Boolean;
 begin
+  result := True;
   InsertObj(Registro);
 end;
 
 function TControllerFinanceiro.salva: boolean;
 begin
+  result := True;
   if Registro.codigo = 0 then
     Registro.codigo := Generator('GN_FINANCEIRO');
   SaveObj(Registro);

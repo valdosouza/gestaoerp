@@ -116,9 +116,9 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : sTRING;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'UPDATE TB_ENDERECO SET   ' +

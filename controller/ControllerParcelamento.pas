@@ -107,7 +107,6 @@ end;
 function TControllerParcelamento.getValor: Real;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TParcelamento;
 begin
   Result := 0;
   Lc_Qry := GeraQuery;

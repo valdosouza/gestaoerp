@@ -29,6 +29,7 @@ implementation
 
 function TControllerCartao.Atualiza: boolean;
 begin
+  Result := True;
   updateObj(REgistro);
 end;
 
@@ -47,6 +48,7 @@ end;
 
 function TControllerCartao.Delete: boolean;
 begin
+  Result := True;
   deleteObj(Registro)
 end;
 
@@ -61,6 +63,7 @@ function TControllerCartao.getByCodigoQuitacao: Boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
@@ -86,12 +89,14 @@ end;
 
 function TControllerCartao.insere: boolean;
 begin
+  Result := True;
   Registro.Codigo := Generator('GN_CARTAO');
   SaveObj(Registro);
 end;
 
 function TControllerCartao.salva: boolean;
 begin
+  Result := True;
   if registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_CARTAO');
   SaveObj(Registro);

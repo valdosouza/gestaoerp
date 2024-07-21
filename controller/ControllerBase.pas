@@ -78,13 +78,11 @@ Type
 implementation
 
 { TControllerBase }
-
-
-
 function TControllerBase.existObj<T>(Obj: T): Boolean;
 VAr
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     try
@@ -130,6 +128,7 @@ function TControllerBase.deleteObj<T>(Obj: T): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   try
     try
@@ -170,9 +169,9 @@ end;
 
 function TControllerBase.clearObj<T>(Obj: T): Boolean;
 begin
+  Result := True;
   Try
     TGenericORM._Clear(Obj);
-    Result := True;
   except
     Result := False;
   End;
@@ -275,6 +274,7 @@ function TControllerBase.getMaxTable(Field,Tab: String): Integer;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := 0;
   Lc_Qry := GeraQuery;
   try
     try
@@ -328,6 +328,7 @@ function TControllerBase.insertObj<T>(Obj: T): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   try
     try
@@ -429,7 +430,6 @@ end;
 
 procedure TControllerBase.setGenerator(Generator, Sequencia: String);
 var
-  Lc_SqlTxt: string;
   Lc_Qry : TSTQuery;
 begin
   Lc_Qry := GeraQuery;
@@ -451,9 +451,9 @@ end;
 
 function TControllerBase.TimeValid(value: String): Boolean;
 begin
+  Result := True;
   try
     StrToTime(Value);
-    Result := True;
   Except
     Result := False;
   end;
@@ -464,6 +464,7 @@ function TControllerBase.updateObj<T>(Obj: T): Boolean;
 Var
   Lc_Qry : TSTQuery;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   try
     try
@@ -523,7 +524,6 @@ end;
 
 function TControllerBase.Generator(pc_Gen: string): Integer;
 var
-  Lc_SqlTxt: string;
   Lc_Qry : TSTQuery;
 begin
   Lc_Qry := GeraQuery;
@@ -562,12 +562,12 @@ begin
 end;
 
 procedure TControllerBase.geralog(origem, msg: string);
-Var
-  Lc_Tabela : String;
-  Lc_Tamanho : Integer;
-  Lc_Posicao : Integer;
-  Lc_Campo:String;
-  Lc_Generator : String;
+//Var
+//  Lc_Tabela : String;
+//  Lc_Tamanho : Integer;
+//  Lc_Posicao : Integer;
+//  Lc_Campo:String;
+//  Lc_Generator : String;
 begin
   GeralogCrashlytics(origem,msg);
   {

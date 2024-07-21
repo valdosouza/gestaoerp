@@ -36,7 +36,6 @@ uses Un_sistema, Un_Regra_Negocio;
 function TControllerCidade.Buscacodigo(IBGE:Integer; Descricao,UF:String): Integer;
 Var
   Lc_Qry : TSTQuery;
-  Lc_SqlTxt : String;
 begin
   Lc_Qry := GeraQuery;
   Try
@@ -52,8 +51,8 @@ begin
         SQL.Add('select CDD_CODIGO '+
                 'FROM TB_CIDADE '+
                 'WHERE CDD_DESCRICAO=:CDD_DESCRICAO AND CDD_UF =:CDD_UF');
-        ParamByName('CDD_DESCRICAO').AsAnsiString := Descricao;
-        ParamByName('CDD_UF').AsAnsiString := UF;
+        ParamByName('CDD_DESCRICAO').AsString := Descricao;
+        ParamByName('CDD_UF').AsString := UF;
         end;
       Active := True;
       FetchAll;
@@ -76,9 +75,9 @@ end;
 
 function TControllerCidade.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -93,11 +92,11 @@ end;
 
 function TControllerCidade.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_CIDADE');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -105,16 +104,17 @@ end;
 
 function TControllerCidade.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerCidade.salva: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_CIDADE');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -123,9 +123,9 @@ end;
 
 function TControllerCidade.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -141,6 +141,7 @@ var
   Lc_Qry : TSTQuery;
   LITem : TCidade;
 begin
+  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do

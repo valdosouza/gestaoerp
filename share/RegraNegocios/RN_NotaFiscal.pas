@@ -35,9 +35,9 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -75,9 +75,9 @@ Var
   Lc_Campo : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       if (Fc_Origem = '0') then
@@ -118,11 +118,20 @@ Var
   Lc_Vl_Imp_Municipal : real;
   Lc_Obs : String;
 Begin
+  Result := TStringList.Create;
+  Result.Clear;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
+  Lc_Vl_Produto := 0;
+  Lc_Vl_Base := 0;
+  Lc_Tx_Imp_Nacional := 0;
+  Lc_Tx_Imp_Estadual := 0;
+  Lc_Tx_Imp_Municipal := 0;
+  Lc_Vl_Imp_Nacional := 0;
+  Lc_Vl_Imp_Estadual := 0;
+  Lc_Vl_Imp_Municipal := 0;
+  Lc_Imp_Aprox := TStringList.Create;
   Try
-    Result := TStringList.Create;
-    Result.Clear;
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add('select ITF_VL_UNIT, ITF_QTDE, ITF_VL_DESC,PRO_CODIGONCM,PRO_ORIGEM '+
@@ -135,19 +144,6 @@ Begin
       ParamByName('NFL_CODIGO').AsInteger := Fc_Cd_NotaFiscal;
       Active := True;
       First;
-      Lc_Vl_Produto := 0;
-
-      Lc_Vl_Base := 0;
-
-      Lc_Tx_Imp_Nacional := 0;
-      Lc_Tx_Imp_Estadual := 0;
-      Lc_Tx_Imp_Municipal := 0;
-
-      Lc_Vl_Imp_Nacional := 0;
-      Lc_Vl_Imp_Estadual := 0;
-      Lc_Vl_Imp_Municipal := 0;
-
-      Lc_Imp_Aprox := TStringList.Create;
       while not eof do
       Begin
          Fc_ImpostoAproximado(Lc_Imp_Aprox,FieldByName('PRO_CODIGONCM').AsString,

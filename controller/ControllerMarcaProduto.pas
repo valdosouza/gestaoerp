@@ -49,9 +49,9 @@ end;
 
 function TControllerMarcaProduto.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -66,11 +66,11 @@ end;
 
 function TControllerMarcaProduto.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_MARCAPRODUTO');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -78,14 +78,15 @@ end;
 
 function TControllerMarcaProduto.migra: boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerMarcaProduto.replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -94,6 +95,7 @@ end;
 
 function TControllerMarcaProduto.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_MARCAPRODUTO');
   SaveObj(Registro);
@@ -102,9 +104,9 @@ end;
 
 function TControllerMarcaProduto.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;

@@ -40,13 +40,13 @@ uses Un_DM, UN_Sistema, UN_MSG, STDataSet,
 
 function Fc_SaldoInventario(Fc_Cd_Produto,Fc_Cd_Estabelecimento:Integer; Fc_Data:TDate):Real;
 Var
-  Lc_SqlTxt : String;
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  Result := 0;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
@@ -73,9 +73,9 @@ Var
   Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
 
@@ -104,9 +104,9 @@ Var
   Lc_SqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT MAX(IVT_CODIGO) IVT_MAX '+
@@ -136,9 +136,9 @@ Var
   Lc_sqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_sqlTxt := 'SELECT  SUM(ITF_QTDE)ITF_QT_TOTAL, SUM(ITF_QTDE * ITF_VL_UNIT) ITF_SUBTOTAL, SUM((ITF_QTDE * ITF_VL_UNIT)* (ITF_AQ_IPI/100) ) ITF_VL_IPI '+
@@ -211,9 +211,10 @@ Var
   Lc_sqlTxt : String;
   LcBase : TControllerBase;
 begin
+  Result := 0;
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT IVT_CODIGO, IVT_VL_CUSTO, IVT_QT_ATUAL '+
@@ -245,9 +246,9 @@ Var
   Lc_sqlTxt : String;
   LcBase : TControllerBase;
 begin
+  LcBase := TControllerBase.create(nil);
+  Lc_Qry := LcBase.GeraQuery;
   Try
-    LcBase := TControllerBase.create(nil);
-    Lc_Qry := LcBase.GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'UPDATE TB_PEDIDO SET '+

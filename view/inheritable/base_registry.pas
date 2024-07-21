@@ -100,7 +100,7 @@ end;
 
 procedure TBaseRegistry.EditionControler(T: TComponent);
 Var
-  I,J:Integer;
+  I:Integer;
 begin
   with T do
   Begin

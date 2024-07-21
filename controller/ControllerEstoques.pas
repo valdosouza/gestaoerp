@@ -45,9 +45,9 @@ end;
 
 function TControllerEstoques.delete: boolean;
 begin
+  Result := True;
   Try
     DeleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -63,11 +63,11 @@ end;
 
 function TControllerEstoques.insert: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_ESTOQUES');
   Try
     InsertObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -109,14 +109,15 @@ end;
 
 function TControllerEstoques.migra: Boolean;
 begin
+  Result := True;
   SaveObj(Registro);
 end;
 
 function TControllerEstoques.Replace: boolean;
 begin
+  Result := True;
   Try
     replaceObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -124,11 +125,11 @@ end;
 
 function TControllerEstoques.save: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_ESTOQUES');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -136,9 +137,9 @@ end;
 
 function TControllerEstoques.update: boolean;
 begin
+  Result := True;
   Try
     UpdateObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -153,7 +154,6 @@ end;
 procedure TControllerEstoques.getbyMain;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TEstoques;
 begin
   Lc_Qry := GeraQuery;
   Try
