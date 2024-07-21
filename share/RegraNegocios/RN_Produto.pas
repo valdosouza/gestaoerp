@@ -4,7 +4,7 @@ interface
 
 uses
   Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
-  StdCtrls,classes,db, UN_TabelasEmListas;
+  StdCtrls,classes,db, UN_TabelasEmListas,FireDAC.Stan.Param;
 
     Function  Fc_BuscaDescricaoProduto(Fc_cd_Produto:String):String;
     procedure Pc_VincularCodigoProdutoFornecedor(pro_codigo,Fornecedor,prf_produto:String);

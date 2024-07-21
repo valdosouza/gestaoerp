@@ -4,7 +4,7 @@ interface
 
 uses
   Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
-  StdCtrls,classes,db, ControllerFormaPagamento;
+  StdCtrls,classes,db, ControllerFormaPagamento,FireDAC.Stan.Param;
 
 
    function Fc_PegaParteFormaPgto(Fc_Descricao: String): Integer;

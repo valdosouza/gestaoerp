@@ -3,7 +3,8 @@ unit RN_Crud;
 interface
 
 uses
-  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,  classes,db,ControllerBase;
+  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,  classes,db,
+  ControllerBase,FireDAC.Stan.Param;
 
   Function Fc_VerificaRegistro(Fc_Tabela:String;Fc_Campo,Fc_Valor,Fc_Retorno : array of string):TStringList;
   function Fc_ApagarRegistro(Fc_Tabela:String;Fc_Campo : array of string;Fc_codigo : array of string):String;

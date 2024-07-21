@@ -3,7 +3,7 @@ unit ControllerItensCofins;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblItensCofins,   System.Generics.Collections,controllerProduto;
+      tblItensCofins,   System.Generics.Collections,controllerProduto,FireDAC.Stan.Param;
 
 
 Type

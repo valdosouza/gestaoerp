@@ -2,7 +2,7 @@ unit ControllerCidade;
 
 interface
 
-uses STDatabase,Classes, STQuery,SysUtils,ControllerBase,
+uses STDatabase,Classes, STQuery,SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblCidade ,Un_MSg,Generics.Collections;
 
 Type

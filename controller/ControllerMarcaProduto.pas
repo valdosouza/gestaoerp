@@ -3,7 +3,7 @@ unit ControllerMarcaProduto;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblMarcaProduto ,Un_MSg,System.Generics.Collections;
+      tblMarcaProduto ,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param;
 
 Type
   TListaMarcaProduto  = TObjectList<TMarcaProduto>;

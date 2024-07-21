@@ -3,7 +3,7 @@ unit ControllerItensICMS;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-       tblItensicms ,  Generics.Collections,controllerProduto;
+       tblItensicms ,  Generics.Collections,controllerProduto,FireDAC.Stan.Param;
 
 
 Type

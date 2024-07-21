@@ -2,7 +2,7 @@ unit ControllerEstoque;
 
 interface
 
-uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
+uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblEstoque ,Un_MSg,tblestoques, Generics.Collections,ControllerCtrlEstoque;
 
 Type

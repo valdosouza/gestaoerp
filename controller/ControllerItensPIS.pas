@@ -3,9 +3,7 @@ unit ControllerItensPIS;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblItenspis,
-      System.Generics.Collections,controllerProduto;
-
+      tblItenspis,System.Generics.Collections,controllerProduto,FireDAC.Stan.Param;
 
 Type
   TListaItemPIS = TObjectList<TItensPIS>;

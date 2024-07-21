@@ -3,7 +3,7 @@ unit ControllerEmbalagem;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      tblEmbalagem ,Un_MSg,System.Generics.Collections;
+      tblEmbalagem ,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param;
 
 Type
   TListaEmbalagem  = TObjectList<TEmbalagem>;

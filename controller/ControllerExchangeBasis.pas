@@ -2,7 +2,7 @@ unit ControllerExchangeBasis;
 
 interface
 
-uses STDatabase,Classes, Vcl.Grids,SysUtils,ControllerBase,
+uses STDatabase,Classes, Vcl.Grids,SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblExchangeBasis, Md5, STQuery, Generics.Collections;
 
 Type

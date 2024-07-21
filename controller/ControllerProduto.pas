@@ -2,7 +2,7 @@ unit ControllerProduto;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,Vcl.Forms,
-      tblProduto ,Un_MSg,ControllerMedida,
+      tblProduto ,Un_MSg,ControllerMedida,FireDAC.Stan.Param,
       Generics.Collections,controllerPreco,ObjMerchandise,ControllerEmbalagem,
       controllerEstoques,ControllerMarcaProduto,ControllerGRupos,ControllerCtrlEstoque,
       ControllerTabelaPreco,

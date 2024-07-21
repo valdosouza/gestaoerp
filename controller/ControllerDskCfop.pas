@@ -3,7 +3,7 @@ unit ControllerDskCfop;
 interface
 
 uses STDatabase,System.Classes, System.SysUtils,ControllerBase,
-      tblDskCfop, Md5, STQuery;
+      tblDskCfop, Md5, STQuery,FireDAC.Stan.Param;
 Type
   TControllerDskCfop = Class(TControllerBase)
 private

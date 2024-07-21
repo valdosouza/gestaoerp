@@ -3,7 +3,7 @@ unit ControllerFinanceiro;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema, tblFinanceiro ,ObjFinancialBills,
+      Un_sistema, tblFinanceiro ,ObjFinancialBills,FireDAC.Stan.Param,
       Generics.Collections, ControllerMovimentoFinanceiro, System.AnsiStrings,
       ControllerGestaoWeb, ControllerFormaPagamento;
 

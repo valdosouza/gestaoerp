@@ -3,7 +3,7 @@ unit RN_Endereco;
 interface
 
 uses
-  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
+  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,FireDAC.Stan.Param,
   StdCtrls,classes,db, ControllerEndereco, UnFunctions;
 
   function Fc_GravaEndereco(Fc_CODIGO: integer;

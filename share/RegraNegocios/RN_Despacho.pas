@@ -4,7 +4,7 @@ interface
 
 uses
   Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
-  StdCtrls,classes,db;
+  StdCtrls,classes,db,FireDAC.Stan.Param;
 
   procedure Pc_LancaDespacho(Pc_Qry: TSTQuery; Pc_Cd_pedido: Integer; Pc_Data_Prevista: Tdate);
   procedure Pc_AtualizaDespacho(Pc_Cd_Despacho,Pc_Cd_Pedido,Pc_Cd_Item,Pc_Cd_Produto:Integer;Pc_Data_Realizada: TDate;Pc_Qt_Produto:Real);

@@ -3,7 +3,7 @@ unit ControllerEstoques;
 interface
 
 uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      tblEstoques,tblEstoque,Un_MSg,System.Generics.Collections,
+      tblEstoques,tblEstoque,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param,
   ControllerEstoque;
 
 Type

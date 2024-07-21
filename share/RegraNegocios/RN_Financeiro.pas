@@ -3,7 +3,7 @@ unit RN_Financeiro;
 interface
 
 uses
-  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
+  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,FireDAC.Stan.Param,
   StdCtrls,classes,db,TypInfo,STTransaction, Vcl.Dialogs;
 
   Function Fc_SaldoDevedorCliente(Pc_cd_Cliente:Integer):Real;

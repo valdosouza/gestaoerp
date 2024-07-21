@@ -3,7 +3,7 @@ unit RN_Estoque;
 interface
 
 uses
-  STDatabase, STQuery, SysUtils,ControllerCtrlEstoque, Vcl.Forms;
+  STDatabase, STQuery, SysUtils,ControllerCtrlEstoque, Vcl.Forms,FireDAC.Stan.Param;
 //------------------------- Controle de Estoque Especifico---------------------------------------
   procedure Pc_Grava_EstoqueDiaAnterior(Pc_Cd_Estoque:Integer;
                                         Pc_Cd_Produto:Integer;

@@ -3,7 +3,7 @@ unit ControllerObsNota;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      Un_MSg,System.Generics.Collections, tblObsNota;
+      Un_MSg,System.Generics.Collections, tblObsNota,FireDAC.Stan.Param;
 
 Type
   TListaObsNota = TObjectList<TObsNota>;

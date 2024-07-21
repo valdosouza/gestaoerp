@@ -2,7 +2,7 @@ unit ControllerColaborador;
 
 interface
 
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
+uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblColaborador ,Un_MSg,Generics.Collections,
       ControllerCargo,ObjSalesMan,tblphone,tblAddress,ControllerUF, controllerCidade;
 

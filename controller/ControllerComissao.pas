@@ -2,8 +2,9 @@ unit ControllerComissao;
 
 interface
 
-uses STDatabase,STQuery,Classes, SysUtils,ControllerBase,
-      tblComissao, Md5;
+uses STDatabase,STQuery,Classes, SysUtils,ControllerBase, tblComissao, Md5,
+    FireDAC.Stan.Param;
+
 Type
   TControllerComissao = Class(TControllerBase)
   private
