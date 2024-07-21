@@ -2,7 +2,7 @@ unit ControllerRestaurante;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema, tblRestaurante,ControllerITensRTR;
+      Un_sistema, tblRestaurante,ControllerITensRTR,FireDAC.Stan.Param;
 
 
 Type

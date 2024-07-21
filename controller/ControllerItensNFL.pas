@@ -4,7 +4,7 @@ interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
        tblItensNFL ,ControllerItensICMS, ControllerItensIPI,ControllerItensPis,
-       ControllerItensCofins,ControllerItensII,
+       ControllerItensCofins,ControllerItensII,FireDAC.Stan.Param,
       Generics.Collections,controllerProduto,ControllerItensISSQN,
     ControllerItensNFLTributacao,ControllerExchangeBasis,
     ControllerItensRTR,ControllerItensAvulso;

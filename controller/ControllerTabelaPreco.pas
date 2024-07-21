@@ -2,9 +2,9 @@ unit ControllerTabelaPreco;
 
 interface
 
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      tblTabelaPreco,Un_MSg, Generics.Collections,
-  ControllerPreco, ControllerTabelaPrecoHasFormaPagto;
+uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
+      tblTabelaPreco,Un_MSg, Generics.Collections, ControllerPreco,
+      ControllerTabelaPrecoHasFormaPagto;
 
 Type
 

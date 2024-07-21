@@ -3,7 +3,8 @@ unit ControllerUsuario;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblUsuario , Un_MSg,System.Generics.Collections,MD5, ControllerColaborador, prm_users;
+      tblUsuario , Un_MSg,System.Generics.Collections,MD5, ControllerColaborador,
+      prm_users,FireDAC.Stan.Param;
 
 Type
   TListaUsuario = TObjectList<TUsuario>;

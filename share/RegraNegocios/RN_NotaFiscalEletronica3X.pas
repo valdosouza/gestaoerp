@@ -4,7 +4,7 @@ interface
 
 uses
   STDatabase, STQuery, SysUtils, ControllerItensNfl,ControllerBase,
-  Classes, System.Math,ACBrNFeDANFeESCPOS,
+  Classes, System.Math,ACBrNFeDANFeESCPOS,FireDAC.Stan.Param,
   ACBrNFe, pcnConversao, ACBrNFeDANFEClass, pcnNFeW, pcnLeitor,ACBrDFeSSL,
   ACBrNFeNotasFiscais, pcnNFe, ACBrNFeWebServices,pcnConversaoNFe,
   ACBrNFeDANFeRLClass, ACBrPosPrinter,

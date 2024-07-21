@@ -3,9 +3,8 @@ unit RN_Permissao;
 interface
 
 uses
-
   Un_DM,  UN_MSG, STQuery,SysUtils,MD5,ControllerUsuario, Un_stored_procedures,
-  UnFunctions;
+  UnFunctions, FireDAC.Stan.Param;
 
   Function Fc_VerificaPermissao(Fc_Interface,Fc_Descricao,Fc_Privilegio:String;Fc_cd_Usuario:Integer;Fc_Msg:String):Boolean;
   function Fc_AutenticaUsuario(Fc_Usuario,Fc_Senha:String): Boolean;

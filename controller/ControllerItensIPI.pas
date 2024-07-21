@@ -3,7 +3,7 @@ unit ControllerItensIPI;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-       tblItensipi,    Generics.Collections,controllerProduto;
+       tblItensipi,    Generics.Collections,controllerProduto,FireDAC.Stan.Param;
 
 
 Type

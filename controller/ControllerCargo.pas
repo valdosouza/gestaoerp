@@ -3,17 +3,14 @@ unit ControllerCargo;
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase, tblCargo ,Un_MSg,
-    Generics.Collections, prm_job_position;
+    Generics.Collections, prm_job_position,FireDAC.Stan.Param;
 
 Type
   TListaCargo = TObjectList<TCargo>;
-
   TControllerCargo = Class(TControllerBase)
-
   private
     FParametros: TPrmJobPosition;
     procedure setFParametros(const Value: TPrmJobPosition);
-
   public
     Registro : TCargo;
     Lista : TListaCargo;

@@ -2,8 +2,7 @@ unit ControllerParcelamento;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-       tblParcelamento ,
-      Generics.Collections;
+       tblParcelamento ,FireDAC.Stan.Param,  Generics.Collections;
 Type
   TListParcelamento = TObjectList<TParcelamento>;
 

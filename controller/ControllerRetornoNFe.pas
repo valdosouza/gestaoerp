@@ -2,7 +2,7 @@ unit ControllerRetornoNFe;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      Un_sistema, tblRetornoNfe,
+      Un_sistema, tblRetornoNfe,FireDAC.Stan.Param,
       Generics.Collections,ObjInvoiceReturn55,ControllerGestaoWeb;
 
 Type

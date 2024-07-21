@@ -2,7 +2,7 @@ unit ControllerEmpresa;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-       tblEmpresa ,ControllerEndereco,
+       tblEmpresa ,ControllerEndereco,FireDAC.Stan.Param,
       Generics.Collections, objcustomer, ControllerColaborador,objEntityFiscal,
       tblphone,tblAddress;
 

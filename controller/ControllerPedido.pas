@@ -6,7 +6,8 @@ uses ACBrUtil,STDatabase,Classes, STQuery, SysUtils,ControllerBase,
       ControllerEmpresa,ControllerEndereco, ControllerCliente,ControllerGestaoWeb,
       ControllerItensNFL, Generics.Collections, ControllerParcelamento,
       ControllerColaborador, System.Math,objOrderSale,tblOrderItem,ObjCustomer,
-      ControllerFormaPagamento,ControllerCtrlEstoque, AnsiStrings,ControllerRestaurante;
+      ControllerFormaPagamento,ControllerCtrlEstoque, AnsiStrings,ControllerRestaurante,
+      FireDAC.Stan.Param;
 
 Type
   TListaPedido = TObjectList<TPedido>;

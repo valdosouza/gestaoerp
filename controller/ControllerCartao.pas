@@ -2,7 +2,7 @@ unit ControllerCartao;
 
 interface
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,tblCartao,
-      Un_Regra_Negocio, tblFinanceiro,ControllerCartaoEletronico ;
+      Un_Regra_Negocio, tblFinanceiro,ControllerCartaoEletronico,FireDAC.Stan.Param ;
 
 
 Type

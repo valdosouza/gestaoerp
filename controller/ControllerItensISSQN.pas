@@ -3,15 +3,11 @@ unit ControllerItensISSQN;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblItensissqn,
-      System.Generics.Collections,controllerProduto;
-
+      tblItensissqn, System.Generics.Collections,controllerProduto, FireDAC.Stan.Param;
 
 Type
   TListaItemISSQN = TObjectList<TItensISSQN>;
-
   TControllerItensISSQN = Class(TControllerBase)
-
   private
     function nextCodigo:Integer;
   public

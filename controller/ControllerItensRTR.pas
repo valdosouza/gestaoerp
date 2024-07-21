@@ -2,7 +2,7 @@ unit ControllerItensRTR;
 
 interface
 
-uses ControllerBase, tblItensRTR, System.Classes, STQuery;
+uses ControllerBase, tblItensRTR, System.Classes, STQuery, FireDAC.Stan.Param;
 
 Type
   TControllerItensRTR = Class(TControllerBase)

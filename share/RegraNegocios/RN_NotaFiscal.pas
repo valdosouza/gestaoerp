@@ -4,7 +4,7 @@ interface
 
 uses
   STDatabase, STQuery, SysUtils, Classes, Vcl.Controls,STTransaction,
-  System.Math, Vcl.Graphics,ControllerBase, Vcl.Dialogs;
+  System.Math, Vcl.Graphics,ControllerBase, Vcl.Dialogs,FireDAC.Stan.Param;
 
   Function Fc_ObsVeiculoNotaFiscal(Fc_Cd_Pedido:Integer):String;
   procedure Fc_ImpostoAproximado(Lista: TStringList;Fc_CodigoNCM:String; Fc_Origem:String);

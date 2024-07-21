@@ -2,7 +2,7 @@ unit ControllerMedida;
 
 interface
 
-uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
+uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
        tblMedida ,Un_MSg,Generics.Collections, ObjRestGroupHasMeasure;
 
 Type

@@ -3,7 +3,7 @@ unit RN_Empresa;
 interface
 
 uses
-  STDatabase, STQuery, SysUtils,ACBrValidador,STTransaction,
+  STDatabase, STQuery, SysUtils,ACBrValidador,STTransaction,FireDAC.Stan.Param,
   Vcl.Samples.Gauges, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Forms, Vcl.Dialogs;
 
 {----------------------------------------}

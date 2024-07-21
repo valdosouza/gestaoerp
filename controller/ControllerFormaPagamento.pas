@@ -2,7 +2,7 @@ unit ControllerFormaPagamento;
 
 interface
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-       tblFormaPagamento ,
+       tblFormaPagamento ,FireDAC.Stan.Param,
       Generics.Collections, ControllerPayTypeHasInterm;
 
 

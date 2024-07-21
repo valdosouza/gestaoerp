@@ -4,7 +4,7 @@ interface
 
 uses STDatabase,Classes, STQuery,Vcl.Grids ,SysUtils,ControllerBase,objCashier,
       Un_sistema,Un_Regra_Negocio,  tblDskCashier, tblDskCashierItems ,
-      Un_MSg, Generics.Collections;
+      Un_MSg, Generics.Collections,FireDAC.Stan.Param;
 
 Type
   TListaDskCashier = TObjectList<TDskCashier>;

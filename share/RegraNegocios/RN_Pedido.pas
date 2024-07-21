@@ -5,7 +5,7 @@ interface
 uses
   STDatabase, STQuery, SysUtils, main, RN_Permissao,ControllerItensNfl,
   Classes, System.Math,ControllerCtrlEstoque, System.StrUtils,ControllerBase,STTransaction,
-  Vcl.Dialogs;
+  Vcl.Dialogs,FireDAC.Stan.Param;
 
 
   procedure Pc_AtualizaTotalPedido(Pc_CODIGO:Integer;

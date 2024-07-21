@@ -3,7 +3,7 @@ unit RN_Cliente;
 interface
 
 uses
-  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
+  Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,FireDAC.Stan.Param,
   StdCtrls,classes,db,DBCtrls, RN_Empresa, Vcl.Dialogs;
 
 

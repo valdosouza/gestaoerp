@@ -12,7 +12,7 @@ uses
   STDatabase, QuickRpt, Vcl.Grids, Vcl.Mask, SHDocVw, Winapi.Windows,
   Vcl.Controls, Vcl.ComCtrls, STQuery, Vcl.DBGrids, Vcl.Samples.Gauges,
   UITypes, Vcl.StdCtrls, AnsiStrings, IniFiles, RN_Financeiro,
-  SysUtils, QRCtrls, Vcl.Imaging.jpeg, Vcl.Graphics, TypInfo,
+  SysUtils, QRCtrls, Vcl.Imaging.jpeg, Vcl.Graphics, TypInfo,FireDAC.Stan.Param,
   Vcl.Dialogs, Data.DB, System.Math, ACBrUtil,Un_stored_procedures,
   Vcl.OleCtrls, Variants, Vcl.Printers, Winapi.ShellAPI, Vcl.ExtCtrls,
   Winapi.WinInet, IdHTTP, Registry, ControllerPreco,ControllerProduto,

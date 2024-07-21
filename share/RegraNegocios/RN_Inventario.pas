@@ -3,7 +3,7 @@ unit RN_Inventario;
 interface
 
 uses
-  STQuery, SysUtils, Variants;
+  STQuery, SysUtils, Variants,FireDAC.Stan.Param;
 
 //-------------------------Controle de Inventario ----------------------------------------------
 

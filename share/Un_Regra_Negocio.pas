@@ -5,8 +5,8 @@ unit Un_Regra_Negocio;
 interface
 
 uses
-   ACBrdevice,FavoritoButtons,ControllerBase,
-   ACBrBase, ACBrBoleto, ACBrUtil, ACBrBoletoFCFortesFr,
+   ACBrdevice,FavoritoButtons,ControllerBase,FireDAC.Stan.Param,
+   ACBrBase, ACBrBoleto, ACBrUtil.Math, ACBrBoletoFCFortesFr,
    Un_DM, UN_MSG,  ACBrGAV,Winapi.WinSpool, Vcl.StdCtrls, Vcl.DBCtrls,
   Vcl.Imaging.jpeg, Classes, Vcl.Grids, STQuery, Vcl.Forms,
   SysUtils, Variants, Data.DB, System.Math, UITypes,

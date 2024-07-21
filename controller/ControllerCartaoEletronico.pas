@@ -3,7 +3,7 @@ unit ControllerCartaoEletronico;
 interface
 
 uses STDatabase,System.Classes, System.SysUtils,ControllerBase,
-      ControllerFormaPagamento,
+      ControllerFormaPagamento,FireDAC.Stan.Param,
       tblCartaoEletronico, Md5, STQuery;
 Type
   TControllerCartaoEletronico = Class(TControllerBase)

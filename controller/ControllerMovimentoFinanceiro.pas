@@ -3,7 +3,7 @@ unit ControllerMovimentoFinanceiro;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      tblMovimentoFinanceiro,objFinancialStatement,
+      tblMovimentoFinanceiro,objFinancialStatement,FireDAC.Stan.Param,
       Generics.Collections,controllerProduto, ControllerFormaPagamento;
 
 
