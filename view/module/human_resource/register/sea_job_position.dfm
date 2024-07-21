@@ -13,9 +13,6 @@ inherited SeaJobPosition: TSeaJobPosition
     ExplicitTop = 59
     ExplicitWidth = 740
     ExplicitHeight = 398
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 736
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 644
       Height = 380

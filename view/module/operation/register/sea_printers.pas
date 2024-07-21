@@ -34,8 +34,8 @@ procedure TSeaPrinters.openRegister(pCodigo: Integer);
 var
   Lc_form : TRegPrinters;
 begin
+  Lc_form := TRegPrinters.Create(self);
   Try
-    Lc_form := TRegPrinters.Create(self);
     Lc_form.CodigoRegistro := pCodigo;
     Lc_form.ShowModal;
   Finally

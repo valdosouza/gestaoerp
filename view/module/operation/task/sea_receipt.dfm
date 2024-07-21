@@ -13,9 +13,6 @@ inherited SeaReceipt: TSeaReceipt
     ExplicitTop = 73
     ExplicitWidth = 672
     ExplicitHeight = 299
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 668
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 576
       Height = 281

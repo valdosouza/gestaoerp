@@ -60,8 +60,8 @@ procedure TSeaJobPosition.openRegister(pCodigo: Integer);
 var
   Lc_form : TRegJobPosition;
 begin
+  Lc_form := TRegJobPosition.Create(self);
   Try
-    Lc_form := TRegJobPosition.Create(self);
     Lc_form.CodigoRegistro := pCodigo;
     Lc_form.ShowModal;
   Finally

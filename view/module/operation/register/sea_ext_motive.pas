@@ -14,7 +14,8 @@ type
     Label28: TLabel;
     E_BuscaDescricao: TEdit;
   private
-    { Private declarations }
+  protected
+    procedure openRegister(pCodigo:Integer);override;
   public
     { Public declarations }
   end;
@@ -25,5 +26,22 @@ var
 implementation
 
 {$R *.dfm}
+uses reg_ext_motive;
+
+{ TSeaExtMotive }
+
+procedure TSeaExtMotive.openRegister(pCodigo: Integer);
+var
+  Lc_form : TRegExtMotive;
+begin
+  Lc_form := TRegExtMotive.Create(self);
+  Try
+    Lc_form.CodigoRegistro := pCodigo;
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
 
 end.

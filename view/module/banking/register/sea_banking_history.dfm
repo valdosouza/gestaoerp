@@ -2,19 +2,17 @@ inherited SeaBankingHistory: TSeaBankingHistory
   Caption = 'Pesquisa de Hit'#243'rico Bancario'
   ClientHeight = 301
   ClientWidth = 568
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 580
-  ExplicitHeight = 364
+  ExplicitWidth = 574
+  ExplicitHeight = 350
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
     Width = 562
     Height = 219
+    ExplicitTop = 79
+    ExplicitWidth = 562
     ExplicitHeight = 375
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 558
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 466
       Height = 201

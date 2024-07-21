@@ -15,7 +15,8 @@ type
     E_BuscaDescricao: TEdit;
     E_BuscaCodigo: TEdit;
   private
-    { Private declarations }
+  protected
+    procedure openRegister(pCodigo:Integer);override;
   public
     { Public declarations }
   end;
@@ -26,5 +27,23 @@ var
 implementation
 
 {$R *.dfm}
+
+uses reg_electronic_card;
+
+{ TSeaEletronicCard }
+
+procedure TSeaEletronicCard.openRegister(pCodigo: Integer);
+var
+  Lc_form : TRegElectronicCard;
+begin
+  Lc_form := TRegElectronicCard.Create(self);
+  Try
+    Lc_form.CodigoRegistro := pCodigo;
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
 
 end.

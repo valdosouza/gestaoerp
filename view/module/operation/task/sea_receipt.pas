@@ -43,8 +43,8 @@ procedure TSeaReceipt.openRegister(pCodigo: Integer);
 var
   Lc_form : TRegReceipt;
 begin
-  Try
     Lc_form := TRegReceipt.Create(self);
+  Try
     Lc_form.CodigoRegistro := pCodigo;
     Lc_form.ShowModal;
   Finally

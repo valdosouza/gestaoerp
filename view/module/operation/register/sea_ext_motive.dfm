@@ -2,16 +2,17 @@ inherited SeaExtMotive: TSeaExtMotive
   Caption = 'Extintor - Pesquisa de Motivos Reprova'#231#227'o/Condena'#231#227'o'
   ClientHeight = 374
   ClientWidth = 753
-  ExplicitWidth = 765
-  ExplicitHeight = 437
+  ExplicitWidth = 759
+  ExplicitHeight = 423
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 69
     Width = 747
     Height = 302
     ExplicitTop = 69
-    ExplicitWidth = 741
-    ExplicitHeight = 293
+    ExplicitWidth = 747
+    ExplicitHeight = 302
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 743
     end
@@ -22,8 +23,8 @@ inherited SeaExtMotive: TSeaExtMotive
     inherited pnl_pesq_right: TPanel
       Left = 653
       Height = 284
-      ExplicitLeft = 647
-      ExplicitHeight = 275
+      ExplicitLeft = 653
+      ExplicitHeight = 284
       inherited Sb_Sair_0: TSpeedButton
         Top = 221
         ExplicitTop = 221
@@ -45,7 +46,7 @@ inherited SeaExtMotive: TSeaExtMotive
   inherited Pnl_Parametros: TPanel
     Width = 747
     Height = 60
-    ExplicitWidth = 741
+    ExplicitWidth = 747
     ExplicitHeight = 60
     object Label3: TLabel
       Left = 8

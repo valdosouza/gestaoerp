@@ -2,8 +2,9 @@ inherited SeaEletronicCard: TSeaEletronicCard
   Caption = 'Pesquisa de Cart'#245'es Eletronicos'
   ClientHeight = 339
   ClientWidth = 550
-  ExplicitWidth = 562
-  ExplicitHeight = 402
+  ExplicitWidth = 556
+  ExplicitHeight = 388
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
@@ -12,9 +13,6 @@ inherited SeaEletronicCard: TSeaEletronicCard
     ExplicitTop = 71
     ExplicitWidth = 538
     ExplicitHeight = 256
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 540
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 448
       Height = 247

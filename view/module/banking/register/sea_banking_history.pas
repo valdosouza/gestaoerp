@@ -16,7 +16,8 @@ type
     E_BuscaCodigo: TEdit;
     DBGrid2: TDBGrid;
   private
-    { Private declarations }
+  protected
+    procedure openRegister(pCodigo:Integer);override;
   public
     { Public declarations }
   end;
@@ -27,5 +28,23 @@ var
 implementation
 
 {$R *.dfm}
+
+uses reg_banking_history;
+
+{ TSeaBankingHistory }
+
+procedure TSeaBankingHistory.openRegister(pCodigo: Integer);
+var
+  Lc_form : TRegBankingHistory;
+begin
+  Lc_form := TRegBankingHistory.Create(self);
+  Try
+    Lc_form.CodigoRegistro := pCodigo;
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
+
+end;
 
 end.
