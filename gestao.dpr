@@ -13,7 +13,8 @@ uses
   reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition},
   sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
   env in 'env.pas',
-  prm_receipt in 'parameter\prm_receipt.pas';
+  prm_receipt in 'parameter\prm_receipt.pas',
+  prm_historico_bancario in 'parameter\prm_historico_bancario.pas';
 
 {$R *.res}
 

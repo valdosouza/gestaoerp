@@ -32,14 +32,11 @@ type
     Recibo : TControllerRecibo;
   protected
     procedure openRegister(pCodigo:Integer);override;
-    procedure setFSelecionar(const Value: Boolean);
-    procedure setFSelecionado(const Value: Boolean);
     //Start
     procedure CriarVariaveis;Override;
     procedure finalizaVariaveis;override;
     procedure FormataTela;Override;
     //Search operations
-    function validateGetView:Boolean;Virtual;
     procedure GetView;Override;
     procedure Search;Override;
     procedure SetRegister;Override;
@@ -93,7 +90,6 @@ begin
   Finally
     FreeAndNil(Lc_form);
   End;
-
 end;
 
 
@@ -134,24 +130,11 @@ begin
   inherited;
 end;
 
-procedure TSeaReceipt.setFSelecionado(const Value: Boolean);
-begin
-
-end;
-
-procedure TSeaReceipt.setFSelecionar(const Value: Boolean);
-begin
-
-end;
 
 procedure TSeaReceipt.SetRegister;
 begin
   openRegister(0);
 end;
 
-function TSeaReceipt.validateGetView: Boolean;
-begin
-
-end;
 
 end.

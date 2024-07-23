@@ -25,16 +25,13 @@ type
     procedure E_Vl_ReciboExit(Sender: TObject);
   private
     Recibo : TControllerRecibo;
-
   protected
     //Variaveis
     procedure CriarVariaveis;Override;
     procedure FinalizaVariaveis;Override;
     procedure IniciaVariaveis;Override;
     procedure setPerfil;Override;
-
     procedure ShowData;override;
-
     //inserir
     procedure Insert;override;
     //Editar
