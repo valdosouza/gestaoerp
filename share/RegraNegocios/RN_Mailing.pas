@@ -16,7 +16,8 @@ uses
   function Fc_ValidaEmail(email:String):boolean;
 implementation
 
-uses Un_DM, UN_Sistema, UN_MSG, STDataSet,Un_Regra_Negocio, RN_Endereco, RN_Crud,  main;
+uses Un_DM, UN_Sistema, UN_MSG, STDataSet,Un_Regra_Negocio, RN_Endereco, RN_Crud,  main,
+  env;
 
 function Fc_AtualizaMailing(Fc_CODEMP,
                             Fc_TIPO,

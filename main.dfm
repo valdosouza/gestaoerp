@@ -2,7 +2,7 @@ inherited FrMain: TFrMain
   Caption = 'Sistema de Gest'#227'o Empresarial'
   ClientHeight = 587
   ClientWidth = 1199
-  Menu = MnuPsl
+  Menu = MnuOper
   ExplicitWidth = 1205
   ExplicitHeight = 636
   PixelsPerInch = 96

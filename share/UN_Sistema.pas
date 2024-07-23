@@ -356,7 +356,7 @@ procedure Pc_Atualiza_Vend_Excluido(Pc_cd_vendedor:Integer);
 
 implementation
 
-uses Un_Regra_Negocio, ControllerVehicleOs,  ControllerTabelaPreco;
+uses Un_Regra_Negocio, ControllerVehicleOs,  ControllerTabelaPreco, env;
 
 
 const

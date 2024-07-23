@@ -184,7 +184,8 @@ procedure Pc_Observacao(Pc_Transacao : TSTTransaction;
 
 implementation
 
-uses Un_DM, UN_Sistema, UN_MSG, STDataSet, Un_Regra_Negocio, main,RI_MovimentoFinanceiro;
+uses Un_DM, UN_Sistema, UN_MSG, STDataSet, Un_Regra_Negocio, main,RI_MovimentoFinanceiro,
+  env;
 
 
 {A}

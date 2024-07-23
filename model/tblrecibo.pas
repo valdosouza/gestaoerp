@@ -10,23 +10,23 @@ Type
   TRecibo = Class(TGenericEntity)
   private
     FREC_CODQTC: Integer;
-    FREC_OBS: Integer;
-    FREC_SACADO: Integer;
-    FREC_VALOR: Integer;
+    FREC_OBS: String;
+    FREC_SACADO: String;
+    FREC_VALOR: Real;
     FREC_CODIGO: Integer;
-    FREC_EMITENTE: Integer;
+    FREC_EMITENTE: String;
     FREC_NUMERO: Integer;
     FREC_CODMHA: Integer;
-    FREC_DATA: Integer;
+    FREC_DATA: TDate;
     procedure setFREC_CODIGO(const Value: Integer);
     procedure setFREC_CODMHA(const Value: Integer);
     procedure setFREC_CODQTC(const Value: Integer);
-    procedure setFREC_DATA(const Value: Integer);
-    procedure setFREC_EMITENTE(const Value: Integer);
+    procedure setFREC_DATA(const Value: TDate);
+    procedure setFREC_EMITENTE(const Value: String);
     procedure setFREC_NUMERO(const Value: Integer);
-    procedure setFREC_OBS(const Value: Integer);
-    procedure setFREC_SACADO(const Value: Integer);
-    procedure setFREC_VALOR(const Value: Integer);
+    procedure setFREC_OBS(const Value: String);
+    procedure setFREC_SACADO(const Value: String);
+    procedure setFREC_VALOR(const Value: Real);
 
   public
     [KeyField('REC_CODIGO')]
@@ -38,30 +38,29 @@ Type
     property Estabelecimento: Integer read FREC_CODMHA write setFREC_CODMHA;
 
     [FieldName('REC_DATA')]
-    property Data: Integer read FREC_DATA write setFREC_DATA;
+    property Data: TDate read FREC_DATA write setFREC_DATA;
 
     [FieldName('REC_NUMERO')]
     property Numero: Integer read FREC_NUMERO write setFREC_NUMERO;
 
     [FieldName('REC_VALOR')]
-    property Valor: Integer read FREC_VALOR write setFREC_VALOR;
+    property Valor: Real read FREC_VALOR write setFREC_VALOR;
 
     [FieldName('REC_SACADO')]
-    property Sacado: Integer read FREC_SACADO write setFREC_SACADO;
+    property Sacado: String read FREC_SACADO write setFREC_SACADO;
 
     [FieldName('REC_EMITENTE')]
-    property Emitente: Integer read FREC_EMITENTE write setFREC_EMITENTE;
+    property Emitente: String read FREC_EMITENTE write setFREC_EMITENTE;
 
     [FieldName('REC_CODQTC')]
     property CodigoQuitacao: Integer read FREC_CODQTC write setFREC_CODQTC;
 
     [FieldName('REC_OBS')]
-    property Observacao: Integer read FREC_OBS write setFREC_OBS;
+    property Referencia: String read FREC_OBS write setFREC_OBS;
 
   End;
 
 implementation
-
 
 
 { TRecibo }
@@ -81,12 +80,12 @@ begin
   FREC_CODQTC := Value;
 end;
 
-procedure TRecibo.setFREC_DATA(const Value: Integer);
+procedure TRecibo.setFREC_DATA(const Value: TDate);
 begin
   FREC_DATA := Value;
 end;
 
-procedure TRecibo.setFREC_EMITENTE(const Value: Integer);
+procedure TRecibo.setFREC_EMITENTE(const Value: String);
 begin
   FREC_EMITENTE := Value;
 end;
@@ -96,17 +95,17 @@ begin
   FREC_NUMERO := Value;
 end;
 
-procedure TRecibo.setFREC_OBS(const Value: Integer);
+procedure TRecibo.setFREC_OBS(const Value: String);
 begin
   FREC_OBS := Value;
 end;
 
-procedure TRecibo.setFREC_SACADO(const Value: Integer);
+procedure TRecibo.setFREC_SACADO(const Value: String);
 begin
   FREC_SACADO := Value;
 end;
 
-procedure TRecibo.setFREC_VALOR(const Value: Integer);
+procedure TRecibo.setFREC_VALOR(const Value: Real);
 begin
   FREC_VALOR := Value;
 end;

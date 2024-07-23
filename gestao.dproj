@@ -132,20 +132,18 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_users.pas">
             <Form>RegUsers</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\sea_users.pas">
             <Form>SeaUsers</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\human_resource\register\reg_job_position.pas">
             <Form>RegJobPosition</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\human_resource\register\sea_job_position.pas">
             <Form>SeaJobPosition</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="env.pas"/>
+        <DCCReference Include="parameter\prm_receipt.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -173,6 +171,12 @@
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="D:\Modelos\Gestao2016\Bin\Gestao.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="D:\Modelos\Gestao2025\Bin\Gestao.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>gestao.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

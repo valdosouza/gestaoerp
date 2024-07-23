@@ -62,7 +62,8 @@ uses
 implementation
 
 uses Un_DM, UN_Sistema, UN_MSG, Un_Regra_Negocio, main, RN_Permissao,RN_Estoque,
-    RN_Empresa, ACBrNFeConfiguracoes, RN_Mailing, RN_NotaFiscal, UNFunctions;
+    RN_Empresa, ACBrNFeConfiguracoes, RN_Mailing, RN_NotaFiscal, UNFunctions,
+  env;
 
 
 function Fc_VerificaCodigoVinculoNFeArquivo(Fc_cd_Nota:Integer):Integer;

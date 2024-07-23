@@ -19,6 +19,50 @@ inherited SeaReceipt: TSeaReceipt
     inherited DBG_Pesquisa: TDBGrid
       Width = 576
       Height = 281
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'rec_codigo'
+          Visible = False
+        end
+        item
+          Expanded = False
+          FieldName = 'rec_numero'
+          Title.Caption = 'N'#250'mero'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'rec_data'
+          Title.Caption = 'Data'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'rec_valor'
+          Title.Caption = 'Valor'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'rec_emitente'
+          Title.Caption = 'Emitente'
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'rec_sacado'
+          Title.Caption = 'Sacado'
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'rec_obs'
+          Title.Caption = 'Refer'#234'ncia'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 578
@@ -88,7 +132,7 @@ inherited SeaReceipt: TSeaReceipt
         Font.Style = []
         ParentFont = False
       end
-      object E_BuscaValor: TMaskEdit
+      object E_Valor: TEdit
         Tag = 32
         Left = 552
         Top = 34
@@ -101,25 +145,23 @@ inherited SeaReceipt: TSeaReceipt
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        TabOrder = 5
-        Text = ''
+        TabOrder = 0
       end
-      object E_BuscaNumero: TMaskEdit
+      object E_Numero: TEdit
         Tag = 32
         Left = 172
         Top = 34
         Width = 81
         Height = 22
-        TabOrder = 3
-        Text = ''
+        TabOrder = 1
       end
-      object chck_dataBusca: TCheckBox
+      object Chkx_Periodo: TCheckBox
         Left = 7
         Top = 14
         Width = 97
         Height = 17
         Caption = 'Por Data'
-        TabOrder = 0
+        TabOrder = 2
       end
       object E_Data_Ini: TDateTimePicker
         Left = 7
@@ -128,7 +170,7 @@ inherited SeaReceipt: TSeaReceipt
         Height = 22
         Date = 39580.356281493060000000
         Time = 39580.356281493060000000
-        TabOrder = 1
+        TabOrder = 3
       end
       object E_Data_Fim: TDateTimePicker
         Left = 88
@@ -137,17 +179,17 @@ inherited SeaReceipt: TSeaReceipt
         Height = 22
         Date = 39580.356281493060000000
         Time = 39580.356281493060000000
-        TabOrder = 2
+        TabOrder = 4
       end
-      object e_nomebusca: TEdit
+      object e_nome: TEdit
         Left = 254
         Top = 34
         Width = 297
         Height = 22
         CharCase = ecUpperCase
-        TabOrder = 4
+        TabOrder = 5
       end
-      object chck_buscaEmitente: TCheckBox
+      object chck_Emitente: TCheckBox
         Left = 256
         Top = 16
         Width = 97
@@ -167,26 +209,40 @@ inherited SeaReceipt: TSeaReceipt
   end
   inherited Menu: TMainMenu
     Left = 168
-    Top = 65528
+    Top = 8
   end
   inherited cds_search: TClientDataSet
+    object cds_searchrec_codigo: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'rec_codigo'
+    end
     object cds_searchrec_numero: TStringField
+      DisplayWidth = 12
       FieldName = 'rec_numero'
       Size = 50
     end
     object cds_searchrec_data: TDateField
+      DisplayWidth = 15
       FieldName = 'rec_data'
     end
     object cds_searchrec_emitente: TStringField
+      DisplayWidth = 100
       FieldName = 'rec_emitente'
       Size = 100
     end
     object cds_searchrec_sacado: TStringField
+      DisplayWidth = 100
       FieldName = 'rec_sacado'
       Size = 100
     end
     object cds_searchrec_valor: TFloatField
+      DisplayWidth = 10
       FieldName = 'rec_valor'
+    end
+    object cds_searchrec_obs: TStringField
+      DisplayWidth = 500
+      FieldName = 'rec_obs'
+      Size = 500
     end
   end
 end

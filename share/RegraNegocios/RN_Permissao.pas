@@ -10,7 +10,7 @@ uses
   function Fc_AutenticaUsuario(Fc_Usuario,Fc_Senha:String): Boolean;
 implementation
 
-uses main, ControllerBase;
+uses main, ControllerBase, env;
 
 Function Fc_VerificaPermissao(Fc_Interface,Fc_Descricao,Fc_Privilegio:String;Fc_cd_Usuario:Integer;Fc_Msg:String):Boolean;
 var

@@ -320,16 +320,6 @@ type
 
 var
   FrMain: TFrMain;
-  GB_NM_Empresa : String;
-  Gb_CodMha : Integer;
-  Gb_Nivel : Integer;
-  Gb_Cd_Usuario : Integer;
-  GB_Nm_Usuario : String;
-  Gb_Senha : String;
-  Gb_Cd_Vendedor : Integer;
-  Gb_Liberado : Boolean;
-  Gb_DataCaixa : TDateTime;
-  Gb_PAF_NFE_e : Boolean;
 
 implementation
 
@@ -337,7 +327,7 @@ implementation
 
 uses un_dm, sea_job_position, sea_printers, sea_ext_motive,reg_virtual_shop,reg_commitment,
       reg_billing_portfolio,sea_electronic_card,sea_banking_history, sea_users,
-      sea_receipt;
+      sea_receipt, env;
 
 { TForm1 }
 

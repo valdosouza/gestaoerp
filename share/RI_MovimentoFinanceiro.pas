@@ -14,7 +14,7 @@ var
 
 implementation
 
-uses ControllerDskCashier, Un_DM, Un_Msg;
+uses ControllerDskCashier, Un_DM, Un_Msg, env;
 
 
 function Fc_VerificaCaixaAberto(msg:Boolean):Boolean;

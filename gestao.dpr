@@ -11,7 +11,9 @@ uses
   reg_users in 'view\module\operation\admin\reg_users.pas' {RegUsers},
   sea_users in 'view\module\operation\admin\sea_users.pas' {SeaUsers},
   reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition},
-  sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition};
+  sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
+  env in 'env.pas',
+  prm_receipt in 'parameter\prm_receipt.pas';
 
 {$R *.res}
 
