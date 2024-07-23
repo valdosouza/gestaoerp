@@ -64,7 +64,6 @@ type
     procedure Insert;Override;
     function ValidateChange():boolean; Override;
     procedure Change;Override;
-    function ValidateDelete():boolean; Override;
     procedure Delete;Override;
     function ValidateSave():boolean; Override;
     procedure Save;Override;
@@ -280,15 +279,6 @@ begin
   Result := True;
 end;
 
-function TRegUsers.ValidateDelete: boolean;
-begin
-  Result := True;
-  if (MensagemExcluir = mrBotao1) then
-  Begin
-    Result := False;
-    exit;
-  End;
-end;
 
 function TRegUsers.ValidateSave: boolean;
 begin

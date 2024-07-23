@@ -58,7 +58,7 @@ implementation
 
 uses Un_DM, UN_Sistema, UN_MSG, Un_Regra_Negocio, Un_Stored_Procedures, RN_Estoque,
   RN_NotaFiscalEletronica3X,  RN_Crud,RN_Empresa, ControllerPedido, ControllerEmpresa,
-  ControllerEndereco;
+  ControllerEndereco, env;
 
 
 procedure Pc_AtualizaTotalPedido(Pc_CODIGO:Integer;

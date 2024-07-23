@@ -26,10 +26,9 @@ Type
     function migra:boolean;
     function insert:Boolean;
     function Update:Boolean;
-    function Detele:Boolean;
+    function Delete:Boolean;
     procedure getById;
     procedure getByDocumento;
-    Function delete:boolean;
     procedure SetSequencia;
     procedure getAllBykey;
     function getList: Boolean;
@@ -137,18 +136,6 @@ begin
   Endereco.DisposeOf;
   Lista.DisposeOf;
   inherited;
-end;
-
-
-
-function TControllerEmpresa.Detele: Boolean;
-begin
-  try
-    DeleteObj(Registro);
-    Result := True;
-  except
-    Result := False;
-  end;
 end;
 
 procedure TControllerEmpresa.fillDataObjeto(pEmpresa: TEmpresa;pObj:TObjEntityFiscal);

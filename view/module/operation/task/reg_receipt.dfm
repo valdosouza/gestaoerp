@@ -10,8 +10,8 @@ inherited RegReceipt: TRegReceipt
     Top = 244
     Width = 656
     Height = 60
-    ExplicitTop = 235
-    ExplicitWidth = 648
+    ExplicitTop = 244
+    ExplicitWidth = 656
     ExplicitHeight = 60
     inherited SB_Inserir: TSpeedButton
       Left = 29
@@ -53,8 +53,8 @@ inherited RegReceipt: TRegReceipt
   inherited pnl_fundo: TPanel
     Width = 656
     Height = 244
-    ExplicitWidth = 648
-    ExplicitHeight = 235
+    ExplicitWidth = 656
+    ExplicitHeight = 244
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -64,9 +64,7 @@ inherited RegReceipt: TRegReceipt
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 644
-      ExplicitHeight = 231
-      object Label12: TLabel
+      object L_Numero: TLabel
         Left = 4
         Top = 3
         Width = 48
@@ -79,7 +77,7 @@ inherited RegReceipt: TRegReceipt
         Font.Style = []
         ParentFont = False
       end
-      object Label13: TLabel
+      object L_Data: TLabel
         Left = 222
         Top = 5
         Width = 22
@@ -92,7 +90,7 @@ inherited RegReceipt: TRegReceipt
         Font.Style = []
         ParentFont = False
       end
-      object Label4: TLabel
+      object L_Emitente: TLabel
         Left = 7
         Top = 176
         Width = 96
@@ -105,7 +103,7 @@ inherited RegReceipt: TRegReceipt
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
+      object L_Vl_Recibo: TLabel
         Left = 123
         Top = 3
         Width = 25
@@ -118,7 +116,7 @@ inherited RegReceipt: TRegReceipt
         Font.Style = []
         ParentFont = False
       end
-      object Label28: TLabel
+      object L_Sacado: TLabel
         Left = 5
         Top = 43
         Width = 55
@@ -131,7 +129,7 @@ inherited RegReceipt: TRegReceipt
         Font.Style = []
         ParentFont = False
       end
-      object Label2: TLabel
+      object L_Referencia: TLabel
         Left = 5
         Top = 84
         Width = 57
@@ -158,6 +156,7 @@ inherited RegReceipt: TRegReceipt
         Height = 21
         Alignment = taRightJustify
         TabOrder = 1
+        OnExit = E_Vl_ReciboExit
       end
       object E_Emitente: TEdit
         Left = 4
@@ -182,7 +181,7 @@ inherited RegReceipt: TRegReceipt
         Height = 77
         TabOrder = 4
       end
-      object Tpk_Data: TDateTimePicker
+      object E_Data: TDateTimePicker
         Left = 219
         Top = 18
         Width = 93

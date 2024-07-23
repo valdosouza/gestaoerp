@@ -51,7 +51,7 @@ implementation
 uses Un_DM, UN_Sistema, UN_MSG, STDataSet,
   Un_Regra_Negocio, Un_Stored_Procedures,
   RN_FormaPagto, tblCartao,
-  ControllerCartao, main,ControllerBase;
+  ControllerCartao, main,ControllerBase, env;
 
 
 Function Fc_SaldoDevedorCliente(Pc_cd_Cliente:Integer):Real;

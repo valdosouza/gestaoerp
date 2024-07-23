@@ -76,7 +76,7 @@ implementation
 
 {$R *.dfm}
 
-uses  RN_Permissao, UN_Sistema;
+uses  RN_Permissao, UN_Sistema, un_msg, env;
 
 
 procedure TBaseRegistry.Change;
@@ -195,7 +195,7 @@ end;
 
 procedure TBaseRegistry.showNoData;
 begin
-  //A implementação será feita na descendencia
+  ClearAllFields;
 end;
 
 procedure TBaseRegistry.Save;
@@ -234,6 +234,11 @@ end;
 function TBaseRegistry.ValidateDelete: boolean;
 begin
   Result := True;
+  if (MensagemExcluir = mrBotao1) then
+  Begin
+    Result := False;
+    exit;
+  End;
 
 
 end;

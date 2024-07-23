@@ -82,7 +82,7 @@ var
 
 implementation
 
-uses Un_DM, UN_Sistema;
+uses Un_DM, UN_Sistema, env;
 
 {$R *.dfm}
 procedure TDM_ListaConsultas.Pc_ListaNatureza(Pc_Sentido:String);
