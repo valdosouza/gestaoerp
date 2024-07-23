@@ -9,14 +9,11 @@ inherited SeaCategory: TSeaCategory
     Top = 81
     Width = 572
     Height = 286
-    ExplicitTop = 65
+    ExplicitTop = 81
     ExplicitWidth = 566
-    ExplicitHeight = 293
+    ExplicitHeight = 277
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 568
-      ExplicitLeft = 9
-      ExplicitTop = 31
-      ExplicitWidth = 568
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 476
@@ -26,7 +23,7 @@ inherited SeaCategory: TSeaCategory
       Left = 478
       Height = 268
       ExplicitLeft = 472
-      ExplicitHeight = 275
+      ExplicitHeight = 259
       inherited Sb_Sair_0: TSpeedButton
         Top = 205
         ExplicitTop = 221
@@ -48,7 +45,7 @@ inherited SeaCategory: TSeaCategory
   inherited Pnl_Parametros: TPanel
     Width = 572
     Height = 72
-    ExplicitWidth = 572
+    ExplicitWidth = 566
     ExplicitHeight = 72
     object GroupBox2: TGroupBox
       Left = 2
@@ -64,8 +61,8 @@ inherited SeaCategory: TSeaCategory
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitTop = -5
-      object Label28: TLabel
+      ExplicitWidth = 562
+      object Lb_Descricao: TLabel
         Left = 57
         Top = 16
         Width = 49
@@ -78,7 +75,7 @@ inherited SeaCategory: TSeaCategory
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
+      object Lb_BuscaCodigo: TLabel
         Left = 10
         Top = 16
         Width = 33
@@ -106,7 +103,7 @@ inherited SeaCategory: TSeaCategory
         TabOrder = 1
       end
       object E_BuscaCodigo: TEdit
-        Left = 7
+        Left = 3
         Top = 32
         Width = 49
         Height = 22
@@ -120,5 +117,9 @@ inherited SeaCategory: TSeaCategory
         TabOrder = 0
       end
     end
+  end
+  inherited Menu: TMainMenu
+    Left = 80
+    Top = 144
   end
 end

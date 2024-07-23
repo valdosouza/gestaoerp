@@ -33,7 +33,8 @@
 		RegExtMotive
 	Copiar e colar os componentes
 
-3 - Trocar componentes TDB por T
+3 - Mudar o name dos componentes e trocar TDB por T  
+	cline no componente e va ate name, altere para o mesmo name de outro componente vinculado
 	clique no form como botão direito do mouse no menu suspenso view as text
 	USar o Ctrl + R para fazer o Replace
 	clique no texto como botão direito do mouse no menu suspenso view as form

@@ -11,9 +11,9 @@ uses
 type
   TRegGroupMenu = class(TBaseRegistry)
     pnl_fundos: TPanel;
-    Label3: TLabel;
-    Label1: TLabel;
-    Label4: TLabel;
+    Lb_Descricao: TLabel;
+    Lb_Desconto: TLabel;
+    Lb_Sequencia: TLabel;
     E_Descricao: TEdit;
     E_Vl_Desconto: TEdit;
     DBRG_Tamanhos: TRadioGroup;

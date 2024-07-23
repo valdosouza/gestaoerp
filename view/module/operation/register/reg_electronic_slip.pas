@@ -10,30 +10,29 @@ uses
 type
   TRegElectronicSlip = class(TBaseRegistry)
     Pnl_fundos: TPanel;
-    Label1: TLabel;
+    Lb_Carteira: TLabel;
     Sb_Carteira: TSpeedButton;
-    Label2: TLabel;
-    Label4: TLabel;
-    Label31: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label10: TLabel;
+    Lb_Cedente_Convenio: TLabel;
+    Lb_Varia_Carteira: TLabel;
+    Lb_Modelo_Boleto: TLabel;
+    Lb_Local_Pagamneto: TLabel;
+    Lb_Inst_Pagamento_1: TLabel;
+    Lb_Inst_Pagamento_2: TLabel;
+    Lb_IntrucaoAdicional: TLabel;
+    Lb_Remessa_Retorno: TLabel;
     Sb_Path_remessa: TSpeedButton;
-    Label11: TLabel;
-    Label12: TLabel;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label_1: TLabel;
-    Label17: TLabel;
-    Label18: TLabel;
-    Label19: TLabel;
-    Label20: TLabel;
-    Label3: TLabel;
-    Label9: TLabel;
-    Label16: TLabel;
+    Lb_Tx_Multa: TLabel;
+    Lb_Tx_Juros: TLabel;
+    Lb_Protesto: TLabel;
+    Lb_Vl_Tarifa: TLabel;
+    Lb_Dias_Protesto: TLabel;
+    Lb_Tx_Desconto: TLabel;
+    Lb_Vl_Mora_Min: TLabel;
+    Lb_LayoutRemessa: TLabel;
+    Lb_CodTransmissao: TLabel;
+    Lb_Posto_Benef: TLabel;
+    Lb_Negativacao: TLabel;
+    Lb_Dias_Negativacao: TLabel;
     Dblcb_Carteira: TComboBox;
     E_Cedente_Convenio: TEdit;
     E_Varia_Carteira: TEdit;
@@ -57,6 +56,7 @@ type
     E_POSTO_BENEF: TEdit;
     Cb_Negativacao: TComboBox;
     E_Dias_Negativacao: TEdit;
+    Lb_Tx_Mora: TLabel;
   private
     { Private declarations }
   public

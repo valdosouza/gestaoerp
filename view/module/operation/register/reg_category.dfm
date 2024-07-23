@@ -69,7 +69,7 @@ inherited RegCategory: TRegCategory
       TabOrder = 0
       ExplicitWidth = 561
       ExplicitHeight = 172
-      object Label1: TLabel
+      object Lb_Codigo: TLabel
         Left = 5
         Top = 8
         Width = 33
@@ -83,7 +83,7 @@ inherited RegCategory: TRegCategory
         Font.Style = []
         ParentFont = False
       end
-      object Label2: TLabel
+      object Lb_Descricao: TLabel
         Left = 57
         Top = 8
         Width = 49
@@ -97,12 +97,13 @@ inherited RegCategory: TRegCategory
         Font.Style = []
         ParentFont = False
       end
-      object Label4: TLabel
+      object Lb_CategoriaPai: TLabel
         Left = 5
         Top = 49
         Width = 63
         Height = 14
         Caption = 'Categoria Pai'
+        Enabled = False
         FocusControl = E_Descricao
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
@@ -111,7 +112,7 @@ inherited RegCategory: TRegCategory
         Font.Style = []
         ParentFont = False
       end
-      object Label5: TLabel
+      object Lb_Atendimento: TLabel
         Left = 5
         Top = 87
         Width = 178
@@ -131,7 +132,7 @@ inherited RegCategory: TRegCategory
         Height = 22
         Caption = '...'
       end
-      object Label6: TLabel
+      object Lb_Impressora: TLabel
         Left = 256
         Top = 87
         Width = 156
@@ -144,7 +145,7 @@ inherited RegCategory: TRegCategory
         Font.Style = []
         ParentFont = False
       end
-      object Label7: TLabel
+      object Lb_Interface: TLabel
         Left = 6
         Top = 127
         Width = 81
@@ -226,5 +227,9 @@ inherited RegCategory: TRegCategory
           'LISTA')
       end
     end
+  end
+  inherited Menu: TMainMenu
+    Left = 200
+    Top = 65520
   end
 end

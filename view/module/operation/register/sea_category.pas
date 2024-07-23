@@ -10,8 +10,8 @@ uses
 type
   TSeaCategory = class(TBaseSearch)
     GroupBox2: TGroupBox;
-    Label28: TLabel;
-    Label3: TLabel;
+    Lb_Descricao: TLabel;
+    Lb_BuscaCodigo: TLabel;
     SeaCategory: TEdit;
     E_BuscaCodigo: TEdit;
   private

@@ -11,8 +11,8 @@ type
   TRegBannerSite = class(TBaseRegistry)
     pnl_fundos: TPanel;
     Sb_Carr_Imagem: TSpeedButton;
-    Label34: TLabel;
-    Label3: TLabel;
+    Lb_Caminho: TLabel;
+    Lb_link: TLabel;
     E_PathIMG: TEdit;
     Rg_ImageTarget: TRadioGroup;
     E_link: TEdit;

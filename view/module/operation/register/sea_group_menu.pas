@@ -10,8 +10,8 @@ uses
 type
   TSeaGroupMenu = class(TBaseSearch)
     GroupBox2: TGroupBox;
-    Label28: TLabel;
-    Label2: TLabel;
+    Lb_grupo: TLabel;
+    Lb_subgrupo: TLabel;
     E_BuscaGrupo: TEdit;
     E_BuscaSubGrupo: TEdit;
     ChBx_Grupo: TCheckBox;
