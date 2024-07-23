@@ -10,13 +10,13 @@ uses
 type
   TRegCategory = class(TBaseRegistry)
     pnl_fundos: TPanel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
+    Lb_Codigo: TLabel;
+    Lb_Descricao: TLabel;
+    Lb_CategoriaPai: TLabel;
+    Lb_Atendimento: TLabel;
     Sb_Impressora: TSpeedButton;
-    Label6: TLabel;
-    Label7: TLabel;
+    Lb_Impressora: TLabel;
+    Lb_Interface: TLabel;
     E_Codigo: TEdit;
     E_Descricao: TEdit;
     Dblcb_CategoriaPai: TComboBox;

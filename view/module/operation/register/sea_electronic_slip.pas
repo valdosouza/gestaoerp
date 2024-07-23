@@ -10,7 +10,7 @@ uses
 type
   TSeaElectronicSlip = class(TBaseSearch)
     Grp_Parametros: TGroupBox;
-    Label55: TLabel;
+    Lb_BuscaBanco: TLabel;
     E_BuscaBanco: TEdit;
   private
     { Private declarations }

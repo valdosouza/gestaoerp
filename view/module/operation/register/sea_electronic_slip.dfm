@@ -1,44 +1,44 @@
 inherited SeaElectronicSlip: TSeaElectronicSlip
-  Caption = 'Cadastro de Cobran'#231'a em Boleto'
-  ClientHeight = 352
+  Caption = 'Pesquisa de Cobran'#231'a em boleto'
+  ClientHeight = 586
   ClientWidth = 575
   ExplicitWidth = 587
-  ExplicitHeight = 415
+  ExplicitHeight = 649
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 569
-    Height = 278
+    Height = 512
     ExplicitTop = 71
     ExplicitWidth = 563
-    ExplicitHeight = 269
+    ExplicitHeight = 503
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 565
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 473
-      Height = 260
+      Height = 494
     end
     inherited pnl_pesq_right: TPanel
       Left = 475
-      Height = 260
+      Height = 494
       ExplicitLeft = 469
-      ExplicitHeight = 251
+      ExplicitHeight = 485
       inherited Sb_Sair_0: TSpeedButton
-        Top = 197
-        ExplicitTop = 197
+        Top = 431
+        ExplicitTop = 431
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 134
-        ExplicitTop = 134
+        Top = 368
+        ExplicitTop = 368
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 71
-        ExplicitTop = 71
+        Top = 305
+        ExplicitTop = 305
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 8
-        ExplicitTop = 8
+        Top = 242
+        ExplicitTop = 242
       end
     end
   end
@@ -62,8 +62,8 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
       ParentFont = False
       TabOrder = 0
       ExplicitWidth = 559
-      object Label55: TLabel
-        Left = 3
+      object Lb_BuscaBanco: TLabel
+        Left = 5
         Top = 17
         Width = 31
         Height = 14
@@ -76,16 +76,16 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
         ParentFont = False
       end
       object E_BuscaBanco: TEdit
-        Left = 3
-        Top = 29
-        Width = 559
+        Left = 5
+        Top = 32
+        Width = 557
         Height = 22
         TabOrder = 0
       end
     end
   end
   inherited Menu: TMainMenu
-    Left = 56
-    Top = 88
+    Left = 96
+    Top = 65528
   end
 end

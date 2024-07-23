@@ -69,7 +69,7 @@ inherited RegGroupMenu: TRegGroupMenu
       TabOrder = 0
       ExplicitWidth = 569
       ExplicitHeight = 201
-      object Label3: TLabel
+      object Lb_Descricao: TLabel
         Left = 72
         Top = 5
         Width = 100
@@ -82,7 +82,7 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
       end
-      object Label1: TLabel
+      object Lb_Desconto: TLabel
         Left = 464
         Top = 5
         Width = 89
@@ -96,7 +96,7 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
       end
-      object Label4: TLabel
+      object Lb_Sequencia: TLabel
         Left = 9
         Top = 5
         Width = 51

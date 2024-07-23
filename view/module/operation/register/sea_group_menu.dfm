@@ -1,14 +1,16 @@
 inherited SeaGroupMenu: TSeaGroupMenu
   Caption = 'Pesquisa de Grupo e SubGrupo do Card'#225'pio'
-  ClientHeight = 424
+  ClientHeight = 438
   ClientWidth = 594
+  ExplicitLeft = 3
+  ExplicitTop = 3
   ExplicitWidth = 606
-  ExplicitHeight = 487
+  ExplicitHeight = 501
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
     Width = 588
-    Height = 342
+    Height = 356
     ExplicitTop = 79
     ExplicitWidth = 582
     ExplicitHeight = 333
@@ -17,33 +19,33 @@ inherited SeaGroupMenu: TSeaGroupMenu
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 492
-      Height = 324
+      Height = 338
     end
     inherited pnl_pesq_right: TPanel
       Left = 494
-      Height = 324
+      Height = 338
       ExplicitLeft = 488
       ExplicitHeight = 315
       inherited Sb_Sair_0: TSpeedButton
-        Top = 261
+        Top = 275
         ExplicitTop = 330
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 198
+        Top = 212
         ExplicitTop = 267
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 135
+        Top = 149
         ExplicitTop = 204
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 72
+        Top = 86
         ExplicitTop = 141
       end
     end
     object ChBx_Grupo: TCheckBox
-      Left = 488
-      Top = 16
+      Left = 500
+      Top = 0
       Width = 89
       Height = 17
       Anchors = [akTop, akRight]
@@ -55,7 +57,6 @@ inherited SeaGroupMenu: TSeaGroupMenu
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      ExplicitLeft = 482
     end
   end
   inherited Pnl_Parametros: TPanel
@@ -78,7 +79,7 @@ inherited SeaGroupMenu: TSeaGroupMenu
       ParentFont = False
       TabOrder = 0
       ExplicitWidth = 578
-      object Label28: TLabel
+      object Lb_grupo: TLabel
         Left = 11
         Top = 16
         Width = 30
@@ -91,7 +92,7 @@ inherited SeaGroupMenu: TSeaGroupMenu
         Font.Style = []
         ParentFont = False
       end
-      object Label2: TLabel
+      object Lb_subgrupo: TLabel
         Left = 291
         Top = 16
         Width = 49

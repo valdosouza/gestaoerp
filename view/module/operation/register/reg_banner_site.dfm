@@ -1,84 +1,89 @@
 inherited RegBannerSite: TRegBannerSite
   Caption = 'Cadastro de Bannar para Site'
   ClientHeight = 423
-  ExplicitWidth = 815
+  ClientWidth = 809
   ExplicitHeight = 486
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 359
+    Width = 809
     ExplicitTop = 350
-    ExplicitWidth = 797
+    ExplicitWidth = 803
     inherited SB_Inserir: TSpeedButton
-      Left = 176
+      Left = 182
       ExplicitLeft = 176
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 280
+      Left = 286
       ExplicitLeft = 280
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 384
+      Left = 390
       ExplicitLeft = 384
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 592
+      Left = 598
       ExplicitLeft = 592
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 696
+      Left = 702
       ExplicitLeft = 696
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 488
+      Left = 494
       ExplicitLeft = 488
     end
   end
   inherited pnl_fundo: TPanel
+    Width = 809
     Height = 359
-    ExplicitWidth = 797
+    ExplicitWidth = 803
     ExplicitHeight = 350
     object img_amostra: TImage
       Left = 2
       Top = 113
-      Width = 799
+      Width = 805
       Height = 200
       Align = alClient
       Center = True
       ExplicitTop = 114
+      ExplicitWidth = 799
       ExplicitHeight = 223
     end
     object Image1: TImage
       Left = 2
       Top = 113
-      Width = 799
+      Width = 805
       Height = 200
       Align = alClient
       Center = True
       ExplicitLeft = 4
       ExplicitTop = 115
+      ExplicitWidth = 799
       ExplicitHeight = 223
     end
     object Image2: TImage
       Left = 2
       Top = 113
-      Width = 799
+      Width = 805
       Height = 200
       Align = alClient
       Center = True
       ExplicitLeft = 4
       ExplicitTop = 115
+      ExplicitWidth = 799
       ExplicitHeight = 223
     end
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
-      Width = 799
+      Width = 805
       Height = 111
       Align = alTop
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 793
+      ExplicitWidth = 799
       object Sb_Carr_Imagem: TSpeedButton
         Left = 663
         Top = 29
@@ -94,7 +99,7 @@ inherited RegBannerSite: TRegBannerSite
         NumGlyphs = 4
         ParentFont = False
       end
-      object Label34: TLabel
+      object Lb_Caminho: TLabel
         Left = 5
         Top = 9
         Width = 196
@@ -107,12 +112,13 @@ inherited RegBannerSite: TRegBannerSite
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
+      object Lb_link: TLabel
         Left = 237
         Top = 56
         Width = 119
         Height = 14
         Caption = 'link do Banner (opcional)'
+        Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -166,14 +172,14 @@ inherited RegBannerSite: TRegBannerSite
     object Panel2: TPanel
       Left = 2
       Top = 313
-      Width = 799
+      Width = 805
       Height = 44
       Align = alBottom
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 1
       ExplicitTop = 304
-      ExplicitWidth = 793
+      ExplicitWidth = 799
       object Sb_First: TSpeedButton
         Left = 9
         Top = 4

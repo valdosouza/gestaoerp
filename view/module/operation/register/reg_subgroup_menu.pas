@@ -10,7 +10,7 @@ uses
 type
   TRegSubgroupMenu = class(TBaseRegistry)
     pnl_fundos: TPanel;
-    Label1: TLabel;
+    Lb_CodigoeDescricao: TLabel;
     E_Codigo: TEdit;
     E_Descricao: TEdit;
   private
