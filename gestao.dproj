@@ -130,6 +130,22 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="view\module\operation\admin\reg_users.pas">
+            <Form>RegUsers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\sea_users.pas">
+            <Form>SeaUsers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\human_resource\register\reg_job_position.pas">
+            <Form>RegJobPosition</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\human_resource\register\sea_job_position.pas">
+            <Form>SeaJobPosition</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

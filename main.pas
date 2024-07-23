@@ -282,6 +282,7 @@ type
     N15: TMenuItem;
     CarteiradeCobrana1: TMenuItem;
     N21: TMenuItem;
+    MnuPslUsuario: TMenuItem;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -305,6 +306,7 @@ type
     procedure MnuArqHistBcoClick(Sender: TObject);
     procedure MnuAjdManuUsuOperClick(Sender: TObject);
     procedure MnuReciboClick(Sender: TObject);
+    procedure MnuPslUsuarioClick(Sender: TObject);
   private
     procedure MenuOperacao;
     procedure MenuBanco;
@@ -349,7 +351,18 @@ begin
   Finally
     FreeAndNil(Lc_form);
   End;
+end;
 
+procedure TFrMain.MnuPslUsuarioClick(Sender: TObject);
+Var
+  Lc_form : TSeaUsers;
+begin
+  Lc_form := TSeaUsers.Create(Self);
+  Try
+    Lc_form.ShowModal;
+  Finally
+    FreeAndNil(Lc_form);
+  End;
 end;
 
 procedure TFrMain.MnuPslBancarioClick(Sender: TObject);

@@ -9,36 +9,46 @@ inherited RegJobPosition: TRegJobPosition
   inherited pnl_botao: TPanel
     Top = 57
     Width = 622
+    ExplicitTop = 57
+    ExplicitWidth = 622
     inherited SB_Inserir: TSpeedButton
       Left = -5
+      ExplicitLeft = -5
     end
     inherited SB_Alterar: TSpeedButton
       Left = 99
+      ExplicitLeft = 99
     end
     inherited SB_Excluir: TSpeedButton
       Left = 203
+      ExplicitLeft = 203
     end
     inherited SB_Cancelar: TSpeedButton
       Left = 411
+      ExplicitLeft = 411
     end
     inherited SB_Sair_0: TSpeedButton
       Left = 515
+      ExplicitLeft = 515
     end
     inherited SB_Gravar: TSpeedButton
       Left = 307
+      ExplicitLeft = 307
     end
   end
   inherited pnl_fundo: TPanel
     Width = 622
     Height = 57
-    object Label1: TLabel
+    ExplicitWidth = 622
+    ExplicitHeight = 57
+    object L_Descricao: TLabel
       Left = 83
       Top = 4
       Width = 46
       Height = 13
       Caption = 'Descri'#231#227'o'
     end
-    object Label2: TLabel
+    object L_ID: TLabel
       Left = 7
       Top = 4
       Width = 33
@@ -62,7 +72,7 @@ inherited RegJobPosition: TRegJobPosition
     end
   end
   inherited Menu: TMainMenu
-    Left = 456
+    Left = 448
     Top = 0
   end
 end
