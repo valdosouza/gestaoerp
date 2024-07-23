@@ -12,6 +12,8 @@ type
   TMsgPadrao = (mpAlerta, mpErro, mpConfirmacao, mpInformacao);
   TMsgEscape = (bEscape,bNormal);
 
+  TMsgConstante = (msgCampoObrigatorio, msgDesejaExcluir);
+
 const
   EOLN=chr(13)+chr(10);   //Usado para fazer fim de linha nos quadros de mensagens
   mrBotao1 = 0;
@@ -21,12 +23,25 @@ const
   mrBotao5 = 4;
   mrBotao6 = 5;
 
+  SIM = 'S';
+  NAO = 'N';
+  OK = 'OK';
 
-function MensagemPadrao(const Titulo, Msg: string;
+  TITULO_ERRO = 'Mensagem de erro';
+  TITULO_CONFIRMACAO = 'Mensagem de Confirmação';
+
+  function MensagemPadrao(const Titulo, Msg: string;
                         Opcoes : array of string;
                         BotaoEscape : array of TMsgEscape;
                         TipoPadrao : TMsgPadrao;
                         Lc_Cor : TColor = clBtnFace) : Integer;
+
+  function MensagemPadrao2(MsgConstante: TMsgConstante;
+                           Campo: String;
+                           Opcoes : array of string;
+                           BotaoEscape : array of TMsgEscape;
+                           TipoPadrao : TMsgPadrao;
+                           Lc_Cor : TColor = clBtnFace): Integer;
 
   type
     TFormMsg = class(TForm)
@@ -79,6 +94,29 @@ begin
     It_Cd_Escolha := -1;
     Close;
   end;
+end;
+
+function MensagemPadrao2(MsgConstante: TMsgConstante;
+                         Campo: String;
+                         Opcoes : array of string;
+                         BotaoEscape : array of TMsgEscape;
+                         TipoPadrao : TMsgPadrao;
+                         Lc_Cor : TColor = clBtnFace): Integer;
+var
+  Titulo, Msg: String;
+begin
+  if MsgConstante = msgCampoObrigatorio then
+  begin
+    Titulo := TITULO_ERRO;
+    Msg := 'A T E N Ç Ã O!' + EOLN + EOLN + 'O Campo "'+Campo+'" não foi informado.' + EOLN + 'Preencha para continuar.' + EOLN;
+  end
+  else if MsgConstante = msgDesejaExcluir then
+  begin
+    Titulo := TITULO_CONFIRMACAO;
+    Msg := 'Deseja excluir este item?' + EOLN + EOLN + 'Confirmar a exclusão?'
+  end;
+
+  Result := MensagemPadrao(Titulo, Msg, Opcoes, BotaoEscape, TipoPadrao, Lc_Cor);
 end;
 
 function MensagemPadrao(const Titulo, Msg: string;

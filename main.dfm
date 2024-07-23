@@ -4,7 +4,7 @@ inherited FrMain: TFrMain
   ClientWidth = 1199
   Menu = MnuPsl
   ExplicitWidth = 1205
-  ExplicitHeight = 636
+  ExplicitHeight = 631
   PixelsPerInch = 96
   TextHeight = 13
   inherited Menu: TMainMenu
@@ -818,6 +818,10 @@ inherited FrMain: TFrMain
       object MnuPslArqCargo: TMenuItem
         Caption = 'Cargos'
         OnClick = MnuPslArqCargoClick
+      end
+      object MnuPslUsuario: TMenuItem
+        Caption = 'Usu'#225'rio'
+        OnClick = MnuPslUsuarioClick
       end
       object MenuItem4: TMenuItem
         Caption = '-'

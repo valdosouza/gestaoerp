@@ -3,7 +3,7 @@ inherited RegUsers: TRegUsers
   ClientHeight = 475
   ClientWidth = 621
   ExplicitWidth = 627
-  ExplicitHeight = 524
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -50,8 +50,8 @@ inherited RegUsers: TRegUsers
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      object Label4: TLabel
-        Left = 120
+      object L_Senha: TLabel
+        Left = 117
         Top = 50
         Width = 31
         Height = 14
@@ -64,8 +64,8 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label9: TLabel
-        Left = 7
+      object L_Codigo: TLabel
+        Left = 5
         Top = 6
         Width = 33
         Height = 14
@@ -78,8 +78,8 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label10: TLabel
-        Left = 62
+      object L_Nome: TLabel
+        Left = 60
         Top = 6
         Width = 27
         Height = 14
@@ -91,7 +91,7 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label2: TLabel
+      object L_Nivel: TLabel
         Left = 196
         Top = 50
         Width = 78
@@ -148,6 +148,7 @@ inherited RegUsers: TRegUsers
         Layout = blGlyphTop
         NumGlyphs = 2
         ParentFont = False
+        OnClick = sb_permissaoClick
       end
       object Label1: TLabel
         Left = 359
@@ -178,7 +179,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 1
       end
       object E_Login: TEdit
-        Left = 9
+        Left = 5
         Top = 66
         Width = 109
         Height = 22
@@ -192,7 +193,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 2
       end
       object E_Senha: TEdit
-        Left = 121
+        Left = 117
         Top = 66
         Width = 77
         Height = 22
@@ -206,9 +207,9 @@ inherited RegUsers: TRegUsers
         TabOrder = 3
       end
       object E_Codigo: TEdit
-        Left = 9
+        Left = 5
         Top = 20
-        Width = 49
+        Width = 51
         Height = 22
         Color = clScrollBar
         Enabled = False
@@ -233,8 +234,8 @@ inherited RegUsers: TRegUsers
           'Usu'#225'rio'
           'Administrador')
       end
-      object DBChBx_Ativo: TCheckBox
-        Left = 9
+      object Cbx_Ativo: TCheckBox
+        Left = 5
         Top = 50
         Width = 97
         Height = 12
@@ -257,11 +258,11 @@ inherited RegUsers: TRegUsers
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 1
-      object Label15: TLabel
+      object L_Auth_card: TLabel
         AlignWithMargins = True
         Left = 5
         Top = 2
-        Width = 607
+        Width = 294
         Height = 14
         Margins.Top = 0
         Margins.Bottom = 0
@@ -273,7 +274,6 @@ inherited RegUsers: TRegUsers
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 294
       end
       object E_Auth_card: TEdit
         AlignWithMargins = True
@@ -313,8 +313,8 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label6: TLabel
-        Left = 3
+      object L_lgn_email: TLabel
+        Left = 5
         Top = 128
         Width = 28
         Height = 14
@@ -327,7 +327,7 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label7: TLabel
+      object L_pwd_email: TLabel
         Left = 5
         Top = 165
         Width = 31
@@ -341,7 +341,7 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label8: TLabel
+      object L_Usr_Mail: TLabel
         Left = 5
         Top = 92
         Width = 201
@@ -354,7 +354,7 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label11: TLabel
+      object L_Lbl_Name: TLabel
         Left = 5
         Top = 55
         Width = 189
@@ -367,9 +367,9 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label12: TLabel
-        Left = 306
-        Top = 17
+      object L_porta_email: TLabel
+        Left = 308
+        Top = 16
         Width = 25
         Height = 14
         Caption = 'Porta'
@@ -381,9 +381,9 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
+      object L_Srv_Smtp: TLabel
         Left = 5
-        Top = 17
+        Top = 16
         Width = 126
         Height = 14
         Caption = 'Servidor de sa'#237'da (SMTP);'
@@ -395,7 +395,7 @@ inherited RegUsers: TRegUsers
         ParentFont = False
       end
       object Label13: TLabel
-        Left = 367
+        Left = 369
         Top = 19
         Width = 130
         Height = 14
@@ -407,9 +407,9 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object Label14: TLabel
-        Left = 309
-        Top = 77
+      object L_Assinatura: TLabel
+        Left = 310
+        Top = 81
         Width = 53
         Height = 14
         Caption = 'Assinatura'
@@ -421,7 +421,7 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         ParentFont = False
       end
-      object SpeedButton1: TSpeedButton
+      object sb_TestarEmail: TSpeedButton
         Left = 212
         Top = 179
         Width = 91
@@ -435,10 +435,11 @@ inherited RegUsers: TRegUsers
         Font.Style = []
         NumGlyphs = 2
         ParentFont = False
+        OnClick = sb_TestarEmailClick
       end
       object E_Srv_Smtp: TEdit
-        Left = 3
-        Top = 31
+        Left = 5
+        Top = 30
         Width = 300
         Height = 22
         Font.Charset = ANSI_CHARSET
@@ -450,7 +451,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 0
       end
       object E_lgn_email: TEdit
-        Left = 3
+        Left = 5
         Top = 142
         Width = 300
         Height = 22
@@ -463,7 +464,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 6
       end
       object E_pwd_email: TEdit
-        Left = 3
+        Left = 5
         Top = 178
         Width = 119
         Height = 22
@@ -477,7 +478,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 7
       end
       object E_Usr_Mail: TEdit
-        Left = 3
+        Left = 5
         Top = 106
         Width = 300
         Height = 22
@@ -490,7 +491,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 5
       end
       object E_Lbl_Name: TEdit
-        Left = 3
+        Left = 5
         Top = 69
         Width = 300
         Height = 22
@@ -503,8 +504,8 @@ inherited RegUsers: TRegUsers
         TabOrder = 4
       end
       object E_porta_email: TEdit
-        Left = 304
-        Top = 31
+        Left = 308
+        Top = 30
         Width = 57
         Height = 22
         Font.Charset = ANSI_CHARSET
@@ -516,7 +517,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 1
       end
       object Cbx_Req_Autenticacao: TCheckBox
-        Left = 367
+        Left = 371
         Top = 39
         Width = 168
         Height = 14
@@ -530,7 +531,7 @@ inherited RegUsers: TRegUsers
         TabOrder = 2
       end
       object Cbx_Req_Con_ssl: TCheckBox
-        Left = 367
+        Left = 369
         Top = 59
         Width = 223
         Height = 14
@@ -543,13 +544,6 @@ inherited RegUsers: TRegUsers
         ParentFont = False
         TabOrder = 3
       end
-      object DBMemo1: TMemo
-        Left = 309
-        Top = 97
-        Width = 279
-        Height = 133
-        TabOrder = 8
-      end
       object chbx_notifica_login: TCheckBox
         Left = 2
         Top = 236
@@ -557,11 +551,21 @@ inherited RegUsers: TRegUsers
         Height = 17
         Align = alBottom
         Caption = 'Quero receber notifica'#231#227'o de tentativas ou login efetuado'
+        TabOrder = 8
+      end
+      object M_Assinatura: TMemo
+        Left = 308
+        Top = 97
+        Width = 279
+        Height = 133
+        Lines.Strings = (
+          'M_Assinatura')
         TabOrder = 9
       end
     end
   end
   inherited Menu: TMainMenu
-    Left = 80
+    Left = 456
+    Top = 16
   end
 end

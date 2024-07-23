@@ -9,10 +9,10 @@ uses
 
 type
   TRegJobPosition = class(TBaseRegistry)
-    Label1: TLabel;
+    L_Descricao: TLabel;
     E_Descricao: TEdit;
     E_ID: TEdit;
-    Label2: TLabel;
+    L_ID: TLabel;
   private
     { Private declarations }
   protected
@@ -152,10 +152,12 @@ function TRegJobPosition.ValidateDelete: boolean;
 begin
   Result := True;
   //quando a pergunta esta dentro da validação verifica-se o botão da negativa
-  if (MensagemPadrao('Mensagem de Confirmação',
+  {if (MensagemPadrao('Mensagem de Confirmação',
                      'Deseja delete este item?'+EOLN+EOLN+
                      'Confirmar a exclusão ?',
-                      ['Não','Sim'],[bEscape,bNormal],mpConfirmacao,clRed) = mrBotao1) then
+                      ['Não','Sim'],[bEscape,bNormal],mpConfirmacao,clRed) = mrBotao1) then}
+
+  if MensagemPadrao2(msgDesejaExcluir, EmptyStr, ['Não','Sim'], [bEscape,bNormal], mpConfirmacao, clRed) = mrBotao1 then
   Begin
     Result := False;
     exit;
@@ -166,17 +168,20 @@ end;
 function TRegJobPosition.ValidateSave: boolean;
 begin
   Result := True;
-  if Trim( E_Descricao.Text)='' then
+
+  if Trim( E_Descricao.Text) = EmptyStr then
   begin
-    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+    {MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Campo descrição não informado.'+EOLN+
                    'Preencha para continuar.'+EOLN,
-                  ['OK'],[bEscape],mpErro);
+                  ['OK'],[bEscape],mpErro);   }
+
+    MensagemPadrao2(msgCampoObrigatorio, L_Descricao.Caption, [OK], [bEscape], mpErro);
+
     result:=False;
     E_Descricao.SetFocus;
     Exit;
   end;
-
 end;
 
 end.
