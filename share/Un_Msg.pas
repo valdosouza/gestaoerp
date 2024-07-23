@@ -12,7 +12,7 @@ type
   TMsgPadrao = (mpAlerta, mpErro, mpConfirmacao, mpInformacao);
   TMsgEscape = (bEscape,bNormal);
 
-  TMsgConstante = (msgCampoObrigatorio, msgDesejaExcluir);
+  TMsgAcao = (msgCampoObrigatorio, msgExcluir, msgParar);
 
 const
   EOLN=chr(13)+chr(10);   //Usado para fazer fim de linha nos quadros de mensagens
@@ -30,18 +30,17 @@ const
   TITULO_ERRO = 'Mensagem de erro';
   TITULO_CONFIRMACAO = 'Mensagem de Confirmação';
 
-  function MensagemPadrao(const Titulo, Msg: string;
+  function Mensagem(const Titulo, Msg: string;
                         Opcoes : array of string;
                         BotaoEscape : array of TMsgEscape;
                         TipoPadrao : TMsgPadrao;
                         Lc_Cor : TColor = clBtnFace) : Integer;
 
-  function MensagemPadrao2(MsgConstante: TMsgConstante;
-                           Campo: String;
-                           Opcoes : array of string;
-                           BotaoEscape : array of TMsgEscape;
-                           TipoPadrao : TMsgPadrao;
-                           Lc_Cor : TColor = clBtnFace): Integer;
+  function MensagemValidaPreenchimentoCampo(Campo: String): Integer;
+  function MensagemErroCampo(Campo,info: String): Integer;
+  function MensagemExcluir(): Integer;
+  function MensagemPararExecucao(info:String): Integer;
+  function MensagemcConfirmaAcao(info:String): Integer;
 
   type
     TFormMsg = class(TForm)
@@ -96,30 +95,56 @@ begin
   end;
 end;
 
-function MensagemPadrao2(MsgConstante: TMsgConstante;
-                         Campo: String;
-                         Opcoes : array of string;
-                         BotaoEscape : array of TMsgEscape;
-                         TipoPadrao : TMsgPadrao;
-                         Lc_Cor : TColor = clBtnFace): Integer;
+function MensagemValidaPreenchimentoCampo(Campo: String): Integer;
 var
-  Titulo, Msg: String;
+  Msg: String;
 begin
-  if MsgConstante = msgCampoObrigatorio then
-  begin
-    Titulo := TITULO_ERRO;
-    Msg := 'A T E N Ç Ã O!' + EOLN + EOLN + 'O Campo "'+Campo+'" não foi informado.' + EOLN + 'Preencha para continuar.' + EOLN;
-  end
-  else if MsgConstante = msgDesejaExcluir then
-  begin
-    Titulo := TITULO_CONFIRMACAO;
-    Msg := 'Deseja excluir este item?' + EOLN + EOLN + 'Confirmar a exclusão?'
-  end;
-
-  Result := MensagemPadrao(Titulo, Msg, Opcoes, BotaoEscape, TipoPadrao, Lc_Cor);
+  Msg :=  'A T E N Ç Ã O!' + EOLN + EOLN +
+          'O Campo "'+Campo+'" não foi informado.' + EOLN +
+          'Preencha para continuar.' + EOLN;
+  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
-function MensagemPadrao(const Titulo, Msg: string;
+function MensagemErroCampo(Campo,info: String): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
+         'Verifique o Campo "'+Campo+'".' + EOLN +
+         info + EOLN +
+         'Preencha para continuar.' + EOLN;
+  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpErro, clRed);
+end;
+
+function MensagemExcluir(): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'Deseja excluir este item?' + EOLN + EOLN +
+         'Confirmar a exclusão?';
+  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OK],[bEscape], mpConfirmacao, clBtnFace);
+end;
+
+function MensagemPararExecucao(info:String): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
+          info + EOLN +
+          'Verifique antes de continuar.' + EOLN;
+  Result := Mensagem( TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+end;
+
+function MensagemcConfirmaAcao(info:String): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'C O N F I R M A Ç Ã O!' + EOLN + EOLN +
+          info + EOLN;
+  Result := Mensagem( TITULO_ERRO, Msg, [SIM,NAO],[bNormal, bEscape], mpAlerta, clBtnFace);
+end;
+
+function Mensagem(const Titulo, Msg: string;
                         Opcoes : array of string;
                         BotaoEscape : array of TMsgEscape; TipoPadrao : TMsgPadrao;
                         Lc_Cor : TColor = clBtnFace) : Integer;

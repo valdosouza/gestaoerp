@@ -152,12 +152,7 @@ function TRegJobPosition.ValidateDelete: boolean;
 begin
   Result := True;
   //quando a pergunta esta dentro da validação verifica-se o botão da negativa
-  {if (MensagemPadrao('Mensagem de Confirmação',
-                     'Deseja delete este item?'+EOLN+EOLN+
-                     'Confirmar a exclusão ?',
-                      ['Não','Sim'],[bEscape,bNormal],mpConfirmacao,clRed) = mrBotao1) then}
-
-  if MensagemPadrao2(msgDesejaExcluir, EmptyStr, ['Não','Sim'], [bEscape,bNormal], mpConfirmacao, clRed) = mrBotao1 then
+  if (MensagemExcluir = mrBotao1) then
   Begin
     Result := False;
     exit;
@@ -171,13 +166,7 @@ begin
 
   if Trim( E_Descricao.Text) = EmptyStr then
   begin
-    {MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Campo descrição não informado.'+EOLN+
-                   'Preencha para continuar.'+EOLN,
-                  ['OK'],[bEscape],mpErro);   }
-
-    MensagemPadrao2(msgCampoObrigatorio, L_Descricao.Caption, [OK], [bEscape], mpErro);
-
+    MensagemValidaPreenchimentoCampo(L_Descricao.Caption);
     result:=False;
     E_Descricao.SetFocus;
     Exit;

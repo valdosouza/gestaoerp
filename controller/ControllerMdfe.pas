@@ -677,9 +677,7 @@ Begin
     finally
       if (StatusServico.cStat <> 107) AND (Trim(StatusServico.xMotivo) <> '') then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Status do Serviço : ' + StatusServico.xMotivo + EOLN,
-                       ['OK'], [bEscape], mpInformacao);
+        MensagemPararExecucao('Status do Serviço : ' + StatusServico.xMotivo);
         Result := False;
       end;
     end;

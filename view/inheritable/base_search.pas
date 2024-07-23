@@ -187,20 +187,14 @@ begin
   Result := True;
   if not cds_search.Active then
   Begin
-    MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Nenhuma busca foi efetuada.'+EOLN+
-                   'Verifique e tente novamente'+EOLN,
-                   ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao('Nenhuma busca foi efetuada');
     Result := False;
     exit;
   end;
 
   if cds_search.RecordCount = 0 then
   Begin
-    MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Não há registros para visualizar.'+EOLN+
-                   'Verifique e tente novamente'+EOLN,
-                   ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao('Não há registros para visualizar.');
     Result := False;
     exit;
   end;

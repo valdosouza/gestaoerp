@@ -243,10 +243,8 @@ Begin
     if (recordCount >0) then
       Begin
       Result := False;
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Não é possível excluir este extintor.' + EOLN +
-                     'Ele possue vínculos em inspeção.' + EOLN,
-                     ['OK'], [bEscape], mpAlerta);
+      MensagemPararExecucao('Não é possível excluir este extintor.' + EOLN +
+                            'Ele possue vínculos em inspeção.');
       end;
     end;
   Lc_Qry.Close;
@@ -1424,10 +1422,7 @@ begin
     FetchAll;
     if (recordcount = 0) then
       Begin
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Não existem selos disponíveis.' + EOLN +
-                     'Verifique antes de continuar.' + EOLN,
-                     ['OK'], [bEscape], mpAlerta);
+      MensagemPararExecucao('Não existem selos disponíveis.');
       Result := False;
       end;
     end;

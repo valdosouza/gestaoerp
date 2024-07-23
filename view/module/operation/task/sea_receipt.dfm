@@ -13,6 +13,9 @@ inherited SeaReceipt: TSeaReceipt
     ExplicitTop = 73
     ExplicitWidth = 672
     ExplicitHeight = 299
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 668
+    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 576
       Height = 281
@@ -165,5 +168,25 @@ inherited SeaReceipt: TSeaReceipt
   inherited Menu: TMainMenu
     Left = 168
     Top = 65528
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchrec_numero: TStringField
+      FieldName = 'rec_numero'
+      Size = 50
+    end
+    object cds_searchrec_data: TDateField
+      FieldName = 'rec_data'
+    end
+    object cds_searchrec_emitente: TStringField
+      FieldName = 'rec_emitente'
+      Size = 100
+    end
+    object cds_searchrec_sacado: TStringField
+      FieldName = 'rec_sacado'
+      Size = 100
+    end
+    object cds_searchrec_valor: TFloatField
+      FieldName = 'rec_valor'
+    end
   end
 end

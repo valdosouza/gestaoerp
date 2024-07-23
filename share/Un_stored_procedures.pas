@@ -264,10 +264,8 @@ begin
     except
       on E : Exception do
       Begin
-        MensagemPadrao('Mensagem ', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Por favor Informe este erro ao Desenvolvedor.' + EOLN +
-                       'V2: ' + E.Message + EOLN,
-                       ['OK'], [bEscape], mpErro);
+        MensagemPararExecucao('Por favor Informe este erro ao Desenvolvedor.' + EOLN +
+                               'V2: ' + E.Message);
         DM.Sp_Itens_Nfl.Active := False;
         Result := 0;
     End;
@@ -321,10 +319,7 @@ begin
   except
     on E : Exception do
     Begin
-      MensagemPadrao('Mensagem ', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Por favor Informe este erro ao Desenvolvedor.' + EOLN +
-                     E.Message + EOLN,
-                     ['OK'], [bEscape], mpErro);
+      MensagemPararExecucao('Por favor Informe este erro ao Desenvolvedor.');
       DM.Sp_Itens_Nfl.Active := False;
       Result := 0;
     End;
@@ -500,11 +495,9 @@ begin
         if Transaction.InTransaction then Transaction.Commit;
       Except
         on E : Exception do
-        MensagemPadrao('Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Um erro impossibilitou a execução da tarefa.' + EOLN +
-                        E.ClassName + EOLN+
-                        E.Message + EOLN,
-                       ['OK'], [bEscape], mpErro);
+        MensagemPararExecucao('Um erro impossibilitou a execução da tarefa.' + EOLN +
+                               E.ClassName + EOLN+
+                               E.Message + EOLN);
       end;
     end;
   Finally
@@ -548,11 +541,9 @@ begin
         if Transaction.InTransaction then  Transaction.Commit;
       Except
         on E : Exception do
-        MensagemPadrao('Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-           'Um erro impossibilitou a gravação dos Log(s).' + EOLN +
-           E.ClassName + EOLN+
-           E.Message + EOLN,
-           ['OK'], [bEscape], mpErro);
+        MensagemPararExecucao('Um erro impossibilitou a gravação dos Log(s).' + EOLN +
+                               E.ClassName + EOLN+
+                               E.Message + EOLN);
       end;
     end;
   Finally

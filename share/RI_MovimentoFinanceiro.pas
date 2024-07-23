@@ -35,10 +35,8 @@ begin
     Begin
       if msg then
       Begin
-        MensagemPadrao(' Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       ' Não existe um caixa aberto para este Usuário.' + EOLN +
-                       ' Abra o caixa e tente novamente.' + EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Não existe um caixa aberto para este Usuário.' + EOLN +
+                              ' Abra o caixa e tente novamente.');
       End;
     End;
   Finally
@@ -59,11 +57,9 @@ begin
       REsult := True;
       Gb_CodigoCaixa := Lc_Cashier.Registro.Codigo;
       Gb_DataCaixa := Lc_Cashier.Registro.Data;
-      MensagemPadrao(' Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'O último caixa aberto do dia ' + DateToStr(Lc_Cashier.Registro.Data) + ' está fechado.'+EOLN +
-                     'O Encerramento foi feito no dia ' + DateTimeToStr(Lc_Cashier.Registro.Fechamento) + EOLN +
-                     ' Este caixa só poderá ser aberto no dia seguinte.' + EOLN,
-                     ['OK'], [bEscape], mpAlerta);
+      MensagemPararExecucao('O último caixa aberto do dia ' + DateToStr(Lc_Cashier.Registro.Data) + ' está fechado.'+EOLN +
+                            'O Encerramento foi feito no dia ' + DateTimeToStr(Lc_Cashier.Registro.Fechamento) + EOLN +
+                            ' Este caixa só poderá ser aberto no dia seguinte.');
     End
     else
     Begin

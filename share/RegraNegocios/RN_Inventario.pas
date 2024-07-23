@@ -289,10 +289,7 @@ Begin
   Lc_Dt_Inventario := Fc_UltimaDataInventario(pcodmha);
   if Fc_Data < Lc_Dt_Inventario then
     Begin
-    MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'A data não pode ser menor que ' + DateToStr(Lc_Dt_Inventario) +'.'+EOLN+
-                   'Um inventário impede datas retroativas.'+EOLN,
-                  ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao('A data não pode ser menor que ' + DateToStr(Lc_Dt_Inventario) +'.');
     Result := FAlse;
     end;
 end;

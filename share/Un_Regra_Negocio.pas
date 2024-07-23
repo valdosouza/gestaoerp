@@ -251,10 +251,7 @@ Begin
           Fetchall;
           If RecordCount = 0 then
           Begin
-            MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                           'O cadastro do Estabelecimento está incompleto.' + EOLN +
-                           'Verifique antes de continuar.' + EOLN,
-                           ['OK'], [bEscape], mpAlerta);
+            MensagemPararExecucao('O cadastro do Estabelecimento está incompleto.');
             if not Assigned(Fr_MinhaEmpresa) then (Application.CreateForm(TFr_MinhaEmpresa, Fr_MinhaEmpresa));
             Fr_MinhaEmpresa.ShowModal;
           end
@@ -372,10 +369,8 @@ begin
       end
       else
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Não foi definido um estoque principal.' + EOLN +
-                       'Verifique no cadastro de minha Empresa.' + EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Não foi definido um estoque principal.' + EOLN +
+                              'Verifique no cadastro de minha Empresa.');
       end;
     End;
   Finally
@@ -1355,10 +1350,8 @@ begin
       if not (Fc_VerificaPermissao('Fr_Pedido_Vda','Pedido de Venda','AUTORIZAR', GB_Cd_Usuario,'N')) then
       Begin
 
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                        'Percentual máximo de Desconto ' + FloatToStr(Lc_Aliq_Perm) + '%.' + EOLN +
-                        'Caso Necessário Peça Autorização.' + EOLN,
-                        ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Percentual máximo de Desconto ' + FloatToStr(Lc_Aliq_Perm) + '%.' + EOLN +
+                              'Caso Necessário Peça Autorização.');
         Result := False;
       end;
     end;
@@ -2413,10 +2406,7 @@ Begin
     end;
   if not Result then
     Begin
-    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Nenhum registro foi selecionado.'+EOLN+
-                   'Verifique e tente novamente.'+EOLN,
-                  ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao('Nenhum registro foi selecionado.');
     end;
 end;
 
@@ -2535,10 +2525,7 @@ Begin
   Result := true;
   if not Usa then
     Begin
-    MensagemPadrao('Mensagem de Alerta', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                   'A Abertura da gaveta não foi ativada nas configurações.' + EOLN +
-                   '               Verifique e tente novamente.' + EOLN,
-                   ['OK'], [bEscape], mpAlerta);
+    MensagemPararExecucao('A Abertura da gaveta não foi ativada nas configurações.');
     Result := False;
     exit;
     end;
@@ -2551,10 +2538,8 @@ Begin
 
   if (not Gb_Liberado) or (Gb_Nivel = 0) then
   Begin
-    MensagemPadrao('Mensagem de Alerta', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                   'A Abertura da gaveta é permitida apenas para usuário Administrador.' + EOLN +
-                   '        Solicite autorização e tente novamente.' + EOLN,
-                   ['OK'], [bEscape], mpAlerta);
+    MensagemPararExecucao('A Abertura da gaveta é permitida apenas para usuário Administrador.' + EOLN +
+                          '        Solicite autorização.');
     try
       ShowMessage('Verificar');
 //      Lc_Form := TFr_Liberacao.Create(nil);

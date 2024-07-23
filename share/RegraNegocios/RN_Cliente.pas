@@ -117,11 +117,8 @@ begin
       FetchAll;
       if (RecordCount > 0) then
       Begin
-        MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Um Cliente com este CPF/CNPJ já existe.'+EOLN+
-                        FieldByName('EMP_CODIGO').AsString + ' - ' + FieldByName('EMP_NOME').AsString+EOLN+
-                       'Verifique e tente novamente.' +EOLN,
-                       ['OK'], [bEscape], mpErro);
+        MensagemPararExecucao('Um Cliente com este CPF/CNPJ já existe.'+EOLN+
+                               FieldByName('EMP_CODIGO').AsString + ' - ' + FieldByName('EMP_NOME').AsString);
         Result:= FieldByName('EMP_CODIGO').AsInteger
       end
       else
@@ -227,10 +224,7 @@ Begin
         end
         else
         Begin
-          MensagemPadrao('Mensagem', 'I N F O R M A Ç Ã O!.' + EOLN + EOLN +
-                         'Cliente não localizado.' + EOLN +
-                         'Verifique e tente novamente.' + EOLN ,
-                         ['OK'], [bEscape], mpInformacao);
+          MensagemPararExecucao('Cliente não localizado.' + EOLN);
         end;
       end;
     Finally
@@ -313,25 +307,19 @@ Begin
         If ( lc_vl_Pos_saldo < 0 ) then
         Begin
           lc_MSG:='O cliente excedeu seu limite em R$:' +FormatFloat('#,##0.00',lc_vl_Pos_saldo) ;
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         lc_MSG+EOLN,
-                      ['OK'],[bEscape],mpErro);
+          MensagemPararExecucao(lc_MSG);
           Result := False;
         end;
         If ( lc_vl_Pre_saldo<=0) then
         Begin
           lc_MSG:='O cliente Atingiu o limite de Crédito disponível' ;
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         lc_MSG+EOLN,
-                      ['OK'],[bEscape],mpErro);
+          MensagemPararExecucao(lc_MSG);
           Result := False;
         end;
         If (lc_vl_Pos_saldo >0) then
         Begin
           lc_MSG:='O cliente tem saldo de limite de R$:' +FormatFloat('#,##0.00',lc_vl_Pos_saldo) ;
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         lc_MSG+EOLN,
-                       ['OK'],[bEscape],mpInformacao);
+          MensagemPararExecucao(lc_MSG);
         end;
       end;
     Finally

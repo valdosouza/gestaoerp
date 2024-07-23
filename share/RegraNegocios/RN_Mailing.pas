@@ -198,10 +198,7 @@ begin
 
   if not Result then
   Begin
-    MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'E-mail informado inválido.'+EOLN+
-                   'Verifique e tente novamente.'+EOLN,
-                   ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao('E-mail informado inválido.');
   end;
 end;
 

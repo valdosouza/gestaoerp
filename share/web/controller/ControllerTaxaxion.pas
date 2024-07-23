@@ -363,11 +363,8 @@ Begin
       else
         It_M_Fisco.Add('       3º Este destinatário não está marcado como Optante pelo simples.');
 
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Regra de Tributação não encontrada para os seguintes Produtos.' + EOLN + EOLN +
-                      It_M_Fisco.Text + EOLN +
-                     'Verifique e tente novamente.' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+      MensagemPararExecucao('Regra de Tributação não encontrada para os seguintes Produtos.' + EOLN + EOLN +
+                            It_M_Fisco.Text);
 
       Result := False;
       exit;
@@ -391,12 +388,9 @@ Begin
     end;
     if (Length(It_M_Fisco.Text) >0 ) then
     Begin
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Verificar o Cód. Class. Fiscal(NCM) dos seguintes produtos.' + EOLN +
+      MensagemPararExecucao('Verificar o Cód. Class. Fiscal(NCM) dos seguintes produtos.' + EOLN +
                      'Falta de preenchimento ou não contém 8 digitos.' + EOLN +
-                      It_M_Fisco.Text + EOLN +
-                     'Verifique e tente novamente.' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+                      It_M_Fisco.Text);
       Result := False;
       exit;
     end;
@@ -415,12 +409,9 @@ Begin
     end;
     if (Length(It_M_Fisco.Text) >0 ) then
     Begin
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Verificar o Código especificador da S.T dos seguintes produtos.' + EOLN +
+      MensagemPararExecucao('Verificar o Código especificador da S.T dos seguintes produtos.' + EOLN +
                      'Falta de preenchimento ou não contém 7 digitos.' + EOLN +
-                      It_M_Fisco.Text + EOLN +
-                     'Verifique e tente novamente.' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+                      It_M_Fisco.Text);
       Result := False;
       exit;
     end;
@@ -436,12 +427,9 @@ Begin
     end;
     if (Length(It_M_Fisco.Text) >0 ) then
     Begin
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Verificar o campo unidade dos seguintes produtos.' + EOLN +
+      MensagemPararExecucao('Verificar o campo unidade dos seguintes produtos.' + EOLN +
                      'Falta de preenchimento.' + EOLN +
-                      It_M_Fisco.Text + EOLN +
-                     'Verifique e tente novamente.' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+                      It_M_Fisco.Text);
       Result := False;
       exit;
     end;
@@ -460,12 +448,9 @@ Begin
       end;
       if (Length(It_M_Fisco.Text) >0 ) then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Verificar o Cód. de barras dos seguintes produtos.' + EOLN +
+        MensagemPararExecucao('Verificar o Cód. de barras dos seguintes produtos.' + EOLN +
                        'Não contém o mímino de 8 digitos.' + EOLN +
-                        It_M_Fisco.Text + EOLN +
-                       'Verifique e tente novamente.' + EOLN,
-                       ['OK'], [bEscape], mpErro);
+                        It_M_Fisco.Text);
         Result := False;
         exit;
       end;
@@ -486,12 +471,9 @@ Begin
       end;
       if (Length(It_M_Fisco.Text) >0 ) then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Verificar o Cód. de barras dos seguintes produtos.' + EOLN +
+        MensagemPararExecucao('Verificar o Cód. de barras dos seguintes produtos.' + EOLN +
                        'O código EAN/GTIN está incorreto.' + EOLN +
-                        It_M_Fisco.Text + EOLN +
-                       'Verifique e tente novamente.' + EOLN,
-                       ['OK'], [bEscape], mpErro);
+                        It_M_Fisco.Text);
         Result := False;
         exit;
       end;
@@ -499,20 +481,14 @@ Begin
 
     IF (Qr_ItensPedido.FieldByName('ITF_VL_UNIT').AsFloat  = 0) then
     Begin
-      MensagemPadrao('Mensagem de Alerta', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                    'Este produto está com o preço Zerado.' + EOLN +
-                    'Verifique antes de continuar.' + EOLN,
-                    ['OK'], [bEscape], mpAlerta);
+      MensagemPararExecucao('Este produto está com o preço Zerado.');
       Result := false;
       exit;
     end;
 
     if Trim(FieldByName('PRO_DESCRICAO').AsString)='' then
     begin
-      MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'O produto está com problemas em sua descrição.'+EOLN+
-                     'Verifique e tente novamente.'+EOLN,
-                     ['OK'],[bEscape],mpAlerta);
+      MensagemPararExecucao('O produto está com problemas em sua descrição.');
       Result := False;
       exit;
     end;

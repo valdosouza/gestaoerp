@@ -64,10 +64,7 @@ Begin
       if (recordCount >0) then
       Begin
         Result := False;
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Não é possível excluir este Lote.' + EOLN +
-                       'Ele possue vínculos em inspeção.' + EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Não é possível excluir este Lote.');
       end;
     End;
   Finally

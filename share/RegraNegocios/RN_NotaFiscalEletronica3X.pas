@@ -319,20 +319,14 @@ Begin
   Result:=true;
   if (Trim(Pc_Endereco) = '') then
   Begin
-    MensagemPadrao(' Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   ' Endereço de entrega não informado.'+EOLN+EOLN+
-                   ' Favor preecher os dados e tentar novamente'+EOLN+EOLN,
-                   ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao(' Endereço de entrega não informado.');
     result := False;
     exit;
   end;
 
   if (Pc_cd_Endereco = 0) then
   Begin
-    MensagemPadrao(' Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   ' Verifique os dados do endereço.'+EOLN+EOLN+
-                   ' Favor preecher os dados e tentar novamente'+EOLN+EOLN,
-                   ['OK'],[bEscape],mpAlerta);
+    MensagemPararExecucao('Verifique os dados do endereço.');
     result := False;
     exit;
   end;
@@ -359,40 +353,28 @@ Begin
 
   If  Lc_Bairro = '' then
   Begin
-      MensagemPadrao(' Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     ' O Bairro do endereço de Entrega não foi informado.'+EOLN+EOLN+
-                     ' Favor preecher os dados e tentar novamente'+EOLN+EOLN,
-                     ['OK'],[bEscape],mpAlerta);
+      MensagemPararExecucao('O Bairro do endereço de Entrega não foi informado.');
       Result := False;
       exit;
   end;
 
   If Lc_Cep = '' then
   Begin
-      MensagemPadrao(' Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     ' O CEP do endereço de Entrega não foi informado.'+EOLN+EOLN+
-                     ' Favor preecher os dados e tentar novamente'+EOLN+EOLN,
-                     ['OK'],[bEscape],mpAlerta);
+      MensagemPararExecucao('O CEP do endereço de Entrega não foi informado.');
       Result := False;
       exit;
   end;
 
   If Lc_Numero = '' then
   Begin
-      MensagemPadrao(' Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     ' O Número do endereço de Entrega não foi informado.'+EOLN+EOLN+
-                     ' Favor preecher os dados e tentar novamente'+EOLN+EOLN,
-                     ['OK'],[bEscape],mpAlerta);
+      MensagemPararExecucao('O Número do endereço de Entrega não foi informado.');
       Result := False;
       exit;
   end;
 
   If Lc_Endereco = '' then
   Begin
-      MensagemPadrao(' Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     ' O endereço de Entrega não foi informado.'+EOLN+EOLN+
-                     ' Favor preecher os dados e tentar novamente'+EOLN+EOLN,
-                     ['OK'],[bEscape],mpAlerta);
+      MensagemPararExecucao('O endereço de Entrega não foi informado.');
       Result := False;
       exit;
   end;
@@ -670,10 +652,7 @@ Begin
   Result := True;
   if not (TestaCgc(TRIM(Fc_Numero))) then
   begin
-    MensagemPadrao(' Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                   ' Número de C.N.P.J. do ' + Fc_Tipo +'Inválido.' + EOLN +
-                   ' Verifique o C.N.P.J.' + EOLN,
-                   ['OK'], [bEscape], mpErro);
+    MensagemPararExecucao('Número de C.N.P.J. do ' + Fc_Tipo +'Inválido.');
     Result := False;
     exit;
   end;
@@ -684,10 +663,7 @@ Begin
   Result := True;
   if not (TestaCpf(TRIM(Fc_Numero))) then
   begin
-    MensagemPadrao(' Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                   ' Número de C.P.F. do ' + Fc_Tipo +' Inválido.' + EOLN +
-                   ' Verifique o C.P.F.' + EOLN,
-                   ['OK'], [bEscape], mpErro);
+    MensagemPararExecucao('Número de C.P.F. do ' + Fc_Tipo +' Inválido.');
      Result := False;
      exit;
   end;

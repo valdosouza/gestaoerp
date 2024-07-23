@@ -136,11 +136,8 @@ begin
             else
             Begin
               {
-              MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                             'O arquivo para anexar ao email não foi encontrado.' + EOLN +
-                             'Nome do Arquivo: ' + FAnexo.Strings[Lc_I] + EOLN +
-                             'Verifique e tente novamente.' + EOLN,
-                            ['OK'], [bEscape], mpAlerta);
+              MensagemPararExecucao('O arquivo para anexar ao email não foi encontrado.' + EOLN +
+                                    'Nome do Arquivo: ' + FAnexo.Strings[Lc_I]);
               }
             end;
           end;

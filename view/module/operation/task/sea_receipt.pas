@@ -21,6 +21,11 @@ type
     e_nomebusca: TEdit;
     chck_buscaEmitente: TCheckBox;
     chck_buscaSacado: TCheckBox;
+    cds_searchrec_numero: TStringField;
+    cds_searchrec_data: TDateField;
+    cds_searchrec_emitente: TStringField;
+    cds_searchrec_sacado: TStringField;
+    cds_searchrec_valor: TFloatField;
   private
   protected
     procedure openRegister(pCodigo:Integer);override;
