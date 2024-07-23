@@ -462,20 +462,14 @@ begin
       Empresa := Fc_BuscaCodigoEmpresa(FcDataBase,FcTransaction, ObjEmpresa.Registro.CpfCNPJ);
       if Empresa = 0 then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       ' Por favor Registre o cliente no Banco Dados de Destino. ' +EOLN +
-                       ' Verifique e tente novamente.'+EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Por favor Registre o cliente no Banco Dados de Destino. ');
         Result := False;
       end;
 
       Endereco := Fc_BuscaCodigoEndereco(FcDataBase,FcTransaction,Empresa);
       if Endereco = 0 then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       ' Por favor Registre o endereço do cliente no Banco Dados de Destino. ' +EOLN +
-                       ' Verifique e tente novamente.'+EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Por favor Registre o endereço do cliente no Banco Dados de Destino. ');
         Result := False;
       End;
 
@@ -580,11 +574,7 @@ Begin
       }
       if ( not result )  then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Problemas de Saldo de Produtos com os seguintes itens:.'+EOLN+EOLN+
-                        lc_obs.Text + EOLN +
-                       'Caso Necessário Peça Autorização.' + EOLN,
-                        ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Problemas de Saldo de Produtos com os seguintes itens:.');
         Result := False;
       end;
     end;
@@ -678,12 +668,10 @@ Var
 Begin
   if ( StrToIntDef( Fc_Cd_Produto ,0) = 0 ) then
   Begin
-    MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                   'Para enviar o pedido, é necessário que '+EOLN+
+    MensagemPararExecucao('Para enviar o pedido, é necessário que '+EOLN+
                    'O código do produto de destino esteja referenciado'+EOLN+
                    'no campo codigo do fornecedor'+EOLN+
-                   'Verifique o produto ' + Fc_Descricao +EOLN,
-                   ['OK'], [bEscape], mpInformacao);
+                   'Verifique o produto ' + Fc_Descricao);
     Result := False;
     Exit;
   End;

@@ -57,10 +57,7 @@ Begin
       Lc_Form.ShowModal;
     except
       on E : Exception do
-        MensagemPadrao('Mensagem ', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'Por favor Informe este erro ao Desenvolvedor.' + EOLN +
-                       E.Message + EOLN,
-                       ['OK'], [bEscape], mpErro);
+        MensagemPararExecucao('Por favor Informe este erro ao Desenvolvedor.');
     end;
   Finally
     Lc_Form.DisposeOf;
@@ -159,11 +156,8 @@ begin
 
   if Lc_Destinatario.Count = 0 then
     Begin
-    MensagemPadrao('Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                   'e-mail não encontrado no Cadastro e/ou não informado.' + EOLN +
-                   '          Verifique  e tente novamente.' + EOLN,
-                   ['OK'], [bEscape], mpErro);
-    exit;
+    MensagemPararExecucao('e-mail não encontrado no Cadastro e/ou não informado.');
+    exit;
     end;
   Try
     LcEnviaemail := TFr_envia_email.create(nil);
@@ -218,11 +212,8 @@ begin
       end
       else
       Begin
-        MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Por favor antes de proseguir preencha o campo '+EOLN+
-                       'Inscrição Municipal da empresa '+ FieldByName('EMP_INSC_MUN').AsString +EOLN+
-                       'Verique e tente novamente'+EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+        MensagemPararExecucao('Por favor antes de proseguir preencha o campo '+EOLN+
+                               'Inscrição Municipal da empresa '+ FieldByName('EMP_INSC_MUN').AsString);
         Result:=false;
       end;
     End;

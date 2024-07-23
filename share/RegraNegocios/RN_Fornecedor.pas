@@ -89,10 +89,7 @@ Begin
         end
         else
         Begin
-          MensagemPadrao('Mensagem', 'I N F O R M A Ç Ã O!.' + EOLN + EOLN +
-                         'Fornecedor não localizado.' + EOLN +
-                         'Verifique e tente novamente.' + EOLN ,
-                         ['OK'], [bEscape], mpInformacao);
+          MensagemPararExecucao('Fornecedor não localizado.');
         end;
       End;
     Finally

@@ -283,10 +283,7 @@ end;
 function TRegUsers.ValidateDelete: boolean;
 begin
   Result := True;
-  if (MensagemPadrao('Mensagem de Confirmação',
-                     'Deseja delete este item?'+EOLN+EOLN+
-                     'Confirmar a exclusão ?',
-                      ['Não','Sim'],[bEscape,bNormal],mpConfirmacao,clRed) = mrBotao1) then
+  if (MensagemExcluir = mrBotao1) then
   Begin
     Result := False;
     exit;
@@ -299,16 +296,7 @@ begin
 
   if TRIM(E_Nome.Text) = EmptyStr then
   begin
-   { MensagemPadrao('Mensagem de erro',
-                   'A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Nome do Usuário não informado.'+EOLN+
-                     'Preencha o Nome deste Usuário.'+EOLN,
-                   ['OK'],
-                   [bEscape],
-                   mpErro); }
-
-    MensagemPadrao2(msgCampoObrigatorio, L_Nome.Caption, [OK], [bEscape], mpErro);
-
+    MensagemValidaPreenchimentoCampo(L_Nome.Caption);
     result:=False;
     E_Nome.SetFocus;
     Exit;
@@ -316,13 +304,7 @@ begin
 
   if TRIM(E_Login.Text) = EmptyStr then
   begin
-    {MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Login do Usuário não informado.'+EOLN+
-                   'Preencha o Login deste Usuário.'+EOLN,
-                  ['OK'],[bEscape],mpErro);  }
-
-    MensagemPadrao2(msgCampoObrigatorio, 'Login do Usuário', [OK], [bEscape], mpErro);
-
+    MensagemValidaPreenchimentoCampo('Login do Usuário');
     result:=False;
     E_Login.SetFocus;
     Exit;
@@ -330,13 +312,7 @@ begin
 
   if (TRIM(E_Senha.Text) = '') and (cbx_Ativo.Checked) then //nao usa mais DB
   begin
-    {MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Senha do Usuário não preenchido.'+EOLN+
-                   'Preencha a Senha deste Usuário.'+EOLN,
-                  ['OK'],[bEscape],mpErro);}
-
-    MensagemPadrao2(msgCampoObrigatorio, L_Senha.Caption, [OK], [bEscape], mpErro);
-
+    MensagemValidaPreenchimentoCampo(L_Senha.Caption);
     result:=False;
     E_Senha.SetFocus;
     Exit;
@@ -346,35 +322,25 @@ end;
 function TRegUsers.validaEnvioEmailteste: boolean;
 begin
   Result:=true;
-
-  {if TRIM(E_Srv_Smtp.Text) = '' then
+  if TRIM(E_Srv_Smtp.Text) = '' then
   begin
-    MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Servidor SMTP não informado.'+EOLN+
-                   'Preencha o campo corretamente.'+EOLN,
-                  ['OK'],[bEscape],mpErro);
+    MensagemValidaPreenchimentoCampo(L_Srv_Smtp.Caption);
    result:=False;
    Exit;
   end;
   if TRIM(E_Usr_Mail.Text) = '' then
   begin
-    MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Campo usuário/email não informado.'+EOLN+
-                   'Preencha o campo corretamente.'+EOLN,
-                  ['OK'],[bEscape],mpErro);
+    MensagemValidaPreenchimentoCampo(L_Usr_Mail.Caption);
    result:=False;
    Exit;
   end;
 
   if TRIM(E_pwd_email.Text) = '' then
   begin
-    MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Campo senha não informado.'+EOLN+
-                   'Preencha o campo corretamente.'+EOLN,
-                  ['OK'],[bEscape],mpErro);
+    MensagemValidaPreenchimentoCampo(L_pwd_email.Caption);
     result:=False;
     Exit;
-  end; }
+  end;
 end;
 
 procedure TRegUsers.EnvioEmailteste;

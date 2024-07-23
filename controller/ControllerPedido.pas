@@ -546,10 +546,7 @@ Begin
         FetchAll;
         if (Lc_Qry.RecordCount >0) then
         Begin
-          MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                         'Este pedido já foi Faturado.' + EOLN +
-                         '    Operação cancelada.'+EOLN,
-                         ['OK'], [bEscape], mpInformacao);
+          MensagemPararExecucao('Este pedido já foi Faturado.');
           Result := True;
         end;
       end;
@@ -1192,11 +1189,9 @@ Begin
         Begin
           if msg then
           Begin
-            MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                           'Há uma inconsistência no faturamento deste pedido.' + EOLN +
+            MensagemPararExecucao('Há uma inconsistência no faturamento deste pedido.' + EOLN +
                            ' Ele consta como faturado, vá em Nota Fiscal de Produtos '+EOLN+
-                           ' e cancele para refazer o processo.'+EOLN,
-                           ['OK'], [bEscape], mpInformacao);
+                           ' e cancele para refazer o processo.');
             Result := True;
           End;
         end;
@@ -1265,10 +1260,8 @@ Begin
         Begin
           if msg then
           Begin
-            MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                           'Este pedido já foi Faturado.' + EOLN +
-                           '    Operação cancelada.'+EOLN,
-                           ['OK'], [bEscape], mpInformacao);
+            MensagemPararExecucao('Este pedido já foi Faturado.' + EOLN +
+                                  '    Operação cancelada.');
           End;
           Result := True;
         end;
@@ -1307,10 +1300,7 @@ begin
           else
           begin
             Result := False;
-            MensagemPadrao('Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                           'Pedido visualizado no terminal ' + FieldbyName('PED_EMUSO').AsString + '.' + EOLN +
-                           'Verifique e tente novamente.' + EOLN,
-                           ['OK'], [bEscape], mpErro);
+            MensagemPararExecucao('Pedido visualizado no terminal ' + FieldbyName('PED_EMUSO').AsString + '.');
             Exit;
           end;
         end;
@@ -1349,10 +1339,7 @@ begin
     IF (Lc_ValorPedido <> Lc_ValorParcelado ) AND
        ( Lc_ValorParcelado >0) THEN
     BEGIN
-      MensagemPadrao('MENSAGEM DE ERRO','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'O Valor do Pedido não confere com Valor do Parcelamento.'+EOLN+
-                     'Refaça o parcelamento.'+EOLN,
-                     ['OK'],[BESCAPE],MPERRO);
+      MensagemPararExecucao('O Valor do Pedido não confere com Valor do Parcelamento.');
       Result := FALSE;
     end;
   End;

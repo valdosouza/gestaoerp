@@ -1751,10 +1751,8 @@ begin
         FetchAll;
         if RecordCount = 0 then
         begin
-          MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                         'Não há registro de movimentação deste produto.' + EOLN +
-                         'verificado desde o dia ' + DateToStr(Pc_Periodo) + ' até hoje.' + EOLN,
-                         ['OK'], [bEscape], mpInformacao);
+          MensagemPararExecucao('Não há registro de movimentação deste produto.' + EOLN +
+                                'verificado desde o dia ' + DateToStr(Pc_Periodo) + ' até hoje.');
         end;
       End;
     Finally
@@ -1823,10 +1821,8 @@ begin
    Lc_Hoje := Copy(DateToStr(Date), 1, 5);
    if Lc_Aniver = Lc_Hoje then
    begin
-      MensagemPadrao('Mensagem ', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-         '        Parabenize o Cliente' + EOLN + EOLN +
-         'Ele está completando aniversário hoje.' + EOLN,
-         ['OK'], [bEscape], mpInformacao);
+      MensagemPararExecucao('        Parabenize o Cliente' + EOLN + EOLN +
+                            'Ele está completando aniversário hoje.');
    end;
 end;
 
@@ -1939,10 +1935,8 @@ var
    Lc_TabPreco :TControllerTabelaPreco;
    I : Integer;
 begin
-  if (MensagemPadrao('Mensagem de Confirmação',
-                     'Deseja atualizar o preço venda no Cadastro?.' + EOLN + EOLN +
-                     'Confirmar a atualização ?',
-                     ['Sim', 'Não'], [bEscape, bNormal], mpConfirmacao, clBtnFace) = mrBotao1) then
+  if (MensagemcConfirmaAcao('Deseja atualizar o preço venda no Cadastro?.' + EOLN + EOLN +
+                            'Confirmar a atualização ?') = mrBotao1) then
   begin
     Lc_TabPreco := TControllerTabelaPreco.create(nil);
     Lc_Qry := Lc_TabPreco.GeraQuery;
@@ -1978,12 +1972,10 @@ begin
       LcAtualizaPrecoFixo := False;
       if (Length(LcListaPrecoFixo.Text) >0 ) and (LcListaPrecoFixo.Count >0) then
       Begin
-        if (MensagemPadrao('Mensagem de Confirmação',
-                           'Os produtos abaixo estão regitrados como preço fixo.' + EOLN +
-                           'Você deseja inclui-los na lista para atualização automática.'  + EOLN +
-                           LcListaPrecoFixo.Text + EOLN  + EOLN +
-                           'Confirmar a inclusão para atualização?',
-                           ['Não', 'Sim'], [bEscape, bNormal], mpConfirmacao, clBlue) = mrBotao2) then
+        if (MensagemcConfirmaAcao('Os produtos abaixo estão regitrados como preço fixo.' + EOLN +
+                                  'Você deseja inclui-los na lista para atualização automática.'  + EOLN +
+                                   LcListaPrecoFixo.Text + EOLN  + EOLN +
+                                  'Confirmar a inclusão para atualização?') = mrBotao2) then
         Begin
           LcAtualizaPrecoFixo := True;
         end;
@@ -2969,9 +2961,7 @@ Begin
       begin
         Result:=false;
         lc_MSG  :='Cliente esta com Status Bloqueado';
-        MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                        lc_MSG+EOLN,
-                      ['OK'],[bEscape],mpErro);
+        MensagemPararExecucao(lc_MSG);
       end
       else
       Begin
@@ -3024,9 +3014,7 @@ Begin
             Result:=True;
             lc_MSG:=' Cliente foi Bloqueado pois há Vencimentos em atraso!';
             Pc_ControleBloqueioCliente(Pc_cd_cli,'B');
-            MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                            lc_MSG+EOLN,
-                          ['OK'],[bEscape],mpErro);
+            MensagemPararExecucao(lc_MSG);
           end;
         end;
 
@@ -3046,9 +3034,7 @@ Begin
             begin
               Result:=True;
               lc_MSG:='O cliente excedeu seu limite em R$:' +FormatFloat('#,##0.00',(lc_vl_saldo - lc_emp_vlrcred )) ;
-              MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                             lc_MSG+EOLN,
-                             ['OK'],[bEscape],mpErro);
+              MensagemPararExecucao(lc_MSG);
               Pc_ControleBloqueioCliente(Pc_cd_cli,'B');
             end;
           end;
@@ -3117,10 +3103,8 @@ Begin
         end;
         if not Result then //nao verdadeiro - cliente incompleto
         Begin
-          if (MensagemPadrao('Mensagem de Confirmação',
-                             lc_msg+EOLN+
-                             'Visualizar o Cadastro agora?',
-                             ['Sim','Não'],[bNormal,bEscape],mpConfirmacao,clRed) = mrBotao1) then
+          if (MensagemcConfirmaAcao(lc_msg+EOLN+
+                                    'Visualizar o Cadastro agora?') = mrBotao1) then
           begin
             Fc_AbreTelaCliente(Fc_cd_Cliente);
           end
@@ -3157,9 +3141,7 @@ Begin
   if lc_total < 0  then
   begin
     Result:=false;
-    MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   ' O cliente excedeu o limite em R$:' +FormatFloat('#,##0.00',lc_total * (-1))+EOLN,
-                   ['OK'],[bEscape],mpErro);
+    MensagemPararExecucao(' O cliente excedeu o limite em R$:' +FormatFloat('#,##0.00',lc_total * (-1)));
     exit;
   end;
 end;
@@ -3398,10 +3380,7 @@ Begin
     else
     Begin
       Result:=false;
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Número do Pedido já foi usado.' + EOLN +
-                     'Verifique o Número do Pedido.' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+      MensagemPararExecucao('Número do Pedido já foi usado.');
     END;
   finally
     LcBase.FinalizaQuery(Lc_Qry);
@@ -3435,10 +3414,7 @@ Begin
     else
     BEGIN
       Result:=false;
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Número do Orçamento já foi usado.' + EOLN +
-                     'Verifique o Número do Orçamento.' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+      MensagemPararExecucao('Número do Orçamento já foi usado.');
     END;
   Finally
     LcBase.FinalizaQuery(Lc_Qry);
@@ -3625,10 +3601,7 @@ begin
         IF (FieldByName('PAR_VL_TOTAL').AsFloat <> Fc_Vl_pedido) AND
            (FieldByName('PAR_VL_TOTAL').AsFloat >0) THEN
         BEGIN
-          MensagemPadrao('MENSAGEM DE ERRO','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         'O Valor do Pedido não confere com Valor do Parcelamento.'+EOLN+
-                         'Refaça o parcelamento.'+EOLN,
-                         ['OK'],[BESCAPE],MPERRO);
+          MensagemPararExecucao('O Valor do Pedido não confere com Valor do Parcelamento.');
           Result := FALSE;
         end;
       end;
@@ -4945,10 +4918,8 @@ begin
         Result:= true
       else
       begin
-        MensagemPadrao(' Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       ' Já existe cheque com esses dados no Banco de dados.' + EOLN +
-                       ' Verifique Nr. Banco, Nr. Agência, Nr. Conta, e Nr. de Cheque.' + EOLN,
-                       ['OK'], [bEscape], mpErro);
+        MensagemPararExecucao(' Já existe cheque com esses dados no Banco de dados.' + EOLN +
+                       ' Verifique Nr. Banco, Nr. Agência, Nr. Conta, e Nr. de Cheque.');
         Result:= false;
       end;
     End;

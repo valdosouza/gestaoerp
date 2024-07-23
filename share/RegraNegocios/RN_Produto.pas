@@ -176,10 +176,8 @@ begin
           Lc_Escala := Frac(Fc_Qtde / FieldByName('MED_ESCALA').AsFloat);
           if  Lc_Escala > 0 then
           Begin
-            MensagemPadrao('Mensagem ', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                           'A escala da medida deste produto não permite a quantidade '+ FloatToStrF(Fc_Qtde,ffFixed,10,2) + EOLN+
-                           'A quantidade deve obeceder a escala de '+ FloatToStrF(FieldByName('MED_ESCALA').AsFloat,ffFixed,10,2) + EOLN,
-                           ['OK'], [bEscape], mpErro);
+            MensagemPararExecucao('A escala da medida deste produto não permite a quantidade '+ FloatToStrF(Fc_Qtde,ffFixed,10,2) + EOLN+
+                                  'A quantidade deve obeceder a escala de '+ FloatToStrF(FieldByName('MED_ESCALA').AsFloat,ffFixed,10,2));
             Result := False;
             exit;
           End;
@@ -282,10 +280,7 @@ begin
       First;
       IF (RecordCount = 0) then
       Begin
-        MensagemPadrao('Mensagem de alerta','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'A tabela de NCM está sendo controlada por data.'+EOLN+
-                       'É necessário atualizá-la.'+EOLN,
-                       ['OK'],[bEscape],mpAlerta);
+        MensagemPararExecucao('A tabela de NCM está sendo controlada por data.');
 //        try
 //          Lc_Form := TFr_Pesq_NCM.create(nil);
 //          Lc_Form.It_Visualizar := False;
@@ -434,9 +429,7 @@ begin
         if Fc_Tipo = 'M' then Lc_Tp_Descricao := 'Matéria Prima'
         else
           Lc_Tp_Descricao := 'Produto';
-        MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       Lc_Tp_Descricao + ' não encontrado.'+EOLN,
-                      ['OK'],[bEscape],mpAlerta);
+        MensagemPararExecucao(Lc_Tp_Descricao + ' não encontrado.');
       end;
     end;
   Finally

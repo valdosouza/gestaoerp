@@ -86,10 +86,7 @@ Begin
         end
         else
         Begin
-          MensagemPadrao('Mensagem', 'I N F O R M A Ç Ã O!.' + EOLN + EOLN +
-                         'Empresa não localizada.' + EOLN +
-                         'Verifique e tente novamente.' + EOLN ,
-                         ['OK'], [bEscape], mpInformacao);
+          MensagemPararExecucao('Empresa não localizada.');
         end;
       end;
     Finally
@@ -169,10 +166,7 @@ begin
       FetchAll;
       if recordcount = 0 then
       Begin
-        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Cadastro do cliente incompleto!'+EOLN+
-                       'Verifique e tente novamente'+EOLN,
-                       ['OK'],[bEscape],mpErro);
+        MensagemPararExecucao('Cadastro do cliente incompleto!');
         result := False;
         LcBase.FinalizaQuery(Lc_Qry);
         LcBase.DisposeOf;
@@ -218,10 +212,7 @@ begin
         //Valida Cidade do IBGE e se o endereço está completo
         if (Length(FieldByName('CDD_DESCRICAO').AsString) = 0) then
         begin
-          MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         'Cidade IBGE Destinatário não encontrado !'+EOLN+
-                         'Verifique e tente novamente'+EOLN,
-                         ['OK'],[bEscape],mpErro);
+          MensagemPararExecucao('Cidade IBGE Destinatário não encontrado !');
           Result := False;
           LcBase.FinalizaQuery(Lc_Qry);
           LcBase.DisposeOf;
@@ -232,10 +223,7 @@ begin
       //Valida o numero predial do endereco do Destinatario
       if (Length(FieldByName('END_ENDER').AsString) = 0) then
       begin
-        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Endereço do Destinatário não encontrado !'+EOLN+
-                       'Verifique e tente novamente'+EOLN,
-                       ['OK'],[bEscape],mpErro);
+        MensagemPararExecucao('Endereço do Destinatário não encontrado !');
         LcBase.FinalizaQuery(Lc_Qry);
         LcBase.DisposeOf;
         Result := False;
@@ -245,10 +233,7 @@ begin
       //Valida o numero predial do endereco do Destinatario
       if (Length(FieldByName('END_NUMERO').AsString) = 0) then
       begin
-        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Número predial do Destinatário não encontrado !'+EOLN+
-                       'Verifique e tente novamente'+EOLN,
-                       ['OK'],[bEscape],mpErro);
+        MensagemPararExecucao('Número predial do Destinatário não encontrado !');
         Result := False;
         LcBase.FinalizaQuery(Lc_Qry);
         LcBase.DisposeOf;
@@ -258,10 +243,7 @@ begin
       //Valida o bairro  do emitente
       if (FieldByName('END_BAIRRO').AsString = '') then
       begin
-        MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Bairro do Destinatário não encontrado !'+EOLN+
-                       'Verifique e tente novamente'+EOLN,
-                       ['OK'],[bEscape],mpErro);
+        MensagemPararExecucao('Bairro do Destinatário não encontrado !');
         Result := False;
         LcBase.FinalizaQuery(Lc_Qry);
         LcBase.DisposeOf;
@@ -513,10 +495,7 @@ Begin
       if not Lc_Val_Insc_Est.Validar then
         Begin
         Result := False;
-        MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'Inscrição Estadual do ' + Fc_Tipo + ' é inválida.'+EOLN+
-                       'Verifique antes de Continuar' + EOLN,
-                       ['OK'],[bEscape],mpAlerta);
+        MensagemPararExecucao('Inscrição Estadual do ' + Fc_Tipo + ' é inválida.');
         end;
     Finally
       FreeAndNil(Lc_Val_Insc_Est);
@@ -540,11 +519,8 @@ begin
       Begin
         if Msg then
         Begin
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         'Uma Empresa com este CPF/CNPJ já existe.'+EOLN+
-                          LcEmpresa.Registro.Codigo.ToString + ' - ' + LcEmpresa.Registro.NomeRazaoSocial +EOLN+
-                         'Verifique e tente novamente.' +EOLN,
-                         ['OK'], [bEscape], mpErro);
+          MensagemPararExecucao('Uma Empresa com este CPF/CNPJ já existe.'+EOLN+
+                          LcEmpresa.Registro.Codigo.ToString + ' - ' + LcEmpresa.Registro.NomeRazaoSocial);
         End;
         Result:= LcEmpresa.Registro.Codigo;
       End;

@@ -34,12 +34,10 @@ begin
 
       if (RecordCount = 0) then
       Begin
-        MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                       'A interface '+ Fc_Interface + ' foi desabilitada do teu sistema.' + EOLN +
+        MensagemPararExecucao('A interface '+ Fc_Interface + ' foi desabilitada do teu sistema.' + EOLN +
                        'Verique junto a Setes a liberação.' + EOLN+
                        'Interface: ' + Fc_Interface + EOLN+
-                       'Privilégio: ' + Fc_Privilegio + EOLN,
-                       ['OK'], [bEscape], mpAlerta);
+                       'Privilégio: ' + Fc_Privilegio);
         Result := False;
       end
       else
@@ -73,12 +71,10 @@ begin
             Begin
               if (Fc_Msg = 'S') then
               Begin
-                MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                               'Usuário não tem permissão.' + EOLN +
-                               'Consulte o administrador da Empresa.' + EOLN+
-                               'Interface: ' + Fc_Interface + EOLN+
-                               'Privilégio: ' + Fc_Privilegio + EOLN,
-                               ['OK'], [bEscape], mpAlerta);
+                MensagemPararExecucao('Usuário não tem permissão.' + EOLN +
+                                     'Consulte o administrador da Empresa.' + EOLN+
+                                     'Interface: ' + Fc_Interface + EOLN+
+                                     'Privilégio: ' + Fc_Privilegio);
               end;
               Result := False;
             end;
@@ -138,9 +134,7 @@ begin
                         DM.Qr_ListaUsuario.FieldByName('USU_CODIGO').AsInteger,
                         'Tentativa de Login no Sistema', concat('Falha no Login no pc: ',Fc_NomeComputador));
       End;
-      MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                     'Senha ou Login Incorretos. Verifique' + EOLN,
-                     ['OK'], [bEscape], mpErro);
+      MensagemPararExecucao('Senha ou Login Incorretos. Verifique');
     end;
   Finally
     Lc_usuario.DisposeOf;

@@ -4,7 +4,7 @@ inherited FrMain: TFrMain
   ClientWidth = 1199
   Menu = MnuPsl
   ExplicitWidth = 1205
-  ExplicitHeight = 631
+  ExplicitHeight = 636
   PixelsPerInch = 96
   TextHeight = 13
   inherited Menu: TMainMenu

@@ -76,11 +76,8 @@ begin
       Begin
         if msg then
         Begin
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         'Uma Transportadora com este CPF/CNPJ já existe.'+EOLN+
-                          FieldByName('EMP_CODIGO').AsString + ' - ' + FieldByName('EMP_NOME').AsString+EOLN+
-                         'Verifique e tente novamente.' +EOLN,
-                         ['OK'], [bEscape], mpErro);
+          MensagemPararExecucao('Uma Transportadora com este CPF/CNPJ já existe.'+EOLN+
+                                FieldByName('EMP_CODIGO').AsString + ' - ' + FieldByName('EMP_NOME').AsString);
         End;
         Result:= FieldByName('EMP_CODIGO').AsInteger
       end

@@ -177,20 +177,17 @@ begin
         Lc_SqlTxt:= Lc_SqlTxt + ' and (EMP_CODIGO<>:EMP_CODIGO) ';
       SQL.Add(Lc_SqlTxt);
       IF (Trim(Fc_Cd_Codigo) <> '') then
-        ParamByName('EMP_CODIGO').AsAnsiString:= Fc_Cd_Codigo;
+        ParamByName('EMP_CODIGO').AsString:= Fc_Cd_Codigo;
       fc_documento := Fc_RemoveCaracterInformado(fc_documento, ['.',',','/','-']);
-      ParamByName('EMP_CNPJ').AsAnsiString:= fc_documento;
+      ParamByName('EMP_CNPJ').AsString:= fc_documento;
       Active:=TRUE;
       FetchAll;
       if (RecordCount > 0) then
       Begin
         if Msg then
         Begin
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         'Um Fornecedor com este CPF/CNPJ já existe.'+EOLN+
-                          FieldByName('EMP_CODIGO').AsAnsiString + ' - ' + FieldByName('EMP_NOME').AsAnsiString+EOLN+
-                         'Verifique e tente novamente.' +EOLN,
-                         ['OK'], [bEscape], mpErro);
+          MensagemPararExecucao('Um Fornecedor com este CPF/CNPJ já existe.'+EOLN+
+                                FieldByName('EMP_CODIGO').AsString + ' - ' + FieldByName('EMP_NOME').AsString);
         End;
         Result:= FieldByName('EMP_CODIGO').AsInteger
       end

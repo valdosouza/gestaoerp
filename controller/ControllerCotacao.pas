@@ -347,10 +347,7 @@ begin
           else
           begin
             Result := False;
-            MensagemPadrao('Mensagem de erro', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                           'Orçamento visualizado no terminal ' + FieldbyName('CTC_EMUSO').AsString + '.' + EOLN +
-                           'Verifique e tente novamente.' + EOLN,
-                           ['OK'], [bEscape], mpErro);
+            MensagemPararExecucao('Orçamento visualizado no terminal ' + FieldbyName('CTC_EMUSO').AsString + '.');
             Exit;
           end;
         end;

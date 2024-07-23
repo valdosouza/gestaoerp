@@ -99,13 +99,11 @@ begin
           Begin
             Lc_Texto_Compra := 'Valor do último item   : ' + FloatToStrF(Fc_Vl_Item ,ffFixed,10,2);
           end;
-          MensagemPadrao('Mensagem', 'A T E N Ç Ã O!.' + EOLN + EOLN +
-                         'O valor limite mensal para pedidos de compra foi atingido.' + EOLN +
-                         'Limite de compra mensal: ' + FloatToStrF(Lc_VL_Limite,ffFixed,10,2) + EOLN +
-                         'Valor mensal de compra : ' + FloatToStrF(Lc_Vl_Compra ,ffFixed,10,2) + EOLN +
-                         Lc_Texto_Compra + EOLN +
-                         'Altere a data do pedido para o próximo mês.' + EOLN,
-                          ['OK'], [bEscape], mpAlerta);
+          MensagemPararExecucao('O valor limite mensal para pedidos de compra foi atingido.' + EOLN +
+                                'Limite de compra mensal: ' + FloatToStrF(Lc_VL_Limite,ffFixed,10,2) + EOLN +
+                                'Valor mensal de compra : ' + FloatToStrF(Lc_Vl_Compra ,ffFixed,10,2) + EOLN +
+                                Lc_Texto_Compra + EOLN +
+                                'Altere a data do pedido para o próximo mês.');
           Result:=FALSE;
         end;
       end;
