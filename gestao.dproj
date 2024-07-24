@@ -144,6 +144,23 @@
         </DCCReference>
         <DCCReference Include="env.pas"/>
         <DCCReference Include="parameter\prm_receipt.pas"/>
+        <DCCReference Include="controller\ControllerCargo.pas"/>
+        <DCCReference Include="controller\ControllerUsuario.pas"/>
+        <DCCReference Include="controller\ControllerCidade.pas"/>
+        <DCCReference Include="model\tblCargo.pas"/>
+        <DCCReference Include="model\tblcidade.pas"/>
+        <DCCReference Include="model\tblusuario.pas"/>
+        <DCCReference Include="parameter\prm_job_position.pas"/>
+        <DCCReference Include="parameter\prm_users.pas"/>
+        <DCCReference Include="parameter\prm_city.pas"/>
+        <DCCReference Include="view\module\operation\register\sea_city.pas">
+            <Form>SeaCity</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\reg_city.pas">
+            <Form>RegCity</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="parameter\prm_historico_bancario.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

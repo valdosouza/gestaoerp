@@ -10,17 +10,14 @@ Type
   private
     FFieldName: TCargo;
     procedure setFFieldName(const Value: TCargo);
-
   public
     constructor Create;
-    destructor Destroy;override;
-    procedure Clear;Override;
+    destructor Destroy; override;
+    procedure Clear; Override;
     property FieldName : TCargo read FFieldName write setFFieldName;
   end;
 
-
 implementation
-
 
 { TPrmJobPosition }
 

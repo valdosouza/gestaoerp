@@ -283,6 +283,7 @@ type
     CarteiradeCobrana1: TMenuItem;
     N21: TMenuItem;
     MnuPslUsuario: TMenuItem;
+    NewCidade1: TMenuItem;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -307,6 +308,7 @@ type
     procedure MnuAjdManuUsuOperClick(Sender: TObject);
     procedure MnuReciboClick(Sender: TObject);
     procedure MnuPslUsuarioClick(Sender: TObject);
+    procedure NewCidade1Click(Sender: TObject);
   private
     procedure MenuOperacao;
     procedure MenuBanco;
@@ -314,6 +316,7 @@ type
     procedure MenuPessoal;
 
     procedure InitVariable;
+    procedure ChamarTela(FormClass: TFormClass);
   public
     { Public declarations }
   end;
@@ -327,32 +330,35 @@ implementation
 
 uses un_dm, sea_job_position, sea_printers, sea_ext_motive,reg_virtual_shop,reg_commitment,
       reg_billing_portfolio,sea_electronic_card,sea_banking_history, sea_users,
-      sea_receipt, env;
+      sea_receipt, env, sea_city;
 
 { TForm1 }
 
 procedure TFrMain.MnuPslArqCargoClick(Sender: TObject);
-Var
-  Lc_form : TSeaJobPosition;
 begin
-  Lc_form := TSeaJobPosition.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TSeaJobPosition);
 end;
 
 procedure TFrMain.MnuPslUsuarioClick(Sender: TObject);
-Var
-  Lc_form : TSeaUsers;
 begin
-  Lc_form := TSeaUsers.Create(Self);
-  Try
+  ChamarTela(TSeaUsers);
+end;
+
+procedure TFrMain.NewCidade1Click(Sender: TObject);
+begin
+  ChamarTela(TSeaCity);
+end;
+
+procedure TFrMain.ChamarTela(FormClass: TFormClass);
+var
+  Lc_form: TForm;
+begin
+  Lc_form := FormClass.Create(Self);
+  try
     Lc_form.ShowModal;
-  Finally
+  finally
     FreeAndNil(Lc_form);
-  End;
+  end;
 end;
 
 procedure TFrMain.MnuPslBancarioClick(Sender: TObject);
