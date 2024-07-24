@@ -12,8 +12,6 @@ type
   TMsgPadrao = (mpAlerta, mpErro, mpConfirmacao, mpInformacao);
   TMsgEscape = (bEscape,bNormal);
 
-  TMsgAcao = (msgCampoObrigatorio, msgExcluir, msgParar);
-
 const
   EOLN=chr(13)+chr(10);   //Usado para fazer fim de linha nos quadros de mensagens
   mrBotao1 = 0;

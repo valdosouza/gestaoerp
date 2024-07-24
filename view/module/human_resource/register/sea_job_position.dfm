@@ -1,21 +1,25 @@
 inherited SeaJobPosition: TSeaJobPosition
   Caption = 'Pesquisa de cargos'
-  ClientHeight = 460
-  ClientWidth = 746
-  ExplicitWidth = 752
-  ExplicitHeight = 509
+  ClientHeight = 528
+  ClientWidth = 824
+  ExplicitWidth = 830
+  ExplicitHeight = 572
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
-    Top = 59
-    Width = 740
-    Height = 398
-    ExplicitTop = 59
-    ExplicitWidth = 740
-    ExplicitHeight = 398
+    Top = 95
+    Width = 818
+    Height = 430
+    ExplicitTop = 95
+    ExplicitWidth = 818
+    ExplicitHeight = 430
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 814
+    end
     inherited DBG_Pesquisa: TDBGrid
-      Width = 644
-      Height = 380
+      Width = 722
+      Height = 412
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
       Columns = <
         item
           Expanded = False
@@ -32,33 +36,33 @@ inherited SeaJobPosition: TSeaJobPosition
         end>
     end
     inherited pnl_pesq_right: TPanel
-      Left = 646
-      Height = 380
-      ExplicitLeft = 646
-      ExplicitHeight = 380
+      Left = 724
+      Height = 412
+      ExplicitLeft = 724
+      ExplicitHeight = 412
       inherited Sb_Sair_0: TSpeedButton
-        Top = 317
+        Top = 349
         ExplicitTop = 317
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 254
+        Top = 286
         ExplicitTop = 254
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 191
+        Top = 223
         ExplicitTop = 191
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 128
+        Top = 160
         ExplicitTop = 128
       end
     end
   end
   inherited Pnl_Parametros: TPanel
-    Width = 740
-    Height = 50
-    ExplicitWidth = 740
-    ExplicitHeight = 50
+    Width = 818
+    Height = 86
+    ExplicitWidth = 818
+    ExplicitHeight = 86
     object Lb_Descricao: TLabel
       Left = 8
       Top = 3

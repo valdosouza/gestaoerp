@@ -10,17 +10,14 @@ Type
   private
     FFieldName: TUsuario;
     procedure setFFieldName(const Value: TUsuario);
-
   public
     constructor Create;
-    destructor Destroy;override;
-    procedure Clear;Override;
+    destructor Destroy; override;
+    procedure Clear; Override;
     property FieldName : TUsuario read FFieldName write setFFieldName;
   end;
 
-
 implementation
-
 
 { TPrmJobPosition }
 

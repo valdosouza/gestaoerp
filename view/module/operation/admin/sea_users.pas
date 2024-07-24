@@ -3,13 +3,14 @@ unit sea_users;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_search, Data.DB, Datasnap.DBClient,
-  Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, ControllerUsuario, reg_users;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls,
+  Datasnap.DBClient, Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls,
+  ControllerUsuario, base_search;
 
 type
   TSeaUsers = class(TBaseSearch)
-    GroupBox1: TGroupBox;
+    Gbx_Parametros: TGroupBox;
     Label27: TLabel;
     Label28: TLabel;
     E_BuscaCodigo: TEdit;
@@ -23,8 +24,6 @@ type
     ChBx_Inativos: TCheckBox;
     cds_searchcodigo: TIntegerField;
     cds_searchnome: TStringField;
-  private
-
   protected
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
@@ -41,6 +40,8 @@ var
   SeaUsers: TSeaUsers;
 
 implementation
+
+uses reg_users;
 
 {$R *.dfm}
 
@@ -80,11 +81,8 @@ var
 begin
   users.Clear;
 
-  if E_BuscaCodigo.Text <> EmptyStr then
-    users.Parametros.FieldName.Codigo := StrToInt(E_BuscaCodigo.Text);
-
-  if e_BuscaNome.Text <> EmptyStr then
-    users.Parametros.FieldName.Nome := e_BuscaNome.Text;
+  users.Parametros.FieldName.Codigo := StrToIntDef(E_BuscaCodigo.Text, 0);
+  users.Parametros.FieldName.Nome := e_BuscaNome.Text;
 
   users.Search;
 

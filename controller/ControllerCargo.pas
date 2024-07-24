@@ -2,8 +2,8 @@ unit ControllerCargo;
 
 interface
 
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase, tblCargo ,Un_MSg,
-    Generics.Collections, prm_job_position,FireDAC.Stan.Param;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblCargo, prm_job_position;
 
 Type
   TListaCargo = TObjectList<TCargo>;
