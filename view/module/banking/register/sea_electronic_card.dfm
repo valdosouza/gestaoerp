@@ -11,8 +11,11 @@ inherited SeaEletronicCard: TSeaEletronicCard
     Width = 544
     Height = 265
     ExplicitTop = 71
-    ExplicitWidth = 538
-    ExplicitHeight = 256
+    ExplicitWidth = 544
+    ExplicitHeight = 265
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 540
+    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 448
       Height = 247
@@ -20,8 +23,8 @@ inherited SeaEletronicCard: TSeaEletronicCard
     inherited pnl_pesq_right: TPanel
       Left = 450
       Height = 247
-      ExplicitLeft = 444
-      ExplicitHeight = 238
+      ExplicitLeft = 450
+      ExplicitHeight = 247
       inherited Sb_Sair_0: TSpeedButton
         Top = 184
         ExplicitTop = 184
@@ -43,7 +46,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
   inherited Pnl_Parametros: TPanel
     Width = 544
     Height = 62
-    ExplicitWidth = 538
+    ExplicitWidth = 544
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -59,8 +62,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 534
-      object Label28: TLabel
+      object L_Descricao: TLabel
         Left = 59
         Top = 16
         Width = 49
@@ -73,7 +75,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
+      object L_Codigo: TLabel
         Left = 10
         Top = 16
         Width = 33
@@ -86,7 +88,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
         Font.Style = []
         ParentFont = False
       end
-      object E_BuscaDescricao: TEdit
+      object E_Descricao: TEdit
         Left = 56
         Top = 32
         Width = 473
@@ -100,7 +102,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
         ParentFont = False
         TabOrder = 1
       end
-      object E_BuscaCodigo: TEdit
+      object E_Codigo: TEdit
         Left = 7
         Top = 32
         Width = 49

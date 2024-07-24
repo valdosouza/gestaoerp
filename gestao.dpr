@@ -14,7 +14,8 @@ uses
   sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
   env in 'env.pas',
   prm_receipt in 'parameter\prm_receipt.pas',
-  prm_historico_bancario in 'parameter\prm_historico_bancario.pas';
+  prm_historico_bancario in 'parameter\prm_historico_bancario.pas',
+  prm_electronic_card in 'parameter\prm_electronic_card.pas';
 
 {$R *.res}
 

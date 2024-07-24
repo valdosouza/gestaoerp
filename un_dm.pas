@@ -51,8 +51,6 @@ type
     Qr_Embalagem: TSTQuery;
     Ds_Embalagem: TDataSource;
     Ds_marcaProduto: TDataSource;
-    Qr_Tp_Extintor: TSTQuery;
-    Qr_Nvl_Manut: TSTQuery;
     Qr_Filtra_CFOP: TSTQuery;
     Qr_Modal_Frete: TSTQuery;
     Sp_Financeiro: TSTStoredProc;
@@ -70,18 +68,6 @@ type
     Qr_Carteira_Cobranca: TSTQuery;
     Qr_Negocio: TSTQuery;
     Ds_Negocio: TDataSource;
-    Qr_Ext_ListaTipoExtintor: TSTQuery;
-    Ds_Ext_ListaTipoExtintor: TDataSource;
-    Qr_Ext_LocalExtintor: TSTQuery;
-    Ds_Ext_LocalExtintor: TDataSource;
-    Qr_Ext_Nivel_Manutencao: TSTQuery;
-    Ds_Ext_Nivel_Manutencao: TDataSource;
-    Qr_Ext_EnsaiadoPor: TSTQuery;
-    Ds_Ext_EnsaiadoPor: TDataSource;
-    Qr_Ext_Tecnico_Insp: TSTQuery;
-    Ds_Ext_Tecnico_Insp: TDataSource;
-    Qr_Ext_Motivo: TSTQuery;
-    Ds_Ext_Motivo: TDataSource;
     Qr_Revestimento: TSTQuery;
     Ds_Revestimento: TDataSource;
     qr_category: TSTQuery;
@@ -91,14 +77,7 @@ type
     Ds_Endereco: TDataSource;
     Qr_Estabelecimento: TSTQuery;
     Qr_Nf_Eletronica: TSTQuery;
-    Qr_Ext_TipoExtintor: TSTQuery;
     Ds_Colaborador: TDataSource;
-    Qr_Ext_ListaGrandezas: TSTQuery;
-    Ds_Ext_ListaGrandezas: TDataSource;
-    Qr_Ext_ListaAgenteExtintor: TSTQuery;
-    Ds_Ext_ListaAgenteExtintor: TDataSource;
-    Qr_Ext_ListaCapacidadeExtintor: TSTQuery;
-    Ds_Ext_ListaCapacidadeExtintor: TDataSource;
     Qr_GeneratorBcoDestino: TSTQuery;
     Sp_Itens_NflBcoDestino: TSTStoredProc;
     Qr_Acao_EstoqueBcoDestino: TSTQuery;
@@ -106,8 +85,6 @@ type
     Qr_Transportadora: TSTQuery;
     Ds_Natureza: TDataSource;
     Qr_Tabelas: TSTQuery;
-    Ds_Ext_Tecnico_Manu: TDataSource;
-    Qr_Ext_Tecnico_Manu: TSTQuery;
     Qr_Crud: TSTQuery;
     IBT_Crud: TSTTransaction;
     Ds_TPV_Veiculo: TDataSource;
@@ -123,7 +100,6 @@ type
     IBT_Listas: TSTTransaction;
     IBT_Servidor: TSTTransaction;
     IBT_Report: TSTTransaction;
-    FDConnection1: TFDConnection;
     procedure DataModuleCreate(Sender: TObject);
   private
 

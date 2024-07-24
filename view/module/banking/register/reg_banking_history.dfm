@@ -9,28 +9,38 @@ inherited RegBankingHistory: TRegBankingHistory
   inherited pnl_botao: TPanel
     Top = 65
     Width = 641
+    ExplicitTop = 65
+    ExplicitWidth = 641
     inherited SB_Inserir: TSpeedButton
       Left = 14
+      ExplicitLeft = 14
     end
     inherited SB_Alterar: TSpeedButton
       Left = 118
+      ExplicitLeft = 118
     end
     inherited SB_Excluir: TSpeedButton
       Left = 222
+      ExplicitLeft = 222
     end
     inherited SB_Cancelar: TSpeedButton
       Left = 430
+      ExplicitLeft = 430
     end
     inherited SB_Sair_0: TSpeedButton
       Left = 534
+      ExplicitLeft = 534
     end
     inherited SB_Gravar: TSpeedButton
       Left = 326
+      ExplicitLeft = 326
     end
   end
   inherited pnl_fundo: TPanel
     Width = 641
     Height = 65
+    ExplicitWidth = 641
+    ExplicitHeight = 65
     object L_Codigo: TLabel
       Left = 8
       Top = 8

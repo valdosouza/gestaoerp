@@ -439,26 +439,6 @@ object DM: TDM
     Left = 249
     Top = 161
   end
-  object Qr_Tp_Extintor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT *'
-      'FROM TB_TP_EXTINTOR')
-    ForcedRefresh = False
-    Left = 749
-    Top = 499
-  end
-  object Qr_Nvl_Manut: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT *'
-      'FROM TB_NVL_MANUT')
-    ForcedRefresh = False
-    Left = 858
-    Top = 347
-  end
   object Qr_Filtra_CFOP: TSTQuery
     Connection = IBD_Gestao
     SQL.Strings = (
@@ -760,149 +740,6 @@ object DM: TDM
     Left = 336
     Top = 283
   end
-  object Qr_Ext_ListaTipoExtintor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT'
-      '  ETP_CODIGO,'
-      '  ETP_DESCRICAO,'
-      '  ETP_DESC_INMETRO,'
-      '  ETP_CAPACIDADE,'
-      '  ETP_CODMED,'
-      '  ETP_CLASSE,'
-      '  ETP_VENC_INSPECAO,'
-      '  ETP_VENC_NIVEL_2,'
-      '  ETP_VENC_NIVEL_3,'
-      '  ETP_VENC_CARGA,'
-      '  ETP_TX_TOL_CARGA_MIN,'
-      '  ETP_TX_TOL_CARGA_MAX,'
-      '  ETP_TX_TOL_CARGA_MIN_MAN,'
-      '  ETP_TX_TOL_CARGA_MAX_MAN,'
-      '  ETP_TX_TOL_PERDA_MASSA,'
-      '  ETP_TX_VOL_HIDRAULICO,'
-      '  ETP_TX_EXP_PERMANENTE,'
-      '  ETP_TEMPO_DE_DESCARGA,'
-      '  ETP_ALCANCE_DO_JATO,'
-      '  ETO_TX_REN_DA_CARGA,'
-      
-        '   ETP_DESCRICAO || '#39' - '#39'  || ETP_CLASSE  || '#39' - '#39'  || ETP_CAPAC' +
-        'IDADE   || '#39' '#39'  || MED_ABREVIATURA  DESC_COMPLETA,'
-      '   ETP_DESCRICAO || '#39' - '#39'  || ETP_CLASSE  DESC_RESUMIDA'
-      'from  TB_EXT_TIPO'
-      '  INNER JOIN TB_MEDIDA'
-      '  ON (MED_CODIGO = ETP_CODMED)'
-      'ORDER BY ETP_DESCRICAO')
-    ForcedRefresh = False
-    Left = 488
-    Top = 343
-  end
-  object Ds_Ext_ListaTipoExtintor: TDataSource
-    DataSet = Qr_Ext_ListaTipoExtintor
-    Left = 488
-    Top = 399
-  end
-  object Qr_Ext_LocalExtintor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT'
-      '  ELZ_CODIGO,'
-      '  ELZ_NIVEL ,'
-      '  ELZ_DESCRICAO'
-      'FROM TB_EXT_LOCALIZACAO'
-      'WHERE ELZ_CODEMP=:ELZ_CODEMP'
-      'ORDER BY ELZ_DESCRICAO')
-    ForcedRefresh = False
-    Left = 256
-    Top = 447
-    ParamData = <
-      item
-        Name = 'ELZ_CODEMP'
-      end>
-  end
-  object Ds_Ext_LocalExtintor: TDataSource
-    DataSet = Qr_Ext_LocalExtintor
-    Left = 256
-    Top = 495
-  end
-  object Qr_Ext_Nivel_Manutencao: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT'
-      '    ENM_CODIGO,'
-      '    ENM_DESCRICAO'
-      'FROM TB_EXT_NIVEL_MANUT'
-      'ORDER BY ENM_DESCRICAO')
-    ForcedRefresh = False
-    Left = 376
-    Top = 451
-  end
-  object Ds_Ext_Nivel_Manutencao: TDataSource
-    DataSet = Qr_Ext_Nivel_Manutencao
-    Left = 376
-    Top = 499
-  end
-  object Qr_Ext_EnsaiadoPor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'Select '
-      '  ENS_CODIGO,'
-      '  ENS_NOME'
-      'from TB_EXT_ENSAIADOR '
-      'ORDER BY ENS_NOME')
-    ForcedRefresh = False
-    Left = 496
-    Top = 451
-  end
-  object Ds_Ext_EnsaiadoPor: TDataSource
-    DataSet = Qr_Ext_EnsaiadoPor
-    Left = 496
-    Top = 499
-  end
-  object Qr_Ext_Tecnico_Insp: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT CLB_CODIGO, CLB_NOME'
-      'FROM TB_COLABORADOR tb_colaborador'
-      '    INNER JOIN TB_CARGO tb_cargo'
-      '    ON (tb_cargo.CRG_CODIGO = tb_colaborador.CLB_CODCRG)'
-      
-        'WHERE (CRG_DESCRICAO LIKE '#39'VENDEDOR%'#39') and (CLB_DEMISSAO IS NULL' +
-        ')'
-      'ORDER BY CLB_NOME')
-    ForcedRefresh = False
-    Left = 747
-    Top = 344
-  end
-  object Ds_Ext_Tecnico_Insp: TDataSource
-    DataSet = Qr_Ext_Tecnico_Insp
-    Left = 749
-    Top = 397
-  end
-  object Qr_Ext_Motivo: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'Select '
-      '  EMC_CODIGO,'
-      '  EMC_TIPO,'
-      '  EMC_NORMA,'
-      '  EMC_DESCRICAO'
-      'from TB_EXT_MOTIVOS ')
-    ForcedRefresh = False
-    Left = 608
-    Top = 456
-  end
-  object Ds_Ext_Motivo: TDataSource
-    AutoEdit = False
-    DataSet = Qr_Ext_Motivo
-    Left = 608
-    Top = 504
-  end
   object Qr_Revestimento: TSTQuery
     Connection = IBD_Gestao
     Transaction = IB_Transacao
@@ -1096,100 +933,10 @@ object DM: TDM
         Name = 'EMP_CODIGO'
       end>
   end
-  object Qr_Ext_TipoExtintor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT'
-      '    ETP_CODIGO,'
-      '    ETP_DESCRICAO,'
-      '    ETP_DESC_INMETRO,'
-      '    ETP_CAPACIDADE,'
-      '    MED_DESCRICAO,'
-      '    ETP_VENC_INSPECAO,'
-      '    ETP_VENC_NIVEL_2, '
-      '    ETP_VENC_NIVEL_3, '
-      '    ETP_VENC_CARGA,'
-      '    ETP_TX_TOL_PERDA_MASSA,'
-      '   ETP_TX_VOL_HIDRAULICO,'
-      '   ETP_TX_EXP_PERMANENTE,'
-      
-        '   ETP_DESCRICAO || '#39' - '#39'  || ETP_CLASSE  || '#39' - '#39'  || ETP_CAPAC' +
-        'IDADE   || '#39' '#39'  || MED_ABREVIATURA  DESC_COMPLETA'
-      'from  TB_EXT_TIPO'
-      '  INNER JOIN TB_MEDIDA'
-      '  ON (MED_CODIGO = ETP_CODMED)'
-      'WHERE ETP_CODIGO=:ETP_CODIGO'
-      'ORDER BY ETP_DESCRICAO')
-    ForcedRefresh = False
-    Left = 744
-    Top = 455
-    ParamData = <
-      item
-        Name = 'ETP_CODIGO'
-      end>
-  end
   object Ds_Colaborador: TDataSource
     DataSet = Qr_Colaborador
     Left = 570
     Top = 161
-  end
-  object Qr_Ext_ListaGrandezas: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT '
-      '    EGZ_CODIGO,'
-      '    EGZ_DESCRICAO,'
-      '    (EGZ_SEQUENCIA || '#39' - '#39' || EGZ_DESCRICAO) EGZ_COMPLETA'
-      'FROM TB_EXT_GRANDEZA'
-      'ORDER BY EGZ_SEQUENCIA ')
-    ForcedRefresh = False
-    Left = 258
-    Top = 339
-  end
-  object Ds_Ext_ListaGrandezas: TDataSource
-    DataSet = Qr_Ext_ListaGrandezas
-    Left = 256
-    Top = 384
-  end
-  object Qr_Ext_ListaAgenteExtintor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT EAE_CODIGO, EAE_CLASSE, EAE_DESC_INMETRO, EAE_DESCRICAO,'
-      '(EAE_DESCRICAO || '#39' | '#39' ||  EAE_CLASSE) AS EAE_COMPLETO'
-      'from TB_EXT_AGENTE_EXTINTOR'
-      'ORDER BY 5')
-    ForcedRefresh = False
-    Left = 370
-    Top = 342
-  end
-  object Ds_Ext_ListaAgenteExtintor: TDataSource
-    DataSet = Qr_Ext_ListaAgenteExtintor
-    Left = 368
-    Top = 384
-  end
-  object Qr_Ext_ListaCapacidadeExtintor: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT DISTINCT'
-      '  ETP_CAPACIDADE || '#39' - '#39' || MED_ABREVIATURA DESCRICAO,'
-      '  ETP_CAPACIDADE,'
-      '  MED_ABREVIATURA'
-      'from  TB_EXT_TIPO'
-      '   INNER JOIN tb_medida'
-      '   ON (tb_medida.med_codigo = tb_ext_tipo.etp_codmed)'
-      'ORDER BY ETP_CAPACIDADE')
-    ForcedRefresh = False
-    Left = 600
-    Top = 346
-  end
-  object Ds_Ext_ListaCapacidadeExtintor: TDataSource
-    DataSet = Qr_Ext_ListaCapacidadeExtintor
-    Left = 608
-    Top = 392
   end
   object Qr_GeneratorBcoDestino: TSTQuery
     CachedUpdates = True
@@ -1432,27 +1179,6 @@ object DM: TDM
     Left = 661
     Top = 6
   end
-  object Ds_Ext_Tecnico_Manu: TDataSource
-    DataSet = Qr_Ext_Tecnico_Manu
-    Left = 247
-    Top = 55
-  end
-  object Qr_Ext_Tecnico_Manu: TSTQuery
-    Connection = IBD_Gestao
-    Transaction = IB_Transacao
-    SQL.Strings = (
-      'SELECT CLB_CODIGO, CLB_NOME'
-      'FROM TB_COLABORADOR tb_colaborador'
-      '    INNER JOIN TB_CARGO tb_cargo'
-      '    ON (tb_cargo.CRG_CODIGO = tb_colaborador.CLB_CODCRG)'
-      
-        'WHERE (CRG_DESCRICAO LIKE '#39'VENDEDOR%'#39') and (CLB_DEMISSAO IS NULL' +
-        ')'
-      'ORDER BY CLB_NOME')
-    ForcedRefresh = False
-    Left = 247
-    Top = 6
-  end
   object Qr_Crud: TSTQuery
     AutoCalcFields = False
     Connection = IBD_Gestao
@@ -1540,9 +1266,5 @@ object DM: TDM
     Connection = IBD_Gestao
     Left = 148
     Top = 257
-  end
-  object FDConnection1: TFDConnection
-    Left = 40
-    Top = 536
   end
 end
