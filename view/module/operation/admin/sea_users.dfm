@@ -3,16 +3,19 @@ inherited SeaUsers: TSeaUsers
   ClientHeight = 532
   ClientWidth = 658
   ExplicitWidth = 664
-  ExplicitHeight = 581
+  ExplicitHeight = 576
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
-    Top = 71
+    Top = 74
     Width = 652
-    Height = 458
-    ExplicitTop = 71
-    ExplicitWidth = 646
-    ExplicitHeight = 449
+    Height = 455
+    ExplicitTop = 74
+    ExplicitWidth = 652
+    ExplicitHeight = 455
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 648
+    end
     object Label22: TLabel [1]
       Left = 1
       Top = 65
@@ -28,7 +31,7 @@ inherited SeaUsers: TSeaUsers
     end
     object SpeedButton1: TSpeedButton [2]
       Left = 320
-      Top = 362
+      Top = 359
       Width = 92
       Height = 54
       Anchors = [akRight, akBottom]
@@ -47,7 +50,7 @@ inherited SeaUsers: TSeaUsers
     end
     object SpeedButton2: TSpeedButton [3]
       Left = 323
-      Top = 409
+      Top = 406
       Width = 92
       Height = 54
       Anchors = [akRight, akBottom]
@@ -66,7 +69,7 @@ inherited SeaUsers: TSeaUsers
     end
     object SpeedButton3: TSpeedButton [4]
       Left = 320
-      Top = 409
+      Top = 406
       Width = 92
       Height = 54
       Anchors = [akRight, akBottom]
@@ -85,7 +88,7 @@ inherited SeaUsers: TSeaUsers
     end
     object Sb_Sair_1: TSpeedButton [5]
       Left = 328
-      Top = 409
+      Top = 406
       Width = 92
       Height = 54
       Anchors = [akRight, akBottom]
@@ -103,27 +106,27 @@ inherited SeaUsers: TSeaUsers
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 556
-      Height = 440
+      Height = 437
     end
     inherited pnl_pesq_right: TPanel
       Left = 558
-      Height = 440
-      ExplicitLeft = 552
-      ExplicitHeight = 431
+      Height = 437
+      ExplicitLeft = 558
+      ExplicitHeight = 437
       inherited Sb_Sair_0: TSpeedButton
-        Top = 377
+        Top = 374
         ExplicitTop = 377
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 314
+        Top = 311
         ExplicitTop = 314
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 251
+        Top = 248
         ExplicitTop = 251
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 188
+        Top = 185
         ExplicitTop = 188
       end
       object ChBx_Inativos: TCheckBox
@@ -146,7 +149,7 @@ inherited SeaUsers: TSeaUsers
       Left = 2
       Top = 16
       Width = 550
-      Height = 440
+      Height = 437
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clCream
       DataSource = ds_search
@@ -193,10 +196,10 @@ inherited SeaUsers: TSeaUsers
   end
   inherited Pnl_Parametros: TPanel
     Width = 652
-    Height = 62
-    ExplicitWidth = 646
-    ExplicitHeight = 62
-    object GroupBox1: TGroupBox
+    Height = 65
+    ExplicitWidth = 652
+    ExplicitHeight = 65
+    object Gbx_Parametros: TGroupBox
       Left = 2
       Top = 2
       Width = 648
@@ -210,9 +213,8 @@ inherited SeaUsers: TSeaUsers
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 642
       object Label27: TLabel
-        Left = 8
+        Left = 5
         Top = 16
         Width = 73
         Height = 14
@@ -225,7 +227,7 @@ inherited SeaUsers: TSeaUsers
         ParentFont = False
       end
       object Label28: TLabel
-        Left = 123
+        Left = 124
         Top = 16
         Width = 30
         Height = 14
@@ -252,7 +254,7 @@ inherited SeaUsers: TSeaUsers
         TabOrder = 0
       end
       object E_BuscaNome: TEdit
-        Left = 122
+        Left = 124
         Top = 32
         Width = 495
         Height = 22
@@ -266,6 +268,10 @@ inherited SeaUsers: TSeaUsers
         TabOrder = 1
       end
     end
+  end
+  inherited Menu: TMainMenu
+    Left = 416
+    Top = 8
   end
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField

@@ -4,8 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_registry, Vcl.Menus, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, ControllerUsuario, System.StrUtils;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus, Vcl.Buttons, Vcl.ExtCtrls, System.StrUtils,
+  base_registry, ControllerUsuario;
 
 type
   TRegUsers = class(TBaseRegistry)
@@ -57,18 +57,14 @@ type
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
-    procedure setPerfil; Override;
     procedure ShowData; Override;
     procedure ShowNoData; Override;
-    function ValidaInsert():boolean; Override;
-    procedure Insert;Override;
-    function ValidateChange():boolean; Override;
-    procedure Change;Override;
-    procedure Delete;Override;
+    procedure Insert; Override;
+    procedure Change; Override;
+    function ValidateDelete():boolean; Override;
+    procedure Delete; Override;
     function ValidateSave():boolean; Override;
-    procedure Save;Override;
-    function ValidateCancel():boolean; Override;
-    procedure Cancel; Override;
+    procedure Save; Override;
   public
     users : TControllerUsuario;
   end;
@@ -83,11 +79,6 @@ implementation
 uses UN_MSG, Md5;
 
 { TRegUsers }
-
-procedure TRegUsers.Cancel;
-begin
-  inherited;
-end;
 
 procedure TRegUsers.Change;
 begin
@@ -134,60 +125,24 @@ begin
   with users do
   Begin
     Registro.Nome := E_Nome.Text;
-
-    //Usuário Ativo
     Registro.Ativo := IfThen(Cbx_Ativo.Checked, SIM, NAO);
-
-    //usuario
     Registro.Login := E_Login.Text;
-    //senha
     Registro.Senha := MD5String(E_Senha.Text);
-
-    //nivel de acesso
     Registro.Nivel := IntToStr(CB_Nivel.ItemIndex);
-
-    //Informe o número do cartão para ser utilizado na autorização
     Registro.CartaoAutorizacao := E_Auth_card.Text;
-
-    //*****GRUPO: Configurações para Envio de e-mail
-    //    Servidor de saída (SMTP);
     Registro.emailSMTP := E_Srv_Smtp.Text;
-
-    //porta
     Registro.emailPorta := E_porta_email.Text;
-
-    //Requer Autenticação
     Registro.emailAutenticacao := IfThen(Cbx_Req_Autenticacao.Checked, SIM, NAO);
-
-    //equer uma conexão de segurança (SSL)
     Registro.emailSSL := IfThen(Cbx_Req_Con_ssl.Checked, SIM, NAO);
-
-    //Nome que aparecerá no título do emails
     Registro.emailLabel := E_Lbl_Name.Text;
-
-    //Usuário (Quando Requerido pelo Servidor
     Registro.email := E_Usr_Mail.Text;
-
-    //e-mail
     Registro.emailLogin := E_lgn_email.Text;
-
-    //senha
     Registro.emailSenha := E_pwd_email.Text;
-
-    //Quero receber notificação de tentativas ou login efetuado
     Registro.NotificarPorEmail := IfThen(chbx_notifica_login.Checked, SIM, NAO);
-
-    //assinatura
     Registro.emailAssinatura := M_Assinatura.Text;
-
     salva;
   End;
   CodigoRegistro := users.Registro.Codigo;
-  inherited;
-end;
-
-procedure TRegUsers.setPerfil;
-begin
   inherited;
 end;
 
@@ -198,61 +153,37 @@ begin
     E_Codigo.Text     := Registro.Codigo.ToString;
     E_Nome.Text  := Registro.Nome;
 
-    //Usuário ativo
     if Registro.Ativo = SIM then
       Cbx_Ativo.Checked := True
     else
       Cbx_Ativo.Checked := False;
 
-    //usuario
-     E_Login.Text := Registro.Login;
-    //senha
-     E_Senha.Text := Registro.Senha;
-
-    //nivel de acesso
+    E_Login.Text := Registro.Login;
+    E_Senha.Text := Registro.Senha;
     CB_Nivel.ItemIndex := StrToInt(Registro.Nivel);
-
-    //Informe o número do cartão para ser utilizado na autorização
     E_Auth_card.Text := Registro.CartaoAutorizacao;
-
-    //*****GRUPO: Configurações para Envio de e-mail
-    //    Servidor de saída (SMTP);
     E_Srv_Smtp.Text := Registro.emailSMTP;
-
-    //porta
     E_porta_email.Text := Registro.emailPorta;
 
-    //Requer Autenticação
     if Registro.emailAutenticacao = SIM then
       Cbx_Req_Autenticacao.Checked := True
     else
       Cbx_Req_Autenticacao.Checked := False;
 
-    //equer uma conexão de segurança (SSL)
     if Registro.emailSSL = SIM then
       Cbx_Req_Con_ssl.Checked := True
     else
       Cbx_Req_Con_ssl.Checked := False;
 
-    //Nome que aparecerá no título do emails
     E_Lbl_Name.Text := Registro.emailLabel;
-
-    //Usuário (Quando Requerido pelo Servidor
     E_Usr_Mail.Text := Registro.email;
-
-    //e-mail
     E_lgn_email.Text := Registro.emailLogin;
-
-    //senha
     E_pwd_email.Text := Registro.emailSenha;
-
-    //Quero receber notificação de tentativas ou login efetuado
     if Registro.NotificarPorEmail = SIM then
       chbx_notifica_login.Checked := True
     else
       chbx_notifica_login.Checked := False;
 
-    //assinatura
     M_Assinatura.Text := Registro.emailAssinatura;
   End;
   inherited;
@@ -264,46 +195,40 @@ begin
   E_Nome.clear;
 end;
 
-function TRegUsers.ValidaInsert: boolean;
+function TRegUsers.ValidateDelete: boolean;
 begin
   Result := True;
+  if (MensagemExcluir = mrBotao1) then
+  Begin
+    Result := False;
+    exit;
+  End;
 end;
-
-function TRegUsers.ValidateCancel: boolean;
-begin
-  Result := True;
-end;
-
-function TRegUsers.ValidateChange: boolean;
-begin
-  Result := True;
-end;
-
 
 function TRegUsers.ValidateSave: boolean;
 begin
   Result := True;
 
-  if TRIM(E_Nome.Text) = EmptyStr then
+  if Trim(E_Nome.Text) = EmptyStr then
   begin
     MensagemValidaPreenchimentoCampo(L_Nome.Caption);
-    result:=False;
+    Result := False;
     E_Nome.SetFocus;
     Exit;
   end;
 
-  if TRIM(E_Login.Text) = EmptyStr then
+  if Trim(E_Login.Text) = EmptyStr then
   begin
     MensagemValidaPreenchimentoCampo('Login do Usuário');
-    result:=False;
+    Result := False;
     E_Login.SetFocus;
     Exit;
   end;
 
-  if (TRIM(E_Senha.Text) = '') and (cbx_Ativo.Checked) then //nao usa mais DB
+  if (Trim(E_Senha.Text) = EmptyStr) and (cbx_Ativo.Checked) then
   begin
     MensagemValidaPreenchimentoCampo(L_Senha.Caption);
-    result:=False;
+    Result := False;
     E_Senha.SetFocus;
     Exit;
   end;
@@ -311,24 +236,25 @@ end;
 
 function TRegUsers.validaEnvioEmailteste: boolean;
 begin
-  Result:=true;
-  if TRIM(E_Srv_Smtp.Text) = '' then
+  Result := True;
+  if Trim(E_Srv_Smtp.Text) = EmptyStr then
   begin
     MensagemValidaPreenchimentoCampo(L_Srv_Smtp.Caption);
-   result:=False;
-   Exit;
-  end;
-  if TRIM(E_Usr_Mail.Text) = '' then
-  begin
-    MensagemValidaPreenchimentoCampo(L_Usr_Mail.Caption);
-   result:=False;
-   Exit;
+    Result := False;
+    Exit;
   end;
 
-  if TRIM(E_pwd_email.Text) = '' then
+  if Trim(E_Usr_Mail.Text) = EmptyStr then
+  begin
+    MensagemValidaPreenchimentoCampo(L_Usr_Mail.Caption);
+    Result := False;
+    Exit;
+  end;
+
+  if Trim(E_pwd_email.Text) = EmptyStr then
   begin
     MensagemValidaPreenchimentoCampo(L_pwd_email.Caption);
-    result:=False;
+    Result := False;
     Exit;
   end;
 end;

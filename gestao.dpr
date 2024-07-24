@@ -25,9 +25,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TRegUsers, RegUsers);
-  Application.CreateForm(TSeaUsers, SeaUsers);
-  Application.CreateForm(TRegJobPosition, RegJobPosition);
-  Application.CreateForm(TSeaJobPosition, SeaJobPosition);
   Application.Run;
 end.

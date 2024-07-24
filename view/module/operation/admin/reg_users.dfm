@@ -3,7 +3,7 @@ inherited RegUsers: TRegUsers
   ClientHeight = 475
   ClientWidth = 621
   ExplicitWidth = 627
-  ExplicitHeight = 524
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel

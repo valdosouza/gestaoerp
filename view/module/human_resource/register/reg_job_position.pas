@@ -4,8 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_registry, Vcl.StdCtrls, Vcl.Menus,
-  Vcl.Buttons, Vcl.ExtCtrls,ControllerCargo;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Menus, Vcl.Buttons, Vcl.ExtCtrls,
+  base_registry, ControllerCargo;
 
 type
   TRegJobPosition = class(TBaseRegistry)
@@ -16,30 +16,17 @@ type
   private
     { Private declarations }
   protected
-    //Variaveis
-    procedure CriarVariaveis;Override;
-    procedure FinalizaVariaveis;Override;
-    procedure IniciaVariaveis;Override;
-    procedure setPerfil;Override;
-    procedure ShowData;Override;
-    procedure ShowNoData;Override;
-
-    //inserir
-    function ValidaInsert():boolean;Override;
-    procedure Insert;Override;
-    //Editar
-    function ValidateChange():boolean;Override;
-    procedure Change;Override;
-    //Deletar
-    function ValidateDelete():boolean;Override;
-    procedure Delete;Override;
-    //Salvar
-    function ValidateSave():boolean;Override;
-    procedure Save;Override;
-    //Cancelar
-    function ValidateCancel():boolean;Override;
-    procedure Cancel;Override;
-
+    procedure CriarVariaveis; Override;
+    procedure FinalizaVariaveis; Override;
+    procedure IniciaVariaveis; Override;
+    procedure ShowData; Override;
+    procedure ShowNoData; Override;
+    procedure Insert; Override;
+    procedure Change; Override;
+    function ValidateDelete():boolean; Override;
+    procedure Delete; Override;
+    function ValidateSave():boolean; Override;
+    procedure Save; Override;
   public
     JobPosition : TControllerCargo;
   end;
@@ -54,11 +41,6 @@ implementation
 uses UN_MSG;
 
 { TRegJobPosition }
-
-procedure TRegJobPosition.Cancel;
-begin
-  inherited;
-end;
 
 procedure TRegJobPosition.Change;
 begin
@@ -111,12 +93,6 @@ begin
   inherited;
 end;
 
-procedure TRegJobPosition.setPerfil;
-begin
-  inherited;
-
-end;
-
 procedure TRegJobPosition.ShowData;
 begin
   with JobPosition do
@@ -133,41 +109,24 @@ begin
   E_Descricao.clear;
 end;
 
-function TRegJobPosition.ValidaInsert: boolean;
-begin
-  Result := True;
-end;
-
-function TRegJobPosition.ValidateCancel: boolean;
-begin
-  Result := True;
-end;
-
-function TRegJobPosition.ValidateChange: boolean;
-begin
-  Result := True;
-end;
-
 function TRegJobPosition.ValidateDelete: boolean;
 begin
   Result := True;
-  //quando a pergunta esta dentro da validação verifica-se o botão da negativa
   if (MensagemExcluir = mrBotao1) then
   Begin
     Result := False;
     exit;
   End;
-
 end;
 
 function TRegJobPosition.ValidateSave: boolean;
 begin
   Result := True;
 
-  if Trim( E_Descricao.Text) = EmptyStr then
+  if Trim(E_Descricao.Text) = EmptyStr then
   begin
     MensagemValidaPreenchimentoCampo(L_Descricao.Caption);
-    result:=False;
+    Result := False;
     E_Descricao.SetFocus;
     Exit;
   end;

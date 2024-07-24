@@ -3,10 +3,10 @@ unit sea_job_position;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_search, Data.DB, Vcl.StdCtrls,
-  Datasnap.Provider, Datasnap.DBClient, Vcl.Menus, Vcl.Buttons, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, ControllerCargo;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls,
+  Datasnap.DBClient, Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls,
+  ControllerCargo, base_search;
 
 type
   TSeaJobPosition = class(TBaseSearch)
@@ -33,9 +33,9 @@ var
 
 implementation
 
-{$R *.dfm}
-
 uses reg_job_position;
+
+{$R *.dfm}
 
 { TSeaJobPosition }
 
@@ -74,8 +74,8 @@ Var
   I : Integer;
 begin
   JobPosition.Clear;
-  if E_Descricao.Text <> '' then
-    JobPosition.Parametros.FieldName.Descricao := E_Descricao.Text;
+
+  JobPosition.Parametros.FieldName.Descricao := E_Descricao.Text;
 
   JobPosition.Search;
 

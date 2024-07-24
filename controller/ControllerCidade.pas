@@ -2,8 +2,8 @@ unit ControllerCidade;
 
 interface
 
-uses STDatabase,Classes, STQuery,SysUtils,ControllerBase,FireDAC.Stan.Param,
-      tblCidade ,Un_MSg,Generics.Collections;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblCidade, prm_city;
 
 Type
   TListaCidade = TObjectList<TCidade>;
@@ -11,9 +11,8 @@ Type
   TControllerCidade = Class(TControllerBase)
 
   private
-
-  protected
-
+    FParametros: TPrmCidade;
+    procedure setFParametros(const Value: TPrmCidade);
   public
     Registro : TCidade;
     Lista : TListaCidade;
@@ -27,6 +26,9 @@ Type
     Function delete:boolean;
     function getList:Boolean;
     function Buscacodigo(IBGE:Integer; Descricao,UF:String):Integer;
+    function Clear:Boolean;
+    function Search:Boolean;
+    property Parametros : TPrmCidade read FParametros write setFParametros;
   End;
 
 implementation
@@ -66,11 +68,19 @@ begin
   End;
 end;
 
+function TControllerCidade.Clear: Boolean;
+begin
+  Result := True;
+  clearObj(Registro);
+  Parametros.Clear;
+end;
+
 constructor TControllerCidade.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TCidade.Create;
   Lista := TListaCidade.Create;
+  Parametros := TPrmCidade.Create;
 end;
 
 function TControllerCidade.delete: boolean;
@@ -87,6 +97,7 @@ destructor TControllerCidade.Destroy;
 begin
   Lista.DisposeOf;
   Registro.DisposeOf;
+  FreeAndNil(FParametros);
   inherited;
 end;
 
@@ -120,6 +131,60 @@ begin
   End;
 end;
 
+
+function TControllerCidade.Search: Boolean;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TCidade;
+begin
+  Result := True;
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_CIDADE WHERE 1=1';
+
+      if Parametros.FieldName.IBGE > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND CDD_IBGE = :CDD_IBGE';
+        ParamByName('CDD_IBGE').AsInteger := Parametros.FieldName.IBGE;
+      end;
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND CDD_DESCRICAO LIKE :CDD_DESCRICAO';
+        ParamByName('CDD_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      if Parametros.FieldName.Estado <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND CDD_UF = :CDD_UF';
+        ParamByName('CDD_UF').AsString := Parametros.FieldName.Estado;
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TCidade.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerCidade.setFParametros(const Value: TPrmCidade);
+begin
+  FParametros := Value;
+end;
 
 function TControllerCidade.update: boolean;
 begin
