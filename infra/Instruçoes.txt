@@ -42,6 +42,14 @@
 
 4 - Testar 
 	Criar um botão no main chamando a tela .
+Var
+ Lc_Form : TX;
+begin
+  try
+    Lc_Form := TX(nil);
+    Lc_Form.ShowModal;
+  finally
+    freeAndNil(Lc_Form);
 
 5 - Ir no GitHub e marcar que parte da tarefa esta pronta
 

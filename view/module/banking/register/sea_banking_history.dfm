@@ -1,68 +1,63 @@
 inherited SeaBankingHistory: TSeaBankingHistory
   Caption = 'Pesquisa de Hit'#243'rico Bancario'
-  ClientHeight = 301
+  ClientHeight = 369
   ClientWidth = 568
   ExplicitWidth = 574
-  ExplicitHeight = 350
+  ExplicitHeight = 418
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
     Width = 562
-    Height = 219
+    Height = 287
     ExplicitTop = 79
     ExplicitWidth = 562
-    ExplicitHeight = 375
+    ExplicitHeight = 219
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 558
+    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 466
-      Height = 201
+      Height = 269
     end
     inherited pnl_pesq_right: TPanel
       Left = 468
-      Height = 201
-      ExplicitLeft = 462
-      ExplicitTop = 0
-      ExplicitHeight = 215
+      Height = 269
+      ExplicitLeft = 468
+      ExplicitHeight = 201
       inherited Sb_Sair_0: TSpeedButton
-        Top = 156
-        Height = 42
+        Top = 206
         ExplicitLeft = 3
-        ExplicitTop = 135
+        ExplicitTop = 224
         ExplicitWidth = 86
-        ExplicitHeight = 42
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 105
-        Height = 48
+        Top = 143
         ExplicitLeft = 3
-        ExplicitTop = 84
+        ExplicitTop = 155
         ExplicitWidth = 86
-        ExplicitHeight = 48
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 48
-        Height = 54
+        Top = 80
         ExplicitLeft = 3
-        ExplicitTop = 67
+        ExplicitTop = 86
         ExplicitWidth = 86
-        ExplicitHeight = 54
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 0
-        Height = 45
+        Top = 17
         ExplicitLeft = 3
-        ExplicitTop = 12
+        ExplicitTop = 32
         ExplicitWidth = 86
-        ExplicitHeight = 45
       end
     end
     object DBGrid2: TDBGrid
       Left = 2
       Top = 16
       Width = 466
-      Height = 197
+      Height = 265
       Anchors = [akTop, akBottom]
       Color = clCream
+      DataSource = ds_search
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -81,7 +76,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
       Columns = <
         item
           Expanded = False
-          FieldName = 'HTB_CODIGO'
+          FieldName = 'Codigo'
           Title.Caption = 'C'#243'digo'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clNavy
@@ -92,7 +87,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
         end
         item
           Expanded = False
-          FieldName = 'HTB_DESCRICAO'
+          FieldName = 'descricao'
           Title.Caption = 'Descri'#231#227'o'
           Title.Font.Charset = ANSI_CHARSET
           Title.Font.Color = clNavy
@@ -107,7 +102,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
   inherited Pnl_Parametros: TPanel
     Width = 562
     Height = 70
-    ExplicitWidth = 873
+    ExplicitWidth = 562
     ExplicitHeight = 70
     object GroupBox2: TGroupBox
       Left = 2
@@ -123,10 +118,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 10
-      ExplicitWidth = 869
-      object Label28: TLabel
+      object L_Descricao: TLabel
         Left = 59
         Top = 16
         Width = 49
@@ -139,7 +131,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
+      object L_Codigo: TLabel
         Left = 10
         Top = 16
         Width = 33
@@ -152,7 +144,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
         Font.Style = []
         ParentFont = False
       end
-      object E_BuscaDescricao: TEdit
+      object E_Descricao: TEdit
         Left = 55
         Top = 32
         Width = 497
@@ -166,7 +158,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
         ParentFont = False
         TabOrder = 1
       end
-      object E_BuscaCodigo: TEdit
+      object E_Codigo: TEdit
         Left = 7
         Top = 32
         Width = 46
@@ -185,5 +177,14 @@ inherited SeaBankingHistory: TSeaBankingHistory
   inherited Menu: TMainMenu
     Left = 152
     Top = 48
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
+      Size = 100
+    end
   end
 end

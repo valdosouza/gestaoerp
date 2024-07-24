@@ -12,19 +12,7 @@ uses
   sea_users in 'view\module\operation\admin\sea_users.pas' {SeaUsers},
   reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition},
   sea_job_position in 'view\module\human_resource\register\sea_job_position.pas' {SeaJobPosition},
-  env in 'env.pas',
-  prm_receipt in 'parameter\prm_receipt.pas',
-  ControllerCargo in 'controller\ControllerCargo.pas',
-  ControllerUsuario in 'controller\ControllerUsuario.pas',
-  ControllerCidade in 'controller\ControllerCidade.pas',
-  tblCargo in 'model\tblCargo.pas',
-  tblcidade in 'model\tblcidade.pas',
-  tblusuario in 'model\tblusuario.pas',
-  prm_job_position in 'parameter\prm_job_position.pas',
-  prm_users in 'parameter\prm_users.pas',
-  prm_city in 'parameter\prm_city.pas',
-  sea_city in 'view\module\operation\register\sea_city.pas' {SeaCity},
-  reg_city in 'view\module\operation\register\reg_city.pas' {RegCity};
+  env in 'env.pas';
 
 {$R *.res}
 
