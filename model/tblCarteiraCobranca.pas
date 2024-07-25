@@ -28,7 +28,7 @@ Type
     property Codigo: Integer read Fctr_codigo write setFctr_codigo;
 
     [FieldName('ctr_codbco')]
-    property Codbco: Integer read Fctr_codbco write setFctr_codbco;
+    property CodigoBanco: Integer read Fctr_codbco write setFctr_codbco;
 
     [FieldName('ctr_numero')]
     property Numero: String read Fctr_numero write setFctr_numero;

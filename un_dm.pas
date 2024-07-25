@@ -122,12 +122,12 @@ Var
 begin
   LcServer   := 'NOTEVALDO';
   LcPort     := '3060';
-  LcDatabase := 'D:\Modelos\erp\Database\IBGCOM.FDB';
+  LcDatabase := 'D:\Modelos\Genio\database\IBGCOM.FDB';
   LcUserName := 'sysdba';
   LcPassword := 'masterkey';
 
   DM.IBD_Gestao.Close;
-  DM.IBD_Gestao.DatabaseName := Concat(LcServer,'/',LcPort,LcDatabase);
+  DM.IBD_Gestao.DatabaseName := Concat(LcServer,'/',LcPort,':',LcDatabase);
   {
   DM.IBD_Gestao.Params.Clear;
   DM.IBD_Gestao.Params.Add('Protocol=TCPIP');

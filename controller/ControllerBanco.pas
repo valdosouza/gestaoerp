@@ -19,7 +19,8 @@ type
     destructor Destroy; override;
     function getNumber(Codigo: Integer):Integer;
     procedure search;
-    function getCodigoLista(NumeroNome:String):Integer;
+    function getCodigoBancoLista(NumeroNome:String):Integer;
+    function getNumeroNomeLista(CodigoBanco: Integer): String;
   End;
 
 implementation
@@ -40,7 +41,7 @@ begin
   inherited;
 end;
 
-function TControllerBanco.getCodigoLista(NumeroNome: String): Integer;
+function TControllerBanco.getCodigoBancoLista(NumeroNome: String): Integer;
 Var
   I:Integer;
 begin
@@ -49,6 +50,21 @@ begin
     if Lista[I].NumeroNome = NumeroNome then
     Begin
       Result := Lista[I].Codigo;
+      Break;
+    End;
+  End;
+
+end;
+
+function TControllerBanco.getNumeroNomeLista(CodigoBanco: Integer): String;
+Var
+  I:Integer;
+begin
+  for I := 0 to Lista.count -1 do
+  Begin
+    if Lista[I].Codigo = CodigoBanco then
+    Begin
+      Result := Lista[I].NumeroNome;
       Break;
     End;
   End;
@@ -104,7 +120,7 @@ begin
               'EMP_NUMBCO,',
               'EMP_ATIVA,',
               'EMP_STATUS,',
-              ' (EMP_NUMBCO ', ' - ', ' EMP_FANTASIA) NUMERO_NOME ',
+              ' (EMP_NUMBCO || '' - '' || EMP_FANTASIA) NUMERO_NOME ',
               'FROM TB_EMPRESA ',
               'WHERE EMP_TIPO = 4 '
       ));
