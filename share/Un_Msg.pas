@@ -49,6 +49,15 @@ const
     public
   end;
 
+  TMsg = class
+  public
+    class function ValidaPreenchimentoCampo(Campo: String): Integer;
+    class function ErroCampo(Campo,info: String): Integer;
+    class function Excluir: Integer;
+    class function PararExecucao(info:String): Integer;
+    class function ConfirmaAcao(info:String): Integer;
+  end;
+
 Var
   It_Cd_Escolha : Integer;
 implementation
@@ -318,43 +327,55 @@ begin
   end;
 end;
 
+{ TMsg }
+
+class function TMsg.ValidaPreenchimentoCampo(Campo: String): Integer;
+var
+  Msg: String;
+begin
+  Msg :=  'A T E N Ç Ã O!' + EOLN + EOLN +
+          'O Campo "'+Campo+'" não foi informado.' + EOLN +
+          'Preencha para continuar.' + EOLN;
+  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+end;
+
+class function TMsg.ErroCampo(Campo,info: String): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
+         'Verifique o Campo "'+Campo+'".' + EOLN +
+         info + EOLN +
+         'Preencha para continuar.' + EOLN;
+  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpErro, clRed);
+end;
+
+class function TMsg.Excluir(): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'Deseja excluir este item?' + EOLN + EOLN +
+         'Confirmar a exclusão?';
+  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OK],[bEscape], mpConfirmacao, clBtnFace);
+end;
+
+class function TMsg.PararExecucao(info:String): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
+          info + EOLN +
+          'Verifique antes de continuar.' + EOLN;
+  Result := Mensagem( TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+end;
+
+class function TMsg.ConfirmaAcao(info:String): Integer;
+var
+  Msg: String;
+begin
+  Msg := 'C O N F I R M A Ç Ã O!' + EOLN + EOLN +
+          info + EOLN;
+  Result := Mensagem( TITULO_ERRO, Msg, [SIM,NAO],[bNormal, bEscape], mpAlerta, clBtnFace);
+end;
+
 end.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

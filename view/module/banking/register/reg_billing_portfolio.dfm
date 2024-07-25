@@ -1,9 +1,9 @@
 inherited RegBillingPortfolio: TRegBillingPortfolio
-  Caption = 'Cadastro de Carteiras de Cobran'#231'a '
+  Caption = 'Cadastro de Carteiras e Cobran'#231'a '
   ClientHeight = 206
   ClientWidth = 494
   ExplicitWidth = 500
-  ExplicitHeight = 255
+  ExplicitHeight = 250
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -68,7 +68,9 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      object Label_1: TLabel
+      ExplicitLeft = 0
+      ExplicitTop = 3
+      object L_Numero: TLabel
         Left = 5
         Top = 40
         Width = 73
@@ -81,7 +83,7 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
         Font.Style = []
         ParentFont = False
       end
-      object Label6: TLabel
+      object L_Banco: TLabel
         Left = 5
         Top = 4
         Width = 31
@@ -94,7 +96,7 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
         Font.Style = []
         ParentFont = False
       end
-      object Label7: TLabel
+      object L_Descricao: TLabel
         Left = 5
         Top = 77
         Width = 105
@@ -114,7 +116,7 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
         Height = 21
         TabOrder = 1
       end
-      object DBLCB_Banco: TComboBox
+      object CB_Banco: TComboBox
         Left = 5
         Top = 19
         Width = 385
@@ -122,14 +124,14 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
         TabOrder = 0
       end
       object E_Descricao: TEdit
-        Left = 7
+        Left = 5
         Top = 92
         Width = 474
         Height = 21
         CharCase = ecUpperCase
         TabOrder = 2
       end
-      object Rg_Tp_Emissao: TRadioGroup
+      object Rg_Emissao: TRadioGroup
         Left = 178
         Top = 48
         Width = 141
@@ -143,5 +145,9 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
         TabOrder = 3
       end
     end
+  end
+  inherited Menu: TMainMenu
+    Left = 336
+    Top = 48
   end
 end
