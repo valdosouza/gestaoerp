@@ -5,16 +5,16 @@ object DM: TDM
   Width = 1528
   object IBD_Gestao: TSTDatabase
     Params.Strings = (
-      'Database=D:\Modelos\erp\Database\IBGCOM.FDB'
+      'Database=D:\Modelos\genio\Database\IBGCOM.FDB'
       'User_Name=sysdba'
       'Password=masterkey'
-      'Server=NOTEVALDO'
+      'Server=127.0.0.1'
       'Protocol=TCPIP'
-      'Port=3060'
+      'Port=3050'
       'CharacterSet=WIN1252'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
-    DatabaseName = 'NOTEVALDO/3060:D:\Modelos\erp\Database\IBGCOM.FDB'
     Left = 36
     Top = 6
   end
@@ -252,6 +252,7 @@ object DM: TDM
       item
         Name = 'MRC_CODIGO'
         DataType = ftInteger
+        ParamType = ptInput
         Size = 4
       end>
   end

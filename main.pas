@@ -477,6 +477,7 @@ Var
 begin
   Lc_form := TRegBillingPortfolio.Create(Self);
   Try
+    Lc_form.CodigoRegistro := 1;
     Lc_form.ShowModal;
   Finally
     FreeAndNil(Lc_form);

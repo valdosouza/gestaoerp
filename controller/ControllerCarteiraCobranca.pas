@@ -3,7 +3,7 @@ unit ControllerCarteiraCobranca;
 interface
 
 uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
-     STQuery, ControllerBase, tblCarteiraCobranca, prm_billing_portfolio;
+     STQuery, ControllerBase, tblCarteiraCobranca, prm_billing_portfolio,ControllerBanco;
 
 Type
   TControllerCarteiraCobranca = Class(TControllerBase)
@@ -12,6 +12,7 @@ Type
     procedure setFParametros(const Value: TPrmCarteiraCobranca);
   public
     Registro : TCarteiraCobranca;
+    Banco : TControllerBanco;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function save:boolean;
@@ -41,6 +42,7 @@ begin
   inherited;
   Registro := TCarteiraCobranca.Create;
   Parametros := TPrmCarteiraCobranca.Create;
+  Banco := TControllerBanco.Create(self);
 end;
 
 function TControllerCarteiraCobranca.delete: boolean;
@@ -55,7 +57,8 @@ end;
 
 destructor TControllerCarteiraCobranca.Destroy;
 begin
-  Registro.DisposeOf;
+  FreeAndNil(Banco);
+  FreeAndNil(Registro);
   FreeAndNil(FParametros);
   inherited;
 end;
@@ -75,7 +78,7 @@ begin
   Result := True;
   Try
     if Registro.Codigo = 0 then
-      Registro.Codigo := Generator('GN_CARTEIRACOBRANCA');
+      Registro.Codigo := getNextByField(Registro,'ctr_codigo',0);
     SaveObj(Registro);
   Except
     Result := False;

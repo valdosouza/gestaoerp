@@ -17,6 +17,8 @@ type
     CB_Banco: TComboBox;
     E_Descricao: TEdit;
     Rg_Emissao: TRadioGroup;
+  private
+    procedure MontaComboBoxBanco;
   protected
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
@@ -70,6 +72,7 @@ end;
 
 procedure TRegBillingPortfolio.IniciaVariaveis;
 begin
+  MontaComboBoxBanco;
   if Self.CodigoRegistro > 0 then
   Begin
     carteiraCobranca.Registro.Codigo := Self.CodigoRegistro;
@@ -85,15 +88,29 @@ begin
   E_Descricao.SetFocus;
 end;
 
+procedure TRegBillingPortfolio.MontaComboBoxBanco;
+Var
+  I : Integer;
+begin
+  with carteiraCobranca do
+  Begin
+    Banco.search;
+    CB_Banco.Items.Clear;
+    for I := 0 to Banco.lista.Count-1 do
+    Begin
+      CB_Banco.Items.Add(Banco.lista[I].NumeroNome);
+    End;
+  End;
+end;
+
 procedure TRegBillingPortfolio.Save;
 begin
   with carteiraCobranca do
   Begin
-    Registro.Codbco := 1;     //ajustarrrrrrrrrrrrrrrrrrr
+    Registro.CodigoBanco := carteiraCobranca.Banco.getCodigoBancoLista(CB_Banco.Text);     //ajustarrrrrrrrrrrrrrrrrrr
     Registro.Numero := E_Numero.Text ;
     Registro.Descricao := E_Descricao.Text;
     Registro.TipoEmissao := IfThen(Rg_Emissao.ItemIndex = 0, 'C', 'B');
-
     salva;
   End;
   CodigoRegistro := carteiraCobranca.Registro.Codigo;
@@ -101,10 +118,13 @@ begin
 end;
 
 procedure TRegBillingPortfolio.ShowData;
+Var
+  Lc_Aux : String;
 begin
   with carteiraCobranca do
   Begin
-    //CB_Banco.ItemIndex := 0;  //ajustarrrrrrrrrrrrrrrrrrr
+    Lc_Aux := carteiraCobranca.Banco.getNumeroNomeLista(Registro.CodigoBanco);
+    CB_Banco.ItemIndex := CB_Banco.Items.IndexOf(Lc_Aux);
     E_Numero.Text := Registro.Numero;
     E_Descricao.Text  := Registro.Descricao;
     if Registro.TipoEmissao = 'C' then

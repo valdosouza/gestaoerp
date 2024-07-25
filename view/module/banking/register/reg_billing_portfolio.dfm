@@ -3,7 +3,7 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
   ClientHeight = 206
   ClientWidth = 494
   ExplicitWidth = 500
-  ExplicitHeight = 250
+  ExplicitHeight = 255
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -68,8 +68,6 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 3
       object L_Numero: TLabel
         Left = 5
         Top = 40
@@ -119,8 +117,9 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
       object CB_Banco: TComboBox
         Left = 5
         Top = 19
-        Width = 385
+        Width = 474
         Height = 21
+        Style = csDropDownList
         TabOrder = 0
       end
       object E_Descricao: TEdit
