@@ -142,7 +142,7 @@ begin
     Exit;
   end;
 
-  if (CB_UF.Text = EmptyStr) then
+  if CB_UF.Text = EmptyStr then
   begin
     MensagemValidaPreenchimentoCampo(L_UF.Caption);
     Result := False;
