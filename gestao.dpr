@@ -15,7 +15,8 @@ uses
   env in 'env.pas',
   prm_receipt in 'parameter\prm_receipt.pas',
   prm_historico_bancario in 'parameter\prm_historico_bancario.pas',
-  prm_electronic_card in 'parameter\prm_electronic_card.pas';
+  prm_electronic_card in 'parameter\prm_electronic_card.pas',
+  tblBanco in 'model\tblBanco.pas';
 
 {$R *.res}
 

@@ -146,6 +146,7 @@
         <DCCReference Include="parameter\prm_receipt.pas"/>
         <DCCReference Include="parameter\prm_historico_bancario.pas"/>
         <DCCReference Include="parameter\prm_electronic_card.pas"/>
+        <DCCReference Include="model\tblBanco.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

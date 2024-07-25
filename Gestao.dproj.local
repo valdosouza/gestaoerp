@@ -13,8 +13,8 @@
     <Transaction>2024/06/18 08:31:36.000.670,D:\gestaoerp\Unit1.pas=D:\gestaoerp\main.pas</Transaction>
     <Transaction>2024/06/18 08:31:36.000.670,D:\gestaoerp\Unit1.dfm=D:\gestaoerp\main.dfm</Transaction>
     <Transaction>2024/06/18 08:33:08.000.942,=D:\gestaoerp\Unit1.pas</Transaction>
-    <Transaction>2024/06/18 08:33:33.000.819,D:\gestaoerp\Unit1.dfm=D:\gestaoerp\un_dm.dfm</Transaction>
     <Transaction>2024/06/18 08:33:33.000.819,D:\gestaoerp\Unit1.pas=D:\gestaoerp\un_dm.pas</Transaction>
+    <Transaction>2024/06/18 08:33:33.000.819,D:\gestaoerp\Unit1.dfm=D:\gestaoerp\un_dm.dfm</Transaction>
     <Transaction>2024/06/18 12:15:54.000.809,=D:\gestaoerp\view\repository\Un_Base.pas</Transaction>
     <Transaction>2024/06/18 12:16:05.000.321,=D:\gestaoerp\view\repository\base_search.pas</Transaction>
     <Transaction>2024/06/18 12:16:14.000.301,=D:\gestaoerp\view\repository\base_registry.pas</Transaction>
@@ -36,5 +36,7 @@
     <Transaction>2024/07/23 17:34:04.000.519,D:\gestaoerp\parameter\prm_historico_bancario.pas=D:\gestaoerp\Unit1.pas</Transaction>
     <Transaction>2024/07/24 09:00:01.000.570,=D:\gestaoerp\Unit1.pas</Transaction>
     <Transaction>2024/07/24 09:01:32.000.223,D:\gestaoerp\parameter\prm_electronic_card.pas=D:\gestaoerp\Unit1.pas</Transaction>
+    <Transaction>2024/07/25 08:57:58.789,=D:\gestaoerp\Unit1.pas</Transaction>
+    <Transaction>2024/07/25 09:01:00.294,D:\gestaoerp\model\tblBanco.pas=D:\gestaoerp\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
