@@ -3,7 +3,7 @@ inherited RegBillingPortfolio: TRegBillingPortfolio
   ClientHeight = 206
   ClientWidth = 494
   ExplicitWidth = 500
-  ExplicitHeight = 255
+  ExplicitHeight = 250
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel

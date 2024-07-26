@@ -16,17 +16,17 @@ Type
     Fagd_avisar: String;
     Fagd_decodusu: Integer;
     Fagd_paracodusu : Integer;
-    FFagd_dia: TDateTime;
-    FFagd_data: TDateTime;
-    Fagd_dia: TDateTime;
-    Fagd_data: TDateTime;
+    FFagd_dia: TDate;
+    FFagd_data: TDate;
+    Fagd_dia: TDate;
+    Fagd_data: TDate;
 
     procedure setFagd_avisar(const Value: String);
     procedure setFagd_codigo(const Value: Integer);
     procedure setFagd_compromisso(const Value: String);
-    procedure setFagd_data(const Value: TDateTime);
+    procedure setFagd_data(const Value: TDate);
     procedure setFagd_decodusu(const Value: Integer);
-    procedure setFagd_dia(const Value: TDateTime);
+    procedure setFagd_dia(const Value: TDate);
     procedure setFagd_hora(const Value: String);
     procedure setFagd_paracodusu(const Value: Integer);
 
@@ -53,10 +53,10 @@ Type
     property ParaCodusu: Integer read Fagd_paracodusu write setFagd_paracodusu;
 
     [FieldName('agd_dia')]
-    property Dia: TDateTime read Fagd_dia write setFagd_dia;
+    property Dia: TDate read Fagd_dia write setFagd_dia;
 
     [FieldName('agd_data')]
-    property Data: TDateTime read Fagd_data write setFagd_data;
+    property Data: TDate read Fagd_data write setFagd_data;
 
   End;
 
@@ -79,7 +79,7 @@ Type
     Fagd_compromisso := Value;
   end;
 
-  procedure TAgenda.setFagd_data(const Value: TDateTime);
+  procedure TAgenda.setFagd_data(const Value: TDate);
   begin
     Fagd_data := Value;
   end;
@@ -89,7 +89,7 @@ Type
     Fagd_decodusu := Value;
   end;
 
-  procedure TAgenda.setFagd_dia(const Value: TDateTime);
+  procedure TAgenda.setFagd_dia(const Value: TDate);
   begin
     Fagd_dia := Value;
   end;

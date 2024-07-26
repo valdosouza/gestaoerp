@@ -47,9 +47,9 @@ end;
 
 function TControllerCarteiraCobranca.delete: boolean;
 begin
+  Result := True;
   Try
     deleteObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
@@ -65,9 +65,9 @@ end;
 
 function TControllerCarteiraCobranca.insert: boolean;
 begin
+  Result := true;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -87,9 +87,9 @@ end;
 
 function TControllerCarteiraCobranca.save: boolean;
 begin
+  Result := true;
   try
     SaveObj(Registro);
-    Result := true;
   except
     Result := False;
   end;
@@ -103,7 +103,12 @@ end;
 
 function TControllerCarteiraCobranca.getAllByKey: boolean;
 begin
-  getByKey;
+  Result := True;
+  try
+    getByKey;
+  except
+    Result := False;
+  end;
 end;
 
 procedure TControllerCarteiraCobranca.getbyId;
