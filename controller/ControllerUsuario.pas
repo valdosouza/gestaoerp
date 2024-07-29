@@ -7,9 +7,7 @@ uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
 
 Type
   TListaUsuario = TObjectList<TUsuario>;
-
   TControllerUsuario = Class(TControllerBase)
-
   private
     FParametros: TPrmUsers;
     procedure setFParametros(const Value: TPrmUsers);
@@ -35,6 +33,8 @@ Type
     function Clear:Boolean;
     function Search:Boolean;
     property Parametros : TPrmUsers read FParametros write setFParametros;
+    function getCodigoLista(Nome: String): Integer;
+    function getNomeLista(Codigo: Integer): String;
   End;
 
 implementation
@@ -340,7 +340,36 @@ begin
   Finally
     FinalizaQuery(Lc_Qry);
   End;
+end;
 
+function TControllerUsuario.getCodigoLista(Nome: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  Begin
+    if Lista[i].Nome = Nome then
+    Begin
+      Result := Lista[i].Codigo;
+      Break;
+    End;
+  End;
+end;
+
+function TControllerUsuario.getNomeLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  Begin
+    if Lista[i].Codigo = Codigo then
+    Begin
+      Result := Lista[i].Nome;
+      Break;
+    End;
+  End;
 end;
 
 end.

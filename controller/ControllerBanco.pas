@@ -4,7 +4,7 @@ interface
 
 uses
   tblbanco,ControllerBase, System.Classes, STQuery, System.SysUtils,
-  System.Generics.Collections;
+  System.Generics.Collections, FireDAC.Stan.Param;
 
 type
   TListBanco = TObjectList<TBanco>;
@@ -43,8 +43,9 @@ end;
 
 function TControllerBanco.getCodigoBancoLista(NumeroNome: String): Integer;
 Var
-  I:Integer;
+  I: Integer;
 begin
+  Result := 0;
   for I := 0 to Lista.count -1 do
   Begin
     if Lista[I].NumeroNome = NumeroNome then
@@ -53,13 +54,13 @@ begin
       Break;
     End;
   End;
-
 end;
 
 function TControllerBanco.getNumeroNomeLista(CodigoBanco: Integer): String;
 Var
   I:Integer;
 begin
+  Result := EmptyStr;
   for I := 0 to Lista.count -1 do
   Begin
     if Lista[I].Codigo = CodigoBanco then
@@ -68,7 +69,6 @@ begin
       Break;
     End;
   End;
-
 end;
 
 function TControllerBanco.getNumber(Codigo: Integer):Integer;

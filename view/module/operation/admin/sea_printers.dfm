@@ -3,7 +3,7 @@ inherited SeaPrinters: TSeaPrinters
   ClientHeight = 392
   ClientWidth = 586
   ExplicitWidth = 592
-  ExplicitHeight = 441
+  ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -11,17 +11,21 @@ inherited SeaPrinters: TSeaPrinters
     Width = 580
     Height = 310
     ExplicitTop = 79
-    ExplicitWidth = 574
-    ExplicitHeight = 301
+    ExplicitWidth = 580
+    ExplicitHeight = 310
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 576
+    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 484
       Height = 292
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 486
       Height = 292
-      ExplicitLeft = 480
-      ExplicitHeight = 283
+      ExplicitLeft = 486
+      ExplicitHeight = 292
       inherited Sb_Sair_0: TSpeedButton
         Top = 229
         ExplicitTop = 229
@@ -43,7 +47,7 @@ inherited SeaPrinters: TSeaPrinters
   inherited Pnl_Parametros: TPanel
     Width = 580
     Height = 70
-    ExplicitWidth = 574
+    ExplicitWidth = 580
     ExplicitHeight = 70
     object GroupBox2: TGroupBox
       Left = 2
@@ -59,10 +63,9 @@ inherited SeaPrinters: TSeaPrinters
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 570
-      object Label28: TLabel
-        Left = 11
-        Top = 16
+      object L_Descricao: TLabel
+        Left = 8
+        Top = 17
         Width = 99
         Height = 14
         Caption = 'Nome da impressora'
@@ -73,7 +76,7 @@ inherited SeaPrinters: TSeaPrinters
         Font.Style = []
         ParentFont = False
       end
-      object E_BuscaImpressora: TEdit
+      object E_Descricao: TEdit
         Left = 8
         Top = 32
         Width = 529
@@ -87,6 +90,18 @@ inherited SeaPrinters: TSeaPrinters
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited Menu: TMainMenu
+    Left = 488
+    Top = 8
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end

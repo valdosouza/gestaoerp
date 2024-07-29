@@ -2,16 +2,15 @@ inherited RegCommitment: TRegCommitment
   Caption = 'Compromisso'
   ClientHeight = 283
   ClientWidth = 316
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 328
-  ExplicitHeight = 346
+  ExplicitWidth = 322
+  ExplicitHeight = 327
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 219
     Width = 316
-    ExplicitTop = 329
-    ExplicitWidth = 546
+    ExplicitTop = 219
+    ExplicitWidth = 316
     inherited SB_Inserir: TSpeedButton
       Left = -311
       ExplicitLeft = -75
@@ -41,10 +40,10 @@ inherited RegCommitment: TRegCommitment
   inherited pnl_fundo: TPanel
     Width = 316
     Height = 219
-    ExplicitWidth = 546
-    ExplicitHeight = 329
-    object Label2: TLabel
-      Left = 11
+    ExplicitWidth = 316
+    ExplicitHeight = 219
+    object L_Data: TLabel
+      Left = 8
       Top = 8
       Width = 22
       Height = 14
@@ -56,8 +55,8 @@ inherited RegCommitment: TRegCommitment
       Font.Style = []
       ParentFont = False
     end
-    object Label3: TLabel
-      Left = 104
+    object L_Hora: TLabel
+      Left = 102
       Top = 8
       Width = 23
       Height = 14
@@ -69,7 +68,7 @@ inherited RegCommitment: TRegCommitment
       Font.Style = []
       ParentFont = False
     end
-    object Label4: TLabel
+    object L_Usuario: TLabel
       Left = 169
       Top = 8
       Width = 63
@@ -82,7 +81,7 @@ inherited RegCommitment: TRegCommitment
       Font.Style = []
       ParentFont = False
     end
-    object Label1: TLabel
+    object L_Descricao: TLabel
       Left = 8
       Top = 53
       Width = 49
@@ -95,37 +94,38 @@ inherited RegCommitment: TRegCommitment
       Font.Style = []
       ParentFont = False
     end
-    object w: TMemo
-      Left = 11
+    object M_Descricao: TMemo
+      Left = 8
       Top = 69
       Width = 294
       Height = 120
       MaxLength = 500
-      TabOrder = 0
+      ScrollBars = ssVertical
+      TabOrder = 3
     end
     object E_Data: TDateTimePicker
       Left = 8
       Top = 24
       Width = 92
       Height = 24
-      Date = 39488.000000000000000000
-      Time = 0.445386284722189900
+      Date = 39488.445386284720000000
+      Time = 39488.445386284720000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
     object E_Hora: TDateTimePicker
       Left = 102
       Top = 24
       Width = 61
       Height = 24
-      Date = 39488.000000000000000000
+      Date = 39488.445386284720000000
       Format = 'HH:mm'
-      Time = 0.445386284722189900
+      Time = 39488.445386284720000000
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -133,9 +133,9 @@ inherited RegCommitment: TRegCommitment
       Font.Style = []
       Kind = dtkTime
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
     end
-    object Dblcb_Usuario: TComboBox
+    object CB_Usuario: TComboBox
       Left = 169
       Top = 24
       Width = 144
@@ -146,12 +146,12 @@ inherited RegCommitment: TRegCommitment
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       Items.Strings = (
         'op'#231'ao 1'
         'op'#231'ao 2')
     end
-    object Chbx_Dia: TCheckBox
+    object Ch_Avisar: TCheckBox
       Left = 8
       Top = 195
       Width = 56
@@ -167,5 +167,9 @@ inherited RegCommitment: TRegCommitment
       State = cbChecked
       TabOrder = 4
     end
+  end
+  inherited Menu: TMainMenu
+    Left = 200
+    Top = 112
   end
 end

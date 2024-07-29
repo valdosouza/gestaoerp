@@ -90,16 +90,14 @@ end;
 
 procedure TRegBillingPortfolio.MontaComboBoxBanco;
 Var
-  I : Integer;
+  i : Integer;
 begin
   with carteiraCobranca do
   Begin
     Banco.search;
     CB_Banco.Items.Clear;
-    for I := 0 to Banco.lista.Count-1 do
-    Begin
+    for i := 0 to Pred(Banco.lista.Count) do
       CB_Banco.Items.Add(Banco.lista[I].NumeroNome);
-    End;
   End;
 end;
 
@@ -107,7 +105,7 @@ procedure TRegBillingPortfolio.Save;
 begin
   with carteiraCobranca do
   Begin
-    Registro.CodigoBanco := carteiraCobranca.Banco.getCodigoBancoLista(CB_Banco.Text);     //ajustarrrrrrrrrrrrrrrrrrr
+    Registro.CodigoBanco := Banco.getCodigoBancoLista(CB_Banco.Text);
     Registro.Numero := E_Numero.Text ;
     Registro.Descricao := E_Descricao.Text;
     Registro.TipoEmissao := IfThen(Rg_Emissao.ItemIndex = 0, 'C', 'B');
@@ -123,7 +121,7 @@ Var
 begin
   with carteiraCobranca do
   Begin
-    Lc_Aux := carteiraCobranca.Banco.getNumeroNomeLista(Registro.CodigoBanco);
+    Lc_Aux := Banco.getNumeroNomeLista(Registro.CodigoBanco);
     CB_Banco.ItemIndex := CB_Banco.Items.IndexOf(Lc_Aux);
     E_Numero.Text := Registro.Numero;
     E_Descricao.Text  := Registro.Descricao;

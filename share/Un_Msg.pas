@@ -23,7 +23,10 @@ const
 
   SIM = 'S';
   NAO = 'N';
-  OK = 'OK';
+
+  OPCOES_SIM = 'SIM';
+  OPCOES_NAO = 'NÃO';
+  OPCOES_OK = 'OK';
 
   TITULO_ERRO = 'Mensagem de erro';
   TITULO_CONFIRMACAO = 'Mensagem de Confirmação';
@@ -109,7 +112,7 @@ begin
   Msg :=  'A T E N Ç Ã O!' + EOLN + EOLN +
           'O Campo "'+Campo+'" não foi informado.' + EOLN +
           'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
 function MensagemErroCampo(Campo,info: String): Integer;
@@ -120,7 +123,7 @@ begin
          'Verifique o Campo "'+Campo+'".' + EOLN +
          info + EOLN +
          'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpErro, clRed);
+  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpErro, clRed);
 end;
 
 function MensagemExcluir(): Integer;
@@ -129,7 +132,7 @@ var
 begin
   Msg := 'Deseja excluir este item?' + EOLN + EOLN +
          'Confirmar a exclusão?';
-  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OK],[bEscape], mpConfirmacao, clBtnFace);
+  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OPCOES_SIM, OPCOES_NAO],[bEscape, bNormal], mpConfirmacao, clRed);
 end;
 
 function MensagemPararExecucao(info:String): Integer;
@@ -139,7 +142,7 @@ begin
   Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
           info + EOLN +
           'Verifique antes de continuar.' + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+  Result := Mensagem( TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
 function MensagemcConfirmaAcao(info:String): Integer;
@@ -336,7 +339,7 @@ begin
   Msg :=  'A T E N Ç Ã O!' + EOLN + EOLN +
           'O Campo "'+Campo+'" não foi informado.' + EOLN +
           'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
 class function TMsg.ErroCampo(Campo,info: String): Integer;
@@ -347,7 +350,7 @@ begin
          'Verifique o Campo "'+Campo+'".' + EOLN +
          info + EOLN +
          'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OK],[bEscape], mpErro, clRed);
+  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK], [bEscape], mpErro, clRed);
 end;
 
 class function TMsg.Excluir(): Integer;
@@ -356,7 +359,8 @@ var
 begin
   Msg := 'Deseja excluir este item?' + EOLN + EOLN +
          'Confirmar a exclusão?';
-  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OK],[bEscape], mpConfirmacao, clBtnFace);
+  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [
+  OPCOES_NAO, OPCOES_SIM], [bEscape, bNormal], mpConfirmacao, clRed);
 end;
 
 class function TMsg.PararExecucao(info:String): Integer;
@@ -366,7 +370,7 @@ begin
   Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
           info + EOLN +
           'Verifique antes de continuar.' + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+  Result := Mensagem( TITULO_ERRO, Msg, [OPCOES_OK], [bEscape], mpAlerta, clBtnFace);
 end;
 
 class function TMsg.ConfirmaAcao(info:String): Integer;
@@ -375,7 +379,7 @@ var
 begin
   Msg := 'C O N F I R M A Ç Ã O!' + EOLN + EOLN +
           info + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [SIM,NAO],[bNormal, bEscape], mpAlerta, clBtnFace);
+  Result := Mensagem( TITULO_ERRO, Msg, [OPCOES_SIM, OPCOES_NAO], [bNormal, bEscape], mpAlerta, clBtnFace);
 end;
 
 end.

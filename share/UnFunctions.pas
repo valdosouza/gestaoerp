@@ -195,12 +195,10 @@ end;
 
 function ValidaCPF_CNPJ(number:String):boolean;
 Begin
-  Result := True;
   if ( Length(number) = 14 ) then
     result := CalculoCNPJ(number)
   else
     result := CalculoCPF(number);
-
 End;
 
 
