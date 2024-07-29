@@ -67,7 +67,7 @@ end;
 
 function TControllerHistoricoBancario.getIdByDescription(value:String):Integer;
 Begin
-
+  result := 0;
 End;
 
 procedure TControllerHistoricoBancario.getlist;

@@ -21,6 +21,7 @@ type
     Ch_Avisar: TCheckBox;
   private
     procedure MontaComboBoxBanco;
+  protected
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;

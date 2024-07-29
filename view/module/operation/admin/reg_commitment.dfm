@@ -3,7 +3,7 @@ inherited RegCommitment: TRegCommitment
   ClientHeight = 283
   ClientWidth = 316
   ExplicitWidth = 322
-  ExplicitHeight = 327
+  ExplicitHeight = 332
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
