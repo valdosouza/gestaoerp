@@ -43,9 +43,11 @@ inherited FrMain: TFrMain
       end
       object Cidades1: TMenuItem
         Caption = 'Ci&dades'
+        OnClick = Cidades1Click
       end
       object Estados1: TMenuItem
         Caption = '&Estados'
+        OnClick = Estados1Click
       end
       object N13: TMenuItem
         Caption = '-'
@@ -98,6 +100,7 @@ inherited FrMain: TFrMain
       end
       object Embalagens1: TMenuItem
         Caption = 'Embalagens'
+        OnClick = Embalagens1Click
       end
       object Marcas1: TMenuItem
         Caption = 'Marcas'
@@ -743,6 +746,7 @@ inherited FrMain: TFrMain
       end
       object MnuArqContaBco: TMenuItem
         Caption = 'Con&tas'
+        OnClick = MnuArqContaBcoClick
       end
       object MnuArqHistBco: TMenuItem
         Caption = '&Hist'#243'ricos'
@@ -758,6 +762,7 @@ inherited FrMain: TFrMain
       end
       object BoletoEletronico1: TMenuItem
         Caption = 'Boleto Eletr'#244'nico'
+        OnClick = BoletoEletronico1Click
       end
       object N5: TMenuItem
         Caption = '-'
@@ -814,18 +819,11 @@ inherited FrMain: TFrMain
       Caption = '&Arquivo'
       object MnuPslArqColaborador: TMenuItem
         Caption = 'Colaborador'
+        OnClick = MnuPslArqColaboradorClick
       end
       object MnuPslArqCargo: TMenuItem
-        Caption = 'New - Cargos'
+        Caption = 'Cargos'
         OnClick = MnuPslArqCargoClick
-      end
-      object MnuPslUsuario: TMenuItem
-        Caption = 'New - Usu'#225'rio'
-        OnClick = MnuPslUsuarioClick
-      end
-      object NewCidade1: TMenuItem
-        Caption = 'New - Cidade'
-        OnClick = NewCidade1Click
       end
       object MenuItem4: TMenuItem
         Caption = '-'

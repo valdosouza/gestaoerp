@@ -134,25 +134,80 @@
         <DCCReference Include="parameter\prm_receipt.pas"/>
         <DCCReference Include="parameter\prm_historico_bancario.pas"/>
         <DCCReference Include="parameter\prm_electronic_card.pas"/>
-        <DCCReference Include="model\tblBanco.pas"/>
+        <DCCReference Include="model\tblBanco.pas">
+            <Form>,
+  reg_banking_account in &apos;view\module\banking\register\reg_banking_account.pas&apos; {RegBankingAccount</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_banking_account.pas">
+            <Form>RegBankingAccount</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_banking_history.pas">
+            <Form>RegBankingHistory</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_billing_portfolio.pas">
+            <Form>RegBillingPortfolio</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_electronic_card.pas">
+            <Form>RegElectronicCard</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_electronic_slip.pas">
+            <Form>RegElectronicSlip</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_banking_account.pas">
+            <Form>SeaBankingAccount</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_banking_history.pas">
+            <Form>SeaBankingHistory</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_electronic_card.pas">
+            <Form>SeaEletronicCard</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_electronic_slip.pas">
+            <Form>SeaElectronicSlip</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\human_resource\register\reg_collaborator.pas">
+            <Form>RegCollaborator</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\human_resource\register\reg_job_position.pas">
+            <Form>RegJobPosition</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\human_resource\register\sea_collaborator.pas">
+            <Form>SeaCollaborator</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\human_resource\register\sea_job_position.pas">
+            <Form>SeaJobPosition</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\reg_commitment.pas">
+            <Form>RegCommitment</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\reg_config_tag.pas">
+            <Form>RegConfigTag</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\reg_printers.pas">
+            <Form>RegPrinters</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_users.pas">
             <Form>RegUsers</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\reg_virtual_shop.pas">
+            <Form>RegVirtualShop</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\admin\sea_printers.pas">
+            <Form>SeaPrinters</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\sea_users.pas">
             <Form>SeaUsers</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_banking_account.pas">
-            <Form>RegBankingAccount</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_banner_site.pas">
             <Form>RegBannerSite</Form>
             <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_billing_portfolio.pas">
-            <Form>RegBillingPortfolio</Form>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_category.pas">
             <Form>RegCategory</Form>
@@ -160,22 +215,6 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_city.pas">
             <Form>RegCity</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_collaborator.pas">
-            <Form>RegCollaborator</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_commitment.pas">
-            <Form>RegCommitment</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_config_tag.pas">
-            <Form>RegConfigTag</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_electronic_slip.pas">
-            <Form>RegElectronicSlip</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_ext_motive.pas">
@@ -190,24 +229,12 @@
             <Form>RegPackage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_printers.pas">
-            <Form>RegPrinters</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_subgroup_menu.pas">
             <Form>RegSubgroupMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_uf.pas">
             <Form>RegUf</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_virtual_shop.pas">
-            <Form>RegVirtualShop</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\sea_banking_account.pas">
-            <Form>SeaBankingAccount</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_banner_site.pas">
@@ -222,16 +249,8 @@
             <Form>SeaCity</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\sea_collaborator.pas">
-            <Form>SeaCollaborator</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_config_tag.pas">
             <Form>SeaConfigTag</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\sea_electronic_slip.pas">
-            <Form>SeaElectronicSlip</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_ext_motive.pas">
@@ -246,24 +265,8 @@
             <Form>SeaPackage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\sea_printers.pas">
-            <Form>SeaPrinters</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_uf.pas">
             <Form>SeaUf</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_banking_history.pas">
-            <Form>RegBankingHistory</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\human_resource\register\reg_job_position.pas">
-            <Form>RegJobPosition</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\human_resource\register\sea_job_position.pas">
-            <Form>SeaJobPosition</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\task\reg_receipt.pas">

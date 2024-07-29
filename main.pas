@@ -282,8 +282,6 @@ type
     N15: TMenuItem;
     CarteiradeCobrana1: TMenuItem;
     N21: TMenuItem;
-    MnuPslUsuario: TMenuItem;
-    NewCidade1: TMenuItem;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -307,8 +305,13 @@ type
     procedure MnuArqHistBcoClick(Sender: TObject);
     procedure MnuAjdManuUsuOperClick(Sender: TObject);
     procedure MnuReciboClick(Sender: TObject);
-    procedure MnuPslUsuarioClick(Sender: TObject);
     procedure NewCidade1Click(Sender: TObject);
+    procedure BoletoEletronico1Click(Sender: TObject);
+    procedure MnuArqContaBcoClick(Sender: TObject);
+    procedure MnuPslArqColaboradorClick(Sender: TObject);
+    procedure Cidades1Click(Sender: TObject);
+    procedure Estados1Click(Sender: TObject);
+    procedure Embalagens1Click(Sender: TObject);
   private
     procedure MenuOperacao;
     procedure MenuBanco;
@@ -328,9 +331,46 @@ implementation
 
 {$R *.dfm}
 
-uses un_dm, sea_job_position, sea_printers, sea_ext_motive,reg_virtual_shop,reg_commitment,
-      reg_billing_portfolio,sea_electronic_card,sea_banking_history, sea_users,
-      sea_receipt, env, sea_city;
+uses un_dm,
+      env,
+    reg_banking_account,
+    reg_banking_history,
+    reg_billing_portfolio,
+    reg_electronic_card,
+    reg_electronic_slip,
+    sea_banking_account,
+    sea_banking_history,
+    sea_electronic_card,
+    sea_electronic_slip,
+    reg_collaborator,
+    reg_job_position,
+    sea_collaborator,
+    sea_job_position,
+    reg_commitment,
+    reg_config_tag,
+    reg_printers,
+    reg_users,
+    reg_virtual_shop,
+    sea_printers,
+    sea_users,
+    reg_banner_site,
+    reg_category,
+    reg_city,
+    reg_ext_motive,
+    reg_group_menu,
+    reg_package,
+    reg_subgroup_menu,
+    reg_uf,
+    sea_banner_site,
+    sea_category,
+    sea_city,
+    sea_config_tag,
+    sea_ext_motive,
+    sea_group_menu,
+    sea_package,
+    sea_uf,
+    sea_receipt;
+
 
 { TForm1 }
 
@@ -339,9 +379,9 @@ begin
   ChamarTela(TSeaJobPosition);
 end;
 
-procedure TFrMain.MnuPslUsuarioClick(Sender: TObject);
+procedure TFrMain.MnuPslArqColaboradorClick(Sender: TObject);
 begin
-  ChamarTela(TSeaUsers);
+  ChamarTela(TSeaCollaborator);
 end;
 
 procedure TFrMain.NewCidade1Click(Sender: TObject);
@@ -361,6 +401,11 @@ begin
   end;
 end;
 
+procedure TFrMain.Cidades1Click(Sender: TObject);
+begin
+  ChamarTela(TSeaCity);
+end;
+
 procedure TFrMain.MnuPslBancarioClick(Sender: TObject);
 begin
   MenuBanco
@@ -377,15 +422,8 @@ begin
 end;
 
 procedure TFrMain.MotivoCondenaoReprovao1Click(Sender: TObject);
-Var
-  Lc_form : TSeaExtMotive;
 begin
-  Lc_form := TSeaExtMotive.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TSeaExtMotive);
 end;
 
 procedure TFrMain.Pessoal1Click(Sender: TObject);
@@ -404,41 +442,23 @@ begin
 end;
 
 procedure TFrMain.MnuReciboClick(Sender: TObject);
-Var
-  Lc_form : TSeaReceipt;
 begin
-  Lc_form := TSeaReceipt.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
-
+  ChamarTela(TSeaReceipt);
 end;
 
 procedure TFrMain.MnuAjdManuUsuOperClick(Sender: TObject);
-Var
-  Lc_form : TSeaUsers;
 begin
-  Lc_form := TSeaUsers.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TSeaUsers);
+end;
+
+procedure TFrMain.MnuArqContaBcoClick(Sender: TObject);
+begin
+  ChamarTela(TSeaBankingAccount);
 end;
 
 procedure TFrMain.MnuArqHistBcoClick(Sender: TObject);
-Var
-  Lc_form : TSeaBankingHistory;
 begin
-  Lc_form := TSeaBankingHistory.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
-
+  ChamarTela(TSeaBankingHistory);
 end;
 
 procedure TFrMain.MnuModBancoOperClick(Sender: TObject);
@@ -471,42 +491,35 @@ begin
   MenuOperacao;
 end;
 
-procedure TFrMain.CarteiradeCobrana1Click(Sender: TObject);
-Var
-  Lc_form : TRegBillingPortfolio;
+procedure TFrMain.BoletoEletronico1Click(Sender: TObject);
 begin
-  Lc_form := TRegBillingPortfolio.Create(Self);
-  Try
-    Lc_form.CodigoRegistro := 1;
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  inherited;
+  ChamarTela(TSeaElectronicSlip);
+end;
+
+procedure TFrMain.CarteiradeCobrana1Click(Sender: TObject);
+begin
+  ChamarTela(TRegBillingPortfolio);
 end;
 
 procedure TFrMain.CartoEletrnico1Click(Sender: TObject);
-Var
-  Lc_form : TSeaEletronicCard;
 begin
-  Lc_form := TSeaEletronicCard.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TSeaEletronicCard);
 end;
 
 procedure TFrMain.Compromissos1Click(Sender: TObject);
-Var
-  Lc_form : TRegCommitment;
 begin
-  Lc_form := TRegCommitment.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TRegCommitment);
+end;
 
+procedure TFrMain.Embalagens1Click(Sender: TObject);
+begin
+  ChamarTela(TSeaPackage);
+end;
+
+procedure TFrMain.Estados1Click(Sender: TObject);
+begin
+  ChamarTela(TSeaUf);
 end;
 
 procedure TFrMain.FormShow(Sender: TObject);
@@ -515,15 +528,8 @@ begin
 end;
 
 procedure TFrMain.Impressoras1Click(Sender: TObject);
-Var
-  Lc_form : TSeaPrinters;
 begin
-  Lc_form := TSeaPrinters.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TSeaPrinters);
 end;
 
 procedure TFrMain.InitVariable;
@@ -534,15 +540,8 @@ begin
 end;
 
 procedure TFrMain.LojaVirtual1Click(Sender: TObject);
-Var
-  Lc_form : TRegVirtualShop;
 begin
-  Lc_form := TRegVirtualShop.Create(Self);
-  Try
-    Lc_form.ShowModal;
-  Finally
-    FreeAndNil(Lc_form);
-  End;
+  ChamarTela(TRegVirtualShop);
 end;
 
 procedure TFrMain.MenuBanco;
