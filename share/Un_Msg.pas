@@ -37,9 +37,6 @@ const
                         TipoPadrao : TMsgPadrao;
                         Lc_Cor : TColor = clBtnFace) : Integer;
 
-  function MensagemValidaPreenchimentoCampo(Campo: String): Integer;
-  function MensagemErroCampo(Campo,info: String): Integer;
-  function MensagemExcluir(): Integer;
   function MensagemPararExecucao(info:String): Integer;
   function MensagemcConfirmaAcao(info:String): Integer;
 
@@ -57,8 +54,6 @@ const
     class function ValidaPreenchimentoCampo(Campo: String): Integer;
     class function ErroCampo(Campo,info: String): Integer;
     class function Excluir: Integer;
-    class function PararExecucao(info:String): Integer;
-    class function ConfirmaAcao(info:String): Integer;
   end;
 
 Var
@@ -353,33 +348,13 @@ begin
   Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK], [bEscape], mpErro, clRed);
 end;
 
-class function TMsg.Excluir(): Integer;
+class function TMsg.Excluir: Integer;
 var
   Msg: String;
 begin
   Msg := 'Deseja excluir este item?' + EOLN + EOLN +
          'Confirmar a exclusão?';
-  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [
-  OPCOES_NAO, OPCOES_SIM], [bEscape, bNormal], mpConfirmacao, clRed);
-end;
-
-class function TMsg.PararExecucao(info:String): Integer;
-var
-  Msg: String;
-begin
-  Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
-          info + EOLN +
-          'Verifique antes de continuar.' + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [OPCOES_OK], [bEscape], mpAlerta, clBtnFace);
-end;
-
-class function TMsg.ConfirmaAcao(info:String): Integer;
-var
-  Msg: String;
-begin
-  Msg := 'C O N F I R M A Ç Ã O!' + EOLN + EOLN +
-          info + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [OPCOES_SIM, OPCOES_NAO], [bNormal, bEscape], mpAlerta, clBtnFace);
+  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OPCOES_NAO, OPCOES_SIM], [bEscape, bNormal], mpConfirmacao, clRed);
 end;
 
 end.
