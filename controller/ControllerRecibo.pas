@@ -3,7 +3,7 @@ unit ControllerRecibo;
 interface
 
 uses ControllerBase,tblrecibo, System.Classes, System.SysUtils, STQuery,
-  prm_receipt, System.Generics.Collections;
+  prm_receipt, System.Generics.Collections, FireDac.Stan.Param;
 
 type
   TListaRecibo = TObjectList<TRecibo>;

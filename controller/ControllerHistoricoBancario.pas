@@ -3,7 +3,7 @@ unit ControllerHistoricoBancario;
 interface
 
 Uses SysUtils,classes,tblHistoricoBancario,STQuery,Forms,controllerBase,
-    System.Generics.Collections, prm_historico_bancario;
+    System.Generics.Collections, prm_historico_bancario, FireDac.Stan.Param;
 
 Type
   //nome da classe de entidade

@@ -2,14 +2,15 @@ inherited RegPrinters: TRegPrinters
   Caption = 'Cadastro de Impressoras'
   ClientHeight = 233
   ClientWidth = 622
-  ExplicitWidth = 634
-  ExplicitHeight = 296
+  ExplicitWidth = 628
+  ExplicitHeight = 277
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 169
     Width = 622
-    ExplicitTop = 160
-    ExplicitWidth = 616
+    ExplicitTop = 169
+    ExplicitWidth = 622
     inherited SB_Inserir: TSpeedButton
       Left = -5
       ExplicitLeft = -5
@@ -38,8 +39,8 @@ inherited RegPrinters: TRegPrinters
   inherited pnl_fundo: TPanel
     Width = 622
     Height = 169
-    ExplicitWidth = 616
-    ExplicitHeight = 160
+    ExplicitWidth = 622
+    ExplicitHeight = 169
     object SeaPrinters: TPanel
       Left = 2
       Top = 2
@@ -49,10 +50,8 @@ inherited RegPrinters: TRegPrinters
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 612
-      ExplicitHeight = 156
-      object Label1: TLabel
-        Left = 8
+      object L_Descricao: TLabel
+        Left = 5
         Top = 5
         Width = 121
         Height = 14
@@ -64,9 +63,9 @@ inherited RegPrinters: TRegPrinters
         Font.Style = []
         ParentFont = False
       end
-      object Label2: TLabel
-        Left = 9
-        Top = 46
+      object L_Caminho: TLabel
+        Left = 5
+        Top = 45
         Width = 152
         Height = 14
         Caption = 'Caminho da Porta de Impress'#227'o'
@@ -77,8 +76,8 @@ inherited RegPrinters: TRegPrinters
         Font.Style = []
         ParentFont = False
       end
-      object Label3: TLabel
-        Left = 8
+      object L_Salto: TLabel
+        Left = 5
         Top = 84
         Width = 169
         Height = 14
@@ -90,8 +89,8 @@ inherited RegPrinters: TRegPrinters
         Font.Style = []
         ParentFont = False
       end
-      object Label4: TLabel
-        Left = 188
+      object L_Vias: TLabel
+        Left = 184
         Top = 84
         Width = 172
         Height = 14
@@ -103,8 +102,8 @@ inherited RegPrinters: TRegPrinters
         Font.Style = []
         ParentFont = False
       end
-      object Label5: TLabel
-        Left = 368
+      object L_Colunas: TLabel
+        Left = 366
         Top = 84
         Width = 94
         Height = 14
@@ -117,7 +116,7 @@ inherited RegPrinters: TRegPrinters
         ParentFont = False
       end
       object E_Codigo: TEdit
-        Left = 6
+        Left = 5
         Top = 21
         Width = 42
         Height = 22
@@ -134,7 +133,7 @@ inherited RegPrinters: TRegPrinters
       object E_Descricao: TEdit
         Left = 49
         Top = 21
-        Width = 562
+        Width = 560
         Height = 22
         CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
@@ -147,7 +146,7 @@ inherited RegPrinters: TRegPrinters
       end
       object E_Caminho: TEdit
         Left = 5
-        Top = 61
+        Top = 60
         Width = 604
         Height = 22
         CharCase = ecUpperCase
@@ -159,12 +158,12 @@ inherited RegPrinters: TRegPrinters
         ParentFont = False
         TabOrder = 2
       end
-      object Chbx_Tipo: TCheckBox
-        Left = 7
+      object Ch_Tipo: TCheckBox
+        Left = 5
         Top = 140
         Width = 310
         Height = 17
-        Caption = 'Est'#225' impressora '#233' a principal pnde o pedido sair'#225' completo'
+        Caption = 'Est'#225' impressora '#233' a principal onde o pedido sair'#225' completo'
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -174,7 +173,7 @@ inherited RegPrinters: TRegPrinters
         TabOrder = 6
       end
       object E_Salto: TEdit
-        Left = 4
+        Left = 5
         Top = 99
         Width = 177
         Height = 22
@@ -184,6 +183,7 @@ inherited RegPrinters: TRegPrinters
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        NumbersOnly = True
         ParentFont = False
         TabOrder = 3
       end
@@ -198,11 +198,12 @@ inherited RegPrinters: TRegPrinters
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        NumbersOnly = True
         ParentFont = False
         TabOrder = 4
       end
       object E_Colunas: TEdit
-        Left = 364
+        Left = 366
         Top = 99
         Width = 168
         Height = 22
@@ -212,13 +213,14 @@ inherited RegPrinters: TRegPrinters
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        NumbersOnly = True
         ParentFont = False
         TabOrder = 5
       end
     end
   end
   inherited Menu: TMainMenu
-    Left = 24
-    Top = 168
+    Left = 552
+    Top = 88
   end
 end
