@@ -141,7 +141,7 @@ end;
 function TFr_Especie_Doc.ValidateDelete: Boolean;
 begin
   inherited;
-  if (MensagemPadrao('Mensagem de Confirmação',
+  if (Mensagem('Mensagem de Confirmação',
                      'Excluir este registro de seus arquivos.' + EOLN + EOLN +
                      'Confirmar a exclusão ?',
                      ['Sim', 'Não'], [bNormal,bEscape], mpConfirmacao, clRed) = mrBotao2) then
@@ -152,7 +152,7 @@ begin
 
   if not ( EspecieDoc.Registro.Codigo > 0 ) then
   Begin
-    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Não há registro para excluir.'+EOLN+
                    'Verifique e tente novamente.'  +EOLN,
                    ['OK'], [bEscape], mpAlerta);
@@ -166,7 +166,7 @@ begin
   Result := True;
   if ( Trim(E_Numero.Text) = '' ) then
   Begin
-    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Campo número não preenchido.'+EOLN+
                    'Verifique e tente novamente.'  +EOLN,
                    ['OK'], [bEscape], mpAlerta);
@@ -177,7 +177,7 @@ begin
 
   if ( Trim(E_Sigla.Text) = '' ) then
   Begin
-    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Campo sigla não preenchido.'+EOLN+
                    'Verifique e tente novamente.'  +EOLN,
                    ['OK'], [bEscape], mpAlerta);
@@ -188,7 +188,7 @@ begin
 
   if ( Trim(E_Descricao.Text) = '' ) then
   Begin
-    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Campo descrição não preenchido.'+EOLN+
                    'Verifique e tente novamente.'  +EOLN,
                    ['OK'], [bEscape], mpAlerta);

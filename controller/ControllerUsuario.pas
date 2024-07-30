@@ -31,7 +31,7 @@ Type
     function Replace:boolean;
     function Autentica : Boolean;
     function Clear:Boolean;
-    function Search:Boolean;
+    procedure Search;
     property Parametros : TPrmUsers read FParametros write setFParametros;
     function getCodigoLista(Nome: String): Integer;
     function getNomeLista(Codigo: Integer): String;
@@ -161,12 +161,11 @@ begin
   SaveObj(Registro);
 end;
 
-function TControllerUsuario.Search: Boolean;
+procedure TControllerUsuario.Search;
 var
   Lc_Qry : TSTQuery;
   LITem : TUsuario;
 begin
-  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do

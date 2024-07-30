@@ -53,7 +53,6 @@ uses
   reg_receipt in 'view\module\operation\task\reg_receipt.pas' {RegReceipt},
   sea_receipt in 'view\module\operation\task\sea_receipt.pas' {SeaReceipt},
   Un_envia_email in 'view\module\operation\task\Un_envia_email.pas' {Fr_envia_email},
-  Un_Fm_CardapioPanel in 'frame\Un_Fm_CardapioPanel.pas' {Fm_CardapioPanel: TFrame},
   Un_Especie_Doc in 'view\module\banking\register\Un_Especie_Doc.pas' {Fr_Especie_Doc};
 
 {$R *.res}
