@@ -277,6 +277,18 @@
             <Form>SeaReceipt</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="view\module\operation\task\Un_envia_email.pas">
+            <Form>Fr_envia_email</Form>
+        </DCCReference>
+        <DCCReference Include="frame\Un_Fm_CardapioPanel.pas">
+            <Form>Fm_CardapioPanel</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\Un_Especie_Doc.pas">
+            <Form>Fr_Especie_Doc</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

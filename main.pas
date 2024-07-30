@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, un_base;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, un_base, Vcl.ExtCtrls,
+  Vcl.Buttons;
 
 type
   TFrMain = class(TFr_Base)

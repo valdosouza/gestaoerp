@@ -9,11 +9,11 @@ inherited FrMain: TFrMain
   TextHeight = 13
   inherited Menu: TMainMenu
     Left = 24
-    Top = 16
+    Top = 80
   end
   object MnuOper: TMainMenu
-    Left = 104
-    Top = 18
+    Left = 80
+    Top = 82
     object MnuArqOpe: TMenuItem
       Caption = '&Arquivo'
       Hint = 'Cadastros em Geral'
@@ -609,8 +609,8 @@ inherited FrMain: TFrMain
     end
   end
   object MnuFin: TMainMenu
-    Left = 164
-    Top = 18
+    Left = 132
+    Top = 82
     object MnuArqFin: TMenuItem
       Caption = '&Arquivo'
       object MnuArqFPagtoFin: TMenuItem
@@ -737,8 +737,8 @@ inherited FrMain: TFrMain
     end
   end
   object MnuBco: TMainMenu
-    Left = 224
-    Top = 26
+    Left = 200
+    Top = 82
     object MnuArqBco: TMenuItem
       Caption = '&Arquivo'
       object MnuArqBancoBco: TMenuItem
@@ -813,8 +813,8 @@ inherited FrMain: TFrMain
     end
   end
   object MnuPsl: TMainMenu
-    Left = 288
-    Top = 26
+    Left = 264
+    Top = 90
     object MnuPslArquivo: TMenuItem
       Caption = '&Arquivo'
       object MnuPslArqColaborador: TMenuItem

@@ -76,7 +76,7 @@ implementation
 
 {$R *.dfm}
 
-uses UN_MSG, Md5;
+uses UN_MSG, Md5, Un_envia_email;
 
 { TRegUsers }
 
@@ -260,7 +260,7 @@ begin
 end;
 
 procedure TRegUsers.EnvioEmailteste;
-{Var
+Var
   Lc_Aux : String;
   Lc_Destinatario : TStringList;
   Lc_AssuntoEmail : string;
@@ -268,9 +268,9 @@ procedure TRegUsers.EnvioEmailteste;
   Lc_arq_pdf : string;
   lc_anexo :TStringList;
   LcEnviaemail : TFr_envia_email;
-  LcEmailTo : String; }
+  LcEmailTo : String;
 begin
-  {//Envia email para a propria empresa
+  //Envia email para a propria empresa
   Lc_Destinatario := TStringList.Create;
   Lc_Destinatario.Clear;
   if (InputQuery('Envio teste de e-mail ', 'Informe um e-mail válido', LcEmailTo)) then
@@ -321,7 +321,7 @@ begin
     end;
   Finally
     LcEnviaemail.Disposeof;
-  End;  }
+  End;
 end;
 
 procedure TRegUsers.sb_permissaoClick(Sender: TObject);

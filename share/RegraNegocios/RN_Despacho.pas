@@ -113,7 +113,7 @@ begin
   Lc_Qry := TSTQuery.Create(Application);
   with Lc_Qry do
   Begin
-    Connection := DM.IBD_Gestao;
+    Database := DM.IBD_Gestao;
     Transaction := DM.IBT_Atualiza;
 
     Active := False;
@@ -276,7 +276,7 @@ begin
   Try
     with Lc_Qry do
     Begin
-      Connection := DM.IBD_Gestao;
+      Database := DM.IBD_Gestao;
       Transaction := DM.IBT_Atualiza;
       CachedUpdates := True;
       Active := False;
@@ -291,7 +291,7 @@ begin
 
     with Lc_Del do
       Begin
-      Connection := DM.IBD_Gestao;
+      Database := DM.IBD_Gestao;
       Transaction := DM.IBT_Atualiza;
       CachedUpdates := True;
       Active := False;
