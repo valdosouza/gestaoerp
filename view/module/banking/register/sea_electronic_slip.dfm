@@ -2,16 +2,17 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
   Caption = 'Pesquisa de Cobran'#231'a em boleto'
   ClientHeight = 586
   ClientWidth = 575
-  ExplicitWidth = 587
-  ExplicitHeight = 649
+  ExplicitWidth = 581
+  ExplicitHeight = 630
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 569
     Height = 512
     ExplicitTop = 71
-    ExplicitWidth = 563
-    ExplicitHeight = 503
+    ExplicitWidth = 569
+    ExplicitHeight = 512
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 565
     end
@@ -22,8 +23,8 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
     inherited pnl_pesq_right: TPanel
       Left = 475
       Height = 494
-      ExplicitLeft = 469
-      ExplicitHeight = 485
+      ExplicitLeft = 475
+      ExplicitHeight = 494
       inherited Sb_Sair_0: TSpeedButton
         Top = 431
         ExplicitTop = 431
@@ -45,7 +46,7 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
   inherited Pnl_Parametros: TPanel
     Width = 569
     Height = 62
-    ExplicitWidth = 563
+    ExplicitWidth = 569
     ExplicitHeight = 62
     object Grp_Parametros: TGroupBox
       Left = 2
@@ -61,7 +62,6 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 559
       object Lb_BuscaBanco: TLabel
         Left = 5
         Top = 17
@@ -85,7 +85,12 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
     end
   end
   inherited Menu: TMainMenu
-    Left = 96
-    Top = 65528
+    Left = 256
+    Top = 8
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
   end
 end

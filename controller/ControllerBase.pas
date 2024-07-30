@@ -217,8 +217,8 @@ begin
   Lc_Tsc := TSTTransaction.Create(nil);
   if not FDataBase.Connected then
     FDataBase.Connected := True;
-  //Lc_Tsc.Connection := FDataBase;
-  Lc_Tsc.DefaultDatabase := FDataBase;
+  Lc_Tsc.Connection := FDataBase;
+  //Lc_Tsc.DefaultDatabase := FDataBase;
   With Result do
   Begin
     Database := FDataBase;
@@ -550,8 +550,8 @@ begin
   Lc_Tsc := TSTTransaction.Create(nil);
   if not FDataBase.Connected then
     FDataBase.Connected := True;
-  //Lc_Tsc.Connection := FDataBase;
-  Lc_Tsc.DefaultDatabase := FDataBase;
+  Lc_Tsc.Connection := FDataBase;
+  //Lc_Tsc.DefaultDatabase := FDataBase;
 
   With Result do
   Begin
@@ -559,8 +559,8 @@ begin
     Database := FDataBase;
     Transaction := Lc_Tsc; //DM.IBT_Crud;
     Transaction.StartTransaction;
-    //Result.SQLScripts.Clear;
-    Result.Script.Clear;
+    Result.SQLScripts.Clear;
+    //Result.Script.Clear;
   End;
 end;
 

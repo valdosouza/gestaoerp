@@ -192,8 +192,8 @@ uses Un_DM, UN_Sistema, UN_MSG, STDataSet, Un_Regra_Negocio, main,RI_MovimentoFi
 Function GeraStored():TSTTransaction;
 begin
   Result := TSTTransaction.Create(nil);
-  //Result.Connection := DM.IBD_Gestao;
-  Result.DefaultDatabase := DM.IBD_Gestao;
+  Result.Connection := DM.IBD_Gestao;
+  //Result.DefaultDatabase := DM.IBD_Gestao;
 end;
 
 
