@@ -141,7 +141,7 @@ end;
 function TRegBillingPortfolio.ValidateDelete: boolean;
 begin
   Result := True;
-  if (MensagemExcluir = mrBotao1) then
+  if (TMsg.Excluir = mrBotao1) then
   Begin
     Result := False;
     exit;

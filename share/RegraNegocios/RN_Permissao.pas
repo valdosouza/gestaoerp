@@ -69,7 +69,7 @@ begin
           Begin
             if (RecordCount = 0)  then
             Begin
-              if (Fc_Msg = 'S') then
+              if (Fc_Msg = SIM) then
               Begin
                 MensagemPararExecucao('Usuário não tem permissão.' + EOLN +
                                      'Consulte o administrador da Empresa.' + EOLN+

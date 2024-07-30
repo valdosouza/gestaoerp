@@ -198,7 +198,7 @@ end;
 function TRegUsers.ValidateDelete: boolean;
 begin
   Result := True;
-  if (MensagemExcluir = mrBotao1) then
+  if (TMsg.Excluir = mrBotao1) then
   Begin
     Result := False;
     exit;
@@ -211,7 +211,7 @@ begin
 
   if Trim(E_Nome.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_Nome.Caption);
+    TMsg.ValidaPreenchimentoCampo(L_Nome.Caption);
     Result := False;
     E_Nome.SetFocus;
     Exit;
@@ -219,7 +219,7 @@ begin
 
   if Trim(E_Login.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo('Login do Usuário');
+    TMsg.ValidaPreenchimentoCampo('Login do Usuário');
     Result := False;
     E_Login.SetFocus;
     Exit;
@@ -227,7 +227,7 @@ begin
 
   if (Trim(E_Senha.Text) = EmptyStr) and (cbx_Ativo.Checked) then
   begin
-    MensagemValidaPreenchimentoCampo(L_Senha.Caption);
+    TMsg.ValidaPreenchimentoCampo(L_Senha.Caption);
     Result := False;
     E_Senha.SetFocus;
     Exit;
@@ -239,21 +239,21 @@ begin
   Result := True;
   if Trim(E_Srv_Smtp.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_Srv_Smtp.Caption);
+    TMsg.ValidaPreenchimentoCampo(L_Srv_Smtp.Caption);
     Result := False;
     Exit;
   end;
 
   if Trim(E_Usr_Mail.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_Usr_Mail.Caption);
+    TMsg.ValidaPreenchimentoCampo(L_Usr_Mail.Caption);
     Result := False;
     Exit;
   end;
 
   if Trim(E_pwd_email.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_pwd_email.Caption);
+    TMsg.ValidaPreenchimentoCampo(L_pwd_email.Caption);
     Result := False;
     Exit;
   end;

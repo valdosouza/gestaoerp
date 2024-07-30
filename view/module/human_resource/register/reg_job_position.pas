@@ -112,7 +112,7 @@ end;
 function TRegJobPosition.ValidateDelete: boolean;
 begin
   Result := True;
-  if (MensagemExcluir = mrBotao1) then
+  if (TMsg.Excluir = mrBotao1) then
   Begin
     Result := False;
     exit;
@@ -125,7 +125,7 @@ begin
 
   if Trim(E_Descricao.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_Descricao.Caption);
+    TMsg.ValidaPreenchimentoCampo(L_Descricao.Caption);
     Result := False;
     E_Descricao.SetFocus;
     Exit;
