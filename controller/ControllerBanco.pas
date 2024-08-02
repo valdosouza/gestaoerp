@@ -43,14 +43,14 @@ end;
 
 function TControllerBanco.getCodigoBancoLista(NumeroNome: String): Integer;
 Var
-  I: Integer;
+  i: Integer;
 begin
   Result := 0;
-  for I := 0 to Lista.count -1 do
+  for i := 0 to Pred(Lista.count) do
   Begin
-    if Lista[I].NumeroNome = NumeroNome then
+    if Lista[i].NumeroNome = NumeroNome then
     Begin
-      Result := Lista[I].Codigo;
+      Result := Lista[i].Codigo;
       Break;
     End;
   End;
@@ -58,14 +58,14 @@ end;
 
 function TControllerBanco.getNumeroNomeLista(CodigoBanco: Integer): String;
 Var
-  I:Integer;
+  i:Integer;
 begin
   Result := EmptyStr;
-  for I := 0 to Lista.count -1 do
+  for i := 0 to Pred(Lista.count) do
   Begin
-    if Lista[I].Codigo = CodigoBanco then
+    if Lista[i].Codigo = CodigoBanco then
     Begin
-      Result := Lista[I].NumeroNome;
+      Result := Lista[i].NumeroNome;
       Break;
     End;
   End;

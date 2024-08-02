@@ -61,6 +61,7 @@ Type
     FOBS_FISCAL : String;
     FRAMO_ATIVIDADE_ID : Integer;
     FIND_IE_DEST : String;
+    FNumeroNome: String;
 
     procedure setFCODIGO( Value : Integer);
     procedure setFTIPO( Value : Integer);
@@ -114,6 +115,7 @@ Type
     procedure setFOBS_FISCAL( Value : String);
     procedure setFRAMO_ATIVIDADE_ID( Value : Integer);
     procedure setFIND_IE_DEST( Value : String);
+    procedure setfNumeroNome(const Value: String);
 
   public
 
@@ -225,7 +227,7 @@ Type
     [FieldName('EMP_IND_IE_DEST')]
     property IndicadorInscricaoEstadual: String read FIND_IE_DEST write setFIND_IE_DEST;
 
-
+    property NumeroNome : String read FNumeroNome write setfNumeroNome;
   End;
 
 implementation
@@ -410,6 +412,11 @@ end;
 procedure TEmpresa.setFNUMBCO(Value: String);
 begin
   FNUMBCO := Value;
+end;
+
+procedure TEmpresa.setfNumeroNome(const Value: String);
+begin
+  FNumeroNome := Value;
 end;
 
 procedure TEmpresa.setFNUMINSC_SUBS(Value: String);

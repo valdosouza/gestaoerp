@@ -12,6 +12,9 @@ type
   TMsgPadrao = (mpAlerta, mpErro, mpConfirmacao, mpInformacao);
   TMsgEscape = (bEscape,bNormal);
 
+resourcestring
+  MSG_DATA_INVALIDA = 'Verifique se o dia, mês e ano estão corretos. Use o formato DD/MM/AAAA.';
+
 const
   EOLN=chr(13)+chr(10);   //Usado para fazer fim de linha nos quadros de mensagens
   mrBotao1 = 0;
@@ -58,8 +61,8 @@ const
 
 Var
   It_Cd_Escolha : Integer;
-implementation
 
+implementation
 
 // Mensagem Padrao  - Utilizado para calcular o tamanho padrao de um caracter
 function GetAveCharSize(Canvas: TCanvas): TPoint;
@@ -337,7 +340,7 @@ begin
   Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
-class function TMsg.ErroCampo(Campo,info: String): Integer;
+class function TMsg.ErroCampo(Campo, info: String): Integer;
 var
   Msg: String;
 begin

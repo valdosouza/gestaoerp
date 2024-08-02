@@ -1,56 +1,55 @@
 inherited RegBankingAccount: TRegBankingAccount
   Caption = 'Cadastro de Contas Banc'#225'rias '
   ClientHeight = 217
-  ClientWidth = 628
-  ExplicitWidth = 640
-  ExplicitHeight = 280
+  ClientWidth = 637
+  ExplicitWidth = 643
+  ExplicitHeight = 261
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 153
-    Width = 628
-    ExplicitTop = 144
-    ExplicitWidth = 622
+    Width = 637
+    ExplicitTop = 153
+    ExplicitWidth = 637
     inherited SB_Inserir: TSpeedButton
-      Left = 1
+      Left = 10
       ExplicitLeft = 1
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 105
+      Left = 114
       ExplicitLeft = 105
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 209
+      Left = 218
       ExplicitLeft = 209
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 417
+      Left = 426
       ExplicitLeft = 417
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 521
+      Left = 530
       ExplicitLeft = 521
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 313
+      Left = 322
       ExplicitLeft = 313
     end
   end
   inherited pnl_fundo: TPanel
-    Width = 628
+    Width = 637
     Height = 153
-    ExplicitWidth = 622
-    ExplicitHeight = 144
+    ExplicitWidth = 637
+    ExplicitHeight = 153
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
-      Width = 624
+      Width = 633
       Height = 149
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 618
-      ExplicitHeight = 140
       object Lb_Codigo: TLabel
         Left = 8
         Top = 6
@@ -71,7 +70,6 @@ inherited RegBankingAccount: TRegBankingAccount
         Width = 67
         Height = 14
         Caption = 'Data Abertura'
-        FocusControl = E_DtAbert
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -135,7 +133,7 @@ inherited RegBankingAccount: TRegBankingAccount
         ParentFont = False
       end
       object Lb_Fax: TLabel
-        Left = 96
+        Left = 93
         Top = 90
         Width = 18
         Height = 14
@@ -149,7 +147,7 @@ inherited RegBankingAccount: TRegBankingAccount
         ParentFont = False
       end
       object Lb_Gerente: TLabel
-        Left = 184
+        Left = 178
         Top = 90
         Width = 39
         Height = 14
@@ -163,7 +161,7 @@ inherited RegBankingAccount: TRegBankingAccount
         ParentFont = False
       end
       object Lb_Limite: TLabel
-        Left = 457
+        Left = 456
         Top = 91
         Width = 27
         Height = 14
@@ -177,12 +175,11 @@ inherited RegBankingAccount: TRegBankingAccount
         ParentFont = False
       end
       object Lb_DataVencto: TLabel
-        Left = 522
+        Left = 532
         Top = 90
         Width = 62
         Height = 14
         Caption = 'Data Vencto.'
-        FocusControl = E_DtVencto
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -204,7 +201,7 @@ inherited RegBankingAccount: TRegBankingAccount
         Font.Style = []
         ParentFont = False
       end
-      object Lb_DV: TLabel
+      object Lb_AgenciaDv: TLabel
         Left = 451
         Top = 48
         Width = 20
@@ -218,7 +215,7 @@ inherited RegBankingAccount: TRegBankingAccount
         Font.Style = []
         ParentFont = False
       end
-      object Lb_DV_2: TLabel
+      object Lb_ContaDv: TLabel
         Left = 580
         Top = 48
         Width = 20
@@ -240,13 +237,6 @@ inherited RegBankingAccount: TRegBankingAccount
         Enabled = False
         ReadOnly = True
         TabOrder = 0
-      end
-      object E_DtAbert: TEdit
-        Left = 532
-        Top = 24
-        Width = 79
-        Height = 21
-        TabOrder = 2
       end
       object E_agencia: TEdit
         Left = 379
@@ -285,47 +275,64 @@ inherited RegBankingAccount: TRegBankingAccount
         TabOrder = 10
       end
       object E_Limite: TEdit
-        Left = 451
+        Left = 456
         Top = 106
-        Width = 68
+        Width = 72
         Height = 21
         TabOrder = 11
       end
-      object E_DtVencto: TEdit
-        Left = 521
-        Top = 106
-        Width = 90
-        Height = 21
-        TabOrder = 12
-      end
-      object DBLCB_Banco: TComboBox
+      object CB_Banco: TComboBox
         Left = 8
         Top = 64
         Width = 368
         Height = 21
         TabOrder = 3
       end
-      object DBLCB_Empresa: TComboBox
+      object CB_Empresa: TComboBox
         Left = 65
         Top = 24
         Width = 465
         Height = 21
         TabOrder = 1
       end
-      object DBEdit1: TEdit
+      object E_AgenciaDv: TEdit
         Left = 450
         Top = 64
         Width = 32
         Height = 21
         TabOrder = 5
       end
-      object DBEdit2: TEdit
-        Left = 579
-        Top = 64
-        Width = 32
+      object E_ContaDv: TEdit
+        Left = 580
+        Top = 63
+        Width = 45
         Height = 21
         TabOrder = 7
       end
+      object E_DtAbert: TEdit
+        Left = 532
+        Top = 24
+        Width = 92
+        Height = 21
+        Hint = 'DD/MM/AAAA'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
+      end
+      object E_DtVencto: TEdit
+        Left = 532
+        Top = 106
+        Width = 92
+        Height = 21
+        Hint = 'DD/MM/AAAA'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 12
+      end
     end
+  end
+  inherited Menu: TMainMenu
+    Left = 312
+    Top = 65520
   end
 end
