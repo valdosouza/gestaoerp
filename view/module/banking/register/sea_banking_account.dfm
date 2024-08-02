@@ -2,28 +2,47 @@ inherited SeaBankingAccount: TSeaBankingAccount
   Caption = 'Cadastro de Contas de Banc'#225'rias'
   ClientHeight = 326
   ClientWidth = 632
-  ExplicitWidth = 644
-  ExplicitHeight = 389
+  ExplicitWidth = 638
+  ExplicitHeight = 370
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 626
     Height = 252
     ExplicitTop = 71
-    ExplicitWidth = 620
-    ExplicitHeight = 243
+    ExplicitWidth = 626
+    ExplicitHeight = 252
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 622
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 530
       Height = 234
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'agencia'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'contacorrente'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'numerobanco'
+          Width = 278
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 532
       Height = 234
-      ExplicitLeft = 526
-      ExplicitHeight = 225
+      ExplicitLeft = 532
+      ExplicitHeight = 234
       inherited Sb_Sair_0: TSpeedButton
         Top = 171
         ExplicitTop = 171
@@ -45,7 +64,7 @@ inherited SeaBankingAccount: TSeaBankingAccount
   inherited Pnl_Parametros: TPanel
     Width = 626
     Height = 62
-    ExplicitWidth = 620
+    ExplicitWidth = 626
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,9 +80,8 @@ inherited SeaBankingAccount: TSeaBankingAccount
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 616
       object Lb_BuscaAgencia: TLabel
-        Left = 11
+        Left = 8
         Top = 16
         Width = 40
         Height = 14
@@ -76,7 +94,7 @@ inherited SeaBankingAccount: TSeaBankingAccount
         ParentFont = False
       end
       object Lb_BuscaConta: TLabel
-        Left = 104
+        Left = 99
         Top = 16
         Width = 73
         Height = 14
@@ -89,8 +107,8 @@ inherited SeaBankingAccount: TSeaBankingAccount
         ParentFont = False
       end
       object Lb_BuscaBanco: TLabel
-        Left = 234
-        Top = 17
+        Left = 229
+        Top = 16
         Width = 76
         Height = 14
         Caption = 'Nome do Banco'
@@ -146,7 +164,29 @@ inherited SeaBankingAccount: TSeaBankingAccount
     end
   end
   inherited Menu: TMainMenu
-    Left = 336
-    Top = 65520
+    Left = 488
+    Top = 32
+  end
+  inherited ds_search: TDataSource
+    Top = 250
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchagencia: TStringField
+      DisplayLabel = 'Ag'#234'ncia'
+      FieldName = 'agencia'
+      Size = 10
+    end
+    object cds_searchconta: TStringField
+      DisplayLabel = 'Conta Corrente'
+      FieldName = 'contacorrente'
+      Size = 10
+    end
+    object cds_searchnumerobanco: TStringField
+      DisplayLabel = 'N'#250'mero Banco'
+      FieldName = 'numerobanco'
+    end
   end
 end

@@ -26,7 +26,7 @@ Type
     function replace:boolean;
     Function GetcargoVendedor : Integer;
     function Clear:Boolean;
-    function Search:Boolean;
+    procedure Search;
     property Parametros : TPrmJobPosition read FParametros write setFParametros;
 
   End;
@@ -104,12 +104,11 @@ begin
   End;
 end;
 
-function TControllerCargo.Search: Boolean;
+procedure TControllerCargo.Search;
 var
   Lc_Qry : TSTQuery;
   LITem : TCargo;
 begin
-  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do

@@ -39,6 +39,9 @@ Type
     procedure saveObjWeb(Fiscal:TObjEntityFiscal);
     procedure fillDataObjeto(pEmpresa:TEmpresa;pObj:TObjEntityFiscal);
     procedure AtualizaBanco;
+    procedure search;
+    function getCodigoEmpresaLista(NumeroNome:String):Integer;
+    function getNumeroNomeLista(CodigoBanco: Integer): String;
   End;
 
 implementation
@@ -259,7 +262,6 @@ begin
   SaveObj(Registro);
 end;
 
-
 procedure TControllerEmpresa.saveObjWeb(Fiscal: TObjEntityFiscal);
 Var
   I : Integer;
@@ -389,6 +391,66 @@ begin
   Fiscal.Entidade.Entidade.Codigo :=  Registro.Codigo;
 end;
 
+function TControllerEmpresa.getCodigoEmpresaLista(NumeroNome: String): Integer;
+Var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.count) do
+  Begin
+    if Lista[i].NumeroNome = NumeroNome then
+    Begin
+      Result := Lista[i].Codigo;
+      Break;
+    End;
+  End;
+end;
+
+function TControllerEmpresa.getNumeroNomeLista(CodigoBanco: Integer): String;
+Var
+  I:Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.count) do
+  Begin
+    if Lista[i].Codigo = CodigoBanco then
+    Begin
+      Result := Lista[i].NumeroNome;
+      Break;
+    End;
+  End;
+end;
+
+procedure TControllerEmpresa.search;
+var
+  Lc_Qry : TSTQuery;
+  LcItem : TEmpresa;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      active := False;
+      SQL.Text := ' SELECT tb.*, (tb.EMP_NUMBCO || '' - '' || tb.EMP_FANTASIA) NUMERO_NOME FROM TB_EMPRESA tb WHERE EMP_TIPO = 0';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+      while not eof do
+      Begin
+        LcItem := TEmpresa.Create;
+        get(Lc_qry,LcItem);
+        //Camapo concatenada para facilitar o preenchimento da combo e depois a localizção do codigo
+        LcItem.NumeroNome := concat(LcItem.NumeroBanco, ' - ', LcItem.ApelidoFantasia);
+        Lista.add(LcItem);
+        next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
 
 procedure TControllerEmpresa.SetSequencia;
 begin

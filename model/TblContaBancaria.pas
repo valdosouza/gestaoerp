@@ -16,14 +16,15 @@ Type
     FCtb_Codbco: Integer;
     FCtb_Codigo: Integer;
     FCtb_Gerente: String;
-    FCtb_Dt_Abertura: TDateTime;
-    FCtb_Dt_Vencto: TDateTime;
+    FCtb_Dt_Abertura: TDate;
+    FCtb_Dt_Vencto: TDate;
     FCtb_Codemp: Integer;
     FCtb_Conta: String;
     FCtb_Codmha: Integer;
     FCtb_Ag_Dv: String;
     FCtb_Agencia: String;
     FCtb_Vl_Limite: Real;
+    FNomeBanco: string;
     procedure setFCtb_Ag_Dv(const Value: String);
     procedure setFCtb_Agencia(const Value: String);
     procedure setFCtb_Cc_Dv(const Value: String);
@@ -32,12 +33,13 @@ Type
     procedure setFCtb_Codigo(const Value: Integer);
     procedure setFCtb_Codmha(const Value: Integer);
     procedure setFCtb_Conta(const Value: String);
-    procedure setFCtb_Dt_Abertura(const Value: TDateTime);
-    procedure setFCtb_Dt_Vencto(const Value: TDateTime);
+    procedure setFCtb_Dt_Abertura(const Value: TDate);
+    procedure setFCtb_Dt_Vencto(const Value: TDate);
     procedure setFCtb_Fax(const Value: String);
     procedure setFCtb_Fone(const Value: String);
     procedure setFCtb_Gerente(const Value: String);
     procedure setFCtb_Vl_Limite(const Value: Real);
+    procedure setNomeBanco(const Value: string);
 
   public
 
@@ -52,7 +54,7 @@ Type
     property CodigoBanco: Integer read FCtb_Codbco write setFCtb_Codbco;
 
     [FieldName('Ctb_Dt_Abertura')]
-    property DataAbertura: TDateTime read FCtb_Dt_Abertura write setFCtb_Dt_Abertura;
+    property DataAbertura: TDate read FCtb_Dt_Abertura write setFCtb_Dt_Abertura;
 
     [FieldName('Ctb_Agencia')]
     property Agencia: String read FCtb_Agencia write setFCtb_Agencia;
@@ -73,7 +75,7 @@ Type
     property ValorLimite: Real read FCtb_Vl_Limite write setFCtb_Vl_Limite;
 
     [FieldName('Ctb_Dt_Vencto')]
-    property DataVencto: TDateTime read FCtb_Dt_Vencto write setFCtb_Dt_Vencto;
+    property DataVencto: TDate read FCtb_Dt_Vencto write setFCtb_Dt_Vencto;
 
     [FieldName('Ctb_Codmha')]
     property Estabelecimento: Integer read FCtb_Codmha write setFCtb_Codmha;
@@ -83,6 +85,8 @@ Type
 
     [FieldName('Ctb_Cc_Dv')]
     property DigitoContaCorrente: String read FCtb_Cc_Dv write setFCtb_Cc_Dv;
+
+    property NomeBanco: string read FNomeBanco write setNomeBanco;
 
   End;
 
@@ -131,12 +135,12 @@ begin
   FCtb_Conta := Value;
 end;
 
-procedure TContaBancaria.setFCtb_Dt_Abertura(const Value: TDateTime);
+procedure TContaBancaria.setFCtb_Dt_Abertura(const Value: TDate);
 begin
   FCtb_Dt_Abertura := Value;
 end;
 
-procedure TContaBancaria.setFCtb_Dt_Vencto(const Value: TDateTime);
+procedure TContaBancaria.setFCtb_Dt_Vencto(const Value: TDate);
 begin
   FCtb_Dt_Vencto := Value;
 end;
@@ -159,6 +163,11 @@ end;
 procedure TContaBancaria.setFCtb_Vl_Limite(const Value: Real);
 begin
   FCtb_Vl_Limite := Value;
+end;
+
+procedure TContaBancaria.setNomeBanco(const Value: string);
+begin
+  FNomeBanco := Value;
 end;
 
 end.
