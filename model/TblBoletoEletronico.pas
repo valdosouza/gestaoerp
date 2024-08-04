@@ -39,6 +39,12 @@ Type
     Fble_posto_benef: String;
     FBLE_DIA_NEGATIVACAO: Integer;
     FBLE_NEGATIVACAO: String;
+    FDescricaoCarteira: string;
+    FConta: string;
+    FCarteira: string;
+    FAgencia: string;
+    FNomeBanco: string;
+    FNumeroBanco: string;
     procedure setFble_aceite(const Value: String);
     procedure setFble_cod_trans(const Value: String);
     procedure setFble_codctb(const Value: Integer);
@@ -68,6 +74,12 @@ Type
     procedure setFble_vl_tarifa(const Value: Real);
     procedure setFBLE_DIAS_NEGATIVACAO(const Value: Integer);
     procedure setFBLE_NEGATIVACAO(const Value: String);
+    procedure setAgencia(const Value: string);
+    procedure setCarteira(const Value: string);
+    procedure setConta(const Value: string);
+    procedure setDescricaoCarteira(const Value: string);
+    procedure setNomeBanco(const Value: string);
+    procedure setNumeroBanco(const Value: string);
 
 
    public
@@ -159,14 +171,38 @@ Type
 
     [FieldName('BLE_POSTO_BENEF')]
     property PostoBenef: String read Fble_posto_benef write setFble_post_benef;
-  End;
 
+    property NomeBanco: string read FNomeBanco write setNomeBanco;
+    property NumeroBanco: string read FNumeroBanco write setNumeroBanco;
+    property Agencia: string read FAgencia write setAgencia;
+    property Conta: string read FConta write setConta;
+    property Carteira: string read FCarteira write setCarteira;
+    property DescricaoCarteira: string read FDescricaoCarteira write setDescricaoCarteira;
+  End;
 
   implementation
 
-
-
 { TBoletoEletronico }
+
+procedure TBoletoEletronico.setAgencia(const Value: string);
+begin
+  FAgencia := Value;
+end;
+
+procedure TBoletoEletronico.setCarteira(const Value: string);
+begin
+  FCarteira := Value;
+end;
+
+procedure TBoletoEletronico.setConta(const Value: string);
+begin
+  FConta := Value;
+end;
+
+procedure TBoletoEletronico.setDescricaoCarteira(const Value: string);
+begin
+  FDescricaoCarteira := Value;
+end;
 
 procedure TBoletoEletronico.setFble_aceite(const Value: String);
 begin
@@ -311,6 +347,16 @@ end;
 procedure TBoletoEletronico.setFble_vl_tarifa(const Value: Real);
 begin
   Fble_vl_tarifa := Value;
+end;
+
+procedure TBoletoEletronico.setNomeBanco(const Value: string);
+begin
+  FNomeBanco := Value;
+end;
+
+procedure TBoletoEletronico.setNumeroBanco(const Value: string);
+begin
+  FNumeroBanco := Value;
 end;
 
 end.

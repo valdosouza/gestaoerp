@@ -4,7 +4,7 @@ object Fm_ListaContaBancaria: TFm_ListaContaBancaria
   Width = 554
   Height = 41
   TabOrder = 0
-  object Label16: TLabel
+  object L_ContaBancaria: TLabel
     Left = 0
     Top = 0
     Width = 554
@@ -51,16 +51,10 @@ object Fm_ListaContaBancaria: TFm_ListaContaBancaria
     ListSource = Ds_ContaBancaria
     TabOrder = 0
     OnKeyDown = DBLCB_ContaBancariaKeyDown
-    ExplicitTop = 16
-    ExplicitWidth = 519
   end
   object Qr_ContaBancaria: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT CTB_CODIGO, EMP_FANTASIA, CTB_AGENCIA, CTB_CONTA,'
       
@@ -71,13 +65,12 @@ object Fm_ListaContaBancaria: TFm_ListaContaBancaria
       '   ON (tb_banco.EMP_CODIGO = tb_contabancaria.CTB_CODBCO ) '
       'WHERE (CTB_CODIGO IS NOT NULL)  '
       'and CTB_CODMHA =:CTB_CODMHA')
+    ForcedRefresh = True
     Left = 328
     Top = 44
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'CTB_CODMHA'
-        ParamType = ptUnknown
       end>
   end
   object Ds_ContaBancaria: TDataSource

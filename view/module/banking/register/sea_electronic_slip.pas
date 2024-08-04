@@ -14,6 +14,11 @@ type
     Lb_BuscaBanco: TLabel;
     E_BuscaBanco: TEdit;
     cds_searchcodigo: TIntegerField;
+    cds_searchnumerobanco: TStringField;
+    cds_searchagencia: TStringField;
+    cds_searchcontacorrente: TStringField;
+    cds_searchcarteira: TStringField;
+    cds_searchdesccarteira: TStringField;
   private
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
@@ -31,6 +36,8 @@ var
 
 implementation
 
+uses reg_electronic_slip;
+
 {$R *.dfm}
 
 procedure TSeaElectronicSlip.CriarVariaveis;
@@ -47,20 +54,20 @@ end;
 
 procedure TSeaElectronicSlip.GetView;
 begin
-  //openRegister(cds_searchCodigo.AsInteger);
+  openRegister(cds_searchCodigo.AsInteger);
 end;
 
 procedure TSeaElectronicSlip.openRegister(pCodigo: Integer);
-//var
-  //Lc_form : TRegPrinters;
+var
+  Lc_form : TRegElectronicSlip;
 begin
-  {Lc_form := TRegPrinters.Create(self);
+  Lc_form := TRegElectronicSlip.Create(self);
   Try
     Lc_form.CodigoRegistro := pCodigo;
     Lc_form.ShowModal;
   Finally
     FreeAndNil(Lc_form);
-  End;   }
+  End;
 end;
 
 procedure TSeaElectronicSlip.Search;
@@ -69,7 +76,7 @@ var
 begin
   boletoEletronico.Clear;
 
-  //boletoEletronico.Parametros.FieldName.Descricao := E_Descricao.Text;
+  boletoEletronico.Parametros.FieldName.NomeBanco := E_BuscaBanco.Text;
 
   boletoEletronico.Search;
 
@@ -79,7 +86,10 @@ begin
   cds_search.EmptyDataSet;
 
   for i := 0 to Pred(boletoEletronico.Lista.Count) do
-    cds_search.AppendRecord([boletoEletronico.Lista[I].Codigo]);
+    cds_search.AppendRecord([
+      boletoEletronico.Lista[I].Codigo, boletoEletronico.Lista[I].NumeroBanco, boletoEletronico.Lista[I].Agencia,
+      boletoEletronico.Lista[I].Conta, boletoEletronico.Lista[I].Carteira, boletoEletronico.Lista[I].DescricaoCarteira
+    ]);
 
   inherited;
 end;

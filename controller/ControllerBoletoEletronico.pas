@@ -31,7 +31,7 @@ Type
 
 implementation
 
-uses Un_sistema, Un_Regra_Negocio;
+uses ENV;
 
 { ControllerBoletoEletronico}
 
@@ -108,42 +108,23 @@ begin
   Try
     with Lc_Qry do
     Begin
-      //SQL.Text := ' SELECT * FROM TB_BOLETO_ELETRONICO WHERE 1=1';
-
-
       SQL.Text:=
-          'SELECT  tb_banco.EMP_NUMBCO ,CTB_AGENCIA, CTB_CONTA, CTB_CODIGO, BLE_CODIGO, '+
-          'tb_carteira_cobranca.ctr_numero,tb_carteira_cobranca.ctr_descricao '+
-          'FROM TB_BOLETO_ELETRONICO tb_boletoeletronico '+
-          '  INNER JOIN TB_CONTABANCARIA tb_contabancaria '+
-          '  ON (tb_boletoeletronico.BLE_CODCTB = tb_contabancaria.ctb_codigo) '+
+          'SELECT TB_BOLETO_ELETRONICO.*, tb_banco.EMP_NUMBCO, tb_banco.EMP_FANTASIA, TB_CONTABANCARIA.ctb_agencia, TB_CONTABANCARIA.ctb_conta, tb_carteira_cobranca.ctr_numero, tb_carteira_cobranca.ctr_descricao '+
+          'FROM TB_BOLETO_ELETRONICO  '+
+          '  INNER JOIN TB_CONTABANCARIA  '+
+          '    ON (TB_BOLETO_ELETRONICO.BLE_CODCTB = tb_contabancaria.ctb_codigo) '+
           '  INNER JOIN TB_EMPRESA tb_banco '+
-          '  ON (tb_banco.EMP_CODIGO = tb_contabancaria.CTB_CODBCO ) '+
+          '    ON (tb_banco.EMP_CODIGO = tb_contabancaria.CTB_CODBCO ) '+
           '  inner join tb_carteira_cobranca '+
-          '  on (tb_carteira_cobranca.ctr_codigo = tb_boletoeletronico.ble_codctr) '+
-          'WHERE 1=1 ';
-          //'WHERE (CTB_CODMHA=:CTB_CODMHA) ';
+          '    on (tb_carteira_cobranca.ctr_codigo = TB_BOLETO_ELETRONICO.ble_codctr) '+
+          'WHERE (TB_CONTABANCARIA.CTB_CODMHA=:CTB_CODMHA) ';
+      ParamByName('CTB_CODMHA').AsInteger := Gb_CodMha;
 
-              {
-
-  if Trim(E_BuscaBanco.Text) = '' then
-    Lc_Banco := False
-  else
-    Lc_Banco := True;
-
-
-
-  if Lc_Banco then
-    sqltxt := sqltxt +'AND (EMP_CODBCO =:EMP_CODBCO) ';
-
-
-
-
-      if Parametros.FieldName.Codigo <> EmptyStr then
+      if Parametros.FieldName.NomeBanco <> EmptyStr then
       begin
-        SQL.Text := SQL.Text + ' AND IMP_DESCRICAO LIKE :IMP_DESCRICAO';
-        ParamByName('IMP_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
-      end;           }
+        SQL.Text := SQL.Text + ' AND EMP_NUMBCO LIKE :EMP_NUMBCO';
+        ParamByName('EMP_NUMBCO').AsString := Concat('%',Parametros.FieldName.NomeBanco,'%');
+      end;
 
       Active := True;
       FetchAll;
@@ -153,6 +134,14 @@ begin
       Begin
         LITem := TBoletoEletronico.Create;
         get(Lc_Qry,LITem);
+
+        LItem.NumeroBanco := FieldByName('EMP_NUMBCO').AsString;
+        LItem.NomeBanco := FieldByName('EMP_FANTASIA').AsString;
+        LItem.Agencia := FieldByName('ctb_agencia').AsString;
+        LItem.Conta := FieldByName('ctb_conta').AsString;
+        LItem.Carteira := FieldByName('ctr_numero').AsString;
+        LItem.DescricaoCarteira := FieldByName('ctr_descricao').AsString;
+
         Lista.add(LITem);
         next;
       end;
@@ -161,6 +150,42 @@ begin
     FinalizaQuery(Lc_Qry);
   End;
 end;
+
+{
+procedure TFr_BoletoEletronico.Pc_Buscar;
+Var
+  Sqltxt:String;
+  Lc_Banco:boolean;
+begin
+  sqltxt := '';
+  Screen.Cursor:=crHourGlass;
+  Qr_Pesquisa.Close;
+  Qr_Pesquisa.Sql.Clear;
+  Sqltxt:='SELECT  tb_banco.EMP_NUMBCO ,CTB_AGENCIA, CTB_CONTA, CTB_CODIGO, BLE_CODIGO, '+
+          'tb_carteira_cobranca.ctr_numero,tb_carteira_cobranca.ctr_descricao '+
+          'FROM TB_BOLETO_ELETRONICO tb_boletoeletronico '+
+          '  INNER JOIN TB_CONTABANCARIA tb_contabancaria '+
+          '  ON (tb_boletoeletronico.BLE_CODCTB = tb_contabancaria.ctb_codigo) '+
+          '  INNER JOIN TB_EMPRESA tb_banco '+
+          '  ON (tb_banco.EMP_CODIGO = tb_contabancaria.CTB_CODBCO ) '+
+          '  inner join tb_carteira_cobranca '+
+          '  on (tb_carteira_cobranca.ctr_codigo = tb_boletoeletronico.ble_codctr) '+
+          'WHERE (CTB_CODMHA=:CTB_CODMHA) ';
+
+  if Trim(E_BuscaBanco.Text) = '' then Lc_Banco := False else Lc_Banco := True;
+  if Lc_Banco then sqltxt := sqltxt +'AND (EMP_CODBCO =:EMP_CODBCO) ';
+
+  Qr_Pesquisa.SQL.Add(sqltxt+' ORDER BY EMP_CODBCO ');
+
+  if Lc_Banco then Qr_Pesquisa.ParamByName('EMP_CODBCO').AsString:=E_BuscaBanco.Text;
+
+  Qr_Pesquisa.ParamByName('CTB_CODMHA').AsInteger := Gb_CodMha;
+
+  Qr_Pesquisa.Open;
+  Screen.Cursor:=crDefault;
+
+end;
+}
 
 procedure TControllerBoletoEletronico.setFParametros(
   const Value: TPrmElectronicSlip);
@@ -183,6 +208,7 @@ begin
   Result := True;
   Self._getByKey(Registro);
 end;
+
 function TControllerBoletoEletronico.getFirst: boolean;
 Var
   Lc_Qry : TSTQuery;
