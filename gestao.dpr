@@ -53,7 +53,9 @@ uses
   reg_receipt in 'view\module\operation\task\reg_receipt.pas' {RegReceipt},
   sea_receipt in 'view\module\operation\task\sea_receipt.pas' {SeaReceipt},
   Un_envia_email in 'view\module\operation\task\Un_envia_email.pas' {Fr_envia_email},
-  Un_Especie_Doc in 'view\module\banking\register\Un_Especie_Doc.pas' {Fr_Especie_Doc};
+  Un_Especie_Doc in 'view\module\banking\register\Un_Especie_Doc.pas' {Fr_Especie_Doc},
+  Un_Fm_ListaContaBancaria in 'frame\Un_Fm_ListaContaBancaria.pas' {Fm_ListaContaBancaria: TFrame},
+  Un_Fm_ListaEspecieDoc in 'frame\Un_Fm_ListaEspecieDoc.pas' {Fm_ListaEspecieDoc: TFrame};
 
 {$R *.res}
 

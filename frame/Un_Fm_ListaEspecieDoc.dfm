@@ -4,8 +4,8 @@ object Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
   Width = 221
   Height = 38
   TabOrder = 0
-  object Label1: TLabel
-    Left = 3
+  object L_Especie_Doc: TLabel
+    Left = 1
     Top = 1
     Width = 116
     Height = 14
@@ -36,18 +36,15 @@ object Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
     TabOrder = 0
   end
   object Qr_EspecieDoc: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       
         'SELECT EPD_CODIGO, EPD_NUMERO, EPD_SIGLA,  (EPD_SIGLA || '#39' - '#39' |' +
         '| EPD_DESCRICAO) SIGDESC'
       'FROM TB_ESPECIE_DOC'
       'ORDER BY EPD_DESCRICAO')
+    ForcedRefresh = True
     Left = 17
     Top = 27
   end

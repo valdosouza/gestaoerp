@@ -69,6 +69,7 @@ inherited RegElectronicSlip: TRegElectronicSlip
         Width = 24
         Height = 22
         Caption = '...'
+        OnClick = Sb_CarteiraClick
       end
       object L_Cedente_Convenio: TLabel
         Left = 149
@@ -188,6 +189,7 @@ inherited RegElectronicSlip: TRegElectronicSlip
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
+        OnClick = Sb_Path_remessaClick
       end
       object L_Tx_Multa: TLabel
         Left = 340
@@ -444,9 +446,9 @@ inherited RegElectronicSlip: TRegElectronicSlip
           '2 - Protestar (Dias '#218'teis)'
           '3 - N'#227'o protestar')
       end
-      object DBMemo1: TMemo
+      object M_IntrucaoAdicional: TMemo
         Left = 5
-        Top = 359
+        Top = 354
         Width = 555
         Height = 90
         TabOrder = 21
@@ -551,10 +553,35 @@ inherited RegElectronicSlip: TRegElectronicSlip
         Height = 21
         TabOrder = 9
       end
+      inline Fm_ListaContaBancaria: TFm_ListaContaBancaria
+        Left = 2
+        Top = 2
+        Width = 554
+        Height = 41
+        TabOrder = 23
+        ExplicitLeft = 2
+        ExplicitTop = 2
+      end
+      inline Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
+        Left = 242
+        Top = 40
+        Width = 221
+        Height = 38
+        TabOrder = 24
+        ExplicitLeft = 242
+        ExplicitTop = 40
+      end
     end
   end
   inherited Menu: TMainMenu
     Left = 576
     Top = 8
+  end
+  object OpenDialog: TOpenDialog
+    DefaultExt = '*.*'
+    Filter = 'Todos os Arquivos (*.*)|*.*'
+    Title = 'Selecione a NFe'
+    Left = 360
+    Top = 384
   end
 end

@@ -19,6 +19,37 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
     inherited DBG_Pesquisa: TDBGrid
       Width = 473
       Height = 494
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'numerobanco'
+          Width = 130
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'agencia'
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'contacorrente'
+          Width = 54
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'carteira'
+          Width = 60
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'desccarteira'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 475
@@ -78,7 +109,7 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
       object E_BuscaBanco: TEdit
         Left = 5
         Top = 32
-        Width = 557
+        Width = 468
         Height = 22
         TabOrder = 0
       end
@@ -91,6 +122,28 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField
       FieldName = 'codigo'
+    end
+    object cds_searchnumerobanco: TStringField
+      DisplayLabel = 'Banco'
+      FieldName = 'numerobanco'
+    end
+    object cds_searchagencia: TStringField
+      DisplayLabel = 'Ag'#234'ncia'
+      FieldName = 'agencia'
+      Size = 15
+    end
+    object cds_searchcontacorrente: TStringField
+      DisplayLabel = 'Conta'
+      FieldName = 'contacorrente'
+      Size = 10
+    end
+    object cds_searchcarteira: TStringField
+      DisplayLabel = 'N'#186' Carteira'
+      FieldName = 'carteira'
+    end
+    object cds_searchdesccarteira: TStringField
+      DisplayLabel = 'Descri'#231#227'o carteira'
+      FieldName = 'desccarteira'
     end
   end
 end

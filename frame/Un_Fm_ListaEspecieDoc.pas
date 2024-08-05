@@ -6,11 +6,13 @@ uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB,
   IBX.IBCustomDataSet, STQuery, Vcl.DBCtrls, Vcl.Buttons, Vcl.StdCtrls,
-  IBX.IBQuery;
+  IBX.IBQuery, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFm_ListaEspecieDoc = class(TFrame)
-    Label1: TLabel;
+    L_Especie_Doc: TLabel;
     Sb_EspecieDoc: TSpeedButton;
     Dblcb_Especie_Doc: TDBLookupComboBox;
     Qr_EspecieDoc: TSTQuery;

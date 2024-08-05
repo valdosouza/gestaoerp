@@ -284,6 +284,16 @@
             <Form>Fr_Especie_Doc</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="frame\Un_Fm_ListaContaBancaria.pas">
+            <Form>Fm_ListaContaBancaria</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="frame\Un_Fm_ListaEspecieDoc.pas">
+            <Form>Fm_ListaEspecieDoc</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
