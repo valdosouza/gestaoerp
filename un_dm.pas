@@ -120,26 +120,27 @@ procedure TDM.DatabaseConnect;
 Var
   LcServer, LcPort, LcDatabase,LcUserName,LcPassword : String;
 begin
-  LcServer   := 'NOTEVALDO';
-  LcPort     := '3060';
-  LcDatabase := 'D:\Modelos\Genio\database\IBGCOM.FDB';
+  LcServer   := '127.0.0.1';
+  LcPort     := '3050';
+  LcDatabase := 'D:\Modelos\GG\database\IBGCOM.FDB';
   LcUserName := 'sysdba';
   LcPassword := 'masterkey';
 
-  DM.IBD_Gestao.Close;
-  DM.IBD_Gestao.DatabaseName := Concat(LcServer,'/',LcPort,':',LcDatabase);
-  {
-  DM.IBD_Gestao.Params.Clear;
-  DM.IBD_Gestao.Params.Add('Protocol=TCPIP');
-  DM.IBD_Gestao.Params.Add('Server='+LcServer);
-  DM.IBD_Gestao.Params.Add('Database='+LcDatabase);
-  DM.IBD_Gestao.Params.Add('User_Name='+LcUsername);
-  DM.IBD_Gestao.Params.Add('Password='+LcPassword);
-  DM.IBD_Gestao.Params.Add('DriverID=FB');
-  DM.IBD_Gestao.Params.Add('Port=3350');
-  }
+  //DM.IBD_Gestao.Close;
+  //DM.IBD_Gestao.DatabaseName := Concat(LcServer,'/',LcPort,':',LcDatabase);
 
+  DM.IBD_Gestao.Params.Clear;
+  DM.IBD_Gestao.Params.Add(concat('Database=',LcDatabase));
+  DM.IBD_Gestao.Params.Add(concat('User_Name=',LcUserName));
+  DM.IBD_Gestao.Params.Add(concat('Password=',LcPassword));
+  DM.IBD_Gestao.Params.Add(concat('Server=',LcServer));
+  DM.IBD_Gestao.Params.Add(concat('Protocol=TCPIP'));
+  DM.IBD_Gestao.Params.Add(concat('Port=',LcPort));
+  DM.IBD_Gestao.Params.Add(concat('CharacterSet=WIN1252'));
+  DM.IBD_Gestao.Params.Add(concat('DriverID=FB'));
   //Rodrigo Prado - teste 2 - com branch e pullrequest
+
+
   DM.IBD_Gestao.Connected := True;
 end;
 

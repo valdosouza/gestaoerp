@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, un_base, Vcl.ExtCtrls,
-  Vcl.Buttons;
+  Vcl.Buttons, Vcl.StdCtrls;
 
 type
   TFrMain = class(TFr_Base)
@@ -283,6 +283,7 @@ type
     N15: TMenuItem;
     CarteiradeCobrana1: TMenuItem;
     N21: TMenuItem;
+    Button1: TButton;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -292,7 +293,6 @@ type
     procedure MnuModFinOperClick(Sender: TObject);
     procedure MnuModFinBcoClick(Sender: TObject);
     procedure MnuPslFinanceiroClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure Pessoal1Click(Sender: TObject);
     procedure Pessoal2Click(Sender: TObject);
     procedure Pessoal3Click(Sender: TObject);
@@ -313,13 +313,15 @@ type
     procedure Cidades1Click(Sender: TObject);
     procedure Estados1Click(Sender: TObject);
     procedure Embalagens1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  protected
+    procedure IniciaVariaveis;override;
   private
     procedure MenuOperacao;
     procedure MenuBanco;
     procedure MenuFinanceiro;
     procedure MenuPessoal;
 
-    procedure InitVariable;
     procedure ChamarTela(FormClass: TFormClass);
   public
     { Public declarations }
@@ -498,6 +500,12 @@ begin
   ChamarTela(TSeaElectronicSlip);
 end;
 
+procedure TFrMain.Button1Click(Sender: TObject);
+begin
+  inherited;
+  ChamarTela(TRegElectronicSlip);
+end;
+
 procedure TFrMain.CarteiradeCobrana1Click(Sender: TObject);
 begin
   ChamarTela(TRegBillingPortfolio);
@@ -523,22 +531,20 @@ begin
   ChamarTela(TSeaUf);
 end;
 
-procedure TFrMain.FormShow(Sender: TObject);
-begin
-  InitVariable;
-end;
-
 procedure TFrMain.Impressoras1Click(Sender: TObject);
 begin
   ChamarTela(TSeaPrinters);
 end;
 
-procedure TFrMain.InitVariable;
+procedure TFrMain.IniciaVariaveis;
 begin
-  MenuOperacao;
+  inherited;
+  MenuBanco;
   GB_NM_Empresa := 'Teste';
   Gb_Nivel := 1;//Setado como 1 por que no sistema original passamos pelo autenticação para defini-lo
+  Gb_CodMha := 1;
 end;
+
 
 procedure TFrMain.LojaVirtual1Click(Sender: TObject);
 begin
@@ -564,7 +570,7 @@ end;
 procedure TFrMain.MenuOperacao;
 begin
   caption := 'Gestão Empresarial - Módulo De operação - ' + GB_NM_Empresa;
-  menu := MnuOper;
+  Menu := MnuOper;
   hint := 'Módulo de operação';
 
 end;

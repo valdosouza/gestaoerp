@@ -2,16 +2,17 @@ inherited SeaBannerSite: TSeaBannerSite
   Caption = 'Pesquisa de Banner para Site'
   ClientHeight = 329
   ClientWidth = 790
-  ExplicitWidth = 802
-  ExplicitHeight = 392
+  ExplicitWidth = 796
+  ExplicitHeight = 378
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 784
     Height = 255
     ExplicitTop = 71
-    ExplicitWidth = 778
-    ExplicitHeight = 246
+    ExplicitWidth = 784
+    ExplicitHeight = 255
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 780
     end
@@ -22,8 +23,8 @@ inherited SeaBannerSite: TSeaBannerSite
     inherited pnl_pesq_right: TPanel
       Left = 690
       Height = 237
-      ExplicitLeft = 684
-      ExplicitHeight = 228
+      ExplicitLeft = 690
+      ExplicitHeight = 237
       inherited Sb_Sair_0: TSpeedButton
         Top = 174
         ExplicitTop = 174
@@ -45,7 +46,7 @@ inherited SeaBannerSite: TSeaBannerSite
   inherited Pnl_Parametros: TPanel
     Width = 784
     Height = 62
-    ExplicitWidth = 778
+    ExplicitWidth = 784
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +62,6 @@ inherited SeaBannerSite: TSeaBannerSite
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 774
       object Lb_Codigo: TLabel
         Left = 5
         Top = 17
@@ -119,7 +119,7 @@ inherited SeaBannerSite: TSeaBannerSite
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 104
   end
 end

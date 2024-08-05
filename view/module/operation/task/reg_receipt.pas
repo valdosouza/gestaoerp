@@ -172,28 +172,28 @@ begin
 
   if StrToFloatDef(E_Vl_Recibo.Text,0) = 0 then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Vl_Recibo.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Vl_Recibo.Caption);
     Result:=false;
     exit;
   end;
 
   if TRim(E_Sacado.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Sacado.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Sacado.Caption);
     Result:=false;
     exit;
   end;
 
   if TRim(E_Emitente.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Emitente.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Emitente.Caption);
     Result:=false;
     exit;
   end;
 
   if TRim(E_Referencia.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Referencia.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Referencia.Caption);
     Result:=false;
     exit;
   end;

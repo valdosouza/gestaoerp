@@ -134,9 +134,7 @@ begin
       Begin
         LITem := TBoletoEletronico.Create;
         get(Lc_Qry,LITem);
-
         LItem.NumeroBanco := FieldByName('EMP_NUMBCO').AsString;
-        LItem.NomeBanco := FieldByName('EMP_FANTASIA').AsString;
         LItem.Agencia := FieldByName('ctb_agencia').AsString;
         LItem.Conta := FieldByName('ctb_conta').AsString;
         LItem.Carteira := FieldByName('ctr_numero').AsString;

@@ -123,11 +123,7 @@ end;
 function TRegCity.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsg.Excluir = mrBotao1) then
-  Begin
-    Result := False;
-    exit;
-  End;
+  inherited;
 end;
 
 function TRegCity.ValidateSave: boolean;
@@ -136,7 +132,7 @@ begin
 
   if Trim(E_Descricao.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Descricao.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
     Result := False;
     E_Descricao.SetFocus;
     Exit;
@@ -144,7 +140,7 @@ begin
 
   if CB_UF.Text = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_UF.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_UF.Caption);
     Result := False;
     CB_UF.SetFocus;
     Exit;
@@ -152,7 +148,7 @@ begin
 
   if (Trim(E_IBGE.Text) = EmptyStr) then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_IBGE.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_IBGE.Caption);
     Result := False;
     CB_UF.SetFocus;
     Exit;

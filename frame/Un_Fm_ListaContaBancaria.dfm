@@ -2,7 +2,7 @@ object Fm_ListaContaBancaria: TFm_ListaContaBancaria
   Left = 0
   Top = 0
   Width = 554
-  Height = 41
+  Height = 44
   TabOrder = 0
   object L_ContaBancaria: TLabel
     Left = 0
@@ -24,7 +24,7 @@ object Fm_ListaContaBancaria: TFm_ListaContaBancaria
     Left = 527
     Top = 14
     Width = 24
-    Height = 26
+    Height = 29
     Margins.Top = 0
     Margins.Bottom = 1
     Align = alRight

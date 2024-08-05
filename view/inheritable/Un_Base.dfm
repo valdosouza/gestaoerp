@@ -12,7 +12,7 @@ object Fr_Base: TFr_Base
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
-  Menu = Menu
+  Menu = MnuBase
   OldCreateOrder = True
   Position = poScreenCenter
   OnClose = FormClose
@@ -22,7 +22,7 @@ object Fr_Base: TFr_Base
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Menu: TMainMenu
+  object MnuBase: TMainMenu
     Left = 64
     Top = 24
     object arefas1: TMenuItem

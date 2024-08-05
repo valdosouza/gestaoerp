@@ -2,14 +2,15 @@ inherited RegConfigTag: TRegConfigTag
   Caption = 'Configurar Etiqueta'
   ClientHeight = 228
   ClientWidth = 598
-  ExplicitWidth = 610
-  ExplicitHeight = 291
+  ExplicitWidth = 604
+  ExplicitHeight = 277
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 164
     Width = 598
-    ExplicitTop = 155
-    ExplicitWidth = 592
+    ExplicitTop = 164
+    ExplicitWidth = 598
     inherited SB_Inserir: TSpeedButton
       Left = -6
       ExplicitLeft = -6
@@ -51,8 +52,8 @@ inherited RegConfigTag: TRegConfigTag
   inherited pnl_fundo: TPanel
     Width = 598
     Height = 164
-    ExplicitWidth = 592
-    ExplicitHeight = 155
+    ExplicitWidth = 598
+    ExplicitHeight = 164
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -62,8 +63,6 @@ inherited RegConfigTag: TRegConfigTag
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 588
-      ExplicitHeight = 151
       object Lb_Codigo: TLabel
         Left = 8
         Top = 9
@@ -357,7 +356,7 @@ inherited RegConfigTag: TRegConfigTag
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 360
     Top = 65512
   end

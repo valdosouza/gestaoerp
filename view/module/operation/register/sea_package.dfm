@@ -2,16 +2,17 @@ inherited SeaPackage: TSeaPackage
   Caption = 'Pesquisa de Embalagens'
   ClientHeight = 333
   ClientWidth = 567
-  ExplicitWidth = 579
-  ExplicitHeight = 396
+  ExplicitWidth = 573
+  ExplicitHeight = 382
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 561
     Height = 259
     ExplicitTop = 71
-    ExplicitWidth = 555
-    ExplicitHeight = 250
+    ExplicitWidth = 561
+    ExplicitHeight = 259
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 557
     end
@@ -22,8 +23,8 @@ inherited SeaPackage: TSeaPackage
     inherited pnl_pesq_right: TPanel
       Left = 467
       Height = 241
-      ExplicitLeft = 461
-      ExplicitHeight = 232
+      ExplicitLeft = 467
+      ExplicitHeight = 241
       inherited Sb_Sair_0: TSpeedButton
         Top = 178
         ExplicitTop = 178
@@ -45,7 +46,7 @@ inherited SeaPackage: TSeaPackage
   inherited Pnl_Parametros: TPanel
     Width = 561
     Height = 62
-    ExplicitWidth = 555
+    ExplicitWidth = 561
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +62,6 @@ inherited SeaPackage: TSeaPackage
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 551
       object Lb_Descricao: TLabel
         Left = 59
         Top = 16
@@ -118,7 +118,7 @@ inherited SeaPackage: TSeaPackage
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 200
     Top = 16
   end

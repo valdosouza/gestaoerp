@@ -12,7 +12,10 @@ inherited SeaBankingHistory: TSeaBankingHistory
     Height = 287
     ExplicitTop = 79
     ExplicitWidth = 562
-    ExplicitHeight = 219
+    ExplicitHeight = 287
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 558
+    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 466
       Height = 269
@@ -21,7 +24,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
       Left = 468
       Height = 269
       ExplicitLeft = 468
-      ExplicitHeight = 201
+      ExplicitHeight = 269
       inherited Sb_Sair_0: TSpeedButton
         Top = 206
         ExplicitLeft = 3
@@ -171,7 +174,7 @@ inherited SeaBankingHistory: TSeaBankingHistory
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 152
     Top = 48
   end

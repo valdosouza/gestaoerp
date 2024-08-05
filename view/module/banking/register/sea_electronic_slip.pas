@@ -87,8 +87,12 @@ begin
 
   for i := 0 to Pred(boletoEletronico.Lista.Count) do
     cds_search.AppendRecord([
-      boletoEletronico.Lista[I].Codigo, boletoEletronico.Lista[I].NumeroBanco, boletoEletronico.Lista[I].Agencia,
-      boletoEletronico.Lista[I].Conta, boletoEletronico.Lista[I].Carteira, boletoEletronico.Lista[I].DescricaoCarteira
+      boletoEletronico.Lista[I].Codigo,
+      boletoEletronico.Lista[I].NumeroBanco,
+      boletoEletronico.Lista[I].Agencia,
+      boletoEletronico.Lista[I].Conta,
+      boletoEletronico.Lista[I].Carteira,
+      boletoEletronico.Lista[I].DescricaoCarteira
     ]);
 
   inherited;

@@ -14,17 +14,19 @@ type
     L_Banco: TLabel;
     L_Descricao: TLabel;
     E_Numero: TEdit;
-    CB_Banco: TComboBox;
+    E_Banco: TEdit;
     E_Descricao: TEdit;
     Rg_Emissao: TRadioGroup;
   private
-    procedure MontaComboBoxBanco;
+
   protected
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
+    procedure ClearAllFields;Override;
     procedure ShowData; Override;
     procedure ShowNoData; Override;
+    procedure EditionControl;override;
     procedure Insert; Override;
     procedure Change; Override;
     function ValidateDelete():boolean; Override;
@@ -32,7 +34,7 @@ type
     function ValidateSave():boolean; Override;
     procedure Save; Override;
   public
-    carteiraCobranca : TControllerCarteiraCobranca;
+    CarteiraCobranca : TControllerCarteiraCobranca;
   end;
 
 var
@@ -52,6 +54,12 @@ begin
   E_Descricao.SetFocus;
 end;
 
+procedure TRegBillingPortfolio.ClearAllFields;
+begin
+  inherited;
+  CarteiraCobranca.Clear;
+end;
+
 procedure TRegBillingPortfolio.CriarVariaveis;
 begin
   inherited;
@@ -64,6 +72,12 @@ begin
   inherited;
 end;
 
+procedure TRegBillingPortfolio.EditionControl;
+begin
+  inherited;
+  E_Banco.ReadOnly := True;
+end;
+
 procedure TRegBillingPortfolio.FinalizaVariaveis;
 begin
   inherited;
@@ -72,7 +86,6 @@ end;
 
 procedure TRegBillingPortfolio.IniciaVariaveis;
 begin
-  MontaComboBoxBanco;
   if Self.CodigoRegistro > 0 then
   Begin
     carteiraCobranca.Registro.Codigo := Self.CodigoRegistro;
@@ -82,30 +95,21 @@ begin
 end;
 
 procedure TRegBillingPortfolio.Insert;
+Var
+  Lc_Banco : String;
 begin
+  Lc_Banco := E_Banco.Text;
   inherited;
-  CB_Banco.ItemIndex := -1;
+  E_Banco.Text := Lc_Banco;
   E_Descricao.SetFocus;
 end;
 
-procedure TRegBillingPortfolio.MontaComboBoxBanco;
-Var
-  i : Integer;
-begin
-  with carteiraCobranca do
-  Begin
-    Banco.search;
-    CB_Banco.Items.Clear;
-    for i := 0 to Pred(Banco.lista.Count) do
-      CB_Banco.Items.Add(Banco.lista[I].NumeroNome);
-  End;
-end;
 
 procedure TRegBillingPortfolio.Save;
 begin
   with carteiraCobranca do
   Begin
-    Registro.CodigoBanco := Banco.getCodigoBancoLista(CB_Banco.Text);
+    Registro.CodigoBanco := CarteiraCobranca.Banco.getCodigoBancoLista(E_Banco.Text);
     Registro.Numero := E_Numero.Text ;
     Registro.Descricao := E_Descricao.Text;
     Registro.TipoEmissao := IfThen(Rg_Emissao.ItemIndex = 0, 'C', 'B');
@@ -116,13 +120,11 @@ begin
 end;
 
 procedure TRegBillingPortfolio.ShowData;
-Var
-  Lc_Aux : String;
 begin
   with carteiraCobranca do
   Begin
-    Lc_Aux := Banco.getNumeroNomeLista(Registro.CodigoBanco);
-    CB_Banco.ItemIndex := CB_Banco.Items.IndexOf(Lc_Aux);
+    Banco.search;
+    E_Banco.Text := Banco.getNumeroNomeLista(Registro.CodigoBanco);
     E_Numero.Text := Registro.Numero;
     E_Descricao.Text  := Registro.Descricao;
     if Registro.TipoEmissao = 'C' then
@@ -135,34 +137,35 @@ end;
 
 procedure TRegBillingPortfolio.ShowNoData;
 begin
+  with carteiraCobranca do
+  Begin
+    Banco.search;
+    E_Banco.Text :=  Banco.getNumeroNomeLista(Registro.CodigoBanco);
+  End;
   E_Descricao.clear;
 end;
 
 function TRegBillingPortfolio.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsg.Excluir = mrBotao1) then
-  Begin
-    Result := False;
-    exit;
-  End;
+  inherited;
 end;
 
 function TRegBillingPortfolio.ValidateSave: boolean;
 begin
   Result := True;
 
-  if CB_Banco.Text = EmptyStr then
+  if E_Banco.Text = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Banco.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Banco.Caption);
     Result := False;
-    CB_Banco.SetFocus;
+    E_Banco.SetFocus;
     Exit;
   end;
 
   if (Trim(E_Numero.Text) = EmptyStr) then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Numero.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Numero.Caption);
     Result := False;
     E_Numero.SetFocus;
     Exit;
@@ -170,7 +173,7 @@ begin
 
   if Trim(E_Descricao.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Descricao.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
     Result := False;
     E_Descricao.SetFocus;
     Exit;

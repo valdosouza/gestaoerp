@@ -2,14 +2,15 @@ inherited RegCategory: TRegCategory
   Caption = 'Cadastro de Categorias'
   ClientHeight = 249
   ClientWidth = 571
-  ExplicitWidth = 583
-  ExplicitHeight = 312
+  ExplicitWidth = 577
+  ExplicitHeight = 298
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 185
     Width = 571
-    ExplicitTop = 176
-    ExplicitWidth = 565
+    ExplicitTop = 185
+    ExplicitWidth = 571
     inherited SB_Inserir: TSpeedButton
       Left = 3
       Width = 94
@@ -56,8 +57,8 @@ inherited RegCategory: TRegCategory
   inherited pnl_fundo: TPanel
     Width = 571
     Height = 185
-    ExplicitWidth = 565
-    ExplicitHeight = 176
+    ExplicitWidth = 571
+    ExplicitHeight = 185
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegCategory: TRegCategory
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 561
-      ExplicitHeight = 172
       object Lb_Codigo: TLabel
         Left = 5
         Top = 8
@@ -228,7 +227,7 @@ inherited RegCategory: TRegCategory
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 200
     Top = 65520
   end

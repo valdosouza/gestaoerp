@@ -117,7 +117,7 @@ begin
   result := True;
   if trim(E_Descricao.Text) = EmptyStr then
   Begin
-    TMsg.ValidaPreenchimentoCampo(L_Descricao.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
     result:=False;
     E_Descricao.SetFocus;
     Exit;

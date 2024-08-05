@@ -71,7 +71,7 @@ inherited RegJobPosition: TRegJobPosition
       TabOrder = 1
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 448
     Top = 0
   end

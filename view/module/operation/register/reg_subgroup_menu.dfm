@@ -2,14 +2,15 @@ inherited RegSubgroupMenu: TRegSubgroupMenu
   Caption = 'Cadastro de SubGrupo'
   ClientHeight = 122
   ClientWidth = 552
-  ExplicitWidth = 564
-  ExplicitHeight = 185
+  ExplicitWidth = 558
+  ExplicitHeight = 171
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 58
     Width = 552
-    ExplicitTop = 49
-    ExplicitWidth = 546
+    ExplicitTop = 58
+    ExplicitWidth = 552
     inherited SB_Inserir: TSpeedButton
       Left = -8
       Width = 90
@@ -56,8 +57,8 @@ inherited RegSubgroupMenu: TRegSubgroupMenu
   inherited pnl_fundo: TPanel
     Width = 552
     Height = 58
-    ExplicitWidth = 546
-    ExplicitHeight = 49
+    ExplicitWidth = 552
+    ExplicitHeight = 58
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegSubgroupMenu: TRegSubgroupMenu
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 542
-      ExplicitHeight = 45
       object Lb_CodigoeDescricao: TLabel
         Left = 5
         Top = 5
@@ -113,7 +112,7 @@ inherited RegSubgroupMenu: TRegSubgroupMenu
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 120
     Top = 16
   end

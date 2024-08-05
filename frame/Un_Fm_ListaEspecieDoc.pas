@@ -22,7 +22,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure Pc_Listar;
+    procedure Listar;
   end;
 
 implementation
@@ -31,7 +31,7 @@ implementation
 
 uses Un_DM, Un_Especie_Doc;
 
-procedure TFm_ListaEspecieDoc.Pc_Listar;
+procedure TFm_ListaEspecieDoc.Listar;
 begin
   with Qr_EspecieDoc do
   Begin
@@ -53,7 +53,7 @@ begin
       Form.CodigoRegistro := 0;
     Form.ShowModal;
   Finally
-    Pc_Listar;
+    Listar;
     Dblcb_Especie_Doc.KeyValue := Form.EspecieDoc.Registro.Codigo;
     Form.DisposeOf;
   End;

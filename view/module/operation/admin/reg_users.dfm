@@ -262,7 +262,7 @@ inherited RegUsers: TRegUsers
         AlignWithMargins = True
         Left = 5
         Top = 2
-        Width = 607
+        Width = 294
         Height = 14
         Margins.Top = 0
         Margins.Bottom = 0
@@ -274,7 +274,6 @@ inherited RegUsers: TRegUsers
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 294
       end
       object E_Auth_card: TEdit
         AlignWithMargins = True
@@ -565,7 +564,7 @@ inherited RegUsers: TRegUsers
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 456
     Top = 16
   end

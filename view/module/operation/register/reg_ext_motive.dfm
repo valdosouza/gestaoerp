@@ -2,14 +2,15 @@ inherited RegExtMotive: TRegExtMotive
   Caption = 'Extintor - Cadastro de Motivos Reprova'#231#227'o/Condena'#231#227'o'
   ClientHeight = 172
   ClientWidth = 610
-  ExplicitWidth = 622
-  ExplicitHeight = 235
+  ExplicitWidth = 616
+  ExplicitHeight = 221
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 108
     Width = 610
-    ExplicitTop = 99
-    ExplicitWidth = 604
+    ExplicitTop = 108
+    ExplicitWidth = 610
     inherited SB_Inserir: TSpeedButton
       Left = -17
       ExplicitLeft = -17
@@ -38,8 +39,8 @@ inherited RegExtMotive: TRegExtMotive
   inherited pnl_fundo: TPanel
     Width = 610
     Height = 108
-    ExplicitWidth = 604
-    ExplicitHeight = 99
+    ExplicitWidth = 610
+    ExplicitHeight = 108
     object Label2: TLabel
       Left = 5
       Top = 4
@@ -122,7 +123,7 @@ inherited RegExtMotive: TRegExtMotive
       TabOrder = 2
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 40
     Top = 88
   end

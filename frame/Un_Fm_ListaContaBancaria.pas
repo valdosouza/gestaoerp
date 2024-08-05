@@ -24,7 +24,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure AtivaLista;
+    procedure Listar;
   end;
 
 implementation
@@ -36,7 +36,7 @@ implementation
 uses UN_Sistema, RN_Permissao, Un_Regra_Negocio, sea_banking_account, Un_DM, env;
 
 
-procedure TFm_ListaContaBancaria.AtivaLista;
+procedure TFm_ListaContaBancaria.Listar;
 begin
   with Qr_ContaBancaria do
   Begin

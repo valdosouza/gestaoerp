@@ -99,7 +99,7 @@ inherited RegBankingHistory: TRegBankingHistory
       TabOrder = 1
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 48
     Top = 72
   end

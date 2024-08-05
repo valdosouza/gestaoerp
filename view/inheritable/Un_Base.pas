@@ -10,7 +10,7 @@ uses
 
 type
   TFr_Base = class(TForm)
-    Menu: TMainMenu;
+    MnuBase: TMainMenu;
     arefas1: TMenuItem;
     Sair1: TMenuItem;
     procedure FormShow(Sender: TObject);

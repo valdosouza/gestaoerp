@@ -9,11 +9,6 @@ uses
   base_registry in 'view\inheritable\base_registry.pas' {BaseRegistry},
   UN_TabelasEmListas in 'UN_TabelasEmListas.pas' {DM_ListaConsultas: TDataModule},
   env in 'env.pas',
-  prm_receipt in 'parameter\prm_receipt.pas',
-  prm_historico_bancario in 'parameter\prm_historico_bancario.pas',
-  prm_electronic_card in 'parameter\prm_electronic_card.pas',
-  tblBanco in 'model\tblBanco.pas' {,
-  reg_banking_account in 'view\module\banking\register\reg_banking_account.pas' {RegBankingAccount},
   reg_banking_account in 'view\module\banking\register\reg_banking_account.pas' {RegBankingAccount},
   reg_banking_history in 'view\module\banking\register\reg_banking_history.pas' {RegBankingHistory},
   reg_billing_portfolio in 'view\module\banking\register\reg_billing_portfolio.pas' {RegBillingPortfolio},
@@ -54,8 +49,10 @@ uses
   sea_receipt in 'view\module\operation\task\sea_receipt.pas' {SeaReceipt},
   Un_envia_email in 'view\module\operation\task\Un_envia_email.pas' {Fr_envia_email},
   Un_Especie_Doc in 'view\module\banking\register\Un_Especie_Doc.pas' {Fr_Especie_Doc},
+  un_fm_billing_portfolio in 'frame\un_fm_billing_portfolio.pas' {FmBillingPortfolio: TFrame},
+  Un_Fm_ListaEspecieDoc in 'frame\Un_Fm_ListaEspecieDoc.pas' {Fm_ListaEspecieDoc: TFrame},
   Un_Fm_ListaContaBancaria in 'frame\Un_Fm_ListaContaBancaria.pas' {Fm_ListaContaBancaria: TFrame},
-  Un_Fm_ListaEspecieDoc in 'frame\Un_Fm_ListaEspecieDoc.pas' {Fm_ListaEspecieDoc: TFrame};
+  base_frame_list in 'view\inheritable\base_frame_list.pas' {BaseFrameList: TFrame};
 
 {$R *.res}
 
@@ -65,6 +62,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TFr_Especie_Doc, Fr_Especie_Doc);
   Application.Run;
 end.

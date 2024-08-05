@@ -7,9 +7,6 @@ inherited SeaCity: TSeaCity
     Height = 429
     ExplicitTop = 74
     ExplicitHeight = 429
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 875
-    end
     inherited DBG_Pesquisa: TDBGrid
       Height = 411
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
@@ -178,7 +175,7 @@ inherited SeaCity: TSeaCity
       'SE'
       'TO')
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 608
     Top = 112
   end

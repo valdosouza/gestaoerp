@@ -2,16 +2,17 @@ inherited SeaCategory: TSeaCategory
   Caption = 'Pesquisa de Categorias'
   ClientHeight = 370
   ClientWidth = 578
-  ExplicitWidth = 590
-  ExplicitHeight = 433
+  ExplicitWidth = 584
+  ExplicitHeight = 419
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 81
     Width = 572
     Height = 286
     ExplicitTop = 81
-    ExplicitWidth = 566
-    ExplicitHeight = 277
+    ExplicitWidth = 572
+    ExplicitHeight = 286
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 568
     end
@@ -22,8 +23,8 @@ inherited SeaCategory: TSeaCategory
     inherited pnl_pesq_right: TPanel
       Left = 478
       Height = 268
-      ExplicitLeft = 472
-      ExplicitHeight = 259
+      ExplicitLeft = 478
+      ExplicitHeight = 268
       inherited Sb_Sair_0: TSpeedButton
         Top = 205
         ExplicitTop = 221
@@ -45,7 +46,7 @@ inherited SeaCategory: TSeaCategory
   inherited Pnl_Parametros: TPanel
     Width = 572
     Height = 72
-    ExplicitWidth = 566
+    ExplicitWidth = 572
     ExplicitHeight = 72
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +62,6 @@ inherited SeaCategory: TSeaCategory
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 562
       object Lb_Descricao: TLabel
         Left = 57
         Top = 16
@@ -118,7 +118,7 @@ inherited SeaCategory: TSeaCategory
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 80
     Top = 144
   end

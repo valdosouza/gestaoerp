@@ -3,7 +3,7 @@ inherited SeaBankingAccount: TSeaBankingAccount
   ClientHeight = 326
   ClientWidth = 632
   ExplicitWidth = 638
-  ExplicitHeight = 370
+  ExplicitHeight = 375
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -163,7 +163,7 @@ inherited SeaBankingAccount: TSeaBankingAccount
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 488
     Top = 32
   end

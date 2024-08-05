@@ -234,7 +234,7 @@ end;
 function TBaseRegistry.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsg.Excluir = mrBotao1) then
+  if (TMsgSetes.Excluir = mrBotao2) then
   Begin
     Result := False;
     exit;

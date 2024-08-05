@@ -3,7 +3,7 @@ inherited RegPrinters: TRegPrinters
   ClientHeight = 233
   ClientWidth = 622
   ExplicitWidth = 628
-  ExplicitHeight = 277
+  ExplicitHeight = 282
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -219,7 +219,7 @@ inherited RegPrinters: TRegPrinters
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 552
     Top = 88
   end

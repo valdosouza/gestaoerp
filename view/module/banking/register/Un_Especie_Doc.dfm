@@ -106,7 +106,7 @@ inherited Fr_Especie_Doc: TFr_Especie_Doc
       TabOrder = 1
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 88
   end
 end

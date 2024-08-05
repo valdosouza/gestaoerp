@@ -2,7 +2,7 @@ object Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
   Left = 0
   Top = 0
   Width = 221
-  Height = 38
+  Height = 44
   TabOrder = 0
   object L_Especie_Doc: TLabel
     Left = 1

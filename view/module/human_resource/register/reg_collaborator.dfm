@@ -1,13 +1,12 @@
 inherited RegCollaborator: TRegCollaborator
   Caption = 'Cadastro de Colaborador'
   ClientWidth = 653
-  ExplicitWidth = 665
-  ExplicitHeight = 470
+  ExplicitWidth = 659
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Width = 653
-    ExplicitTop = 334
-    ExplicitWidth = 647
+    ExplicitWidth = 653
     inherited SB_Inserir: TSpeedButton
       Left = 26
       ExplicitLeft = 26
@@ -36,10 +35,10 @@ inherited RegCollaborator: TRegCollaborator
   inherited pnl_fundo: TPanel
     Top = 175
     Width = 653
-    Height = 168
+    Height = 176
     ExplicitTop = 175
-    ExplicitWidth = 647
-    ExplicitHeight = 159
+    ExplicitWidth = 653
+    ExplicitHeight = 176
   end
   object pnl_fundos: TPanel [2]
     Left = 0
@@ -50,7 +49,6 @@ inherited RegCollaborator: TRegCollaborator
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 2
-    ExplicitWidth = 647
     object Lb_Nome: TLabel
       Left = 68
       Top = 8
@@ -475,8 +473,8 @@ inherited RegCollaborator: TRegCollaborator
       Top = 140
       Width = 81
       Height = 22
-      Date = 39580.000000000000000000
-      Time = 0.356281493062852000
+      Date = 39580.356281493060000000
+      Time = 39580.356281493060000000
       TabOrder = 13
     end
   end
@@ -484,15 +482,17 @@ inherited RegCollaborator: TRegCollaborator
     Left = 0
     Top = 175
     Width = 653
-    Height = 168
+    Height = 176
     ActivePage = TBS_documentos
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 3
-    ExplicitWidth = 647
-    ExplicitHeight = 159
     object TabSheet3: TTabSheet
       Caption = 'Observa'#231#227'o'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object ME_Observ: TMemo
         Left = 0
         Top = 0
@@ -510,7 +510,7 @@ inherited RegCollaborator: TRegCollaborator
         Left = 0
         Top = 0
         Width = 645
-        Height = 137
+        Height = 145
         Align = alClient
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -743,8 +743,8 @@ inherited RegCollaborator: TRegCollaborator
           Top = 23
           Width = 84
           Height = 22
-          Date = 39580.000000000000000000
-          Time = 0.356281493062852000
+          Date = 39580.356281493060000000
+          Time = 39580.356281493060000000
           TabOrder = 0
         end
         object E_Salario: TEdit
@@ -805,6 +805,10 @@ inherited RegCollaborator: TRegCollaborator
     object TabSheet5: TTabSheet
       Caption = 'Comiss'#227'o'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Pnl_Com_Vda: TPanel
         Left = 0
         Top = 0
@@ -921,6 +925,10 @@ inherited RegCollaborator: TRegCollaborator
     object tbs_Outras: TTabSheet
       Caption = 'Outras Informa'#231#245'es'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Pnl_Outra_Inf: TPanel
         Left = 0
         Top = 0
@@ -957,7 +965,7 @@ inherited RegCollaborator: TRegCollaborator
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 192
     Top = 65528
   end

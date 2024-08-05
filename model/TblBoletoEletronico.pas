@@ -10,41 +10,45 @@ Type
   TBoletoEletronico = Class(TGenericEntity)
 
   private
+    FDescricaoCarteira: string;
+    FBLE_NEGATIVACAO: String;
+    Fble_instrucoes: String;
+    Fble_convenio: String;
+    Fble_codctr: Integer;
+    Fble_posto_benef: String;
+    Fble_codfpg: Integer;
+    Fble_instr_2: String;
+    Fble_leiaute: Integer;
+    Fble_dias_protesto: Integer;
+    Fble_instr_1: String;
     Fble_codigo: Integer;
     Fble_codctb: Integer;
-    Fble_codfpg: Integer;
-    Fble_codctr: Integer;
-    Fble_codepd: Integer;
-    Fble_convenio: String;
-    Fble_var_cart: Integer;
     Fble_aceite: String;
-    Fble_leiaute: Integer;
-    Fble_instr_1: String;
-    Fble_instr_2: String;
-    Fble_instrucoes: String;
-    Fble_tx_desconto: Real;
-    Fble_tx_juros: Real;
-    Fble_tx_mora: Real;
-    Fble_vl_mora_min: Real;
-    Fble_vl_multa: Real;
-    Fble_vl_tarifa: Real;
-    Fble_path_arquivos: String;
-    Fble_name_arquivos: String;
-    Fble_protesto: String;
-    Fble_dias_protesto: Integer;
     Fble_localpag: String;
-    Fble_tx_multa: Real;
-    Fble_lay_remessa: String;
+    FNumeroBanco: string;
+    Fble_vl_multa: Real;
+    Fble_tx_desconto: Real;
     Fble_cod_trans: String;
-    Fble_posto_benef: String;
     FBLE_DIA_NEGATIVACAO: Integer;
-    FBLE_NEGATIVACAO: String;
-    FDescricaoCarteira: string;
+    Fble_name_arquivos: String;
+    Fble_path_arquivos: String;
+    Fble_lay_remessa: String;
+    Fble_vl_tarifa: Real;
+    Fble_var_cart: Integer;
     FConta: string;
+    Fble_vl_mora_min: Real;
     FCarteira: string;
+    Fble_protesto: String;
+    Fble_tx_mora: Real;
     FAgencia: string;
     FNomeBanco: string;
-    FNumeroBanco: string;
+    Fble_tx_multa: Real;
+    Fble_tx_juros: Real;
+    Fble_codepd: Integer;
+    procedure setAgencia(const Value: string);
+    procedure setCarteira(const Value: string);
+    procedure setConta(const Value: string);
+    procedure setDescricaoCarteira(const Value: string);
     procedure setFble_aceite(const Value: String);
     procedure setFble_cod_trans(const Value: String);
     procedure setFble_codctb(const Value: Integer);
@@ -53,6 +57,7 @@ Type
     procedure setFble_codfpg(const Value: Integer);
     procedure setFble_codigo(const Value: Integer);
     procedure setFble_convenio(const Value: String);
+    procedure setFBLE_DIAS_NEGATIVACAO(const Value: Integer);
     procedure setFble_dias_protesto(const Value: Integer);
     procedure setFble_instr_1(const Value: String);
     procedure setFble_instr_2(const Value: String);
@@ -61,6 +66,7 @@ Type
     procedure setFble_leiaute(const Value: Integer);
     procedure setFble_localpag(const Value: String);
     procedure setFble_name_arquivos(const Value: String);
+    procedure setFBLE_NEGATIVACAO(const Value: String);
     procedure setFble_path_arquivos(const Value: String);
     procedure setFble_post_benef(const Value: String);
     procedure setFble_protesto(const Value: String);
@@ -72,14 +78,9 @@ Type
     procedure setFble_vl_mora_min(const Value: Real);
     procedure setFble_vl_multa(const Value: Real);
     procedure setFble_vl_tarifa(const Value: Real);
-    procedure setFBLE_DIAS_NEGATIVACAO(const Value: Integer);
-    procedure setFBLE_NEGATIVACAO(const Value: String);
-    procedure setAgencia(const Value: string);
-    procedure setCarteira(const Value: string);
-    procedure setConta(const Value: string);
-    procedure setDescricaoCarteira(const Value: string);
     procedure setNomeBanco(const Value: string);
     procedure setNumeroBanco(const Value: string);
+
 
 
    public
@@ -87,24 +88,23 @@ Type
     [KeyField('ble_codigo')]
     property Codigo: Integer read Fble_codigo write setFble_codigo;
 
-    [KeyField('ble_codctb')]
     [FieldName('ble_codctb')]
-    property Codctb: Integer read Fble_codctb write setFble_codctb;
+    property ContaCorrente: Integer read Fble_codctb write setFble_codctb;
 
     [FieldName('ble_codfpg')]
-    property Codfpg: Integer read Fble_codfpg write setFble_codfpg;
+    property FormaPagamento: Integer read Fble_codfpg write setFble_codfpg;
 
     [FieldName('ble_codctr')]
     property CodigoCarteira: Integer read Fble_codctr write setFble_codctr;
 
     [FieldName('ble_codepd')]
-    property Codepd: Integer read Fble_codepd write setFble_codepd;
+    property EspecieDoc: Integer read Fble_codepd write setFble_codepd;
 
     [FieldName('ble_convenio')]
     property Convenio: String read Fble_convenio write setFble_convenio;
 
     [FieldName('ble_var_cart')]
-    property VarCart: Integer read Fble_var_cart write setFble_var_cart;
+    property VariacaoCarteira: Integer read Fble_var_cart write setFble_var_cart;
 
     [FieldName('ble_aceite')]
     property Aceite: String read Fble_aceite write setFble_aceite;
@@ -182,6 +182,7 @@ Type
 
   implementation
 
+
 { TBoletoEletronico }
 
 procedure TBoletoEletronico.setAgencia(const Value: string);
@@ -254,11 +255,6 @@ begin
   Fble_dias_protesto := Value;
 end;
 
-procedure TBoletoEletronico.setFBLE_NEGATIVACAO(const Value: String);
-begin
-  FBLE_NEGATIVACAO := Value;
-end;
-
 procedure TBoletoEletronico.setFble_instrucoes(const Value: String);
 begin
   Fble_instrucoes := Value;
@@ -292,6 +288,11 @@ end;
 procedure TBoletoEletronico.setFble_name_arquivos(const Value: String);
 begin
   Fble_name_arquivos := Value;
+end;
+
+procedure TBoletoEletronico.setFBLE_NEGATIVACAO(const Value: String);
+begin
+  FBLE_NEGATIVACAO := Value;
 end;
 
 procedure TBoletoEletronico.setFble_path_arquivos(const Value: String);

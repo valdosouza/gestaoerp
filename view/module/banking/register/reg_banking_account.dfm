@@ -3,7 +3,7 @@ inherited RegBankingAccount: TRegBankingAccount
   ClientHeight = 217
   ClientWidth = 637
   ExplicitWidth = 643
-  ExplicitHeight = 261
+  ExplicitHeight = 266
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -331,7 +331,7 @@ inherited RegBankingAccount: TRegBankingAccount
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 312
     Top = 65520
   end

@@ -3,7 +3,7 @@ inherited SeaUsers: TSeaUsers
   ClientHeight = 532
   ClientWidth = 658
   ExplicitWidth = 664
-  ExplicitHeight = 576
+  ExplicitHeight = 581
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -269,7 +269,7 @@ inherited SeaUsers: TSeaUsers
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 416
     Top = 8
   end

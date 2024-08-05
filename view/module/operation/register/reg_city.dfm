@@ -3,35 +3,43 @@ inherited RegCity: TRegCity
   ClientHeight = 160
   ClientWidth = 632
   ExplicitWidth = 638
-  ExplicitHeight = 204
+  ExplicitHeight = 209
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 96
     Width = 632
     ExplicitTop = 96
+    ExplicitWidth = 632
     inherited SB_Inserir: TSpeedButton
       Left = 5
+      ExplicitLeft = 5
     end
     inherited SB_Alterar: TSpeedButton
       Left = 109
+      ExplicitLeft = 109
     end
     inherited SB_Excluir: TSpeedButton
       Left = 213
+      ExplicitLeft = 213
     end
     inherited SB_Cancelar: TSpeedButton
       Left = 421
+      ExplicitLeft = 421
     end
     inherited SB_Sair_0: TSpeedButton
       Left = 525
+      ExplicitLeft = 525
     end
     inherited SB_Gravar: TSpeedButton
       Left = 317
+      ExplicitLeft = 317
     end
   end
   inherited pnl_fundo: TPanel
     Width = 632
     Height = 96
+    ExplicitWidth = 632
     ExplicitHeight = 96
     object L_Codigo: TLabel
       Left = 5
@@ -193,7 +201,7 @@ inherited RegCity: TRegCity
       TabOrder = 4
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 448
     Top = 8
   end

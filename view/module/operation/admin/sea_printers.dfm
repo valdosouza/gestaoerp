@@ -3,7 +3,7 @@ inherited SeaPrinters: TSeaPrinters
   ClientHeight = 392
   ClientWidth = 586
   ExplicitWidth = 592
-  ExplicitHeight = 436
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -92,7 +92,7 @@ inherited SeaPrinters: TSeaPrinters
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 488
     Top = 8
   end

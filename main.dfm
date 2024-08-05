@@ -2,12 +2,20 @@ inherited FrMain: TFrMain
   Caption = 'Sistema de Gest'#227'o Empresarial'
   ClientHeight = 587
   ClientWidth = 1199
-  Menu = MnuBco
   ExplicitWidth = 1205
   ExplicitHeight = 636
   PixelsPerInch = 96
   TextHeight = 13
-  inherited Menu: TMainMenu
+  object Button1: TButton [0]
+    Left = 96
+    Top = 192
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  inherited MnuBase: TMainMenu
     Left = 24
     Top = 80
   end

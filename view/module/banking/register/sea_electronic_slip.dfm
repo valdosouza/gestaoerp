@@ -3,7 +3,7 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
   ClientHeight = 586
   ClientWidth = 575
   ExplicitWidth = 581
-  ExplicitHeight = 630
+  ExplicitHeight = 635
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -115,7 +115,7 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 256
     Top = 8
   end

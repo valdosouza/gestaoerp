@@ -179,7 +179,7 @@ end;
 function TRegBankingAccount.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsg.Excluir = mrBotao1) then
+  if (TMsgSetes.Excluir = mrBotao1) then
   Begin
     Result := False;
     exit;
@@ -192,7 +192,7 @@ begin
 
   if (Trim(CB_Empresa.Text) = EmptyStr) then
   begin
-    TMsg.ValidaPreenchimentoCampo(Lb_Empresa.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(Lb_Empresa.Caption);
     Result := False;
     CB_Empresa.SetFocus;
     Exit;
@@ -202,7 +202,7 @@ begin
   begin
     if not TValidar.Data(E_DtAbert.Text) then
     begin
-      TMsg.ErroCampo(Lb_DtAbert.Caption, MSG_DATA_INVALIDA);
+      TMsgSetes.ErroCampo(Lb_DtAbert.Caption, MSG_DATA_INVALIDA);
       Result := False;
       E_DtAbert.SetFocus;
       Exit;
@@ -211,7 +211,7 @@ begin
 
   if (Trim(CB_Banco.Text) = EmptyStr) then
   begin
-    TMsg.ValidaPreenchimentoCampo(LB_Banco.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(LB_Banco.Caption);
     Result := False;
     CB_Banco.SetFocus;
     Exit;
@@ -219,7 +219,7 @@ begin
 
   if (Trim(E_agencia.Text) = EmptyStr) then
   begin
-    TMsg.ValidaPreenchimentoCampo(LB_agencia.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(LB_agencia.Caption);
     Result := False;
     E_agencia.SetFocus;
     Exit;
@@ -227,7 +227,7 @@ begin
 
   if (Trim(E_conta.Text) = EmptyStr) then
   begin
-    TMsg.ValidaPreenchimentoCampo(LB_conta.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(LB_conta.Caption);
     Result := False;
     E_conta.SetFocus;
     Exit;
@@ -237,7 +237,7 @@ begin
   begin
     if not TValidar.Data(E_DtVencto.Text) then
     begin
-      TMsg.ErroCampo(Lb_DataVencto.Caption, MSG_DATA_INVALIDA);
+      TMsgSetes.ErroCampo(Lb_DataVencto.Caption, MSG_DATA_INVALIDA);
       Result := False;
       E_DtVencto.SetFocus;
       Exit;

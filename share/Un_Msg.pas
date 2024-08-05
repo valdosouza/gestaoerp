@@ -52,7 +52,7 @@ const
     public
   end;
 
-  TMsg = class
+  TMsgSetes = class
   public
     class function ValidaPreenchimentoCampo(Campo: String): Integer;
     class function ErroCampo(Campo,info: String): Integer;
@@ -328,9 +328,9 @@ begin
   end;
 end;
 
-{ TMsg }
+{ TMsgSetes }
 
-class function TMsg.ValidaPreenchimentoCampo(Campo: String): Integer;
+class function TMsgSetes.ValidaPreenchimentoCampo(Campo: String): Integer;
 var
   Msg: String;
 begin
@@ -340,7 +340,7 @@ begin
   Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
-class function TMsg.ErroCampo(Campo, info: String): Integer;
+class function TMsgSetes.ErroCampo(Campo, info: String): Integer;
 var
   Msg: String;
 begin
@@ -351,7 +351,7 @@ begin
   Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK], [bEscape], mpErro, clRed);
 end;
 
-class function TMsg.Excluir: Integer;
+class function TMsgSetes.Excluir: Integer;
 var
   Msg: String;
 begin

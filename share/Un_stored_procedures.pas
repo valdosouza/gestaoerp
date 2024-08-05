@@ -193,7 +193,6 @@ Function GeraStored():TSTTransaction;
 begin
   Result := TSTTransaction.Create(nil);
   Result.Connection := DM.IBD_Gestao;
-  //Result.DefaultDatabase := DM.IBD_Gestao;
 end;
 
 

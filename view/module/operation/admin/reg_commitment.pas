@@ -122,11 +122,7 @@ end;
 function TRegCommitment.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsg.Excluir = mrBotao1) then
-  Begin
-    Result := False;
-    exit;
-  End;
+  inherited;
 end;
 
 function TRegCommitment.ValidateSave: boolean;
@@ -135,7 +131,7 @@ begin
 
   if Trim(CB_Usuario.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Usuario.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Usuario.Caption);
     Result := False;
     CB_Usuario.SetFocus;
     Exit;
@@ -143,7 +139,7 @@ begin
 
   if Trim(M_Descricao.Text) = EmptyStr then
   begin
-    TMsg.ValidaPreenchimentoCampo(L_Descricao.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
     Result := False;
     M_Descricao.SetFocus;
     Exit;

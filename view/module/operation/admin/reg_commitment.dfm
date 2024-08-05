@@ -168,7 +168,7 @@ inherited RegCommitment: TRegCommitment
       TabOrder = 4
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 200
     Top = 112
   end
