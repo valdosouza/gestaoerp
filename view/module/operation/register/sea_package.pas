@@ -88,7 +88,7 @@ begin
   cds_search.DisableControls;
 
   for i := 0 to Pred(embalagem.Lista.Count) do
-    cds_search.AppendRecord([embalagem.Lista[I].Codigo, embalagem.Lista[I].Descricao]);
+    cds_search.AppendRecord([embalagem.Lista[i].Codigo, embalagem.Lista[i].Descricao]);
 
   cds_search.EnableControls;
 

@@ -1,13 +1,12 @@
 inherited RegUf: TRegUf
   Caption = 'Casdastro de Estados'
   ClientWidth = 569
-  ExplicitWidth = 581
-  ExplicitHeight = 470
+  ExplicitWidth = 575
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Width = 569
-    ExplicitTop = 334
-    ExplicitWidth = 563
+    ExplicitWidth = 569
     inherited SB_Inserir: TSpeedButton
       Left = 1
       Width = 88
@@ -53,8 +52,7 @@ inherited RegUf: TRegUf
   end
   inherited pnl_fundo: TPanel
     Width = 569
-    ExplicitWidth = 563
-    ExplicitHeight = 334
+    ExplicitWidth = 569
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -64,8 +62,7 @@ inherited RegUf: TRegUf
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 559
-      object Lb_Codigo: TLabel
+      object L_Codigo: TLabel
         Left = 8
         Top = 8
         Width = 33
@@ -79,7 +76,7 @@ inherited RegUf: TRegUf
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Descricao: TLabel
+      object L_Descricao: TLabel
         Left = 57
         Top = 8
         Width = 49
@@ -93,7 +90,7 @@ inherited RegUf: TRegUf
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Sigla: TLabel
+      object L_Sigla: TLabel
         Left = 521
         Top = 8
         Width = 23
@@ -107,7 +104,7 @@ inherited RegUf: TRegUf
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Sub_Tributario: TLabel
+      object L_Sub_Tributario: TLabel
         Left = 165
         Top = 49
         Width = 181
@@ -120,7 +117,7 @@ inherited RegUf: TRegUf
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Aliq_Interna: TLabel
+      object L_Aliq_Interna: TLabel
         Left = 6
         Top = 49
         Width = 54
@@ -134,7 +131,7 @@ inherited RegUf: TRegUf
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Aliq_Interstadual: TLabel
+      object L_Aliq_Interstadual: TLabel
         Left = 75
         Top = 49
         Width = 86
@@ -164,7 +161,7 @@ inherited RegUf: TRegUf
         TabOrder = 0
       end
       object E_Descricao: TEdit
-        Left = 58
+        Left = 57
         Top = 24
         Width = 463
         Height = 22
@@ -236,27 +233,26 @@ inherited RegUf: TRegUf
       Left = 2
       Top = 99
       Width = 565
-      Height = 242
-      ActivePage = tbs_st
+      Height = 250
+      ActivePage = tbs_FCP
       Align = alClient
       TabOrder = 1
-      ExplicitWidth = 559
-      ExplicitHeight = 233
+      ExplicitTop = 100
       object tbs_st: TTabSheet
         Caption = 'Substitui'#231#227'o Tribut'#225'ria'
         object Pnl_ST: TPanel
           Left = 0
           Top = 0
           Width = 557
-          Height = 214
+          Height = 222
           Align = alClient
           TabOrder = 0
           DesignSize = (
             557
-            214)
+            222)
           object Sb_Ins_Ncm: TSpeedButton
             Left = 5
-            Top = 155
+            Top = 163
             Width = 100
             Height = 38
             Anchors = [akLeft, akBottom]
@@ -273,7 +269,7 @@ inherited RegUf: TRegUf
           end
           object Sb_Exc_Ncm: TSpeedButton
             Left = 208
-            Top = 155
+            Top = 163
             Width = 100
             Height = 38
             Anchors = [akLeft, akBottom]
@@ -290,7 +286,7 @@ inherited RegUf: TRegUf
           end
           object Sb_Grv_Ncm: TSpeedButton
             Left = 106
-            Top = 155
+            Top = 163
             Width = 100
             Height = 38
             Anchors = [akLeft, akBottom]
@@ -305,6 +301,46 @@ inherited RegUf: TRegUf
             Transparent = False
             ExplicitTop = 178
           end
+          object Dbg_ST: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 555
+            Height = 153
+            Align = alTop
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'MUN_CODIGONCM'
+                Title.Caption = 'C'#243'd. Class. Fiscal (NCM)'
+                Width = 122
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MUN_MR_VL_AGREGADO'
+                Title.Caption = 'MVA. Original'
+                Width = 135
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MUN_ALIQ_INTERNA'
+                Title.Caption = 'Aliq Interna'
+                Width = 94
+                Visible = True
+              end>
+          end
         end
       end
       object tbs_FCP: TTabSheet
@@ -314,17 +350,15 @@ inherited RegUf: TRegUf
           Left = 0
           Top = 0
           Width = 557
-          Height = 214
+          Height = 222
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 551
-          ExplicitHeight = 205
           DesignSize = (
             557
-            214)
+            222)
           object Sb_Ins_Fcp: TSpeedButton
             Left = 5
-            Top = 155
+            Top = 163
             Width = 100
             Height = 38
             Anchors = [akLeft, akBottom]
@@ -341,7 +375,7 @@ inherited RegUf: TRegUf
           end
           object Sb_Exc_Fcp: TSpeedButton
             Left = 208
-            Top = 155
+            Top = 163
             Width = 100
             Height = 38
             Anchors = [akLeft, akBottom]
@@ -358,7 +392,7 @@ inherited RegUf: TRegUf
           end
           object Sb_Grv_Fcp: TSpeedButton
             Left = 106
-            Top = 155
+            Top = 163
             Width = 100
             Height = 38
             Anchors = [akLeft, akBottom]
@@ -373,8 +407,44 @@ inherited RegUf: TRegUf
             Transparent = False
             ExplicitTop = 178
           end
+          object Dbg_Fcp: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 555
+            Height = 153
+            Align = alTop
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'NCM'
+                Width = 145
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ALIQUOTA'
+                Title.Caption = 'Al'#237'quota'
+                Width = 107
+                Visible = True
+              end>
+          end
         end
       end
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 480
+    Top = 56
   end
 end
