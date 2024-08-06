@@ -2,8 +2,8 @@ unit ControllerEmbalagem;
 
 interface
 
-uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      tblEmbalagem ,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblEmbalagem, prm_package;
 
 Type
   TListaEmbalagem  = TObjectList<TEmbalagem>;
@@ -11,6 +11,8 @@ Type
   TControllerEmbalagem = Class(TControllerBase)
 
   private
+    FParametros: TPrmPackage;
+    procedure setFParametros(const Value: TPrmPackage);
   public
     Registro : TEmbalagem;
     Lista : TListaEmbalagem;
@@ -27,6 +29,8 @@ Type
     Function delete:boolean;
     Function getList:boolean;
     procedure clear;
+    procedure Search;
+    property Parametros : TPrmPackage read FParametros write setFParametros;
   End;
 
 implementation
@@ -36,6 +40,7 @@ uses Un_sistema, Un_Regra_Negocio;
 procedure TControllerEmbalagem.clear;
 begin
   clearObj(Registro);
+  Parametros.Clear;
 end;
 
 constructor TControllerEmbalagem.Create(AOwner: TComponent);
@@ -43,6 +48,7 @@ begin
   inherited;
   Registro := TEmbalagem.Create;
   Lista := TListaEmbalagem.create;
+  Parametros := TPrmPackage.Create;
 end;
 
 function TControllerEmbalagem.delete: boolean;
@@ -96,6 +102,53 @@ begin
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_EMBALAGEM');
   SaveObj(Registro);
+end;
+
+procedure TControllerEmbalagem.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TEmbalagem;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_EMBALAGEM WHERE 1=1';
+
+      if Parametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND EMB_CODIGO LIKE :EMB_CODIGO';
+        ParamByName('EMB_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      end;
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND EMB_DESCRICAO LIKE :EMB_DESCRICAO';
+        ParamByName('EMB_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TEmbalagem.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerEmbalagem.setFParametros(const Value: TPrmPackage);
+begin
+  FParametros := Value;
 end;
 
 function TControllerEmbalagem.update: boolean;
