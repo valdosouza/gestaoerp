@@ -2,8 +2,8 @@ unit ControllerUf;
 
 interface
 
-uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
-      tblUf ,Un_MSg,Generics.Collections,FireDAC.Stan.Param;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tbluf, prm_uf;
 
 Type
   TListaUf = TObjectList<TUF>;
@@ -11,6 +11,8 @@ Type
   TControllerUf = Class(TControllerBase)
 
   private
+    FParametros: TPrmuf;
+    procedure setFParametros(const Value: TPrmuf);
 
   protected
 
@@ -27,6 +29,9 @@ Type
     Function delete:boolean;
     function getList:Boolean;
     function BuscaCodigo(sigla:String):Integer;
+    procedure clear;
+    procedure Search;
+    property Parametros : TPrmuf read FParametros write setFParametros;
   End;
 
 implementation
@@ -56,11 +61,18 @@ begin
   End;
 end;
 
+procedure TControllerUf.clear;
+begin
+  clearObj(Registro);
+  Parametros.Clear;
+end;
+
 constructor TControllerUf.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TUf.Create;
   Lista := TListaUf.Create;
+  Parametros := TPrmUF.Create;
 end;
 
 function TControllerUf.delete: boolean;
@@ -108,6 +120,53 @@ begin
   Except
     Result := False;
   End;
+end;
+
+procedure TControllerUf.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : Tuf;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_UF WHERE 1=1';
+
+      if Parametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND UFE_CODIGO LIKE :UFE_CODIGO';
+        ParamByName('UFE_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      end;
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND UFE_DESCRICAO LIKE :UFE_DESCRICAO';
+        ParamByName('UFE_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TUF.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerUf.setFParametros(const Value: TPrmuf);
+begin
+  FParametros := Value;
 end;
 
 function TControllerUf.update: boolean;

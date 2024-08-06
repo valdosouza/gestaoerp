@@ -2,28 +2,30 @@ inherited SeaUf: TSeaUf
   Caption = 'Pesquisa de Estados'
   ClientHeight = 349
   ClientWidth = 566
-  ExplicitWidth = 578
-  ExplicitHeight = 412
+  ExplicitWidth = 572
+  ExplicitHeight = 393
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 560
     Height = 275
     ExplicitTop = 71
-    ExplicitWidth = 554
-    ExplicitHeight = 266
+    ExplicitWidth = 560
+    ExplicitHeight = 275
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 556
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 464
       Height = 257
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 466
       Height = 257
-      ExplicitLeft = 460
-      ExplicitHeight = 248
+      ExplicitLeft = 466
+      ExplicitHeight = 257
       inherited Sb_Sair_0: TSpeedButton
         Top = 194
         ExplicitTop = 194
@@ -45,7 +47,7 @@ inherited SeaUf: TSeaUf
   inherited Pnl_Parametros: TPanel
     Width = 560
     Height = 62
-    ExplicitWidth = 554
+    ExplicitWidth = 560
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +63,6 @@ inherited SeaUf: TSeaUf
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 550
       object Lb_BuscaDescricao: TLabel
         Left = 57
         Top = 16
@@ -76,7 +77,7 @@ inherited SeaUf: TSeaUf
         ParentFont = False
       end
       object Lb_BuscaCodigo: TLabel
-        Left = 3
+        Left = 7
         Top = 16
         Width = 33
         Height = 14
@@ -116,6 +117,18 @@ inherited SeaUf: TSeaUf
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 184
+    Top = 0
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end
