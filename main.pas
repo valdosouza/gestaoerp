@@ -283,7 +283,6 @@ type
     N15: TMenuItem;
     CarteiradeCobrana1: TMenuItem;
     N21: TMenuItem;
-    Button1: TButton;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -313,7 +312,6 @@ type
     procedure Cidades1Click(Sender: TObject);
     procedure Estados1Click(Sender: TObject);
     procedure Embalagens1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   protected
     procedure IniciaVariaveis;override;
   private
@@ -498,12 +496,6 @@ procedure TFrMain.BoletoEletronico1Click(Sender: TObject);
 begin
   inherited;
   ChamarTela(TSeaElectronicSlip);
-end;
-
-procedure TFrMain.Button1Click(Sender: TObject);
-begin
-  inherited;
-  ChamarTela(TRegElectronicSlip);
 end;
 
 procedure TFrMain.CarteiradeCobrana1Click(Sender: TObject);
