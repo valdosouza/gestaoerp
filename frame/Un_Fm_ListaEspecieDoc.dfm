@@ -9,7 +9,7 @@ object Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
     Top = 1
     Width = 116
     Height = 14
-    Caption = 'Esp'#233'cide de Documento'
+    Caption = 'Esp'#233'cie de Documento'
     Font.Charset = ANSI_CHARSET
     Font.Color = clNavy
     Font.Height = -11

@@ -2,14 +2,15 @@ inherited RegPackage: TRegPackage
   Caption = 'Cadastro de Embalagens'
   ClientHeight = 177
   ClientWidth = 565
-  ExplicitWidth = 577
-  ExplicitHeight = 240
+  ExplicitWidth = 571
+  ExplicitHeight = 221
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 113
     Width = 565
-    ExplicitTop = 104
-    ExplicitWidth = 559
+    ExplicitTop = 113
+    ExplicitWidth = 565
     inherited SB_Inserir: TSpeedButton
       Left = -7
       Width = 94
@@ -56,8 +57,8 @@ inherited RegPackage: TRegPackage
   inherited pnl_fundo: TPanel
     Width = 565
     Height = 113
-    ExplicitWidth = 559
-    ExplicitHeight = 104
+    ExplicitWidth = 565
+    ExplicitHeight = 113
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegPackage: TRegPackage
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 555
-      ExplicitHeight = 100
       object Lb_Codigo: TLabel
         Left = 4
         Top = 8
@@ -83,7 +82,7 @@ inherited RegPackage: TRegPackage
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Descricao: TLabel
+      object L_Descricao: TLabel
         Left = 55
         Top = 8
         Width = 49
@@ -97,7 +96,7 @@ inherited RegPackage: TRegPackage
         Font.Style = []
         ParentFont = False
       end
-      object Lb_Abreviatura: TLabel
+      object L_Abreviatura: TLabel
         Left = 4
         Top = 56
         Width = 57
