@@ -117,7 +117,7 @@ begin
 
       if Parametros.FieldName.Codigo > 0 then
       begin
-        SQL.Text := SQL.Text + ' AND EMB_CODIGO LIKE :EMB_CODIGO';
+        SQL.Text := SQL.Text + ' AND EMB_CODIGO = :EMB_CODIGO';
         ParamByName('EMB_CODIGO').AsInteger := Parametros.FieldName.Codigo;
       end;
 
