@@ -2,19 +2,20 @@ unit ControllerGrupos;
 
 interface
 
-uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
-      tblGrupos ,Un_MSg,Generics.Collections,ControllerSubGRupos, tblRestGroup;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblGrupos, prm_group_menu, ControllerSubGRupos, tblRestGroup;
 
 Type
   TListaGrupo  = TObjectList<TGrupos>;
 
   TControllerGrupos = Class(TControllerBase)
-    Lista:TListaGrupo;
   private
-  protected
+    FParametros: TPrmGroupMenu;
+    procedure setFParametros(const Value: TPrmGroupMenu);
   public
+    Lista:TListaGrupo;
     Registro : TGrupos;
-    SubGRupo : TControllerSubGRupos;
+    SubGrupo : TControllerSubGRupos;
     Obj:TRestGroup;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -30,6 +31,11 @@ Type
     function autocreate(pGrupo:String):Integer;
     procedure AtivarDesativarProdutos(grupoId:Integer;oper:boolean);
     procedure FillDataRestGRoup(grupo: TGrupos;ObjRestGroup:TRestGroup; institutioWebId:Integer);
+    function Fc_GrupoExiste(pCodigo: integer; pDescricao: String): Integer;
+
+    procedure clear;
+    procedure Search;
+    property Parametros : TPrmGroupMenu read FParametros write setFParametros;
   End;
 
 implementation
@@ -62,7 +68,6 @@ begin
   Finally
     FinalizaQuery(Lc_Qry);
   End;
-
 end;
 
 function TControllerGrupos.autocreate(pGrupo: String): Integer;
@@ -87,6 +92,12 @@ begin
   End;
 end;
 
+procedure TControllerGrupos.clear;
+begin
+  clearObj(Registro);
+  Parametros.Clear;
+end;
+
 constructor TControllerGrupos.Create(AOwner: TComponent);
 begin
   inherited;
@@ -94,6 +105,7 @@ begin
   Lista := TListaGrupo.create;
   SubGRupo := TControllerSubGRupos.Create(self);
   Obj := TRestGroup.create;
+  Parametros := TPrmGroupMenu.Create;
 end;
 
 function TControllerGrupos.delete: boolean;
@@ -161,6 +173,65 @@ begin
   SaveObj(Registro);
 end;
 
+procedure TControllerGrupos.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TGrupos;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text :=
+        'SELECT tb_grupos.*, tb_subgrupos.SBG_DESCRICAO '+
+        'FROM TB_GRUPOS tb_grupos '+
+        '   LEFT OUTER JOIN TB_SUBGRUPOS tb_subgrupos '+
+        '   ON (tb_subgrupos.SBG_CODGRP= tb_grupos.GRP_CODIGO) '+
+        'WHERE (GRP_COMPOSICAO IS NOT NULL) ';
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND tb_grupos.GRP_DESCRICAO LIKE :GRP_DESCRICAO';
+        ParamByName('GRP_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      if Parametros.FieldName.SubGrupo <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND tb_grupos.SBG_DESCRICAO LIKE :SBG_DESCRICAO';
+        ParamByName('SBG_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      if Parametros.FieldName.GruposVazios then
+        SQL.Text := SQL.Text + ' AND (tb_subgrupos.SBG_DESCRICAO IS NULL) '
+      else
+        SQL.Text := SQL.Text + ' AND (tb_subgrupos.SBG_DESCRICAO IS NOT NULL) ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TGrupos.Create;
+        get(Lc_Qry, LITem);
+
+        LItem.SubGrupo := FieldByName('SBG_DESCRICAO').AsString;
+
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerGrupos.setFParametros(const Value: TPrmGroupMenu);
+begin
+  FParametros := Value;
+end;
 
 function TControllerGrupos.update: boolean;
 begin
@@ -263,5 +334,30 @@ begin
   End;
 end;
 
+function TControllerGrupos.Fc_GrupoExiste(pCodigo: integer; pDescricao: String): Integer;
+var
+  Lc_Qry : TSTQuery;
+begin
+  Lc_Qry := GeraQuery;
+  Result := 0;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := 'SELECT GRP_CODIGO '+
+                  'FROM TB_GRUPOS '+
+                  'WHERE GRP_DESCRICAO=:GRP_DESCRICAO '+
+                  'and GRP_CODIGO <>:GRP_CODIGO ';
+      ParamByName('GRP_CODIGO').AsInteger := pCodigo;
+      ParamByName('GRP_DESCRICAO').AsString := pDescricao;
+      Active := True;
+      FetchAll;
+      First;
+      if ( RecordCount > 0) then
+        Result := FieldByName('GRP_CODIGO').AsInteger;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
 
 end.

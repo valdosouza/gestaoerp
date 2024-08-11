@@ -22,6 +22,8 @@ Type
     FGRP_ATIVO: String;
     FIFOOD: String;
     FIFOOD_CD: String;
+    FSubGrupo: String;
+    FGruposVazios: boolean;
 
     procedure setFGRP_CODIGO( Value : INTEGER);
     procedure setFGRP_DESCRICAO( Value : String);
@@ -36,6 +38,8 @@ Type
     procedure setFGRP_ATIVO(const Value: String);
     procedure setFIFOOD(const Value: String);
     procedure setFIFOOD_CD(const Value: String);
+    procedure setSubGrupo(const Value: String);
+    procedure setGruposVazios(const Value: boolean);
 
 
   public
@@ -80,6 +84,9 @@ Type
 
     [FieldName('IFOOD_CD')]
     property IfoodCodigo: String read FIFOOD_CD write setFIFOOD_CD;
+
+    property SubGrupo: String read FSubGrupo write setSubGrupo;
+    property GruposVazios: boolean read FGruposVazios write setGruposVazios;
 
   End;
 
@@ -142,7 +149,6 @@ begin
   FGRP_VL_DESCONTO := Value;
 end;
 
-
 procedure TGrupos.setFIFOOD(const Value: String);
 begin
   FIFOOD := Value;
@@ -151,6 +157,16 @@ end;
 procedure TGrupos.setFIFOOD_CD(const Value: String);
 begin
   FIFOOD_CD := Value;
+end;
+
+procedure TGrupos.setGruposVazios(const Value: boolean);
+begin
+  FGruposVazios := Value;
+end;
+
+procedure TGrupos.setSubGrupo(const Value: String);
+begin
+  FSubGrupo := Value;
 end;
 
 end.
