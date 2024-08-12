@@ -41,7 +41,7 @@ Type
     procedure setFcge_pg_largura(const Value: Real);
     procedure setFcge_sizefonte(const Value: Integer);
     procedure setFcge_superior(const Value: Real);
-    procedure setFcge_typefone(const Value: Real);
+    procedure setFcge_typefonte(const Value: string);
   public
 
     [FieldName('cge_codigo')]
@@ -66,7 +66,7 @@ Type
     [FieldName('cge_direita')]
     property Direita: Real read Fcge_direita write setFcge_direita;
 
-    [FieldName('cge_esquerda')]
+    [FieldName('cge_esquera')]
     property Esquerda: Real read Fcge_esquerda write setFcge_esquerda;
 
     [FieldName('cge_et_altura')]
@@ -79,7 +79,7 @@ Type
     property DisColuna: Real read Fcge_dis_coluna write setFcge_dis_coluna;
 
     [FieldName('cge_typefonte')]
-    property TypeFonte: Real read Fcge_typefonte write setFcge_typefone;
+    property TypeFonte: string read Fcge_typefonte write setFcge_typefonte;
 
     [FieldName('cge_sizefonte')]
     property SizeFonte: Integer read Fcge_sizefonte write setFcge_sizefonte;
@@ -173,7 +173,7 @@ begin
   Fcge_superior := Value;
 end;
 
-procedure TCfgEtiqueta.setFcge_typefone(const Value: Real);
+procedure TCfgEtiqueta.setFcge_typefonte(const Value: string);
 begin
   Fcge_typefonte := Value;
 end;

@@ -3,7 +3,7 @@ inherited RegConfigTag: TRegConfigTag
   ClientHeight = 228
   ClientWidth = 598
   ExplicitWidth = 604
-  ExplicitHeight = 277
+  ExplicitHeight = 272
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -89,19 +89,12 @@ inherited RegConfigTag: TRegConfigTag
         Font.Style = []
         ParentFont = False
       end
-      object E_Codigo: TEdit
-        Left = 8
-        Top = 23
-        Width = 57
-        Height = 21
-        TabOrder = 0
-      end
       object E_Descricao: TEdit
         Left = 69
         Top = 23
         Width = 510
         Height = 21
-        TabOrder = 1
+        TabOrder = 0
       end
       object GroupBox2: TGroupBox
         Left = 133
@@ -109,7 +102,7 @@ inherited RegConfigTag: TRegConfigTag
         Width = 225
         Height = 105
         Caption = 'Margens'
-        TabOrder = 3
+        TabOrder = 2
         object Lb_Superior: TLabel
           Left = 9
           Top = 16
@@ -177,7 +170,7 @@ inherited RegConfigTag: TRegConfigTag
           TabOrder = 1
         end
         object E_Direita: TEdit
-          Left = 119
+          Left = 121
           Top = 71
           Width = 100
           Height = 21
@@ -197,7 +190,7 @@ inherited RegConfigTag: TRegConfigTag
         Width = 222
         Height = 105
         Caption = 'Etiqueta'
-        TabOrder = 4
+        TabOrder = 3
         object Lb_Alt_Etiq: TLabel
           Left = 7
           Top = 16
@@ -279,21 +272,21 @@ inherited RegConfigTag: TRegConfigTag
         end
         object E_N_Coluna: TEdit
           Left = 6
-          Top = 70
+          Top = 71
           Width = 59
           Height = 21
           TabOrder = 3
         end
         object E_TypeFonte: TEdit
           Left = 70
-          Top = 70
+          Top = 71
           Width = 104
           Height = 21
           TabOrder = 4
         end
         object E_SizeFonte: TEdit
           Left = 178
-          Top = 70
+          Top = 71
           Width = 37
           Height = 21
           TabOrder = 5
@@ -312,7 +305,7 @@ inherited RegConfigTag: TRegConfigTag
         Width = 123
         Height = 105
         Caption = 'P'#225'gina'
-        TabOrder = 2
+        TabOrder = 1
         object Lb_Pg_Altura: TLabel
           Left = 9
           Top = 16
@@ -353,6 +346,21 @@ inherited RegConfigTag: TRegConfigTag
           Height = 21
           TabOrder = 1
         end
+      end
+      object E_Codigo: TEdit
+        Left = 8
+        Top = 23
+        Width = 57
+        Height = 21
+        Color = clScrollBar
+        Enabled = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
       end
     end
   end
