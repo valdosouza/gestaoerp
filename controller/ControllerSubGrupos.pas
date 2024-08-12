@@ -95,7 +95,7 @@ end;
 procedure TControllerSubGrupos.Clear;
 begin
   ClearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerSubGrupos.Create(AOwner: TComponent);
@@ -104,7 +104,7 @@ begin
   Registro := TSubGRupos.Create;
   Lista := TListaSubGrupo.create;
   ObjRestSubGroup :=  TRestSubGroup.create;
-  Parametros := TPrmSubGroupMenu.Create;
+  FParametros := TPrmSubGroupMenu.Create;
   impressora := TControllerImpressora.Create(self);
 end;
 
@@ -124,6 +124,7 @@ begin
   Registro.DisposeOf;
   Lista.DisposeOf;
   impressora.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -183,10 +184,10 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM TB_SUBGRUPOS WHERE 1=1 ';
 
-      if Parametros.FieldName.Grupo > 0 then
+      if FParametros.FieldName.Grupo > 0 then
       begin
         SQL.Text := SQL.Text + ' AND SBG_CODGRP = :SBG_CODGRP';
-        ParamByName('SBG_CODGRP').AsInteger := Parametros.FieldName.Grupo;
+        ParamByName('SBG_CODGRP').AsInteger := FParametros.FieldName.Grupo;
       end;
 
       SQL.Text := SQL.Text + ' ORDER BY SBG_DESCRICAO ';

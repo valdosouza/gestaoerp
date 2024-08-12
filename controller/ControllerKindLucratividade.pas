@@ -39,7 +39,7 @@ function TControllerKindLucratividade.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerKindLucratividade.Create(AOwner: TComponent);
@@ -47,7 +47,7 @@ begin
   inherited;
   Registro := TKindLucratividade.Create;
   Lista := TListaLucratividade.Create;
-  Parametros := TPrmkindProfitability.Create;
+  FParametros := TPrmkindProfitability.Create;
 end;
 
 function TControllerKindLucratividade.delete: boolean;
@@ -115,16 +115,16 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM TB_KIND_LUCRATIVIDADE WHERE 1=1';
 
-      if Parametros.FieldName.Codigo > 0 then
+      if FParametros.FieldName.Codigo > 0 then
       begin
         SQL.Text := SQL.Text + ' AND ID = :ID';
-        ParamByName('ID').AsInteger := Parametros.FieldName.Codigo;
+        ParamByName('ID').AsInteger := FParametros.FieldName.Codigo;
       end;
 
-      if Parametros.FieldName.descricao <> EmptyStr then
+      if FParametros.FieldName.descricao <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND DESCRIPTION LIKE :DESCRIPTION';
-        ParamByName('DESCRIPTION').AsString := Concat('%',Parametros.FieldName.descricao,'%');
+        ParamByName('DESCRIPTION').AsString := Concat('%',FParametros.FieldName.descricao,'%');
       end;
 
       Active := True;

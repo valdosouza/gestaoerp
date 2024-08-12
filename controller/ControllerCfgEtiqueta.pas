@@ -36,14 +36,14 @@ function TControllerCfgEtiqueta.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerCfgEtiqueta.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TCfgEtiqueta.Create;
-  Parametros := TPrmConfigTag.Create;
+  FParametros := TPrmConfigTag.Create;
   Lista := TListaCfgEtiqueta.Create;
 end;
 
@@ -105,16 +105,16 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM tb_cfg_etiqueta where 1=1 ';
 
-      if Parametros.FieldName.Codigo > 0 then
+      if FParametros.FieldName.Codigo > 0 then
       begin
         SQL.Text := SQL.Text + ' AND cge_codigo = :cge_codigo';
-        ParamByName('cge_codigo').AsInteger := Parametros.FieldName.Codigo;
+        ParamByName('cge_codigo').AsInteger := FParametros.FieldName.Codigo;
       end;
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
+      if FParametros.FieldName.Descricao <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND cge_descricao LIKE :cge_descricao';
-        ParamByName('cge_descricao').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+        ParamByName('cge_descricao').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
       Active := True;

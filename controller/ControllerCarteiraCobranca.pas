@@ -34,14 +34,14 @@ function TControllerCarteiraCobranca.clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerCarteiraCobranca.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TCarteiraCobranca.Create;
-  Parametros := TPrmCarteiraCobranca.Create;
+  FParametros := TPrmCarteiraCobranca.Create;
   Banco := TControllerBanco.Create(self);
 end;
 

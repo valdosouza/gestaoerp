@@ -72,7 +72,7 @@ function TControllerUsuario.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerUsuario.Create(AOwner: TComponent);
@@ -81,7 +81,7 @@ begin
   Registro := TUsuario.Create;
   Lista := TListaUsuario.Create;
   Colaborador := TControllerColaborador.create(Self);
-  Parametros := TPrmUsers.Create;
+  FParametros := TPrmUsers.Create;
 end;
 
 function TControllerUsuario.delete: boolean;
@@ -99,8 +99,7 @@ begin
   Colaborador.DisposeOf;
   Registro.DisposeOf;
   Lista.DisposeOf;
-
-  FreeAndNil(FParametros);
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -172,16 +171,16 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM TB_USUARIO where USU_ATIVO = ''S'' ';
 
-      if Parametros.FieldName.Codigo > 0 then
+      if FParametros.FieldName.Codigo > 0 then
       begin
         SQL.Text := SQL.Text + ' AND USU_CODIGO = :USU_CODIGO';
-        ParamByName('USU_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+        ParamByName('USU_CODIGO').AsInteger := FParametros.FieldName.Codigo;
       end;
 
-      if Parametros.FieldName.Nome <> EmptyStr then
+      if FParametros.FieldName.Nome <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND USU_NOME LIKE :USU_NOME';
-        ParamByName('USU_NOME').AsString := Concat('%',Parametros.FieldName.Nome,'%');
+        ParamByName('USU_NOME').AsString := Concat('%',FParametros.FieldName.Nome,'%');
       end;
 
       Active := True;

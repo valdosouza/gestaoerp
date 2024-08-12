@@ -39,7 +39,7 @@ function TControllerCargo.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerCargo.Create(AOwner: TComponent);
@@ -47,7 +47,7 @@ begin
   inherited;
   Registro := TCargo.Create;
   Lista := TListaCargo.Create;
-  Parametros := TPrmJobPosition.Create;
+  FParametros := TPrmJobPosition.Create;
 end;
 
 function TControllerCargo.delete: boolean;
@@ -117,11 +117,11 @@ begin
                       'FROM TB_CARGO ',
                       'WHERE CRG_CODIGO IS NOT NULL '
       ));
-      if Parametros.FieldName.Descricao <> '' then
+      if FParametros.FieldName.Descricao <> '' then
         sql.add(' AND ( CRG_DESCRICAO LIKE :CRG_DESCRICAO ) ');
 
-      if Parametros.FieldName.Descricao <> '' then
-        ParamByName('CRG_DESCRICAO').AsString := concat('%',Parametros.FieldName.Descricao,'%');
+      if FParametros.FieldName.Descricao <> '' then
+        ParamByName('CRG_DESCRICAO').AsString := concat('%',FParametros.FieldName.Descricao,'%');
 
       Active := True;
       FetchAll;
