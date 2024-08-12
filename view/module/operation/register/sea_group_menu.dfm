@@ -2,30 +2,30 @@ inherited SeaGroupMenu: TSeaGroupMenu
   Caption = 'Pesquisa de Grupo e SubGrupo do Card'#225'pio'
   ClientHeight = 438
   ClientWidth = 594
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 606
-  ExplicitHeight = 501
+  ExplicitWidth = 600
+  ExplicitHeight = 482
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
     Width = 588
     Height = 356
     ExplicitTop = 79
-    ExplicitWidth = 582
-    ExplicitHeight = 333
+    ExplicitWidth = 588
+    ExplicitHeight = 356
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 584
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 492
       Height = 338
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 494
       Height = 338
-      ExplicitLeft = 488
-      ExplicitHeight = 315
+      ExplicitLeft = 494
+      ExplicitHeight = 338
       inherited Sb_Sair_0: TSpeedButton
         Top = 275
         ExplicitTop = 330
@@ -44,12 +44,12 @@ inherited SeaGroupMenu: TSeaGroupMenu
       end
     end
     object ChBx_Grupo: TCheckBox
-      Left = 500
-      Top = 0
-      Width = 89
+      Left = 497
+      Top = 16
+      Width = 82
       Height = 17
       Anchors = [akTop, akRight]
-      Caption = 'Grupos Vazio'
+      Caption = 'Grupos vazios'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -11
@@ -62,7 +62,7 @@ inherited SeaGroupMenu: TSeaGroupMenu
   inherited Pnl_Parametros: TPanel
     Width = 588
     Height = 70
-    ExplicitWidth = 582
+    ExplicitWidth = 588
     ExplicitHeight = 70
     object GroupBox2: TGroupBox
       Left = 2
@@ -78,7 +78,6 @@ inherited SeaGroupMenu: TSeaGroupMenu
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 578
       object Lb_grupo: TLabel
         Left = 11
         Top = 16
@@ -133,6 +132,20 @@ inherited SeaGroupMenu: TSeaGroupMenu
         ParentFont = False
         TabOrder = 1
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Grupo'
+      FieldName = 'descricao'
+    end
+    object cds_searchdescricao_subgrupo: TStringField
+      DisplayLabel = 'SubGrupo'
+      FieldName = 'descricao_subgrupo'
     end
   end
 end

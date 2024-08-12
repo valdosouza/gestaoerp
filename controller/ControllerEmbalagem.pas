@@ -66,6 +66,7 @@ begin
   Registro.DisposeOf;
   Lista.DisposeOf;
   inherited;
+  FreeAndNil(Registro);
 end;
 
 function TControllerEmbalagem.insert: boolean;

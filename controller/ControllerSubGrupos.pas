@@ -3,7 +3,7 @@ unit ControllerSubGrupos;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
-      tblSubGrupos ,Un_MSg,Generics.Collections, tblRestSubGroup;
+      tblSubGrupos ,Un_MSg,Generics.Collections, tblRestSubGroup, prm_subgroup_menu, ControllerImpressora;
 
 Type
   TListaSubGrupo  = TObjectList<TSubGrupos>;
@@ -11,11 +11,15 @@ Type
   TControllerSubGrupos = Class(TControllerBase)
 
   private
+    FParametros: TPrmSubGroupMenu;
+    procedure setFParametros(const Value: TPrmSubGroupMenu);
 
   public
     Registro : TSubGrupos;
     Lista : TListaSubGrupo;
     ObjRestSubGroup: TRestSubGroup;
+
+    impressora : TControllerImpressora;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function salva:boolean;
@@ -31,6 +35,9 @@ Type
     function getByDescricao(pGRupo:Integer;PSubgrupo:String) : Boolean;
     function autocreate(pGRupo:Integer;PSubgrupo:String):Integer;
     procedure FillDataRestSubGroup(subgrupo: TSubGrupos;DObjRestSubgroup:TRestSubGroup; institutioWebId:Integer);
+
+    procedure Search;
+    property Parametros : TPrmSubGroupMenu read FParametros write setFParametros;
   End;
 
 implementation
@@ -88,6 +95,7 @@ end;
 procedure TControllerSubGrupos.Clear;
 begin
   ClearObj(Registro);
+  Parametros.Clear;
 end;
 
 constructor TControllerSubGrupos.Create(AOwner: TComponent);
@@ -96,6 +104,8 @@ begin
   Registro := TSubGRupos.Create;
   Lista := TListaSubGrupo.create;
   ObjRestSubGroup :=  TRestSubGroup.create;
+  Parametros := TPrmSubGroupMenu.Create;
+  impressora := TControllerImpressora.Create(self);
 end;
 
 function TControllerSubGrupos.delete: boolean;
@@ -113,6 +123,7 @@ begin
   ObjRestSubGroup.DisposeOf;
   Registro.DisposeOf;
   Lista.DisposeOf;
+  impressora.DisposeOf;
   inherited;
 end;
 
@@ -159,6 +170,50 @@ begin
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_SUBGRUPO');
   SaveObj(Registro);
+end;
+
+procedure TControllerSubGrupos.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TSubGrupos;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_SUBGRUPOS WHERE 1=1 ';
+
+      if Parametros.FieldName.Grupo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND SBG_CODGRP = :SBG_CODGRP';
+        ParamByName('SBG_CODGRP').AsInteger := Parametros.FieldName.Grupo;
+      end;
+
+      SQL.Text := SQL.Text + ' ORDER BY SBG_DESCRICAO ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TSubGrupos.Create;
+        get(Lc_Qry, LITem);
+
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerSubGrupos.setFParametros(const Value: TPrmSubGroupMenu);
+begin
+  FParametros := Value;
 end;
 
 function TControllerSubGrupos.update: boolean;

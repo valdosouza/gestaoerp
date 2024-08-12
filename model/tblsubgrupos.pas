@@ -47,7 +47,7 @@ Type
     property Sequencia: Integer read FSBG_SEQUENCIA write setFSBG_SEQUENCIA;
 
     [FieldName('SBG_ATIVO')]
-    property ATivos: String read FSBG_ATIVO write setFSBG_ATIVO;
+    property Ativos: String read FSBG_ATIVO write setFSBG_ATIVO;
 
   End;
 

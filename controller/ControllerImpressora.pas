@@ -21,6 +21,9 @@ Type
     function insert:boolean;
     function update:boolean;
     Function delete:boolean;
+    function getCodigoLista(Descricao: String): Integer;
+    function getDescLista(Codigo: Integer): String;
+
     function Clear:Boolean;
     function Search:Boolean;
     property Parametros : TPrmPrinters read FParametros write setFParametros;
@@ -140,6 +143,36 @@ end;
 procedure TControllerImpressora.getById;
 begin
   _getByKey(Registro);
+end;
+
+function TControllerImpressora.getCodigoLista(Descricao: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  Begin
+    if Lista[i].Descricao = Descricao then
+    Begin
+      Result := Lista[i].Codigo;
+      Break;
+    End;
+  End;
+end;
+
+function TControllerImpressora.getDescLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  Begin
+    if Lista[i].Codigo = Codigo then
+    Begin
+      Result := Lista[i].Descricao;
+      Break;
+    End;
+  End;
 end;
 
 end.

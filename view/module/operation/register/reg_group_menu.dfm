@@ -2,14 +2,15 @@ inherited RegGroupMenu: TRegGroupMenu
   Caption = ' Cadastro de Grupo e SubGrupo do Card'#225'pio'
   ClientHeight = 479
   ClientWidth = 579
-  ExplicitWidth = 591
-  ExplicitHeight = 542
+  ExplicitWidth = 585
+  ExplicitHeight = 523
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 415
     Width = 579
-    ExplicitTop = 406
-    ExplicitWidth = 573
+    ExplicitTop = 415
+    ExplicitWidth = 579
     inherited SB_Inserir: TSpeedButton
       Left = -1
       Width = 98
@@ -56,8 +57,8 @@ inherited RegGroupMenu: TRegGroupMenu
   inherited pnl_fundo: TPanel
     Width = 579
     Height = 415
-    ExplicitWidth = 573
-    ExplicitHeight = 406
+    ExplicitWidth = 579
+    ExplicitHeight = 415
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegGroupMenu: TRegGroupMenu
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 569
-      ExplicitHeight = 201
       object Lb_Descricao: TLabel
         Left = 72
         Top = 5
@@ -86,7 +85,7 @@ inherited RegGroupMenu: TRegGroupMenu
         Left = 464
         Top = 5
         Width = 89
-        Height = 14
+        Height = 13
         Caption = 'Desconto Especial'
         FocusControl = E_Vl_Desconto
         Font.Charset = DEFAULT_CHARSET
@@ -180,6 +179,7 @@ inherited RegGroupMenu: TRegGroupMenu
           'Baixar somente os Itens')
         ParentFont = False
         TabOrder = 4
+        OnClick = DBRG_ComposicaoClick
       end
       object ChBx_Propag_Tamanho: TCheckBox
         AlignWithMargins = True
@@ -200,8 +200,6 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
         TabOrder = 5
-        ExplicitTop = 120
-        ExplicitWidth = 559
       end
       object ChBx_Agrupar_Abas: TCheckBox
         AlignWithMargins = True
@@ -220,8 +218,6 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
         TabOrder = 6
-        ExplicitTop = 139
-        ExplicitWidth = 559
       end
       object E_Sequencia: TEdit
         Left = 8
@@ -254,10 +250,8 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
         TabOrder = 8
-        ExplicitTop = 179
-        ExplicitWidth = 559
       end
-      object ChBx_show_descktop: TCheckBox
+      object ChBx_show_menu: TCheckBox
         AlignWithMargins = True
         Left = 5
         Top = 167
@@ -273,8 +267,6 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
         TabOrder = 9
-        ExplicitTop = 158
-        ExplicitWidth = 559
       end
       object Chbx_Ifood: TCheckBox
         AlignWithMargins = True
@@ -293,11 +285,9 @@ inherited RegGroupMenu: TRegGroupMenu
         Font.Style = []
         ParentFont = False
         TabOrder = 10
-        ExplicitTop = 101
-        ExplicitWidth = 559
       end
     end
-    object Panel1: TPanel
+    object pnlGrid: TPanel
       Left = 2
       Top = 212
       Width = 575
@@ -305,10 +295,7 @@ inherited RegGroupMenu: TRegGroupMenu
       Align = alBottom
       BevelInner = bvRaised
       BevelOuter = bvLowered
-      Caption = 'Panel1'
       TabOrder = 1
-      ExplicitTop = 203
-      ExplicitWidth = 569
       DesignSize = (
         575
         201)
@@ -319,8 +306,72 @@ inherited RegGroupMenu: TRegGroupMenu
         Height = 27
         Anchors = [akRight, akBottom]
         Caption = 'Editar Subgrupos'
+        OnClick = Sb_SubGruposClick
         ExplicitLeft = 461
       end
+      object DBGrid1: TDBGrid
+        Left = 5
+        Top = 4
+        Width = 552
+        Height = 161
+        Color = clMoneyGreen
+        DataSource = ds_subgrupo
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgCancelOnExit]
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'descricao_subgrupo'
+            Title.Caption = 'Rela'#231#227'o de subgrupos cadastrados'
+            Title.Font.Charset = ANSI_CHARSET
+            Title.Font.Color = clNavy
+            Title.Font.Height = -11
+            Title.Font.Name = 'Arial'
+            Title.Font.Style = []
+            Width = 495
+            Visible = True
+          end>
+      end
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 512
+    Top = 128
+  end
+  object cds_subgrupo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSP'
+    Left = 160
+    Top = 242
+    object cds_subgrupocodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_subgrupodescricao: TStringField
+      DisplayLabel = 'Grupo'
+      FieldName = 'descricao'
+    end
+    object cds_subgrupodescricao_subgrupo: TStringField
+      DisplayLabel = 'SubGrupo'
+      FieldName = 'descricao_subgrupo'
+    end
+  end
+  object ds_subgrupo: TDataSource
+    DataSet = cds_subgrupo
+    Left = 160
+    Top = 298
   end
 end
