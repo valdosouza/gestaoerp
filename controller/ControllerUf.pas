@@ -64,7 +64,7 @@ end;
 procedure TControllerUf.clear;
 begin
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerUf.Create(AOwner: TComponent);
@@ -72,7 +72,7 @@ begin
   inherited;
   Registro := TUf.Create;
   Lista := TListaUf.Create;
-  Parametros := TPrmUF.Create;
+  FParametros := TPrmUF.Create;
 end;
 
 function TControllerUf.delete: boolean;
@@ -89,6 +89,7 @@ destructor TControllerUf.Destroy;
 begin
   Lista.DisposeOf;
   Registro.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -133,16 +134,16 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM TB_UF WHERE 1=1';
 
-      if Parametros.FieldName.Codigo > 0 then
+      if FParametros.FieldName.Codigo > 0 then
       begin
         SQL.Text := SQL.Text + ' AND UFE_CODIGO LIKE :UFE_CODIGO';
-        ParamByName('UFE_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+        ParamByName('UFE_CODIGO').AsInteger := FParametros.FieldName.Codigo;
       end;
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
+      if FParametros.FieldName.Descricao <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND UFE_DESCRICAO LIKE :UFE_DESCRICAO';
-        ParamByName('UFE_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+        ParamByName('UFE_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
       Active := True;

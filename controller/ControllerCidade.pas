@@ -72,7 +72,7 @@ function TControllerCidade.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerCidade.Create(AOwner: TComponent);
@@ -80,7 +80,7 @@ begin
   inherited;
   Registro := TCidade.Create;
   Lista := TListaCidade.Create;
-  Parametros := TPrmCidade.Create;
+  FParametros := TPrmCidade.Create;
 end;
 
 function TControllerCidade.delete: boolean;
@@ -97,7 +97,7 @@ destructor TControllerCidade.Destroy;
 begin
   Lista.DisposeOf;
   Registro.DisposeOf;
-  FreeAndNil(FParametros);
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -144,22 +144,22 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM TB_CIDADE WHERE 1=1';
 
-      if Parametros.FieldName.IBGE > 0 then
+      if FParametros.FieldName.IBGE > 0 then
       begin
         SQL.Text := SQL.Text + ' AND CDD_IBGE = :CDD_IBGE';
-        ParamByName('CDD_IBGE').AsInteger := Parametros.FieldName.IBGE;
+        ParamByName('CDD_IBGE').AsInteger := FParametros.FieldName.IBGE;
       end;
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
+      if FParametros.FieldName.Descricao <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND CDD_DESCRICAO LIKE :CDD_DESCRICAO';
-        ParamByName('CDD_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+        ParamByName('CDD_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
-      if Parametros.FieldName.Estado <> EmptyStr then
+      if FParametros.FieldName.Estado <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND CDD_UF = :CDD_UF';
-        ParamByName('CDD_UF').AsString := Parametros.FieldName.Estado;
+        ParamByName('CDD_UF').AsString := FParametros.FieldName.Estado;
       end;
 
       Active := True;

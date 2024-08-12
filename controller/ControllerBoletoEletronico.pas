@@ -39,7 +39,7 @@ function TControllerBoletoEletronico.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerBoletoEletronico.Create(AOwner: TComponent);
@@ -47,7 +47,7 @@ begin
   inherited;
   Registro := TBoletoEletronico.Create;
   Lista := TListaBoletoEletronico.Create;
-  Parametros := TPrmElectronicSlip.Create;
+  FParametros := TPrmElectronicSlip.Create;
 end;
 
 function TControllerBoletoEletronico.delete: boolean;
@@ -63,6 +63,8 @@ end;
 destructor TControllerBoletoEletronico.Destroy;
 begin
   Registro.DisposeOf;
+  Lista.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -120,10 +122,10 @@ begin
           'WHERE (TB_CONTABANCARIA.CTB_CODMHA=:CTB_CODMHA) ';
       ParamByName('CTB_CODMHA').AsInteger := Gb_CodMha;
 
-      if Parametros.FieldName.NomeBanco <> EmptyStr then
+      if FParametros.FieldName.NomeBanco <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND EMP_NUMBCO LIKE :EMP_NUMBCO';
-        ParamByName('EMP_NUMBCO').AsString := Concat('%',Parametros.FieldName.NomeBanco,'%');
+        ParamByName('EMP_NUMBCO').AsString := Concat('%',FParametros.FieldName.NomeBanco,'%');
       end;
 
       Active := True;
@@ -148,42 +150,6 @@ begin
     FinalizaQuery(Lc_Qry);
   End;
 end;
-
-{
-procedure TFr_BoletoEletronico.Pc_Buscar;
-Var
-  Sqltxt:String;
-  Lc_Banco:boolean;
-begin
-  sqltxt := '';
-  Screen.Cursor:=crHourGlass;
-  Qr_Pesquisa.Close;
-  Qr_Pesquisa.Sql.Clear;
-  Sqltxt:='SELECT  tb_banco.EMP_NUMBCO ,CTB_AGENCIA, CTB_CONTA, CTB_CODIGO, BLE_CODIGO, '+
-          'tb_carteira_cobranca.ctr_numero,tb_carteira_cobranca.ctr_descricao '+
-          'FROM TB_BOLETO_ELETRONICO tb_boletoeletronico '+
-          '  INNER JOIN TB_CONTABANCARIA tb_contabancaria '+
-          '  ON (tb_boletoeletronico.BLE_CODCTB = tb_contabancaria.ctb_codigo) '+
-          '  INNER JOIN TB_EMPRESA tb_banco '+
-          '  ON (tb_banco.EMP_CODIGO = tb_contabancaria.CTB_CODBCO ) '+
-          '  inner join tb_carteira_cobranca '+
-          '  on (tb_carteira_cobranca.ctr_codigo = tb_boletoeletronico.ble_codctr) '+
-          'WHERE (CTB_CODMHA=:CTB_CODMHA) ';
-
-  if Trim(E_BuscaBanco.Text) = '' then Lc_Banco := False else Lc_Banco := True;
-  if Lc_Banco then sqltxt := sqltxt +'AND (EMP_CODBCO =:EMP_CODBCO) ';
-
-  Qr_Pesquisa.SQL.Add(sqltxt+' ORDER BY EMP_CODBCO ');
-
-  if Lc_Banco then Qr_Pesquisa.ParamByName('EMP_CODBCO').AsString:=E_BuscaBanco.Text;
-
-  Qr_Pesquisa.ParamByName('CTB_CODMHA').AsInteger := Gb_CodMha;
-
-  Qr_Pesquisa.Open;
-  Screen.Cursor:=crDefault;
-
-end;
-}
 
 procedure TControllerBoletoEletronico.setFParametros(
   const Value: TPrmElectronicSlip);

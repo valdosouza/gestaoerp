@@ -46,7 +46,7 @@ function TControllerContaBancaria.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerContaBancaria.Create(AOwner: TComponent);
@@ -55,7 +55,7 @@ begin
   Registro  := TContaBancaria.Create;
   Lista     := TListContaCorrente.Create;
  // Obj       := TObjBankAccount.create;
-  Parametros := TPrmBankingAccount.Create;
+  FParametros := TPrmBankingAccount.Create;
   Banco := TControllerBanco.Create(self);
   Empresa := TControllerEmpresa.Create(self);
 end;
@@ -75,9 +75,9 @@ begin
   //Obj.Destroy;
   Registro.DisposeOf;
   Lista.DisposeOf;
-  FreeAndNil(FParametros);
-  FreeAndNil(Banco);
-  FreeAndNil(Empresa);
+  FParametros.DisposeOf;
+  Banco.DisposeOf;
+  Empresa.DisposeOf;
   inherited;
 end;
 
@@ -159,22 +159,22 @@ begin
 
       ParamByName('CTB_CODMHA').AsInteger := Gb_CodMha;
 
-      if Parametros.FieldName.Agencia <> EmptyStr then
+      if FParametros.FieldName.Agencia <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND Ctb_Agencia LIKE :Ctb_Agencia';
-        ParamByName('Ctb_Agencia').AsString := Concat('%',Parametros.FieldName.Agencia,'%');
+        ParamByName('Ctb_Agencia').AsString := Concat('%',FParametros.FieldName.Agencia,'%');
       end;
 
-      if Parametros.FieldName.Conta <> EmptyStr then
+      if FParametros.FieldName.Conta <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND Ctb_Conta LIKE :Ctb_Conta';
-        ParamByName('Ctb_Conta').AsString := Concat('%',Parametros.FieldName.Conta,'%');
+        ParamByName('Ctb_Conta').AsString := Concat('%',FParametros.FieldName.Conta,'%');
       end;
 
-      if Parametros.FieldName.NomeBanco <> EmptyStr then
+      if FParametros.FieldName.NomeBanco <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND EMP_FANTASIA LIKE :EMP_FANTASIA';
-        ParamByName('EMP_FANTASIA').AsString := Concat('%',Parametros.FieldName.NomeBanco,'%');
+        ParamByName('EMP_FANTASIA').AsString := Concat('%',FParametros.FieldName.NomeBanco,'%');
       end;
 
       Active := True;

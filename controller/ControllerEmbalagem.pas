@@ -40,7 +40,7 @@ uses Un_sistema, Un_Regra_Negocio;
 procedure TControllerEmbalagem.clear;
 begin
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerEmbalagem.Create(AOwner: TComponent);
@@ -48,7 +48,7 @@ begin
   inherited;
   Registro := TEmbalagem.Create;
   Lista := TListaEmbalagem.create;
-  Parametros := TPrmPackage.Create;
+  FParametros := TPrmPackage.Create;
 end;
 
 function TControllerEmbalagem.delete: boolean;
@@ -65,8 +65,8 @@ destructor TControllerEmbalagem.Destroy;
 begin
   Registro.DisposeOf;
   Lista.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
-  FreeAndNil(Registro);
 end;
 
 function TControllerEmbalagem.insert: boolean;

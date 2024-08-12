@@ -32,14 +32,14 @@ function TControllerAgenda.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerAgenda.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TAgenda.Create;
-  Parametros := TPrmCommitMent.Create;
+  FParametros := TPrmCommitMent.Create;
   Usuario := TControllerUsuario.Create(self);
 end;
 
