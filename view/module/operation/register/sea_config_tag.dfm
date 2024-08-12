@@ -2,16 +2,17 @@ inherited SeaConfigTag: TSeaConfigTag
   Caption = 'Pesquisa de etiqueta'
   ClientHeight = 338
   ClientWidth = 598
-  ExplicitWidth = 610
-  ExplicitHeight = 401
+  ExplicitWidth = 604
+  ExplicitHeight = 382
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 592
     Height = 264
     ExplicitTop = 71
-    ExplicitWidth = 586
-    ExplicitHeight = 255
+    ExplicitWidth = 592
+    ExplicitHeight = 264
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 588
     end
@@ -22,8 +23,8 @@ inherited SeaConfigTag: TSeaConfigTag
     inherited pnl_pesq_right: TPanel
       Left = 498
       Height = 246
-      ExplicitLeft = 492
-      ExplicitHeight = 237
+      ExplicitLeft = 498
+      ExplicitHeight = 246
       inherited Sb_Sair_0: TSpeedButton
         Top = 183
         ExplicitTop = 183
@@ -45,7 +46,7 @@ inherited SeaConfigTag: TSeaConfigTag
   inherited Pnl_Parametros: TPanel
     Width = 592
     Height = 62
-    ExplicitWidth = 586
+    ExplicitWidth = 592
     ExplicitHeight = 62
     object GroupBox1: TGroupBox
       Left = 2
@@ -61,7 +62,6 @@ inherited SeaConfigTag: TSeaConfigTag
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 582
       object Lb_Descricao: TLabel
         Left = 59
         Top = 16
@@ -116,6 +116,16 @@ inherited SeaConfigTag: TSeaConfigTag
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchCodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchDescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'Descricao'
     end
   end
 end
