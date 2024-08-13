@@ -1,4 +1,4 @@
-unit Un_Especie_Doc;
+ï»¿unit Un_Especie_Doc;
 
 interface
 
@@ -10,11 +10,11 @@ uses
 
 type
   TFr_Especie_Doc = class(TBaseRegistry)
-    Label7: TLabel;
+    L_Descricao: TLabel;
     E_Descricao: TEdit;
-    Label1: TLabel;
+    L_Numero: TLabel;
     E_Numero: TEdit;
-    Label2: TLabel;
+    L_Sigla: TLabel;
     E_Sigla: TEdit;
     procedure ShowNoData;Override;
     procedure ShowData;Override;
@@ -44,7 +44,7 @@ implementation
 
 {$R *.dfm}
 
-uses Un_Msg;
+uses Un_Msg, env;
 
 { TBaseRegistry }
 
@@ -141,10 +141,7 @@ end;
 function TFr_Especie_Doc.ValidateDelete: Boolean;
 begin
   inherited;
-  if (Mensagem('Mensagem de Confirmação',
-                     'Excluir este registro de seus arquivos.' + EOLN + EOLN +
-                     'Confirmar a exclusão ?',
-                     ['Sim', 'Não'], [bNormal,bEscape], mpConfirmacao, clRed) = mrBotao2) then
+  if (not TMsgSetes.Excluir) then
   begin
     Result := False;
     Exit;
@@ -152,10 +149,7 @@ begin
 
   if not ( EspecieDoc.Registro.Codigo > 0 ) then
   Begin
-    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Não há registro para excluir.'+EOLN+
-                   'Verifique e tente novamente.'  +EOLN,
-                   ['OK'], [bEscape], mpAlerta);
+    TMsgSetes.PararExecucao( 'NÃ£o hÃ¡ registro para excluir.');
     Result := False;
     Exit;
   End;
@@ -166,10 +160,7 @@ begin
   Result := True;
   if ( Trim(E_Numero.Text) = '' ) then
   Begin
-    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Campo número não preenchido.'+EOLN+
-                   'Verifique e tente novamente.'  +EOLN,
-                   ['OK'], [bEscape], mpAlerta);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Numero.Caption);
     E_Numero.SetFocus;
     Result := False;
     Exit;
@@ -177,10 +168,7 @@ begin
 
   if ( Trim(E_Sigla.Text) = '' ) then
   Begin
-    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Campo sigla não preenchido.'+EOLN+
-                   'Verifique e tente novamente.'  +EOLN,
-                   ['OK'], [bEscape], mpAlerta);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Sigla.Caption);
     E_Sigla.SetFocus;
     Result := False;
     Exit;
@@ -188,10 +176,7 @@ begin
 
   if ( Trim(E_Descricao.Text) = '' ) then
   Begin
-    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
-                   'Campo descrição não preenchido.'+EOLN+
-                   'Verifique e tente novamente.'  +EOLN,
-                   ['OK'], [bEscape], mpAlerta);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
     E_Descricao.SetFocus;
     Result := False;
     Exit;

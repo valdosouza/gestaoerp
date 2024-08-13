@@ -43,7 +43,7 @@ var
 
 implementation
 
-uses UN_MSG;
+uses UN_MSG, env;
 
 {$R *.dfm}
 

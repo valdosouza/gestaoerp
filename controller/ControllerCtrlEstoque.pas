@@ -125,7 +125,7 @@ Type
 
 implementation
 
-uses UN_Sistema, Un_Regra_Negocio, Un_tr_send_email;
+uses UN_Sistema, Un_Regra_Negocio, Un_tr_send_email, env;
 
 procedure TControllerCtrlEstoque.AjustaGenerator;
 Var
@@ -1215,7 +1215,7 @@ Begin
     end;
   Finally
     FinalizaQuery(Lc_Qry);
-    DisposeOf;
+
   End;
 end;
 
@@ -1241,7 +1241,6 @@ begin
     End;
   Finally
     FinalizaQuery(Lc_Qry);
-    DisposeOf;
   End;
 end;
 
@@ -1541,7 +1540,6 @@ begin
     End;
   Finally
     FinalizaQuery(Lc_Qry);
-    DisposeOf;
   End;
 end;
 

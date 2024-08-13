@@ -86,7 +86,7 @@ implementation
 
 {$R *.dfm}
 
-uses UN_MSG;
+uses UN_MSG, env;
 
 { TRegElectronicSlip }
 
@@ -250,7 +250,7 @@ end;
 function TRegElectronicSlip.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsgSetes.Excluir = mrBotao1) then
+  if (not TMsgSetes.Excluir) then
   Begin
     Result := False;
     exit;
@@ -296,7 +296,7 @@ begin
   if ((Copy(Cb_Protesto.text,1,1) = '1') or (Copy(Cb_Protesto.text,1,1) = '2')) and
     (Trim(E_Dias_Protesto.Text) = EmptyStr)   then
   begin
-    Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+    MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Para campo protesto igual a 1 ou 2 torna obrigatório '+EOLN+
                    'o preenchimento do campo Nr dias'+EOLN,
                    ['OK'],[bEscape],mpAlerta);
@@ -309,7 +309,7 @@ begin
   begin
     if (Trim(E_POSTO_BENEF.Text) = EmptyStr) then
     begin
-      Mensagem('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
+      MensagemPadrao('Mensagem ','A T E N Ç Ã O!.'+EOLN+EOLN+
                      'Para Banco Sicred, favor informar campo Posto Beneficiário.'+EOLN+
                      'Preenchimento obrigatório.'+EOLN,
                       ['OK'],[bEscape],mpAlerta);

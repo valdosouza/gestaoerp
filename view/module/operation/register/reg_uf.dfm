@@ -207,6 +207,7 @@ inherited RegUf: TRegUf
         Top = 65
         Width = 67
         Height = 22
+        Alignment = taRightJustify
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -220,6 +221,7 @@ inherited RegUf: TRegUf
         Top = 65
         Width = 88
         Height = 22
+        Alignment = taRightJustify
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -234,80 +236,27 @@ inherited RegUf: TRegUf
       Top = 99
       Width = 565
       Height = 250
-      ActivePage = tbs_FCP
+      ActivePage = tbs_st
       Align = alClient
       TabOrder = 1
-      ExplicitTop = 100
       object tbs_st: TTabSheet
         Caption = 'Substitui'#231#227'o Tribut'#225'ria'
         object Pnl_ST: TPanel
           Left = 0
           Top = 0
           Width = 557
-          Height = 222
+          Height = 172
           Align = alClient
+          BevelInner = bvRaised
+          BevelOuter = bvLowered
           TabOrder = 0
-          DesignSize = (
-            557
-            222)
-          object Sb_Ins_Ncm: TSpeedButton
-            Left = 5
-            Top = 163
-            Width = 100
-            Height = 38
-            Anchors = [akLeft, akBottom]
-            Caption = 'Novo'
-            Flat = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            Transparent = False
-            ExplicitTop = 178
-          end
-          object Sb_Exc_Ncm: TSpeedButton
-            Left = 208
-            Top = 163
-            Width = 100
-            Height = 38
-            Anchors = [akLeft, akBottom]
-            Caption = 'Excluir'
-            Flat = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            Transparent = False
-            ExplicitTop = 178
-          end
-          object Sb_Grv_Ncm: TSpeedButton
-            Left = 106
-            Top = 163
-            Width = 100
-            Height = 38
-            Anchors = [akLeft, akBottom]
-            Caption = 'Gravar'
-            Flat = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            Transparent = False
-            ExplicitTop = 178
-          end
-          object Dbg_ST: TDBGrid
-            Left = 1
-            Top = 1
-            Width = 555
-            Height = 153
-            Align = alTop
-            Anchors = [akLeft, akTop, akRight, akBottom]
+          object Dbg_MVA: TDBGrid
+            Left = 2
+            Top = 2
+            Width = 553
+            Height = 168
+            Align = alClient
+            DataSource = ds_MVA
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -317,29 +266,147 @@ inherited RegUf: TRegUf
             Columns = <
               item
                 Expanded = False
+                FieldName = 'MUN_CODUFE'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'MUN_CODMHA'
                 Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'MUN_CODIGONCM'
-                Title.Caption = 'C'#243'd. Class. Fiscal (NCM)'
-                Width = 122
+                Title.Caption = 'C'#243'digo NCM'
+                Width = 152
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'MUN_MR_VL_AGREGADO'
-                Title.Caption = 'MVA. Original'
-                Width = 135
+                Title.Caption = 'MVA Original'
+                Width = 87
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'MUN_ALIQ_INTERNA'
-                Title.Caption = 'Aliq Interna'
+                Title.Caption = 'Aliq. Interna'
                 Width = 94
                 Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'MUN_MVA_AJUSTADO'
+                Visible = False
               end>
+          end
+        end
+        object Panel2: TPanel
+          Left = 0
+          Top = 172
+          Width = 557
+          Height = 50
+          Align = alBottom
+          BevelInner = bvRaised
+          BevelOuter = bvLowered
+          Caption = 'Panel2'
+          TabOrder = 1
+          object Sb_Ins_MVa: TSpeedButton
+            Left = 2
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Novo'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Ins_MVaClick
+            ExplicitLeft = -4
+            ExplicitTop = 4
+          end
+          object Sb_Grv_MVa: TSpeedButton
+            Left = 302
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Gravar'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Grv_MVaClick
+            ExplicitLeft = 107
+            ExplicitTop = 12
+            ExplicitHeight = 38
+          end
+          object Sb_Exc_MVa: TSpeedButton
+            Left = 202
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Excluir'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Exc_MVaClick
+            ExplicitLeft = 179
+            ExplicitTop = 4
+          end
+          object Sb_Edit_MVa: TSpeedButton
+            Left = 102
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Alterar'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Edit_MVaClick
+            ExplicitLeft = 110
+            ExplicitTop = 4
+          end
+          object Sb_Can_MVa: TSpeedButton
+            Left = 402
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Cancelar'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Can_MVaClick
+            ExplicitLeft = 408
+            ExplicitTop = 4
           end
         end
       end
@@ -350,70 +417,18 @@ inherited RegUf: TRegUf
           Left = 0
           Top = 0
           Width = 557
-          Height = 222
+          Height = 172
           Align = alClient
+          BevelInner = bvRaised
+          BevelOuter = bvLowered
           TabOrder = 0
-          DesignSize = (
-            557
-            222)
-          object Sb_Ins_Fcp: TSpeedButton
-            Left = 5
-            Top = 163
-            Width = 100
-            Height = 38
-            Anchors = [akLeft, akBottom]
-            Caption = 'Novo'
-            Flat = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            Transparent = False
-            ExplicitTop = 178
-          end
-          object Sb_Exc_Fcp: TSpeedButton
-            Left = 208
-            Top = 163
-            Width = 100
-            Height = 38
-            Anchors = [akLeft, akBottom]
-            Caption = 'Excluir'
-            Flat = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            Transparent = False
-            ExplicitTop = 178
-          end
-          object Sb_Grv_Fcp: TSpeedButton
-            Left = 106
-            Top = 163
-            Width = 100
-            Height = 38
-            Anchors = [akLeft, akBottom]
-            Caption = 'Gravar'
-            Flat = True
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clNavy
-            Font.Height = -11
-            Font.Name = 'Arial'
-            Font.Style = []
-            ParentFont = False
-            Transparent = False
-            ExplicitTop = 178
-          end
           object Dbg_Fcp: TDBGrid
-            Left = 1
-            Top = 1
-            Width = 555
-            Height = 153
-            Align = alTop
-            Anchors = [akLeft, akTop, akRight, akBottom]
+            Left = 2
+            Top = 2
+            Width = 553
+            Height = 168
+            Align = alClient
+            DataSource = ds_FCP
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
@@ -423,28 +438,193 @@ inherited RegUf: TRegUf
             Columns = <
               item
                 Expanded = False
+                FieldName = 'TB_STATE_ID'
                 Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'NCM'
-                Width = 145
+                Width = 141
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'ALIQUOTA'
                 Title.Caption = 'Al'#237'quota'
-                Width = 107
                 Visible = True
               end>
+          end
+        end
+        object Panel1: TPanel
+          Left = 0
+          Top = 172
+          Width = 557
+          Height = 50
+          Align = alBottom
+          BevelInner = bvRaised
+          BevelOuter = bvLowered
+          Caption = 'Panel1'
+          TabOrder = 1
+          object Sb_Ins_Fcp: TSpeedButton
+            Left = 2
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Novo'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Ins_FcpClick
+            ExplicitLeft = 21
+            ExplicitTop = 3
+            ExplicitHeight = 38
+          end
+          object Sb_Grv_Fcp: TSpeedButton
+            Left = 302
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Gravar'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Grv_FcpClick
+            ExplicitLeft = 106
+            ExplicitTop = 3
+            ExplicitHeight = 38
+          end
+          object Sb_Exc_Fcp: TSpeedButton
+            Left = 202
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Excluir'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Exc_FcpClick
+            ExplicitLeft = 179
+            ExplicitTop = -6
+          end
+          object Sb_Edit_Fcp: TSpeedButton
+            Left = 102
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Alterar'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Edit_FcpClick
+            ExplicitLeft = 110
+            ExplicitTop = 4
+          end
+          object Sb_Can_Fcp: TSpeedButton
+            Left = 402
+            Top = 2
+            Width = 100
+            Height = 46
+            Align = alLeft
+            Caption = 'Cancelar'
+            Flat = True
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clNavy
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = []
+            ParentFont = False
+            Transparent = False
+            OnClick = Sb_Can_FcpClick
+            ExplicitLeft = 330
+            ExplicitTop = 9
           end
         end
       end
     end
   end
   inherited MnuBase: TMainMenu
-    Left = 480
-    Top = 56
+    Left = 392
+    Top = 64
+  end
+  object ds_MVA: TDataSource
+    AutoEdit = False
+    DataSet = cds_MVA
+    Left = 120
+    Top = 226
+  end
+  object cds_FCP: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 224
+    Top = 178
+    object cds_FCPTB_STATE_ID: TIntegerField
+      FieldName = 'TB_STATE_ID'
+      Required = True
+    end
+    object cds_FCPNCM: TWideStringField
+      FieldName = 'NCM'
+      Required = True
+      Size = 10
+    end
+    object cds_FCPALIQUOTA: TBCDField
+      FieldName = 'ALIQUOTA'
+      Precision = 18
+      Size = 2
+    end
+  end
+  object ds_FCP: TDataSource
+    AutoEdit = False
+    DataSet = cds_FCP
+    Left = 224
+    Top = 234
+  end
+  object cds_MVA: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 112
+    Top = 176
+    object cds_MVAMUN_CODUFE: TIntegerField
+      FieldName = 'MUN_CODUFE'
+    end
+    object cds_MVAMUN_CODIGONCM: TStringField
+      FieldName = 'MUN_CODIGONCM'
+      Size = 15
+    end
+    object cds_MVAMUN_MR_VL_AGREGADO: TFloatField
+      FieldName = 'MUN_MR_VL_AGREGADO'
+    end
+    object cds_MVAMUN_ALIQ_INTERNA: TFloatField
+      FieldName = 'MUN_ALIQ_INTERNA'
+    end
+    object cds_MVAMUN_CODMHA: TIntegerField
+      FieldName = 'MUN_CODMHA'
+    end
+    object cds_MVAMUN_MVA_AJUSTADO: TFloatField
+      FieldName = 'MUN_MVA_AJUSTADO'
+    end
   end
 end

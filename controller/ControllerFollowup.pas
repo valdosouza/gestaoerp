@@ -111,7 +111,7 @@ end;
 function TControllerFollowup.salva: boolean;
 begin
   if Registro.Codigo = 0 then
-    Registro.Codigo := getNextByField(Registro,'ID',Registro.Estabelecimento);
+    Registro.Codigo := getNextByField(Registro,'ID');
   SaveObj(Registro);
 end;
 

@@ -3,7 +3,7 @@ inherited SeaUf: TSeaUf
   ClientHeight = 349
   ClientWidth = 566
   ExplicitWidth = 572
-  ExplicitHeight = 393
+  ExplicitHeight = 398
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -20,6 +20,19 @@ inherited SeaUf: TSeaUf
       Width = 464
       Height = 257
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 466
@@ -124,6 +137,7 @@ inherited SeaUf: TSeaUf
     Top = 0
   end
   inherited cds_search: TClientDataSet
+    ProviderName = ''
     object cds_searchcodigo: TIntegerField
       FieldName = 'codigo'
     end

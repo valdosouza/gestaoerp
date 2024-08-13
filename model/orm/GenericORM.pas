@@ -19,7 +19,7 @@ type
       class function _Delete<T: class>(Obj: T):String;
       class function _Clear<T: class>(Obj: T):String;
       class procedure _assign<T: class>(Source, Dest: T);
-      class function _getNextByField<T: class>(Obj: T;Field:String;Intitution:Integer):String;
+      class function _getNextByField<T: class>(Obj: T;Field:String):String;
       class function _getLastInsert<T: class>(Obj: T):String;
       class procedure _get<T: class>(Qry:TSTQuery;Obj: T);
       class Procedure _geralog(acesso : string);
@@ -493,7 +493,7 @@ begin
   end;
 end;
 
-class function TGenericORM._getNextByField<T>(Obj: T; Field: String;Intitution: Integer): String;
+class function TGenericORM._getNextByField<T>(Obj: T; Field: String): String;
 var
   strSelect: String;
 begin
@@ -501,10 +501,6 @@ begin
                 'SELECT MAX(',Field,') ', Field,
                 ' FROM ' + GetTableName(Obj)
                 );
-  if Intitution > 0 then
-    strSelect := concat(strSelect,
-                       ' where tb_institution_id = ',
-                       IntToStr(Intitution)) ;
   Result := strSelect;
 end;
 

@@ -112,7 +112,7 @@ end;
 function TRegJobPosition.ValidateDelete: boolean;
 begin
   Result := True;
-  if (TMsgSetes.Excluir = mrBotao1) then
+  if (not TMsgSetes.Excluir ) then
   Begin
     Result := False;
     exit;

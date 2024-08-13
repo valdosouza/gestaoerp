@@ -59,7 +59,7 @@ var
 
 implementation
 
-uses UN_MSG, reg_subgroup_menu;
+uses UN_MSG, reg_subgroup_menu, env;
 
 {$R *.dfm}
 
@@ -230,7 +230,7 @@ begin
 
   if (Lc_Cd_Grupo > 0) then
   Begin
-    if (Mensagem('Mensagem de Confirmação',
+    if (MensagemPadrao('Mensagem de Confirmação',
                        'Já existe um grupo com esta descrição.' + EOLN + EOLN +
                        'Deseja visualizar este registro ?',
                        ['Sim', 'Não'], [bNormal,bEscape], mpConfirmacao, clBtnFace) = mrBotao1) then
@@ -243,7 +243,7 @@ begin
     end
     else
     Begin
-      Mensagem('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
+      MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
                      'Altere a descrição para continuar.'+EOLN,
                     ['OK'],[bEscape],mpAlerta);
       Result:=false;

@@ -124,7 +124,7 @@ begin
   Result := True;
   Try
     if Registro.Codigo = 0 then
-      Registro.Codigo := Generator('GN_CONTABANCARIA');
+      Registro.Codigo := getNextByField(Registro,'CTB_CODIGO',0);
     SaveObj(Registro);
   Except
     Result := False;

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient,
   Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls,
-  ControllerUF, base_search;
+  ControllerUF, base_search, Datasnap.Provider;
 
 type
   TSeaUf = class(TBaseSearch)
@@ -89,10 +89,8 @@ begin
 
   for i := 0 to Pred(uf.Lista.Count) do
     cds_search.AppendRecord([uf.Lista[i].Codigo, uf.Lista[i].Descricao]);
-
+  cds_search.first;
   cds_search.EnableControls;
-
-  inherited;
 end;
 
 procedure TSeaUf.SetRegister;

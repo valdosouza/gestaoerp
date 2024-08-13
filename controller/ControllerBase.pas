@@ -307,7 +307,7 @@ begin
       with Lc_Qry do
       Begin
         SQL.Clear;
-        SQL.Add ( TGenericORM._getNextByField( Obj,Field, Intitution  ) );
+        SQL.Add ( TGenericORM._getNextByField( Obj,Field  ) );
         Active := True;
         Result := StrToIntDef( FieldByName(Field).AsString,0) + 1;
       End;

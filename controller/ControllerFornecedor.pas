@@ -31,7 +31,7 @@ Type
 
 implementation
 
-uses UnFunctions;
+uses UnFunctions,Un_Funcoes;
 
 
 procedure TControllerFornecedor.clear;
@@ -167,7 +167,6 @@ begin
     End;
   Finally
     FinalizaQuery(Lc_Qry);
-    DisposeOf;
   End;
 end;
 

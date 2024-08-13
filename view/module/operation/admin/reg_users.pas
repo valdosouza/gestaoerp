@@ -76,7 +76,7 @@ implementation
 
 {$R *.dfm}
 
-uses UN_MSG, Md5, Un_envia_email;
+uses UN_MSG, Md5, Un_envia_email, env;
 
 { TRegUsers }
 

@@ -156,7 +156,7 @@ Var
   Lc_Banco:boolean;
 begin
   sqltxt := '';
-  Screen.Cursor:=crHourGlass;
+  Screen.Cursor := crHourGlass;
   Qr_Pesquisa.Close;
   Qr_Pesquisa.Sql.Clear;
   Sqltxt:='SELECT  tb_banco.EMP_NUMBCO ,CTB_AGENCIA, CTB_CONTA, CTB_CODIGO, BLE_CODIGO, '+

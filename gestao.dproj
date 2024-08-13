@@ -131,33 +131,6 @@
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="env.pas"/>
-        <DCCReference Include="view\module\banking\register\reg_banking_account.pas">
-            <Form>RegBankingAccount</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_banking_history.pas">
-            <Form>RegBankingHistory</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_billing_portfolio.pas">
-            <Form>RegBillingPortfolio</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_electronic_card.pas">
-            <Form>RegElectronicCard</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_electronic_slip.pas">
-            <Form>RegElectronicSlip</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\sea_banking_account.pas">
-            <Form>SeaBankingAccount</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\sea_banking_history.pas">
-            <Form>SeaBankingHistory</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\sea_electronic_card.pas">
-            <Form>SeaEletronicCard</Form>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\sea_electronic_slip.pas">
-            <Form>SeaElectronicSlip</Form>
-        </DCCReference>
         <DCCReference Include="view\module\human_resource\register\reg_collaborator.pas">
             <Form>RegCollaborator</Form>
         </DCCReference>
@@ -270,6 +243,46 @@
             <Form>BaseFrameList</Form>
             <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_banking_account.pas">
+            <Form>RegBankingAccount</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_banking_history.pas">
+            <Form>RegBankingHistory</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_billing_portfolio.pas">
+            <Form>RegBillingPortfolio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_electronic_card.pas">
+            <Form>RegElectronicCard</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_electronic_slip.pas">
+            <Form>RegElectronicSlip</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_banking_account.pas">
+            <Form>SeaBankingAccount</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_banking_history.pas">
+            <Form>SeaBankingHistory</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_electronic_card.pas">
+            <Form>SeaEletronicCard</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\sea_electronic_slip.pas">
+            <Form>SeaElectronicSlip</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\reg_measure.pas">
+            <Form>RegMeasure</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

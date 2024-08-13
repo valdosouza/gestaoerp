@@ -42,7 +42,7 @@ inherited Fr_Especie_Doc: TFr_Especie_Doc
     Height = 47
     ExplicitWidth = 624
     ExplicitHeight = 47
-    object Label7: TLabel
+    object L_Descricao: TLabel
       Left = 121
       Top = 2
       Width = 105
@@ -55,7 +55,7 @@ inherited Fr_Especie_Doc: TFr_Especie_Doc
       Font.Style = []
       ParentFont = False
     end
-    object Label1: TLabel
+    object L_Numero: TLabel
       Left = 5
       Top = 2
       Width = 37
@@ -68,7 +68,7 @@ inherited Fr_Especie_Doc: TFr_Especie_Doc
       Font.Style = []
       ParentFont = False
     end
-    object Label2: TLabel
+    object L_Sigla: TLabel
       Left = 59
       Top = 2
       Width = 23

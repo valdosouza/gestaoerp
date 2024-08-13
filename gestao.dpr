@@ -9,15 +9,6 @@ uses
   base_registry in 'view\inheritable\base_registry.pas' {BaseRegistry},
   UN_TabelasEmListas in 'UN_TabelasEmListas.pas' {DM_ListaConsultas: TDataModule},
   env in 'env.pas',
-  reg_banking_account in 'view\module\banking\register\reg_banking_account.pas' {RegBankingAccount},
-  reg_banking_history in 'view\module\banking\register\reg_banking_history.pas' {RegBankingHistory},
-  reg_billing_portfolio in 'view\module\banking\register\reg_billing_portfolio.pas' {RegBillingPortfolio},
-  reg_electronic_card in 'view\module\banking\register\reg_electronic_card.pas' {RegElectronicCard},
-  reg_electronic_slip in 'view\module\banking\register\reg_electronic_slip.pas' {RegElectronicSlip},
-  sea_banking_account in 'view\module\banking\register\sea_banking_account.pas' {SeaBankingAccount},
-  sea_banking_history in 'view\module\banking\register\sea_banking_history.pas' {SeaBankingHistory},
-  sea_electronic_card in 'view\module\banking\register\sea_electronic_card.pas' {SeaEletronicCard},
-  sea_electronic_slip in 'view\module\banking\register\sea_electronic_slip.pas' {SeaElectronicSlip},
   reg_collaborator in 'view\module\human_resource\register\reg_collaborator.pas' {RegCollaborator},
   reg_job_position in 'view\module\human_resource\register\reg_job_position.pas' {RegJobPosition},
   sea_collaborator in 'view\module\human_resource\register\sea_collaborator.pas' {SeaCollaborator},
@@ -52,7 +43,17 @@ uses
   un_fm_billing_portfolio in 'frame\un_fm_billing_portfolio.pas' {FmBillingPortfolio: TFrame},
   Un_Fm_ListaEspecieDoc in 'frame\Un_Fm_ListaEspecieDoc.pas' {Fm_ListaEspecieDoc: TFrame},
   Un_Fm_ListaContaBancaria in 'frame\Un_Fm_ListaContaBancaria.pas' {Fm_ListaContaBancaria: TFrame},
-  base_frame_list in 'view\inheritable\base_frame_list.pas' {BaseFrameList: TFrame};
+  base_frame_list in 'view\inheritable\base_frame_list.pas' {BaseFrameList: TFrame},
+  reg_banking_account in 'view\module\banking\register\reg_banking_account.pas' {RegBankingAccount},
+  reg_banking_history in 'view\module\banking\register\reg_banking_history.pas' {RegBankingHistory},
+  reg_billing_portfolio in 'view\module\banking\register\reg_billing_portfolio.pas' {RegBillingPortfolio},
+  reg_electronic_card in 'view\module\banking\register\reg_electronic_card.pas' {RegElectronicCard},
+  reg_electronic_slip in 'view\module\banking\register\reg_electronic_slip.pas' {RegElectronicSlip},
+  sea_banking_account in 'view\module\banking\register\sea_banking_account.pas' {SeaBankingAccount},
+  sea_banking_history in 'view\module\banking\register\sea_banking_history.pas' {SeaBankingHistory},
+  sea_electronic_card in 'view\module\banking\register\sea_electronic_card.pas' {SeaEletronicCard},
+  sea_electronic_slip in 'view\module\banking\register\sea_electronic_slip.pas' {SeaElectronicSlip},
+  reg_measure in 'view\module\operation\register\reg_measure.pas' {RegMeasure};
 
 {$R *.res}
 
@@ -62,5 +63,15 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
+  Application.CreateForm(TRegBankingAccount, RegBankingAccount);
+  Application.CreateForm(TRegBankingHistory, RegBankingHistory);
+  Application.CreateForm(TRegBillingPortfolio, RegBillingPortfolio);
+  Application.CreateForm(TRegElectronicCard, RegElectronicCard);
+  Application.CreateForm(TRegElectronicSlip, RegElectronicSlip);
+  Application.CreateForm(TSeaBankingAccount, SeaBankingAccount);
+  Application.CreateForm(TSeaBankingHistory, SeaBankingHistory);
+  Application.CreateForm(TSeaEletronicCard, SeaEletronicCard);
+  Application.CreateForm(TSeaElectronicSlip, SeaElectronicSlip);
+  Application.CreateForm(TRegMeasure, RegMeasure);
   Application.Run;
 end.
