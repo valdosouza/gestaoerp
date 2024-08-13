@@ -595,16 +595,17 @@ inherited RegElectronicSlip: TRegElectronicSlip
       ExplicitHeight = 41
       inherited L_Carteira: TLabel
         Width = 233
-        ExplicitLeft = 0
-        ExplicitTop = 0
       end
       inherited pnl_linha_1: TPanel
         Width = 233
+        ExplicitWidth = 233
         inherited Sb_Carteira: TSpeedButton
           Left = 209
+          ExplicitLeft = 209
         end
         inherited Dblcb_Lista: TDBLookupComboBox
           Width = 209
+          ExplicitWidth = 209
         end
       end
     end

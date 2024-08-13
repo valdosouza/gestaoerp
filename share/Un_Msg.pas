@@ -24,17 +24,7 @@ const
   mrBotao5 = 4;
   mrBotao6 = 5;
 
-  SIM = 'S';
-  NAO = 'N';
-
-  OPCOES_SIM = 'SIM';
-  OPCOES_NAO = 'NÃO';
-  OPCOES_OK = 'OK';
-
-  TITULO_ERRO = 'Mensagem de erro';
-  TITULO_CONFIRMACAO = 'Mensagem de Confirmação';
-
-  function Mensagem(const Titulo, Msg: string;
+  function MensagemPadrao(const Titulo, Msg: string;
                         Opcoes : array of string;
                         BotaoEscape : array of TMsgEscape;
                         TipoPadrao : TMsgPadrao;
@@ -56,7 +46,8 @@ const
   public
     class function ValidaPreenchimentoCampo(Campo: String): Integer;
     class function ErroCampo(Campo,info: String): Integer;
-    class function Excluir: Integer;
+    class function Excluir: Boolean;
+    class function PararExecucao(info:String): Integer;
   end;
 
 Var
@@ -65,7 +56,9 @@ Var
 implementation
 
 // Mensagem Padrao  - Utilizado para calcular o tamanho padrao de um caracter
-function GetAveCharSize(Canvas: TCanvas): TPoint;
+
+
+uses env;function GetAveCharSize(Canvas: TCanvas): TPoint;
 var
   I: Integer;
   Buffer: array[0..51] of Char;
@@ -110,7 +103,7 @@ begin
   Msg :=  'A T E N Ç Ã O!' + EOLN + EOLN +
           'O Campo "'+Campo+'" não foi informado.' + EOLN +
           'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
+  Result := MensagemPadrao(TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
 function MensagemErroCampo(Campo,info: String): Integer;
@@ -121,7 +114,7 @@ begin
          'Verifique o Campo "'+Campo+'".' + EOLN +
          info + EOLN +
          'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpErro, clRed);
+  Result := MensagemPadrao(TITULO_ERRO, Msg, [OK],[bEscape], mpErro, clRed);
 end;
 
 function MensagemExcluir(): Integer;
@@ -130,7 +123,7 @@ var
 begin
   Msg := 'Deseja excluir este item?' + EOLN + EOLN +
          'Confirmar a exclusão?';
-  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OPCOES_SIM, OPCOES_NAO],[bEscape, bNormal], mpConfirmacao, clRed);
+  Result := MensagemPadrao(TITULO_CONFIRMACAO, Msg, [SIM, NAO],[bEscape, bNormal], mpConfirmacao, clRed);
 end;
 
 function MensagemPararExecucao(info:String): Integer;
@@ -140,7 +133,7 @@ begin
   Msg := 'A T E N Ç Ã O!' + EOLN + EOLN +
           info + EOLN +
           'Verifique antes de continuar.' + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
+  Result := MensagemPadrao( TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
 function MensagemcConfirmaAcao(info:String): Integer;
@@ -149,10 +142,10 @@ var
 begin
   Msg := 'C O N F I R M A Ç Ã O!' + EOLN + EOLN +
           info + EOLN;
-  Result := Mensagem( TITULO_ERRO, Msg, [SIM,NAO],[bNormal, bEscape], mpAlerta, clBtnFace);
+  Result := MensagemPadrao( TITULO_ERRO, Msg, [SIM,NAO],[bNormal, bEscape], mpAlerta, clBtnFace);
 end;
 
-function Mensagem(const Titulo, Msg: string;
+function MensagemPadrao(const Titulo, Msg: string;
                         Opcoes : array of string;
                         BotaoEscape : array of TMsgEscape; TipoPadrao : TMsgPadrao;
                         Lc_Cor : TColor = clBtnFace) : Integer;
@@ -337,7 +330,7 @@ begin
   Msg :=  'A T E N Ç Ã O!' + EOLN + EOLN +
           'O Campo "'+Campo+'" não foi informado.' + EOLN +
           'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK],[bEscape], mpAlerta, clBtnFace);
+  Result := MensagemPadrao(TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
 end;
 
 class function TMsgSetes.ErroCampo(Campo, info: String): Integer;
@@ -348,16 +341,29 @@ begin
          'Verifique o Campo "'+Campo+'".' + EOLN +
          info + EOLN +
          'Preencha para continuar.' + EOLN;
-  Result := Mensagem(TITULO_ERRO, Msg, [OPCOES_OK], [bEscape], mpErro, clRed);
+  Result := MensagemPadrao(TITULO_ERRO, Msg, [OK], [bEscape], mpErro, clRed);
 end;
 
-class function TMsgSetes.Excluir: Integer;
+class function TMsgSetes.Excluir: Boolean;
 var
   Msg: String;
+  Lc_resposta : Integer;
 begin
   Msg := 'Deseja excluir este item?' + EOLN + EOLN +
          'Confirmar a exclusão?';
-  Result := Mensagem(TITULO_CONFIRMACAO, Msg, [OPCOES_NAO, OPCOES_SIM], [bEscape, bNormal], mpConfirmacao, clRed);
+  Lc_resposta := MensagemPadrao(TITULO_CONFIRMACAO, Msg, [SIM,NAO],[bNormal,bEscape], mpConfirmacao, clBtnFace);
+  Result := Lc_resposta = mrBotao1;
 end;
+
+class function TMsgSetes.PararExecucao(info:String): Integer;
+var
+  Msg: String;
+begin
+  Msg := ATENCAO + EOLN + EOLN +
+          info + EOLN +
+          'Verifique antes de continuar.' + EOLN;
+  Result := MensagemPadrao( TITULO_ERRO, Msg, [OK],[bEscape], mpAlerta, clBtnFace);
+end;
+
 
 end.

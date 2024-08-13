@@ -7,7 +7,7 @@ object Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
   object L_Especie_Doc: TLabel
     Left = 1
     Top = 1
-    Width = 116
+    Width = 110
     Height = 14
     Caption = 'Esp'#233'cie de Documento'
     Font.Charset = ANSI_CHARSET

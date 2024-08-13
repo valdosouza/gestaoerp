@@ -141,7 +141,7 @@ function TControllerPrintShopOS.insert: boolean;
 begin
   try
     if Registro.Codigo = 0 then
-      Registro.Codigo := getNextByField(Registro,'ID',Registro.Estabelecimento);
+      Registro.Codigo := getNextByField(Registro,'ID');
     if Registro.Numero = '' then
       Registro.Numero := Registro.Codigo.ToString();
     SaveObj(Registro);

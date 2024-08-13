@@ -161,7 +161,7 @@ end;
 function TControllerIfoodOrder.insert: boolean;
 begin
   Try
-    Registro.IDSETES := getNextByField(Registro,'ID_SETES',0) ;
+    Registro.IDSETES := getNextByField(Registro,'ID_SETES') ;
     InsertObj(Registro);
     Result := True;
   Except

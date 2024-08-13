@@ -43,14 +43,14 @@ end;
 
 function TControllerBanco.getCodigoBancoLista(NumeroNome: String): Integer;
 Var
-  i: Integer;
+  I: Integer;
 begin
   Result := 0;
-  for i := 0 to Pred(Lista.count) do
+  for I := 0 to Lista.count -1 do
   Begin
-    if Lista[i].NumeroNome = NumeroNome then
+    if Lista[I].NumeroNome = NumeroNome then
     Begin
-      Result := Lista[i].Codigo;
+      Result := Lista[I].Codigo;
       Break;
     End;
   End;
@@ -58,14 +58,14 @@ end;
 
 function TControllerBanco.getNumeroNomeLista(CodigoBanco: Integer): String;
 Var
-  i:Integer;
+  I:Integer;
 begin
   Result := EmptyStr;
-  for i := 0 to Pred(Lista.count) do
+  for I := 0 to Lista.count -1 do
   Begin
-    if Lista[i].Codigo = CodigoBanco then
+    if Lista[I].Codigo = CodigoBanco then
     Begin
-      Result := Lista[i].NumeroNome;
+      Result := Lista[I].NumeroNome;
       Break;
     End;
   End;
@@ -90,7 +90,7 @@ begin
       Result := StrToIntDEf(FieldByName('EMP_NUMBCO').AsString,1);
     End;
   finally
-    Lc_Qry.DisposeOf;
+    FinalizaQuery(Lc_Qry);
   end;
 end;
 

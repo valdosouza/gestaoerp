@@ -45,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses UN_MSG;
+uses UN_MSG, env;
 
 { TRegJobPosition }
 

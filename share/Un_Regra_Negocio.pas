@@ -1860,11 +1860,12 @@ Begin
       Active := true;
       FetchAll;
       Result := FieldByName('VL_VENDA').AsFloat;
-      Screen.Cursor:=crDefault;
+
     end;
   Finally
     LcBase.FinalizaQuery(Lc_Qry);
     LcBase.DisposeOf;
+    Screen.Cursor:=crDefault;
   End;
 end;
 
@@ -1989,11 +1990,11 @@ Begin
       Active := true;
       FetchAll;
       Result := FieldByName('CTC_VL_TL_FRETE').AsFloat;
-      Screen.Cursor:=crDefault;
     end;
   Finally
     LcBase.FinalizaQuery(Lc_Qry);
     LcBase.DisposeOf;
+    Screen.Cursor:=crDefault;
   End;
 end;
 

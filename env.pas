@@ -14,6 +14,16 @@ var
   Gb_DataCaixa : TDateTime;
   Gb_PAF_NFE_e : Boolean;
 
+const
+  SIM = 'Sim';
+  NAO = 'Não';
+  OK  = 'OK';
+  ATENCAO = 'A T E N Ç Ã O !';
+  MENSAGEM = 'Mensagem';
+  TITULO_ERRO = 'Mensagem de erro';
+  TITULO_CONFIRMACAO = 'Mensagem de Confirmação';
+  TITULO_INFORMACAO = 'Mensagem de Informação';
+
 
 implementation
 
