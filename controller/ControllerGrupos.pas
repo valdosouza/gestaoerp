@@ -95,7 +95,7 @@ end;
 procedure TControllerGrupos.clear;
 begin
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerGrupos.Create(AOwner: TComponent);
@@ -105,7 +105,7 @@ begin
   Lista := TListaGrupo.create;
   SubGRupo := TControllerSubGRupos.Create(self);
   Obj := TRestGroup.create;
-  Parametros := TPrmGroupMenu.Create;
+  FParametros := TPrmGroupMenu.Create;
 end;
 
 function TControllerGrupos.delete: boolean;
@@ -124,6 +124,7 @@ begin
   SubGRupo.DisposeOf;
   Registro.DisposeOf;
   Lista.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -189,19 +190,19 @@ begin
         '   ON (tb_subgrupos.SBG_CODGRP= tb_grupos.GRP_CODIGO) '+
         'WHERE (GRP_COMPOSICAO IS NOT NULL) ';
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
+      if FParametros.FieldName.Descricao <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND tb_grupos.GRP_DESCRICAO LIKE :GRP_DESCRICAO';
-        ParamByName('GRP_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+        ParamByName('GRP_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
-      if Parametros.FieldName.SubGrupo <> EmptyStr then
+      if FParametros.FieldName.SubGrupo <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND tb_grupos.SBG_DESCRICAO LIKE :SBG_DESCRICAO';
-        ParamByName('SBG_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+        ParamByName('SBG_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
-      if Parametros.FieldName.GruposVazios then
+      if FParametros.FieldName.GruposVazios then
         SQL.Text := SQL.Text + ' AND (tb_subgrupos.SBG_DESCRICAO IS NULL) '
       else
         SQL.Text := SQL.Text + ' AND (tb_subgrupos.SBG_DESCRICAO IS NOT NULL) ';

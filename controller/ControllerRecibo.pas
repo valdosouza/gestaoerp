@@ -43,7 +43,7 @@ begin
   inherited;
   Registro := TRecibo.create;
   Lista := TListaRecibo.Create();
-  Parametros := TPrmReceipt.Create;
+  FParametros := TPrmReceipt.Create;
 end;
 
 destructor TControllerRecibo.Destroy;
@@ -105,19 +105,19 @@ begin
       sql.add(concat('SELECT * ',
                       'FROM TB_RECIBO '));
 
-      IF Parametros.FieldName.Numero > 0 THEN
+      IF FParametros.FieldName.Numero > 0 THEN
         sql.add(' AND REC_NUMERO = :rec_numero ');
 
-      IF Parametros.FieldName.Valor > 0 THEN
+      IF FParametros.FieldName.Valor > 0 THEN
         sql.add(' AND REC_VALOR = :REC_VALOR ');
 
-      if Parametros.Periodo then
+      if FParametros.Periodo then
         sql.add(' and REC_DATA BETWEEN :Dat_ini and :dat_fim ');
 
-      if Parametros.FieldName.Emitente <> '' then
+      if FParametros.FieldName.Emitente <> '' then
         sql.add(' and REC_EMITENTE like :REC_EMITENTE ')
       else
-      if Parametros.FieldName.Sacado <> '' then
+      if FParametros.FieldName.Sacado <> '' then
         sql.add(' and REC_SACADO like :REC_SACADO ');
 
       Active := True;

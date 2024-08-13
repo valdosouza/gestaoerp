@@ -129,17 +129,17 @@ begin
                 'FROM TB_HISTBANCARIO ',
                 'WHERE HTB_CODIGO IS NOT NULL '
       ));
-      if Parametros.FieldName.Codigo > 0 then
+      if FParametros.FieldName.Codigo > 0 then
         sql.add(' AND HTB_CODIGO =:HTB_CODIGO ');
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
+      if FParametros.FieldName.Descricao <> EmptyStr then
         sql.add(' AND HTB_CODIGO like :HTB_CODIGO ');
 
-      if Parametros.FieldName.Codigo > 0 then
-        ParamByName('HTB_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      if FParametros.FieldName.Codigo > 0 then
+        ParamByName('HTB_CODIGO').AsInteger := FParametros.FieldName.Codigo;
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
-        ParamByName('HTB_DESCRICAO').AsString := Parametros.FieldName.Descricao;
+      if FParametros.FieldName.Descricao <> EmptyStr then
+        ParamByName('HTB_DESCRICAO').AsString := FParametros.FieldName.Descricao;
 
       Active := True;
       FetchAll;

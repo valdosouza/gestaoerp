@@ -37,7 +37,7 @@ function TControllerImpressora.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
-  Parametros.Clear;
+  FParametros.Clear;
 end;
 
 constructor TControllerImpressora.Create(AOwner: TComponent);
@@ -45,7 +45,7 @@ begin
   inherited;
   Registro := TImpressora.Create;
   Lista := TListaImpressora.Create;
-  Parametros := TPrmPrinters.Create;
+  FParametros := TPrmPrinters.Create;
 end;
 
 function TControllerImpressora.delete: boolean;
@@ -102,10 +102,10 @@ begin
     Begin
       SQL.Text := ' SELECT * FROM TB_IMPRESSORA WHERE 1=1';
 
-      if Parametros.FieldName.Descricao <> EmptyStr then
+      if FParametros.FieldName.Descricao <> EmptyStr then
       begin
         SQL.Text := SQL.Text + ' AND IMP_DESCRICAO LIKE :IMP_DESCRICAO';
-        ParamByName('IMP_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+        ParamByName('IMP_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
       Active := True;
