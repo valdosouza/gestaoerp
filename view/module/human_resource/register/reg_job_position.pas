@@ -16,6 +16,7 @@ type
   private
     { Private declarations }
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -46,6 +47,12 @@ procedure TRegJobPosition.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegJobPosition.ClearAllFields;
+begin
+  inherited;
+  JobPosition.Clear;
 end;
 
 procedure TRegJobPosition.CriarVariaveis;

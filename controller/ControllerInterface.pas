@@ -2,46 +2,63 @@ unit ControllerInterface;
 
 interface
 
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      tblInterface ,Un_MSg,Generics.Collections,EncdDecd,synacode;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblInterface, prm_interface,
+     ControllerMenus, ControllerOperInterface, ControllerItensIfc;
 
 Type
-  TListaInterface = TObjectList<TInterface>;
-
+  TListaInterface  = TObjectList<TInterface>;
   TControllerInterface = Class(TControllerBase)
-
   private
-
+    FParametros: TPrmInterface;
+    procedure setFParametros(const Value: TPrmInterface);
   public
     Registro : TInterface;
     Lista : TListaInterface;
+    menus : TControllerMenus;
+    operInterface : TControllerOperInterface;
+    itensIfc : TControllerItensIfc;
+
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
+    function save:boolean;
+    function insert:boolean;
+    Function delete:boolean;
+    function getByKey:Boolean;
     function salva:boolean;
     procedure getbyId;
-    function insert:boolean;
-    function update:boolean;
-    Function delete:boolean;
-    function getList:Boolean;
-    function replace:boolean;
+    function Clear:Boolean;
+    procedure Search;
+    property Parametros : TPrmInterface read FParametros write setFParametros;
   End;
 
 implementation
 
-uses Un_sistema, Un_Regra_Negocio;
+{ ControllerInterface }
+
+function TControllerInterface.Clear: Boolean;
+begin
+  Result := True;
+  clearObj(Registro);
+  FParametros.Clear;
+end;
 
 constructor TControllerInterface.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TInterface.Create;
+  FParametros := TPrmInterface.Create;
   Lista := TListaInterface.Create;
+  menus := TControllerMenus.Create(self);
+  operInterface := TControllerOperInterface.Create(self);
+  itensIfc := TControllerItensIfc.Create(self);
 end;
 
 function TControllerInterface.delete: boolean;
 begin
+  Result := True;
   Try
-    DeleteObj(Registro);
-    Result := True;
+    deleteObj(Registro);
   Except
     Result := False;
   End;
@@ -49,81 +66,98 @@ end;
 
 destructor TControllerInterface.Destroy;
 begin
-  Lista.DisposeOf;
   Registro.DisposeOf;
+  FParametros.DisposeOf;
+  Lista.DisposeOf;
+  menus.DisposeOf;
+  operInterface.DisposeOf;
+  itensIfc.DisposeOf;
   inherited;
 end;
 
 function TControllerInterface.insert: boolean;
 begin
-  if Registro.Codigo = 0 then
-    Registro.Codigo := Generator('GN_INTERFACE');
-  Try
-    InsertObj(Registro);
-    Result := True;
-  Except
+  Result := true;
+  try
+    SaveObj(Registro);
+  except
     Result := False;
-  End;
-end;
-
-
-function TControllerInterface.replace: boolean;
-var
-  Lc_Qry : TSTQuery;
-  LITem : TInterface;
-begin
-  ReplaceObj(Registro);
+  end;
 end;
 
 function TControllerInterface.salva: boolean;
 begin
+  Result := True;
   Try
     if Registro.Codigo = 0 then
       Registro.Codigo := Generator('GN_INTERFACE');
     SaveObj(Registro);
-    Result := True;
   Except
     Result := False;
   End;
 end;
 
-function TControllerInterface.update: boolean;
+function TControllerInterface.save: boolean;
 begin
-  Try
-    UpdateObj(Registro);
-    Result := True;
-  Except
+  Result := true;
+  try
+    SaveObj(Registro);
+  except
     Result := False;
-  End;
+  end;
 end;
 
-procedure TControllerInterface.getById;
+procedure TControllerInterface.setFParametros(const Value: TPrmInterface);
+begin
+  FParametros := Value;
+end;
+
+procedure TControllerInterface.getbyId;
 begin
   _getByKey(Registro);
 end;
 
-function TControllerInterface.getList: Boolean;
+function TControllerInterface.getByKey: Boolean;
+begin
+  Result := True;
+  Self._getByKey(Registro);
+end;
+
+procedure TControllerInterface.Search;
 var
   Lc_Qry : TSTQuery;
   LITem : TInterface;
 begin
-  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
     Begin
-      sql.add(concat('SELECT * ',
-                      'FROM TB_INTERFACE '));
+      SQL.Text := ' SELECT * FROM TB_INTERFACE WHERE 1=1';
+
+      if Parametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND IFC_CODIGO = :IFC_CODIGO';
+        ParamByName('IFC_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      end;
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND IFC_DESCRICAO LIKE :IFC_DESCRICAO';
+        ParamByName('IFC_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
       Active := True;
       FetchAll;
       First;
       Lista.Clear;
-      while not eof do
+
+      while not Eof do
       Begin
         LITem := TInterface.Create;
-        get(Lc_Qry,LITem);
+        get(Lc_Qry, LITem);
         Lista.add(LITem);
-        next;
+
+        Next;
       end;
     end;
   Finally
@@ -132,3 +166,4 @@ begin
 end;
 
 end.
+

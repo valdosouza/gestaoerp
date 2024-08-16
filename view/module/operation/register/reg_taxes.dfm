@@ -1,15 +1,16 @@
 inherited RegTaxes: TRegTaxes
   Caption = 'Impostos para a Lucratividade'
-  ClientHeight = 236
+  ClientHeight = 204
   ClientWidth = 323
-  ExplicitWidth = 335
-  ExplicitHeight = 299
+  ExplicitWidth = 329
+  ExplicitHeight = 248
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 172
+    Top = 140
     Width = 323
-    ExplicitTop = 163
-    ExplicitWidth = 317
+    ExplicitTop = 140
+    ExplicitWidth = 323
     inherited SB_Inserir: TSpeedButton
       Left = -304
       ExplicitLeft = -304
@@ -37,20 +38,18 @@ inherited RegTaxes: TRegTaxes
   end
   inherited pnl_fundo: TPanel
     Width = 323
-    Height = 172
-    ExplicitWidth = 317
-    ExplicitHeight = 163
+    Height = 140
+    ExplicitWidth = 323
+    ExplicitHeight = 140
     object Panel2: TPanel
       Left = 2
       Top = 2
       Width = 319
-      Height = 168
+      Height = 136
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 313
-      ExplicitHeight = 159
       object L_Aq_Pis: TLabel
         Left = 8
         Top = 42
@@ -135,52 +134,6 @@ inherited RegTaxes: TRegTaxes
         Alignment = taRightJustify
         TabOrder = 0
         Text = ''
-      end
-      object Panel1: TPanel
-        Left = 2
-        Top = 125
-        Width = 315
-        Height = 41
-        Align = alBottom
-        BevelInner = bvRaised
-        BevelOuter = bvLowered
-        TabOrder = 5
-        ExplicitTop = 116
-        ExplicitWidth = 309
-        DesignSize = (
-          315
-          41)
-        object Btn_Ok: TButton
-          Left = 133
-          Top = 7
-          Width = 79
-          Height = 25
-          Anchors = [akRight, akBottom]
-          Caption = 'OK'
-          TabOrder = 0
-          ExplicitLeft = 127
-        end
-        object Btn_Cancelar: TButton
-          Left = 212
-          Top = 7
-          Width = 75
-          Height = 25
-          Anchors = [akRight, akBottom]
-          Caption = 'Cancelar'
-          TabOrder = 1
-          ExplicitLeft = 206
-        end
-        object Btn_Aplicar: TButton
-          Left = 53
-          Top = 7
-          Width = 79
-          Height = 25
-          Anchors = [akRight, akBottom]
-          Caption = 'Aplicar'
-          Enabled = False
-          TabOrder = 2
-          ExplicitLeft = 47
-        end
       end
     end
   end

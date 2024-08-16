@@ -40,6 +40,7 @@ type
     procedure MontaComboBoxEmpresa;
     procedure MontaComboBoxBanco;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -68,6 +69,12 @@ procedure TRegBankingAccount.Change;
 begin
   inherited;
   CB_Empresa.SetFocus;
+end;
+
+procedure TRegBankingAccount.ClearAllFields;
+begin
+  inherited;
+  contaBancaria.Clear;
 end;
 
 procedure TRegBankingAccount.CriarVariaveis;

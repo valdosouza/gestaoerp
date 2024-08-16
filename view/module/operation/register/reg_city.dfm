@@ -3,7 +3,7 @@ inherited RegCity: TRegCity
   ClientHeight = 160
   ClientWidth = 632
   ExplicitWidth = 638
-  ExplicitHeight = 209
+  ExplicitHeight = 204
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel

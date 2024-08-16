@@ -22,6 +22,7 @@ type
   private
     procedure MontaComboBoxBanco;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -50,6 +51,12 @@ procedure TRegCommitment.Change;
 begin
   inherited;
   E_Data.SetFocus;
+end;
+
+procedure TRegCommitment.ClearAllFields;
+begin
+  inherited;
+  agenda.Clear;
 end;
 
 procedure TRegCommitment.CriarVariaveis;
@@ -112,7 +119,7 @@ begin
     registro.ParaCodusu := Usuario.getCodigoLista(CB_Usuario.Text);
     Registro.Compromisso := M_Descricao.Text;
     registro.DecoDusu := Gb_Cd_Usuario;
-    registro.Avisar := IfThen(Ch_Avisar.Checked, SIM, NAO);
+    registro.Avisar := IfThen(Ch_Avisar.Checked, SIGLA_S, SIGLA_N);
     salva;
   End;
   CodigoRegistro := agenda.Registro.Codigo;

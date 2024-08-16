@@ -94,6 +94,7 @@ type
     procedure UpdateMVA;
     procedure UpdateFCP;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure ImagemBotao;Override;
@@ -147,6 +148,12 @@ procedure TRegUf.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegUf.ClearAllFields;
+begin
+  inherited;
+  uf.clear;
 end;
 
 procedure TRegUf.CriarVariaveis;

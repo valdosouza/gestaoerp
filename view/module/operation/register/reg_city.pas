@@ -20,6 +20,7 @@ type
     E_AliquotaISS: TEdit;
     L_AliquotaISS: TLabel;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -50,6 +51,12 @@ procedure TRegCity.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegCity.ClearAllFields;
+begin
+  inherited;
+  cidade.Clear;
 end;
 
 procedure TRegCity.CriarVariaveis;

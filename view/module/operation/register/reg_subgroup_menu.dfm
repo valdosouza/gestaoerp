@@ -3,7 +3,7 @@ inherited RegSubgroupMenu: TRegSubgroupMenu
   ClientHeight = 202
   ClientWidth = 552
   ExplicitWidth = 558
-  ExplicitHeight = 251
+  ExplicitHeight = 246
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel

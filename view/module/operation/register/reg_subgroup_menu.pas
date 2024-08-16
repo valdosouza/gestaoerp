@@ -22,6 +22,7 @@ type
   private
     procedure MontaComboBox;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -51,6 +52,12 @@ procedure TRegSubgroupMenu.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegSubgroupMenu.ClearAllFields;
+begin
+  inherited;
+  subgrupos.Clear;
 end;
 
 procedure TRegSubgroupMenu.CriarVariaveis;
@@ -98,7 +105,7 @@ begin
     Registro.Abas := E_Abas.Text;
 
     registro.Impressora := impressora.getCodigoLista(cb_Impressora.Text);
-    Registro.Ativos := IfThen(ChBx_Ativo.Checked, SIM, NAO);
+    Registro.Ativos := IfThen(ChBx_Ativo.Checked, SIGLA_S, SIGLA_N);
 
     salva;
   End;
@@ -117,7 +124,7 @@ begin
     Lc_Aux := impressora.getDescLista(Registro.Impressora);
     cb_Impressora.ItemIndex := cb_Impressora.Items.IndexOf(Lc_Aux);
 
-    if Registro.Ativos = SIM then
+    if Registro.Ativos = SIGLA_S then
       ChBx_Ativo.Checked := True
     else
       ChBx_Ativo.Checked := False;

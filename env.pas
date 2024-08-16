@@ -17,6 +17,8 @@ var
 const
   SIM = 'Sim';
   NAO = 'Não';
+  SIGLA_S = 'S';
+  SIGLA_N = 'N';
   OK  = 'OK';
   ATENCAO = 'A T E N Ç Ã O !';
   MENSAGEM = 'Mensagem';
