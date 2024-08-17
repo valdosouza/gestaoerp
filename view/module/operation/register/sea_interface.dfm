@@ -3,7 +3,7 @@ inherited SeaInterface: TSeaInterface
   ClientHeight = 333
   ClientWidth = 570
   ExplicitWidth = 576
-  ExplicitHeight = 377
+  ExplicitHeight = 382
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -19,6 +19,17 @@ inherited SeaInterface: TSeaInterface
     inherited DBG_Pesquisa: TDBGrid
       Width = 468
       Height = 241
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 470
@@ -124,10 +135,12 @@ inherited SeaInterface: TSeaInterface
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField
       DisplayLabel = 'C'#243'digo'
+      DisplayWidth = 12
       FieldName = 'codigo'
     end
     object cds_searchdescricao: TStringField
       DisplayLabel = 'Descri'#231#227'o'
+      DisplayWidth = 53
       FieldName = 'descricao'
     end
   end

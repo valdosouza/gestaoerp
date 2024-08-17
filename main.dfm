@@ -512,6 +512,7 @@ inherited FrMain: TFrMain
       end
       object Interface1: TMenuItem
         Caption = 'Interface'
+        OnClick = Interface1Click
       end
       object Perfil1: TMenuItem
         Caption = 'Opera'#231#227'o da Interface'

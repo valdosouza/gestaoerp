@@ -53,7 +53,8 @@ uses
   sea_banking_history in 'view\module\banking\register\sea_banking_history.pas' {SeaBankingHistory},
   sea_electronic_card in 'view\module\banking\register\sea_electronic_card.pas' {SeaEletronicCard},
   sea_electronic_slip in 'view\module\banking\register\sea_electronic_slip.pas' {SeaElectronicSlip},
-  reg_measure in 'view\module\operation\register\reg_measure.pas' {RegMeasure};
+  reg_measure in 'view\module\operation\register\reg_measure.pas' {RegMeasure},
+  prm_itens_ifc in 'parameter\prm_itens_ifc.pas';
 
 {$R *.res}
 

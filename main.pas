@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, un_base, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls;
+  Vcl.Buttons, Vcl.StdCtrls, sea_interface;
 
 type
   TFrMain = class(TFr_Base)
@@ -312,6 +312,7 @@ type
     procedure Cidades1Click(Sender: TObject);
     procedure Estados1Click(Sender: TObject);
     procedure Embalagens1Click(Sender: TObject);
+    procedure Interface1Click(Sender: TObject);
   protected
     procedure IniciaVariaveis;override;
   private
@@ -531,12 +532,18 @@ end;
 procedure TFrMain.IniciaVariaveis;
 begin
   inherited;
-  MenuBanco;
+  MenuOperacao;
   GB_NM_Empresa := 'Teste';
   Gb_Nivel := 1;//Setado como 1 por que no sistema original passamos pelo autenticação para defini-lo
   Gb_CodMha := 1;
 end;
 
+
+procedure TFrMain.Interface1Click(Sender: TObject);
+begin
+  inherited;
+  ChamarTela(TSeaInterface);
+end;
 
 procedure TFrMain.LojaVirtual1Click(Sender: TObject);
 begin

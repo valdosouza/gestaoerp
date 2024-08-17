@@ -38,6 +38,8 @@ type
     procedure Delete; Override;
     function ValidateSave():boolean; Override;
     procedure Save; Override;
+    procedure SaveInterface;
+    procedure SaveInterfaceHasPrivilege;
   public
     cInterface : TControllerInterface;
   end;
@@ -47,7 +49,7 @@ var
 
 implementation
 
-uses UN_MSG, env;
+uses UN_MSG, UnFunctions,env;
 
 {$R *.dfm}
 
@@ -89,6 +91,10 @@ begin
   Begin
     cInterface.Registro.Codigo := Self.CodigoRegistro;
     cInterface.getbyId;
+
+    cInterface.itensIfc.Parametros.FieldName.CodigoIfc := cInterface.Registro.Codigo;
+    cInterface.itensIfc.search;
+    
   End;
   inherited;
 end;
@@ -107,38 +113,42 @@ procedure TRegInterface.Save;
 var
   Lc_I, Lc_Codigo: Integer;
 begin
+  SaveInterface;
+  SaveInterfaceHasPrivilege;
   CodigoRegistro := cInterface.Registro.Codigo;
+  inherited;
+end;
+
+procedure TRegInterface.SaveInterface;
+begin
   cInterface.Registro.Descricao := E_Descricao.Text;
   cInterface.Registro.FrName := E_FormName.Text;
   cInterface.Registro.CodMnu := cInterface.menus.getCodigoLista(cb_Menu.Text);
   cInterface.Registro.Sistema := IfThen(rgSistema.ItemIndex = 0, SIGLA_S, SIGLA_N);
-
-  for Lc_I := 0 to Pred(ChkBx_Permissao.Count) do
-  begin
-    Lc_Codigo := StrToIntDef(Copy(ChkBx_Permissao.Items.Strings[Lc_I],1,2),0);
-    cInterface.itensIfc.registro.Codigo := CodigoRegistro;
-    cInterface.itensIfc.registro.CodigoIfc := CodigoRegistro;
-    cInterface.itensIfc.registro.CodigoOpf := Lc_Codigo;
-    if ChkBx_Permissao.Checked[Lc_I] then   //tanto edição, como insert... esta falhando
-      cInterface.itensIfc.Delete
-    else
-    begin
-      if CodigoRegistro = 0 then
-        cInterface.itensIfc.salva
-      else
-        cInterface.itensIfc.Replace;
-    end;
-
-  end;
   cInterface.salva;
-  inherited;
+end;
+
+procedure TRegInterface.SaveInterfaceHasPrivilege;
+var
+  I : Integer;
+Begin
+  for I := 0 to Pred(ChkBx_Permissao.Count) do
+  begin
+    cInterface.itensIfc.registro.Codigo    := 0;
+    cInterface.itensIfc.registro.CodigoIfc := cInterface.Registro.Codigo;
+    cInterface.itensIfc.registro.CodigoOpf := StrToIntDef(Copy(ChkBx_Permissao.Items.Strings[I],1,2),0);
+    if ChkBx_Permissao.Checked[I] then   
+      cInterface.itensIfc.Insert
+    else  
+      cInterface.itensIfc.Delete
+  end;
 end;
 
 procedure TRegInterface.ShowData;
 Var
   Lc_Aux : String;
   Lc_I: Integer;
-  Lc_Codigo: Integer;
+  Lc_CodigoOper : Integer;
 begin
   E_Codigo.Text     := cInterface.Registro.Codigo.ToString;
   E_Descricao.Text  := cInterface.Registro.Descricao;
@@ -151,11 +161,14 @@ begin
   else
     rgSistema.ItemIndex := 1;
 
-  for  Lc_I := 0 to ChkBx_Permissao.Count -1 do
-  begin
-    Lc_Codigo := StrToIntDef(Copy(ChkBx_Permissao.Items.Strings[Lc_I],1,2),0);
-    ChkBx_Permissao.Checked[Lc_I] := cInterface.itensIfc.AchaOperacao(cInterface.Registro.Codigo, Lc_Codigo);
-  end;
+  if (cInterface.itensIfc.Lista.Count > 0) then
+  Begin
+    for  Lc_I := 0 to ChkBx_Permissao.Count -1 do
+    begin
+      Lc_CodigoOper := StrToIntDef(Copy(ChkBx_Permissao.Items.Strings[Lc_I],1,2),0);
+      ChkBx_Permissao.Checked[Lc_I] := cInterface.itensIfc.AchaOperacao(Lc_CodigoOper);
+    end;
+  End;
   inherited;
 end;
 
@@ -210,22 +223,16 @@ var
   i : Integer;
   Lc_Descricao: string;
 
-  function AdicionarZerosEsquerda(Numero: Integer; TotalDigitos: Integer): String;
-  begin
-    Result := Format('%.*d', [TotalDigitos, Numero]);
-  end;
-
 begin
   with cInterface do
   Begin
     operInterface.search;
     ChkBx_Permissao.Items.Clear;
-
     for i := 0 to Pred(operInterface.lista.Count) do
     begin
-      Lc_Descricao := AdicionarZerosEsquerda(operInterface.lista[I].Codigo, 2) + '-' +  operInterface.lista[I].Descricao;
-
+      Lc_Descricao := StrZero(operInterface.lista[I].Codigo, 2,0) + ' - ' +  operInterface.lista[I].Descricao;
       ChkBx_Permissao.Items.Add(Lc_Descricao);
+
     end;
   End;
 end;
