@@ -119,7 +119,7 @@ begin
     cInterface.itensIfc.registro.Codigo := CodigoRegistro;
     cInterface.itensIfc.registro.CodigoIfc := CodigoRegistro;
     cInterface.itensIfc.registro.CodigoOpf := Lc_Codigo;
-    if ChkBx_Permissao.Checked[Lc_I] then
+    if ChkBx_Permissao.Checked[Lc_I] then   //tanto edição, como insert... esta falhando
       cInterface.itensIfc.Delete
     else
     begin
