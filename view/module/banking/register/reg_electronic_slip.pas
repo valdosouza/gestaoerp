@@ -64,6 +64,7 @@ type
     procedure Sb_Path_remessaClick(Sender: TObject);
     procedure Fm_ListaContaBancariaDBLCB_ContaBancariaClick(Sender: TObject);
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -94,6 +95,12 @@ procedure TRegElectronicSlip.Change;
 begin
   inherited;
   Fm_ListaContaBancaria.DBLCB_ContaBancaria.SetFocus;
+end;
+
+procedure TRegElectronicSlip.ClearAllFields;
+begin
+  inherited;
+  boletoEletronico.Clear;
 end;
 
 procedure TRegElectronicSlip.CriarVariaveis;
@@ -157,7 +164,7 @@ begin
     Registro.ContaCorrente    := Fm_ListaContaBancaria.DBLCB_ContaBancaria.KeyValue;
     Registro.CodigoCarteira   := Fm_BillingPortfolio.Dblcb_Lista.KeyValue;
     Registro.EspecieDoc       := Fm_ListaEspecieDoc.Dblcb_Especie_Doc.KeyValue;
-    Registro.Aceite           := IfThen(RG_Aceite.ItemIndex = 0, SIM, NAO);
+    Registro.Aceite           := IfThen(RG_Aceite.ItemIndex = 0, SIGLA_S, SIGLA_N);
     Registro.Convenio         := E_Cedente_Convenio.Text;
     Registro.CodTrans         := E_CodTransmissao.Text;
     Registro.VariacaoCarteira := StrToIntDef(E_Varia_Carteira.Text, 0);
@@ -212,7 +219,7 @@ begin
 
     Fm_ListaEspecieDoc.Dblcb_Especie_Doc.KeyValue := Registro.EspecieDoc;
 
-    if Registro.Aceite = SIM then
+    if Registro.Aceite = SIGLA_S then
       RG_Aceite.ItemIndex := 0
     else
       RG_Aceite.ItemIndex := 1;

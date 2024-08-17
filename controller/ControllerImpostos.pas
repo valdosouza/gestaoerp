@@ -1,49 +1,47 @@
-unit ControllerAgenda;
+unit ControllerImpostos;
 
 interface
 
 uses STDatabase, System.Classes, System.SysUtils, ControllerBase,
-      tblAgenda, prm_commitment, ControllerUsuario;
+      tblImpostos, prm_taxes;
+
 Type
-  TControllerAgenda = Class(TControllerBase)
+  TControllerImpostos = Class(TControllerBase)
   private
-    FParametros: TPrmCommitMent;
-    procedure setFParametros(const Value: TPrmCommitMent);
+    FParametros: TPrmTaxes;
+    procedure setFParametros(const Value: TPrmTaxes);
   public
-    Registro : TAgenda;
-    Usuario : TControllerUsuario;
+    Registro : TImpostos;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function save:boolean;
     function insert:boolean;
     Function delete:boolean;
     function getByKey:Boolean;
-    function getAllByKey:boolean;
     function salva:boolean;
     procedure getbyId;
     function Clear:Boolean;
-    property Parametros : TPrmCommitMent read FParametros write setFParametros;
+    property Parametros : TPrmTaxes read FParametros write setFParametros;
   End;
 
   implementation
 { ControllerAgenda }
 
-function TControllerAgenda.Clear: Boolean;
+function TControllerImpostos.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
   FParametros.Clear;
 end;
 
-constructor TControllerAgenda.Create(AOwner: TComponent);
+constructor TControllerImpostos.Create(AOwner: TComponent);
 begin
   inherited;
-  Registro := TAgenda.Create;
-  FParametros := TPrmCommitMent.Create;
-  Usuario := TControllerUsuario.Create(self);
+  Registro := TImpostos.Create;
+  FParametros := TPrmTaxes.Create;
 end;
 
-function TControllerAgenda.delete: boolean;
+function TControllerImpostos.delete: boolean;
 begin
   Result := True;
   Try
@@ -53,15 +51,14 @@ begin
   End;
 end;
 
-destructor TControllerAgenda.Destroy;
+destructor TControllerImpostos.Destroy;
 begin
   FreeAndNil(Registro);
   FreeAndNil(FParametros);
-  FreeAndNil(Usuario);
   inherited;
 end;
 
-function TControllerAgenda.insert: boolean;
+function TControllerImpostos.insert: boolean;
 begin
   Result := true;
   try
@@ -71,7 +68,7 @@ begin
   end;
 end;
 
-function TControllerAgenda.salva: boolean;
+function TControllerImpostos.salva: boolean;
 begin
   Result := True;
   Try
@@ -83,7 +80,7 @@ begin
   End;
 end;
 
-function TControllerAgenda.save: boolean;
+function TControllerImpostos.save: boolean;
 begin
   Result := true;
   try
@@ -93,22 +90,17 @@ begin
   end;
 end;
 
-procedure TControllerAgenda.setFParametros(const Value: TPrmCommitMent);
+procedure TControllerImpostos.setFParametros(const Value: TPrmTaxes);
 begin
   FParametros := Value;
 end;
 
-function TControllerAgenda.getAllByKey: boolean;
-begin
-  getByKey;
-end;
-
-procedure TControllerAgenda.getbyId;
+procedure TControllerImpostos.getbyId;
 begin
   _getByKey(Registro);
 end;
 
-function TControllerAgenda.getByKey: Boolean;
+function TControllerImpostos.getByKey: Boolean;
 begin
   Result := True;
   Self._getByKey(Registro);

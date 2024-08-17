@@ -3,7 +3,7 @@ inherited RegUsers: TRegUsers
   ClientHeight = 475
   ClientWidth = 621
   ExplicitWidth = 627
-  ExplicitHeight = 524
+  ExplicitHeight = 519
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -262,7 +262,7 @@ inherited RegUsers: TRegUsers
         AlignWithMargins = True
         Left = 5
         Top = 2
-        Width = 294
+        Width = 607
         Height = 14
         Margins.Top = 0
         Margins.Bottom = 0
@@ -274,6 +274,7 @@ inherited RegUsers: TRegUsers
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
+        ExplicitWidth = 294
       end
       object E_Auth_card: TEdit
         AlignWithMargins = True

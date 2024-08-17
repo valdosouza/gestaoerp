@@ -39,6 +39,7 @@ type
     procedure AtivarDesativarProdutos;
     procedure MontarGrid(pCodigo: integer);
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -67,6 +68,12 @@ procedure TRegGroupMenu.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegGroupMenu.ClearAllFields;
+begin
+  inherited;
+  grupos.clear;
 end;
 
 procedure TRegGroupMenu.CriarVariaveis;
@@ -127,12 +134,12 @@ begin
     Registro.ValorDesconto := StrToFloatDef(E_Vl_Desconto.Text, 0);
     Registro.Composicao := IntToStr(DBRG_Composicao.ItemIndex);
     Registro.ControleInterface := IntToStr(DBRG_Interface.ItemIndex);
-    Registro.Tamanhos := IfThen(DBRG_Tamanhos.ItemIndex =  0, SIM, NAO);
-    Registro.IfoodAtivo := IfThen(Chbx_Ifood.Checked, SIM, NAO);
-    Registro.PropagaTamanho := IfThen(ChBx_Propag_Tamanho.Checked, SIM, NAO);
-    Registro.Agrupar := IfThen(ChBx_Agrupar_Abas.Checked, SIM, NAO);
-    Registro.ShowMenu := IfThen(ChBx_show_menu.Checked, SIM, NAO);
-    Registro.Ativo := IfThen(ChBx_Ativo.Checked, SIM, NAO);
+    Registro.Tamanhos := IfThen(DBRG_Tamanhos.ItemIndex =  0, SIGLA_S, SIGLA_N);
+    Registro.IfoodAtivo := IfThen(Chbx_Ifood.Checked, SIGLA_S, SIGLA_N);
+    Registro.PropagaTamanho := IfThen(ChBx_Propag_Tamanho.Checked, SIGLA_S, SIGLA_N);
+    Registro.Agrupar := IfThen(ChBx_Agrupar_Abas.Checked, SIGLA_S, SIGLA_N);
+    Registro.ShowMenu := IfThen(ChBx_show_menu.Checked, SIGLA_S, SIGLA_N);
+    Registro.Ativo := IfThen(ChBx_Ativo.Checked, SIGLA_S, SIGLA_N);
     salva;
   End;
   AtivarDesativarProdutos;
@@ -167,32 +174,32 @@ begin
     if Registro.ControleInterface <> EmptyStr then
       DBRG_Interface.ItemIndex := StrToInt(Registro.ControleInterface);
 
-    if Registro.Tamanhos = SIM then
+    if Registro.Tamanhos = SIGLA_S then
       DBRG_Tamanhos.ItemIndex := 0
     else
       DBRG_Tamanhos.ItemIndex := 1;
 
-    if Registro.IfoodAtivo = SIM then
+    if Registro.IfoodAtivo = SIGLA_S then
       Chbx_Ifood.Checked := True
     else
       Chbx_Ifood.Checked := False;
 
-    if Registro.PropagaTamanho = SIM then
+    if Registro.PropagaTamanho = SIGLA_S then
       ChBx_Propag_Tamanho.Checked := True
     else
       ChBx_Propag_Tamanho.Checked := False;
 
-    if Registro.Agrupar = SIM then
+    if Registro.Agrupar = SIGLA_S then
       ChBx_Agrupar_Abas.Checked := True
     else
       ChBx_Agrupar_Abas.Checked := False;
 
-    if Registro.ShowMenu = SIM then
+    if Registro.ShowMenu = SIGLA_S then
       ChBx_show_menu.Checked := True
     else
       ChBx_show_menu.Checked := False;
 
-    if Registro.Ativo = SIM then
+    if Registro.Ativo = SIGLA_S then
       ChBx_Ativo.Checked := True
     else
       ChBx_Ativo.Checked := False;

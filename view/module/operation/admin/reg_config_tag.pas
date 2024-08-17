@@ -41,6 +41,7 @@ type
     E_Pg_Largura: TEdit;
     E_Codigo: TEdit;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -69,6 +70,12 @@ procedure TRegConfigTag.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegConfigTag.ClearAllFields;
+begin
+  inherited;
+  cfgEtiqueta.Clear;
 end;
 
 procedure TRegConfigTag.CriarVariaveis;

@@ -54,6 +54,7 @@ type
     function validaEnvioEmailteste:boolean;
     procedure EnvioEmailteste;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -84,6 +85,12 @@ procedure TRegUsers.Change;
 begin
   inherited;
   E_Nome.SetFocus;
+end;
+
+procedure TRegUsers.ClearAllFields;
+begin
+  inherited;
+  users.Clear;
 end;
 
 procedure TRegUsers.CriarVariaveis;
@@ -125,20 +132,20 @@ begin
   with users do
   Begin
     Registro.Nome := E_Nome.Text;
-    Registro.Ativo := IfThen(Cbx_Ativo.Checked, SIM, NAO);
+    Registro.Ativo := IfThen(Cbx_Ativo.Checked, SIGLA_S, SIGLA_N);
     Registro.Login := E_Login.Text;
     Registro.Senha := MD5String(E_Senha.Text);
     Registro.Nivel := IntToStr(CB_Nivel.ItemIndex);
     Registro.CartaoAutorizacao := E_Auth_card.Text;
     Registro.emailSMTP := E_Srv_Smtp.Text;
     Registro.emailPorta := E_porta_email.Text;
-    Registro.emailAutenticacao := IfThen(Cbx_Req_Autenticacao.Checked, SIM, NAO);
-    Registro.emailSSL := IfThen(Cbx_Req_Con_ssl.Checked, SIM, NAO);
+    Registro.emailAutenticacao := IfThen(Cbx_Req_Autenticacao.Checked, SIGLA_S, SIGLA_N);
+    Registro.emailSSL := IfThen(Cbx_Req_Con_ssl.Checked, SIGLA_S, SIGLA_N);
     Registro.emailLabel := E_Lbl_Name.Text;
     Registro.email := E_Usr_Mail.Text;
     Registro.emailLogin := E_lgn_email.Text;
     Registro.emailSenha := E_pwd_email.Text;
-    Registro.NotificarPorEmail := IfThen(chbx_notifica_login.Checked, SIM, NAO);
+    Registro.NotificarPorEmail := IfThen(chbx_notifica_login.Checked, SIGLA_S, SIGLA_N);
     Registro.emailAssinatura := M_Assinatura.Text;
     salva;
   End;
@@ -153,7 +160,7 @@ begin
     E_Codigo.Text     := Registro.Codigo.ToString;
     E_Nome.Text  := Registro.Nome;
 
-    if Registro.Ativo = SIM then
+    if Registro.Ativo = SIGLA_S then
       Cbx_Ativo.Checked := True
     else
       Cbx_Ativo.Checked := False;
@@ -165,12 +172,12 @@ begin
     E_Srv_Smtp.Text := Registro.emailSMTP;
     E_porta_email.Text := Registro.emailPorta;
 
-    if Registro.emailAutenticacao = SIM then
+    if Registro.emailAutenticacao = SIGLA_S then
       Cbx_Req_Autenticacao.Checked := True
     else
       Cbx_Req_Autenticacao.Checked := False;
 
-    if Registro.emailSSL = SIM then
+    if Registro.emailSSL = SIGLA_S then
       Cbx_Req_Con_ssl.Checked := True
     else
       Cbx_Req_Con_ssl.Checked := False;
@@ -179,7 +186,7 @@ begin
     E_Usr_Mail.Text := Registro.email;
     E_lgn_email.Text := Registro.emailLogin;
     E_pwd_email.Text := Registro.emailSenha;
-    if Registro.NotificarPorEmail = SIM then
+    if Registro.NotificarPorEmail = SIGLA_S then
       chbx_notifica_login.Checked := True
     else
       chbx_notifica_login.Checked := False;

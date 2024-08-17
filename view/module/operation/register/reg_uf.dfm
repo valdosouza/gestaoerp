@@ -413,6 +413,10 @@ inherited RegUf: TRegUf
       object tbs_FCP: TTabSheet
         Caption = 'Aliq. Fundo Combate a Pobreza'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Pnl_FCP: TPanel
           Left = 0
           Top = 0

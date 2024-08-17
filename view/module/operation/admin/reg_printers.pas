@@ -23,6 +23,7 @@ type
     E_Vias: TEdit;
     E_Colunas: TEdit;
   protected
+    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
@@ -53,6 +54,12 @@ procedure TRegPrinters.Change;
 begin
   inherited;
   E_Descricao.SetFocus;
+end;
+
+procedure TRegPrinters.ClearAllFields;
+begin
+  inherited;
+  impressora.Clear;
 end;
 
 procedure TRegPrinters.CriarVariaveis;
@@ -98,7 +105,7 @@ begin
     Registro.Salto := StrToIntDef(E_Salto.Text, 0);
     Registro.Vias := StrToIntDef(E_Vias.Text, 0);
     Registro.Colunas := StrToIntDef(E_Colunas.Text, 0);
-    Registro.Modelo := IfThen(Ch_Tipo.Checked, SIM, NAO);
+    Registro.Modelo := IfThen(Ch_Tipo.Checked, SIGLA_S, SIGLA_N);
     salva;
   End;
   CodigoRegistro := impressora.Registro.Codigo;
@@ -115,7 +122,7 @@ begin
     E_Vias.Text := IntToStr(Registro.Vias);
     E_Colunas.Text := IntToStr(Registro.Colunas);
 
-    if Registro.Modelo = SIM then
+    if Registro.Modelo = SIGLA_S then
       Ch_Tipo.Checked := True
     else
       Ch_Tipo.Checked := False;

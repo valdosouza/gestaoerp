@@ -2,14 +2,15 @@ inherited RegInterface: TRegInterface
   Caption = 'Cadastro de Interface'
   ClientHeight = 286
   ClientWidth = 575
-  ExplicitWidth = 587
-  ExplicitHeight = 349
+  ExplicitWidth = 581
+  ExplicitHeight = 330
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 222
     Width = 575
-    ExplicitTop = 213
-    ExplicitWidth = 569
+    ExplicitTop = 222
+    ExplicitWidth = 575
     inherited SB_Inserir: TSpeedButton
       Left = 2
       Width = 94
@@ -56,8 +57,8 @@ inherited RegInterface: TRegInterface
   inherited pnl_fundo: TPanel
     Width = 575
     Height = 222
-    ExplicitWidth = 569
-    ExplicitHeight = 213
+    ExplicitWidth = 575
+    ExplicitHeight = 222
     object Pn_Fundo: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegInterface: TRegInterface
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 565
-      ExplicitHeight = 209
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -101,8 +100,8 @@ inherited RegInterface: TRegInterface
         Left = 8
         Top = 48
         Width = 152
-        Height = 18
-        Caption = 'Nome do Formul'#225'rio ou relatorio'
+        Height = 14
+        Caption = 'Nome do Formul'#225'rio ou relat'#243'rio'
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -179,7 +178,7 @@ inherited RegInterface: TRegInterface
           TabOrder = 0
         end
       end
-      object DBRadioGroup1: TRadioGroup
+      object rgSistema: TRadioGroup
         Left = 229
         Top = 90
         Width = 145
@@ -204,7 +203,7 @@ inherited RegInterface: TRegInterface
         ParentFont = False
         TabOrder = 2
       end
-      object DBLCB_Menu: TComboBox
+      object cb_Menu: TComboBox
         Left = 8
         Top = 103
         Width = 217
@@ -213,8 +212,8 @@ inherited RegInterface: TRegInterface
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 120
-    Top = 152
+  inherited MnuBase: TMainMenu
+    Left = 144
+    Top = 64
   end
 end

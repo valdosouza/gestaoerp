@@ -3,13 +3,13 @@ inherited RegElectronicSlip: TRegElectronicSlip
   ClientHeight = 575
   ClientWidth = 573
   ExplicitWidth = 579
-  ExplicitHeight = 624
+  ExplicitHeight = 619
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 511
     Width = 573
-    ExplicitTop = 548
+    ExplicitTop = 511
     ExplicitWidth = 573
     inherited SB_Inserir: TSpeedButton
       Left = 0
@@ -58,7 +58,7 @@ inherited RegElectronicSlip: TRegElectronicSlip
     Width = 573
     Height = 511
     ExplicitWidth = 573
-    ExplicitHeight = 548
+    ExplicitHeight = 511
     object L_Cedente_Convenio: TLabel
       Left = 151
       Top = 91
@@ -598,6 +598,8 @@ inherited RegElectronicSlip: TRegElectronicSlip
       end
       inherited pnl_linha_1: TPanel
         Width = 233
+        ExplicitLeft = 0
+        ExplicitTop = 14
         ExplicitWidth = 233
         inherited Sb_Carteira: TSpeedButton
           Left = 209
