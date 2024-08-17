@@ -25,7 +25,6 @@ type
     procedure Delete;Override;
     function ValidateSave:Boolean;Override;
     procedure Save;Override;
-    function ValidateCancel:Boolean;Override;
     procedure Cancel;Override;
     procedure FormCreate(Sender: TObject);
   private
@@ -132,14 +131,9 @@ begin
   E_Numero.SetFocus;
 end;
 
-function TFr_Especie_Doc.ValidateCancel: Boolean;
-begin
-  inherited;
-  //
-end;
-
 function TFr_Especie_Doc.ValidateDelete: Boolean;
 begin
+  Result := True;
   inherited;
   if (not TMsgSetes.Excluir) then
   begin

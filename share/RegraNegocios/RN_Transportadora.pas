@@ -25,6 +25,7 @@ Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
 begin
+  Result := 0;
   LcBase := TControllerBase.create(nil);
   Lc_Qry := LcBase.GeraQuery;
   Try

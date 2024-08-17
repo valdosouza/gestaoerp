@@ -70,7 +70,6 @@ function Fc_VerificaCodigoVinculoNFeArquivo(Fc_cd_Nota:Integer):Integer;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
   Result := 0;
@@ -101,7 +100,6 @@ function Fc_VerificaCodigoVinculoCartaCorrecao(Fc_cd_Nota:Integer):Integer;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
   LcBase := TControllerBase.create(nil);
@@ -131,7 +129,6 @@ function Fc_VerificaCodigoVinculoNFCeArquivo(Fc_cd_Nota:Integer):Integer;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
   LcBase := TControllerBase.create(nil);
@@ -165,6 +162,8 @@ Begin
     1: Lc_Cd_Vinculo := Fc_VerificaCodigoVinculoNfeArquivo(Pc_Cd_Nota);
     2: Lc_Cd_Vinculo := Fc_VerificaCodigoVinculoCartaCorrecao(Pc_Cd_Nota);
     3: Lc_Cd_Vinculo := Pc_Cd_Nota;
+    else
+      Lc_Cd_Vinculo := 0;
   end;
 
   //Salva o Arquivo XML da NOta no diretorio
@@ -396,7 +395,6 @@ procedure Pc_GravaEvento(Pc_Codigo        : Integer;
 Var
   Lc_Qry : TSTQuery;
   Lc_SqlTxt : String;
-  Lc_FileStream : TFileStream;
   LcBase : TControllerBase;
 begin
   LcBase := TControllerBase.create(nil);

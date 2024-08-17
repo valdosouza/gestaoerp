@@ -52,12 +52,14 @@ end;
 
 function TControllerEspecieDoc.insere: boolean;
 begin
+  Result := True;
   Registro.Codigo := Generator('GN_ESPECIE_DOC');
   SaveObj(Registro);
 end;
 
 function TControllerEspecieDoc.salva: boolean;
 begin
+  Result := True;
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_ESPECIE_DOC');
   SaveObj(Registro);

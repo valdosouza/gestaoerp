@@ -3,7 +3,7 @@ unit ControllerDskMailing;
 interface
 
 uses  Classes,ControllerBase, STQuery,tblMailing, System.SysUtils,
-     Generics.Collections;
+     Generics.Collections, FireDAC.Stan.Param;
 
 type
   TListaMailing = TObjectList<TMailing>;
@@ -58,8 +58,8 @@ Var
   Lc_SqlTxt : String;
   Lc_item : TMailing;
 Begin
+  Lc_Qry := GeraQuery;
   Try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       Lc_SqlTxt := 'SELECT DISTINCT MLG_EMAIL '+
@@ -81,7 +81,7 @@ Begin
         Lc_SqlTxt := Lc_SqlTxt + ')';
       end;
       SQL.add(Lc_SqlTxt);
-      ParamByName('EMP_CODIGO').AsAnsiString := Pc_cd_Empresa;
+      ParamByName('EMP_CODIGO').AsString := Pc_cd_Empresa;
       Active := True;
       First;
       while not eof do

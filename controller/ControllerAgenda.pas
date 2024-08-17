@@ -100,6 +100,7 @@ end;
 
 function TControllerAgenda.getAllByKey: boolean;
 begin
+  Result := True;
   getByKey;
 end;
 

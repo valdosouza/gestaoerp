@@ -176,6 +176,7 @@ Var
   LcBase : TControllerBase;
   Lc_SqlTxt : String;
 Begin
+  Result := 0;
   LcBase := TControllerBase.create(nil);
   Lc_Qry := LcBase.GeraQuery;
   TRy
@@ -191,7 +192,7 @@ Begin
       ParamByName('FIN_CODMHA').AsInteger := Gb_CodMha;
       Active := True;
       First;
-      Result := 0;
+
       Lc_Vl_cheque := 0;
       Lc_Vl_Amortizado := 0;
       while not Eof do

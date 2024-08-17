@@ -156,8 +156,8 @@ function TControllerRecibo.VerificaNumRecibo: Boolean;
 var
   Lc_Qry : TSTQuery;
 begin
+  Lc_Qry := GeraQuery;
   try
-    Lc_Qry := GeraQuery;
     with Lc_Qry do
     Begin
       SQL.Add(concat(
