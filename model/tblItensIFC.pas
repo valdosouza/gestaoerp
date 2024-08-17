@@ -15,7 +15,7 @@ Type
     procedure setFIIF_CODIGO(const Value: Integer);
     procedure setFIIF_CODOPF(const Value: Integer);
   public
-//    [KeyField('IIF_CODIGO')]
+    //No banco está como primary Key, mas nesta camada trataremos este campo apenas o sequenciamento
     [FieldName('IIF_CODIGO')]
     property Codigo: Integer read FIIF_CODIGO write setFIIF_CODIGO;
 

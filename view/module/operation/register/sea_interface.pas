@@ -89,7 +89,7 @@ begin
     cds_search.AppendRecord([cInterface.Lista[i].Codigo, cInterface.Lista[i].Descricao]);
 
   cds_search.EnableControls;
-
+  cds_search.First;
   inherited;
 end;
 

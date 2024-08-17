@@ -1,53 +1,53 @@
 inherited RegInterface: TRegInterface
   Caption = 'Cadastro de Interface'
-  ClientHeight = 286
-  ClientWidth = 575
-  ExplicitWidth = 581
-  ExplicitHeight = 330
+  ClientHeight = 277
+  ClientWidth = 579
+  ExplicitWidth = 585
+  ExplicitHeight = 326
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 222
-    Width = 575
+    Top = 213
+    Width = 579
     ExplicitTop = 222
     ExplicitWidth = 575
     inherited SB_Inserir: TSpeedButton
-      Left = 2
+      Left = 6
       Width = 94
       ExplicitLeft = 115
       ExplicitTop = 5
       ExplicitWidth = 94
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 98
+      Left = 102
       Width = 94
       ExplicitLeft = 219
       ExplicitTop = 5
       ExplicitWidth = 94
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 194
+      Left = 198
       Width = 94
       ExplicitLeft = 323
       ExplicitTop = 5
       ExplicitWidth = 94
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 386
+      Left = 390
       Width = 93
       ExplicitLeft = 364
       ExplicitTop = 5
       ExplicitWidth = 93
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 481
+      Left = 485
       Width = 89
       ExplicitLeft = 468
       ExplicitTop = 5
       ExplicitWidth = 89
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 290
+      Left = 294
       Width = 94
       ExplicitLeft = 427
       ExplicitTop = 5
@@ -55,19 +55,21 @@ inherited RegInterface: TRegInterface
     end
   end
   inherited pnl_fundo: TPanel
-    Width = 575
-    Height = 222
+    Width = 579
+    Height = 213
     ExplicitWidth = 575
     ExplicitHeight = 222
     object Pn_Fundo: TPanel
       Left = 2
       Top = 2
-      Width = 571
-      Height = 218
+      Width = 575
+      Height = 209
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
+      ExplicitWidth = 571
+      ExplicitHeight = 218
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -140,7 +142,7 @@ inherited RegInterface: TRegInterface
       object E_Descricao: TEdit
         Left = 58
         Top = 24
-        Width = 313
+        Width = 330
         Height = 22
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -151,12 +153,16 @@ inherited RegInterface: TRegInterface
         TabOrder = 1
       end
       object GroupBox1: TGroupBox
-        Left = 376
-        Top = 1
+        Left = 394
+        Top = 2
         Width = 179
-        Height = 203
+        Height = 205
+        Align = alRight
         Caption = 'Opera'#231#245'es desta Interface'
         TabOrder = 5
+        ExplicitLeft = 376
+        ExplicitTop = 1
+        ExplicitHeight = 203
         object ChkBx_Permissao: TCheckListBox
           Left = 3
           Top = 14
@@ -181,7 +187,7 @@ inherited RegInterface: TRegInterface
       object rgSistema: TRadioGroup
         Left = 229
         Top = 90
-        Width = 145
+        Width = 159
         Height = 35
         Caption = ' Dispon'#237'vel no Sistema '
         Columns = 2
@@ -193,7 +199,7 @@ inherited RegInterface: TRegInterface
       object E_FormName: TEdit
         Left = 8
         Top = 64
-        Width = 366
+        Width = 380
         Height = 22
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -208,6 +214,7 @@ inherited RegInterface: TRegInterface
         Top = 103
         Width = 217
         Height = 21
+        Style = csDropDownList
         TabOrder = 3
       end
     end
