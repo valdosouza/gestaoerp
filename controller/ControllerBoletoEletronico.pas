@@ -159,6 +159,7 @@ end;
 
 function TControllerBoletoEletronico.getAllByKey: boolean;
 begin
+  Result := True;
   getByKey;
 end;
 
@@ -177,6 +178,7 @@ function TControllerBoletoEletronico.getFirst: boolean;
 Var
   Lc_Qry : TSTQuery;
 Begin
+  Result := True;
   Lc_Qry := GeraQuery;
   TRy
     with Lc_Qry do

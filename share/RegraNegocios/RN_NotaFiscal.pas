@@ -104,7 +104,6 @@ Function Fc_Obs_ImpostoAproximado(Fc_Transacao : TSTTransaction; Fc_Cd_NotaFisca
 Var
   Lc_Qry : TSTQuery;
   LcBase : TControllerBase;
-  Lc_Campo : String;
   Lc_Vl_Produto:Real;
   Lc_Vl_Base : Real;
   Lc_Imp_Aprox : TStringList;

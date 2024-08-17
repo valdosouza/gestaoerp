@@ -19,7 +19,7 @@ type
     cds_searchcontacorrente: TStringField;
     cds_searchcarteira: TStringField;
     cds_searchdesccarteira: TStringField;
-  private
+  protected
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
     procedure FinalizaVariaveis; override;

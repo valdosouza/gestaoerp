@@ -84,9 +84,7 @@ end;
 procedure TFr_envia_email.ListarEmailParaEnvio(Pc_cd_Empresa: String;
   Pc_Tipos: array of string; Pc_Lista: TStringList);
 Var
-  Lc_Codigo : Integer;
   I : Integer;
-  Lc_SqlTxt : String;
 Begin
   Mailing.ListarEmailParaEnvio(Pc_cd_Empresa,Pc_Tipos);
   for I := 0 to Mailing.Lista.Count -1 do

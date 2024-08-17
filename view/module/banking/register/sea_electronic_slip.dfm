@@ -13,9 +13,6 @@ inherited SeaElectronicSlip: TSeaElectronicSlip
     ExplicitTop = 71
     ExplicitWidth = 569
     ExplicitHeight = 512
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 565
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 473
       Height = 494

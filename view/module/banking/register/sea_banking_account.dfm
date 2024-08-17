@@ -13,9 +13,6 @@ inherited SeaBankingAccount: TSeaBankingAccount
     ExplicitTop = 71
     ExplicitWidth = 626
     ExplicitHeight = 252
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 622
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 530
       Height = 234

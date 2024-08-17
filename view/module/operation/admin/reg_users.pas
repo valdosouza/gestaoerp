@@ -257,11 +257,9 @@ end;
 
 procedure TRegUsers.EnvioEmailteste;
 Var
-  Lc_Aux : String;
   Lc_Destinatario : TStringList;
   Lc_AssuntoEmail : string;
   Lc_Corpo : String;
-  Lc_arq_pdf : string;
   lc_anexo :TStringList;
   LcEnviaemail : TFr_envia_email;
   LcEmailTo : String;

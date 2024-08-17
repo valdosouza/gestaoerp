@@ -21,7 +21,7 @@ type
     cds_searchconta: TStringField;
     cds_searchnumerobanco: TStringField;
     cds_searchcodigo: TIntegerField;
-  private
+  protected
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
     procedure FinalizaVariaveis; override;

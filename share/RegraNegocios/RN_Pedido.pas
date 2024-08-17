@@ -374,6 +374,7 @@ function Fc_CopiaPedidoNota(Pc_TipoPedido:Integer):integer;
 //Var
 //  Lc_Form : TFr_CopiaPedidoNota;
 begin
+  Result := 0;
   ShowMessage('Verificar');
 //  TRy
 //    Result := 0;
@@ -391,6 +392,7 @@ function Fc_EnviaPedidoNota(Pc_TipoPedido:Integer):integer;
 //Var
 //  Lc_Form : TFr_EnviaPedidoNota;
 begin
+  Result := 0;
   ShowMessage('Verificar');
 //  Try
 //    Result := 0;

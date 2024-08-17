@@ -866,7 +866,6 @@ end;
 function TControllerProduto.getField(codigo: Integer; Field: String): String;
 var
   Lc_Qry : TSTQuery;
-  LcLista : TProduto;
 begin
   Result := '';
   Lc_Qry := GeraQuery;

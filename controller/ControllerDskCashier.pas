@@ -76,6 +76,7 @@ end;
 
 function TControllerDskCashier.AbrirCaixa:boolean;
 begin
+  Result := True;
   Registro.Codigo := Fc_Generator('GN_CASHIER','TB_CASHIER','ID');
   Registro.Data := Date;
   Registro.Usuario := Registro.Usuario;
