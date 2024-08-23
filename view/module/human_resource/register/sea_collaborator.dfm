@@ -1,42 +1,61 @@
 inherited SeaCollaborator: TSeaCollaborator
   Caption = 'Pesquisa de Colaborador'
   ClientWidth = 663
-  ExplicitWidth = 675
-  ExplicitHeight = 561
+  ExplicitWidth = 669
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 136
     Width = 657
-    Height = 359
+    Height = 367
     ExplicitTop = 136
-    ExplicitWidth = 651
-    ExplicitHeight = 350
+    ExplicitWidth = 657
+    ExplicitHeight = 367
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 653
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 561
-      Height = 341
+      Height = 349
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'nome'
+          Width = 177
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CPFCNPJ'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CargoDescricao'
+          Width = 191
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 563
-      Height = 341
-      ExplicitLeft = 557
-      ExplicitHeight = 332
+      Height = 349
+      ExplicitLeft = 563
+      ExplicitHeight = 349
       inherited Sb_Sair_0: TSpeedButton
-        Top = 278
+        Top = 286
         ExplicitTop = 279
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 215
+        Top = 223
         ExplicitTop = 216
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 152
+        Top = 160
         ExplicitTop = 153
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 89
+        Top = 97
         ExplicitTop = 90
       end
       object Chbx_Demitidos: TCheckBox
@@ -53,7 +72,7 @@ inherited SeaCollaborator: TSeaCollaborator
   inherited Pnl_Parametros: TPanel
     Width = 657
     Height = 127
-    ExplicitWidth = 651
+    ExplicitWidth = 657
     ExplicitHeight = 127
     object GroupBox1: TGroupBox
       Left = 2
@@ -69,9 +88,8 @@ inherited SeaCollaborator: TSeaCollaborator
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 647
       object Lb_CPF: TLabel
-        Left = 8
+        Left = 5
         Top = 16
         Width = 24
         Height = 14
@@ -84,7 +102,7 @@ inherited SeaCollaborator: TSeaCollaborator
         ParentFont = False
       end
       object Lb_Nome: TLabel
-        Left = 127
+        Left = 121
         Top = 16
         Width = 30
         Height = 14
@@ -97,7 +115,7 @@ inherited SeaCollaborator: TSeaCollaborator
         ParentFont = False
       end
       object Lb_Cargo: TLabel
-        Left = 390
+        Left = 387
         Top = 16
         Width = 29
         Height = 14
@@ -110,7 +128,7 @@ inherited SeaCollaborator: TSeaCollaborator
         ParentFont = False
       end
       object E_BuscaCPF: TEdit
-        Left = 5
+        Left = 3
         Top = 32
         Width = 116
         Height = 22
@@ -165,7 +183,6 @@ inherited SeaCollaborator: TSeaCollaborator
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitWidth = 647
       DesignSize = (
         653
         50)
@@ -176,16 +193,38 @@ inherited SeaCollaborator: TSeaCollaborator
         Height = 14
         Caption = 'Selecionar todas as Empresas'
         TabOrder = 0
+        OnClick = chbx_EmpresasClick
       end
       object Dblcb_Mha_Empresa: TComboBox
         Left = 5
         Top = 24
         Width = 639
-        Height = 22
+        Height = 21
         Anchors = [akLeft, akRight]
         TabOrder = 1
-        ExplicitWidth = 633
       end
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 528
+    Top = 160
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchnome: TStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+    end
+    object cds_searchCPFCNPJ: TStringField
+      FieldName = 'CPFCNPJ'
+      Size = 14
+    end
+    object cds_searchCargoDescricao: TStringField
+      DisplayLabel = 'Cargo Descri'#231#227'o'
+      FieldName = 'CargoDescricao'
     end
   end
 end

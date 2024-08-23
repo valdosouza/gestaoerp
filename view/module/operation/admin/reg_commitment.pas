@@ -20,7 +20,7 @@ type
     L_Descricao: TLabel;
     Ch_Avisar: TCheckBox;
   private
-    procedure MontaComboBoxBanco;
+    procedure MontarComboBox;
   protected
     procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
@@ -79,7 +79,7 @@ end;
 
 procedure TRegCommitment.IniciaVariaveis;
 begin
-  MontaComboBoxBanco;
+  MontarComboBox;
   if Self.CodigoRegistro > 0 then
   Begin
     agenda.Registro.Codigo := Self.CodigoRegistro;
@@ -96,7 +96,7 @@ begin
   CB_Usuario.SetFocus;
 end;
 
-procedure TRegCommitment.MontaComboBoxBanco;
+procedure TRegCommitment.MontarComboBox;
 var
   i : Integer;
 begin

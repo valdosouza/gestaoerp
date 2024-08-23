@@ -102,7 +102,7 @@ inherited RegCollaborator: TRegCollaborator
       ParentFont = False
     end
     object Lb_Fone: TLabel
-      Left = 9
+      Left = 7
       Top = 127
       Width = 24
       Height = 14
@@ -115,7 +115,7 @@ inherited RegCollaborator: TRegCollaborator
       ParentFont = False
     end
     object Lb_Email: TLabel
-      Left = 364
+      Left = 359
       Top = 87
       Width = 30
       Height = 14
@@ -211,6 +211,7 @@ inherited RegCollaborator: TRegCollaborator
       Width = 24
       Height = 22
       Caption = '...'
+      OnClick = SB_CargoClick
     end
     object Sb_Cep: TSpeedButton
       Left = 76
@@ -233,9 +234,10 @@ inherited RegCollaborator: TRegCollaborator
       Layout = blGlyphTop
       Margin = 0
       NumGlyphs = 2
+      OnClick = Sb_CepClick
     end
     object Lb_UF: TLabel
-      Left = 9
+      Left = 7
       Top = 86
       Width = 16
       Height = 14
@@ -281,6 +283,7 @@ inherited RegCollaborator: TRegCollaborator
       Layout = blGlyphTop
       Margin = 0
       NumGlyphs = 2
+      OnClick = Sb_EnderecoClick
     end
     object E_Celular: TMaskEdit
       Left = 100
@@ -295,7 +298,7 @@ inherited RegCollaborator: TRegCollaborator
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
       Text = ''
     end
     object E_Nome: TEdit
@@ -341,7 +344,7 @@ inherited RegCollaborator: TRegCollaborator
       TabOrder = 5
     end
     object E_Cep: TEdit
-      Left = 6
+      Left = 7
       Top = 61
       Width = 63
       Height = 22
@@ -366,12 +369,12 @@ inherited RegCollaborator: TRegCollaborator
       Font.Style = []
       MaxLength = 14
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 8
       Text = ''
     end
     object E_Email: TEdit
       Left = 359
-      Top = 102
+      Top = 101
       Width = 284
       Height = 22
       CharCase = ecLowerCase
@@ -381,7 +384,7 @@ inherited RegCollaborator: TRegCollaborator
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 7
     end
     object E_Codigo: TEdit
       Left = 7
@@ -398,21 +401,8 @@ inherited RegCollaborator: TRegCollaborator
       ParentFont = False
       TabOrder = 0
     end
-    object E_Demissao: TEdit
-      Left = 545
-      Top = 140
-      Width = 91
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 12
-    end
     object DBCB_Sexo: TComboBox
-      Left = 597
+      Left = 595
       Top = 23
       Width = 47
       Height = 22
@@ -440,20 +430,7 @@ inherited RegCollaborator: TRegCollaborator
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabOrder = 11
-    end
-    object DBLCB_UF: TComboBox
-      Left = 7
-      Top = 101
-      Width = 52
-      Height = 22
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 6
+      TabOrder = 10
     end
     object DBLCB_Cidade: TComboBox
       Left = 61
@@ -466,7 +443,7 @@ inherited RegCollaborator: TRegCollaborator
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 6
     end
     object e_ADMISSAO: TDateTimePicker
       Left = 462
@@ -475,7 +452,60 @@ inherited RegCollaborator: TRegCollaborator
       Height = 22
       Date = 39580.356281493060000000
       Time = 39580.356281493060000000
+      TabOrder = 11
+    end
+    object CB_UF: TComboBox
+      Left = 7
+      Top = 101
+      Width = 50
+      Height = 21
+      Style = csDropDownList
       TabOrder = 13
+      Items.Strings = (
+        'AC'
+        'AL'
+        'AP'
+        'AM'
+        'BA'
+        'CE'
+        'DF'
+        'ES'
+        'GO'
+        'MA'
+        'MT'
+        'MS'
+        'MG'
+        'PA'
+        'PB'
+        'PR'
+        'PE'
+        'PI'
+        'RJ'
+        'RN'
+        'RS'
+        'RO'
+        'RR'
+        'SC'
+        'SP'
+        'SE'
+        'TO')
+    end
+    object E_DEMISSAO: TEdit
+      Left = 550
+      Top = 140
+      Width = 94
+      Height = 22
+      Hint = 'Formato aceito: DD/MM/AAAA'
+      CharCase = ecUpperCase
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 12
     end
   end
   object PG_Informacoes: TPageControl [3]
@@ -483,27 +513,23 @@ inherited RegCollaborator: TRegCollaborator
     Top = 175
     Width = 653
     Height = 176
-    ActivePage = TBS_documentos
+    ActivePage = tsOutras
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 3
-    object TabSheet3: TTabSheet
+    object tsObservacao: TTabSheet
       Caption = 'Observa'#231#227'o'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object ME_Observ: TMemo
         Left = 0
         Top = 0
         Width = 645
-        Height = 137
+        Height = 145
         Align = alClient
         ScrollBars = ssVertical
         TabOrder = 0
       end
     end
-    object TBS_documentos: TTabSheet
+    object tsdocumentos: TTabSheet
       Caption = 'Documentos'
       ImageIndex = 1
       object pnl_documentos: TPanel
@@ -659,7 +685,7 @@ inherited RegCollaborator: TRegCollaborator
           TabOrder = 6
         end
         object E_Identidade: TEdit
-          Left = 216
+          Left = 215
           Top = 23
           Width = 121
           Height = 22
@@ -750,7 +776,7 @@ inherited RegCollaborator: TRegCollaborator
         object E_Salario: TEdit
           Left = 256
           Top = 96
-          Width = 94
+          Width = 107
           Height = 22
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
@@ -760,7 +786,7 @@ inherited RegCollaborator: TRegCollaborator
           ParentFont = False
           TabOrder = 10
         end
-        object dbcert_militar: TEdit
+        object e_militar: TEdit
           Left = 6
           Top = 96
           Width = 248
@@ -777,13 +803,13 @@ inherited RegCollaborator: TRegCollaborator
         object Chbx_CPF: TCheckBox
           Left = 93
           Top = 6
-          Width = 42
+          Width = 51
           Height = 17
           Caption = 'CPF / '
           TabOrder = 11
         end
         object chbx_CNPJ: TCheckBox
-          Left = 142
+          Left = 143
           Top = 6
           Width = 42
           Height = 17
@@ -802,18 +828,14 @@ inherited RegCollaborator: TRegCollaborator
         end
       end
     end
-    object TabSheet5: TTabSheet
+    object tsComissao: TTabSheet
       Caption = 'Comiss'#227'o'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Pnl_Com_Vda: TPanel
         Left = 0
         Top = 0
         Width = 241
-        Height = 137
+        Height = 145
         Align = alLeft
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -869,7 +891,7 @@ inherited RegCollaborator: TRegCollaborator
         Left = 241
         Top = 0
         Width = 240
-        Height = 137
+        Height = 145
         Align = alLeft
         BevelInner = bvRaised
         BevelOuter = bvLowered
@@ -922,24 +944,18 @@ inherited RegCollaborator: TRegCollaborator
         end
       end
     end
-    object tbs_Outras: TTabSheet
+    object tsOutras: TTabSheet
       Caption = 'Outras Informa'#231#245'es'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Pnl_Outra_Inf: TPanel
         Left = 0
         Top = 0
         Width = 645
-        Height = 137
+        Height = 145
         Align = alClient
         BevelInner = bvRaised
         BevelOuter = bvLowered
         TabOrder = 0
-        ExplicitWidth = 639
-        ExplicitHeight = 128
         object Lb_Usuario: TLabel
           AlignWithMargins = True
           Left = 5

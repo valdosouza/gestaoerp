@@ -21,16 +21,15 @@ Type
     function getAllByKey:boolean;
     function salva:boolean;
     procedure getbyId;
-    function Clear:Boolean;
+    procedure Clear;
     property Parametros : TPrmCommitMent read FParametros write setFParametros;
   End;
 
   implementation
 { ControllerAgenda }
 
-function TControllerAgenda.Clear: Boolean;
+procedure TControllerAgenda.Clear;
 begin
-  Result := True;
   clearObj(Registro);
   FParametros.Clear;
 end;
