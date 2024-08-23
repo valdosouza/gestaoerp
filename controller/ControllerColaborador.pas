@@ -4,8 +4,8 @@ interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblColaborador ,Un_MSg,Generics.Collections,
-      ControllerCargo,ObjSalesMan,tblphone,tblAddress,ControllerUF, controllerCidade;
-
+      ControllerCargo, ObjSalesMan, tblphone, tblAddress,ControllerUF, controllerCidade,
+      prm_collaborator, controllerUsuario;
 
 Type
   TListColaborador = TObjectList<TColaborador>;
@@ -13,13 +13,14 @@ Type
   TControllerColaborador = Class(TControllerBase)
 
   private
-
-  protected
-
+    FParametros: TPrmCollaborator;
+    procedure setFParametros(const Value: TPrmCollaborator);
   public
     Registro : TColaborador;
     Cargo : TControllerCargo;
     Lista : TListColaborador;
+    Cidade : TControllerCidade;
+    Usuario : TControllerUsuario;
     Obj  : TObjSalesMan;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -42,11 +43,20 @@ Type
     function Replace:boolean;
     procedure FillDataObjeto(Colab: TColaborador;Obj:TObjSalesMan);
     function VerificaExistenciaUsuario(UsuarioId:Integer):Boolean;
+    procedure Clear;
+    procedure Search;
+    property Parametros : TPrmCollaborator read FParametros write setFParametros;
   End;
 
 implementation
 
-uses Un_sistema, Un_Regra_Negocio;
+uses Un_sistema, Un_Regra_Negocio, ENV;
+
+procedure TControllerColaborador.Clear;
+begin
+  clearObj(Registro);
+  FParametros.Clear;
+end;
 
 constructor TControllerColaborador.Create(AOwner: TComponent);
 begin
@@ -55,7 +65,9 @@ begin
   Lista     := TListColaborador.Create;
   Cargo := TControllerCargo.create(Self);
   Obj  := TObjSalesMan.Create;
-
+  FParametros := TPrmCollaborator.Create;
+  Cidade := TControllerCidade.create(Self);
+  Usuario := TControllerUsuario.create(Self);
 end;
 
 function TControllerColaborador.delete: boolean;
@@ -74,6 +86,9 @@ begin
   FreeAndNil(Lista);
   Registro.DisposeOf;
   Cargo.DisposeOf;
+  FParametros.DisposeOf;
+  Cidade.DisposeOf;
+  Usuario.DisposeOf;
   inherited;
 end;
 
@@ -213,6 +228,77 @@ begin
   SaveObj(Registro);
 end;
 
+procedure TControllerColaborador.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TColaborador;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := //' SELECT * FROM TB_COLABORADOR WHERE 1=1';
+        ' SELECT CLB.*, CRG.CRG_DESCRICAO ' + //CLB_CODIGO, CLB_CPF, CLB_NOME, CRG_DESCRICAO, CLB_CODMHA ' +
+        '   FROM TB_COLABORADOR CLB' +
+        '   LEFT OUTER JOIN TB_CARGO CRG ON (CRG.CRG_CODIGO = CLB.CLB_CODCRG) ' +
+        '  WHERE (CLB.CLB_CODIGO IS NOT NULL) ';
+
+      if not (Fc_Tb_Geral('L','PES_G_COMPARTILHA','S') = 'S') then
+      begin
+        SQL.Text := SQL.Text + ' AND (CLB.CLB_CODMHA =:CLB_CODMHA) ';
+        ParamByName('CLB_CODMHA').AsInteger := Gb_CodMha;
+      end;
+
+      if FParametros.FieldName.CPFCNPJ <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND CLB.CLB_CPF = :CLB_CPF ';
+        ParamByName('CLB_CPF').AsString := FParametros.FieldName.CPFCNPJ;
+      end;
+
+      if FParametros.FieldName.Nome <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND CLB.CLB_NOME LIKE :CLB_NOME ';
+        ParamByName('CLB_NOME').AsString := Concat('%',FParametros.FieldName.nome,'%');
+      end;
+
+      if FParametros.FieldName.CargoDescricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND CRG.CRG_DESCRICAO LIKE :CRG.CRG_DESCRICAO ';
+        ParamByName('CRG.CRG_DESCRICAO').AsString := Concat('%',FParametros.FieldName.CargoDescricao,'%');
+      end;
+
+      if FParametros.FieldName.Demitidos then
+        SQL.Text := SQL.Text +'AND (CLB.CLB_DEMISSAO IS NOT NULL) '
+      else
+        SQL.Text := SQL.Text +'AND (CLB.CLB_DEMISSAO IS NULL) ';
+
+      SQL.Text := SQL.Text + ' ORDER BY CLB.CLB_NOME';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TColaborador.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        LITem.CargoDescricao := FieldByName('CRG_DESCRICAO').AsString;
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerColaborador.setFParametros(const Value: TPrmCollaborator);
+begin
+  FParametros := Value;
+end;
 
 function TControllerColaborador.temPedido: Boolean;
 Var
@@ -559,7 +645,6 @@ begin
     FinalizaQuery(Lc_Qry);
   End;
 end;
-
 
 function TControllerColaborador.getByDoc: Boolean;
 Var

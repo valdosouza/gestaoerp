@@ -18,6 +18,8 @@ Type
     Lista : TListaCidade;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
+    function getCodigoLista(Descricao: String): Integer;
+    function getDescricaoLista(Codigo: Integer): String;
     function salva:boolean;
     function migra:boolean;
     procedure getbyId;
@@ -26,8 +28,8 @@ Type
     Function delete:boolean;
     function getList:Boolean;
     function Buscacodigo(IBGE:Integer; Descricao,UF:String):Integer;
-    function Clear:Boolean;
-    function Search:Boolean;
+    procedure Clear;
+    procedure Search;
     property Parametros : TPrmCidade read FParametros write setFParametros;
   End;
 
@@ -68,9 +70,8 @@ begin
   End;
 end;
 
-function TControllerCidade.Clear: Boolean;
+procedure TControllerCidade.Clear;
 begin
-  Result := True;
   clearObj(Registro);
   FParametros.Clear;
 end;
@@ -131,13 +132,11 @@ begin
   End;
 end;
 
-
-function TControllerCidade.Search: Boolean;
+procedure TControllerCidade.Search;
 var
   Lc_Qry : TSTQuery;
   LITem : TCidade;
 begin
-  Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
@@ -229,5 +228,36 @@ begin
     FinalizaQuery(Lc_Qry);
   End;
 end;
+
+function TControllerCidade.getCodigoLista(Descricao: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  Begin
+    if Lista[i].Descricao = Descricao then
+    Begin
+      Result := Lista[i].Codigo;
+      Break;
+    End;
+  End;
+end;
+
+function TControllerCidade.getDescricaoLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  Begin
+    if Lista[i].Codigo = Codigo then
+    Begin
+      Result := Lista[i].Descricao;
+      Break;
+    End;
+  End;
+end;
+
 
 end.

@@ -46,6 +46,8 @@ Type
     FCLB_TIT_ELEITOR: String;
     FCLB_UF: String;
     FCLB_CELULAR: String;
+    FCargoDescricao: String;
+    FDemitidos: boolean;
     procedure setFCLB_ADMISSAO(const Value: TDate);
     procedure setFCLB_AQ_COM_SRV(const Value: Real);
     procedure setFCLB_AQ_COM_VDA(const Value: Real);
@@ -83,6 +85,8 @@ Type
     procedure setFCLB_TIT_SECAO(const Value: String);
     procedure setFCLB_TIT_ZONA(const Value: String);
     procedure setFCLB_UF(const Value: String);
+    procedure setFCargoDescricao(const Value: String);
+    procedure setFDemitidos(const Value: boolean);
 
   public
     [KeyField('CLB_CODIGO')]
@@ -164,12 +168,18 @@ Type
     [FieldName('CLB_CALC_COM_SRV')]
     property ComissaoPorServico: String read FCLB_CALC_COM_SRV write setFCLB_CALC_COM_SRV;
 
-
+    property CargoDescricao : String read FCargoDescricao write setFCargoDescricao;
+    property Demitidos : boolean read FDemitidos write setFDemitidos;
   End;
 
 implementation
 
 { TColaborador }
+
+procedure TColaborador.setFCargoDescricao(const Value: String);
+begin
+  FCargoDescricao := Value;
+end;
 
 procedure TColaborador.setFCLB_ADMISSAO(const Value: TDate);
 begin
@@ -354,6 +364,11 @@ end;
 procedure TColaborador.setFCLB_UF(const Value: String);
 begin
   FCLB_UF := Value;
+end;
+
+procedure TColaborador.setFDemitidos(const Value: boolean);
+begin
+  FDemitidos := Value;
 end;
 
 end.

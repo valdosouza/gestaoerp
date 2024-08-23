@@ -105,11 +105,11 @@ begin
       Gb_Nivel := StrToIntDef( Lc_usuario.Registro.nivel,0);
       GB_Nm_Usuario := Lc_usuario.Registro.Nome;
       Gb_Senha := Lc_usuario.Registro.Senha;
-      Lc_Usuario.Colaborador.Registro.USuario := Lc_Usuario.Registro.Codigo;
-      Lc_Usuario.Colaborador.GetByUser;
-      if Lc_Usuario.Colaborador.exist then
+      Lc_Usuario.Registro.codigo := Lc_Usuario.Registro.Codigo;
+      Lc_Usuario.getVendedorID;
+      if Lc_Usuario.exist then
       Begin
-        Gb_Cd_Vendedor := Lc_Usuario.Colaborador.Registro.Codigo;
+        Gb_Cd_Vendedor := Lc_Usuario.Registro.Codigo;
       end;
       Gb_Liberado := (Gb_Nivel = 1);
       //Registra quem entrou no sistema

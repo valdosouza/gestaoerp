@@ -3,7 +3,7 @@ unit ControllerUsuario;
 interface
 
 uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
-     STQuery, ControllerBase, tblUsuario, prm_users, ControllerColaborador, MD5;
+     STQuery, ControllerBase, tblUsuario, prm_users, MD5;
 
 Type
   TListaUsuario = TObjectList<TUsuario>;
@@ -14,7 +14,6 @@ Type
   public
     Registro : TUsuario;
     Lista : TListaUsuario;
-    Colaborador : TControllerColaborador;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function salva:boolean;
@@ -30,7 +29,7 @@ Type
     function ResetaSenha:boolean;
     function Replace:boolean;
     function Autentica : Boolean;
-    function Clear:Boolean;
+    procedure Clear;
     procedure Search;
     property Parametros : TPrmUsers read FParametros write setFParametros;
     function getCodigoLista(Nome: String): Integer;
@@ -68,9 +67,8 @@ begin
   End;
 end;
 
-function TControllerUsuario.Clear: Boolean;
+procedure TControllerUsuario.Clear;
 begin
-  Result := True;
   clearObj(Registro);
   FParametros.Clear;
 end;
@@ -80,7 +78,6 @@ begin
   inherited;
   Registro := TUsuario.Create;
   Lista := TListaUsuario.Create;
-  Colaborador := TControllerColaborador.create(Self);
   FParametros := TPrmUsers.Create;
 end;
 
@@ -96,7 +93,6 @@ end;
 
 destructor TControllerUsuario.Destroy;
 begin
-  Colaborador.DisposeOf;
   Registro.DisposeOf;
   Lista.DisposeOf;
   FParametros.DisposeOf;
