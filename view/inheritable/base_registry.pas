@@ -24,6 +24,8 @@ type
     procedure SB_gravarClick(Sender: TObject);
     procedure SB_CancelarClick(Sender: TObject);
     procedure Sb_Sair_0Click(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
 
   protected
@@ -114,6 +116,15 @@ begin
           TEdit (Components[I]).ReadOnly := ( EditionState = 'B' );
       End;
 
+      if (Components[I].ClassName = 'TComboBox') then
+        if ( EditionState = 'B' ) then
+          TComboBox (Components[I]).Style := csSimple
+        else
+          TComboBox(Components[I]).Style := csDropDown;
+
+      if (Components[I].ClassName = 'TCheckBox') then
+        TCheckBox(Components[I]).Enabled := ( EditionState = 'I' ) or ( EditionState = 'E' );
+
       if (Components[I].ClassName = 'TDBLookupComboBox') then
         TDBLookupComboBox (Components[I]).ReadOnly := ( EditionState = 'B' );
 
@@ -187,6 +198,25 @@ begin
 
 end;
 
+
+procedure TBaseRegistry.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if EditionState = 'B' then
+  Begin
+    Key := 0;
+  end;
+  inherited;
+end;
+
+procedure TBaseRegistry.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if EditionState = 'B' then
+  Begin
+    Key := #0;
+  end;
+  inherited;
+end;
 
 procedure TBaseRegistry.showData;
 begin

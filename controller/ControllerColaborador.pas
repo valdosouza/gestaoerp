@@ -4,7 +4,7 @@ interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
       tblColaborador ,Un_MSg,Generics.Collections,
-      ControllerCargo, ObjSalesMan, tblphone, tblAddress,ControllerUF, controllerCidade,
+      ControllerCargo, ObjSalesMan, tblphone, tblAddress,ControllerUF,
       prm_collaborator, controllerUsuario;
 
 Type
@@ -19,7 +19,7 @@ Type
     Registro : TColaborador;
     Cargo : TControllerCargo;
     Lista : TListColaborador;
-    Cidade : TControllerCidade;
+    UF : TControllerUf;
     Usuario : TControllerUsuario;
     Obj  : TObjSalesMan;
     constructor Create(AOwner: TComponent); override;
@@ -66,7 +66,7 @@ begin
   Cargo := TControllerCargo.create(Self);
   Obj  := TObjSalesMan.Create;
   FParametros := TPrmCollaborator.Create;
-  Cidade := TControllerCidade.create(Self);
+  UF := TControllerUf.create(Self);
   Usuario := TControllerUsuario.create(Self);
 end;
 
@@ -87,7 +87,7 @@ begin
   Registro.DisposeOf;
   Cargo.DisposeOf;
   FParametros.DisposeOf;
-  Cidade.DisposeOf;
+  UF.DisposeOf;
   Usuario.DisposeOf;
   inherited;
 end;
@@ -97,7 +97,6 @@ Var
   LcPhone : TPhone;
   LcAddress : TAddress;
   LcUF : TControllerUf;
-  LcCidade : TControllerCidade;
 begin
   with Obj do
   BEgin
@@ -136,13 +135,11 @@ begin
     LcAddress.CodigoPais := 1058;
     Try
       LcUF := TControllerUf.Create(self);
-      LcCidade := TControllerCidade.Create(self);
 
       LcAddress.CodigoEstado := LcUF.BuscaCodigo( Colab.Estado );
-      LcAddress.CodigoCidade := LcCidade.Buscacodigo(0,Colab.Cidade,Colab.Estado);
+      LcAddress.CodigoCidade := LcUF.Cidade.Buscacodigo(0,Colab.Cidade,Colab.Estado);
     Finally
       FreeAndNil( LcUF );
-      FreeAndNil( LcCidade );
     End;
     LcAddress.Principal := 'S';
     Fiscal.Entidade.ListaEndereco.Add(LcAddress);
@@ -243,7 +240,7 @@ begin
         '   LEFT OUTER JOIN TB_CARGO CRG ON (CRG.CRG_CODIGO = CLB.CLB_CODCRG) ' +
         '  WHERE (CLB.CLB_CODIGO IS NOT NULL) ';
 
-      if not (Fc_Tb_Geral('L','PES_G_COMPARTILHA','S') = 'S') then
+      if FParametros.FieldName.Estabelecimento > 0 then
       begin
         SQL.Text := SQL.Text + ' AND (CLB.CLB_CODMHA =:CLB_CODMHA) ';
         ParamByName('CLB_CODMHA').AsInteger := Gb_CodMha;

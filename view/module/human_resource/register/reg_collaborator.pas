@@ -36,8 +36,8 @@ type
     E_Email: TEdit;
     E_Codigo: TEdit;
     DBCB_Sexo: TComboBox;
-    DBLCB_Cargo: TComboBox;
-    DBLCB_Cidade: TComboBox;
+    CB_Cargo: TComboBox;
+    CB_Cidade: TComboBox;
     e_ADMISSAO: TDateTimePicker;
     PG_Informacoes: TPageControl;
     tsObservacao: TTabSheet;
@@ -87,10 +87,18 @@ type
     procedure Sb_CepClick(Sender: TObject);
     procedure Sb_EnderecoClick(Sender: TObject);
     procedure SB_CargoClick(Sender: TObject);
+    procedure E_CepExit(Sender: TObject);
+    procedure CB_UFChange(Sender: TObject);
+    procedure CB_CidadeClick(Sender: TObject);
+    procedure chbx_CNPJClick(Sender: TObject);
+    procedure Chbx_CPFClick(Sender: TObject);
   private
+    procedure MascaraDocumentoFiscal;
     procedure MontarComboBoxCargo;
+    procedure MontarComboBoxUF;
     procedure MontarComboBoxCidade;
     procedure MontarComboBoxUsuario;
+    procedure BuscaCep(Pc_Cep : String);
   protected
     procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
@@ -113,14 +121,54 @@ var
 
 implementation
 
-uses UN_MSG, env, sea_job_position, methods;
+uses UN_MSG, env, sea_job_position, methods,api_route_cep, un_dm,UnFunctions,
+  Un_PesqEndereco;
 
 {$R *.dfm}
+
+procedure TRegCollaborator.BuscaCep(Pc_Cep: String);
+Var
+  Lc_Cep : TCependereco;
+begin
+  Lc_Cep := Fc_BuscaPorCep(Pc_Cep);
+  if (trim(Lc_Cep.FLogradouro) <> '') then
+  Begin
+    CB_UF.Text      := Lc_Cep.FUF;
+    MontarComboBoxCidade;
+    CB_Cidade.Text  := UpperCase(Lc_Cep.FCidade);
+    E_Endereco.Text := Lc_Cep.FLogradouro;
+    E_Bairro.Text := Lc_Cep.FBairro;
+    if E_Endereco.CanFocus then E_Endereco.SetFocus;
+  end;
+end;
+
+procedure TRegCollaborator.CB_CidadeClick(Sender: TObject);
+begin
+  inherited;
+  MascaraDocumentoFiscal;
+end;
+
+procedure TRegCollaborator.CB_UFChange(Sender: TObject);
+begin
+  MontarComboBoxCidade;
+end;
 
 procedure TRegCollaborator.Change;
 begin
   inherited;
   E_Nome.SetFocus;
+end;
+
+procedure TRegCollaborator.chbx_CNPJClick(Sender: TObject);
+begin
+  Chbx_CPF.Checked := not TCheckBox(Sender).Checked;
+  MascaraDocumentoFiscal;
+end;
+
+procedure TRegCollaborator.Chbx_CPFClick(Sender: TObject);
+begin
+  chbx_CNPJ.Checked := not TCheckBox(Sender).Checked;
+  MascaraDocumentoFiscal;
 end;
 
 procedure TRegCollaborator.ClearAllFields;
@@ -141,6 +189,13 @@ begin
   inherited;
 end;
 
+procedure TRegCollaborator.E_CepExit(Sender: TObject);
+begin
+  inherited;
+  if (EditionState = 'I')then
+    Sb_CepClick(Sender);
+end;
+
 procedure TRegCollaborator.FinalizaVariaveis;
 begin
   inherited;
@@ -149,6 +204,8 @@ end;
 
 procedure TRegCollaborator.IniciaVariaveis;
 begin
+  PG_Informacoes.ActivePage := tsdocumentos;
+  MontarComboBoxUF;
   MontarComboBoxCidade;
   MontarComboBoxCargo;
   MontarComboBoxUsuario;
@@ -178,11 +235,11 @@ begin
     Registro.Endereco := E_Endereco.Text;
     Registro.Bairro := E_Bairro.Text;
     Registro.Estado := CB_UF.Text;
-    registro.Cidade := DBLCB_Cidade.Text;
+    registro.Cidade := CB_Cidade.Text;
     registro.email := E_Email.Text;
     registro.Fone := E_Fone.Text;
     registro.Celular := E_Celular.Text;
-    registro.Cargo := cargo.getCodigoLista(DBLCB_Cargo.Text);
+    registro.Cargo := cargo.getCodigoLista(CB_Cargo.Text);
     registro.Admissao := e_ADMISSAO.Date;
     if E_Demissao.Text <> EmptyStr then
       registro.Demissao := StrToDate(E_Demissao.Text);
@@ -223,47 +280,38 @@ begin
 end;
 
 procedure TRegCollaborator.SB_CargoClick(Sender: TObject);
-begin
-  inherited;
-  TSetesForms.Show(TSeaJobPosition);
-{
 Var
-  Lc_Form : TFr_Cargo;
+  Lc_Form : TSeaJobPosition;
 begin
-  Try
-    Lc_Form := TFr_Cargo.Create(nil);
-    Lc_Form.ShowModal;
-  Finally
-    DM.Qr_Cargo.Active:=false;
-    DM.Qr_Cargo.Active:=True;
-    Tb_Colaborador.FieldByName('CLB_CODCRG').AsInteger := TFr_Cargo(Lc_Form).It_Cd_Cadastro;
-    DBLCB_Cargo.KeyValue := TFr_Cargo(Lc_Form).It_Cd_Cadastro;
-    DBLCB_Cargo.SetFocus;
-    Lc_Form.DisposeOf;
-  End;
-
-  ChamarTela(TSeaJobPosition);
-}
+  Lc_form := TSeaJobPosition.Create(Self);
+  try
+    Lc_form.ShowModal;
+  finally
+    MontarComboBoxCargo;
+    CB_Cargo.Text := Lc_Form.cds_searchDescricao.AsString;
+    CB_Cargo.SetFocus;
+    Lc_form.DisposeOf;
+  end;
 end;
 
 procedure TRegCollaborator.Sb_CepClick(Sender: TObject);
 begin
   inherited;
-  {if (E_cep.Text = '') then
-    Begin
+  if (E_cep.Text = '') then
+  Begin
     MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
                    'Informe o Número do Cep.'+EOLN+EOLN,
                   ['OK'],[bEscape],mpInformacao);
     E_cep.SetFocus;
-    end
+  end
   else
-    Pc_BuscaCep(E_cep.Text);}
+    BuscaCep(E_cep.Text);
 end;
 
 procedure TRegCollaborator.Sb_EnderecoClick(Sender: TObject);
 begin
   inherited;
-{  if not Assigned(Fr_PesqEndereco) then Application.CreateForm(TFr_PesqEndereco, Fr_PesqEndereco);
+  if not Assigned(Fr_PesqEndereco) then Application.CreateForm(TFr_PesqEndereco, Fr_PesqEndereco);
   if Fr_PesqEndereco.showmodal = mrOk then
   begin
     with Fr_PesqEndereco do
@@ -271,24 +319,14 @@ begin
       if (StrGrd_Logradouro.RowCount > 1) and (StrGrd_Logradouro.Cells[1,StrGrd_Logradouro.row]<>'') then
       Begin
         E_Cep.Text := StrGrd_Logradouro.Cells[1,StrGrd_Logradouro.row];
-        Tb_Colaborador.FieldByName('CLB_CEP').AsString := StrGrd_Logradouro.Cells[1,StrGrd_Logradouro.row];
-
         E_Endereco.Text := StrGrd_Logradouro.Cells[2,StrGrd_Logradouro.row];
-        Tb_Colaborador.FieldByName('CLB_ENDER').AsString := E_Endereco.Text;
-
         E_Bairro.Text := StrGrd_Logradouro.Cells[3,StrGrd_Logradouro.row];
-        Tb_Colaborador.FieldByName('CLB_BAIRRO').AsString := E_Bairro.Text;
-
-        DBLCB_UF.KeyValue := Fc_BuscaCodigoEstado(StrGrd_Logradouro.Cells[5,StrGrd_Logradouro.row]);
-        Tb_Colaborador.FieldByName('CLB_UF').AsString := DBLCB_UF.KeyValue;
-
-        DBLCB_Cidade.KeyValue := Fc_BuscaCodigoCidade(0,StrGrd_Logradouro.Cells[4,StrGrd_Logradouro.row],StrGrd_Logradouro.Cells[5,StrGrd_Logradouro.row]);
-        Tb_Colaborador.FieldByName('CLB_CIDADE').AsString := DBLCB_Cidade.KeyValue;
-
+        CB_UF.Text := StrGrd_Logradouro.Cells[5,StrGrd_Logradouro.row];
+        CB_Cidade.Text := StrGrd_Logradouro.Cells[4,StrGrd_Logradouro.row];
         if E_Endereco.CanFocus then E_Endereco.SetFocus;
       end;
     end;
-  end;}
+  end;
 end;
 
 procedure TRegCollaborator.ShowData;
@@ -304,12 +342,13 @@ begin
     E_Endereco.Text:= Registro.Endereco;
     E_Bairro.Text:= Registro.Bairro;
     CB_UF.ItemIndex := CB_UF.Items.IndexOf(Registro.Estado);
-    DBLCB_Cidade.ItemIndex := DBLCB_Cidade.Items.IndexOf(Registro.Cidade);
+    MontarComboBoxCidade;
+    CB_Cidade.ItemIndex := CB_Cidade.Items.IndexOf(Registro.Cidade);
     E_Email.Text := registro.email;
     E_Fone.Text := registro.Fone;
     E_Celular.Text := registro.Celular;
     Lc_Aux := cargo.getDescricaoLista(Registro.Cargo);
-    DBLCB_Cargo.ItemIndex := DBLCB_Cargo.Items.IndexOf(Lc_Aux);
+    CB_Cargo.ItemIndex := CB_Cargo.Items.IndexOf(Lc_Aux);
     e_ADMISSAO.Date := registro.Admissao;
     E_Demissao.Text := DateToStr(registro.Demissao);
     //observações
@@ -317,6 +356,11 @@ begin
     //documentos
     E_DataNasc.Date := registro.NAscimento;
     E_Cpf_CNPJ.Text := registro.CPFCNPJ;
+    IF (Length(registro.CPFCNPJ) = 14) then
+      chbx_CNPJ.Checked := True
+    else
+      Chbx_CPF.Checked := True;
+
     E_Identidade.Text := registro.Identidade;
     E_Pis.Text := registro.PIS;
     E_Tit_Eleit.Text := registro.TituloEleitor;
@@ -368,6 +412,8 @@ begin
 end;
 
 function TRegCollaborator.ValidateSave: boolean;
+Var
+  Lc_DocFiscal : String;
 begin
   Result := True;
 
@@ -379,11 +425,11 @@ begin
     Exit;
   end;
 
-  if (DBLCB_Cargo.Text) = EmptyStr then
+  if (CB_Cargo.Text) = EmptyStr then
   begin
     TMsgSetes.ValidaPreenchimentoCampo(Lb_Cargo.Caption);
     Result := False;
-    DBLCB_Cargo.SetFocus;
+    CB_Cargo.SetFocus;
     Exit;
   end;
 
@@ -394,37 +440,15 @@ begin
     PG_Informacoes.ActivePage := tsdocumentos;
     E_Cpf_CNPJ.SetFocus;
     Exit;
-  end
-  else
+  end;
+
+  Lc_DocFiscal := ValidDocFiscal(E_Cpf_CNPJ.Text);
+  if (Lc_DocFiscal <> OK) then
   Begin
-    IF Length(E_Cpf_CNPJ.Text) = 11 then
-    Begin
-      {if not TestaCpf(E_Cpf_CNPJ.Text) then
-      Begin
-        MensagemPadrao(' Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'CPF do Colaborador Inválido.'+EOLN+
-                       'Verifique o CPF do Colaborador.' + EOLN,
-                       ['OK'],[bEscape],mpErro);
-        Result := False;
-        PG_Informacoes.ActivePage:= TBS_documentos;
-        E_Cpf_CNPJ.SetFocus;
-        exit;
-      end;   }
-    end
-    else
-    Begin
-      {if not TestaCgc(E_Cpf_CNPJ.Text) then
-      Begin
-        MensagemPadrao(' Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                       'CNPJ do Colaborador Inválido.'+EOLN+
-                       'Verifique o CNPJ do Colaborador.' + EOLN,
-                       ['OK'],[bEscape],mpErro);
-        Result := False;
-        PG_Informacoes.ActivePage:= TBS_documentos;
-        E_Cpf_CNPJ.SetFocus;
-        exit;
-      end; }
-    end;
+    TMsgSetes.ErroCampo('Documento Fiscal',Lc_DocFiscal);
+    E_Cpf_CNPJ.SetFocus;
+    Result := False;
+    Exit;
   end;
 
   if DBLCB_Usuario.Text <> EmptyStr then
@@ -446,27 +470,6 @@ begin
       end;
     end;
   end;
-
-  {if (Trim(DBLCB_Usuario.Text)<> '') then
-  Begin
-    colab.Registro.Codigo := Tb_Colaborador.fieldByName('clb_codigo').AsInteger;
-    colab.VerificaExistenciaUsuario(DBLCB_Usuario.KeyValue);
-    if colab.exist then
-    Begin
-      MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Este usuário está sendo usado pelo colaborador ' + Colab.Registro.Nome + '.'+EOLN+
-                     'Não é permitido usar o mesmo usuário em mais de um colaborador ao mesmo tempo' + EOLN+
-                     'Por favor retire o usuário do outro colaborador ou utilize outro usuário neste.'+EOLN,
-                     ['OK'],[bEscape],mpErro);
-      Result := False;
-      PG_Informacoes.ActivePage:= tbs_Outras;
-      DBLCB_Usuario.SetFocus;
-      exit;
-    End;
-  End;    }
-
-
-
 end;
 
 procedure TRegCollaborator.MontarComboBoxCidade;
@@ -476,12 +479,22 @@ begin
   with colaborador do
   Begin
     if CB_UF.Text <> EmptyStr then
-      cidade.Parametros.FieldName.Estado := CB_UF.Text;
-    Cidade.search;
-    DBLCB_Cidade.Items.Clear;
-    for i := 0 to Pred(Cidade.lista.Count) do
-      DBLCB_Cidade.Items.Add(Cidade.lista[I].Descricao);
+    Begin
+      UF.Cidade.Parametros.FieldName.Estado := CB_UF.Text;
+      UF.Cidade.search;
+      CB_Cidade.Items.Clear;
+      for i := 0 to Pred(UF.Cidade.lista.Count) do
+        CB_Cidade.Items.Add(UF.Cidade.lista[I].Descricao);
+    End;
   End;
+end;
+
+procedure TRegCollaborator.MascaraDocumentoFiscal;
+begin
+  if Chbx_CPF.Checked then
+    E_Cpf_CNPJ.EditMask := '###.###.###-##;0;_'
+  else
+    E_Cpf_CNPJ.EditMask := '##.###.###/####-##;0;_';
 end;
 
 procedure TRegCollaborator.MontarComboBoxCargo;
@@ -491,9 +504,23 @@ begin
   with colaborador do
   Begin
     Cargo.search;
-    DBLCB_Cargo.Items.Clear;
+    CB_Cargo.Items.Clear;
     for i := 0 to Pred(cargo.lista.Count) do
-      DBLCB_Cargo.Items.Add(cargo.lista[I].Descricao);
+      CB_Cargo.Items.Add(cargo.lista[I].Descricao);
+  End;
+end;
+
+procedure TRegCollaborator.MontarComboBoxUF;
+var
+  i : Integer;
+begin
+  with colaborador do
+  Begin
+    CB_UF.Clear;
+    UF.search;
+    for i := 0 to Pred(UF.lista.Count) do
+      CB_UF.Items.Add(UF.lista[I].Sigla);
+    CB_UF.ItemIndex := 0;
   End;
 end;
 

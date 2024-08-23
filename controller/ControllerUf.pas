@@ -3,7 +3,8 @@ unit ControllerUf;
 interface
 
 uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
-     STQuery, ControllerBase, tbluf, prm_uf,ControllerFcpUfNcm,ControllerMvaUfNcm;
+     STQuery, ControllerBase, tbluf, prm_uf,ControllerFcpUfNcm,ControllerMvaUfNcm,
+     ControllerCidade;
 
 Type
   TListaUf = TObjectList<TUF>;
@@ -21,6 +22,7 @@ Type
     Lista : TListaUf;
     MVA : TControllerMvaUfNcm;
     FCP : TControllerFcpUfNcm;
+    Cidade : TControllerCidade;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function salva:boolean;
@@ -77,6 +79,7 @@ begin
   FParametros := TPrmUF.Create;
   MVA := TControllerMvaUfNcm.create(self);
   FCP := TControllerFcpUfNcm.create(self);
+  Cidade := TControllerCidade.create(self);
 end;
 
 function TControllerUf.delete: boolean;
@@ -91,6 +94,7 @@ end;
 
 destructor TControllerUf.Destroy;
 begin
+  FreeAndNil( Cidade );
   FreeAndNil( MVA );
   FreeAndNil( FCP );
   Lista.DisposeOf;

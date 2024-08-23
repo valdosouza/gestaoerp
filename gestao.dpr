@@ -54,7 +54,9 @@ uses
   sea_electronic_card in 'view\module\banking\register\sea_electronic_card.pas' {SeaEletronicCard},
   sea_electronic_slip in 'view\module\banking\register\sea_electronic_slip.pas' {SeaElectronicSlip},
   reg_measure in 'view\module\operation\register\reg_measure.pas' {RegMeasure},
-  prm_itens_ifc in 'parameter\prm_itens_ifc.pas';
+  prm_itens_ifc in 'parameter\prm_itens_ifc.pas',
+  Un_PesqEndereco in 'view\module\operation\admin\Un_PesqEndereco.pas' {Fr_PesqEndereco},
+  Un_Fm_ListaMultiEmpresa in 'frame\Un_Fm_ListaMultiEmpresa.pas' {Fm_ListaMultiEmpresa: TFrame};
 
 {$R *.res}
 
@@ -64,15 +66,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TRegBankingAccount, RegBankingAccount);
-  Application.CreateForm(TRegBankingHistory, RegBankingHistory);
-  Application.CreateForm(TRegBillingPortfolio, RegBillingPortfolio);
-  Application.CreateForm(TRegElectronicCard, RegElectronicCard);
-  Application.CreateForm(TRegElectronicSlip, RegElectronicSlip);
-  Application.CreateForm(TSeaBankingAccount, SeaBankingAccount);
-  Application.CreateForm(TSeaBankingHistory, SeaBankingHistory);
-  Application.CreateForm(TSeaEletronicCard, SeaEletronicCard);
-  Application.CreateForm(TSeaElectronicSlip, SeaElectronicSlip);
-  Application.CreateForm(TRegMeasure, RegMeasure);
   Application.Run;
 end.

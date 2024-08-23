@@ -47,7 +47,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>view\inheritable;Controller;model;model\orm;share;share\web\model;share\web\controller;share\web\framework;share\web\DataObjetcs;share\RegraNegocios;parameter;view\module\operation\register;view\module\operation\admin;view\module\banking\register;view\module\human_resource\register;view\module\operation\task;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>view\inheritable;Controller;model;model\orm;share;share\web\model;share\web\controller;share\web\framework;share\web\DataObjetcs;share\RegraNegocios;parameter;view\module\operation\register;view\module\operation\admin;view\module\banking\register;view\module\human_resource\register;view\module\operation\task;api_adm_desktop;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_ExeOutput>..\Modelos\Gestao2025\Bin\</DCC_ExeOutput>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <SanitizedProjectName>Gestao</SanitizedProjectName>
@@ -133,96 +133,127 @@
         <DCCReference Include="env.pas"/>
         <DCCReference Include="view\module\human_resource\register\reg_collaborator.pas">
             <Form>RegCollaborator</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\human_resource\register\reg_job_position.pas">
             <Form>RegJobPosition</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\human_resource\register\sea_collaborator.pas">
             <Form>SeaCollaborator</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\human_resource\register\sea_job_position.pas">
             <Form>SeaJobPosition</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_commitment.pas">
             <Form>RegCommitment</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_config_tag.pas">
             <Form>RegConfigTag</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_printers.pas">
             <Form>RegPrinters</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_users.pas">
             <Form>RegUsers</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\reg_virtual_shop.pas">
             <Form>RegVirtualShop</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\sea_printers.pas">
             <Form>SeaPrinters</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\admin\sea_users.pas">
             <Form>SeaUsers</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_banner_site.pas">
             <Form>RegBannerSite</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_category.pas">
             <Form>RegCategory</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_city.pas">
             <Form>RegCity</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_ext_motive.pas">
             <Form>RegExtMotive</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_group_menu.pas">
             <Form>RegGroupMenu</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_package.pas">
             <Form>RegPackage</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_subgroup_menu.pas">
             <Form>RegSubgroupMenu</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_uf.pas">
             <Form>RegUf</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_banner_site.pas">
             <Form>SeaBannerSite</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_category.pas">
             <Form>SeaCategory</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_city.pas">
             <Form>SeaCity</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_config_tag.pas">
             <Form>SeaConfigTag</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_ext_motive.pas">
             <Form>SeaExtMotive</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_group_menu.pas">
             <Form>SeaGroupMenu</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_package.pas">
             <Form>SeaPackage</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_uf.pas">
             <Form>SeaUf</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\task\reg_receipt.pas">
             <Form>RegReceipt</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\task\sea_receipt.pas">
             <Form>SeaReceipt</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\task\Un_envia_email.pas">
             <Form>Fr_envia_email</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\banking\register\Un_Especie_Doc.pas">
             <Form>Fr_Especie_Doc</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="frame\un_fm_billing_portfolio.pas">
             <Form>FmBillingPortfolio</Form>
@@ -285,6 +316,15 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="parameter\prm_itens_ifc.pas"/>
+        <DCCReference Include="view\module\operation\admin\Un_PesqEndereco.pas">
+            <Form>Fr_PesqEndereco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="frame\Un_Fm_ListaMultiEmpresa.pas">
+            <Form>Fm_ListaMultiEmpresa</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

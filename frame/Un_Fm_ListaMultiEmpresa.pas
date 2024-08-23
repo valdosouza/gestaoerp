@@ -7,22 +7,20 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, IBX.IBCustomDataSet,
   STQuery, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Mask, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.DBCtrls, STDatabase, IBX.IBDatabase, STTransaction,
-  IBX.IBQuery;
+  IBX.IBQuery, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet,
+  base_frame_list;
 
 type
-  TFm_ListaMultiEmpresa = class(TFrame)
-    Grb_MnhaEmpresa: TGroupBox;
+  TFm_ListaMultiEmpresa = class(TBaseFrameList)
     chbx_Empresas: TCheckBox;
-    Dblcb_Mha_Empresa: TDBLookupComboBox;
-    Qr_ListaEstabelecimento: TSTQuery;
-    Ds_ListaEstabelecimento: TDataSource;
-    IBT_Estabelecimento: TSTTransaction;
     procedure chbx_EmpresasClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure Listar(Pc_Order:String);
+    procedure Listar(Order:String);
     Procedure HabilitarMultiEmpresa;
   end;
 
@@ -30,13 +28,13 @@ implementation
 
 {$R *.dfm}
 
-uses UN_TabelasEmListas, UN_Sistema, Un_Regra_Negocio, Un_DM, Un_Principal,env;
+uses Un_DM, env;
 
-procedure TFm_ListaMultiEmpresa.Listar(Pc_Order:String);
+procedure TFm_ListaMultiEmpresa.Listar(Order:String);
 Var
   Lc_SqlTxt : String;
 Begin
-  with Qr_ListaEstabelecimento do
+  with Qr_Lista do
   Begin
     Active := False;
     SQL.Clear;
@@ -51,13 +49,14 @@ Begin
                  'FROM TB_EMPRESA '+
                   'WHERE (EMP_ATIVA = ''S'') and (EMP_TIPO = ''0'') ';
 
-    IF Pc_Order = 'EMP_NOME' then
+    IF Order = 'EMP_NOME' then
       Lc_SqlTxt := Lc_SqlTxt + ' ORDER BY EMP_NOME '
     else
       Lc_SqlTxt := Lc_SqlTxt + ' ORDER BY EMP_FANTASIA ';
     SQL.Add(Lc_SqlTxt);
     Active := True;
     FetchAll;
+    Dblcb_Lista.KeyValue := Gb_CodMha;
   end;
 end;
 
@@ -67,14 +66,14 @@ Var
 begin
   IF chbx_Empresas.Checked then
   Begin
-    Dblcb_Mha_Empresa.KeyValue := Null;
-    Dblcb_Mha_Empresa.Enabled := False;
+    Dblcb_Lista.KeyValue := Null;
+    Dblcb_Lista.Enabled := False;
   end
   else
   Begin
     Listar('EMP_NOME');
-    Dblcb_Mha_Empresa.Enabled := True;
-    Dblcb_Mha_Empresa.KeyValue := Gb_CodMha;
+    Dblcb_Lista.Enabled := True;
+    Dblcb_Lista.KeyValue := Gb_CodMha;
   End;
 end;
 

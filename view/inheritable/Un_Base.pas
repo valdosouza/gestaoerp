@@ -388,6 +388,7 @@ begin
       Key := #0;
       Perform(WM_NEXTDLGCTL, 0, 0);
    end;
+
 end;
 
 procedure TFr_Base.ImagemBotao;

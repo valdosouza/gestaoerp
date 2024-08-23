@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls, Vcl.StdCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, STQuery;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, STQuery, STTransaction;
 
 type
   TBaseFrameList = class(TFrame)
@@ -18,6 +18,7 @@ type
     Sb_Carteira: TSpeedButton;
     Qr_Lista: TSTQuery;
     Ds_Lista: TDataSource;
+    IBT_Lista: TSTTransaction;
   private
     { Private declarations }
   public
@@ -27,5 +28,7 @@ type
 implementation
 
 {$R *.dfm}
+
+uses un_dm;
 
 end.

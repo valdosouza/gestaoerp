@@ -532,7 +532,7 @@ end;
 procedure TFrMain.IniciaVariaveis;
 begin
   inherited;
-  MenuOperacao;
+  MenuPessoal;
   GB_NM_Empresa := 'Teste';
   Gb_Nivel := 1;//Setado como 1 por que no sistema original passamos pelo autenticação para defini-lo
   Gb_CodMha := 1;
