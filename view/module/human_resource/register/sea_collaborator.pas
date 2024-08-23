@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_search, Data.DB, Datasnap.DBClient,
   Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.DBCtrls, ControllerColaborador, ControllerEmpresa;
+  Vcl.DBCtrls, ControllerColaborador, ControllerEmpresa, base_frame_list,
+  Un_Fm_ListaMultiEmpresa;
 
 type
   TSeaCollaborator = class(TBaseSearch)
@@ -18,19 +19,18 @@ type
     E_BuscaNome: TEdit;
     E_BuscaCargo: TEdit;
     Chbx_Demitidos: TCheckBox;
-    Grb_MnhaEmpresa: TGroupBox;
-    chbx_Empresas: TCheckBox;
-    Dblcb_Mha_Empresa: TComboBox;
     cds_searchnome: TStringField;
     cds_searchcodigo: TIntegerField;
     cds_searchCargoDescricao: TStringField;
     cds_searchCPFCNPJ: TStringField;
+    Fm_LME: TFm_ListaMultiEmpresa;
     procedure chbx_EmpresasClick(Sender: TObject);
   private
-    procedure MontaComboBoxEmpresa;
+
   protected
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
+    procedure IniciaVariaveis;Override;
     procedure FinalizaVariaveis; override;
     procedure Search; override;
     procedure GetView; override;
@@ -60,7 +60,6 @@ begin
   inherited;
   colaborador := TControllerColaborador.create(self);
   Empresa := TControllerEmpresa.create(Self);
-  MontaComboBoxEmpresa;
 end;
 
 procedure TSeaCollaborator.FinalizaVariaveis;
@@ -73,6 +72,12 @@ end;
 procedure TSeaCollaborator.GetView;
 begin
   openRegister(cds_searchCodigo.AsInteger);
+end;
+
+procedure TSeaCollaborator.IniciaVariaveis;
+begin
+  inherited;
+  Fm_LME.Listar('EMP_NOME');
 end;
 
 procedure TSeaCollaborator.openRegister(pCodigo: Integer);
@@ -93,9 +98,8 @@ var
   i: Integer;
 begin
   colaborador.Clear;
-
-  //chbx_Empresas //--ajustar
-  //colaborador.Parametros.FieldName. := Dblcb_Mha_Empresa    //--ajustar
+  if ( Trim(Fm_LME.Dblcb_Lista.Text) <> '' ) then
+    colaborador.Parametros.FieldName.Estabelecimento := Fm_LME.Dblcb_Lista.KeyValue;
   colaborador.Parametros.FieldName.CPFCNPJ := E_BuscaCPF.Text;
   colaborador.Parametros.FieldName.Nome := E_BuscaNome.Text;
   colaborador.Parametros.FieldName.CargoDescricao := E_BuscaCargo.Text;
@@ -114,7 +118,7 @@ begin
     cds_search.AppendRecord([colaborador.Lista[i].CODIGO, colaborador.Lista[i].Nome, colaborador.Lista[i].CPFCNPJ, colaborador.Lista[i].CargoDescricao]);
 
   cds_search.EnableControls;
-
+  cds_search.First;
   inherited;
 end;
 
@@ -123,17 +127,5 @@ begin
   openRegister(0);
 end;
 
-procedure TSeaCollaborator.MontaComboBoxEmpresa;
-var
-  i : Integer;
-begin
-  with Empresa do
-  Begin
-    search;
-    Dblcb_Mha_Empresa.Items.Clear;
-    for i := 0 to Pred(lista.Count) do
-      Dblcb_Mha_Empresa.Items.Add(lista[I].NumeroNome);
-  End;
-end;
 
 end.

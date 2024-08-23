@@ -5,9 +5,9 @@ inherited SeaCollaborator: TSeaCollaborator
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
-    Top = 136
+    Top = 135
     Width = 657
-    Height = 367
+    Height = 368
     ExplicitTop = 136
     ExplicitWidth = 657
     ExplicitHeight = 367
@@ -16,7 +16,7 @@ inherited SeaCollaborator: TSeaCollaborator
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 561
-      Height = 349
+      Height = 350
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
       Columns = <
         item
@@ -28,6 +28,7 @@ inherited SeaCollaborator: TSeaCollaborator
         item
           Expanded = False
           FieldName = 'CPFCNPJ'
+          Title.Caption = 'CPF / CNPJ'
           Visible = True
         end
         item
@@ -39,23 +40,23 @@ inherited SeaCollaborator: TSeaCollaborator
     end
     inherited pnl_pesq_right: TPanel
       Left = 563
-      Height = 349
+      Height = 350
       ExplicitLeft = 563
       ExplicitHeight = 349
       inherited Sb_Sair_0: TSpeedButton
-        Top = 286
+        Top = 287
         ExplicitTop = 279
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 223
+        Top = 224
         ExplicitTop = 216
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 160
+        Top = 161
         ExplicitTop = 153
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 97
+        Top = 98
         ExplicitTop = 90
       end
       object Chbx_Demitidos: TCheckBox
@@ -70,14 +71,17 @@ inherited SeaCollaborator: TSeaCollaborator
     end
   end
   inherited Pnl_Parametros: TPanel
+    Top = 56
     Width = 657
-    Height = 127
+    Height = 73
+    ExplicitTop = 376
     ExplicitWidth = 657
-    ExplicitHeight = 127
+    ExplicitHeight = 73
     object GroupBox1: TGroupBox
-      Left = 2
-      Top = 52
-      Width = 653
+      AlignWithMargins = True
+      Left = 5
+      Top = 5
+      Width = 647
       Height = 59
       Align = alTop
       Caption = ' Digite sua op'#231#227'o de busca '
@@ -88,6 +92,9 @@ inherited SeaCollaborator: TSeaCollaborator
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitLeft = 2
+      ExplicitTop = 52
+      ExplicitWidth = 653
       object Lb_CPF: TLabel
         Left = 5
         Top = 16
@@ -170,44 +177,42 @@ inherited SeaCollaborator: TSeaCollaborator
         TabOrder = 2
       end
     end
-    object Grb_MnhaEmpresa: TGroupBox
-      Left = 2
-      Top = 2
-      Width = 653
-      Height = 50
-      Align = alTop
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      DesignSize = (
-        653
-        50)
-      object chbx_Empresas: TCheckBox
-        Left = 7
-        Top = 8
-        Width = 165
-        Height = 14
-        Caption = 'Selecionar todas as Empresas'
-        TabOrder = 0
-        OnClick = chbx_EmpresasClick
+  end
+  inline Fm_LME: TFm_ListaMultiEmpresa [2]
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 657
+    Height = 47
+    Align = alTop
+    TabOrder = 2
+    ExplicitLeft = 10
+    ExplicitTop = 10
+    ExplicitWidth = 653
+    inherited L_Carteira: TLabel
+      Width = 634
+      ExplicitTop = 0
+      ExplicitWidth = 634
+    end
+    inherited pnl_linha_1: TPanel
+      Width = 657
+      ExplicitTop = 20
+      ExplicitWidth = 653
+      inherited Sb_Carteira: TSpeedButton
+        Left = 633
+        ExplicitLeft = 629
       end
-      object Dblcb_Mha_Empresa: TComboBox
-        Left = 5
-        Top = 24
-        Width = 639
-        Height = 21
-        Anchors = [akLeft, akRight]
-        TabOrder = 1
+      inherited Dblcb_Lista: TDBLookupComboBox
+        Width = 633
+        ExplicitWidth = 629
       end
     end
   end
-  inherited MnuBase: TMainMenu
+  inherited MnuBase: TMainMenu [3]
     Left = 528
     Top = 160
+  end
+  inherited ds_search: TDataSource [4]
   end
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField

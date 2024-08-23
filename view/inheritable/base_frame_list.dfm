@@ -2,7 +2,7 @@ object BaseFrameList: TBaseFrameList
   Left = 0
   Top = 0
   Width = 494
-  Height = 38
+  Height = 36
   TabOrder = 0
   object L_Carteira: TLabel
     Left = 0
@@ -17,8 +17,6 @@ object BaseFrameList: TBaseFrameList
     Font.Name = 'Arial'
     Font.Style = []
     ParentFont = False
-    ExplicitLeft = 3
-    ExplicitTop = 3
     ExplicitWidth = 103
   end
   object pnl_linha_1: TPanel
@@ -29,9 +27,6 @@ object BaseFrameList: TBaseFrameList
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 3
-    ExplicitTop = 23
-    ExplicitWidth = 488
     object Sb_Carteira: TSpeedButton
       Left = 470
       Top = 0
@@ -50,19 +45,18 @@ object BaseFrameList: TBaseFrameList
       Height = 21
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 464
     end
   end
   object Qr_Lista: TSTQuery
     Connection = DM.IBD_Gestao
-    Transaction = DM.IB_Transacao
+    Transaction = IBT_Lista
     SQL.Strings = (
       'SELECT *'
       'FROM TB_CARTEIRA_COBRANCA'
       'WHERE CTR_CODBCO=:CTR_CODBCO')
     ForcedRefresh = True
     Left = 17
-    Top = 59
+    Top = 51
     ParamData = <
       item
         Name = 'CTR_CODBCO'
@@ -72,7 +66,15 @@ object BaseFrameList: TBaseFrameList
   end
   object Ds_Lista: TDataSource
     DataSet = Qr_Lista
-    Left = 81
-    Top = 57
+    Left = 73
+    Top = 49
+  end
+  object IBT_Lista: TSTTransaction
+    Params.Strings = (
+      'concurrency'
+      'nowait')
+    DefaultDatabase = DM.IBD_Gestao
+    Left = 132
+    Top = 52
   end
 end

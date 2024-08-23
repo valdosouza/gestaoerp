@@ -355,6 +355,7 @@ inherited RegCollaborator: TRegCollaborator
       Font.Style = []
       ParentFont = False
       TabOrder = 3
+      OnExit = E_CepExit
     end
     object E_Fone: TMaskEdit
       Left = 7
@@ -419,7 +420,7 @@ inherited RegCollaborator: TRegCollaborator
         'F'
         'H')
     end
-    object DBLCB_Cargo: TComboBox
+    object CB_Cargo: TComboBox
       Left = 185
       Top = 140
       Width = 246
@@ -432,9 +433,9 @@ inherited RegCollaborator: TRegCollaborator
       ParentFont = False
       TabOrder = 10
     end
-    object DBLCB_Cidade: TComboBox
-      Left = 61
-      Top = 101
+    object CB_Cidade: TComboBox
+      Left = 59
+      Top = 100
       Width = 296
       Height = 22
       Font.Charset = ANSI_CHARSET
@@ -444,6 +445,7 @@ inherited RegCollaborator: TRegCollaborator
       Font.Style = []
       ParentFont = False
       TabOrder = 6
+      OnClick = CB_CidadeClick
     end
     object e_ADMISSAO: TDateTimePicker
       Left = 462
@@ -461,6 +463,7 @@ inherited RegCollaborator: TRegCollaborator
       Height = 21
       Style = csDropDownList
       TabOrder = 13
+      OnChange = CB_UFChange
       Items.Strings = (
         'AC'
         'AL'
@@ -513,7 +516,7 @@ inherited RegCollaborator: TRegCollaborator
     Top = 175
     Width = 653
     Height = 176
-    ActivePage = tsOutras
+    ActivePage = tsComissao
     Align = alClient
     Style = tsFlatButtons
     TabOrder = 3
@@ -541,6 +544,8 @@ inherited RegCollaborator: TRegCollaborator
         BevelInner = bvRaised
         BevelOuter = bvLowered
         TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 3
         object Lb_Secao: TLabel
           Left = 590
           Top = 7
@@ -807,6 +812,7 @@ inherited RegCollaborator: TRegCollaborator
           Height = 17
           Caption = 'CPF / '
           TabOrder = 11
+          OnClick = Chbx_CPFClick
         end
         object chbx_CNPJ: TCheckBox
           Left = 143
@@ -815,6 +821,7 @@ inherited RegCollaborator: TRegCollaborator
           Height = 17
           Caption = 'CNPJ'
           TabOrder = 12
+          OnClick = chbx_CNPJClick
         end
         object E_Cpf_CNPJ: TMaskEdit
           Left = 90
@@ -858,6 +865,7 @@ inherited RegCollaborator: TRegCollaborator
           Top = 19
           Width = 93
           Height = 22
+          Alignment = taRightJustify
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -922,6 +930,7 @@ inherited RegCollaborator: TRegCollaborator
           Top = 19
           Width = 93
           Height = 22
+          Alignment = taRightJustify
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
