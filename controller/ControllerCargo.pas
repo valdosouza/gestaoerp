@@ -25,7 +25,7 @@ Type
     function getList:Boolean;
     function replace:boolean;
     Function GetcargoVendedor : Integer;
-    function Clear:Boolean;
+    procedure Clear;
     procedure Search;
     property Parametros : TPrmJobPosition read FParametros write setFParametros;
 
@@ -35,9 +35,8 @@ implementation
 
 uses Un_sistema, Un_Regra_Negocio;
 
-function TControllerCargo.Clear: Boolean;
+procedure TControllerCargo.Clear;
 begin
-  Result := True;
   clearObj(Registro);
   FParametros.Clear;
 end;

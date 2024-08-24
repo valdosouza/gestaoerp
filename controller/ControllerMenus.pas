@@ -34,8 +34,8 @@ end;
 
 destructor TControllerMenus.Destroy;
 begin
-  FreeAndNil(Registro);
-  FreeAndNil(Lista);
+  Registro.DisposeOf;
+  Lista.DisposeOf;
   inherited;
 end;
 
