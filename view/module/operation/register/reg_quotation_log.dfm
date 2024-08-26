@@ -2,8 +2,10 @@ inherited RegQuotationLog: TRegQuotationLog
   Caption = 'Log de Or'#231'amento '
   ClientHeight = 572
   ClientWidth = 742
-  ExplicitWidth = 754
-  ExplicitHeight = 635
+  OnDestroy = FormDestroy
+  ExplicitWidth = 748
+  ExplicitHeight = 616
+  PixelsPerInch = 96
   TextHeight = 13
   object Label12: TLabel [0]
     Left = 0
@@ -40,9 +42,8 @@ inherited RegQuotationLog: TRegQuotationLog
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 736
     object L_Orcamento: TLabel
-      Left = 175
+      Left = 170
       Top = 16
       Width = 37
       Height = 14
@@ -56,7 +57,7 @@ inherited RegQuotationLog: TRegQuotationLog
       ParentFont = False
     end
     object L_BuscaFantasia: TLabel
-      Left = 247
+      Left = 244
       Top = 16
       Width = 27
       Height = 14
@@ -71,7 +72,7 @@ inherited RegQuotationLog: TRegQuotationLog
       ParentFont = False
     end
     object RG_Situacao: TRadioGroup
-      Left = 532
+      Left = 534
       Top = 10
       Width = 205
       Height = 43
@@ -104,18 +105,18 @@ inherited RegQuotationLog: TRegQuotationLog
       Top = 31
       Width = 81
       Height = 22
-      Date = 39580.000000000000000000
-      Time = 0.356281493062852000
+      Date = 39580.356281493060000000
+      Time = 39580.356281493060000000
       Checked = False
       TabOrder = 1
     end
     object E_Data_Fim: TDateTimePicker
-      Left = 86
+      Left = 88
       Top = 31
       Width = 81
       Height = 22
-      Date = 39580.000000000000000000
-      Time = 0.356281493062852000
+      Date = 39580.356281493060000000
+      Time = 39580.356281493060000000
       Checked = False
       TabOrder = 2
     end
@@ -126,6 +127,7 @@ inherited RegQuotationLog: TRegQuotationLog
       Height = 12
       Caption = 'Data Inicial    Data Final'
       TabOrder = 0
+      OnClick = ChBx_PeriodoClick
     end
     object ChBx_Bloqueados: TCheckBox
       Left = 537
@@ -160,6 +162,7 @@ inherited RegQuotationLog: TRegQuotationLog
     Height = 164
     Align = alTop
     Color = clCream
+    DataSource = ds_search
     Font.Charset = ANSI_CHARSET
     Font.Color = clNavy
     Font.Height = -11
@@ -174,6 +177,7 @@ inherited RegQuotationLog: TRegQuotationLog
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+    OnTitleClick = DBG_PesquisaTitleClick
     Columns = <
       item
         Expanded = False
@@ -230,6 +234,7 @@ inherited RegQuotationLog: TRegQuotationLog
     TabStop = False
     Align = alClient
     Color = clCream
+    DataSource = ds_searchItens
     Font.Charset = ANSI_CHARSET
     Font.Color = clNavy
     Font.Height = -11
@@ -244,6 +249,7 @@ inherited RegQuotationLog: TRegQuotationLog
     TitleFont.Height = -11
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
+    OnTitleClick = DBG_ItensTitleClick
     Columns = <
       item
         Expanded = False
@@ -315,8 +321,6 @@ inherited RegQuotationLog: TRegQuotationLog
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 3
-    ExplicitTop = 499
-    ExplicitWidth = 736
     object SB_Buscar: TSpeedButton
       AlignWithMargins = True
       Left = 537
@@ -436,6 +440,7 @@ inherited RegQuotationLog: TRegQuotationLog
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = SB_BuscarClick
       ExplicitTop = 4
     end
     object SB_Sair: TSpeedButton
@@ -597,15 +602,16 @@ inherited RegQuotationLog: TRegQuotationLog
       Margin = 15
       NumGlyphs = 2
       ParentFont = False
+      OnClick = SB_RetonarClick
       ExplicitLeft = 436
       ExplicitTop = 5
       ExplicitHeight = 54
     end
     object Sb_Desbloqueia: TSpeedButton
       AlignWithMargins = True
-      Left = 320
+      Left = 304
       Top = 3
-      Width = 113
+      Width = 129
       Height = 58
       Margins.Left = 1
       Margins.Top = 1
@@ -637,7 +643,77 @@ inherited RegQuotationLog: TRegQuotationLog
       Margin = 15
       NumGlyphs = 2
       ParentFont = False
-      ExplicitTop = 4
+      OnClick = Sb_DesbloqueiaClick
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Top = 72
+  end
+  object ds_search: TDataSource
+    DataSet = mem_search
+    OnDataChange = ds_searchDataChange
+    Left = 176
+    Top = 186
+  end
+  object mem_searchItens: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 448
+    Top = 296
+    object mem_searchItensPRO_CODIGOFAB: TStringField
+      FieldName = 'PRO_CODIGOFAB'
+    end
+    object mem_searchItensICT_DESCRICAO: TStringField
+      FieldName = 'ICT_DESCRICAO'
+    end
+    object mem_searchItensICT_QTDE: TFloatField
+      FieldName = 'ICT_QTDE'
+    end
+    object mem_searchItensICT_VL_UNIT: TFloatField
+      FieldName = 'ICT_VL_UNIT'
+    end
+    object mem_searchItensICT_VL_SUBTOTAL: TCurrencyField
+      FieldName = 'ICT_VL_SUBTOTAL'
+    end
+  end
+  object ds_searchItens: TDataSource
+    DataSet = mem_searchItens
+    Left = 448
+    Top = 346
+  end
+  object mem_search: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 176
+    Top = 136
+    object mem_searchCTC_CODIGO: TIntegerField
+      FieldName = 'CTC_CODIGO'
+    end
+    object mem_searchCTC_NUMERO: TStringField
+      FieldName = 'CTC_NUMERO'
+    end
+    object mem_searchFPT_DESCRICAO: TStringField
+      FieldName = 'FPT_DESCRICAO'
+    end
+    object mem_searchCTC_DATA: TDateField
+      FieldName = 'CTC_DATA'
+    end
+    object mem_searchCTC_FANTASIA: TStringField
+      FieldName = 'CTC_FANTASIA'
+    end
+    object mem_searchCTC_STATUS: TStringField
+      FieldName = 'CTC_STATUS'
+      Size = 1
     end
   end
 end

@@ -1077,7 +1077,7 @@ procedure TControllerProduto.getProdutoToSincronia;
 Var
   Lc_Qry : TSTQuery;
 Begin
-  //Na ultima analise 12/12/2020 - Precisa enviar os todos os produtos  - O menu fará o vinculo depois
+  //Na ultima analise 12/12/2020 - Precisa enviar os todos os produ'tos  - O menu fará o vinculo depois
   //Não deve ser utilizado por enquanto
   Lc_Qry := GeraQuery;
   Try

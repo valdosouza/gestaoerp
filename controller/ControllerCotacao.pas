@@ -3,14 +3,16 @@ unit ControllerCotacao;
 interface
 
 uses STDatabase,STQuery, Classes, SysUtils,ControllerBase,
-      tblCotacao,  Generics.Collections, ControllerItensCotacao, un_Padrao, 
-    UnFunctions,System.Math, Un_Msg;
+      tblCotacao,  Generics.Collections, ControllerItensCotacao,
+    UnFunctions,System.Math, Un_Msg, prm_quotation_log;
 Type
   TListCotacao = TObjectList<TCotacao>;
 
   TControllerCotacao = Class(TControllerBase)
     Lista :TListCotacao;
   private
+    FParametros: TPrmQuotation_log;
+    procedure setFParametros(const Value: TPrmQuotation_log);
 
   public
     Registro : TCotacao;
@@ -33,6 +35,10 @@ Type
     procedure AplicarDescontoItens(PedidoID: Integer; Vl_Desconto: real);
     function using(Operation: string): Boolean;
     function LiberaEmUso:boolean;
+
+    procedure atualiza_retornar(CTC_CODIGO: integer);
+    procedure Search;
+    property Parametros : TPrmQuotation_log read FParametros write setFParametros;
   End;
 
   implementation
@@ -131,9 +137,27 @@ begin
   End;
 end;
 
+procedure TControllerCotacao.atualiza_retornar(CTC_CODIGO: integer);
+var
+  Lc_Upt: TSTQuery;
+begin
+  Lc_Upt := GeraQuery;
+
+  try
+    Lc_Upt.SQL.Text := 'UPDATE TB_COTACAO SET CTC_DATA = :CTC_DATA, CTC_STATUS = :CTC_STATUS WHERE CTC_CODIGO =:CTC_CODIGO';
+    Lc_Upt.ParamByName('CTC_DATA').AsDateTime := Date;
+    Lc_Upt.ParamByName('CTC_STATUS').AsString := 'N';
+    Lc_Upt.ParamByName('CTC_CODIGO').AsInteger := CTC_CODIGO;
+    Lc_Upt.ExecSQL;
+  finally
+    FinalizaQuery(Lc_Upt);
+  end;
+end;
+
 procedure TControllerCotacao.clear;
 begin
   ClearObj(Registro);
+  FParametros.Clear;
 end;
 
 constructor TControllerCotacao.Create(AOwner: TComponent);
@@ -142,6 +166,7 @@ begin
   Registro := TCotacao.Create;
   Lista := TListCotacao.Create;
   ItensProduto := TControllerItensCotacao.Create(self);
+  FParametros := TPrmQuotation_log.Create;
 end;
 
 function TControllerCotacao.delete: boolean;
@@ -157,8 +182,9 @@ end;
 destructor TControllerCotacao.Destroy;
 begin
   Registro.DisposeOf;
-  FreeAndNil(Lista);
-  FreeAndNil( ItensProduto );
+  Lista.DisposeOf;
+  ItensProduto.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -207,7 +233,7 @@ Begin
     Begin
       SQL.Add('UPDATE tb_COTACAO SET CTC_emuso = NULL where CTC_codigo =:CTC_codigo');
       ParamByName('CTC_CODIGO').AsInteger := Registro.codigo;
-      Active := True;
+      ExecSQL;
       FetchAll;
     end;
   finally
@@ -286,6 +312,75 @@ begin
   end;
 end;
 
+procedure TControllerCotacao.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TCotacao;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text :=
+            'SELECT C.*, F.FPT_DESCRICAO ' +
+            '  FROM TB_COTACAO C '+
+            '  LEFT OUTER JOIN TB_FORMAPAGTO F ON (F.FPT_CODIGO = C.CTC_CODFPG)  '+
+            ' WHERE (C.CTC_CODIGO IS NOT NULL)';
+
+      if Parametros.FieldName.Bloqueados then
+        SQL.Text := SQL.Text + ' AND  (C.CTC_EMUSO <> '''')  ';
+
+      if Parametros.FieldName.Numero <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + 'AND (C.CTC_NUMERO like :CTC_NUMERO) ';
+        ParamByName('CTC_NUMERO').AsString := concat('%',Parametros.FieldName.Numero,'%');
+      end;
+
+      if Parametros.FieldName.Fantasia <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + 'AND C.CTC_FANTASIA LIKE :CTC_FANTASIA ';
+        ParamByName('CTC_FANTASIA').AsString := concat('%',Parametros.FieldName.Fantasia,'%');              
+      end;
+
+      if Parametros.FieldName.Periodo then
+      begin
+        SQL.Text :=  SQL.Text + 'AND (C.CTC_DATA BETWEEN :DATAINI AND :DATAFIM) ';
+        ParamByName('DATAINI').AsDate := Parametros.FieldName.DataInicial;
+        ParamByName('DATAFIM').AsDate := Parametros.FieldName.DataFinal;        
+      end;
+
+      if Parametros.FieldName.Status = '0' then
+        SQL.Text := SQL.Text + 'AND (C.CTC_STATUS = ''A'') '
+      else if Parametros.FieldName.Status = '1' then
+        SQL.Text := SQL.Text + 'AND (C.CTC_STATUS <> ''A'') ';
+
+      SQL.Text := SQL.Text + ' ORDER BY C.CTC_FANTASIA ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TCotacao.Create;
+        get(Lc_Qry, LITem);
+
+        LITem.FPT_DESCRICAO := FieldByName('FPT_DESCRICAO').AsString;
+
+        Lista.add(LITem);
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerCotacao.setFParametros(const Value: TPrmQuotation_log);
+begin
+  FParametros := Value;
+end;
 
 function TControllerCotacao.update: Boolean;
 begin
