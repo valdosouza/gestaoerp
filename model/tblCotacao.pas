@@ -51,11 +51,7 @@ Type
     Fctc_vl_custo: Real;
     FCTC_CODVDO_AUX: Integer;
     FCTC_EMUSO: String;
-    FFPT_DESCRICAO: String;
-    FBloqueados: boolean;
-    FPeriodo: boolean;
-    FDataFinal: TDate;
-    FDataInicial: TDate;
+    FFormaPAgamento: String;
     procedure setFctc_aliq_desconto(const Value: Real);
     procedure setFctc_aprovado(const Value: String);
     procedure setFctc_codemp(const Value: Integer);
@@ -97,11 +93,9 @@ Type
     procedure setFctc_vl_servico(const Value: Real);
     procedure setFCTC_CODVDO_AUX(const Value: Integer);
     procedure setFCTC_EMUSO(const Value: String);
-    procedure setFFPT_DESCRICAO(const Value: String);
-    procedure setFBloqueados(const Value: boolean);
-    procedure setFPeriodo(const Value: boolean);
-    procedure setFDataFinal(const Value: TDate);
-    procedure setFDataInicial(const Value: TDate);
+    procedure setFFormaPAgamento(const Value: String);
+
+
   public
 
     [FieldName('ctc_codigo')]
@@ -192,6 +186,7 @@ Type
     [FieldName('ctc_tp_contato')]
     property TpContato: String read Fctc_tp_contato write setFctc_tp_contato;
 
+
     [FieldName('ctc_contatoempresa')]
     property ContatoEmpr: String read Fctc_contatoempresa write setFctc_contatoempresa;
 
@@ -226,25 +221,15 @@ Type
     property AuxiliarVenda: Integer read FCTC_CODVDO_AUX write setFCTC_CODVDO_AUX;
 
     [FieldName('CTC_EMUSO')]
-    property EmUso: String read FCTC_EMUSO write setFCTC_EMUSO;
+    property EmUso:String read FCTC_EMUSO write setFCTC_EMUSO;
 
-    property FPT_DESCRICAO: String read FFPT_DESCRICAO write setFFPT_DESCRICAO;
-    property Bloqueados: boolean read FBloqueados write setFBloqueados;
-    property Periodo: boolean read FPeriodo write setFPeriodo;
-
-    property DataInicial: TDate read FDataInicial write setFDataInicial;
-    property DataFinal: TDate read FDataFinal write setFDataFinal;
+    property FormaPAgamento : String read FFormaPAgamento write setFFormaPAgamento;
   End;
 
 
 implementation
 
 { TCotacao }
-
-procedure TCotacao.setFBloqueados(const Value: boolean);
-begin
-  FBloqueados := Value;
-end;
 
 procedure TCotacao.setFctc_aliq_desconto(const Value: Real);
 begin
@@ -451,24 +436,9 @@ begin
   Fctc_vl_servico := Value;
 end;
 
-procedure TCotacao.setFDataFinal(const Value: TDate);
+procedure TCotacao.setFFormaPAgamento(const Value: String);
 begin
-  FDataFinal := Value;
-end;
-
-procedure TCotacao.setFDataInicial(const Value: TDate);
-begin
-  FDataInicial := Value;
-end;
-
-procedure TCotacao.setFFPT_DESCRICAO(const Value: String);
-begin
-  FFPT_DESCRICAO := Value;
-end;
-
-procedure TCotacao.setFPeriodo(const Value: boolean);
-begin
-  FPeriodo := Value;
+  FFormaPAgamento := Value;
 end;
 
 end.

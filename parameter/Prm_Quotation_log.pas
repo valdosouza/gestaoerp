@@ -9,12 +9,15 @@ Type
   TPrmQuotation_log = class(TPrmBase)
   private
     FFieldName: TCotacao;
+    FBloqueado: Boolean;
     procedure setFFieldName(const Value: TCotacao);
+    procedure setFBloqueado(const Value: Boolean);
   public
     constructor Create;
     destructor Destroy;override;
     procedure Clear;Override;
     property FieldName : TCotacao read FFieldName write setFFieldName;
+    property Bloqueado : Boolean Read FBloqueado write setFBloqueado;
   end;
 
 implementation
@@ -37,6 +40,11 @@ destructor TPrmQuotation_log.Destroy;
 begin
   FreeAndNil(FFieldName);
   inherited;
+end;
+
+procedure TPrmQuotation_log.setFBloqueado(const Value: Boolean);
+begin
+  FBloqueado := Value;
 end;
 
 procedure TPrmQuotation_log.setFFieldName(const Value: TCotacao);

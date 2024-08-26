@@ -1,10 +1,11 @@
 inherited RegQuotationLog: TRegQuotationLog
+  BorderIcons = [biSystemMenu]
   Caption = 'Log de Or'#231'amento '
   ClientHeight = 572
   ClientWidth = 742
   OnDestroy = FormDestroy
   ExplicitWidth = 748
-  ExplicitHeight = 616
+  ExplicitHeight = 621
   PixelsPerInch = 96
   TextHeight = 13
   object Label12: TLabel [0]
@@ -562,6 +563,7 @@ inherited RegQuotationLog: TRegQuotationLog
         0000000000000000000000000000000000000000000000000000}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = SB_SairClick
       ExplicitLeft = 636
       ExplicitTop = 5
       ExplicitHeight = 54
@@ -603,9 +605,7 @@ inherited RegQuotationLog: TRegQuotationLog
       NumGlyphs = 2
       ParentFont = False
       OnClick = SB_RetonarClick
-      ExplicitLeft = 436
-      ExplicitTop = 5
-      ExplicitHeight = 54
+      ExplicitTop = 4
     end
     object Sb_Desbloqueia: TSpeedButton
       AlignWithMargins = True
@@ -651,7 +651,6 @@ inherited RegQuotationLog: TRegQuotationLog
   end
   object ds_search: TDataSource
     DataSet = mem_search
-    OnDataChange = ds_searchDataChange
     Left = 176
     Top = 186
   end
@@ -687,6 +686,7 @@ inherited RegQuotationLog: TRegQuotationLog
     Top = 346
   end
   object mem_search: TFDMemTable
+    AfterScroll = mem_searchAfterScroll
     FetchOptions.AssignedValues = [evMode]
     FetchOptions.Mode = fmAll
     ResourceOptions.AssignedValues = [rvSilentMode]

@@ -56,7 +56,9 @@ uses
   reg_measure in 'view\module\operation\register\reg_measure.pas' {RegMeasure},
   prm_itens_ifc in 'parameter\prm_itens_ifc.pas',
   Un_PesqEndereco in 'view\module\operation\admin\Un_PesqEndereco.pas' {Fr_PesqEndereco},
-  Un_Fm_ListaMultiEmpresa in 'frame\Un_Fm_ListaMultiEmpresa.pas' {Fm_ListaMultiEmpresa: TFrame};
+  Un_Fm_ListaMultiEmpresa in 'frame\Un_Fm_ListaMultiEmpresa.pas' {Fm_ListaMultiEmpresa: TFrame},
+  reg_quotation_log in 'view\module\operation\register\reg_quotation_log.pas' {RegQuotationLog},
+  ControllerItensCotacao in 'controller\ControllerItensCotacao.pas';
 
 {$R *.res}
 
@@ -66,5 +68,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
+  Application.CreateForm(TRegQuotationLog, RegQuotationLog);
   Application.Run;
 end.

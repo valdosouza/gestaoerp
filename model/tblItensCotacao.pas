@@ -36,6 +36,9 @@ Type
     FICT_AQ_VENDEDOR: REal;
     FICT_TIPO: String;
     FICT_AQ_COM: REal;
+    FSubTotal: Real;
+    FCodigoFabrica: String;
+
     procedure setFICT_ALIQ_CT_FINANCEIRO(const Value: REal);
     procedure setFICT_ALTURA(const Value: Real);
     procedure setFICT_AQ_COM(const Value: REal);
@@ -62,6 +65,9 @@ Type
     procedure setFICT_VL_DESC(const Value: Real);
     procedure setFICT_VL_PRATICADO(const Value: Integer);
     procedure setFICT_VL_UNIT(const Value: REal);
+
+    procedure setFSubTotal(const Value: Real);
+    procedure setFCodigoFabrica(const Value: String);
 
   PUBLIC
     [FieldName('ICT_CODIGO')]
@@ -143,10 +149,19 @@ Type
     [FieldName('ICT_LARGURA')]
     property Largura: Real read FICT_LARGURA write setFICT_LARGURA;
 
+    //Não vinculados ao banco
+    property CodigoFabrica: String read FCodigoFabrica write setFCodigoFabrica;
+    property SubTotal : Real read FSubTotal write setFSubTotal;
+
   End;
 implementation
 
 { TItensCotacao }
+
+procedure TItensCotacao.setFCodigoFabrica(const Value: String);
+begin
+  FCodigoFabrica := Value;
+end;
 
 procedure TItensCotacao.setFICT_ALIQ_CT_FINANCEIRO(const Value: REal);
 begin
@@ -276,6 +291,11 @@ end;
 procedure TItensCotacao.setFICT_VL_UNIT(const Value: REal);
 begin
   FICT_VL_UNIT := Value;
+end;
+
+procedure TItensCotacao.setFSubTotal(const Value: Real);
+begin
+  FSubTotal := Value;
 end;
 
 end.

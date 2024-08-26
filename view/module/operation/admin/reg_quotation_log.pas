@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_Base, Vcl.Menus, Vcl.StdCtrls,
   Vcl.ComCtrls, Vcl.Mask, Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.Buttons, ControllerCotacao, Datasnap.DBClient, ControllerItensCtc,
+  Vcl.Buttons, ControllerCotacao, Datasnap.DBClient,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client;
@@ -55,27 +55,15 @@ type
     procedure SB_RetonarClick(Sender: TObject);
     procedure ChBx_PeriodoClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure ds_searchDataChange(Sender: TObject; Field: TField);
+    procedure mem_searchAfterScroll(DataSet: TDataSet);
+    procedure SB_SairClick(Sender: TObject);
   protected
-    {procedure ClearAllFields; Override;
-    procedure CriarVariaveis; Override;
-    procedure FinalizaVariaveis; Override;
-    procedure IniciaVariaveis; Override;
-    procedure ShowData; Override;
-    procedure ShowNoData; Override;
-    procedure Insert; Override;
-    procedure Change; Override;
-    function ValidateDelete():boolean; Override;
-    procedure Delete; Override;
-    function ValidateSave():boolean; Override;
-    procedure Save; Override;}
   private
     { Private declarations }
     cotacao : TControllerCotacao;
-    ItensCtc : TControllerItensCtc;
 
     procedure carregarCotacao;
-    procedure carregarItensCotacao(CTC_CODIGO: integer);
+    procedure carregarItensCotacao;
   public
 
   end;
@@ -101,22 +89,10 @@ begin
   Pc_Pintar_Grid_Ordenar(DBG_Pesquisa, Column);
 end;
 
-procedure TRegQuotationLog.ds_searchDataChange(Sender: TObject; Field: TField);
-begin
-  inherited;
-  if mem_search.IsEmpty then
-    exit;
-
-  carregarItensCotacao(mem_search.FieldByName('CTC_CODIGO').AsInteger);
-  SB_Retonar.Enabled := mem_search.FieldByName('CTC_STATUS').AsString = 'A';
-  Sb_Desbloqueia.Enabled := mem_search.RecordCount > 0;
-end;
-
 procedure TRegQuotationLog.FormDestroy(Sender: TObject);
 begin
   inherited;
   cotacao.DisposeOf;
-  ItensCtc.DisposeOf;
 end;
 
 procedure TRegQuotationLog.FormKeyDown(Sender: TObject; var Key: Word;
@@ -137,15 +113,25 @@ procedure TRegQuotationLog.FormShow(Sender: TObject);
 begin
   inherited;
   cotacao := TControllerCotacao.create(self);
-  ItensCtc := TControllerItensCtc.create(self);
 
   E_Data_Ini.Date := Date;
   E_Data_Fim.Date := Date;
 end;
 
+procedure TRegQuotationLog.mem_searchAfterScroll(DataSet: TDataSet);
+begin
+  carregarItensCotacao;
+  SB_Retonar.Enabled :=  ( mem_searchCTC_STATUS.AsString = 'A' );
+  Sb_Desbloqueia.Enabled := mem_search.RecordCount >0;
+
+end;
+
 procedure TRegQuotationLog.SB_BuscarClick(Sender: TObject);
 begin
   carregarCotacao;
+  if True then
+
+  carregarItensCotacao;
 end;
 
 procedure TRegQuotationLog.Sb_DesbloqueiaClick(Sender: TObject);
@@ -153,7 +139,6 @@ begin
   inherited;
   if mem_search.IsEmpty then
     exit;
-
   cotacao.Registro.Codigo := mem_search.FieldByName('CTC_CODIGO').AsInteger;
   cotacao.getbyId;
   if cotacao.exist then
@@ -177,46 +162,10 @@ begin
                      ['OK'],[bEscape],mpErro);
     end;
   end;
-
-  {procedure TFr_Log_Cotacao.Sb_DesbloqueiaClick(Sender: TObject);
-  Var
-    Lc_cotacao : TControllerCotacao;
-  begin
-    try
-      Lc_cotacao := TControllerCotacao.create(Self);
-      Lc_cotacao.Registro.Codigo := TB_cotacao.FieldByName('CTC_CODIGO').AsInteger;
-      Lc_cotacao.getbyId;
-      if Lc_cotacao.exist then
-      begin
-        if (Lc_cotacao.Registro.EmUso.Length >0) then
-        Begin
-          if (MensagemPadrao(' Mensagem de Confirmação',
-                             ' Este pedido foi ou está bloqueado no computador ' + Lc_cotacao.Registro.EmUso + '. '+ EOLN +
-                             ' Deseja liberar o pedido, Sobre o risco de criar duplicidade na edição do pedido? '+EOLN ,
-                             ['Sim','Não'],[bEscape,bNormal],mpConfirmacao,clBtnFace) = mrBotao1) then
-          begin
-            //Cria a Sql para a atualização
-            Lc_cotacao.LiberaEmUso;
-            Pc_Log_Sistema(Gb_CodMha,Gb_Cd_Usuario, (Now), 'Log Pedido',TB_COTACAO.FieldByName('CTC_CODIGO').AsInteger,'Desbloquear','Orçamento Desbloqueado');
-          end;
-        end
-        else
-        Begin
-          MensagemPadrao('Mensagem','A T E N Ç Ã O!.'+EOLN+EOLN+
-                         'Orçamento não Bloqueado.'+EOLN,
-                         ['OK'],[bEscape],mpErro);
-        end;
-      end;
-    finally
-      Lc_cotacao.DisposeOf;
-    end;
-  end;}
 end;
 
 procedure TRegQuotationLog.SB_RetonarClick(Sender: TObject);
 begin
-  inherited;
-
   if mem_search.IsEmpty then
     exit;
 
@@ -226,7 +175,8 @@ begin
                     ['Sim','Não'],[bEscape,bNormal],mpConfirmacao,clBtnFace) = mrBotao1) then
   begin
     try
-      cotacao.atualiza_retornar(mem_search.FieldByName('CTC_CODIGO').AsInteger);
+      cotacao.Registro.Codigo := mem_search.FieldByName('CTC_CODIGO').AsInteger;
+      cotacao.UndoDelete;
       carregarCotacao;
     except
       MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
@@ -235,31 +185,12 @@ begin
                     ['OK'],[bEscape],mpErro);
     end;
   end;
+end;
 
-{procedure TFr_Log_Cotacao.SB_RetonarClick(Sender: TObject);
+procedure TRegQuotationLog.SB_SairClick(Sender: TObject);
 begin
-
-  if (MensagemPadrao('Mensagem de Confirmação',
-                     'Ativar o Orçamento '+TB_COTACAO.FieldByName('CTC_CODIGO').AsAnsiString +' para seus arquivos.'+EOLN+EOLN+
-                     'Confirmar a Ativação ?',
-                    ['Sim','Não'],[bEscape,bNormal],mpConfirmacao,clBtnFace) = mrBotao1) then
-    begin
-    try
-      TB_COTACAO.Edit;
-      TB_COTACAO.FieldByName('CTC_DATA').AsDateTime := Date;
-      TB_COTACAO.FieldByName('CTC_STATUS').AsAnsiString := 'N';
-      TB_COTACAO.Post;
-      IF DM.IB_Transacao.InTransaction THEN DM.IB_Transacao.CommitRetaining;
-      Pc_Buscar;
-    except
-      MensagemPadrao('Mensagem de erro','A T E N Ç Ã O!.'+EOLN+EOLN+
-                     'Um erro impossibilitou a operação.'+EOLN+
-                     'Entre em contato com o suporte técnico.'+EOLN,
-                    ['OK'],[bEscape],mpErro);
-      DM.IB_Transacao.RollbackRetaining;
-    end;
-  end;
-end;}
+  inherited;
+  Close;
 end;
 
 procedure TRegQuotationLog.carregarCotacao;
@@ -267,14 +198,17 @@ var
   i: Integer;
 begin
   cotacao.Clear;
-
-  cotacao.Parametros.FieldName.Bloqueados := ChBx_Bloqueados.Checked;
+  cotacao.Parametros.Periodo := ChBx_Periodo.Checked;
+  cotacao.Parametros.DataInicial := E_Data_Ini.Date;
+  cotacao.Parametros.DataFinal := E_Data_Fim.Date;
+  cotacao.Parametros.Bloqueado := ChBx_Bloqueados.Checked;
   cotacao.Parametros.FieldName.Numero := E_Orcamento.Text;
   cotacao.Parametros.FieldName.Fantasia := E_BuscaFantasia.Text;
-  cotacao.Parametros.FieldName.Periodo := ChBx_Periodo.Checked;
-  cotacao.Parametros.FieldName.DataInicial := E_Data_Ini.Date;
-  cotacao.Parametros.FieldName.DataFinal := E_Data_Fim.Date;
-  cotacao.Parametros.FieldName.Status := IntToStr(RG_Situacao.ItemIndex);
+  case RG_Situacao.ItemIndex of
+    0:cotacao.Parametros.FieldName.Status := 'A';
+    1:cotacao.Parametros.FieldName.Status := 'N';
+  end;
+  IntToStr(RG_Situacao.ItemIndex);
 
   cotacao.Search;
 
@@ -287,36 +221,38 @@ begin
 
   for i := 0 to Pred(cotacao.Lista.Count) do
     mem_search.AppendRecord([cotacao.Lista[i].Codigo, cotacao.Lista[i].Numero,
-      cotacao.Lista[i].FPT_DESCRICAO, cotacao.Lista[i].Data, cotacao.Lista[i].Fantasia, cotacao.Lista[i].Status]);
-
+      cotacao.Lista[i].FormaPAgamento, cotacao.Lista[i].Data, cotacao.Lista[i].Fantasia, cotacao.Lista[i].Status]);
+  mem_search.First;
   mem_search.EnableControls;
 
-  inherited;
 end;
 
-procedure TRegQuotationLog.carregarItensCotacao(CTC_CODIGO: integer);
+procedure TRegQuotationLog.carregarItensCotacao;
 var
   i: Integer;
 begin
-  ItensCtc.Clear;
+  with cotacao do
+  Begin
+    Itens.Clear;
 
-  ItensCtc.Parametros.FieldName.CodCTC := CTC_CODIGO;
-  ItensCtc.Search;
+    Itens.Parametros.FieldName.Cotacao := mem_searchCTC_CODIGO.AsInteger;
+    Itens.Search;
 
-  if not mem_searchItens.Active then
-    mem_searchItens.CreateDataSet;
+    if not mem_searchItens.Active then
+      mem_searchItens.CreateDataSet;
 
-  mem_searchItens.EmptyDataSet;
+    mem_searchItens.EmptyDataSet;
 
-  mem_searchItens.DisableControls;
+    mem_searchItens.DisableControls;
 
-  for i := 0 to Pred(ItensCtc.Lista.Count) do
-    mem_searchItens.AppendRecord([ItensCtc.Lista[i].CodigoFabrica, ItensCtc.Lista[i].Descricao,
-      ItensCtc.Lista[i].Qtde, ItensCtc.Lista[i].ValorUnitario, ItensCtc.Lista[i].SubTotal]);
+    for i := 0 to Pred(Itens.Lista.Count) do
+      mem_searchItens.AppendRecord([Itens.Lista[i].CodigoFabrica, Itens.Lista[i].Descricao,
+        Itens.Lista[i].Quantidade, Itens.Lista[i].ValorUnitario, Itens.Lista[i].SubTotal]);
 
-  mem_searchItens.EnableControls;
+    mem_searchItens.EnableControls;
 
-  inherited;
+    inherited;
+  End;
 end;
 
 procedure TRegQuotationLog.ChBx_PeriodoClick(Sender: TObject);

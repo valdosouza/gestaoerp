@@ -2,7 +2,7 @@ unit ControllerItensCotacao;
 
 interface
 
-uses STDatabase,STQuery, Classes, Vcl.Grids,SysUtils,ControllerBase,
+uses STDatabase,STQuery, Classes, Vcl.Grids,SysUtils,ControllerBase,prm_ItensCotacao,
       tblItensCotacao,  Generics.Collections, ControllerProduto,ControllerItensObs;
 Type
   TListItensCotacao = TObjectList<TItensCotacao>;
@@ -11,7 +11,9 @@ Type
     Lista :TListItensCotacao;
 
   private
+    FParametros: TPrmItensCotacao;
     function nextCodigo:Integer;
+    procedure setFParametros(const Value: TPrmItensCotacao);
   public
     Registro : TItensCotacao;
     Produto : TControllerProduto;
@@ -27,6 +29,8 @@ Type
     procedure clear;
     function atualiza:boolean;
     function ExisteItemNoCotacao: Boolean;
+    property Parametros : TPrmItensCotacao read FParametros write setFParametros;
+    procedure search;
   End;
 
 
@@ -52,6 +56,7 @@ begin
   Lista := TListItensCotacao.create;
   Produto := TControllerProduto.Create(self);
   Detalhe := TControllerItensObs.Create(self);
+  FParametros := TPrmItensCotacao.Create;
 end;
 
 function TControllerItensCotacao.delete: boolean;
@@ -184,6 +189,55 @@ begin
   except
     Result := False;
   end;
+end;
+
+procedure TControllerItensCotacao.search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TItensCotacao;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text :=
+        '   SELECT tb_itens_ctc.*, ' +
+        '          tb_produto.PRO_CODIGOFAB, tb_produto.PRO_VL_CUSTO, tb_produto.PRO_DIVISOR, tb_produto.PRO_CODIGO, tb_tabela_preco.TPR_MODALIDADE' +
+        '     FROM TB_ITENS_CTC tb_itens_ctc ' +
+        '     left JOIN TB_PRODUTO tb_produto on (tb_produto.PRO_CODIGO = tb_itens_ctc.ICT_CODVCL) ' +
+        '    INNER JOIN TB_TABELA_PRECO tb_tabela_preco on (tb_tabela_preco.TPR_CODIGO = tb_itens_ctc.ICT_CODTPR) ' +
+        '    WHERE (tb_itens_ctc.ICT_CODCTC = :ICT_CODCTC) AND (tb_itens_ctc.ICT_TIPO <> ''S'') ' +
+        ' ORDER BY tb_itens_ctc.ICT_CODIGO ';
+
+      ParamByName('ICT_CODCTC').AsInteger := Parametros.FieldName.Cotacao;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+      while not eof do
+      Begin
+        LITem := TItensCotacao.Create;
+        get(Lc_Qry,LITem);
+
+        LITem. CodigoFabrica := FieldByName('PRO_CODIGOFAB').AsString;
+
+        if FieldByName('ICT_QTDE').AsFloat > 0 then
+          LITem.SubTotal := FieldByName('ICT_QTDE').AsFloat * FieldByName('ICT_VL_UNIT').AsFloat;
+
+        Lista.add(LITem);
+        next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+
+end;
+
+procedure TControllerItensCotacao.setFParametros(const Value: TPrmItensCotacao);
+begin
+  FParametros := Value;
 end;
 
 end.
