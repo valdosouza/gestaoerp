@@ -20,12 +20,13 @@ type
     L_Descricao: TLabel;
     Ch_Avisar: TCheckBox;
   private
-    procedure MontarComboBox;
+    procedure MontaComboBoxBanco;
   protected
-    procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
     procedure FinalizaVariaveis; Override;
     procedure IniciaVariaveis; Override;
+    procedure EditionControl;Override;
+    procedure ShowData;Override;
     procedure Insert; Override;
     procedure Change; Override;
     function ValidateDelete():boolean; Override;
@@ -53,12 +54,6 @@ begin
   E_Data.SetFocus;
 end;
 
-procedure TRegCommitment.ClearAllFields;
-begin
-  inherited;
-  agenda.Clear;
-end;
-
 procedure TRegCommitment.CriarVariaveis;
 begin
   inherited;
@@ -68,7 +63,13 @@ end;
 procedure TRegCommitment.Delete;
 begin
   agenda.delete;
-  inherited;
+  Close;
+end;
+
+procedure TRegCommitment.EditionControl;
+begin
+  //Não terá controle de botões nesta tela
+
 end;
 
 procedure TRegCommitment.FinalizaVariaveis;
@@ -79,13 +80,19 @@ end;
 
 procedure TRegCommitment.IniciaVariaveis;
 begin
-  MontarComboBox;
+  MontaComboBoxBanco;
   if Self.CodigoRegistro > 0 then
   Begin
     agenda.Registro.Codigo := Self.CodigoRegistro;
     agenda.getbyId;
+    ShowData;
+    EditionState := 'E';
+    EditionControl;
+  End
+  else
+  Begin
+    Insert;
   End;
-  inherited;
 end;
 
 procedure TRegCommitment.Insert;
@@ -96,7 +103,7 @@ begin
   CB_Usuario.SetFocus;
 end;
 
-procedure TRegCommitment.MontarComboBox;
+procedure TRegCommitment.MontaComboBoxBanco;
 var
   i : Integer;
 begin
@@ -116,29 +123,42 @@ begin
     registro.Data := E_Data.DateTime;
     registro.Dia := E_Data.DateTime;
     registro.Hora := Copy(TimeToStr(E_Hora.Time),1,5);
-    registro.ParaCodusu := Usuario.getCodigoLista(CB_Usuario.Text);
+    registro.ToUsuario := Usuario.getCodigoLista(CB_Usuario.Text);
     Registro.Compromisso := M_Descricao.Text;
-    registro.DecoDusu := Gb_Cd_Usuario;
-    registro.Avisar := IfThen(Ch_Avisar.Checked, SIGLA_S, SIGLA_N);
+    registro.FromUsuario := Gb_Cd_Usuario;
+    registro.Avisar := IfThen(Ch_Avisar.Checked, SIM, NAO);
     salva;
   End;
   CodigoRegistro := agenda.Registro.Codigo;
-  inherited;
+  Close;
+end;
+
+procedure TRegCommitment.ShowData;
+begin
+  E_Data.DateTime   := agenda.Registro.Data;
+  E_Data.DateTime   := agenda.Registro.Dia;
+  E_Hora.Time       := StrToTime(agenda.Registro.Hora);
+  CB_Usuario.Text   := agenda.Usuario.getNomeLista(Agenda.Registro.ToUsuario);
+  M_Descricao.Text  := Agenda.Registro.Compromisso;
+  Ch_Avisar.Checked := (Agenda.Registro.Avisar = SIM);
 end;
 
 function TRegCommitment.ValidateDelete: boolean;
 begin
   Result := True;
-  inherited;
+  if ( not TMsgSetes.Excluir ) then
+  Begin
+    Result := False;
+    exit;
+  End;
 end;
 
 function TRegCommitment.ValidateSave: boolean;
 begin
   Result := True;
-
   if Trim(CB_Usuario.Text) = EmptyStr then
   begin
-    TMsgSetes.ValidaPreenchimentoCampo(L_Usuario.Caption);
+    MensagemValidaPreenchimentoCampo(L_Usuario.Caption);
     Result := False;
     CB_Usuario.SetFocus;
     Exit;
@@ -146,7 +166,7 @@ begin
 
   if Trim(M_Descricao.Text) = EmptyStr then
   begin
-    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
+    MensagemValidaPreenchimentoCampo(L_Descricao.Caption);
     Result := False;
     M_Descricao.SetFocus;
     Exit;

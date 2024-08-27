@@ -1,46 +1,46 @@
 inherited RegCommitment: TRegCommitment
   Caption = 'Compromisso'
   ClientHeight = 283
-  ClientWidth = 316
-  ExplicitWidth = 322
-  ExplicitHeight = 327
+  ClientWidth = 321
+  ExplicitWidth = 327
+  ExplicitHeight = 332
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 219
-    Width = 316
+    Width = 321
     ExplicitTop = 219
-    ExplicitWidth = 316
+    ExplicitWidth = 321
     inherited SB_Inserir: TSpeedButton
-      Left = -311
+      Left = -306
       ExplicitLeft = -75
     end
     inherited SB_Alterar: TSpeedButton
-      Left = -207
+      Left = -202
       ExplicitLeft = 29
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 1
+      Left = 6
       ExplicitLeft = 349
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = -103
+      Left = -98
       ExplicitLeft = 341
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 209
+      Left = 214
       ExplicitLeft = 445
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 105
+      Left = 110
       ExplicitLeft = 429
       ExplicitTop = -11
     end
   end
   inherited pnl_fundo: TPanel
-    Width = 316
+    Width = 321
     Height = 219
-    ExplicitWidth = 316
+    ExplicitWidth = 321
     ExplicitHeight = 219
     object L_Data: TLabel
       Left = 8
@@ -95,10 +95,12 @@ inherited RegCommitment: TRegCommitment
       ParentFont = False
     end
     object M_Descricao: TMemo
-      Left = 8
-      Top = 69
-      Width = 294
-      Height = 120
+      AlignWithMargins = True
+      Left = 5
+      Top = 70
+      Width = 311
+      Height = 121
+      Align = alBottom
       MaxLength = 500
       ScrollBars = ssVertical
       TabOrder = 3
@@ -152,10 +154,12 @@ inherited RegCommitment: TRegCommitment
         'op'#231'ao 2')
     end
     object Ch_Avisar: TCheckBox
-      Left = 8
-      Top = 195
-      Width = 56
+      AlignWithMargins = True
+      Left = 5
+      Top = 197
+      Width = 311
       Height = 17
+      Align = alBottom
       Caption = 'Avisar'
       Checked = True
       Font.Charset = DEFAULT_CHARSET
