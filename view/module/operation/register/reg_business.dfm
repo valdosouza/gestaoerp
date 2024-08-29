@@ -2,14 +2,15 @@ inherited RegBusiness: TRegBusiness
   Caption = 'Cadastro de Neg'#243'cios'
   ClientHeight = 168
   ClientWidth = 570
-  ExplicitWidth = 582
-  ExplicitHeight = 231
+  ExplicitWidth = 576
+  ExplicitHeight = 212
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 104
     Width = 570
-    ExplicitTop = 95
-    ExplicitWidth = 564
+    ExplicitTop = 104
+    ExplicitWidth = 570
     inherited SB_Inserir: TSpeedButton
       Left = -1
       Width = 96
@@ -56,8 +57,8 @@ inherited RegBusiness: TRegBusiness
   inherited pnl_fundo: TPanel
     Width = 570
     Height = 104
-    ExplicitWidth = 564
-    ExplicitHeight = 95
+    ExplicitWidth = 570
+    ExplicitHeight = 104
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegBusiness: TRegBusiness
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 560
-      ExplicitHeight = 91
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -135,5 +134,9 @@ inherited RegBusiness: TRegBusiness
         TabOrder = 2
       end
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 392
+    Top = 56
   end
 end

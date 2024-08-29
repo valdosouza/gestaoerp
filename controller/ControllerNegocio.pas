@@ -80,7 +80,7 @@ function TControllerNegocio.salva: boolean;
 begin
   Result := True;
   if Registro.Codigo = 0 then
-    Registro.Codigo := getNextByField(Registro,'cge_codigo',0);
+    Registro.Codigo := getNextByField(Registro,'neg_codigo',0);
   SaveObj(Registro);
 end;
 
@@ -116,15 +116,6 @@ begin
         SQL.Text := SQL.Text + ' AND NEG_DESCRICAO LIKE :NEG_DESCRICAO';
         ParamByName('NEG_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
-
-     { if FParametros.FieldName.Exclusivo = 'S' then
-      begin
-
-      end;  }
-
-
-
-      //NEG_EXCLUSIVO
 
       Active := True;
       FetchAll;
