@@ -123,9 +123,9 @@ begin
     registro.Data := E_Data.DateTime;
     registro.Dia := E_Data.DateTime;
     registro.Hora := Copy(TimeToStr(E_Hora.Time),1,5);
-    registro.ToUsuario := Usuario.getCodigoLista(CB_Usuario.Text);
+    registro.ParaUsuario := Usuario.getCodigoLista(CB_Usuario.Text);
     Registro.Compromisso := M_Descricao.Text;
-    registro.FromUsuario := Gb_Cd_Usuario;
+    registro.DeUsuario := Gb_Cd_Usuario;
     registro.Avisar := IfThen(Ch_Avisar.Checked, SIM, NAO);
     salva;
   End;
@@ -138,7 +138,7 @@ begin
   E_Data.DateTime   := agenda.Registro.Data;
   E_Data.DateTime   := agenda.Registro.Dia;
   E_Hora.Time       := StrToTime(agenda.Registro.Hora);
-  CB_Usuario.Text   := agenda.Usuario.getNomeLista(Agenda.Registro.ToUsuario);
+  CB_Usuario.Text   := agenda.Usuario.getNomeLista(Agenda.Registro.ParaUsuario);
   M_Descricao.Text  := Agenda.Registro.Compromisso;
   Ch_Avisar.Checked := (Agenda.Registro.Avisar = SIM);
 end;
@@ -158,7 +158,7 @@ begin
   Result := True;
   if Trim(CB_Usuario.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_Usuario.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Usuario.Caption);
     Result := False;
     CB_Usuario.SetFocus;
     Exit;
@@ -166,7 +166,7 @@ begin
 
   if Trim(M_Descricao.Text) = EmptyStr then
   begin
-    MensagemValidaPreenchimentoCampo(L_Descricao.Caption);
+    TMsgSetes.ValidaPreenchimentoCampo(L_Descricao.Caption);
     Result := False;
     M_Descricao.SetFocus;
     Exit;

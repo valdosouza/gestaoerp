@@ -47,10 +47,10 @@ Type
     property Avisar: String read Fagd_avisar write setFagd_avisar;
 
     [FieldName('agd_decodusu')]
-    property DecoDusu: Integer read Fagd_decodusu write setFagd_decodusu;
+    property DeUsuario: Integer read Fagd_decodusu write setFagd_decodusu;
 
     [FieldName('agd_paracodusu')]
-    property ParaCodusu: Integer read Fagd_paracodusu write setFagd_paracodusu;
+    property ParaUsuario: Integer read Fagd_paracodusu write setFagd_paracodusu;
 
     [FieldName('agd_dia')]
     property Dia: TDate read Fagd_dia write setFagd_dia;
