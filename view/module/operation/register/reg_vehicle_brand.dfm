@@ -2,14 +2,15 @@ inherited RegVehicleBrand: TRegVehicleBrand
   Caption = 'Cadastro de Marca e Modelo'
   ClientHeight = 358
   ClientWidth = 564
-  ExplicitWidth = 576
-  ExplicitHeight = 421
+  ExplicitWidth = 570
+  ExplicitHeight = 402
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 294
     Width = 564
-    ExplicitTop = 285
-    ExplicitWidth = 558
+    ExplicitTop = 294
+    ExplicitWidth = 564
     inherited SB_Inserir: TSpeedButton
       Left = 0
       Width = 94
@@ -56,8 +57,8 @@ inherited RegVehicleBrand: TRegVehicleBrand
   inherited pnl_fundo: TPanel
     Width = 564
     Height = 294
-    ExplicitWidth = 558
-    ExplicitHeight = 285
+    ExplicitWidth = 564
+    ExplicitHeight = 294
     object Panel1: TPanel
       Left = 6
       Top = 8
@@ -94,13 +95,6 @@ inherited RegVehicleBrand: TRegVehicleBrand
         Font.Style = []
         ParentFont = False
       end
-      object Sb_Fornecedor: TSpeedButton
-        Left = 517
-        Top = 61
-        Width = 21
-        Height = 21
-        Caption = '...'
-      end
       object E_Codigo: TEdit
         Left = 8
         Top = 21
@@ -133,8 +127,9 @@ inherited RegVehicleBrand: TRegVehicleBrand
       object DBLCB_Fornecedor: TComboBox
         Left = 8
         Top = 62
-        Width = 506
+        Width = 529
         Height = 21
+        Style = csDropDownList
         TabOrder = 2
       end
     end
@@ -147,27 +142,27 @@ inherited RegVehicleBrand: TRegVehicleBrand
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 1
-      ExplicitTop = 110
-      ExplicitWidth = 554
       object Sb_Modelos: TSpeedButton
-        Left = 442
+        Left = 445
         Top = 141
         Width = 93
         Height = 28
         Caption = 'Editar Modelos'
+        OnClick = Sb_ModelosClick
       end
-      object DBGrid1: TDBGrid
+      object grdModelos: TDBGrid
         Left = 4
         Top = 3
         Width = 534
         Height = 136
         Color = clMoneyGreen
+        DataSource = ds_Modelos
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
-        Options = [dgTitles, dgColLines, dgRowLines, dgCancelOnExit]
+        Options = [dgTitles, dgColLines, dgRowLines, dgRowSelect, dgCancelOnExit]
         ParentFont = False
         ReadOnly = True
         TabOrder = 0
@@ -186,13 +181,39 @@ inherited RegVehicleBrand: TRegVehicleBrand
             Title.Font.Height = -11
             Title.Font.Name = 'Arial'
             Title.Font.Style = []
+            Width = 181
             Visible = True
           end>
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 320
-    Top = 16
+  inherited MnuBase: TMainMenu
+    Left = 336
+    Top = 168
+  end
+  object ds_Modelos: TDataSource
+    DataSet = cds_Modelos
+    Left = 216
+    Top = 200
+  end
+  object cds_Modelos: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 216
+    Top = 152
+    object cds_ModelosCodigo: TIntegerField
+      FieldName = 'Codigo'
+    end
+    object cds_ModelosCodigoMarca: TIntegerField
+      FieldName = 'CodigoMarca'
+    end
+    object cds_ModelosMOD_DESCRICAO: TStringField
+      FieldName = 'MOD_DESCRICAO'
+    end
   end
 end

@@ -12,10 +12,13 @@ Type
     FMRC_CODIGO: Integer;
     FMRC_CODFAB: Integer;
     FMRC_DESCRICAO: String;
+    FModeloDescricao: string;
+    FMarcasVazio: boolean;
     procedure setFMRC_CODFAB(const Value: Integer);
     procedure setFMRC_CODIGO(const Value: Integer);
     procedure setFMRC_DESCRICAO(const Value: String);
-
+    procedure setFModeloDescricao(const Value: string);
+    procedure setFMarcasVazio(const Value: boolean);
   public
 
     [KeyField('MRC_CODIGO')]
@@ -28,11 +31,24 @@ Type
     [FieldName('MRC_CODFAB')]
     property Fabricante: Integer read FMRC_CODFAB write setFMRC_CODFAB;
 
+    property ModeloDescricao: string read FModeloDescricao write setFModeloDescricao;
+    property MarcasVazio: boolean read FMarcasVazio write setFMarcasVazio;
+
   End;
 
 implementation
 
 { TVehicleBrand }
+
+procedure TVehicleBrand.setFMarcasVazio(const Value: boolean);
+begin
+  FMarcasVazio := Value;
+end;
+
+procedure TVehicleBrand.setFModeloDescricao(const Value: string);
+begin
+  FModeloDescricao := Value;
+end;
 
 procedure TVehicleBrand.setFMRC_CODFAB(const Value: Integer);
 begin
