@@ -5,8 +5,6 @@ uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,
       Un_sistema,Un_Regra_Negocio, tblFornecedor, ControllerEmpresa ,
       ControllerEndereco,ObjProvider,tblPhone,tblAddress, Un_Msg,
       Generics.Collections;
-
-
 Type
   TListFornecedor = TObjectList<TFornecedor>;
   TControllerFornecedor = Class(TControllerBase)
@@ -27,11 +25,15 @@ Type
     procedure getList;
     procedure fillDataObjeto(pFornecedor:TFornecedor;pObj:TObjProvider);
     function VerificaSeExste(Fc_Cd_Codigo,fc_documento: string;Msg:Boolean):Integer;
+
+    procedure search;
+    function getCodigoLista(Descricao: String): Integer;
+    function getDescLista(Codigo: Integer): String;
   End;
 
 implementation
 
-uses UnFunctions,Un_Funcoes;
+uses UnFunctions;
 
 
 procedure TControllerFornecedor.clear;
@@ -80,6 +82,36 @@ begin
   _getByKey(Registro);
 end;
 
+function TControllerFornecedor.getCodigoLista(Descricao: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Descricao = Descricao then
+    Begin
+      Result := Lista[i].Codigo;
+      Break;
+    End;
+  end;
+end;
+
+function TControllerFornecedor.getDescLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Codigo = Codigo then
+    Begin
+      Result := Lista[i].Descricao;
+      Break;
+    End;
+  end;
+end;
+
 procedure TControllerFornecedor.getList;
 var
   Lc_Qry : TSTQuery;
@@ -113,6 +145,42 @@ end;
 function TControllerFornecedor.salva: boolean;
 begin
   SaveObj(Registro);
+end;
+
+procedure TControllerFornecedor.search;
+var
+  Lc_Qry : TSTQuery;
+  LcItem : TFornecedor;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      active := False;
+      SQL.Text := 'SELECT F.*, E.EMP_NOME ' +
+                  '  FROM TB_EMPRESA E ' +
+                  ' INNER JOIN TB_FORNECEDOR F ON (F.FOR_CODEMP = E.EMP_CODIGO) ' +
+                  ' WHERE F.FOR_ATIVO = ''S'' ' +
+                  ' ORDER BY E.EMP_NOME ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+      while not eof do
+      Begin
+        LcItem := TFornecedor.Create;
+        get(Lc_qry,LcItem);
+
+        LcItem.Descricao := FieldByName('EMP_NOME').AsString;
+
+        Lista.add(LcItem);
+        next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
 end;
 
 function TControllerFornecedor.update: Boolean;

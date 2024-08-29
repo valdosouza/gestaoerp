@@ -2,14 +2,15 @@ inherited RegVehicleModel: TRegVehicleModel
   Caption = 'Cadastro de Modelo'
   ClientHeight = 122
   ClientWidth = 463
-  ExplicitWidth = 475
-  ExplicitHeight = 185
+  ExplicitWidth = 469
+  ExplicitHeight = 166
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 58
     Width = 463
-    ExplicitTop = 49
-    ExplicitWidth = 457
+    ExplicitTop = 58
+    ExplicitWidth = 463
     inherited SB_Inserir: TSpeedButton
       Left = -4
       Width = 86
@@ -56,8 +57,8 @@ inherited RegVehicleModel: TRegVehicleModel
   inherited pnl_fundo: TPanel
     Width = 463
     Height = 58
-    ExplicitWidth = 457
-    ExplicitHeight = 49
+    ExplicitWidth = 463
+    ExplicitHeight = 58
   end
   object Panel1: TPanel [2]
     Left = 0
@@ -68,8 +69,6 @@ inherited RegVehicleModel: TRegVehicleModel
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 2
-    ExplicitWidth = 457
-    ExplicitHeight = 49
     object L_Descricao: TLabel
       Left = 53
       Top = 5

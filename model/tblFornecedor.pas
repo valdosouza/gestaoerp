@@ -11,9 +11,11 @@ Type
   private
     FFOR_ATIVO: String;
     FFOR_CODEMP: Integer;
+    FDescricao: String;
 
     procedure setFFOR_CODEMP( Value : INTEGER);
     procedure setFFOR_ATIVO( Value : String);
+    procedure setFDescricao(const Value: String);
   public
 
     [KeyField('FOR_CODEMP')]
@@ -23,6 +25,7 @@ Type
     [FieldName('FOR_ATIVO')]
     property Ativo: String read FFOR_ATIVO write setFFOR_ATIVO;
 
+    property Descricao: String read FDescricao write setFDescricao;
 
   End;
 
@@ -30,6 +33,11 @@ implementation
 
 
 { TFornecedor }
+
+procedure TFornecedor.setFDescricao(const Value: String);
+begin
+  FDescricao := Value;
+end;
 
 procedure TFornecedor.setFFOR_ATIVO(Value: String);
 begin

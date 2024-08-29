@@ -3,7 +3,7 @@ unit ControllerVehicleModel;
 interface
 
 uses STDatabase,Classes, STQuery,SysUtils,ControllerBase,
-      tblVehicleModel ,Un_MSg,Generics.Collections;
+      tblVehicleModel ,Un_MSg,Generics.Collections, prm_Vehicle_Model;
 
 Type
   TListaModel = TObjectList<TVehicleModel>;
@@ -11,6 +11,8 @@ Type
   TControllerVehicleModel = Class(TControllerBase)
 
   private
+    FParametros: TPrmVehicleModel;
+    procedure setFParametros(const Value: TPrmVehicleModel);
 
   public
     Registro : TVehicleModel;
@@ -23,7 +25,10 @@ Type
     function update:boolean;
     Function delete:boolean;
     function getList:Boolean;
+    procedure clear;
 
+    procedure search;
+    property Parametros : TPrmVehicleModel read FParametros write setFParametros;
   End;
 
 implementation
@@ -31,11 +36,17 @@ implementation
 uses Un_sistema, Un_Regra_Negocio;
 
 
+procedure TControllerVehicleModel.clear;
+begin
+  clearObj(Registro);
+end;
+
 constructor TControllerVehicleModel.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TVehicleModel.Create;
   Lista := TListaModel.Create;
+  Parametros := TPrmVehicleModel.Create;
 end;
 
 function TControllerVehicleModel.delete: boolean;
@@ -52,6 +63,7 @@ destructor TControllerVehicleModel.Destroy;
 begin
   Lista.DisposeOf;
   Registro.DisposeOf;
+  Parametros.DisposeOf;
   inherited;
 end;
 
@@ -67,7 +79,6 @@ begin
   End;
 end;
 
-
 function TControllerVehicleModel.salva: boolean;
 begin
   Try
@@ -80,6 +91,46 @@ begin
   End;
 end;
 
+procedure TControllerVehicleModel.search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TVehicleModel;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_MODELO WHERE 1=1 ';
+
+      if FParametros.FieldName.CodigoMarca > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND MOD_CODMRC LIKE :MOD_CODMRC';
+        ParamByName('MOD_CODMRC').AsInteger := FParametros.FieldName.CodigoMarca;
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TVehicleModel.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerVehicleModel.setFParametros(const Value: TPrmVehicleModel);
+begin
+  FParametros := Value;
+end;
 
 function TControllerVehicleModel.update: boolean;
 begin

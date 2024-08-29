@@ -2,28 +2,49 @@ inherited SeaVehicleBrand: TSeaVehicleBrand
   Caption = 'Pesquisa de Marca e Modelo'
   ClientHeight = 375
   ClientWidth = 564
-  ExplicitWidth = 576
-  ExplicitHeight = 438
+  ExplicitWidth = 570
+  ExplicitHeight = 419
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
     Width = 558
     Height = 293
     ExplicitTop = 79
-    ExplicitWidth = 552
-    ExplicitHeight = 284
+    ExplicitWidth = 558
+    ExplicitHeight = 293
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 554
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 462
       Height = 275
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Marca'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'modelodescricao'
+          Title.Caption = 'Modelo'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 464
       Height = 275
-      ExplicitLeft = 458
-      ExplicitHeight = 266
+      ExplicitLeft = 464
+      ExplicitHeight = 275
       inherited Sb_Sair_0: TSpeedButton
         Top = 212
         ExplicitTop = 212
@@ -59,7 +80,7 @@ inherited SeaVehicleBrand: TSeaVehicleBrand
   inherited Pnl_Parametros: TPanel
     Width = 558
     Height = 70
-    ExplicitWidth = 552
+    ExplicitWidth = 558
     ExplicitHeight = 70
     object GroupBox2: TGroupBox
       Left = 2
@@ -75,7 +96,6 @@ inherited SeaVehicleBrand: TSeaVehicleBrand
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 548
       object L_BuscaMarca: TLabel
         Left = 11
         Top = 16
@@ -130,6 +150,21 @@ inherited SeaVehicleBrand: TSeaVehicleBrand
         ParentFont = False
         TabOrder = 1
       end
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 352
+    Top = 128
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
+    end
+    object cds_searchmodelodescricao: TStringField
+      FieldName = 'modelodescricao'
     end
   end
 end
