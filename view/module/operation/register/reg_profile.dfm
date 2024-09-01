@@ -1,54 +1,53 @@
-inherited RegProfille: TRegProfille
+inherited RegProfile: TRegProfile
   Caption = 'Cadastro de Perfil'
-  ClientHeight = 141
-  ClientWidth = 559
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 571
-  ExplicitHeight = 204
+  ClientHeight = 151
+  ClientWidth = 567
+  ExplicitWidth = 573
+  ExplicitHeight = 195
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 77
-    Width = 559
-    ExplicitTop = 68
-    ExplicitWidth = 557
+    Top = 87
+    Width = 567
+    ExplicitTop = 87
+    ExplicitWidth = 567
     inherited SB_Inserir: TSpeedButton
-      Left = -7
+      Left = 1
       Width = 89
       ExplicitLeft = -16
       ExplicitTop = 5
       ExplicitWidth = 89
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 84
+      Left = 92
       Width = 94
       ExplicitLeft = 88
       ExplicitTop = 5
       ExplicitWidth = 94
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 180
+      Left = 188
       Width = 94
       ExplicitLeft = 184
       ExplicitTop = 5
       ExplicitWidth = 94
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 372
+      Left = 380
       Width = 94
       ExplicitLeft = 376
       ExplicitTop = 5
       ExplicitWidth = 94
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 468
+      Left = 476
       Width = 86
       ExplicitLeft = 472
       ExplicitTop = 5
       ExplicitWidth = 86
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 276
+      Left = 284
       Width = 94
       ExplicitLeft = 280
       ExplicitTop = 5
@@ -56,10 +55,10 @@ inherited RegProfille: TRegProfille
     end
   end
   inherited pnl_fundo: TPanel
-    Width = 559
-    Height = 77
-    ExplicitWidth = 557
-    ExplicitHeight = 68
+    Width = 567
+    Height = 87
+    ExplicitWidth = 567
+    ExplicitHeight = 87
     object L_Codigo: TLabel
       Left = 8
       Top = 8
@@ -89,8 +88,8 @@ inherited RegProfille: TRegProfille
       ParentFont = False
     end
     object SB_Permissao: TSpeedButton
-      Left = 450
-      Top = 5
+      Left = 453
+      Top = 4
       Width = 105
       Height = 42
       Caption = 'Permiss'#245'es - F8'
@@ -116,6 +115,7 @@ inherited RegProfille: TRegProfille
       Layout = blGlyphTop
       NumGlyphs = 2
       ParentFont = False
+      OnClick = SB_PermissaoClick
     end
     object E_Codigo: TEdit
       Left = 8

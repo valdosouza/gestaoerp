@@ -27,6 +27,20 @@ Type
     [FieldName('IIF_CODOPF')]
     property CodigoOpf: Integer read FIIF_CODOPF write setFIIF_CODOPF;
   End;
+{CREATE TABLE TB_ITENS_IFC (
+    IIF_CODIGO  "Codigo" /* "Codigo" = INTEGER NOT NULL */,
+    IIF_CODIFC  "Codigo" /* "Codigo" = INTEGER NOT NULL */,
+    IIF_CODOPF  "Codigo" /* "Codigo" = INTEGER NOT NULL */
+);
+/******************************************************************************/
+/****                             Primary keys                             ****/
+/******************************************************************************/
+ALTER TABLE TB_ITENS_IFC ADD PRIMARY KEY (IIF_CODIGO);
+/******************************************************************************/
+/****                             Foreign keys                             ****/
+/******************************************************************************/
+ALTER TABLE TB_ITENS_IFC ADD CONSTRAINT FK_TB_ITENS_IFC_1 FOREIGN KEY (IIF_CODOPF) REFERENCES TB_OPER_INTERFACE (OPF_CODIGO);
+}
 
 implementation
 
