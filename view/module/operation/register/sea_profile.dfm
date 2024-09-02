@@ -1,73 +1,87 @@
 inherited SeaProfile: TSeaProfile
   Caption = 'Pesquisa de Perfil'
-  ClientHeight = 291
-  ClientWidth = 574
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 586
-  ExplicitHeight = 354
+  ClientHeight = 350
+  ClientWidth = 585
+  ExplicitWidth = 591
+  ExplicitHeight = 394
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
-    Width = 568
-    Height = 217
-    ExplicitWidth = 861
-    ExplicitHeight = 371
+    Width = 579
+    Height = 276
+    ExplicitTop = 71
+    ExplicitWidth = 568
+    ExplicitHeight = 217
     inherited Lb_ResultadoPesquisa: TLabel
-      Width = 564
+      Width = 575
     end
     inherited DBG_Pesquisa: TDBGrid
-      Width = 472
-      Height = 199
+      Width = 483
+      Height = 258
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
-      Left = 474
-      Height = 199
-      ExplicitLeft = 767
-      ExplicitHeight = 353
+      Left = 485
+      Height = 258
+      ExplicitLeft = 474
+      ExplicitHeight = 199
       inherited Sb_Sair_0: TSpeedButton
-        Top = 148
-        Height = 48
+        Top = 197
+        Height = 58
         ExplicitLeft = 3
-        ExplicitTop = 185
+        ExplicitTop = 175
         ExplicitWidth = 86
-        ExplicitHeight = 48
+        ExplicitHeight = 58
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 98
-        Height = 47
+        Top = 136
+        Height = 58
         ExplicitLeft = 3
-        ExplicitTop = 122
+        ExplicitTop = 125
         ExplicitWidth = 86
-        ExplicitHeight = 47
+        ExplicitHeight = 58
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 49
-        Height = 46
+        Top = 75
+        Height = 58
         ExplicitLeft = 3
-        ExplicitTop = 59
+        ExplicitTop = 64
         ExplicitWidth = 86
-        ExplicitHeight = 46
+        ExplicitHeight = 58
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -7
-        Height = 53
+        Top = 14
+        Height = 58
         ExplicitLeft = 3
-        ExplicitTop = -4
+        ExplicitTop = 9
         ExplicitWidth = 86
-        ExplicitHeight = 53
+        ExplicitHeight = 58
       end
     end
   end
   inherited Pnl_Parametros: TPanel
-    Width = 568
+    Width = 579
     Height = 62
     ExplicitWidth = 568
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
       Top = 2
-      Width = 564
+      Width = 575
       Height = 61
       Align = alTop
       Caption = ' Digite sua op'#231#227'o de busca '
@@ -78,9 +92,7 @@ inherited SeaProfile: TSeaProfile
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 10
-      ExplicitWidth = 863
+      ExplicitWidth = 564
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -135,6 +147,20 @@ inherited SeaProfile: TSeaProfile
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited ds_search: TDataSource
+    Left = 176
+    Top = 202
+  end
+  inherited cds_search: TClientDataSet
+    Left = 176
+    Top = 154
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end
