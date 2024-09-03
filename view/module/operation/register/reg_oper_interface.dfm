@@ -9,7 +9,7 @@ inherited RegOperInterface: TRegOperInterface
   inherited pnl_botao: TPanel
     Top = 181
     Width = 572
-    ExplicitTop = 244
+    ExplicitTop = 181
     ExplicitWidth = 572
     inherited SB_Inserir: TSpeedButton
       Left = -5
@@ -55,7 +55,7 @@ inherited RegOperInterface: TRegOperInterface
     Width = 572
     Height = 181
     ExplicitWidth = 572
-    ExplicitHeight = 244
+    ExplicitHeight = 181
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -65,7 +65,6 @@ inherited RegOperInterface: TRegOperInterface
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitHeight = 240
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -253,7 +252,6 @@ inherited RegOperInterface: TRegOperInterface
         Width = 411
         Height = 21
         TabOrder = 2
-        Text = 'E_Path_Imagem'
       end
       object GroupBox1: TGroupBox
         Left = 2
@@ -269,7 +267,6 @@ inherited RegOperInterface: TRegOperInterface
         Font.Style = []
         ParentFont = False
         TabOrder = 3
-        ExplicitTop = 152
         object Sb_Amostra: TSpeedButton
           Left = 2
           Top = 15
