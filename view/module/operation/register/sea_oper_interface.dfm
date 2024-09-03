@@ -1,31 +1,47 @@
 inherited SeaOperInterface: TSeaOperInterface
   Caption = 'Pesquisa de Opera'#231#227'o de Interfaces'
-  ClientHeight = 309
+  ClientHeight = 324
   ClientWidth = 573
-  ExplicitWidth = 585
-  ExplicitHeight = 372
+  ExplicitWidth = 579
+  ExplicitHeight = 368
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 567
-    Height = 235
+    Height = 250
     ExplicitTop = 71
-    ExplicitWidth = 561
-    ExplicitHeight = 226
+    ExplicitWidth = 567
+    ExplicitHeight = 235
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 563
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 471
-      Height = 217
+      Height = 232
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Width = 306
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 473
-      Height = 217
-      ExplicitLeft = 467
-      ExplicitHeight = 208
+      Height = 232
+      ExplicitLeft = 473
+      ExplicitHeight = 217
       inherited Sb_Sair_0: TSpeedButton
-        Top = 158
+        Top = 173
         Height = 56
         ExplicitLeft = 3
         ExplicitTop = 185
@@ -33,26 +49,26 @@ inherited SeaOperInterface: TSeaOperInterface
         ExplicitHeight = 56
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 108
-        Height = 47
+        Top = 115
+        Height = 55
         ExplicitLeft = 3
-        ExplicitTop = 122
+        ExplicitTop = 116
         ExplicitWidth = 86
-        ExplicitHeight = 47
+        ExplicitHeight = 55
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 57
-        Height = 48
+        Top = 56
+        Height = 56
         ExplicitLeft = 3
-        ExplicitTop = 73
+        ExplicitTop = 58
         ExplicitWidth = 86
-        ExplicitHeight = 48
+        ExplicitHeight = 56
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 1
+        Top = 0
         Height = 53
         ExplicitLeft = 3
-        ExplicitTop = -4
+        ExplicitTop = 15
         ExplicitWidth = 86
         ExplicitHeight = 53
       end
@@ -61,7 +77,7 @@ inherited SeaOperInterface: TSeaOperInterface
   inherited Pnl_Parametros: TPanel
     Width = 567
     Height = 62
-    ExplicitWidth = 561
+    ExplicitWidth = 567
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -77,7 +93,6 @@ inherited SeaOperInterface: TSeaOperInterface
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 557
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -132,6 +147,23 @@ inherited SeaOperInterface: TSeaOperInterface
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 344
+    Top = 160
+  end
+  inherited ds_search: TDataSource
+    Left = 232
+    Top = 234
+  end
+  inherited cds_search: TClientDataSet
+    Left = 232
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end
