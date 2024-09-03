@@ -92,7 +92,7 @@ begin
     cInterface.Registro.Codigo := Self.CodigoRegistro;
     cInterface.getbyId;
 
-    cInterface.itensIfc.Parametros.FieldName.CodigoIfc := cInterface.Registro.Codigo;
+    cInterface.itensIfc.Parametros.FieldName.CodigoInterface := cInterface.Registro.Codigo;
     cInterface.itensIfc.search;
     
   End;
@@ -135,8 +135,8 @@ Begin
   for I := 0 to Pred(ChkBx_Permissao.Count) do
   begin
     cInterface.itensIfc.registro.Codigo    := 0;
-    cInterface.itensIfc.registro.CodigoIfc := cInterface.Registro.Codigo;
-    cInterface.itensIfc.registro.CodigoOpf := StrToIntDef(Copy(ChkBx_Permissao.Items.Strings[I],1,2),0);
+    cInterface.itensIfc.registro.CodigoInterface := cInterface.Registro.Codigo;
+    cInterface.itensIfc.registro.CodigoOperacao := StrToIntDef(Copy(ChkBx_Permissao.Items.Strings[I],1,2),0);
     if ChkBx_Permissao.Checked[I] then   
       cInterface.itensIfc.Insert
     else  

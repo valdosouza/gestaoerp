@@ -58,7 +58,10 @@ uses
   Un_PesqEndereco in 'view\module\operation\admin\Un_PesqEndereco.pas' {Fr_PesqEndereco},
   Un_Fm_ListaMultiEmpresa in 'frame\Un_Fm_ListaMultiEmpresa.pas' {Fm_ListaMultiEmpresa: TFrame},
   reg_quotation_log in 'view\module\operation\register\reg_quotation_log.pas' {RegQuotationLog},
-  ControllerItensCotacao in 'controller\ControllerItensCotacao.pas';
+  ControllerItensCotacao in 'controller\ControllerItensCotacao.pas',
+  reg_profile in 'view\module\operation\register\reg_profile.pas' {RegProfile},
+  rg_privilege in 'view\module\operation\register\rg_privilege.pas' {RgPrivilege},
+  reg_interface in 'view\module\operation\register\reg_interface.pas' {RegInterface};
 
 {$R *.res}
 
@@ -68,6 +71,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TRegQuotationLog, RegQuotationLog);
+  Application.CreateForm(TRegInterface, RegInterface);
   Application.Run;
 end.

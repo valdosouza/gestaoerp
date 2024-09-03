@@ -1,15 +1,15 @@
 inherited RegProfile: TRegProfile
   Caption = 'Cadastro de Perfil'
-  ClientHeight = 151
+  ClientHeight = 128
   ClientWidth = 567
   ExplicitWidth = 573
-  ExplicitHeight = 195
+  ExplicitHeight = 177
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 87
+    Top = 64
     Width = 567
-    ExplicitTop = 87
+    ExplicitTop = 64
     ExplicitWidth = 567
     inherited SB_Inserir: TSpeedButton
       Left = 1
@@ -56,9 +56,9 @@ inherited RegProfile: TRegProfile
   end
   inherited pnl_fundo: TPanel
     Width = 567
-    Height = 87
+    Height = 64
     ExplicitWidth = 567
-    ExplicitHeight = 87
+    ExplicitHeight = 64
     object L_Codigo: TLabel
       Left = 8
       Top = 8
@@ -88,10 +88,16 @@ inherited RegProfile: TRegProfile
       ParentFont = False
     end
     object SB_Permissao: TSpeedButton
-      Left = 453
-      Top = 4
+      AlignWithMargins = True
+      Left = 459
+      Top = 3
       Width = 105
-      Height = 42
+      Height = 58
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
+      Align = alRight
       Caption = 'Permiss'#245'es - F8'
       Flat = True
       Font.Charset = ANSI_CHARSET
@@ -116,6 +122,8 @@ inherited RegProfile: TRegProfile
       NumGlyphs = 2
       ParentFont = False
       OnClick = SB_PermissaoClick
+      ExplicitLeft = 453
+      ExplicitTop = 4
     end
     object E_Codigo: TEdit
       Left = 8

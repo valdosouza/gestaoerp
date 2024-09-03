@@ -3,7 +3,7 @@ inherited RegUsers: TRegUsers
   ClientHeight = 475
   ClientWidth = 621
   ExplicitWidth = 627
-  ExplicitHeight = 519
+  ExplicitHeight = 524
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -122,7 +122,7 @@ inherited RegUsers: TRegUsers
       end
       object sb_permissao: TSpeedButton
         Left = 502
-        Top = 49
+        Top = 48
         Width = 88
         Height = 47
         Caption = 'Permiss'#245'es - F8'

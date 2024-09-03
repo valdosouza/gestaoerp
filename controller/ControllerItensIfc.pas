@@ -36,7 +36,7 @@ begin
   Result := False;
   for I := 0 to Lista.Count -1 do
   Begin
-    if (Lista[I].CodigoOpf = CodigoOpf)  then
+    if (Lista[I].CodigoOperacao = CodigoOpf)  then
     Begin
       Result := True;
       Break;
@@ -93,11 +93,13 @@ begin
     with Lc_Qry do
     Begin
       SQL.Text := concat(
-                  'SELECT * ',
-                  'FROM TB_ITENS_IFC ',
+                  'SELECT i.*, op.OPF_DESCRICAO ',
+                  'FROM TB_ITENS_IFC i ',
+                  '    inner join tb_oper_interface op ',
+                  '    on (i.IIF_CODOPF = op.OPF_CODIGO) ',
                   'WHERE IIF_CODIFC =:IIF_CODIFC '
                   );
-      ParamByName('IIF_CODIFC').AsInteger := FParametros.FieldName.CodigoIfc;
+      ParamByName('IIF_CODIFC').AsInteger := FParametros.FieldName.CodigoInterface;
       Active := True;
       FetchAll;
       First;
@@ -106,6 +108,7 @@ begin
       Begin
         LITem := TItensIfc.Create;
         get(Lc_Qry,LITem);
+        LITem.DescricaoOperacao := FieldByname('OPF_DESCRICAO').AsString;
         Lista.add(LITem);
         next;
       end;

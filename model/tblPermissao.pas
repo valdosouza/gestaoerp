@@ -12,40 +12,44 @@ Type
     FPER_CODIIF: Integer;
     FPER_CODMHA: Integer;
     FPER_CODUSU: Integer;
+    FDescricaoOperacao: String;
+    FNomeUsuario: String;
     procedure setFPER_CODIIF(const Value: Integer);
     procedure setFPER_CODMHA(const Value: Integer);
     procedure setFPER_CODUSU(const Value: Integer);
+    procedure setFDescricaoOperacao(const Value: String);
+    procedure setFNomeUsuario(const Value: String);
 
   public
-    [KeyField('PPF_CODPFL')]
-    [FieldName('PPF_CODPFL')]
-    property CodMha: Integer read FPER_CODMHA write setFPER_CODMHA;
+    [KeyField('PER_CODMHA')]
+    [FieldName('PER_CODMHA')]
+    property Estabelecimento: Integer read FPER_CODMHA write setFPER_CODMHA;
 
     [KeyField('PER_CODUSU')]
     [FieldName('PER_CODUSU')]
-    property CodUsu: Integer read FPER_CODUSU write setFPER_CODUSU;
+    property Usuario: Integer read FPER_CODUSU write setFPER_CODUSU;
 
     [KeyField('PER_CODIIF')]
     [FieldName('PER_CODIIF')]
-    property CodIIF: Integer read FPER_CODIIF write setFPER_CODIIF;
+    property Privilegio: Integer read FPER_CODIIF write setFPER_CODIIF;
+
+    property NomeUsuario : String read FNomeUsuario write setFNomeUsuario;
+    property DescricaoOperacao : String read FDescricaoOperacao write setFDescricaoOperacao;
   End;
-{CREATE TABLE TB_PERMISSAO (
-    PER_CODMHA  "Codigo" /* "Codigo" = INTEGER NOT NULL */,
-    PER_CODUSU  "Codigo" /* "Codigo" = INTEGER NOT NULL */,
-    PER_CODIIF  "Codigo" /* "Codigo" = INTEGER NOT NULL */
-);
-/******************************************************************************/
-/****                             Primary keys                             ****/
-/******************************************************************************/
-ALTER TABLE TB_PERMISSAO ADD PRIMARY KEY (PER_CODMHA, PER_CODUSU, PER_CODIIF);
-/******************************************************************************/
-/****                             Foreign keys                             ****/
-/******************************************************************************/
-ALTER TABLE TB_PERMISSAO ADD CONSTRAINT FK_TB_PERMISSAO_1 FOREIGN KEY (PER_CODUSU) REFERENCES TB_USUARIO (USU_CODIGO);}
 
 implementation
 
 { TPermissao }
+
+procedure TPermissao.setFDescricaoOperacao(const Value: String);
+begin
+  FDescricaoOperacao := Value;
+end;
+
+procedure TPermissao.setFNomeUsuario(const Value: String);
+begin
+  FNomeUsuario := Value;
+end;
 
 procedure TPermissao.setFPER_CODIIF(const Value: Integer);
 begin

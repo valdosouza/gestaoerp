@@ -313,6 +313,7 @@ type
     procedure Estados1Click(Sender: TObject);
     procedure Embalagens1Click(Sender: TObject);
     procedure Interface1Click(Sender: TObject);
+    procedure Perfil2Click(Sender: TObject);
   protected
     procedure IniciaVariaveis;override;
   private
@@ -371,7 +372,7 @@ uses un_dm,
     sea_group_menu,
     sea_package,
     sea_uf,
-    sea_receipt;
+    sea_receipt, sea_profile;
 
 
 { TForm1 }
@@ -426,6 +427,12 @@ end;
 procedure TFrMain.MotivoCondenaoReprovao1Click(Sender: TObject);
 begin
   ChamarTela(TSeaExtMotive);
+end;
+
+procedure TFrMain.Perfil2Click(Sender: TObject);
+begin
+  inherited;
+  ChamarTela(TSeaProfile);
 end;
 
 procedure TFrMain.Pessoal1Click(Sender: TObject);
@@ -532,7 +539,7 @@ end;
 procedure TFrMain.IniciaVariaveis;
 begin
   inherited;
-  MenuPessoal;
+  MenuOperacao;
   GB_NM_Empresa := 'Teste';
   Gb_Nivel := 1;//Setado como 1 por que no sistema original passamos pelo autenticação para defini-lo
   Gb_CodMha := 1;

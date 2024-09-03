@@ -509,6 +509,7 @@ inherited FrMain: TFrMain
       end
       object Perfil2: TMenuItem
         Caption = 'Perfil do Usu'#225'rio'
+        OnClick = Perfil2Click
       end
       object Interface1: TMenuItem
         Caption = 'Interface'
