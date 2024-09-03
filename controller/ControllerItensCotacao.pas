@@ -3,7 +3,8 @@ unit ControllerItensCotacao;
 interface
 
 uses STDatabase,STQuery, Classes, Vcl.Grids,SysUtils,ControllerBase,prm_ItensCotacao,
-      tblItensCotacao,  Generics.Collections, ControllerProduto,ControllerItensObs;
+      tblItensCotacao,  Generics.Collections, ControllerProduto,ControllerItensObs,
+      FireDAC.Stan.Param;
 Type
   TListItensCotacao = TObjectList<TItensCotacao>;
 
@@ -153,6 +154,7 @@ end;
 
 function TControllerItensCotacao.migra: Boolean;
 begin
+  Result := True;
   InsertObj(Registro);
 end;
 

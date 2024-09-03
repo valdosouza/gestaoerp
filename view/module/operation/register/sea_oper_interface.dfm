@@ -3,7 +3,7 @@ inherited SeaOperInterface: TSeaOperInterface
   ClientHeight = 324
   ClientWidth = 573
   ExplicitWidth = 579
-  ExplicitHeight = 368
+  ExplicitHeight = 373
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -13,9 +13,6 @@ inherited SeaOperInterface: TSeaOperInterface
     ExplicitTop = 71
     ExplicitWidth = 567
     ExplicitHeight = 235
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 563
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 471
       Height = 232

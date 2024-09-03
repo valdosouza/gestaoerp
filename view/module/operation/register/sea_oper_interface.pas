@@ -88,8 +88,7 @@ begin
     cds_search.AppendRecord([operInterface.Lista[i].Codigo, operInterface.Lista[i].Descricao]);
 
   cds_search.EnableControls;
-
-  inherited;
+  cds_search.First;
 end;
 
 procedure TSeaOperInterface.SetRegister;

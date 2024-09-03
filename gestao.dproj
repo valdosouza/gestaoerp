@@ -342,6 +342,14 @@
             <Form>RegInterface</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="view\module\operation\register\reg_oper_interface.pas">
+            <Form>RegOperInterface</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\sea_oper_interface.pas">
+            <Form>SeaOperInterface</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

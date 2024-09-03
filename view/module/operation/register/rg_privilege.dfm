@@ -162,10 +162,6 @@ inherited RgPrivilege: TRgPrivilege
       Style = lbOwnerDrawFixed
       TabOrder = 3
       OnClick = ChkBx_PermissaoClick
-      ExplicitLeft = 477
-      ExplicitTop = 0
-      ExplicitWidth = 232
-      ExplicitHeight = 320
     end
   end
   object pnl_bottom: TPanel [1]

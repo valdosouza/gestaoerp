@@ -61,7 +61,9 @@ uses
   ControllerItensCotacao in 'controller\ControllerItensCotacao.pas',
   reg_profile in 'view\module\operation\register\reg_profile.pas' {RegProfile},
   rg_privilege in 'view\module\operation\register\rg_privilege.pas' {RgPrivilege},
-  reg_interface in 'view\module\operation\register\reg_interface.pas' {RegInterface};
+  reg_interface in 'view\module\operation\register\reg_interface.pas' {RegInterface},
+  reg_oper_interface in 'view\module\operation\register\reg_oper_interface.pas' {RegOperInterface},
+  sea_oper_interface in 'view\module\operation\register\sea_oper_interface.pas' {SeaOperInterface};
 
 {$R *.res}
 
@@ -71,6 +73,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TRegInterface, RegInterface);
   Application.Run;
 end.

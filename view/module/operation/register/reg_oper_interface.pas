@@ -107,7 +107,7 @@ begin
   with operInterface do
   Begin
     Registro.Descricao := E_Descricao.Text;
-    //Registro.Abreviatura := E_Abreviatura.Text;
+    Registro.PathImagem := E_Path_Imagem.Text;
     salva;
   End;
   CodigoRegistro := operInterface.Registro.Codigo;

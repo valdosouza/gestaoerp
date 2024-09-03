@@ -10,10 +10,10 @@ Type
   private
     FOPF_DESCRICAO: String;
     FOPF_CODIGO: Integer;
-    FOPF_IMAGEM: TStream;
+    FPathImagem: String;
     procedure setFOPF_CODIGO(const Value: Integer);
     procedure setFOPF_DESCRICAO(const Value: String);
-    procedure setFOPF_IMAGEM(const Value: TStream);
+    procedure setFPathImagem(const Value: String);
 
   public
     [KeyField('OPF_CODIGO')]
@@ -23,22 +23,8 @@ Type
     [FieldName('OPF_DESCRICAO')]
     property Descricao: String read FOPF_DESCRICAO write setFOPF_DESCRICAO;
 
-    //[FieldName('OPF_IMAGEM')]
-    //property Imagem: TStream read FOPF_IMAGEM write setFOPF_IMAGEM;
+    property PathImagem: String read FPathImagem write setFPathImagem;
   End;
-{CREATE TABLE TB_OPER_INTERFACE (
-    OPF_CODIGO     "Codigo" /* "Codigo" = INTEGER NOT NULL */,
-    OPF_DESCRICAO  "Descricao_30" /* "Descricao_30" = VARCHAR(30) */,
-    OPF_IMAGEM     "Observacao" /* "Observacao" = BLOB SUB_TYPE 0 SEGMENT SIZE 80 */
-);
-ALTER TABLE TB_OPER_INTERFACE ADD PRIMARY KEY (OPF_CODIGO);
-
-    object FDTable1OPF_IMAGEM: TBlobField
-      FieldName = 'OPF_IMAGEM'
-      Origin = 'OPF_IMAGEM'
-    end
-
-}
 
 implementation
 
@@ -54,9 +40,9 @@ begin
   FOPF_DESCRICAO := Value;
 end;
 
-procedure TOperInterface.setFOPF_IMAGEM(const Value: TStream);
+procedure TOperInterface.setFPathImagem(const Value: String);
 begin
-  FOPF_IMAGEM := Value;
+  FPathImagem := Value;
 end;
 
 end.

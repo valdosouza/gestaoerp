@@ -2,9 +2,10 @@ unit ControllerCotacao;
 
 interface
 
-uses STDatabase,STQuery, Classes, SysUtils,ControllerBase,
-      tblCotacao,  Generics.Collections, ControllerItensCotacao,
-    UnFunctions,System.Math, Un_Msg, prm_quotation_log;
+uses STDatabase,STQuery, Classes, SysUtils,ControllerBase, tblCotacao,
+    Generics.Collections, ControllerItensCotacao, UnFunctions,System.Math, Un_Msg,
+    prm_quotation_log,FireDAC.Stan.Param;
+
 Type
   TListCotacao = TObjectList<TCotacao>;
 
@@ -227,6 +228,7 @@ end;
 
 function TControllerCotacao.migra: Boolean;
 begin
+  Result := True;
   InsertObj(Registro);
 end;
 
@@ -483,6 +485,7 @@ end;
 
 function TControllerCotacao.getByKey: boolean;
 begin
+  Result := True;
   _getByKey(Registro);
 end;
 

@@ -3,7 +3,7 @@ unit ControllerOperInterface;
 interface
 
 uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
-     STQuery, ControllerBase, tblOperInterface, prm_oper_interface;
+     STQuery, ControllerBase, tblOperInterface, prm_oper_interface, Data.DB;
 
 Type
   TListaOperInterface = TObjectList<TOperInterface>;
@@ -23,7 +23,6 @@ Type
     function insert:boolean;
     function update:boolean;
     Function delete:boolean;
-    function getList:Boolean;
     function replace:boolean;
     function getCodigoLista(Descricao: String): Integer;
     function getDescLista(Codigo: Integer): String;
@@ -70,21 +69,35 @@ begin
 end;
 
 function TControllerOperInterface.insert: boolean;
+var
+  Lc_Qry : TSTQuery;
 begin
-  if Registro.Codigo = 0 then
-    Registro.Codigo := Generator('GN_OPER_INTERFACE');
+  Result := True;
+  Lc_Qry := GeraQuery;
   Try
-    InsertObj(Registro);
-    Result := True;
-  Except
-    Result := False;
+    with Lc_Qry do
+    Begin
+      sql.add(concat(
+                'INSERT INTO TB_OPER_INTERFACE (OPF_CODIGO, OPF_DESCRICAO, OPF_IMAGEM) ',
+                'VALUES (:OPF_CODIGO, :OPF_DESCRICAO,:OPF_IMAGEM) '
+      ));
+      if Registro.Codigo > 0 then
+        ParamByName('OPF_CODIGO').AsInteger := Registro.Codigo
+      else
+        ParamByName('OPF_CODIGO').AsInteger := Generator('GN_OPER_INTERFACE');
+      ParamByName('OPF_DESCRICAO').AsString := Registro.Descricao;
+      if Registro.PathImagem <>  '' then
+        ParamByName('OPF_IMAGEM').LoadFromFile(Registro.PathImagem , ftBlob);
+      ExecSQL;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
   End;
 end;
 
 function TControllerOperInterface.replace: boolean;
 var
   Lc_Qry : TSTQuery;
-  //LITem : TOperInterface;
 begin
   Result := True;
   Lc_Qry := GeraQuery;
@@ -98,7 +111,8 @@ begin
       ));
       ParamByName('OPF_CODIGO').AsInteger := Registro.Codigo;
       ParamByName('OPF_DESCRICAO').AsString := Registro.Descricao;
-      //ParamByName('OPF_IMAGEM').value := DecodeBase64 (Registro.Imagem);
+      if Registro.PathImagem <>  '' then
+        ParamByName('OPF_IMAGEM').LoadFromFile(Registro.PathImagem , ftBlob);
       ExecSQL;
     end;
   Finally
@@ -107,59 +121,45 @@ begin
 end;
 
 function TControllerOperInterface.salva: boolean;
+var
+  Lc_Qry : TSTQuery;
 begin
-  Try
-    if Registro.Codigo = 0 then
-      Registro.Codigo := Generator('GN_OPER_INTERFACE');
-    SaveObj(Registro);
-    Result := True;
-  Except
-    Result := False;
-  End;
+  Result := True;
+  if existObj(Registro) then
+    self.update
+  else
+    self.insert;
 end;
 
 function TControllerOperInterface.update: boolean;
-begin
-  Try
-    UpdateObj(Registro);
-    Result := True;
-  Except
-    Result := False;
-  End;
-end;
-
-procedure TControllerOperInterface.getById;
-begin
-  _getByKey(Registro);
-end;
-
-function TControllerOperInterface.getList: Boolean;
 var
   Lc_Qry : TSTQuery;
-  LITem : TOperInterface;
 begin
   Result := True;
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
     Begin
-      sql.add(concat('SELECT * ',
-                      'FROM TB_OPER_INTERFACE '));
-      Active := True;
-      FetchAll;
-      First;
-      Lista.Clear;
-      while not eof do
-      Begin
-        LITem := TOperInterface.Create;
-        get(Lc_Qry,LITem);
-        Lista.add(LITem);
-        next;
-      end;
+      sql.add(concat(
+                'UPDATE TB_OPER_INTERFACE SET ',
+                'OPF_DESCRICAO =:OPF_DESCRICAO,',
+                ' OPF_IMAGEM =:OPF_IMAGEM ',
+                'where OPF_CODIGO=:OPF_CODIGO '
+      ));
+      ParamByName('OPF_CODIGO').AsInteger := Registro.Codigo;
+      ParamByName('OPF_DESCRICAO').AsString := Registro.Descricao;
+      if Registro.PathImagem <>  '' then
+        ParamByName('OPF_IMAGEM').LoadFromFile(Registro.PathImagem , ftBlob);
+      ExecSQL;
     end;
   Finally
     FinalizaQuery(Lc_Qry);
   End;
+end;
+
+procedure TControllerOperInterface.getById;
+begin
+  _getByKey(Registro);
 end;
 
 procedure TControllerOperInterface.search;
