@@ -2,14 +2,15 @@ inherited RegOperInterface: TRegOperInterface
   Caption = 'Cadastro de Opera'#231#227'o de Interfaces'
   ClientHeight = 308
   ClientWidth = 572
-  ExplicitWidth = 584
-  ExplicitHeight = 371
+  ExplicitWidth = 578
+  ExplicitHeight = 352
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 244
     Width = 572
-    ExplicitTop = 235
-    ExplicitWidth = 566
+    ExplicitTop = 244
+    ExplicitWidth = 572
     inherited SB_Inserir: TSpeedButton
       Left = -5
       ExplicitLeft = -55
@@ -53,8 +54,8 @@ inherited RegOperInterface: TRegOperInterface
   inherited pnl_fundo: TPanel
     Width = 572
     Height = 244
-    ExplicitWidth = 566
-    ExplicitHeight = 235
+    ExplicitWidth = 572
+    ExplicitHeight = 244
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -64,8 +65,6 @@ inherited RegOperInterface: TRegOperInterface
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 562
-      ExplicitHeight = 231
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -95,7 +94,7 @@ inherited RegOperInterface: TRegOperInterface
         ParentFont = False
       end
       object Sb_Path_Botao: TSpeedButton
-        Left = 422
+        Left = 421
         Top = 63
         Width = 23
         Height = 22
@@ -107,6 +106,7 @@ inherited RegOperInterface: TRegOperInterface
         Font.Style = []
         NumGlyphs = 2
         ParentFont = False
+        OnClick = Sb_Path_BotaoClick
       end
       object L_Path_Imagem: TLabel
         Left = 9
@@ -148,6 +148,7 @@ inherited RegOperInterface: TRegOperInterface
         NumGlyphs = 2
         ParentFont = False
         Spacing = 0
+        OnClick = Sb_CarregaClick
       end
       object Sb_Descarrega: TSpeedButton
         Left = 445
@@ -214,6 +215,7 @@ inherited RegOperInterface: TRegOperInterface
         NumGlyphs = 2
         ParentFont = False
         Spacing = 0
+        OnClick = Sb_DescarregaClick
       end
       object E_Codigo: TEdit
         Left = 8
@@ -266,13 +268,11 @@ inherited RegOperInterface: TRegOperInterface
         Font.Style = []
         ParentFont = False
         TabOrder = 3
-        ExplicitTop = 100
-        ExplicitWidth = 558
         DesignSize = (
           564
           129)
         object Sb_Amostra: TSpeedButton
-          Left = -5
+          Left = 13
           Top = 22
           Width = 80
           Height = 80
@@ -385,13 +385,16 @@ inherited RegOperInterface: TRegOperInterface
             AA9BFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
           Layout = blGlyphTop
           ParentFont = False
-          ExplicitLeft = 10
         end
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 296
-    Top = 144
+  inherited MnuBase: TMainMenu
+    Left = 376
+    Top = 152
+  end
+  object OpenDialogo: TOpenDialog
+    Left = 436
+    Top = 129
   end
 end

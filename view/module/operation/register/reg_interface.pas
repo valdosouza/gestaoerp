@@ -110,8 +110,6 @@ begin
 end;
 
 procedure TRegInterface.Save;
-var
-  Lc_I, Lc_Codigo: Integer;
 begin
   SaveInterface;
   SaveInterfaceHasPrivilege;

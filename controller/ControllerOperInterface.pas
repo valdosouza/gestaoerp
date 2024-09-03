@@ -2,8 +2,8 @@ unit ControllerOperInterface;
 
 interface
 
-uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
-      tblOperInterface ,Un_MSg,Generics.Collections,EncdDecd,synacode;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblOperInterface, prm_oper_interface;
 
 Type
   TListaOperInterface = TObjectList<TOperInterface>;
@@ -11,6 +11,8 @@ Type
   TControllerOperInterface = Class(TControllerBase)
 
   private
+    FParametros: TPrm_Oper_Interface;
+    procedure setFParametros(const Value: TPrm_Oper_Interface);
   public
     Registro : TOperInterface;
     Lista : TListaOperInterface;
@@ -27,17 +29,26 @@ Type
     function getDescLista(Codigo: Integer): String;
     procedure search;
 
+    procedure clear;
+    property Parametros : TPrm_Oper_Interface read FParametros write setFParametros;
   End;
 
 implementation
 
 uses Un_sistema, Un_Regra_Negocio;
 
+procedure TControllerOperInterface.clear;
+begin
+  clearObj(Registro);
+  FParametros.Clear;
+end;
+
 constructor TControllerOperInterface.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TOperInterface.Create;
   Lista := TListaOperInterface.Create;
+  FParametros := TPrm_Oper_Interface.Create;
 end;
 
 function TControllerOperInterface.delete: boolean;
@@ -54,6 +65,7 @@ destructor TControllerOperInterface.Destroy;
 begin
   Lista.DisposeOf;
   Registro.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -72,7 +84,7 @@ end;
 function TControllerOperInterface.replace: boolean;
 var
   Lc_Qry : TSTQuery;
-  LITem : TOperInterface;
+  //LITem : TOperInterface;
 begin
   Result := True;
   Lc_Qry := GeraQuery;
@@ -85,7 +97,7 @@ begin
                 ' MATCHING (OPF_CODIGO);'
       ));
       ParamByName('OPF_CODIGO').AsInteger := Registro.Codigo;
-      ParamByName('OPF_DESCRICAO').AsAnsiString := Registro.Descricao;
+      ParamByName('OPF_DESCRICAO').AsString := Registro.Descricao;
       //ParamByName('OPF_IMAGEM').value := DecodeBase64 (Registro.Imagem);
       ExecSQL;
     end;
@@ -159,7 +171,23 @@ begin
   Try
     with Lc_Qry do
     Begin
-      SQL.Text := ' SELECT * FROM TB_OPER_INTERFACE ORDER BY OPF_CODIGO';
+      //--SQL.Text := 'SELECT OPF_CODIGO, OPF_DESCRICAO FROM TB_OPER_INTERFACE WHERE 1=1';
+      SQL.Text := 'SELECT * FROM TB_OPER_INTERFACE WHERE 1=1';
+
+      if Parametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND OPF_CODIGO = :OPF_CODIGO';
+        ParamByName('OPF_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      end;
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND OPF_DESCRICAO LIKE :OPF_DESCRICAO';
+        ParamByName('OPF_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      SQL.Text := SQL.Text + ' ORDER BY OPF_DESCRICAO ';
+
       Active := True;
       FetchAll;
       First;
@@ -175,6 +203,12 @@ begin
   Finally
     FinalizaQuery(Lc_Qry);
   End;
+end;
+
+procedure TControllerOperInterface.setFParametros(
+  const Value: TPrm_Oper_Interface);
+begin
+  FParametros := Value;
 end;
 
 function TControllerOperInterface.getCodigoLista(Descricao: String): Integer;

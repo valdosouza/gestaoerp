@@ -3,7 +3,7 @@ inherited RegInterface: TRegInterface
   ClientHeight = 277
   ClientWidth = 579
   ExplicitWidth = 585
-  ExplicitHeight = 326
+  ExplicitHeight = 321
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
