@@ -215,6 +215,17 @@ begin
     E_Descricao.SetFocus;
     Exit;
   end;
+
+  if (E_Path_Imagem.Text <> '') then
+  Begin
+    if not FileExists(E_Path_Imagem.Text) then
+    begin
+      TMsgSetes.ErroCampo(L_Path_Imagem.Caption, 'Arquivo informado não encontrado.');
+      Result := False;
+      E_Path_Imagem.SetFocus;
+      Exit;
+    end;
+  End;
 end;
 
 end.
