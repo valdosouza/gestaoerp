@@ -72,7 +72,9 @@ end;
 function TControllerPerfilUsuario.insert: boolean;
 begin
   try
-    SaveObj(Registro);
+    if Registro.Codigo  = 0 then
+      Registro.Codigo := Generator('GN_PERFIL_USUARIO');
+    insertObj(Registro);
     Result := true;
   except
     Result := False;
@@ -82,8 +84,8 @@ end;
 function TControllerPerfilUsuario.salva: boolean;
 begin
   Result := True;
-  if Registro.Codigo = 0 then
-    Registro.Codigo := getNextByField(Registro,'pfl_codigo',0);
+    if Registro.Codigo  = 0 then
+      Registro.Codigo := Generator('GN_PERFIL_USUARIO');
   SaveObj(Registro);
 end;
 

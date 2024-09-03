@@ -38,7 +38,7 @@ var
 
 implementation
 
-uses UN_MSG, ENV;
+uses UN_MSG, ENV, rg_privilege;
 
 {$R *.dfm}
 
@@ -110,7 +110,7 @@ begin
                        'Confirmar a exclusão ?',
                       ['Sim','Não'],[bEscape,bNormal],mpConfirmacao,clRed) = mrBotao1) then
     begin
-      perfilUsuario.permisssaoPerfil.Registro.CodPFL := Self.CodigoRegistro;
+      perfilUsuario.permisssaoPerfil.Registro.Perfil := Self.CodigoRegistro;
       perfilUsuario.permisssaoPerfil.getbyId;
       perfilUsuario.permisssaoPerfil.delete;
       inherited;
@@ -168,24 +168,18 @@ end;}
 end;
 
 procedure TRegProfile.SB_PermissaoClick(Sender: TObject);
-begin
-  inherited;
-  //ControllerPermission
-
-{
 Var
-  Lc_Form : TFr_Permissao;
+  Lc_Form : TRgPrivilege;
 begin
+  Lc_Form := TRgPrivilege.Create(nil);
   Try
-    Lc_Form := TFr_Permissao.Create(nil);
-    Lc_Form.It_Tp_Acesso := 2;
-    Lc_Form.It_Cd_Perfil := Tb_Perfil.FieldByName('PFL_CODIGO').AsInteger;
+    Lc_Form.Acesso := 2;
+    Lc_Form.Usuario := 0;
+    Lc_Form.Perfil := perfilUsuario.Registro.codigo;
     Lc_Form.ShowModal;
   Finally
     Lc_Form.DisposeOf;
   End;
-end;
-}
 end;
 
 procedure TRegProfile.ShowData;

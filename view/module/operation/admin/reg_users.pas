@@ -77,7 +77,7 @@ implementation
 
 {$R *.dfm}
 
-uses UN_MSG, Md5, Un_envia_email, env;
+uses UN_MSG, Md5, Un_envia_email, env, rg_privilege;
 
 { TRegUsers }
 
@@ -326,17 +326,18 @@ begin
 end;
 
 procedure TRegUsers.sb_permissaoClick(Sender: TObject);
-//Var
-  //Lc_Form : TFr_Permissao;
+Var
+  Lc_Form : TRgPrivilege;
 begin
-  {Lc_Form := TFr_Permissao.Create(nil);
+  Lc_Form := TRgPrivilege.Create(nil);
   Try
-    Lc_Form.It_Tp_Acesso := 1;
-    Lc_Form.It_Cd_Usuario := Tb_Usuario.FieldByName('USU_CODIGO').AsInteger;
+    Lc_Form.Acesso := 1;
+    Lc_Form.Perfil := 0;
+    Lc_Form.Usuario := users.Registro.Codigo;
     Lc_Form.ShowModal;
   Finally
     Lc_Form .disposeOf;
-  End;}
+  End;
 end;
 
 procedure TRegUsers.sb_TestarEmailClick(Sender: TObject);
