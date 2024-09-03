@@ -314,6 +314,7 @@ type
     procedure Embalagens1Click(Sender: TObject);
     procedure Interface1Click(Sender: TObject);
     procedure Perfil2Click(Sender: TObject);
+    procedure Perfil1Click(Sender: TObject);
   protected
     procedure IniciaVariaveis;override;
   private
@@ -372,7 +373,7 @@ uses un_dm,
     sea_group_menu,
     sea_package,
     sea_uf,
-    sea_receipt, sea_profile;
+    sea_receipt, sea_profile, sea_oper_interface;
 
 
 { TForm1 }
@@ -427,6 +428,12 @@ end;
 procedure TFrMain.MotivoCondenaoReprovao1Click(Sender: TObject);
 begin
   ChamarTela(TSeaExtMotive);
+end;
+
+procedure TFrMain.Perfil1Click(Sender: TObject);
+begin
+  inherited;
+  ChamarTela(TSeaOperInterface);
 end;
 
 procedure TFrMain.Perfil2Click(Sender: TObject);

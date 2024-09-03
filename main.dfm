@@ -517,6 +517,7 @@ inherited FrMain: TFrMain
       end
       object Perfil1: TMenuItem
         Caption = 'Opera'#231#227'o da Interface'
+        OnClick = Perfil1Click
       end
       object MnuAjdTrShaOper: TMenuItem
         Caption = 'Troca de Senha'

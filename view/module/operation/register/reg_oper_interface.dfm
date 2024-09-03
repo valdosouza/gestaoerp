@@ -1,13 +1,13 @@
 inherited RegOperInterface: TRegOperInterface
   Caption = 'Cadastro de Opera'#231#227'o de Interfaces'
-  ClientHeight = 308
+  ClientHeight = 245
   ClientWidth = 572
   ExplicitWidth = 578
-  ExplicitHeight = 352
+  ExplicitHeight = 294
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 244
+    Top = 181
     Width = 572
     ExplicitTop = 244
     ExplicitWidth = 572
@@ -53,18 +53,19 @@ inherited RegOperInterface: TRegOperInterface
   end
   inherited pnl_fundo: TPanel
     Width = 572
-    Height = 244
+    Height = 181
     ExplicitWidth = 572
     ExplicitHeight = 244
     object Panel1: TPanel
       Left = 2
       Top = 2
       Width = 568
-      Height = 240
+      Height = 177
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
+      ExplicitHeight = 240
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -256,9 +257,9 @@ inherited RegOperInterface: TRegOperInterface
       end
       object GroupBox1: TGroupBox
         Left = 2
-        Top = 109
+        Top = 89
         Width = 564
-        Height = 129
+        Height = 86
         Align = alBottom
         Caption = 'Pr'#233' Visualiza'#231#227'o do bot'#227'o'
         Font.Charset = DEFAULT_CHARSET
@@ -268,15 +269,13 @@ inherited RegOperInterface: TRegOperInterface
         Font.Style = []
         ParentFont = False
         TabOrder = 3
-        DesignSize = (
-          564
-          129)
+        ExplicitTop = 152
         object Sb_Amostra: TSpeedButton
-          Left = 13
-          Top = 22
+          Left = 2
+          Top = 15
           Width = 80
-          Height = 80
-          Anchors = [akBottom]
+          Height = 69
+          Align = alLeft
           Caption = 'Inserir - F2'
           Flat = True
           Font.Charset = ANSI_CHARSET
@@ -385,6 +384,9 @@ inherited RegOperInterface: TRegOperInterface
             AA9BFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
           Layout = blGlyphTop
           ParentFont = False
+          ExplicitLeft = 13
+          ExplicitTop = 22
+          ExplicitHeight = 80
         end
       end
     end

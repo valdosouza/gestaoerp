@@ -3,7 +3,7 @@ unit ControllerItensIfc;
 interface
 
 uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,prm_itens_ifc,
-      tblItensIfc ,Un_MSg,Generics.Collections,EncdDecd,synacode;
+      tblItensIfc ,Un_MSg,Generics.Collections,EncdDecd,synacode,FireDAC.Stan.Param;
 
 Type
   TListaItensIfc = TObjectList<TItensIfc>;

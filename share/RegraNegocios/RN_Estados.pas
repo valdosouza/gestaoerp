@@ -4,7 +4,7 @@ interface
 
 uses
   Forms, Controls,SysUtils, STQuery,STStoredProc, STDatabase,
-  StdCtrls,classes,db;
+  StdCtrls,classes,db,FireDAC.Stan.Param;
 
   function Fc_GetInscrSubstTributario(Fc_Estado:String):String;
   procedure Pc_AliquotasUF(Pc_Uf: Integer;Pc_NCM,Pc_OptanteSimples:string);
