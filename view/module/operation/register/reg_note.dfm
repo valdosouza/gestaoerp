@@ -2,14 +2,15 @@ inherited RegNote: TRegNote
   Caption = 'Cadastro de Observa'#231#245'es'
   ClientHeight = 328
   ClientWidth = 592
-  ExplicitWidth = 604
-  ExplicitHeight = 391
+  ExplicitWidth = 598
+  ExplicitHeight = 372
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 264
     Width = 592
-    ExplicitTop = 255
-    ExplicitWidth = 586
+    ExplicitTop = 264
+    ExplicitWidth = 592
     inherited SB_Inserir: TSpeedButton
       Left = 5
       Width = 104
@@ -53,8 +54,8 @@ inherited RegNote: TRegNote
   inherited pnl_fundo: TPanel
     Width = 592
     Height = 264
-    ExplicitWidth = 586
-    ExplicitHeight = 255
+    ExplicitWidth = 592
+    ExplicitHeight = 264
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -64,8 +65,6 @@ inherited RegNote: TRegNote
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 582
-      ExplicitHeight = 251
       object L_Name: TLabel
         Left = 8
         Top = 4
@@ -127,8 +126,8 @@ inherited RegNote: TRegNote
       object L_TipoObs: TLabel
         Left = 9
         Top = 210
-        Width = 98
-        Height = 14
+        Width = 97
+        Height = 13
         Caption = 'Tipo de Observa'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -155,7 +154,7 @@ inherited RegNote: TRegNote
       object E_Descricao: TEdit
         Left = 59
         Top = 18
-        Width = 448
+        Width = 447
         Height = 22
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -169,7 +168,7 @@ inherited RegNote: TRegNote
       object DBCB_Diferido: TComboBox
         Left = 508
         Top = 18
-        Width = 73
+        Width = 70
         Height = 21
         CharCase = ecUpperCase
         Sorted = True
