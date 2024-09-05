@@ -1,61 +1,62 @@
 inherited SeaNote: TSeaNote
   Caption = 'Pesquisa de Observa'#231#245'es'
-  ClientHeight = 307
+  ClientHeight = 383
   ClientWidth = 571
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 583
-  ExplicitHeight = 370
+  ExplicitWidth = 577
+  ExplicitHeight = 427
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 79
     Width = 565
-    Height = 225
-    ExplicitWidth = 861
-    ExplicitHeight = 371
+    Height = 301
+    ExplicitTop = 79
+    ExplicitWidth = 565
+    ExplicitHeight = 301
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 561
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 469
-      Height = 207
+      Height = 283
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 471
-      Height = 207
-      ExplicitLeft = 767
-      ExplicitHeight = 353
+      Height = 283
+      ExplicitLeft = 471
+      ExplicitHeight = 283
       inherited Sb_Sair_0: TSpeedButton
-        Top = 155
-        Height = 49
+        Top = 216
+        Height = 64
         ExplicitLeft = 3
-        ExplicitTop = 200
+        ExplicitTop = 215
         ExplicitWidth = 86
-        ExplicitHeight = 49
+        ExplicitHeight = 64
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 102
-        Height = 50
+        Top = 148
+        Height = 65
         ExplicitLeft = 3
-        ExplicitTop = 136
+        ExplicitTop = 146
         ExplicitWidth = 86
-        ExplicitHeight = 50
+        ExplicitHeight = 65
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 48
-        Height = 51
+        Top = 79
+        Height = 66
         ExplicitLeft = 3
-        ExplicitTop = 72
+        ExplicitTop = 76
         ExplicitWidth = 86
-        ExplicitHeight = 51
+        ExplicitHeight = 66
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 1
-        Height = 44
+        Top = 7
+        Height = 69
         ExplicitLeft = 3
-        ExplicitTop = 16
+        ExplicitTop = 3
         ExplicitWidth = 86
-        ExplicitHeight = 44
+        ExplicitHeight = 69
       end
     end
   end
@@ -78,9 +79,6 @@ inherited SeaNote: TSeaNote
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 10
-      ExplicitWidth = 863
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -135,6 +133,14 @@ inherited SeaNote: TSeaNote
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end
