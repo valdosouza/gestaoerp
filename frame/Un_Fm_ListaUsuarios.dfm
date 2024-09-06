@@ -41,7 +41,7 @@ object Fm_ListaUsuarios: TFm_ListaUsuarios
     Left = 2
     Top = 14
     Width = 188
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'USU_CODIGO'
     ListField = 'USU_LOGIN'
@@ -49,17 +49,14 @@ object Fm_ListaUsuarios: TFm_ListaUsuarios
     TabOrder = 0
   end
   object Qr_Lista: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IBT_Listas
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT USU_CODIGO, USU_LOGIN, USU_LEVEL, USU_NOME'
       'FROM TB_USUARIO    '
       'WHERE (USU_ATIVO = '#39'S'#39')'
       'ORDER BY USU_LOGIN')
+    ForcedRefresh = True
     Left = 41
     Top = 36
   end

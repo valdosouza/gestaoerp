@@ -18,12 +18,9 @@ object Frame1: TFrame1
     ExplicitHeight = 120
   end
   object Qr_ItensNota: TSTQuery
-    Database = DM.IBD_Gestao
-    Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
     CachedUpdates = True
-    ParamCheck = True
+    Connection = DM.IBD_Gestao
+    Transaction = DM.IB_Transacao
     SQL.Strings = (
       'SELECT'
       '  ITF_CODIGO,'
@@ -59,18 +56,15 @@ object Frame1: TFrame1
       ''
       'WHERE (ITF_CODPED = :PED_CODIGO) AND (ITF_OPER <> :ITF_OPER)'
       'AND tb_produto.pro_tipo <> '#39'S'#39)
+    ForcedRefresh = True
     Left = 432
     Top = 143
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'PED_CODIGO'
-        ParamType = ptUnknown
       end
       item
-        DataType = ftUnknown
         Name = 'ITF_OPER'
-        ParamType = ptUnknown
       end>
   end
 end

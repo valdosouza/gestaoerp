@@ -4,11 +4,11 @@ interface
 
 
 uses
-  STQuery, Data.DB, IBX.IBCustomDataSet, Vcl.DBCtrls,ControllerPermission,
+  STQuery, Data.DB, Vcl.DBCtrls,ControllerPermission,
   Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Buttons, Vcl.Controls, Classes,Un_Base,
   Vcl.ExtCtrls, Vcl.Forms, SysUtils, Vcl.Graphics, Winapi.Messages,FireDAC.Stan.Param,
   Winapi.Windows, STStoredProc, Vcl.Grids, Vcl.DBGrids, Vcl.CheckLst,
-  Vcl.Dialogs, IBX.IBStoredProc, IBX.IBQuery, FireDAC.Stan.Intf,
+  Vcl.Dialogs, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.Client, FireDAC.Comp.DataSet, Vcl.Menus;

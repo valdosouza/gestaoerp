@@ -21,7 +21,7 @@ object Fm_ListaEmpresaEndereco: TFm_ListaEmpresaEndereco
     Left = 57
     Top = 17
     Width = 427
-    Height = 21
+    Height = 23
     KeyField = 'END_CODIGO'
     ListField = 'ENDERECO'
     ListSource = Ds_Entrega
@@ -38,12 +38,8 @@ object Fm_ListaEmpresaEndereco: TFm_ListaEmpresaEndereco
     OnChange = E_CodigoChange
   end
   object Qr_Entrega: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT DISTINCT '
       '    END_CODIGO, '
@@ -53,16 +49,13 @@ object Fm_ListaEmpresaEndereco: TFm_ListaEmpresaEndereco
       '    INNER JOIN TB_ENDERECO tb_endereco'
       '    ON (tb_endereco.END_CODEMP = tb_empresa.EMP_CODIGO)'
       'ORDER BY EMP_FANTASIA')
+    ForcedRefresh = True
     Left = 159
     Top = 20
     object Qr_EntregaEND_CODIGO: TIntegerField
       FieldName = 'END_CODIGO'
       Origin = 'TB_ENDERECO.END_CODIGO'
       Required = True
-    end
-    object Qr_EntregaENDERECO: TIBStringField
-      FieldName = 'ENDERECO'
-      Size = 203
     end
     object Qr_EntregaEMP_CODIGO: TIntegerField
       FieldName = 'EMP_CODIGO'

@@ -9,10 +9,10 @@ uses
     UN_MSG,  Datasnap.DBClient,ControllerBase,UnFunctions, UN_DM,QEdit_Setes,
     System.Threading, ControllerGeral, ControllerCtrlIcmsST, STTransaction,
     ControllerCtrlEstoque, Classes, Vcl.Forms,RN_Permissao,RN_Cliente,
-  STDatabase, QuickRpt, Vcl.Grids, Vcl.Mask, SHDocVw, Winapi.Windows,
+  STDatabase, Vcl.Grids, Vcl.Mask, SHDocVw, Winapi.Windows,
   Vcl.Controls, Vcl.ComCtrls, STQuery, Vcl.DBGrids, Vcl.Samples.Gauges,
   UITypes, Vcl.StdCtrls, AnsiStrings, IniFiles, RN_Financeiro,
-  SysUtils, QRCtrls, Vcl.Imaging.jpeg, Vcl.Graphics, TypInfo,FireDAC.Stan.Param,
+  SysUtils, Vcl.Imaging.jpeg, Vcl.Graphics, TypInfo,FireDAC.Stan.Param,
   Vcl.Dialogs, Data.DB, System.Math, Un_stored_procedures,
   Vcl.OleCtrls, Variants, Vcl.Printers, Winapi.ShellAPI, Vcl.ExtCtrls,
   Winapi.WinInet, IdHTTP, Registry, ControllerPreco,ControllerProduto,
@@ -48,8 +48,8 @@ function Fc_PegaLetraColuna(Fc_Numero: Integer): string;
 function Fc_Generator(pc_Gen: string;pc_NomeTabela:String;Pc_campo : String): Integer;
 
 //function Fc_Ultimo_Generator(pc_Gen: string;pc_NomeTabela:String): Integer;
-procedure Pc_Cab_Relatorio(Pc_Quick: TCustomQuickRep);
-procedure Pc_Cab_Report(Pc_Cabeca: TQrBand);
+//procedure Pc_Cab_Relatorio(Pc_Quick: TCustomQuickRep);
+//procedure Pc_Cab_Report(Pc_Cabeca: TQrBand);
 
 procedure Pc_CopiarArquivo(const Pc_Origem, Pc_Destino: string;Pc_Barra:TGauge);
 function EncryptSTR(const InString: string; StartKey, MultKey, AddKey: Integer): string;
@@ -199,7 +199,7 @@ procedure Pc_ApagaObservacao(Pc_cd_nota:Integer);
 Function Fc_Preenche_Transportadora(Fc_Cd_Empresa :Integer):Integer;
 fUNCtION Fc_Obs_Empresa(Fc_Cd_Empresa:integer):string;
 Function Fc_TamanhoArquivo(const FileName: string): integer;
-procedure Pc_Define_Impressora_Qrpt(Pc_Qrpt:TQuickRep);
+//procedure Pc_Define_Impressora_Qrpt(Pc_Qrpt:TQuickRep);
 Procedure Pc_Excluir_Extintores(Pc_Cd_Pedido:Integer);
 
 procedure Pc_Atualiza_Custo_venda(Pc_cd_nota:Integer);
@@ -792,6 +792,7 @@ begin
   End;
 end;
 
+{
 procedure Pc_Cab_Relatorio(Pc_Quick: TCustomQuickRep);
 var
   Ex_NomeEmpresa: TQRLabel;
@@ -912,7 +913,9 @@ begin
     LcBase.DisposeOf;
   End;
 end;
+ }
 
+ {
 procedure Pc_Cab_Report(Pc_Cabeca: TQrBand);
 var
   Ex_NomeEmpresa: TQRLabel;
@@ -1007,7 +1010,7 @@ begin
     LcBase.DisposeOf;
   End;
 end;
-
+}
 
 procedure Pc_CopiarArquivo(const Pc_Origem, Pc_Destino: string; Pc_Barra:TGauge);
 var
@@ -5116,14 +5119,14 @@ begin
 //    FindClose(SR);
   end;
 end;
-
+{
 procedure Pc_Define_Impressora_Qrpt(Pc_Qrpt:TQuickRep);
 begin
   Pc_Qrpt.ShowProgress := True;
   Pc_Qrpt.PrinterSettings.PrinterIndex := Printer.PrinterIndex;
   //Pc_Qrpt.PrinterSettings.ApplySettings(Pc_Qrpt.Printer);
 end;
-
+}
 Procedure Pc_Excluir_Extintores(Pc_Cd_Pedido:Integer);
 Var
   Lc_Qry : TSTQuery;

@@ -34,7 +34,7 @@ object Fm_ListaTabelaPreco: TFm_ListaTabelaPreco
     Left = 0
     Top = 13
     Width = 219
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'TPR_CODIGO'
     ListField = 'TPR_NOME'
@@ -43,15 +43,12 @@ object Fm_ListaTabelaPreco: TFm_ListaTabelaPreco
     OnKeyDown = Dblcb_ListaKeyDown
   end
   object Qr_Tabelas: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'select  * from TB_TABELA_PRECO'
       'ORDER BY TPR_NOME')
+    ForcedRefresh = True
     Left = 99
     Top = 40
   end

@@ -4,7 +4,7 @@ interface
 
 uses
   STDatabase, Data.DB, STDataSet, Classes,
-  STQuery, IBX.IBDatabase, STTransaction, IBX.IBCustomDataSet, IBX.IBQuery,
+  STQuery,  STTransaction,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Comp.DataSet,
@@ -15,11 +15,6 @@ type
   TDM_ListaConsultas = class(TDataModule)
     Qr_ListaNatureza: TSTQuery;
     Qr_ListaNaturezaNAT_CODIGO: TIntegerField;
-    Qr_ListaNaturezaNAT_CFOP: TIBStringField;
-
-    Qr_ListaNaturezaNAT_DESCRICAO: TIBStringField;
-    Qr_ListaNaturezaCFOP: TIBStringField;
-    Qr_ListaNaturezaNAT_RESUMIDO: TIBStringField;
     Ds_ListaNatureza: TDataSource;
     Qr_ListaCliente: TSTQuery;
     Ds_ListaCliente: TDataSource;

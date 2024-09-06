@@ -10,6 +10,7 @@ inherited Fm_ListaMultiEmpresa: TFm_ListaMultiEmpresa
     Width = 532
     Margins.Left = 20
     Caption = 'Selecionar todas as Empresas'
+    StyleElements = [seFont, seClient, seBorder]
     ExplicitLeft = 20
     ExplicitTop = 3
     ExplicitWidth = 147
@@ -17,10 +18,13 @@ inherited Fm_ListaMultiEmpresa: TFm_ListaMultiEmpresa
   inherited pnl_linha_1: TPanel
     Top = 20
     Width = 555
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 20
     ExplicitWidth = 555
     inherited Sb_Carteira: TSpeedButton
       Left = 531
       Visible = False
+      ExplicitLeft = 531
     end
     inherited Dblcb_Lista: TDBLookupComboBox
       Width = 531
@@ -51,7 +55,6 @@ inherited Fm_ListaMultiEmpresa: TFm_ListaMultiEmpresa
       'FROM TB_EMPRESA'
       'WHERE (EMP_ATIVA = '#39'S'#39') and (EMP_TIPO = '#39'0'#39')')
     Left = 41
-    ParamData = <>
   end
   inherited Ds_Lista: TDataSource
     Left = 89

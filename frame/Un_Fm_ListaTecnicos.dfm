@@ -40,7 +40,7 @@ object Fm_ListaTecnicos: TFm_ListaTecnicos
     Left = 3
     Top = 14
     Width = 152
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'CLB_CODIGO'
     ListField = 'CLB_NOME'
@@ -48,12 +48,8 @@ object Fm_ListaTecnicos: TFm_ListaTecnicos
     TabOrder = 0
   end
   object Qr_Lista: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IBT_Listas
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT CLB_CODIGO, CLB_NOME, CLB_AQ_COM_vda, '
       'CLB_AQ_COM_SRV'
@@ -64,6 +60,7 @@ object Fm_ListaTecnicos: TFm_ListaTecnicos
         'WHERE (CRG_DESCRICAO LIKE '#39'VENDEDOR%'#39') and (CLB_DEMISSAO IS NULL' +
         ')'
       'ORDER BY CLB_NOME')
+    ForcedRefresh = True
     Left = 41
     Top = 36
   end

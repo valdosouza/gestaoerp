@@ -446,12 +446,8 @@ object Fm_CardapioPanel: TFm_CardapioPanel
     end
   end
   object Qr_Sabor: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       
         'SELECT DISTINCT PRO_DESCRICAO, pro_codgrp, pro_codsbg, min(PRO_C' +
@@ -463,13 +459,12 @@ object Fm_CardapioPanel: TFm_CardapioPanel
       'and  PRO_TIPO='#39'A'#39
       'GROUP by 1,2,3'
       'ORDER BY PRO_DESCRICAO')
+    ForcedRefresh = True
     Left = 32
     Top = 48
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'SBG_CODIGO'
-        ParamType = ptUnknown
       end>
   end
   object popMenuTamanho: TPopupMenu

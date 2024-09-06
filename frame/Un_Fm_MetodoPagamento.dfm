@@ -34,6 +34,7 @@ object Fm_MetodoPagamento: TFm_MetodoPagamento
         Font.Color = clWindowText
         Font.Height = -16
         Font.Name = 'Tahoma'
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitTop = 2
         ExplicitWidth = 151
         ExplicitHeight = 19
@@ -42,6 +43,7 @@ object Fm_MetodoPagamento: TFm_MetodoPagamento
         Top = 23
         Width = 325
         Height = 46
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitTop = 23
         ExplicitWidth = 325
         ExplicitHeight = 46
@@ -56,7 +58,7 @@ object Fm_MetodoPagamento: TFm_MetodoPagamento
         end
         inherited DBLCB_FormaPagto: TDBLookupComboBox
           Width = 319
-          Height = 41
+          Height = 45
           Font.Height = -27
           ParentFont = False
           OnExit = Fm_FormaPagtoDBLCB_FormaPagtoExit

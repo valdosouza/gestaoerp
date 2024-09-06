@@ -29,7 +29,7 @@ object fm_ListaTributacao: Tfm_ListaTributacao
     Left = 3
     Top = 17
     Width = 600
-    Height = 21
+    Height = 23
     Align = alTop
     KeyField = 'TRB_CODIGO'
     ListField = 'CFOP_COMPLETE'
@@ -38,12 +38,8 @@ object fm_ListaTributacao: Tfm_ListaTributacao
     OnKeyDown = Dblcb_ListaKeyDown
   end
   object Qr_Lista: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IBT_Listas
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       
         'Select tb.trb_codigo, (nt.nat_cfop || '#39' - '#39' || nt.nat_descricao)' +
@@ -52,6 +48,7 @@ object fm_ListaTributacao: Tfm_ListaTributacao
       '  inner join tb_natureza nt'
       '  on (nt.nat_codigo = tb.trb_codnat)'
       'where tb.trb_codigo is not null')
+    ForcedRefresh = True
     Left = 87
     Top = 24
     object Qr_ListaTRB_CODIGO: TIntegerField
@@ -59,16 +56,6 @@ object fm_ListaTributacao: Tfm_ListaTributacao
       Origin = '"TB_TRIBUTACAO"."TRB_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-    end
-    object Qr_ListaCFOP_COMPLETE: TIBStringField
-      FieldName = 'CFOP_COMPLETE'
-      ProviderFlags = []
-      Size = 263
-    end
-    object Qr_ListaNAT_CFOP: TIBStringField
-      FieldName = 'NAT_CFOP'
-      Origin = '"TB_NATUREZA"."NAT_CFOP"'
-      Size = 10
     end
   end
   object Ds_Lista: TDataSource

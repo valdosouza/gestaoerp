@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.DBCtrls, Vcl.Buttons, Data.DB, IBX.IBCustomDataSet, STQuery, IBX.IBQuery;
+  Vcl.DBCtrls, Vcl.Buttons, Data.DB, STQuery, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFm_ListaEmpresaEndereco = class(TFrame)
@@ -14,7 +17,6 @@ type
     E_Codigo: TEdit;
     Qr_Entrega: TSTQuery;
     Qr_EntregaEND_CODIGO: TIntegerField;
-    Qr_EntregaENDERECO: TIBStringField;
     Qr_EntregaEMP_CODIGO: TIntegerField;
     Ds_Entrega: TDataSource;
     procedure E_CodigoChange(Sender: TObject);

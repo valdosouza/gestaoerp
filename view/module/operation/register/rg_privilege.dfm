@@ -8,11 +8,10 @@ inherited RgPrivilege: TRgPrivilege
   ClientHeight = 416
   ClientWidth = 711
   Font.Name = 'MS Sans Serif'
-  OldCreateOrder = False
-  ExplicitWidth = 717
-  ExplicitHeight = 465
-  PixelsPerInch = 96
-  TextHeight = 13
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 727
+  ExplicitHeight = 475
+  TextHeight = 14
   object pnl_body: TPanel [0]
     Left = 0
     Top = 0
@@ -386,7 +385,7 @@ inherited RgPrivilege: TRgPrivilege
         Left = 8
         Top = 15
         Width = 69
-        Height = 13
+        Height = 14
         Caption = 'Nome do Perfil'
       end
       object Sb_AplicarPerfil: TSpeedButton
@@ -457,7 +456,7 @@ inherited RgPrivilege: TRgPrivilege
         Left = 6
         Top = 31
         Width = 145
-        Height = 21
+        Height = 22
         KeyField = 'PFL_CODIGO'
         ListField = 'PFL_DESCRICAO'
         ListSource = Ds_Perfil

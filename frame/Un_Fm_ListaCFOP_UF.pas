@@ -5,15 +5,17 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_Fm_ListaEstados,
-  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, IBX.IBCustomDataSet,
-  STQuery, STDatabase, IBX.IBDatabase, STTransaction, IBX.IBQuery;
+  Vcl.DBCtrls, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  STQuery, STDatabase, STTransaction, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet;
 
 type
   TFm_ListaCFOP_UF = class(TFrame)
     RG_Tipo_S_E: TRadioGroup;
     Label25: TLabel;
     Dblcb_Lista: TDBLookupComboBox;
-    Fm_ListaBuscaEstado: TFm_ListaEstados;
     Qr_Filtra_CFOP: TSTQuery;
     Ds_Filtra_CFOP: TDataSource;
     IBT_Lista: TSTTransaction;

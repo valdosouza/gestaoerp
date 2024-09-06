@@ -34,7 +34,7 @@ object Fm_ListaEstados: TFm_ListaEstados
     Left = 3
     Top = 13
     Width = 65
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'UFE_CODIGO'
     ListField = 'UFE_SIGLA'
@@ -43,18 +43,14 @@ object Fm_ListaEstados: TFm_ListaEstados
     OnKeyDown = DBLCB_UFKeyDown
   end
   object Qr_Uf: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    Active = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT * '
       'FROM TB_UF'
       'ORDER BY UFE_SIGLA'
       '')
+    ForcedRefresh = True
     Left = 13
     Top = 39
   end

@@ -1,5 +1,4 @@
 object DM_ListaConsultas: TDM_ListaConsultas
-  OldCreateOrder = False
   Height = 542
   Width = 863
   object Qr_ListaNatureza: TSTQuery
@@ -23,25 +22,6 @@ object DM_ListaConsultas: TDM_ListaConsultas
       FieldName = 'NAT_CODIGO'
       Origin = 'TB_NATUREZA.NAT_CODIGO'
       Required = True
-    end
-    object Qr_ListaNaturezaNAT_CFOP: TIBStringField
-      FieldName = 'NAT_CFOP'
-      Origin = 'TB_NATUREZA.NAT_CFOP'
-      Size = 10
-    end
-    object Qr_ListaNaturezaNAT_DESCRICAO: TIBStringField
-      FieldName = 'NAT_DESCRICAO'
-      Origin = 'TB_NATUREZA.NAT_DESCRICAO'
-      Size = 250
-    end
-    object Qr_ListaNaturezaCFOP: TIBStringField
-      FieldName = 'CFOP'
-      Size = 263
-    end
-    object Qr_ListaNaturezaNAT_RESUMIDO: TIBStringField
-      FieldName = 'NAT_RESUMIDO'
-      Origin = 'TB_NATUREZA.NAT_RESUMIDO'
-      Size = 60
     end
   end
   object Ds_ListaNatureza: TDataSource

@@ -20,13 +20,10 @@ object Fm_Itens_Pedido: TFm_Itens_Pedido
     OnDrawCell = StrGrd_Itens_PedidoDrawCell
   end
   object Qr_ItensNota: TSTQuery
-    Database = DM.IBD_Gestao
-    Transaction = DM.IB_Transacao
-    ForcedRefresh = True
     OnCalcFields = Qr_ItensNotaCalcFields
-    BufferChunks = 1000
     CachedUpdates = True
-    ParamCheck = True
+    Connection = DM.IBD_Gestao
+    Transaction = DM.IB_Transacao
     SQL.Strings = (
       'SELECT'
       '  ITF_CODIGO,'
@@ -63,18 +60,15 @@ object Fm_Itens_Pedido: TFm_Itens_Pedido
       'WHERE (ITF_CODPED = :PED_CODIGO) AND (ITF_OPER = :ITF_OPER)'
       'AND tb_produto.pro_tipo <> '#39'S'#39
       'Order by 1')
+    ForcedRefresh = True
     Left = 384
     Top = 135
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'PED_CODIGO'
-        ParamType = ptUnknown
       end
       item
-        DataType = ftUnknown
         Name = 'ITF_OPER'
-        ParamType = ptUnknown
       end>
     object Qr_ItensNotaITF_CODIGO: TIntegerField
       FieldName = 'ITF_CODIGO'
@@ -85,37 +79,6 @@ object Fm_Itens_Pedido: TFm_Itens_Pedido
     object Qr_ItensNotaITF_CODPRO: TIntegerField
       FieldName = 'ITF_CODPRO'
       Origin = '"TB_ITENS_NFL"."ITF_CODPRO"'
-    end
-    object Qr_ItensNotaPRO_CODIGOFAB: TIBStringField
-      FieldName = 'PRO_CODIGOFAB'
-      Origin = '"TB_PRODUTO"."PRO_CODIGOFAB"'
-      Size = 50
-    end
-    object Qr_ItensNotaPRO_CODIGONCM: TIBStringField
-      FieldName = 'PRO_CODIGONCM'
-      Origin = '"TB_PRODUTO"."PRO_CODIGONCM"'
-      Size = 50
-    end
-    object Qr_ItensNotaPRO_DESCRICAO: TIBStringField
-      FieldName = 'PRO_DESCRICAO'
-      Origin = '"TB_PRODUTO"."PRO_DESCRICAO"'
-      Size = 100
-    end
-    object Qr_ItensNotaIAV_DESCRICAO: TIBStringField
-      FieldName = 'IAV_DESCRICAO'
-      Origin = '"TB_ITENS_AVL"."IAV_DESCRICAO"'
-      Size = 100
-    end
-    object Qr_ItensNotaEMB_ABREVIATURA: TIBStringField
-      FieldName = 'EMB_ABREVIATURA'
-      Origin = '"TB_EMBALAGEM"."EMB_ABREVIATURA"'
-      Size = 5
-    end
-    object Qr_ItensNotaITF_QTDE: TIBBCDField
-      FieldName = 'ITF_QTDE'
-      Origin = '"TB_ITENS_NFL"."ITF_QTDE"'
-      Precision = 18
-      Size = 3
     end
     object Qr_ItensNotaITF_VL_CUSTO: TFMTBCDField
       FieldName = 'ITF_VL_CUSTO'
@@ -128,34 +91,6 @@ object Fm_Itens_Pedido: TFm_Itens_Pedido
       Origin = '"TB_ITENS_NFL"."ITF_VL_UNIT"'
       Precision = 18
       Size = 6
-    end
-    object Qr_ItensNotaITF_AQ_COM: TIBBCDField
-      FieldName = 'ITF_AQ_COM'
-      Origin = '"TB_ITENS_NFL"."ITF_AQ_COM"'
-      Precision = 18
-      Size = 2
-    end
-    object Qr_ItensNotaMED_ABREVIATURA: TIBStringField
-      FieldName = 'MED_ABREVIATURA'
-      Origin = '"TB_MEDIDA"."MED_ABREVIATURA"'
-      Size = 5
-    end
-    object Qr_ItensNotaIAV_UNIDADE: TIBStringField
-      FieldName = 'IAV_UNIDADE'
-      Origin = '"TB_ITENS_AVL"."IAV_UNIDADE"'
-      Size = 5
-    end
-    object Qr_ItensNotaITF_AQ_DESC: TIBBCDField
-      FieldName = 'ITF_AQ_DESC'
-      Origin = '"TB_ITENS_NFL"."ITF_AQ_DESC"'
-      Precision = 18
-      Size = 2
-    end
-    object Qr_ItensNotaITF_VL_DESC: TIBBCDField
-      FieldName = 'ITF_VL_DESC'
-      Origin = '"TB_ITENS_NFL"."ITF_VL_DESC"'
-      Precision = 18
-      Size = 2
     end
     object Qr_ItensNotaPRO_VL_CUSTOMED: TFMTBCDField
       FieldName = 'PRO_VL_CUSTOMED'

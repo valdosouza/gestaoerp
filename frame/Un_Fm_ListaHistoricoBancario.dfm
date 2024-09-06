@@ -45,7 +45,7 @@ object Fm_ListaHistoricoBancario: TFm_ListaHistoricoBancario
     Left = 3
     Top = 17
     Width = 420
-    Height = 21
+    Height = 23
     Align = alClient
     KeyField = 'HTB_CODIGO'
     ListField = 'HTB_DESCRICAO'
@@ -56,14 +56,11 @@ object Fm_ListaHistoricoBancario: TFm_ListaHistoricoBancario
     ExplicitWidth = 416
   end
   object Qr_HistBancario: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT * FROM TB_HISTBANCARIO')
+    ForcedRefresh = True
     Left = 207
     Top = 39
   end

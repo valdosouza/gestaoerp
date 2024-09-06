@@ -11,13 +11,11 @@ object Fr_envia_email: TFr_envia_email
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 14
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -57,22 +55,6 @@ object Fr_envia_email: TFr_envia_email
       ScrollBars = ssVertical
       TabOrder = 0
       WantReturns = False
-      Zoom = 100
     end
-  end
-  object Id_Mail: TACBrMail
-    Host = '127.0.0.1'
-    Port = '25'
-    SetSSL = False
-    SetTLS = False
-    Attempts = 3
-    DefaultCharset = UTF_8
-    IDECharset = CP1252
-    OnBeforeMailProcess = Id_MailBeforeMailProcess
-    OnMailProcess = Id_MailMailProcess
-    OnAfterMailProcess = Id_MailAfterMailProcess
-    OnMailException = Id_MailMailException
-    Left = 48
-    Top = 72
   end
 end

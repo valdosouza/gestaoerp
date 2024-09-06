@@ -44,7 +44,7 @@ object Fm_ListaSituacao: TFm_ListaSituacao
     Left = 0
     Top = 14
     Width = 328
-    Height = 21
+    Height = 23
     Align = alClient
     KeyField = 'SIT_CODIGO'
     ListField = 'SIT_DESCRICAO'
@@ -53,24 +53,19 @@ object Fm_ListaSituacao: TFm_ListaSituacao
     OnKeyDown = DBLCB_SituacaoKeyDown
   end
   object Qr_Situacao: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = IBT_Frame
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT *'
       'FROM TB_SITUACAO'
       'WHERE SIT_MODULO=:SIT_MODULO'
       'ORDER BY SIT_DESCRICAO')
+    ForcedRefresh = True
     Left = 30
     Top = 70
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'SIT_MODULO'
-        ParamType = ptUnknown
       end>
   end
   object Ds_Situacao: TDataSource
@@ -79,10 +74,6 @@ object Fm_ListaSituacao: TFm_ListaSituacao
     Top = 68
   end
   object IBT_Frame: TSTTransaction
-    DefaultDatabase = DM.IBD_Gestao
-    Params.Strings = (
-      'concurrency'
-      'nowait')
     Left = 188
     Top = 70
   end

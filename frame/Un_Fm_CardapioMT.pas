@@ -5,25 +5,23 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.Buttons,Vcl.Grids,
-  Vcl.ExtCtrls, Un_Fm_CardapioPanel, Data.DB, IBX.IBCustomDataSet, STQuery,
+  Vcl.ExtCtrls, Un_Fm_CardapioPanel, Data.DB, STQuery,
   Vcl.StdCtrls, Un_Fm_ListaGrupoSubGrupo, Vcl.Menus,ControllerMedida,
-  IBX.IBQuery;
+FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFm_CardapioMT = class(TFrame)
     Pg_Geral: TPageControl;
     tbs_SAbor: TTabSheet;
     tbs_Tamanho: TTabSheet;
-    Fm_Sabor: TFm_CardapioPanel;
-    Fm_Tamanho: TFm_CardapioPanel;
     Qr_Tamanho: TSTQuery;
     Pnl_GrupoSubgrupo: TPanel;
-    Fm_ListaGrupoSubGrupo: TFm_ListaGrupoSubGrupo;
     Label1: TLabel;
     Sb_Confirma: TButton;
     Sb_Cancela: TButton;
     Qr_UpdateSubgrupo: TSTQuery;
-    MnuAlteraGrupo: TMenuItem;
     procedure AbreListaSabor;
     procedure MontaGradeSabor;
     procedure PreencheGradesabor;

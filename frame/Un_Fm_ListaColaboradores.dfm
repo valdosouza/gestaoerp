@@ -59,12 +59,8 @@ object Fm_ListaColaboradores: TFm_ListaColaboradores
     OnKeyDown = Dblcb_VendedorKeyDown
   end
   object Qr_ListaVendedor: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = IBT_Lista
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT CLB_CODIGO, CLB_NOME, CLB_AQ_COM_vda, '
       'CLB_AQ_COM_SRV'
@@ -75,6 +71,7 @@ object Fm_ListaColaboradores: TFm_ListaColaboradores
         'WHERE (CRG_DESCRICAO LIKE '#39'VENDEDOR%'#39') and (CLB_DEMISSAO IS NULL' +
         ')'
       'ORDER BY CLB_NOME')
+    ForcedRefresh = True
     Left = 41
     Top = 36
   end
@@ -84,11 +81,6 @@ object Fm_ListaColaboradores: TFm_ListaColaboradores
     Top = 32
   end
   object IBT_Lista: TSTTransaction
-    DefaultDatabase = DM.IBD_Gestao
-    Params.Strings = (
-      'read_committed'
-      'rec_version'
-      'wait')
     Left = 44
     Top = 91
   end
