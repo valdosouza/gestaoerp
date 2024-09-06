@@ -33,7 +33,7 @@ object FmListaCidades: TFmListaCidades
     Left = 2
     Top = 13
     Width = 108
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'CDD_CODIGO'
     ListField = 'CDD_DESCRICAO'
@@ -42,16 +42,12 @@ object FmListaCidades: TFmListaCidades
     ExplicitWidth = 110
   end
   object Qr_Cidade: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    Active = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT * FROM TB_CIDADE'
       '')
+    ForcedRefresh = True
     Left = 13
     Top = 39
   end

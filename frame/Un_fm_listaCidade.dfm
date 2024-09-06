@@ -33,7 +33,7 @@ object FmListaCidades: TFmListaCidades
     Left = 2
     Top = 13
     Width = 110
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'CDD_CODIGO'
     ListField = 'CDD_DESCRICAO'
@@ -42,24 +42,19 @@ object FmListaCidades: TFmListaCidades
     OnKeyDown = DBLCB_CIDADEKeyDown
   end
   object Qr_Cidade: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT * '
       'FROM TB_CIDADE'
       'where CDD_UF=:CDD_UF'
       '')
+    ForcedRefresh = True
     Left = 13
     Top = 39
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'CDD_UF'
-        ParamType = ptUnknown
       end>
   end
   object Ds_Cidade: TDataSource

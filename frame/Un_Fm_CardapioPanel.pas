@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls,
-  Vcl.Grids, Data.DB, IBX.IBCustomDataSet, STQuery, Vcl.Menus, IBX.IBQuery;
+  Vcl.Grids, Data.DB, STQuery, Vcl.Menus, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFm_CardapioPanel = class(TFrame)

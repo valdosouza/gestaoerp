@@ -83,12 +83,8 @@ object Fm_CentroResultado: TFm_CentroResultado
     end
   end
   object Qr_PlanoContas: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT DISTINCT'
       '  PLC_CODIGO,'
@@ -101,6 +97,7 @@ object Fm_CentroResultado: TFm_CentroResultado
       'WHERE (PLC_NIVEL = '#39'A'#39')'
       'AND (PLC_TIPO = '#39'R'#39')'
       'ORDER BY 4')
+    ForcedRefresh = True
     Left = 262
     Top = 59
   end

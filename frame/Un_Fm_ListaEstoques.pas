@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls,
-  Data.DB, IBX.IBCustomDataSet, STQuery,  Vcl.Buttons, IBX.IBQuery;
+  Data.DB, STQuery,  Vcl.Buttons, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TFm_ListaEstoques = class(TFrame)
@@ -16,8 +19,6 @@ type
     ChBx_Estoques: TCheckBox;
     Qr_EstoquesETS_CODMHA: TIntegerField;
     Qr_EstoquesETS_CODIGO: TIntegerField;
-    Qr_EstoquesETS_DESCRICAO: TIBStringField;
-    Qr_EstoquesETS_PRINCIPAL: TIBStringField;
     Sb_Cadastro: TSpeedButton;
 
     procedure ChBx_EstoquesClick(Sender: TObject);

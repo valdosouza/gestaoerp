@@ -98,15 +98,12 @@ object Fm_ListaPet: TFm_ListaPet
     OnKeyDown = Dblcb_ListaKeyDown
   end
   object Qr_Lista: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = IBT_Lista
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'Select *'
       'from tb_pet')
+    ForcedRefresh = True
     Left = 41
     Top = 36
   end
@@ -116,11 +113,6 @@ object Fm_ListaPet: TFm_ListaPet
     Top = 32
   end
   object IBT_Lista: TSTTransaction
-    DefaultDatabase = DM.IBD_Gestao
-    Params.Strings = (
-      'read_committed'
-      'rec_version'
-      'wait')
     Left = 12
     Top = 37
   end

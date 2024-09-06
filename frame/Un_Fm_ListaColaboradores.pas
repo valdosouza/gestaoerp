@@ -5,8 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,STTransaction,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.DBCtrls, Vcl.Buttons,
-  Vcl.StdCtrls, Data.DB, IBX.IBCustomDataSet, STQuery, Un_DM, STDatabase,
-  IBX.IBDatabase, IBX.IBQuery;
+  Vcl.StdCtrls, Data.DB,  STQuery, Un_DM, STDatabase, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.Client, FireDAC.Comp.DataSet;
 
 type
   TFm_ListaColaboradores = class(TFrame)

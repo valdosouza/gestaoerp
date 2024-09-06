@@ -6,12 +6,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_Fm_CardapioMT, Data.DB,
-  IBX.IBCustomDataSet, Vcl.Menus,ControllerMedida;
+  Vcl.Menus,ControllerMedida;
 
 type
   TFm_CardapioMTS = class(TFrame)
     Fm_CardapioMT: TFm_CardapioMT;
-    DesativarTamanho1: TMenuItem;
     procedure IniciaVariaveis;
     procedure AbreListaTamanho;
     procedure Fm_TamahoSb_AlteraClick(Sender: TObject);

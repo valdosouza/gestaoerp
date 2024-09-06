@@ -5,8 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB,
-  IBX.IBCustomDataSet, STQuery, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons,
-  STDatabase, IBX.IBDatabase, STTransaction, IBX.IBQuery;
+  STQuery, Vcl.DBCtrls, Vcl.StdCtrls, Vcl.Buttons,
+  STDatabase, STTransaction, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet;
 
 type
   TFm_ListaSituacao = class(TFrame)

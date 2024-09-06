@@ -79,41 +79,34 @@ object Fm_ListaGrupoSubGrupo: TFm_ListaGrupoSubGrupo
     TabOrder = 1
   end
   object Qr_Grupo: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'select * from TB_GRUPOS'
       'where GRP_COMPOSICAO IS NOT NULL'
       'ORDER BY GRP_DESCRICAO')
+    ForcedRefresh = True
     Left = 391
     Top = 6
   end
   object Qr_SubGrupo: TSTQuery
-    Database = DM.IBD_Gestao
-    Transaction = DM.IB_Transacao
-    ForcedRefresh = True
     AfterScroll = Qr_SubGrupoAfterScroll
-    BufferChunks = 1000
-    CachedUpdates = False
-    DataSource = Ds_Grupo
-    ParamCheck = True
+    MasterSource = Ds_Grupo
+    Connection = DM.IBD_Gestao
+    Transaction = DM.IB_Transacao
     SQL.Strings = (
       'SELECT * FROM TB_SUBGRUPOS'
       'WHERE'
       '    SBG_CODGRP =:GRP_CODIGO '
       '  AND  SBG_ATIVO = '#39'S'#39
       'ORDER BY SBG_DESCRICAO')
+    ForcedRefresh = True
     Left = 426
     Top = 6
     ParamData = <
       item
-        DataType = ftInteger
         Name = 'GRP_CODIGO'
-        ParamType = ptUnknown
+        DataType = ftInteger
         Size = 4
       end>
   end

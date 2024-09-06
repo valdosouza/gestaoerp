@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB,
-  IBX.IBCustomDataSet, STQuery, Vcl.StdCtrls, Vcl.DBCtrls, Un_DM, IBX.IBQuery;
+  STQuery, Vcl.StdCtrls, Vcl.DBCtrls, Un_DM, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   Tfm_ListaTributacao = class(TFrame)
@@ -14,8 +17,6 @@ type
     Qr_Lista: TSTQuery;
     Ds_Lista: TDataSource;
     Qr_ListaTRB_CODIGO: TIntegerField;
-    Qr_ListaCFOP_COMPLETE: TIBStringField;
-    Qr_ListaNAT_CFOP: TIBStringField;
     procedure Dblcb_ListaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private

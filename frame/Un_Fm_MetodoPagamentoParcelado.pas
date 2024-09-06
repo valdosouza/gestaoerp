@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_Fm_MetodoPagamento, Vcl.ComCtrls,
-  Data.DB, IBX.IBCustomDataSet, STQuery, Vcl.DBCtrls, Vcl.StdCtrls,
+  Data.DB, STQuery, Vcl.DBCtrls, Vcl.StdCtrls,
   Vcl.ExtCtrls, Un_Fm_FormaPagto;
 
 type

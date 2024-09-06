@@ -36,7 +36,7 @@ object Fm_ListaMarcaProduto: TFm_ListaMarcaProduto
     Left = 0
     Top = 13
     Width = 311
-    Height = 21
+    Height = 22
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -50,16 +50,13 @@ object Fm_ListaMarcaProduto: TFm_ListaMarcaProduto
     OnKeyDown = Dblcb_MarcaKeyDown
   end
   object Qr_ListaMarca: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT *'
       'FROM TB_MARCA_PRODUTO'
       'ORDER BY MRC_DESCRICAO')
+    ForcedRefresh = True
     Left = 65
     Top = 27
   end

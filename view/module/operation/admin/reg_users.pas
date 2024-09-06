@@ -298,6 +298,7 @@ begin
               '</html>';
 
   LcEnviaemail := TFr_envia_email.create(nil);
+  {
   Try
     with LcEnviaemail do
     Begin
@@ -323,6 +324,7 @@ begin
   Finally
     LcEnviaemail.Disposeof;
   End;
+  }
 end;
 
 procedure TRegUsers.sb_permissaoClick(Sender: TObject);

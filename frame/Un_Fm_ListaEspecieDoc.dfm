@@ -29,7 +29,7 @@ object Fm_ListaEspecieDoc: TFm_ListaEspecieDoc
     Left = 1
     Top = 15
     Width = 187
-    Height = 21
+    Height = 23
     KeyField = 'EPD_CODIGO'
     ListField = 'SIGDESC'
     ListSource = Ds_EspecieDoc

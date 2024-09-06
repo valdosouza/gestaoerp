@@ -6,6 +6,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
   inherited Panel1: TPanel
     Width = 570
     Height = 54
+    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 570
     ExplicitHeight = 54
     inherited Fm_FormaPagto: TFm_FormaPagto
@@ -22,6 +23,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Height = 16
         Font.Color = clNavy
         Font.Height = -13
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 123
         ExplicitHeight = 16
       end
@@ -29,12 +31,13 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Top = 20
         Width = 269
         Height = 30
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitTop = 20
         ExplicitWidth = 269
         ExplicitHeight = 30
         inherited DBLCB_FormaPagto: TDBLookupComboBox
           Width = 263
-          Height = 22
+          Height = 23
           Align = alTop
           Font.Height = -12
           ExplicitWidth = 263
@@ -48,6 +51,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
       Height = 50
       Align = alRight
       TabOrder = 2
+      StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 390
       ExplicitWidth = 114
       ExplicitHeight = 50
@@ -57,6 +61,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Caption = 'Valor'
         Font.Color = clNavy
         Font.Height = -13
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 30
         ExplicitHeight = 16
       end
@@ -66,6 +71,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Height = 22
         Align = alTop
         Font.Height = -12
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitTop = 3
         ExplicitWidth = 108
         ExplicitHeight = 22
@@ -77,6 +83,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
       Height = 50
       Align = alRight
       TabOrder = 3
+      StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 504
       ExplicitWidth = 64
       ExplicitHeight = 50
@@ -85,6 +92,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Height = 16
         Font.Color = clNavy
         Font.Height = -13
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 48
         ExplicitHeight = 16
       end
@@ -94,6 +102,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Height = 22
         Align = alTop
         Font.Height = -12
+        StyleElements = [seFont, seClient, seBorder]
         ExplicitTop = 3
         ExplicitWidth = 58
         ExplicitHeight = 22
@@ -111,7 +120,7 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         AlignWithMargins = True
         Left = 3
         Top = 2
-        Width = 113
+        Width = 67
         Height = 16
         Margins.Top = 2
         Margins.Bottom = 2
@@ -123,7 +132,6 @@ inherited Fm_MetodoPagamentoParcelado: TFm_MetodoPagamentoParcelado
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitWidth = 67
       end
       object E_Data: TDateTimePicker
         AlignWithMargins = True

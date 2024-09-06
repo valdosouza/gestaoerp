@@ -4,13 +4,12 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls, ACBrMail, types, ACBrBase, ExtCtrls,
-  Vcl.Buttons,ControllerUsuario, IBX.IBQuery,ControllerDskMailing;
+  Vcl.Buttons,ControllerUsuario,ControllerDskMailing;
 type
   TFr_envia_email = class(TForm)
     Panel1: TPanel;
     Sb_Cancelar: TSpeedButton;
     RE_Status: TRichEdit;
-    Id_Mail: TACBrMail;
 
     procedure FormCreate(Sender: TObject);
     procedure Sb_CancelarClick(Sender: TObject);
@@ -66,6 +65,7 @@ Begin
     Usuario.Registro.Login := GB_Nm_Usuario;
     Usuario.getByLogin;
   End;
+  {
   with Id_Mail do
   Begin
     Host := Usuario.Registro.emailSMTP;
@@ -78,6 +78,7 @@ Begin
       Username := Usuario.Registro.emailLogin;
     Password := Usuario.Registro.emailSenha;
   end;
+  }
 end;
 
 
@@ -95,6 +96,7 @@ Begin
 end;
 procedure TFr_envia_email.Pc_Define_Rementente;
 Begin
+  {
   with Id_Mail do
   Begin
     if It_Tipo_Envio = 'A' then   // Envio Erros e outros do sistema
@@ -131,6 +133,7 @@ Begin
       End;
     End;
   end;
+  }
 end;
 
 procedure TFr_envia_email.Fc_EnviaEmail;
@@ -138,10 +141,12 @@ var
   Lc_I : Integer;
   Lc_Aux : String;
 begin
+{
   //Verifica Coenexão com a Internet
   if Fc_PingConectadoSetes then
   Begin;
     // Configura o Remetente da Mensagem
+
     with Id_Mail do
     begin
 
@@ -210,6 +215,7 @@ begin
         ShowMessage(E.ClassName+' Erro , com Mensagem : '+E.Message);
     end;
   End;
+  }
 end;
 
 
@@ -224,6 +230,7 @@ end;
 
 procedure TFr_envia_email.FormCreate(Sender: TObject);
 begin
+  {
   Usuario := TControllerUsuario.create(Self);
   Mailing := TControllerDskMailing.create(Self);
 
@@ -234,7 +241,7 @@ begin
   It_Anexo   := TStringList.Create;
   Id_Mail.DefaultCharset := TMailCharset.UTF_8;
   Id_Mail.IDECharset := TMailCharset.CP1252
-
+  }
 end;
 
 procedure TFr_envia_email.Sb_CancelarClick(Sender: TObject);

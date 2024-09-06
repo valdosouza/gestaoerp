@@ -51,7 +51,7 @@ object Fm_ListaEstoques: TFm_ListaEstoques
     Left = 3
     Top = 14
     Width = 195
-    Height = 21
+    Height = 23
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'ETS_CODIGO'
     ListField = 'ETS_DESCRICAO'
@@ -77,12 +77,8 @@ object Fm_ListaEstoques: TFm_ListaEstoques
     OnClick = ChBx_EstoquesClick
   end
   object Qr_Estoques: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT ETS_CODMHA, ETS_CODIGO, ETS_DESCRICAO, ETS_PRINCIPAL'
       'FROM TB_ESTOQUES'
@@ -90,13 +86,12 @@ object Fm_ListaEstoques: TFm_ListaEstoques
       'ETS_CODMHA = :ETS_CODMHA'
       'ORDER BY ETS_PRINCIPAL DESC, ETS_DESCRICAO ASC'
       '')
+    ForcedRefresh = True
     Left = 71
     Top = 8
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'ETS_CODMHA'
-        ParamType = ptUnknown
       end>
     object Qr_EstoquesETS_CODMHA: TIntegerField
       FieldName = 'ETS_CODMHA'
@@ -108,16 +103,6 @@ object Fm_ListaEstoques: TFm_ListaEstoques
       Origin = '"TB_ESTOQUES"."ETS_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-    end
-    object Qr_EstoquesETS_DESCRICAO: TIBStringField
-      FieldName = 'ETS_DESCRICAO'
-      Origin = '"TB_ESTOQUES"."ETS_DESCRICAO"'
-      Size = 100
-    end
-    object Qr_EstoquesETS_PRINCIPAL: TIBStringField
-      FieldName = 'ETS_PRINCIPAL'
-      Origin = '"TB_ESTOQUES"."ETS_PRINCIPAL"'
-      Size = 1
     end
   end
   object Ds_Estoques: TDataSource

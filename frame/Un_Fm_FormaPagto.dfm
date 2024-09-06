@@ -48,7 +48,7 @@ object Fm_FormaPagto: TFm_FormaPagto
       Left = 3
       Top = 3
       Width = 243
-      Height = 21
+      Height = 23
       Align = alClient
       KeyField = 'FPT_CODIGO'
       ListField = 'FPT_DESCRICAO'
@@ -58,18 +58,15 @@ object Fm_FormaPagto: TFm_FormaPagto
     end
   end
   object Qr_ListaFormPagto: TSTQuery
-    Database = DM.IBD_Gestao
-    Transaction = IB_Local
-    ForcedRefresh = True
     FieldOptions.AutoCreateMode = acCombineComputed
     FieldOptions.PositionMode = poFirst
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
+    Connection = DM.IBD_Gestao
+    Transaction = IB_Local
     SQL.Strings = (
       'SELECT * FROM TB_FORMAPAGTO a'
       'where  FPT_ATIVO = '#39'S'#39
       ' ORDER BY FPT_DESCRICAO')
+    ForcedRefresh = True
     Left = 188
     Top = 92
   end
@@ -80,11 +77,6 @@ object Fm_FormaPagto: TFm_FormaPagto
     Top = 140
   end
   object IB_Local: TSTTransaction
-    DefaultDatabase = DM.IBD_Gestao
-    Params.Strings = (
-      'read_committed'
-      'rec_version'
-      'wait')
     Left = 188
     Top = 49
   end

@@ -42,7 +42,7 @@ object BaseFrameList: TBaseFrameList
       Left = 0
       Top = 0
       Width = 470
-      Height = 21
+      Height = 23
       Align = alClient
       TabOrder = 0
     end
@@ -70,10 +70,6 @@ object BaseFrameList: TBaseFrameList
     Top = 49
   end
   object IBT_Lista: TSTTransaction
-    Params.Strings = (
-      'concurrency'
-      'nowait')
-    DefaultDatabase = DM.IBD_Gestao
     Left = 132
     Top = 52
   end

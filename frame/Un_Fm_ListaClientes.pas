@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_Fm_ListaEmpresas, Vcl.StdCtrls,
-  Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons, Data.DB, IBX.IBCustomDataSet, STQuery,
-  RN_Empresa, RN_cliente, Vcl.ExtCtrls, Un_Cliente, IBX.IBQuery;
+  Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons, Data.DB, STQuery,
+  RN_Empresa, RN_cliente, Vcl.ExtCtrls, Un_Cliente;
 
 type
   TFm_ListaClientes = class(TFm_ListaEmpresas)

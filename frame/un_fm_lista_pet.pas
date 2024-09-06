@@ -5,8 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_DM, Data.DB,
-  IBX.IBCustomDataSet, STQuery, Vcl.DBCtrls, Vcl.Buttons, Vcl.StdCtrls,
-  STDatabase, cad_pet, sea_pet, IBX.IBDatabase, STTransaction, IBX.IBQuery;
+  STQuery, Vcl.DBCtrls, Vcl.Buttons, Vcl.StdCtrls,
+  STDatabase, cad_pet, sea_pet, STTransaction, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.Client, FireDAC.Comp.DataSet;
 
 type
   TFm_ListaPet = class(TFrame)

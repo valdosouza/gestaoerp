@@ -5,8 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Data.DB,
-  IBX.IBCustomDataSet, STQuery, Vcl.Menus, System.Math, Un_Ctrl_Lote_Saida,
-  IBX.IBQuery;
+  STQuery, Vcl.Menus, System.Math, Un_Ctrl_Lote_Saida, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFm_Itens_Pedido = class(TFrame)
@@ -16,19 +18,8 @@ type
     CadastrodeProdutos1: TMenuItem;
     Qr_ItensNotaITF_CODIGO: TIntegerField;
     Qr_ItensNotaITF_CODPRO: TIntegerField;
-    Qr_ItensNotaPRO_CODIGOFAB: TIBStringField;
-    Qr_ItensNotaPRO_CODIGONCM: TIBStringField;
-    Qr_ItensNotaPRO_DESCRICAO: TIBStringField;
-    Qr_ItensNotaIAV_DESCRICAO: TIBStringField;
-    Qr_ItensNotaEMB_ABREVIATURA: TIBStringField;
-    Qr_ItensNotaITF_QTDE: TIBBCDField;
     Qr_ItensNotaITF_VL_CUSTO: TFMTBCDField;
     Qr_ItensNotaITF_VL_UNIT: TFMTBCDField;
-    Qr_ItensNotaITF_AQ_COM: TIBBCDField;
-    Qr_ItensNotaMED_ABREVIATURA: TIBStringField;
-    Qr_ItensNotaIAV_UNIDADE: TIBStringField;
-    Qr_ItensNotaITF_AQ_DESC: TIBBCDField;
-    Qr_ItensNotaITF_VL_DESC: TIBBCDField;
     Qr_ItensNotaPRO_VL_CUSTOMED: TFMTBCDField;
     Qr_ItensNotaITF_VL_IPI: TFMTBCDField;
     Qr_ItensNotaITF_VL_SUBTOTAL: TFloatField;

@@ -41,49 +41,16 @@ object Fm_ListaCFOP_UF: TFm_ListaCFOP_UF
     Left = 202
     Top = 20
     Width = 395
-    Height = 21
+    Height = 23
     KeyField = 'NAT_CODIGO'
     ListField = 'CFOP'
     ListSource = Ds_Filtra_CFOP
     TabOrder = 1
     OnKeyDown = Dblcb_ListaKeyDown
   end
-  inline Fm_ListaBuscaEstado: TFm_ListaEstados
-    Left = 133
-    Top = 5
-    Width = 67
-    Height = 40
-    TabOrder = 2
-    ExplicitLeft = 133
-    ExplicitTop = 5
-    ExplicitWidth = 67
-    ExplicitHeight = 40
-    inherited Label23: TLabel
-      Top = 1
-      ExplicitTop = 1
-    end
-    inherited Sb_Uf: TSpeedButton
-      Left = 72
-      Top = 15
-      Anchors = [akLeft]
-      ExplicitLeft = 72
-      ExplicitTop = 15
-    end
-    inherited DBLCB_UF: TDBLookupComboBox
-      Top = 16
-      Width = 60
-      OnExit = Fm_ListaBuscaEstadoDBLCB_UFExit
-      ExplicitTop = 16
-      ExplicitWidth = 60
-    end
-  end
   object Qr_Filtra_CFOP: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = IBT_Lista
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT '
       'NAT_CODIGO,'
@@ -96,18 +63,15 @@ object Fm_ListaCFOP_UF: TFm_ListaCFOP_UF
       '  AND NAT_SENTIDO =:NAT_SENTIDO'
       '  AND NAT_ALCADA=:NAT_ALCADA'
       'ORDER BY NAT_CFOP')
+    ForcedRefresh = True
     Left = 214
     Top = 92
     ParamData = <
       item
-        DataType = ftUnknown
         Name = 'NAT_SENTIDO'
-        ParamType = ptUnknown
       end
       item
-        DataType = ftUnknown
         Name = 'NAT_ALCADA'
-        ParamType = ptUnknown
       end>
   end
   object Ds_Filtra_CFOP: TDataSource
@@ -116,11 +80,6 @@ object Fm_ListaCFOP_UF: TFm_ListaCFOP_UF
     Top = 148
   end
   object IBT_Lista: TSTTransaction
-    DefaultDatabase = DM.IBD_Gestao
-    Params.Strings = (
-      'read_committed'
-      'rec_version'
-      'wait')
     Left = 324
     Top = 129
   end

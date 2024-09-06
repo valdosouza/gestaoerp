@@ -2,13 +2,14 @@ inherited RegUsers: TRegUsers
   Caption = 'Cadastro de Usu'#225'rios'
   ClientHeight = 475
   ClientWidth = 621
-  ExplicitWidth = 627
-  ExplicitHeight = 524
-  PixelsPerInch = 96
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 637
+  ExplicitHeight = 534
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 411
     Width = 621
+    StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 411
     ExplicitWidth = 621
     inherited SB_Inserir: TSpeedButton
@@ -39,6 +40,7 @@ inherited RegUsers: TRegUsers
   inherited pnl_fundo: TPanel
     Width = 621
     Height = 411
+    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 621
     ExplicitHeight = 411
     object Panel1: TPanel

@@ -6,7 +6,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls,
-  Data.DB, IBX.IBCustomDataSet, STQuery, Vcl.ExtCtrls, Un_Fm_FormaPagto;
+  Data.DB, STQuery, Vcl.ExtCtrls, Un_Fm_FormaPagto;
 
 type
   TFm_MetodoPagamento = class(TFrame)

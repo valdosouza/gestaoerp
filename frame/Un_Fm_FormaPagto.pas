@@ -6,8 +6,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls,
-  Vcl.DBCtrls, Data.DB, IBX.IBCustomDataSet, STQuery, Un_DM, Vcl.ExtCtrls,
-  STDatabase, IBX.IBDatabase, STTransaction, IBX.IBQuery ;
+  Vcl.DBCtrls, Data.DB, STQuery, Un_DM, Vcl.ExtCtrls,
+  STDatabase, STTransaction, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet;
 
 type
   TFm_FormaPagto = class(TFrame)

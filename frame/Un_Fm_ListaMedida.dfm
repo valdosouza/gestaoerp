@@ -49,16 +49,13 @@ object Fm_ListaMedida: TFm_ListaMedida
     TabOrder = 0
   end
   object Qr_ListaMedida: TSTQuery
-    Database = DM.IBD_Gestao
+    Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
-    ForcedRefresh = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
     SQL.Strings = (
       'SELECT * FROM TB_MEDIDA'
       'WHERE MED_ESPECIAL is null'
       'ORDER BY MED_ABREVIATURA')
+    ForcedRefresh = True
     Left = 42
     Top = 24
   end

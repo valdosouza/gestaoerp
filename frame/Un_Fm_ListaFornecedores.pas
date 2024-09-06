@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Un_Fm_ListaEmpresas, Vcl.StdCtrls,
   Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons,RN_Empresa,RN_Fornecedor, Data.DB,
-  IBX.IBCustomDataSet, STQuery, Vcl.ExtCtrls, IBX.IBQuery;
+  STQuery, Vcl.ExtCtrls;
 
 type
   TFm_ListaFornecedores = class(TFm_ListaEmpresas)

@@ -44,7 +44,7 @@ object Fm_ListaContaBancaria: TFm_ListaContaBancaria
     Left = 3
     Top = 17
     Width = 518
-    Height = 21
+    Height = 23
     Align = alClient
     KeyField = 'CTB_CODIGO'
     ListField = 'CTB_COMPLETO'
