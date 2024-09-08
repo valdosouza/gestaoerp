@@ -20,6 +20,19 @@ inherited SeaProductBrand: TSeaProductBrand
       Width = 477
       Height = 235
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 479
