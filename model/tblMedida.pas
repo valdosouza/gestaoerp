@@ -11,21 +11,20 @@ Type
   private
     FMED_SEQUENCIA: iNTEGER;
     FMED_ESCALA: String;
+    FMED_ATIVO: String;
     FMED_DESCRICAO: String;
     FMED_CODIGO: Integer;
-    FMED_ABREVIATURA: String;
     FMED_ESPECIAL: String;
+    FMED_ABREVIATURA: String;
     FMED_PROPORCAO: Real;
-    FMED_ATIVO: String;
-
-    procedure setFMED_CODIGO( Value : INTEGER);
-    procedure setFMED_DESCRICAO( Value : String);
-    procedure setFMED_ABREVIATURA( Value : String);
-    procedure setFMED_ESCALA( Value : String);
-    procedure setFMED_ESPECIAL( Value : String);
-    procedure setFMED_PROPORCAO( Value : Real);
-    procedure setFMED_SEQUENCIA( Value : INTEGER);
+    procedure setFMED_ABREVIATURA(const Value: String);
     procedure setFMED_ATIVO(const Value: String);
+    procedure setFMED_CODIGO(const Value: Integer);
+    procedure setFMED_DESCRICAO(const Value: String);
+    procedure setFMED_ESCALA(const Value: String);
+    procedure setFMED_ESPECIAL(const Value: String);
+    procedure setFMED_PROPORCAO(const Value: Real);
+    procedure setFMED_SEQUENCIA(const Value: iNTEGER);
 
   public
 
@@ -58,10 +57,9 @@ Type
 
 implementation
 
-
 { TMedida }
 
-procedure TMedida.setFMED_ABREVIATURA(Value: String);
+procedure TMedida.setFMED_ABREVIATURA(const Value: String);
 begin
   FMED_ABREVIATURA := Value;
 end;
@@ -71,32 +69,32 @@ begin
   FMED_ATIVO := Value;
 end;
 
-procedure TMedida.setFMED_CODIGO(Value: INTEGER);
+procedure TMedida.setFMED_CODIGO(const Value: Integer);
 begin
   FMED_CODIGO := Value;
 end;
 
-procedure TMedida.setFMED_DESCRICAO(Value: String);
+procedure TMedida.setFMED_DESCRICAO(const Value: String);
 begin
   FMED_DESCRICAO := Value;
 end;
 
-procedure TMedida.setFMED_ESCALA(Value: String);
+procedure TMedida.setFMED_ESCALA(const Value: String);
 begin
   FMED_ESCALA := Value;
 end;
 
-procedure TMedida.setFMED_ESPECIAL(Value: String);
+procedure TMedida.setFMED_ESPECIAL(const Value: String);
 begin
   FMED_ESPECIAL := Value;
 end;
 
-procedure TMedida.setFMED_PROPORCAO(Value: Real);
+procedure TMedida.setFMED_PROPORCAO(const Value: Real);
 begin
   FMED_PROPORCAO := Value;
 end;
 
-procedure TMedida.setFMED_SEQUENCIA(Value: INTEGER);
+procedure TMedida.setFMED_SEQUENCIA(const Value: iNTEGER);
 begin
   FMED_SEQUENCIA := Value;
 end;
