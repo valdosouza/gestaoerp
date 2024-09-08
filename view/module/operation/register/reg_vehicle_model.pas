@@ -99,7 +99,6 @@ begin
 end;
 
 procedure TRegVehicleModel.ShowData;
-var Lc_Aux: string;
 begin
   with vehicleModel do
   Begin

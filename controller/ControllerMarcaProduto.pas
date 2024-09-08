@@ -3,18 +3,22 @@ unit ControllerMarcaProduto;
 interface
 
 uses STDatabase,System.Classes, Vcl.Grids,STQuery, System.SysUtils,ControllerBase,
-      tblMarcaProduto ,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param;
+      tblMarcaProduto ,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param,
+      prm_product_brand;
 
 Type
   TListaMarcaProduto  = TObjectList<TMarcaProduto>;
   TControllerMarcaProduto = Class(TControllerBase)
 
   private
+    FParametros: TPrmProductBrand;
+    procedure setFParametros(const Value: TPrmProductBrand);
   protected
 
   public
     Registro : TMarcaProduto;
     Lista : TListaMarcaProduto;
+
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function salva:boolean;
@@ -29,6 +33,9 @@ Type
     Function getList:boolean;
     procedure clear;
     function GetCNPJFactory(MarcaID:Integer):String;
+
+    procedure Search;
+    property Parametros : TPrmProductBrand read FParametros write setFParametros;
   End;
 
 implementation
@@ -38,6 +45,7 @@ uses Un_sistema, Un_Regra_Negocio;
 procedure TControllerMarcaProduto.clear;
 begin
   clearObj(Registro);
+  FParametros.Clear;
 end;
 
 constructor TControllerMarcaProduto.Create(AOwner: TComponent);
@@ -45,6 +53,7 @@ begin
   inherited;
   Registro := TMarcaProduto.Create;
   Lista := TListaMarcaProduto.create;
+  FParametros := TPrmProductBrand.Create;
 end;
 
 function TControllerMarcaProduto.delete: boolean;
@@ -61,6 +70,7 @@ destructor TControllerMarcaProduto.Destroy;
 begin
   Registro.DisposeOf;
   Lista.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -101,6 +111,53 @@ begin
   SaveObj(Registro);
 end;
 
+
+procedure TControllerMarcaProduto.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TMarcaProduto;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_MARCA_PRODUTO where 1=1 ';
+
+      if FParametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND MRC_CODIGO = :MRC_CODIGO';
+        ParamByName('MRC_CODIGO').AsInteger := FParametros.FieldName.Codigo;
+      end;
+
+      if FParametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND MRC_DESCRICAO LIKE :MRC_DESCRICAO';
+        ParamByName('MRC_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TMarcaProduto.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerMarcaProduto.setFParametros(const Value: TPrmProductBrand);
+begin
+  FParametros := Value;
+end;
 
 function TControllerMarcaProduto.update: boolean;
 begin
