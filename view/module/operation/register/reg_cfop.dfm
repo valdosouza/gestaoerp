@@ -2,8 +2,9 @@ inherited RegCfop: TRegCfop
   Caption = 'Cadastro de Natureza de Opera'#231#245'es - CFOP'
   ClientHeight = 365
   ClientWidth = 572
-  ExplicitWidth = 584
-  ExplicitHeight = 428
+  ExplicitWidth = 578
+  ExplicitHeight = 409
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 301
@@ -108,8 +109,8 @@ inherited RegCfop: TRegCfop
       object L_Registro: TLabel
         Left = 8
         Top = 90
-        Width = 40
-        Height = 14
+        Width = 39
+        Height = 13
         Caption = 'Registro'
         FocusControl = E_Registro
         Font.Charset = DEFAULT_CHARSET

@@ -2,26 +2,28 @@ inherited SeaCfop: TSeaCfop
   Caption = 'Pesquisa de Natureza de Opera'#231#245'es - CFOP'
   ClientHeight = 369
   ClientWidth = 579
-  ExplicitWidth = 591
-  ExplicitHeight = 432
+  ExplicitWidth = 585
+  ExplicitHeight = 413
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Width = 573
     Height = 251
-    ExplicitWidth = 567
-    ExplicitHeight = 242
+    ExplicitWidth = 573
+    ExplicitHeight = 251
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 569
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 477
       Height = 233
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 479
       Height = 233
-      ExplicitLeft = 473
-      ExplicitHeight = 224
+      ExplicitLeft = 479
+      ExplicitHeight = 233
       inherited Sb_Sair_0: TSpeedButton
         Top = 170
         ExplicitTop = 170
@@ -42,7 +44,7 @@ inherited SeaCfop: TSeaCfop
   end
   inherited Pnl_Parametros: TPanel
     Width = 573
-    ExplicitWidth = 567
+    ExplicitWidth = 573
     object GroupBox2: TGroupBox
       Left = 2
       Top = 2
@@ -57,7 +59,6 @@ inherited SeaCfop: TSeaCfop
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 563
       object L_BuscaDescricao: TLabel
         Left = 86
         Top = 16
@@ -144,6 +145,14 @@ inherited SeaCfop: TSeaCfop
           'Todos')
         TabOrder = 4
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end
