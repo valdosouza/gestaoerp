@@ -1,15 +1,16 @@
 inherited RegProductBrand: TRegProductBrand
   Caption = 'Cadastro de Marca de Produto'
-  ClientHeight = 185
+  ClientHeight = 187
   ClientWidth = 615
-  ExplicitWidth = 627
-  ExplicitHeight = 248
+  ExplicitWidth = 621
+  ExplicitHeight = 231
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 121
+    Top = 123
     Width = 615
-    ExplicitTop = 112
-    ExplicitWidth = 609
+    ExplicitTop = 229
+    ExplicitWidth = 615
     inherited SB_Inserir: TSpeedButton
       Left = 17
       Width = 87
@@ -43,21 +44,21 @@ inherited RegProductBrand: TRegProductBrand
   end
   inherited pnl_fundo: TPanel
     Width = 615
-    Height = 121
-    ExplicitWidth = 609
-    ExplicitHeight = 112
+    Height = 123
+    ExplicitWidth = 615
+    ExplicitHeight = 229
   end
   object Panel1: TPanel [2]
     Left = 0
     Top = 0
     Width = 615
-    Height = 121
+    Height = 123
     Align = alClient
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 2
-    ExplicitWidth = 609
-    ExplicitHeight = 112
+    ExplicitTop = -1
+    ExplicitHeight = 162
     object L_Codigo: TLabel
       Left = 8
       Top = 8
@@ -85,50 +86,6 @@ inherited RegProductBrand: TRegProductBrand
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-    end
-    object L_Fornecedor: TLabel
-      Left = 8
-      Top = 48
-      Width = 81
-      Height = 14
-      Caption = 'Nome da F'#225'brica'
-      FocusControl = DBLCB_Fornecedor
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Sb_Fornecedor: TSpeedButton
-      Left = 550
-      Top = 61
-      Width = 21
-      Height = 21
-      Caption = '...'
-    end
-    object Sb_Pesq_Cliente: TSpeedButton
-      Left = 573
-      Top = 60
-      Width = 23
-      Height = 22
-      Glyph.Data = {
-        E6010000424DE60100000000000036000000280000000C0000000C0000000100
-        180000000000B0010000C40E0000C40E00000000000000000000FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF285A9F626F8DFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2963AC7EE3FA18
-        79DEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF296CBA7FE3FA
-        177FE4C9D5E9FFFFFFFFFFFFFFFFFFF7F6F7E6E5E6FFFFFFFFFFFF447DC57EE3
-        FA177FE4C9D8ECFFFFFFFFFFFFEFEEEF66574AFBDCACFFEECDC0C8A6483C489C
-        A1B62372CBC9DBF1FFFFFFFFFFFFFFFFFF8D734FF5BC91FFD8B6FFEED2FFF9E0
-        FFFEF0463C49FFFFFFFFFFFFFFFFFFFFFFFF8F8792E1A87DDDA479FFD7B5FFED
-        D4FFF7E1FFFDEDCCD6C0FFFFFFFFFFFFFFFFFFFFFFFF7C6A78DAA176DAA176FD
-        C498FFEFE0FFEED6FFF4DAFFF2CFD6D5D8FFFFFFFFFFFFFFFFFF827788D0976C
-        FFE1CBFFF9F5FFCBA3FFE4CBFFE7CDFFECC2F1F1F2FFFFFFFFFFFFFFFFFFDFDC
-        E0BF8656FCC398FFE5D2FBC297ECB388FFC99E8C8171FFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFF9C929FBF8857D69D72DBA277EAB186AB976FE9E8EBFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFE4E0E49D91A0A1939DA69FABFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFF}
     end
     object E_Codigo: TEdit
       Left = 8
@@ -159,12 +116,18 @@ inherited RegProductBrand: TRegProductBrand
       ParentFont = False
       TabOrder = 1
     end
-    object DBLCB_Fornecedor: TComboBox
-      Left = 8
-      Top = 62
-      Width = 541
-      Height = 21
+    inline Fm_ListaFornecedores1: TFm_ListaFornecedores
+      Left = 6
+      Top = 52
+      Width = 442
+      Height = 41
       TabOrder = 2
+      ExplicitLeft = 6
+      ExplicitTop = 52
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 264
+    Top = 0
   end
 end

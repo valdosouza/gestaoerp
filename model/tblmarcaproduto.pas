@@ -9,12 +9,13 @@ Type
   [TableName('TB_MARCA_PRODUTO')]
   TMarcaProduto = Class(TGenericEntity)
   private
-    FMRC_ABAS: Integer;
+    FMRC_CODFAB: Integer;
     FMRC_DESCRICAO: String;
     FMRC_CODIGO: Integer;
-    procedure setFMRC_ABAS(const Value: Integer);
+    procedure setFMRC_CODFAB(const Value: Integer);
     procedure setFMRC_CODIGO(const Value: Integer);
     procedure setFMRC_DESCRICAO(const Value: String);
+
 
   public
 
@@ -26,20 +27,17 @@ Type
     property Descricao: String read FMRC_DESCRICAO write setFMRC_DESCRICAO;
 
     [FieldName('MRC_CODFAB')]
-    property Fabrica: Integer read FMRC_ABAS write setFMRC_ABAS;
-
+    property Fabrica: Integer read FMRC_CODFAB write setFMRC_CODFAB;
 
   End;
 
 implementation
 
-
-
 { TMarcaProduto }
 
-procedure TMarcaProduto.setFMRC_ABAS(const Value: Integer);
+procedure TMarcaProduto.setFMRC_CODFAB(const Value: Integer);
 begin
-  FMRC_ABAS := Value;
+  FMRC_CODFAB := Value;
 end;
 
 procedure TMarcaProduto.setFMRC_CODIGO(const Value: Integer);
