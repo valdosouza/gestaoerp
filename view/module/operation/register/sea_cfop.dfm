@@ -1,14 +1,14 @@
 inherited SeaCfop: TSeaCfop
   Caption = 'Pesquisa de Natureza de Opera'#231#245'es - CFOP'
-  ClientHeight = 369
+  ClientHeight = 389
   ClientWidth = 579
   ExplicitWidth = 585
-  ExplicitHeight = 413
+  ExplicitHeight = 433
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Width = 573
-    Height = 251
+    Height = 271
     ExplicitWidth = 573
     ExplicitHeight = 251
     inherited Lb_ResultadoPesquisa: TLabel
@@ -16,28 +16,42 @@ inherited SeaCfop: TSeaCfop
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 477
-      Height = 233
+      Height = 253
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'Cfop'
+          Title.Caption = 'CFOP'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Width = 346
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 479
-      Height = 233
+      Height = 253
       ExplicitLeft = 479
       ExplicitHeight = 233
       inherited Sb_Sair_0: TSpeedButton
-        Top = 170
+        Top = 190
         ExplicitTop = 170
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 107
+        Top = 127
         ExplicitTop = 107
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 44
+        Top = 64
         ExplicitTop = 44
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -19
+        Top = 1
         ExplicitTop = -19
       end
     end
@@ -147,12 +161,32 @@ inherited SeaCfop: TSeaCfop
       end
     end
   end
+  inherited MnuBase: TMainMenu
+    Left = 384
+    Top = 88
+  end
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField
       FieldName = 'codigo'
     end
     object cds_searchdescricao: TStringField
       FieldName = 'descricao'
+    end
+    object cds_searchCfop: TStringField
+      FieldName = 'Cfop'
+      Size = 10
+    end
+    object cds_searchSentido: TStringField
+      FieldName = 'Sentido'
+      Size = 1
+    end
+    object cds_searchAlcada: TStringField
+      FieldName = 'Alcada'
+      Size = 1
+    end
+    object cds_searchAtivo: TStringField
+      FieldName = 'Ativo'
+      Size = 1
     end
   end
 end

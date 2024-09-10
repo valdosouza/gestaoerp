@@ -9,8 +9,8 @@ inherited RegCfop: TRegCfop
   inherited pnl_botao: TPanel
     Top = 301
     Width = 572
-    ExplicitTop = 292
-    ExplicitWidth = 566
+    ExplicitTop = 301
+    ExplicitWidth = 572
     inherited SB_Inserir: TSpeedButton
       Left = 1
       ExplicitLeft = 1
@@ -51,8 +51,8 @@ inherited RegCfop: TRegCfop
   inherited pnl_fundo: TPanel
     Width = 572
     Height = 301
-    ExplicitWidth = 566
-    ExplicitHeight = 292
+    ExplicitWidth = 572
+    ExplicitHeight = 301
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -62,8 +62,6 @@ inherited RegCfop: TRegCfop
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 562
-      ExplicitHeight = 288
       object L_Desc_Abreviada: TLabel
         Left = 155
         Top = 9
@@ -174,6 +172,7 @@ inherited RegCfop: TRegCfop
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        MaxLength = 60
         ParentFont = False
         TabOrder = 2
       end
@@ -188,6 +187,7 @@ inherited RegCfop: TRegCfop
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        MaxLength = 250
         ParentFont = False
         TabOrder = 3
       end
@@ -224,7 +224,7 @@ inherited RegCfop: TRegCfop
         ParentFont = False
         TabOrder = 5
       end
-      object Rgp_Interno: TRadioGroup
+      object Rgp_Alcada: TRadioGroup
         Left = 215
         Top = 92
         Width = 223
@@ -271,7 +271,7 @@ inherited RegCfop: TRegCfop
         ParentFont = False
         TabOrder = 7
       end
-      object DBMemo1: TMemo
+      object mmoAplicacao: TMemo
         Left = 2
         Top = 144
         Width = 564
@@ -279,8 +279,6 @@ inherited RegCfop: TRegCfop
         Align = alBottom
         Anchors = [akTop, akBottom]
         TabOrder = 8
-        ExplicitWidth = 558
-        ExplicitHeight = 142
       end
     end
   end

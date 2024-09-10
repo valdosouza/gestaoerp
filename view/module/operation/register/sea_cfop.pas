@@ -15,11 +15,15 @@ type
     L_BuscaCFOP: TLabel;
     E_BuscaDescricao: TMaskEdit;
     E_BuscaCFOP: TMaskEdit;
-    Rg_Busca_Sentido: TRadioGroup;
     Rg_busca_Alcada: TRadioGroup;
     Rg_Busca_ativo: TRadioGroup;
     cds_searchcodigo: TIntegerField;
     cds_searchdescricao: TStringField;
+    cds_searchCfop: TStringField;
+    cds_searchAtivo: TStringField;
+    cds_searchAlcada: TStringField;
+    cds_searchSentido: TStringField;
+    Rg_Busca_Sentido: TRadioGroup;
   protected
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
@@ -40,7 +44,7 @@ implementation
 
 { TSeaCfop }
 
-uses reg_printers;
+uses reg_cfop, env;
 
 procedure TSeaCfop.CriarVariaveis;
 begin
@@ -61,9 +65,9 @@ end;
 
 procedure TSeaCfop.openRegister(pCodigo: Integer);
 var
-  Lc_form : TRegPrinters;
+  Lc_form : TRegCfop;
 begin
-  Lc_form := TRegPrinters.Create(self);
+  Lc_form := TRegCfop.Create(self);
   Try
     Lc_form.CodigoRegistro := pCodigo;
     Lc_form.ShowModal;
@@ -76,19 +80,44 @@ procedure TSeaCfop.Search;
 var
   i: Integer;
 begin
-  natureza.Clear;
+  with natureza do
+  begin
+    Clear;
 
-  natureza.Parametros.FieldName.Descricao := E_Descricao.Text;
+    Parametros.FieldName.Cfop := E_BuscaCFOP.Text;
+    Parametros.FieldName.Descricao := E_BuscaDescricao.Text;
 
-  natureza.Search;
+    if Rg_Busca_Sentido.ItemIndex = 0 then
+      Parametros.FieldName.Sentido := SENTIDO_ENTRADA
+    else
+      Parametros.FieldName.Sentido := SENTIDO_SAIDA;
 
-  if not cds_search.Active then
-    cds_search.CreateDataSet;
+    case Rg_busca_Alcada.ItemIndex of
+      0: Parametros.FieldName.Alcada := ALCADA_ESTADUAL;
+      1: Parametros.FieldName.Alcada := ALCADA_NACIONAL;
+      2: Parametros.FieldName.Alcada := ALCADA_EXTERIOR;
+    end;
 
-  cds_search.EmptyDataSet;
+    case Rg_Busca_ativo.ItemIndex of
+      0: Parametros.FieldName.Ativo := SIGLA_S;
+      1: Parametros.FieldName.Ativo := SIGLA_N;
+    end;
 
-  for i := 0 to Pred(natureza.Lista.Count) do
-    cds_search.AppendRecord([natureza.Lista[I].Codigo, natureza.Lista[I].Descricao]);
+    Search;
+
+    if not cds_search.Active then
+      cds_search.CreateDataSet;
+
+    cds_search.EmptyDataSet;
+
+    cds_search.DisableControls;
+
+    for i := 0 to Pred(Lista.Count) do
+      cds_search.AppendRecord([Lista[i].Codigo, Lista[i].Descricao, Lista[i].Cfop,
+        Lista[i].Sentido, Lista[i].Alcada, Lista[i].Ativo]);
+
+    cds_search.EnableControls;
+  end;
 
   inherited;
 end;
@@ -97,3 +126,5 @@ procedure TSeaCfop.SetRegister;
 begin
   openRegister(0);
 end;
+
+end.

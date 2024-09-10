@@ -34,31 +34,31 @@ Type
     [FieldName('NAT_CODIGO')]
     property Codigo: Integer read FNAT_CODIGO write setFNAT_CODIGO;
 
-    [FieldName('NAT_DESCRICAO')]
+    [FieldName('NAT_DESCRICAO')]  //250
     property Descricao: String read FNAT_DESCRICAO write setFNAT_DESCRICAO;
 
-    [FieldName('NAT_CFOP')]
+    [FieldName('NAT_CFOP')]    //10
     property Cfop: String read FNAT_CFOP write setFNAT_CFOP;
 
-    [FieldName('NAT_RESUMIDO')]
+    [FieldName('NAT_RESUMIDO')] //60
     property Resumido: String read FNAT_RESUMIDO write setFNAT_RESUMIDO;
 
-    [FieldName('NAT_ATIVO')]
+    [FieldName('NAT_ATIVO')]   //1
     property Ativo: String read FNAT_ATIVO write setFNAT_ATIVO;
 
     [FieldName('NAT_REGISTRO')]
     property Registro: integer read FNAT_REGISTRO write setFNAT_REGISTRO;
 
-    [FieldName('NAT_SENTIDO')]
+    [FieldName('NAT_SENTIDO')] //1
     property Sentido: String read FNAT_SENTIDO write setFNAT_SENTIDO;
 
-    [FieldName('NAT_ALCADA')]
+    [FieldName('NAT_ALCADA')]  //1
     property Alcada: String read FNAT_ALCADA write setFNAT_ALCADA;
 
-    [FieldName('NAT_APLICACAO')]
+    [FieldName('NAT_APLICACAO')] //memo
     property Aplicacao: String read FNAT_APLICACAO write setNAT_APLICACAO;
 
-    [FieldName('NAT_INTERNO')]
+    [FieldName('NAT_INTERNO')]  //1
     property Interno: String read FNAT_INTERNO write setFNAT_INTERNO;
   End;
 
