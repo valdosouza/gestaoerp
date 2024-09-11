@@ -1,15 +1,16 @@
 inherited RegMeasure: TRegMeasure
   Caption = 'Cadastro de Medidas\Unidades'
-  ClientHeight = 220
+  ClientHeight = 192
   ClientWidth = 598
-  ExplicitWidth = 610
-  ExplicitHeight = 283
+  ExplicitWidth = 604
+  ExplicitHeight = 236
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 156
+    Top = 128
     Width = 598
-    ExplicitTop = 147
-    ExplicitWidth = 592
+    ExplicitTop = 156
+    ExplicitWidth = 598
     inherited SB_Inserir: TSpeedButton
       Left = 5
       Width = 88
@@ -46,20 +47,19 @@ inherited RegMeasure: TRegMeasure
   end
   inherited pnl_fundo: TPanel
     Width = 598
-    Height = 156
-    ExplicitWidth = 592
-    ExplicitHeight = 147
+    Height = 128
+    ExplicitWidth = 598
+    ExplicitHeight = 156
     object Panel1: TPanel
       Left = 2
       Top = 2
       Width = 594
-      Height = 152
+      Height = 124
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 588
-      ExplicitHeight = 143
+      ExplicitHeight = 152
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -103,7 +103,7 @@ inherited RegMeasure: TRegMeasure
         ParentFont = False
       end
       object L_Escala: TLabel
-        Left = 80
+        Left = 78
         Top = 56
         Width = 32
         Height = 14
@@ -115,14 +115,15 @@ inherited RegMeasure: TRegMeasure
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
+        Visible = False
       end
       object L_Proporcao: TLabel
-        Left = 185
+        Left = 183
         Top = 56
         Width = 50
         Height = 14
         Caption = 'Propor'#231#227'o'
-        FocusControl = E_Porporcao
+        FocusControl = E_Proporcao
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -132,7 +133,7 @@ inherited RegMeasure: TRegMeasure
         Visible = False
       end
       object L_MedidaGrupo: TLabel
-        Left = 292
+        Left = 288
         Top = 56
         Width = 76
         Height = 14
@@ -171,6 +172,7 @@ inherited RegMeasure: TRegMeasure
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        MaxLength = 20
         ParentFont = False
         TabOrder = 1
       end
@@ -179,6 +181,7 @@ inherited RegMeasure: TRegMeasure
         Top = 72
         Width = 69
         Height = 21
+        MaxLength = 5
         TabOrder = 2
       end
       object E_Escala: TEdit
@@ -186,24 +189,32 @@ inherited RegMeasure: TRegMeasure
         Top = 72
         Width = 103
         Height = 21
+        NumbersOnly = True
         TabOrder = 3
+        Visible = False
       end
-      object E_Porporcao: TEdit
+      object E_Proporcao: TEdit
         Left = 183
         Top = 72
         Width = 103
         Height = 21
+        NumbersOnly = True
         TabOrder = 4
         Visible = False
       end
       object E_MedidaGRupo: TEdit
-        Left = 292
+        Left = 288
         Top = 72
-        Width = 125
+        Width = 289
         Height = 21
+        MaxLength = 100
         TabOrder = 5
         Visible = False
       end
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 464
+    Top = 8
   end
 end
