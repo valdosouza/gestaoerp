@@ -1,15 +1,15 @@
 inherited SeaConfigTag: TSeaConfigTag
   Caption = 'Pesquisa de etiqueta'
-  ClientHeight = 338
+  ClientHeight = 352
   ClientWidth = 598
   ExplicitWidth = 604
-  ExplicitHeight = 382
+  ExplicitHeight = 396
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 592
-    Height = 264
+    Height = 278
     ExplicitTop = 71
     ExplicitWidth = 592
     ExplicitHeight = 264
@@ -18,27 +18,39 @@ inherited SeaConfigTag: TSeaConfigTag
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 496
-      Height = 246
+      Height = 260
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Descricao'
+          Width = 338
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 498
-      Height = 246
+      Height = 260
       ExplicitLeft = 498
       ExplicitHeight = 246
       inherited Sb_Sair_0: TSpeedButton
-        Top = 183
+        Top = 197
         ExplicitTop = 183
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 120
+        Top = 134
         ExplicitTop = 120
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 57
+        Top = 71
         ExplicitTop = 57
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -6
+        Top = 8
         ExplicitTop = -6
       end
     end

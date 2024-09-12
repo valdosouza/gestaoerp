@@ -351,7 +351,7 @@ inherited RegConfigTag: TRegConfigTag
         Left = 8
         Top = 23
         Width = 57
-        Height = 21
+        Height = 22
         Color = clScrollBar
         Enabled = False
         Font.Charset = ANSI_CHARSET
