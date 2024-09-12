@@ -1,20 +1,20 @@
-unit ControllerCfgEtiqueta;
+unit ControllerVehicleKind;
 
 interface
 
 uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
-     STQuery, ControllerBase, tblCfgEtiqueta, prm_configtag;
+     STQuery, ControllerBase, tbltpveiculo, prm_vehicle_kind;
 
 Type
-  TListaCfgEtiqueta = TObjectList<TCfgEtiqueta>;
-  TControllerCfgEtiqueta = Class(TControllerBase)
+  TListaTpVeiculo = TObjectList<TTpVeiculo>;
+  TControllerVehicleKind = Class(TControllerBase)
   private
-    FParametros: TPrmConfigTag;
-    procedure setFParametros(const Value: TPrmConfigTag);
+    FParametros: TPrmVehicleKind;
+    procedure setFParametros(const Value: TPrmVehicleKind);
 
   public
-    Registro : TCfgEtiqueta;
-    Lista : TListaCfgEtiqueta;
+    Registro : TTpVeiculo;
+    Lista : TListaTpVeiculo;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function save:boolean;
@@ -26,29 +26,27 @@ Type
 
     function Clear:Boolean;
     procedure Search;
-    property Parametros : TPrmConfigTag read FParametros write setFParametros;
+    property Parametros : TPrmVehicleKind read FParametros write setFParametros;
   End;
 
 implementation
 
-{ ControllerCfgEtiqueta}
-
-function TControllerCfgEtiqueta.Clear: Boolean;
+function TControllerVehicleKind.Clear: Boolean;
 begin
   Result := True;
   clearObj(Registro);
   FParametros.Clear;
 end;
 
-constructor TControllerCfgEtiqueta.Create(AOwner: TComponent);
+constructor TControllerVehicleKind.Create(AOwner: TComponent);
 begin
   inherited;
-  Registro := TCfgEtiqueta.Create;
-  FParametros := TPrmConfigTag.Create;
-  Lista := TListaCfgEtiqueta.Create;
+  Registro := TTpVeiculo.Create;
+  FParametros := TPrmVehicleKind.Create;
+  Lista := TListaTpVeiculo.Create;
 end;
 
-function TControllerCfgEtiqueta.delete: boolean;
+function TControllerVehicleKind.delete: boolean;
 begin
   Try
     deleteObj(Registro);
@@ -58,7 +56,7 @@ begin
   End;
 end;
 
-destructor TControllerCfgEtiqueta.Destroy;
+destructor TControllerVehicleKind.Destroy;
 begin
   Registro.DisposeOf;
   Lista.DisposeOf;
@@ -66,7 +64,7 @@ begin
   inherited;
 end;
 
-function TControllerCfgEtiqueta.insert: boolean;
+function TControllerVehicleKind.insert: boolean;
 begin
   try
     SaveObj(Registro);
@@ -76,15 +74,15 @@ begin
   end;
 end;
 
-function TControllerCfgEtiqueta.salva: boolean;
+function TControllerVehicleKind.salva: boolean;
 begin
   Result := True;
   if Registro.Codigo = 0 then
-    Registro.Codigo := getNextByField(Registro,'cge_codigo',0);
+    Registro.Codigo := getNextByField(Registro,'tpv_codigo',0);
   SaveObj(Registro);
 end;
 
-function TControllerCfgEtiqueta.save: boolean;
+function TControllerVehicleKind.save: boolean;
 begin
   try
     SaveObj(Registro);
@@ -94,27 +92,27 @@ begin
   end;
 end;
 
-procedure TControllerCfgEtiqueta.Search;
+procedure TControllerVehicleKind.Search;
 var
   Lc_Qry : TSTQuery;
-  LITem : TCfgEtiqueta;
+  LITem : TTpVeiculo;
 begin
   Lc_Qry := GeraQuery;
   Try
     with Lc_Qry do
     Begin
-      SQL.Text := ' SELECT * FROM tb_cfg_etiqueta where 1=1 ';
+      SQL.Text := ' SELECT * FROM TB_TP_VEICULO where 1=1 ';
 
       if FParametros.FieldName.Codigo > 0 then
       begin
-        SQL.Text := SQL.Text + ' AND cge_codigo = :cge_codigo';
-        ParamByName('cge_codigo').AsInteger := FParametros.FieldName.Codigo;
+        SQL.Text := SQL.Text + ' AND TPV_CODIGO = :TPV_CODIGO';
+        ParamByName('TPV_CODIGO').AsInteger := FParametros.FieldName.Codigo;
       end;
 
       if FParametros.FieldName.Descricao <> EmptyStr then
       begin
-        SQL.Text := SQL.Text + ' AND cge_descricao LIKE :cge_descricao';
-        ParamByName('cge_descricao').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
+        SQL.Text := SQL.Text + ' AND TPV_DESCRICAO LIKE :TPV_DESCRICAO';
+        ParamByName('TPV_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
       end;
 
       Active := True;
@@ -124,7 +122,7 @@ begin
 
       while not Eof do
       Begin
-        LITem := TCfgEtiqueta.Create;
+        LITem := TTpVeiculo.Create;
         get(Lc_Qry, LITem);
         Lista.add(LITem);
 
@@ -136,17 +134,17 @@ begin
   End;
 end;
 
-procedure TControllerCfgEtiqueta.setFParametros(const Value: TPrmConfigTag);
+procedure TControllerVehicleKind.setFParametros(const Value: TPrmVehicleKind);
 begin
   FParametros := Value;
 end;
 
-procedure TControllerCfgEtiqueta.getbyId;
+procedure TControllerVehicleKind.getbyId;
 begin
   _getByKey(Registro);
 end;
 
-function TControllerCfgEtiqueta.getByKey: Boolean;
+function TControllerVehicleKind.getByKey: Boolean;
 begin
   Result := True;
   Self._getByKey(Registro);

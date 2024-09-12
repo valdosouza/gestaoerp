@@ -1,21 +1,19 @@
-unit tblVehicleKind;
+unit tbltpveiculo;
 
 interface
 
-Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
+Uses TEntity, CAtribEntity;
 
 Type
-  //nome da classe de entidade
   [TableName('TB_TP_VEICULO')]
-  TVehicleKind = Class(TGenericEntity)
-
+  TTpVeiculo = Class(TGenericEntity)
   private
     FTPV_DESCRICAO: String;
     FTPV_CODIGO: Integer;
     FTPV_RENAVAM: String;
-    procedure setFPTPV_RENAVAM(const Value: String);
     procedure setFTPV_CODIGO(const Value: Integer);
     procedure setFTPV_DESCRICAO(const Value: String);
+    procedure setFTPV_RENAVAM(const Value: String);
 
   public
     [KeyField('TPV_CODIGO')]
@@ -23,7 +21,7 @@ Type
     property Codigo: Integer read FTPV_CODIGO write setFTPV_CODIGO;
 
     [FieldName('TPV_RENAVAM')]
-    property Renavam: String read FTPV_RENAVAM write setFPTPV_RENAVAM;
+    property Renavam: String read FTPV_RENAVAM write setFTPV_RENAVAM;
 
     [FieldName('TPV_DESCRICAO')]
     property Descricao: String read FTPV_DESCRICAO write setFTPV_DESCRICAO;
@@ -31,21 +29,20 @@ Type
 
 implementation
 
-{ TVehicleKind }
 
-procedure TVehicleKind.setFPTPV_RENAVAM(const Value: String);
-begin
-  FTPV_RENAVAM := Value;
-end;
-
-procedure TVehicleKind.setFTPV_CODIGO(const Value: Integer);
+procedure TTpVeiculo.setFTPV_CODIGO(const Value: Integer);
 begin
   FTPV_CODIGO := Value;
 end;
 
-procedure TVehicleKind.setFTPV_DESCRICAO(const Value: String);
+procedure TTpVeiculo.setFTPV_DESCRICAO(const Value: String);
 begin
   FTPV_DESCRICAO := Value;
+end;
+
+procedure TTpVeiculo.setFTPV_RENAVAM(const Value: String);
+begin
+  FTPV_RENAVAM := Value;
 end;
 
 end.

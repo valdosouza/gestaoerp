@@ -2,14 +2,15 @@ inherited RegVehicleKind: TRegVehicleKind
   Caption = 'Cadastro de Tipos de Veiculos'
   ClientHeight = 165
   ClientWidth = 562
-  ExplicitWidth = 574
-  ExplicitHeight = 228
+  ExplicitWidth = 568
+  ExplicitHeight = 209
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 101
     Width = 562
-    ExplicitTop = 92
-    ExplicitWidth = 556
+    ExplicitTop = 101
+    ExplicitWidth = 562
     inherited SB_Inserir: TSpeedButton
       Left = 3
       ExplicitLeft = -65
@@ -50,8 +51,8 @@ inherited RegVehicleKind: TRegVehicleKind
   inherited pnl_fundo: TPanel
     Width = 562
     Height = 101
-    ExplicitWidth = 556
-    ExplicitHeight = 92
+    ExplicitWidth = 562
+    ExplicitHeight = 101
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -61,8 +62,6 @@ inherited RegVehicleKind: TRegVehicleKind
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 552
-      ExplicitHeight = 88
       object L_Codigo: TLabel
         Left = 8
         Top = 8
