@@ -351,6 +351,9 @@
             <Form>SeaOperInterface</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="model\tblTaxModeDetBcIcms.pas"/>
+        <DCCReference Include="model\tblTaxModeDetBcIcmsSt.pas"/>
+        <DCCReference Include="model\tblTaxRelievesIcms.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -377,6 +380,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
+                <DeployFile LocalName="C:\Modelos\Gestao2025\Bin\Gestao.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>gestao.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="D:\Modelos\Gestao2016\Bin\Gestao.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="D:\Modelos\Gestao2025\Bin\Gestao.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
