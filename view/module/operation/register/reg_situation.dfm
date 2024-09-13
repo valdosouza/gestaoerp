@@ -2,14 +2,15 @@ inherited RegSituation: TRegSituation
   Caption = 'Cadastro de Situa'#231#227'o'
   ClientHeight = 199
   ClientWidth = 572
-  ExplicitWidth = 584
-  ExplicitHeight = 262
+  ExplicitWidth = 578
+  ExplicitHeight = 243
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 135
     Width = 572
-    ExplicitTop = 126
-    ExplicitWidth = 566
+    ExplicitTop = 135
+    ExplicitWidth = 572
     inherited SB_Inserir: TSpeedButton
       Left = 5
       Width = 96
@@ -56,8 +57,8 @@ inherited RegSituation: TRegSituation
   inherited pnl_fundo: TPanel
     Width = 572
     Height = 135
-    ExplicitWidth = 566
-    ExplicitHeight = 126
+    ExplicitWidth = 572
+    ExplicitHeight = 135
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -67,8 +68,6 @@ inherited RegSituation: TRegSituation
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 562
-      ExplicitHeight = 122
       object L_Codigo: TLabel
         Left = 8
         Top = 8

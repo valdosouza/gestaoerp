@@ -2,13 +2,11 @@ unit TblCfgEtiqueta;
 
 interface
 
-Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
+Uses TEntity, CAtribEntity;
 
 Type
-  //nome da classe de entidade
   [TableName('tb_cfg_etiqueta')]
   TCfgEtiqueta = Class(TGenericEntity)
-
   private
     Fcge_codigo: Integer;
     Fcge_descricao: String;
@@ -92,10 +90,9 @@ Type
 
     [FieldName('cge_eti_superior')]
     property EtiSuperior: Real read Fcge_eti_superior write setFcge_eti_superior;
-
   End;
 
-  implementation
+implementation
 { TCfgEtiqueta }
 
 procedure TCfgEtiqueta.setFcge_codigo(const Value: Integer);

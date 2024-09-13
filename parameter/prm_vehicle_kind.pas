@@ -19,8 +19,6 @@ Type
 
 implementation
 
-{ TPrmJobPosition }
-
 procedure TPrmVehicleKind.Clear;
 begin
   inherited;
