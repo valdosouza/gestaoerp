@@ -1,31 +1,53 @@
 inherited SeaSituation: TSeaSituation
   Caption = 'Pesquisa de Situa'#231#227'o'
-  ClientHeight = 321
+  ClientHeight = 337
   ClientWidth = 576
-  ExplicitWidth = 588
-  ExplicitHeight = 384
+  ExplicitWidth = 582
+  ExplicitHeight = 381
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 570
-    Height = 247
+    Height = 263
     ExplicitTop = 71
-    ExplicitWidth = 564
-    ExplicitHeight = 238
+    ExplicitWidth = 570
+    ExplicitHeight = 247
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 566
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 474
-      Height = 229
+      Height = 245
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      OnDrawColumnCell = DBG_PesquisaDrawColumnCell
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Descricao'
+          Width = 303
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Color'
+          Title.Caption = 'Sinaliza'#231#227'o'
+          Width = 59
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 476
-      Height = 229
-      ExplicitLeft = 470
-      ExplicitHeight = 220
+      Height = 245
+      ExplicitLeft = 476
+      ExplicitHeight = 229
       inherited Sb_Sair_0: TSpeedButton
-        Top = 170
+        Top = 186
         Height = 56
         ExplicitLeft = 3
         ExplicitTop = 177
@@ -33,7 +55,7 @@ inherited SeaSituation: TSeaSituation
         ExplicitHeight = 56
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 112
+        Top = 128
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 114
@@ -41,7 +63,7 @@ inherited SeaSituation: TSeaSituation
         ExplicitHeight = 55
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 55
+        Top = 71
         Height = 54
         ExplicitLeft = 3
         ExplicitTop = 51
@@ -49,7 +71,7 @@ inherited SeaSituation: TSeaSituation
         ExplicitHeight = 54
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -1
+        Top = 15
         Height = 53
         ExplicitLeft = 3
         ExplicitTop = -12
@@ -61,7 +83,7 @@ inherited SeaSituation: TSeaSituation
   inherited Pnl_Parametros: TPanel
     Width = 570
     Height = 62
-    ExplicitWidth = 564
+    ExplicitWidth = 570
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -77,7 +99,6 @@ inherited SeaSituation: TSeaSituation
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 560
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -164,6 +185,19 @@ inherited SeaSituation: TSeaSituation
           'MOVELEIRO'
           'GR'#193'FICA')
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchDescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'Descricao'
+    end
+    object cds_searchColor: TStringField
+      FieldName = 'Color'
     end
   end
 end

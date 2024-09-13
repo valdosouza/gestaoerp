@@ -12,7 +12,7 @@ inherited SeaVehicleKind: TSeaVehicleKind
     Height = 289
     ExplicitTop = 71
     ExplicitWidth = 564
-    ExplicitHeight = 265
+    ExplicitHeight = 289
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 560
     end
@@ -36,7 +36,7 @@ inherited SeaVehicleKind: TSeaVehicleKind
       Left = 470
       Height = 271
       ExplicitLeft = 470
-      ExplicitHeight = 247
+      ExplicitHeight = 271
       inherited Sb_Sair_0: TSpeedButton
         Top = 208
         ExplicitTop = 184

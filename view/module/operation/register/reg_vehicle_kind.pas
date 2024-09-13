@@ -30,6 +30,7 @@ type
   private
     vehicleKind : TControllerVehicleKind;
   end;
+
 var
   RegVehicleKind: TRegVehicleKind;
 
@@ -59,7 +60,7 @@ end;
 
 procedure TRegVehicleKind.Delete;
 begin
-  RegVehicleKind.delete;
+  vehicleKind.delete;
   inherited;
 end;
 
