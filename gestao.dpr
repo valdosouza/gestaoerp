@@ -63,7 +63,10 @@ uses
   rg_privilege in 'view\module\operation\register\rg_privilege.pas' {RgPrivilege},
   reg_interface in 'view\module\operation\register\reg_interface.pas' {RegInterface},
   reg_oper_interface in 'view\module\operation\register\reg_oper_interface.pas' {RegOperInterface},
-  sea_oper_interface in 'view\module\operation\register\sea_oper_interface.pas' {SeaOperInterface};
+  sea_oper_interface in 'view\module\operation\register\sea_oper_interface.pas' {SeaOperInterface},
+  tblTaxModeDetBcIcms in 'model\tblTaxModeDetBcIcms.pas',
+  tblTaxModeDetBcIcmsSt in 'model\tblTaxModeDetBcIcmsSt.pas',
+  tblTaxRelievesIcms in 'model\tblTaxRelievesIcms.pas';
 
 {$R *.res}
 
