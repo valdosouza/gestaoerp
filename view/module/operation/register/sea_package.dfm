@@ -125,9 +125,11 @@ inherited SeaPackage: TSeaPackage
   end
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'codigo'
     end
     object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
     end
   end

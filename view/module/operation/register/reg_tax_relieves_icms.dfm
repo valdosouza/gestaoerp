@@ -1,15 +1,16 @@
 inherited RegTaxRelievesIcms: TRegTaxRelievesIcms
   Caption = 'Cadastro do Motivo da Desonera'#231#227'o'
-  ClientHeight = 201
+  ClientHeight = 142
   ClientWidth = 573
-  ExplicitWidth = 585
-  ExplicitHeight = 264
+  ExplicitWidth = 579
+  ExplicitHeight = 186
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 137
+    Top = 78
     Width = 573
-    ExplicitTop = 128
-    ExplicitWidth = 567
+    ExplicitTop = 137
+    ExplicitWidth = 573
     inherited SB_Inserir: TSpeedButton
       Left = 7
       ExplicitLeft = 7
@@ -49,20 +50,19 @@ inherited RegTaxRelievesIcms: TRegTaxRelievesIcms
   end
   inherited pnl_fundo: TPanel
     Width = 573
-    Height = 137
-    ExplicitWidth = 567
-    ExplicitHeight = 128
+    Height = 78
+    ExplicitWidth = 573
+    ExplicitHeight = 137
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
       Width = 569
-      Height = 133
+      Height = 74
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 563
-      ExplicitHeight = 124
+      ExplicitHeight = 133
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -78,26 +78,12 @@ inherited RegTaxRelievesIcms: TRegTaxRelievesIcms
         ParentFont = False
       end
       object L_Descricao: TLabel
-        Left = 6
-        Top = 48
+        Left = 71
+        Top = 8
         Width = 49
         Height = 14
         Caption = 'Descri'#231#227'o'
         FocusControl = E_Descricao
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clNavy
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object L_Grupo: TLabel
-        Left = 75
-        Top = 8
-        Width = 30
-        Height = 14
-        Caption = 'Grupo'
-        FocusControl = E_Grupo
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -121,23 +107,9 @@ inherited RegTaxRelievesIcms: TRegTaxRelievesIcms
         TabOrder = 0
       end
       object E_Descricao: TEdit
-        Left = 7
-        Top = 64
-        Width = 542
-        Height = 22
-        CharCase = ecUpperCase
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-      end
-      object E_Grupo: TEdit
-        Left = 75
+        Left = 71
         Top = 24
-        Width = 474
+        Width = 480
         Height = 22
         CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
@@ -145,14 +117,13 @@ inherited RegTaxRelievesIcms: TRegTaxRelievesIcms
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
-        MaxLength = 2
         ParentFont = False
         TabOrder = 1
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 288
-    Top = 65528
+  inherited MnuBase: TMainMenu
+    Left = 240
+    Top = 16
   end
 end
