@@ -1,11 +1,11 @@
 unit tblTaxRelievesIcms;
 
 interface
-Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
+
+Uses TEntity, CAtribEntity;
 
 Type
-  //nome da classe de entidade
-  [TableName('TB_TRIB_DESONERA_ICMS')]
+  [TableName('TB_DESONERA_ICMS')]
   TTaxRelievesIcms = Class(TGenericEntity)
 
   private
@@ -13,7 +13,6 @@ Type
     FDSI_DESCRICAO: String;
     procedure setFDSI_CODIGO(const Value: Integer);
     procedure setFDSI_DESCRICAO(const Value: String);
-
   public
     [KeyField('DSI_CODIGO')]
     [FieldName('DSI_CODIGO')]
@@ -21,7 +20,6 @@ Type
 
     [FieldName('DSI_DESCRICAO')]
     property Descricao: String read FDSI_DESCRICAO write setFDSI_DESCRICAO;
-
   End;
 
 implementation
