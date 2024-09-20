@@ -5,7 +5,7 @@ Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
 
 Type
   //nome da classe de entidade
-  [TableName('TB_TRIB_DESONERA_ICMS')]
+  [TableName('TB_DESONERA_ICMS')]
   TTaxRelievesIcms = Class(TGenericEntity)
 
   private
