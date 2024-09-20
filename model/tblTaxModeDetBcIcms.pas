@@ -2,13 +2,11 @@ unit tblTaxModeDetBcIcms;
 
 interface
 
-Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
+Uses TEntity, CAtribEntity;
 
 Type
-  //nome da classe de entidade
   [TableName('TB_MOD_DET_BC_ICMS')]
   TTaxModeDetBcIcms = Class(TGenericEntity)
-
   private
     FMDB_DESCRICAO: String;
     FMDB_CODIGO: Integer;
@@ -16,7 +14,6 @@ Type
     procedure setFMDB_CODIGO(const Value: Integer);
     procedure setFMDB_DESCRICAO(const Value: String);
     procedure setFMDB_GRUPO(const Value: String);
-
   public
     [KeyField('MDB_CODIGO')]
     [FieldName('MDB_CODIGO')]
@@ -25,13 +22,11 @@ Type
     [FieldName('MDB_GRUPO')]
     property Grupo: String read FMDB_GRUPO write setFMDB_GRUPO;
 
-      [FieldName('MDB_DESCRICAO')]
+    [FieldName('MDB_DESCRICAO')]
     property Descricao: String read FMDB_DESCRICAO write setFMDB_DESCRICAO;
-
   End;
 
-  Implementation
-{ TTaxModeDetBcIcms }
+Implementation
 
 procedure TTaxModeDetBcIcms.setFMDB_CODIGO(const Value: Integer);
 begin

@@ -24,7 +24,7 @@ type
     procedure Search; override;
     procedure GetView; override;
     procedure SetRegister; override;
-  public
+  private
     cfgEtiqueta : TControllerCfgEtiqueta;
   end;
 

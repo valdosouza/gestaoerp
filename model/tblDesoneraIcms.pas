@@ -1,11 +1,11 @@
-unit tblCargo;
+unit tblDesoneraIcms;
 
 interface
 
 Uses TEntity, CAtribEntity;
 
 Type
-  [TableName('TB_CARGO')]
+  [TableName('TB_DESONERA_ICMS')]
   TCargo = Class(TGenericEntity)
   private
     FCRG_DESCRICAO: String;

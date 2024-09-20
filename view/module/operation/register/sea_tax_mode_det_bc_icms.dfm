@@ -1,31 +1,45 @@
 inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
   Caption = 'Pesquisa da Determina'#231#227'o da Base de Calculo - ICMS '
-  ClientHeight = 315
+  ClientHeight = 330
   ClientWidth = 569
-  ExplicitWidth = 581
-  ExplicitHeight = 378
+  ExplicitWidth = 575
+  ExplicitHeight = 374
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 563
-    Height = 241
+    Height = 256
     ExplicitTop = 71
-    ExplicitWidth = 557
-    ExplicitHeight = 232
+    ExplicitWidth = 563
+    ExplicitHeight = 256
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 559
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 467
-      Height = 223
+      Height = 238
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 330
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 469
-      Height = 223
-      ExplicitLeft = 463
-      ExplicitHeight = 214
+      Height = 238
+      ExplicitLeft = 469
+      ExplicitHeight = 238
       inherited Sb_Sair_0: TSpeedButton
-        Top = 165
+        Top = 180
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 180
@@ -33,7 +47,7 @@ inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
         ExplicitHeight = 55
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 107
+        Top = 122
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 117
@@ -41,7 +55,7 @@ inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
         ExplicitHeight = 55
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 49
+        Top = 64
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 54
@@ -49,7 +63,7 @@ inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
         ExplicitHeight = 55
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -9
+        Top = 6
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = -9
@@ -61,7 +75,7 @@ inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
   inherited Pnl_Parametros: TPanel
     Width = 563
     Height = 62
-    ExplicitWidth = 557
+    ExplicitWidth = 563
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -77,7 +91,6 @@ inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 553
       object L_BuscaDescricao: TLabel
         Left = 57
         Top = 16
@@ -132,6 +145,21 @@ inherited SeaTaxModeDetBcIcms: TSeaTaxModeDetBcIcms
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 264
+    Top = 16
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+      Size = 100
     end
   end
 end

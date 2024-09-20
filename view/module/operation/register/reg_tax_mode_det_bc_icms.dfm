@@ -1,15 +1,16 @@
 inherited RegTaxModeDetBcIcms: TRegTaxModeDetBcIcms
   Caption = 'Cadastro da Determina'#231#227'o da Base de Calculo - ICMS '
-  ClientHeight = 189
+  ClientHeight = 132
   ClientWidth = 568
-  ExplicitWidth = 580
-  ExplicitHeight = 252
+  ExplicitWidth = 574
+  ExplicitHeight = 176
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 125
+    Top = 68
     Width = 568
-    ExplicitTop = 116
-    ExplicitWidth = 562
+    ExplicitTop = 125
+    ExplicitWidth = 568
     inherited SB_Inserir: TSpeedButton
       Left = 7
       Width = 95
@@ -55,20 +56,19 @@ inherited RegTaxModeDetBcIcms: TRegTaxModeDetBcIcms
   end
   inherited pnl_fundo: TPanel
     Width = 568
-    Height = 125
-    ExplicitWidth = 562
-    ExplicitHeight = 116
+    Height = 68
+    ExplicitWidth = 568
+    ExplicitHeight = 125
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
       Width = 564
-      Height = 121
+      Height = 64
       Align = alClient
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 558
-      ExplicitHeight = 112
+      ExplicitHeight = 121
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -84,8 +84,8 @@ inherited RegTaxModeDetBcIcms: TRegTaxModeDetBcIcms
         ParentFont = False
       end
       object L_Descricao: TLabel
-        Left = 6
-        Top = 48
+        Left = 110
+        Top = 8
         Width = 49
         Height = 14
         Caption = 'Descri'#231#227'o'
@@ -127,9 +127,9 @@ inherited RegTaxModeDetBcIcms: TRegTaxModeDetBcIcms
         TabOrder = 0
       end
       object E_Descricao: TEdit
-        Left = 7
-        Top = 64
-        Width = 542
+        Left = 111
+        Top = 24
+        Width = 442
         Height = 22
         CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
@@ -137,13 +137,14 @@ inherited RegTaxModeDetBcIcms: TRegTaxModeDetBcIcms
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        MaxLength = 100
         ParentFont = False
         TabOrder = 2
       end
       object E_Grupo: TEdit
         Left = 75
         Top = 24
-        Width = 474
+        Width = 30
         Height = 22
         CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
@@ -151,14 +152,14 @@ inherited RegTaxModeDetBcIcms: TRegTaxModeDetBcIcms
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
-        MaxLength = 2
+        MaxLength = 1
         ParentFont = False
         TabOrder = 1
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 112
-    Top = 80
+  inherited MnuBase: TMainMenu
+    Left = 232
+    Top = 16
   end
 end

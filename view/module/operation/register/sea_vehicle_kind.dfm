@@ -1,43 +1,56 @@
 inherited SeaVehicleKind: TSeaVehicleKind
   Caption = 'Pesquisa de Tipos de Veiculos'
-  ClientHeight = 339
+  ClientHeight = 363
   ClientWidth = 570
-  ExplicitWidth = 582
-  ExplicitHeight = 402
+  ExplicitWidth = 576
+  ExplicitHeight = 407
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 564
-    Height = 265
+    Height = 289
     ExplicitTop = 71
-    ExplicitWidth = 558
-    ExplicitHeight = 256
+    ExplicitWidth = 564
+    ExplicitHeight = 289
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 560
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 468
-      Height = 247
+      Height = 271
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Descricao'
+          Width = 314
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 470
-      Height = 247
-      ExplicitLeft = 464
-      ExplicitHeight = 238
+      Height = 271
+      ExplicitLeft = 470
+      ExplicitHeight = 271
       inherited Sb_Sair_0: TSpeedButton
-        Top = 184
+        Top = 208
         ExplicitTop = 184
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 121
+        Top = 145
         ExplicitTop = 121
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 58
+        Top = 82
         ExplicitTop = 58
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -5
+        Top = 19
         ExplicitTop = -5
       end
     end
@@ -45,7 +58,7 @@ inherited SeaVehicleKind: TSeaVehicleKind
   inherited Pnl_Parametros: TPanel
     Width = 564
     Height = 62
-    ExplicitWidth = 558
+    ExplicitWidth = 564
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +74,6 @@ inherited SeaVehicleKind: TSeaVehicleKind
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 554
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -116,6 +128,16 @@ inherited SeaVehicleKind: TSeaVehicleKind
         ParentFont = False
         TabOrder = 1
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchDescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'Descricao'
     end
   end
 end

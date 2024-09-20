@@ -3,13 +3,15 @@ unit ControllerMedida;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
-       tblMedida ,Un_MSg,Generics.Collections, ObjRestGroupHasMeasure;
+       tblMedida ,Un_MSg,Generics.Collections, ObjRestGroupHasMeasure, prm_measure;
 
 Type
   TListaMedida  = TObjectList<TMedida>;
   TControllerMedida = Class(TControllerBase)
 
   private
+    FParametros: TPrmMeasure;
+    procedure setFParametros(const Value: TPrmMeasure);
 
   public
     Registro : TMedida;
@@ -36,6 +38,9 @@ Type
     procedure AtivarDesativar;
     function autocreate(pMedida,pAbreviatura: String):Integer;
     procedure FillDataRestGroupMeasure(medida: TMedida;ObjRestGroupMeasure:TObjRestGroupHasMeasure; institutioWebId:Integer);
+
+    procedure Search;
+    property Parametros : TPrmMeasure read FParametros write setFParametros;
   End;
 
 implementation
@@ -153,6 +158,7 @@ begin
   Registro := TMedida.Create;
   Lista := TListaMedida.create;
   ObjRest:= TObjRestGroupHasMeasure.Create;
+  FParametros := TPrmMeasure.Create;
 end;
 
 function TControllerMedida.delete: boolean;
@@ -170,6 +176,7 @@ begin
   ObjRest.DisposeOf;
   Registro.DisposeOf;
   Lista.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -221,6 +228,55 @@ begin
   if Registro.Codigo = 0 then
     Registro.Codigo := Generator('GN_MEDIDA');
   SaveObj(Registro);
+end;
+
+procedure TControllerMedida.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TMedida;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM TB_MEDIDA WHERE (MED_CODIGO IS NOT NULL)';
+
+      if Parametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND MED_CODIGO = :MED_CODIGO';
+        ParamByName('MED_CODIGO').AsInteger := Parametros.FieldName.Codigo;
+      end;
+
+      if Parametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND MED_DESCRICAO LIKE :MED_DESCRICAO';
+        ParamByName('MED_DESCRICAO').AsString := Concat('%',Parametros.FieldName.Descricao,'%');
+      end;
+
+      SQL.Text := SQL.Text + ' ORDER BY MED_DESCRICAO ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TMedida.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerMedida.setFParametros(const Value: TPrmMeasure);
+begin
+  FParametros := Value;
 end;
 
 function TControllerMedida.update: Boolean;
@@ -332,7 +388,7 @@ begin
   if not exist then
   Begin
     Registro.Codigo := 0;
-    Registro.Escala := '0';
+    Registro.Escala := 0;
     if Registro.Abreviatura = '' then
       Registro.Abreviatura := Copy(Registro.Descricao,1,3);
     Registro.MedidaCardapio := '';

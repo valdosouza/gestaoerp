@@ -1,43 +1,59 @@
 inherited SeaMeasure: TSeaMeasure
   Caption = 'Pesquisa de Medidas\Unidades'
-  ClientHeight = 332
+  ClientHeight = 348
   ClientWidth = 581
-  ExplicitWidth = 593
-  ExplicitHeight = 395
+  ExplicitWidth = 587
+  ExplicitHeight = 392
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 575
-    Height = 258
+    Height = 274
     ExplicitTop = 71
-    ExplicitWidth = 569
-    ExplicitHeight = 249
+    ExplicitWidth = 575
+    ExplicitHeight = 258
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 571
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 479
-      Height = 240
+      Height = 256
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Width = 72
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Width = 335
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 481
-      Height = 240
-      ExplicitLeft = 475
-      ExplicitHeight = 231
+      Height = 256
+      ExplicitLeft = 481
+      ExplicitHeight = 240
       inherited Sb_Sair_0: TSpeedButton
-        Top = 177
+        Top = 193
         ExplicitTop = 177
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 114
+        Top = 130
         ExplicitTop = 114
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 51
+        Top = 67
         ExplicitTop = 51
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -12
+        Top = 4
         ExplicitTop = -12
       end
     end
@@ -45,7 +61,7 @@ inherited SeaMeasure: TSeaMeasure
   inherited Pnl_Parametros: TPanel
     Width = 575
     Height = 62
-    ExplicitWidth = 569
+    ExplicitWidth = 575
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +77,6 @@ inherited SeaMeasure: TSeaMeasure
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 565
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -116,6 +131,14 @@ inherited SeaMeasure: TSeaMeasure
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
     end
   end
 end

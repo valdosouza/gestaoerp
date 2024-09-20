@@ -53,7 +53,7 @@ type
     procedure Delete; Override;
     function ValidateSave():boolean; Override;
     procedure Save; Override;
-  public
+  private
     cfgEtiqueta : TControllerCfgEtiqueta;
   end;
 

@@ -2,28 +2,43 @@ inherited SeaProductBrand: TSeaProductBrand
   Caption = 'Pesquisa de Marca de Produto'
   ClientHeight = 327
   ClientWidth = 579
-  ExplicitWidth = 591
-  ExplicitHeight = 390
+  ExplicitWidth = 585
+  ExplicitHeight = 371
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 573
     Height = 253
     ExplicitTop = 71
-    ExplicitWidth = 567
-    ExplicitHeight = 244
+    ExplicitWidth = 573
+    ExplicitHeight = 253
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 569
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 477
       Height = 235
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Title.Caption = 'C'#243'digo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Title.Caption = 'Descri'#231#227'o'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 479
       Height = 235
-      ExplicitLeft = 473
-      ExplicitHeight = 226
+      ExplicitLeft = 479
+      ExplicitHeight = 235
       inherited Sb_Sair_0: TSpeedButton
         Top = 172
         ExplicitTop = 172
@@ -45,7 +60,7 @@ inherited SeaProductBrand: TSeaProductBrand
   inherited Pnl_Parametros: TPanel
     Width = 573
     Height = 62
-    ExplicitWidth = 567
+    ExplicitWidth = 573
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -61,7 +76,6 @@ inherited SeaProductBrand: TSeaProductBrand
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 563
       object L_BuscaDescricao: TLabel
         Left = 59
         Top = 16
@@ -118,8 +132,18 @@ inherited SeaProductBrand: TSeaProductBrand
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 264
-    Top = 8
+  inherited ds_search: TDataSource
+    Left = 160
+    Top = 154
+  end
+  inherited cds_search: TClientDataSet
+    Left = 160
+    Top = 106
+    object cds_searchcodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      FieldName = 'descricao'
+    end
   end
 end
