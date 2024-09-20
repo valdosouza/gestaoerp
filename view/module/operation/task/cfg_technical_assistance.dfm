@@ -1,57 +1,67 @@
 inherited CfgTechnicalAssistance: TCfgTechnicalAssistance
   Caption = 'Configura'#231#227'o de Acompanhamento de Assist'#234'ncia T'#233'cnica'
-  ClientHeight = 178
-  ClientWidth = 480
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 496
-  ExplicitHeight = 237
+  ClientHeight = 130
+  ClientWidth = 478
+  ExplicitWidth = 484
+  ExplicitHeight = 179
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
-    Top = 114
-    Width = 480
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 136
+    Top = 66
+    Width = 478
+    ExplicitTop = 114
     ExplicitWidth = 480
     inherited SB_Inserir: TSpeedButton
-      Left = -93
-      ExplicitLeft = -93
+      Left = 3
+      Width = 10
+      Align = alLeft
+      Visible = False
+      ExplicitLeft = 3
+      ExplicitTop = 5
+      ExplicitWidth = 10
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 11
-      Width = 74
-      ExplicitLeft = -17
+      Left = 15
+      Width = 10
+      Align = alLeft
+      Visible = False
+      ExplicitLeft = 15
       ExplicitTop = 5
-      ExplicitWidth = 74
+      ExplicitWidth = 10
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 87
-      ExplicitLeft = 87
+      Left = 27
+      Width = 10
+      Align = alLeft
+      Visible = False
+      ExplicitLeft = 27
+      ExplicitTop = 5
+      ExplicitWidth = 10
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 295
+      Left = 293
       Width = 103
       ExplicitLeft = 322
       ExplicitTop = 5
       ExplicitWidth = 103
     end
     inherited SB_Sair_0: TSpeedButton
-      Left = 400
+      Left = 398
       Width = 75
       ExplicitLeft = 400
       ExplicitTop = 5
       ExplicitWidth = 75
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 191
+      Left = 189
       ExplicitLeft = 191
     end
   end
   inherited pnl_fundo: TPanel
-    Width = 480
-    Height = 114
-    StyleElements = [seFont, seClient, seBorder]
+    Width = 478
+    Height = 66
     ExplicitWidth = 480
-    ExplicitHeight = 136
+    ExplicitHeight = 114
     object L_ModeloImpressao: TLabel
       Left = 11
       Top = 8
@@ -77,36 +87,6 @@ inherited CfgTechnicalAssistance: TCfgTechnicalAssistance
       Items.Strings = (
         'MODELO 1  - GENIO'
         'MODELO 2  - BALAN'#199'AS PINHAIS')
-    end
-    object Btn_Ok_Local: TButton
-      Left = 244
-      Top = 83
-      Width = 79
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = 'OK'
-      TabOrder = 1
-      ExplicitTop = 105
-    end
-    object Btn_Cn_Local: TButton
-      Left = 323
-      Top = 83
-      Width = 75
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = 'Cancelar'
-      TabOrder = 2
-      ExplicitTop = 105
-    end
-    object Btn_Ap_Local: TButton
-      Left = 398
-      Top = 83
-      Width = 79
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = 'Aplicar'
-      TabOrder = 3
-      ExplicitTop = 105
     end
   end
   inherited MnuBase: TMainMenu

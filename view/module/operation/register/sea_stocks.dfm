@@ -2,18 +2,19 @@ inherited SeaStocks: TSeaStocks
   Caption = 'Pesquisa de Estoques'
   ClientHeight = 332
   ClientWidth = 564
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 580
-  ExplicitHeight = 391
+  ExplicitWidth = 570
+  ExplicitHeight = 381
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 558
     Height = 258
-    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 71
+    ExplicitWidth = 558
+    ExplicitHeight = 258
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 554
-      StyleElements = [seFont, seClient, seBorder]
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 462
@@ -22,25 +23,29 @@ inherited SeaStocks: TSeaStocks
     inherited pnl_pesq_right: TPanel
       Left = 464
       Height = 240
-      StyleElements = [seFont, seClient, seBorder]
+      ExplicitLeft = 464
+      ExplicitHeight = 240
       inherited Sb_Sair_0: TSpeedButton
         Top = 177
+        ExplicitTop = 177
       end
       inherited SB_Visualizar: TSpeedButton
         Top = 114
+        ExplicitTop = 114
       end
       inherited SB_Buscar: TSpeedButton
         Top = 51
+        ExplicitTop = 51
       end
       inherited SB_Cadastrar: TSpeedButton
         Top = -12
+        ExplicitTop = -12
       end
     end
   end
   inherited Pnl_Parametros: TPanel
     Width = 558
     Height = 62
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 558
     ExplicitHeight = 62
     object L_BuscaDescricao: TLabel
@@ -107,11 +112,7 @@ inherited SeaStocks: TSeaStocks
     Top = 234
   end
   inherited cds_search: TClientDataSet
-    Left = 328
-    Top = 218
-  end
-  inherited DSP: TDataSetProvider
-    Left = 248
-    Top = 176
+    Left = 272
+    Top = 186
   end
 end

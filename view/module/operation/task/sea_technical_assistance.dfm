@@ -2,22 +2,17 @@ inherited SeaTechnicalAssistance: TSeaTechnicalAssistance
   Caption = 'Busca de Acompanhamento de Assist'#234'ncia T'#233'cnica'
   ClientHeight = 345
   ClientWidth = 788
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 804
-  ExplicitHeight = 404
+  ExplicitWidth = 794
+  ExplicitHeight = 394
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 782
     Height = 271
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 71
     ExplicitWidth = 782
     ExplicitHeight = 271
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 778
-      StyleElements = [seFont, seClient, seBorder]
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 686
       Height = 253
@@ -25,7 +20,6 @@ inherited SeaTechnicalAssistance: TSeaTechnicalAssistance
     inherited pnl_pesq_right: TPanel
       Left = 688
       Height = 253
-      StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 688
       ExplicitHeight = 253
       inherited Sb_Sair_0: TSpeedButton
@@ -49,7 +43,6 @@ inherited SeaTechnicalAssistance: TSeaTechnicalAssistance
   inherited Pnl_Parametros: TPanel
     Width = 782
     Height = 62
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitLeft = 91
     ExplicitTop = 107
     ExplicitWidth = 782
