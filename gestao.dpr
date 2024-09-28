@@ -66,7 +66,20 @@ uses
   sea_oper_interface in 'view\module\operation\register\sea_oper_interface.pas' {SeaOperInterface},
   tblTaxModeDetBcIcms in 'model\tblTaxModeDetBcIcms.pas',
   tblTaxModeDetBcIcmsSt in 'model\tblTaxModeDetBcIcmsSt.pas',
-  tblTaxRelievesIcms in 'model\tblTaxRelievesIcms.pas';
+  tblTaxRelievesIcms in 'model\tblTaxRelievesIcms.pas',
+  reg_technical_assistance in 'view\module\operation\task\reg_technical_assistance.pas' {RegTechnicalAssistance},
+  sea_technical_assistance in 'view\module\operation\task\sea_technical_assistance.pas' {SeaTechnicalAssistance},
+  cfg_technical_assistance in 'view\module\operation\task\cfg_technical_assistance.pas' {CfgTechnicalAssistance},
+  sea_customer_origin in 'view\module\operation\register\sea_customer_origin.pas' {SeaCustomerOrigin},
+  reg_customer_origin in 'view\module\operation\register\reg_customer_origin.pas' {RegCustomerOrigin},
+  reg_button_image in 'view\module\operation\register\reg_button_image.pas' {RegButtonImage},
+  sea_button_image in 'view\module\operation\register\sea_button_image.pas' {SeaButtonImage},
+  sea_tax_icms_sn in 'view\module\operation\register\sea_tax_icms_sn.pas' {SeaTaxIcmsSn},
+  reg_tax_icms_sn in 'view\module\operation\register\reg_tax_icms_sn.pas' {RegTaxIcmsSn},
+  sea_tax_icms_nr in 'view\module\operation\register\sea_tax_icms_nr.pas' {SeaTaxIcmsNr},
+  reg_tax_icms_nr in 'view\module\operation\register\reg_tax_icms_nr.pas' {RegTaxIcmsNr},
+  reg_stocks in 'view\module\operation\register\reg_stocks.pas' {RegStocks},
+  sea_stocks in 'view\module\operation\register\sea_stocks.pas' {SeaStocks};
 
 {$R *.res}
 

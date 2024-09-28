@@ -2,10 +2,9 @@ inherited RegTaxIcmsSn: TRegTaxIcmsSn
   Caption = 'Cadastro de Situa'#231#227'o do Simples Nacional '
   ClientHeight = 182
   ClientWidth = 553
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 565
-  ExplicitHeight = 245
+  ExplicitWidth = 559
+  ExplicitHeight = 231
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 118
@@ -156,7 +155,7 @@ inherited RegTaxIcmsSn: TRegTaxIcmsSn
       end
     end
   end
-  inherited Menu: TMainMenu
+  inherited MnuBase: TMainMenu
     Left = 80
     Top = 72
   end
