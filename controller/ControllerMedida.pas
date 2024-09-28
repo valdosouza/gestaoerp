@@ -39,6 +39,9 @@ Type
     function autocreate(pMedida,pAbreviatura: String):Integer;
     procedure FillDataRestGroupMeasure(medida: TMedida;ObjRestGroupMeasure:TObjRestGroupHasMeasure; institutioWebId:Integer);
 
+    function getCodigoLista(Descricao: String): Integer;
+    function getDescricaoLista(Codigo: Integer): String;
+
     procedure Search;
     property Parametros : TPrmMeasure read FParametros write setFParametros;
   End;
@@ -475,6 +478,36 @@ Begin
     FinalizaQuery(Lc_Qry);
   End;
 
+end;
+
+function TControllerMedida.getCodigoLista(Descricao: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Descricao = Descricao then
+    begin
+      Result := Lista[i].Codigo;
+      Break;
+    end;
+  end;
+end;
+
+function TControllerMedida.getDescricaoLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Codigo = Codigo then
+    Begin
+      Result := Lista[i].Descricao;
+      Break;
+    End;
+  end;
 end;
 
 end.

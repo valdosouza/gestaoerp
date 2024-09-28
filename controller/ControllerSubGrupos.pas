@@ -36,6 +36,9 @@ Type
     function autocreate(pGRupo:Integer;PSubgrupo:String):Integer;
     procedure FillDataRestSubGroup(subgrupo: TSubGrupos;DObjRestSubgroup:TRestSubGroup; institutioWebId:Integer);
 
+    function getCodigoLista(Descricao: String): Integer;
+    function getDescricaoLista(Codigo: Integer): String;
+
     procedure Search;
     property Parametros : TPrmSubGroupMenu read FParametros write setFParametros;
   End;
@@ -325,5 +328,34 @@ begin
   End;
 end;
 
+function TControllerSubGrupos.getCodigoLista(Descricao: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Descricao = Descricao then
+    begin
+      Result := Lista[i].Codigo;
+      Break;
+    end;
+  end;
+end;
+
+function TControllerSubGrupos.getDescricaoLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Codigo = Codigo then
+    begin
+      Result := Lista[i].Descricao;
+      Break;
+    end;
+  end;
+end;
 
 end.

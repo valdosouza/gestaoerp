@@ -66,6 +66,7 @@ Type
     FPRO_SEND_WEB: String;
     FPRO_VL_CUSTO_LAST: Real;
     FPRO_IAT: String;
+    FPrecoVenda: Currency;
     procedure setFINDESCALA(const Value: String);
     procedure setFPRO_ALTURA(const Value: Real);
     procedure setFPRO_APLICACAO(const Value: String);
@@ -123,6 +124,7 @@ Type
     procedure setFPRO_SEND_WEB(const Value: String);
     procedure setFPRO_VL_CUSTO_LAST(const Value: Real);
     procedure setFPRO_IAT(const Value: String);
+    procedure setFPrecoVenda(const Value: Currency);
 
   public
 
@@ -300,6 +302,8 @@ Type
     [FieldName('PRO_IAT')]
     property IAT: String read FPRO_IAT write setFPRO_IAT;
 
+    property PrecoVenda: Currency read FPrecoVenda write setFPrecoVenda; //TB_PRECO.PRC_VL_VDA
+
   End;
 
 implementation
@@ -326,6 +330,11 @@ end;
 procedure TProduto.setFINDESCALA(const Value: String);
 begin
   FINDESCALA := Value;
+end;
+
+procedure TProduto.setFPrecoVenda(const Value: Currency);
+begin
+  FPrecoVenda := Value;
 end;
 
 procedure TProduto.setFPRO_ALTURA(const Value: Real);

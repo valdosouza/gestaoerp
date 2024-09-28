@@ -12,7 +12,7 @@ inherited SeaMeasure: TSeaMeasure
     Height = 274
     ExplicitTop = 71
     ExplicitWidth = 575
-    ExplicitHeight = 258
+    ExplicitHeight = 274
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 571
     end
@@ -39,7 +39,7 @@ inherited SeaMeasure: TSeaMeasure
       Left = 481
       Height = 256
       ExplicitLeft = 481
-      ExplicitHeight = 240
+      ExplicitHeight = 256
       inherited Sb_Sair_0: TSpeedButton
         Top = 193
         ExplicitTop = 177
