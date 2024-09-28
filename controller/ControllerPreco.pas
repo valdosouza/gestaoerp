@@ -3,7 +3,7 @@ unit ControllerPreco;
 interface
 
 uses STDatabase,Classes, Vcl.Grids,STQuery, SysUtils,ControllerBase,FireDAC.Stan.Param,
-      tblPreco ,Un_MSg,   Generics.Collections;
+      tblPreco , Un_MSg, Generics.Collections, prm_price;
 
 Type
   TListaPreco = TObjectList<TPreco>;
@@ -12,6 +12,8 @@ Type
 
   private
     TipoCalculoPreco : String;
+    FParametros: TPrmPrice;
+    procedure setFParametros(const Value: TPrmPrice);
 
   public
     Registro : TPreco;
@@ -35,6 +37,8 @@ Type
     function CalcularPrecoPelaMargemLucro(Fc_Vl_Custo,Fc_Aq_Margem:real):Real;
     procedure clear;
 
+    procedure Search;
+    property Parametros : TPrmPrice read FParametros write setFParametros;
   End;
 
 implementation
@@ -69,6 +73,7 @@ begin
   inherited;
   Registro := TPreco.Create;
   Lista := TListaPreco.Create;
+  FParametros := TPrmPrice.Create;
 end;
 
 
@@ -81,6 +86,7 @@ destructor TControllerPreco.Destroy;
 begin
   Registro.disposeOf;
   Lista.disposeOf;
+  FParametros.disposeOf;
   inherited;
 end;
 
@@ -336,6 +342,59 @@ begin
   finally
     FinalizaQuery(Lc_Qry);
   end;
+end;
+
+procedure TControllerPreco.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TPreco;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text :=
+        ' SELECT * FROM TB_PRECO WHERE 1=1 ';
+
+      if FParametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND PRC_CODIGO = :PRC_CODIGO';
+        ParamByName('PRC_CODIGO').AsInteger := FParametros.FieldName.Codigo;
+      end;
+
+      if FParametros.FieldName.CodigoTabela > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND PRC_CODTPR = :PRC_CODTPR';
+        ParamByName('PRC_CODTPR').AsInteger := FParametros.FieldName.CodigoTabela;
+      end;
+
+      if FParametros.FieldName.CodigoProduto > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND PRC_CODPRO = :PRC_CODPRO';
+        ParamByName('PRC_CODPRO').AsInteger := FParametros.FieldName.CodigoProduto;
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TPreco.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerPreco.setFParametros(const Value: TPrmPrice);
+begin
+  FParametros := Value;
 end;
 
 end.

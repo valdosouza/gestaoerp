@@ -33,6 +33,9 @@ Type
     procedure FillDataRestGRoup(grupo: TGrupos;ObjRestGroup:TRestGroup; institutioWebId:Integer);
     function Fc_GrupoExiste(pCodigo: integer; pDescricao: String): Integer;
 
+    function getCodigoLista(Descricao: String): Integer;
+    function getDescricaoLista(Codigo: Integer): String;
+
     procedure clear;
     procedure Search;
     property Parametros : TPrmGroupMenu read FParametros write setFParametros;
@@ -359,6 +362,36 @@ begin
   Finally
     FinalizaQuery(Lc_Qry);
   End;
+end;
+
+function TControllerGrupos.getCodigoLista(Descricao: String): Integer;
+var
+  i: Integer;
+begin
+  Result := 0;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Descricao = Descricao then
+    begin
+      Result := Lista[i].Codigo;
+      Break;
+    end;
+  end;
+end;
+
+function TControllerGrupos.getDescricaoLista(Codigo: Integer): String;
+var
+  i: Integer;
+begin
+  Result := EmptyStr;
+  for i := 0 to Pred(Lista.Count) do
+  begin
+    if Lista[i].Codigo = Codigo then
+    begin
+      Result := Lista[i].Descricao;
+      Break;
+    end;
+  end;
 end;
 
 end.

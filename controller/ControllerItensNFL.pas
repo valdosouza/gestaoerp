@@ -54,6 +54,7 @@ Type
     procedure clear;
     procedure setITF_Estoque;
     function ExisteItemNoPedido(Pc_Tp_Operacao:String): Boolean;
+    function Fc_ValidaExclusao(iCodigoProduto: Integer): boolean;
   End;
 
 implementation
@@ -497,6 +498,29 @@ begin
       ParamByName('PED_CODIGO').AsInteger := Registro.CodigoPedido;
       ParamByName('ITF_ESTOQUE').AsString := Registro.Estoque;
       ExecSQL;
+    End;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+function TControllerItensNFL.Fc_ValidaExclusao(iCodigoProduto: Integer): boolean;
+Var
+  Lc_Qry : TSTQuery;
+Begin
+  Result := true;
+
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Clear;
+      SQL.Text := 'SELECT DISTINCT ITF_CODPRO FROM TB_ITENS_NFL WHERE ITF_CODPRO=:PRO_CODIGO';
+      ParamByName('PRO_CODIGO').AsInteger := iCodigoProduto;
+      Active := True;
+      FetchAll;
+      if (recordcount > 0) then
+        Result := False
     End;
   Finally
     FinalizaQuery(Lc_Qry);

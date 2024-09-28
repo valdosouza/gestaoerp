@@ -2,7 +2,7 @@ unit TblCoating;
 
 interface
 
-Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
+Uses TEntity, CAtribEntity;
 
 Type
   //nome da classe de entidade

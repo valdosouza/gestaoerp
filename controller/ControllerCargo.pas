@@ -230,13 +230,13 @@ var
 begin
   Result := 0;
   for i := 0 to Pred(Lista.Count) do
-  Begin
+  begin
     if Lista[i].Descricao = Descricao then
-    Begin
+    begin
       Result := Lista[i].Codigo;
       Break;
-    End;
-  End;
+    end;
+  end;
 end;
 
 function TControllerCargo.getDescricaoLista(Codigo: Integer): String;
@@ -245,13 +245,13 @@ var
 begin
   Result := EmptyStr;
   for i := 0 to Pred(Lista.Count) do
-  Begin
+  begin
     if Lista[i].Codigo = Codigo then
-    Begin
+    begin
       Result := Lista[i].Descricao;
       Break;
-    End;
-  End;
+    end;
+  end;
 end;
 
 end.

@@ -2,14 +2,15 @@ inherited RegService: TRegService
   Caption = 'Cadastro de Servi'#231'os'
   ClientHeight = 350
   ClientWidth = 606
-  ExplicitWidth = 618
-  ExplicitHeight = 413
+  ExplicitWidth = 612
+  ExplicitHeight = 394
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 286
     Width = 606
-    ExplicitTop = 277
-    ExplicitWidth = 600
+    ExplicitTop = 286
+    ExplicitWidth = 606
     inherited SB_Inserir: TSpeedButton
       Left = 3
       ExplicitLeft = -21
@@ -50,8 +51,8 @@ inherited RegService: TRegService
   inherited pnl_fundo: TPanel
     Width = 606
     Height = 286
-    ExplicitWidth = 600
-    ExplicitHeight = 277
+    ExplicitWidth = 606
+    ExplicitHeight = 286
     object Panel1: TPanel
       Left = 2
       Top = 2
@@ -61,8 +62,6 @@ inherited RegService: TRegService
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 596
-      ExplicitHeight = 273
       object L_Codigo: TLabel
         Left = 9
         Top = 6
@@ -76,13 +75,13 @@ inherited RegService: TRegService
         Font.Style = []
         ParentFont = False
       end
-      object L_DescricaoServico: TLabel
+      object L_Descricao: TLabel
         Left = 116
         Top = 7
         Width = 49
         Height = 14
         Caption = 'Descri'#231#227'o'
-        FocusControl = E_DescricaoServico
+        FocusControl = E_Descricao
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -96,7 +95,6 @@ inherited RegService: TRegService
         Width = 73
         Height = 14
         Caption = 'Pre'#231'o de custo'
-        FocusControl = E_PrecoCusto
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -143,6 +141,7 @@ inherited RegService: TRegService
         Font.Style = []
         NumGlyphs = 2
         ParentFont = False
+        OnClick = SB_GruposClick
       end
       object L_Aq_Margem: TLabel
         Left = 325
@@ -198,6 +197,7 @@ inherited RegService: TRegService
         Font.Style = []
         NumGlyphs = 2
         ParentFont = False
+        OnClick = Sb_MedidaClick
       end
       object L_Aq_Comissao: TLabel
         Left = 144
@@ -212,7 +212,7 @@ inherited RegService: TRegService
         Font.Style = []
         ParentFont = False
       end
-      object E_DescricaoServico: TEdit
+      object E_Descricao: TEdit
         Left = 116
         Top = 21
         Width = 476
@@ -225,20 +225,6 @@ inherited RegService: TRegService
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-      end
-      object E_PrecoCusto: TEdit
-        Left = 233
-        Top = 99
-        Width = 90
-        Height = 22
-        CharCase = ecUpperCase
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 6
       end
       object E_Codigo: TEdit
         Left = 8
@@ -302,7 +288,7 @@ inherited RegService: TRegService
       object E_Vl_Venda: TEdit_Setes
         Left = 416
         Top = 99
-        Width = 90
+        Width = 87
         Height = 22
         Alignment = taRightJustify
         CharCase = ecUpperCase
@@ -329,9 +315,9 @@ inherited RegService: TRegService
         TabOrder = 4
       end
       object e_aq_comissao: TEdit_Setes
-        Left = 141
+        Left = 144
         Top = 99
-        Width = 90
+        Width = 88
         Height = 22
         Alignment = taRightJustify
         CharCase = ecUpperCase
@@ -421,6 +407,7 @@ inherited RegService: TRegService
               Font.Style = []
               NumGlyphs = 2
               ParentFont = False
+              OnClick = Sb_CategoryClick
             end
             object Trw_Cadastro: TTreeView
               Left = 3
@@ -439,6 +426,45 @@ inherited RegService: TRegService
           end
         end
       end
+      object E_PrecoCusto: TEdit_Setes
+        Left = 234
+        Top = 99
+        Width = 88
+        Height = 22
+        Alignment = taRightJustify
+        AutoSize = False
+        CharCase = ecUpperCase
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        Text = ''
+      end
+    end
+  end
+  object memCategory: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 136
+    Top = 176
+    object memCategorycodigo: TIntegerField
+      FieldName = 'codigo'
+    end
+    object memCategorydescricao: TStringField
+      FieldName = 'descricao'
+      Size = 100
+    end
+    object memCategoryposicao: TStringField
+      FieldName = 'posicao'
+      Size = 40
     end
   end
 end

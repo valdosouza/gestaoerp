@@ -3,7 +3,7 @@ inherited SeaCategory: TSeaCategory
   ClientHeight = 370
   ClientWidth = 578
   ExplicitWidth = 584
-  ExplicitHeight = 419
+  ExplicitHeight = 414
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -19,6 +19,7 @@ inherited SeaCategory: TSeaCategory
     inherited DBG_Pesquisa: TDBGrid
       Width = 476
       Height = 268
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 478
@@ -88,7 +89,7 @@ inherited SeaCategory: TSeaCategory
         Font.Style = []
         ParentFont = False
       end
-      object SeaCategory: TEdit
+      object E_BuscaDescricao: TEdit
         Left = 57
         Top = 32
         Width = 492
@@ -121,5 +122,15 @@ inherited SeaCategory: TSeaCategory
   inherited MnuBase: TMainMenu
     Left = 80
     Top = 144
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+    end
   end
 end

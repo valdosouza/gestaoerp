@@ -25,6 +25,8 @@ type
     procedure SetRegister; override;
   public
     medida : TControllerMedida;
+
+    procedure SearchMeasure;
   end;
 
 var
@@ -67,6 +69,13 @@ begin
 end;
 
 procedure TSeaMeasure.Search;
+begin
+  SearchMeasure;
+
+  inherited;
+end;
+
+procedure TSeaMeasure.SearchMeasure;
 var
   i: Integer;
 begin
@@ -92,11 +101,10 @@ begin
   inherited;
 end;
 
+
 procedure TSeaMeasure.SetRegister;
 begin
   openRegister(0);
 end;
-
-end.
 
 end.

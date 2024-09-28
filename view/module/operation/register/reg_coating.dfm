@@ -1,16 +1,15 @@
-inherited BaseRegistry1: TBaseRegistry1
+inherited RegCoating: TRegCoating
   Caption = 'Cadastro de Revestimento dos Produtos'
   ClientHeight = 121
   ClientWidth = 596
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 612
-  ExplicitHeight = 180
+  ExplicitWidth = 602
+  ExplicitHeight = 165
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 57
     Width = 596
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 73
+    ExplicitTop = 57
     ExplicitWidth = 596
     inherited SB_Inserir: TSpeedButton
       Left = -2
@@ -46,12 +45,11 @@ inherited BaseRegistry1: TBaseRegistry1
   inherited pnl_fundo: TPanel
     Width = 596
     Height = 57
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 596
-    ExplicitHeight = 73
+    ExplicitHeight = 57
     object L_Descricao: TLabel
-      Left = 5
-      Top = 4
+      Left = 60
+      Top = 8
       Width = 49
       Height = 14
       Caption = 'Descri'#231#227'o'
@@ -63,9 +61,23 @@ inherited BaseRegistry1: TBaseRegistry1
       Font.Style = []
       ParentFont = False
     end
+    object Lb_Codigo: TLabel
+      Left = 4
+      Top = 8
+      Width = 33
+      Height = 14
+      Caption = 'C'#243'digo'
+      FocusControl = E_Codigo
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
     object E_Descricao: TEdit
-      Left = 5
-      Top = 21
+      Left = 60
+      Top = 24
       Width = 580
       Height = 22
       CharCase = ecUpperCase
@@ -77,5 +89,24 @@ inherited BaseRegistry1: TBaseRegistry1
       ParentFont = False
       TabOrder = 0
     end
+    object E_Codigo: TEdit
+      Left = 5
+      Top = 24
+      Width = 49
+      Height = 22
+      Color = clScrollBar
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 120
+    Top = 56
   end
 end
