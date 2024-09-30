@@ -31,10 +31,6 @@ Type
   End;
 implementation
 
-{ TPLanoContas }
-
-{ TTaxIcmsNr }
-
 procedure TTaxIcmsNr.setFTBI_CODIGO(const Value: Integer);
 begin
   FTBI_CODIGO := Value;

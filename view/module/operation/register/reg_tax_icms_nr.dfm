@@ -3,14 +3,14 @@ inherited RegTaxIcmsNr: TRegTaxIcmsNr
   ClientHeight = 191
   ClientWidth = 562
   ExplicitWidth = 568
-  ExplicitHeight = 240
+  ExplicitHeight = 235
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 127
     Width = 562
-    ExplicitTop = 123
-    ExplicitWidth = 556
+    ExplicitTop = 127
+    ExplicitWidth = 562
     inherited SB_Inserir: TSpeedButton
       Left = 3
       ExplicitLeft = 3
@@ -51,8 +51,8 @@ inherited RegTaxIcmsNr: TRegTaxIcmsNr
   inherited pnl_fundo: TPanel
     Width = 562
     Height = 127
-    ExplicitWidth = 556
-    ExplicitHeight = 123
+    ExplicitWidth = 562
+    ExplicitHeight = 127
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -62,8 +62,6 @@ inherited RegTaxIcmsNr: TRegTaxIcmsNr
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 552
-      ExplicitHeight = 119
       object L_Codigo: TLabel
         Left = 8
         Top = 8
@@ -132,6 +130,7 @@ inherited RegTaxIcmsNr: TRegTaxIcmsNr
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        MaxLength = 100
         ParentFont = False
         TabOrder = 2
       end
