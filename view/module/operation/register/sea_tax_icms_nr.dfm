@@ -3,7 +3,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
   ClientHeight = 333
   ClientWidth = 661
   ExplicitWidth = 667
-  ExplicitHeight = 377
+  ExplicitHeight = 382
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -11,8 +11,8 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
     Width = 655
     Height = 259
     ExplicitTop = 71
-    ExplicitWidth = 565
-    ExplicitHeight = 234
+    ExplicitWidth = 655
+    ExplicitHeight = 259
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 651
     end
@@ -36,8 +36,8 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
     inherited pnl_pesq_right: TPanel
       Left = 561
       Height = 241
-      ExplicitLeft = 471
-      ExplicitHeight = 216
+      ExplicitLeft = 561
+      ExplicitHeight = 241
       inherited Sb_Sair_0: TSpeedButton
         Top = 183
         Height = 55
@@ -75,7 +75,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
   inherited Pnl_Parametros: TPanel
     Width = 655
     Height = 62
-    ExplicitWidth = 565
+    ExplicitWidth = 655
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
@@ -91,7 +91,6 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 561
       object L_BuscaDescricao: TLabel
         Left = 57
         Top = 16
@@ -152,7 +151,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
     Top = 202
   end
   inherited cds_search: TClientDataSet
-    Top = 146
+    Top = 130
     object cds_searchcodigo: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'codigo'

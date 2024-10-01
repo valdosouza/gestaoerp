@@ -3,7 +3,7 @@ inherited RegTaxIcmsNr: TRegTaxIcmsNr
   ClientHeight = 191
   ClientWidth = 562
   ExplicitWidth = 568
-  ExplicitHeight = 235
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -153,6 +153,6 @@ inherited RegTaxIcmsNr: TRegTaxIcmsNr
   end
   inherited MnuBase: TMainMenu
     Left = 160
-    Top = 8
+    Top = 16
   end
 end

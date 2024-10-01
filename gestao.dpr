@@ -77,9 +77,9 @@ uses
   sea_tax_icms_sn in 'view\module\operation\register\sea_tax_icms_sn.pas' {SeaTaxIcmsSn},
   reg_tax_icms_sn in 'view\module\operation\register\reg_tax_icms_sn.pas' {RegTaxIcmsSn},
   sea_tax_icms_nr in 'view\module\operation\register\sea_tax_icms_nr.pas' {SeaTaxIcmsNr},
-  reg_tax_icms_nr in 'view\module\operation\register\reg_tax_icms_nr.pas' {RegTaxIcmsNr},
   reg_stocks in 'view\module\operation\register\reg_stocks.pas' {RegStocks},
-  sea_stocks in 'view\module\operation\register\sea_stocks.pas' {SeaStocks};
+  sea_stocks in 'view\module\operation\register\sea_stocks.pas' {SeaStocks},
+  reg_tax_icms_nr in 'view\module\operation\register\reg_tax_icms_nr.pas' {RegTaxIcmsNr};
 
 {$R *.res}
 
@@ -89,5 +89,6 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
+  Application.CreateForm(TRegTaxIcmsNr, RegTaxIcmsNr);
   Application.Run;
 end.

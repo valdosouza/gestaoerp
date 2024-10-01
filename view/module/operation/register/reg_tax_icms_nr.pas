@@ -126,7 +126,6 @@ end;
 function TRegTaxIcmsNr.ValidateSave: boolean;
 begin
   Result := True;
-
   if Trim(E_Grupo.Text) = EmptyStr then
   begin
     TMsgSetes.ValidaPreenchimentoCampo(L_Grupo.Caption);

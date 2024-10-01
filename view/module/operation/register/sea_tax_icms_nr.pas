@@ -90,7 +90,6 @@ begin
     cds_search.AppendRecord([TaxIcmsNr.Lista[i].Codigo, TaxIcmsNr.Lista[i].Descricao]);
 
   cds_search.EnableControls;
-
   inherited;
 end;
 
