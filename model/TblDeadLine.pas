@@ -23,7 +23,7 @@ Type
     property Codigo: Integer read FPRZ_CODIGO write setFPRZ_CODIGO;
 
     [FieldName('PRZ_PRAZO')]
-    property Prazo: String read FPRZ_PRAZO write setFPRZ_PRAZO;
+    property Descricao: String read FPRZ_PRAZO write setFPRZ_PRAZO;
 
     [FieldName('PRZ_VL_MINIMO')]
     property ValorMinima: Real read FPRZ_VL_MINIMO write setFPRZ_VL_MINIMO;
