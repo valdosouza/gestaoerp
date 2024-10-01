@@ -53,6 +53,7 @@ inherited FrMain: TFrMain
       end
       object MnuArqCadSrvOper: TMenuItem
         Caption = 'Cadastro &Servi'#231'os'
+        OnClick = MnuArqCadSrvOperClick
       end
       object ipoVeculo1: TMenuItem
         Caption = 'Tipo Ve'#237'culo'
@@ -154,6 +155,13 @@ inherited FrMain: TFrMain
       end
       object OrigemdaVenda1: TMenuItem
         Caption = 'Origem da Venda'
+      end
+      object N17: TMenuItem
+        Caption = '-'
+      end
+      object Revestimento1: TMenuItem
+        Caption = 'Revestimento'
+        OnClick = Revestimento1Click
       end
       object OrigemdoCliente1: TMenuItem
         Caption = 'Origem do Cliente'

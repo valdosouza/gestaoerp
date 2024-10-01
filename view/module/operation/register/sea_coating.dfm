@@ -3,7 +3,7 @@ inherited SeaCoating: TSeaCoating
   ClientHeight = 298
   ClientWidth = 604
   ExplicitWidth = 610
-  ExplicitHeight = 342
+  ExplicitHeight = 347
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -12,7 +12,7 @@ inherited SeaCoating: TSeaCoating
     Height = 240
     ExplicitTop = 55
     ExplicitWidth = 598
-    ExplicitHeight = 229
+    ExplicitHeight = 240
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 594
     end
@@ -20,12 +20,24 @@ inherited SeaCoating: TSeaCoating
       Width = 502
       Height = 222
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 371
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 504
       Height = 222
       ExplicitLeft = 504
-      ExplicitHeight = 211
+      ExplicitHeight = 222
       inherited Sb_Sair_0: TSpeedButton
         Top = 165
         Height = 54
@@ -63,7 +75,6 @@ inherited SeaCoating: TSeaCoating
   inherited Pnl_Parametros: TPanel
     Width = 598
     Height = 46
-    ExplicitLeft = 8
     ExplicitWidth = 598
     ExplicitHeight = 46
     object Lb_Codigo: TLabel

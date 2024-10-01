@@ -180,10 +180,6 @@
             <Form>RegBannerSite</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_category.pas">
-            <Form>RegCategory</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_city.pas">
             <Form>RegCity</Form>
             <FormType>dfm</FormType>
@@ -210,10 +206,6 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_banner_site.pas">
             <Form>SeaBannerSite</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\operation\register\sea_category.pas">
-            <Form>SeaCategory</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_city.pas">
@@ -286,10 +278,6 @@
         </DCCReference>
         <DCCReference Include="view\module\banking\register\reg_billing_portfolio.pas">
             <Form>RegBillingPortfolio</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="view\module\banking\register\reg_electronic_card.pas">
-            <Form>RegElectronicCard</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\banking\register\reg_electronic_slip.pas">
@@ -378,10 +366,6 @@
             <Form>RegButtonImage</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\sea_button_image.pas">
-            <Form>SeaButtonImage</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_tax_icms_sn.pas">
             <Form>SeaTaxIcmsSn</Form>
             <FormType>dfm</FormType>
@@ -404,6 +388,38 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_stocks.pas">
             <Form>SeaStocks</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\reg_category.pas">
+            <Form>RegCategory</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\reg_coating.pas">
+            <Form>RegCoating</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\sea_coating.pas">
+            <Form>SeaCoating</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\sea_button_image.pas">
+            <Form>SeaButtonImage</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\banking\register\reg_electronic_card.pas">
+            <Form>RegElectronicCard</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\sea_category.pas">
+            <Form>SeaCategory</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\sea_kind_profitability.pas">
+            <Form>Seakindprofitability</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\reg_subgroup.pas">
+            <Form>RegSubgroup</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

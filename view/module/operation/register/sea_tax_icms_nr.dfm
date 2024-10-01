@@ -2,10 +2,9 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
   Caption = 'Pesquisa de Situa'#231#245'es Tribut'#225'rias'
   ClientHeight = 308
   ClientWidth = 571
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 583
-  ExplicitHeight = 371
+  ExplicitWidth = 577
+  ExplicitHeight = 357
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
@@ -14,9 +13,6 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
     ExplicitTop = 71
     ExplicitWidth = 559
     ExplicitHeight = 230
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 561
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 469
       Height = 216
