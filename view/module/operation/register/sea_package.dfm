@@ -1,15 +1,15 @@
 inherited SeaPackage: TSeaPackage
   Caption = 'Pesquisa de Embalagens'
-  ClientHeight = 333
+  ClientHeight = 346
   ClientWidth = 567
   ExplicitWidth = 573
-  ExplicitHeight = 377
+  ExplicitHeight = 390
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 561
-    Height = 259
+    Height = 272
     ExplicitTop = 71
     ExplicitWidth = 561
     ExplicitHeight = 259
@@ -18,28 +18,28 @@ inherited SeaPackage: TSeaPackage
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 465
-      Height = 241
+      Height = 254
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 467
-      Height = 241
+      Height = 254
       ExplicitLeft = 467
       ExplicitHeight = 241
       inherited Sb_Sair_0: TSpeedButton
-        Top = 178
+        Top = 191
         ExplicitTop = 178
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 115
+        Top = 128
         ExplicitTop = 115
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 52
+        Top = 65
         ExplicitTop = 52
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -11
+        Top = 2
         ExplicitTop = -11
       end
     end
