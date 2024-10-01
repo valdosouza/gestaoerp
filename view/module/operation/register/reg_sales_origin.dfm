@@ -2,15 +2,14 @@ inherited RegSalesOrigin: TRegSalesOrigin
   Caption = 'Cadastro de Origem da Venda'
   ClientHeight = 130
   ClientWidth = 566
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 582
-  ExplicitHeight = 189
+  ExplicitWidth = 572
+  ExplicitHeight = 174
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 66
     Width = 566
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 90
+    ExplicitTop = 66
     ExplicitWidth = 566
     inherited SB_Inserir: TSpeedButton
       Left = 11
@@ -52,9 +51,8 @@ inherited RegSalesOrigin: TRegSalesOrigin
   inherited pnl_fundo: TPanel
     Width = 566
     Height = 66
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 566
-    ExplicitHeight = 90
+    ExplicitHeight = 66
     object L_Codigo: TLabel
       Left = 11
       Top = 8

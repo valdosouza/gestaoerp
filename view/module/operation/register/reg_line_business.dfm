@@ -2,14 +2,13 @@ inherited RegLineBusiness: TRegLineBusiness
   Caption = 'Cadastro de Ramo de Atividade'
   ClientHeight = 146
   ClientWidth = 564
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 580
-  ExplicitHeight = 205
+  ExplicitWidth = 570
+  ExplicitHeight = 190
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 82
     Width = 564
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 82
     ExplicitWidth = 564
     inherited SB_Inserir: TSpeedButton
@@ -52,8 +51,6 @@ inherited RegLineBusiness: TRegLineBusiness
   inherited pnl_fundo: TPanel
     Width = 564
     Height = 82
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = -1
     ExplicitWidth = 564
     ExplicitHeight = 82
     object L_Codigo: TLabel
