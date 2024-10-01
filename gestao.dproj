@@ -378,10 +378,6 @@
             <Form>SeaTaxIcmsNr</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="view\module\operation\register\reg_tax_icms_nr.pas">
-            <Form>RegTaxIcmsNr</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_stocks.pas">
             <Form>RegStocks</Form>
             <FormType>dfm</FormType>
@@ -420,6 +416,7 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_subgroup.pas">
             <Form>RegSubgroup</Form>
+
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

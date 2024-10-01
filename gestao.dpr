@@ -73,7 +73,6 @@ uses
   sea_tax_icms_sn in 'view\module\operation\register\sea_tax_icms_sn.pas' {SeaTaxIcmsSn},
   reg_tax_icms_sn in 'view\module\operation\register\reg_tax_icms_sn.pas' {RegTaxIcmsSn},
   sea_tax_icms_nr in 'view\module\operation\register\sea_tax_icms_nr.pas' {SeaTaxIcmsNr},
-  reg_tax_icms_nr in 'view\module\operation\register\reg_tax_icms_nr.pas' {RegTaxIcmsNr},
   reg_stocks in 'view\module\operation\register\reg_stocks.pas' {RegStocks},
   sea_stocks in 'view\module\operation\register\sea_stocks.pas' {SeaStocks},
   reg_category in 'view\module\operation\register\reg_category.pas' {RegCategory},
@@ -93,10 +92,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TSeaButtonImage, SeaButtonImage);
-  Application.CreateForm(TRegElectronicCard, RegElectronicCard);
-  Application.CreateForm(TSeaCategory, SeaCategory);
-  Application.CreateForm(TSeakindprofitability, Seakindprofitability);
-  Application.CreateForm(TRegSubgroup, RegSubgroup);
   Application.Run;
 end.
