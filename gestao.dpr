@@ -21,7 +21,6 @@ uses
   sea_printers in 'view\module\operation\admin\sea_printers.pas' {SeaPrinters},
   sea_users in 'view\module\operation\admin\sea_users.pas' {SeaUsers},
   reg_banner_site in 'view\module\operation\register\reg_banner_site.pas' {RegBannerSite},
-  reg_category in 'view\module\operation\register\reg_category.pas' {RegCategory},
   reg_city in 'view\module\operation\register\reg_city.pas' {RegCity},
   reg_ext_motive in 'view\module\operation\register\reg_ext_motive.pas' {RegExtMotive},
   reg_group_menu in 'view\module\operation\register\reg_group_menu.pas' {RegGroupMenu},
@@ -29,7 +28,6 @@ uses
   reg_subgroup_menu in 'view\module\operation\register\reg_subgroup_menu.pas' {RegSubgroupMenu},
   reg_uf in 'view\module\operation\register\reg_uf.pas' {RegUf},
   sea_banner_site in 'view\module\operation\register\sea_banner_site.pas' {SeaBannerSite},
-  sea_category in 'view\module\operation\register\sea_category.pas' {SeaCategory},
   sea_city in 'view\module\operation\register\sea_city.pas' {SeaCity},
   sea_config_tag in 'view\module\operation\register\sea_config_tag.pas' {SeaConfigTag},
   sea_ext_motive in 'view\module\operation\register\sea_ext_motive.pas' {SeaExtMotive},
@@ -47,7 +45,6 @@ uses
   reg_banking_account in 'view\module\banking\register\reg_banking_account.pas' {RegBankingAccount},
   reg_banking_history in 'view\module\banking\register\reg_banking_history.pas' {RegBankingHistory},
   reg_billing_portfolio in 'view\module\banking\register\reg_billing_portfolio.pas' {RegBillingPortfolio},
-  reg_electronic_card in 'view\module\banking\register\reg_electronic_card.pas' {RegElectronicCard},
   reg_electronic_slip in 'view\module\banking\register\reg_electronic_slip.pas' {RegElectronicSlip},
   sea_banking_account in 'view\module\banking\register\sea_banking_account.pas' {SeaBankingAccount},
   sea_banking_history in 'view\module\banking\register\sea_banking_history.pas' {SeaBankingHistory},
@@ -73,13 +70,19 @@ uses
   sea_customer_origin in 'view\module\operation\register\sea_customer_origin.pas' {SeaCustomerOrigin},
   reg_customer_origin in 'view\module\operation\register\reg_customer_origin.pas' {RegCustomerOrigin},
   reg_button_image in 'view\module\operation\register\reg_button_image.pas' {RegButtonImage},
-  sea_button_image in 'view\module\operation\register\sea_button_image.pas' {SeaButtonImage},
   sea_tax_icms_sn in 'view\module\operation\register\sea_tax_icms_sn.pas' {SeaTaxIcmsSn},
   reg_tax_icms_sn in 'view\module\operation\register\reg_tax_icms_sn.pas' {RegTaxIcmsSn},
   sea_tax_icms_nr in 'view\module\operation\register\sea_tax_icms_nr.pas' {SeaTaxIcmsNr},
   reg_stocks in 'view\module\operation\register\reg_stocks.pas' {RegStocks},
   sea_stocks in 'view\module\operation\register\sea_stocks.pas' {SeaStocks},
-  reg_tax_icms_nr in 'view\module\operation\register\reg_tax_icms_nr.pas' {RegTaxIcmsNr};
+  reg_category in 'view\module\operation\register\reg_category.pas' {RegCategory},
+  reg_coating in 'view\module\operation\register\reg_coating.pas' {RegCoating},
+  sea_coating in 'view\module\operation\register\sea_coating.pas' {SeaCoating},
+  sea_button_image in 'view\module\operation\register\sea_button_image.pas' {SeaButtonImage},
+  reg_electronic_card in 'view\module\banking\register\reg_electronic_card.pas' {RegElectronicCard},
+  sea_category in 'view\module\operation\register\sea_category.pas' {SeaCategory},
+  sea_kind_profitability in 'view\module\operation\register\sea_kind_profitability.pas' {Seakindprofitability},
+  reg_subgroup in 'view\module\operation\register\reg_subgroup.pas' {RegSubgroup};
 
 {$R *.res}
 
@@ -89,6 +92,5 @@ begin
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TDM_ListaConsultas, DM_ListaConsultas);
   Application.CreateForm(TFrMain, FrMain);
-  Application.CreateForm(TRegTaxIcmsNr, RegTaxIcmsNr);
   Application.Run;
 end.

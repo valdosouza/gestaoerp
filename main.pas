@@ -283,6 +283,8 @@ type
     N15: TMenuItem;
     CarteiradeCobrana1: TMenuItem;
     N21: TMenuItem;
+    N17: TMenuItem;
+    Revestimento1: TMenuItem;
     procedure MnuModOpeFinClick(Sender: TObject);
     procedure MnuModOperBcoClick(Sender: TObject);
     procedure MnuPslOperacaoClick(Sender: TObject);
@@ -315,6 +317,8 @@ type
     procedure Interface1Click(Sender: TObject);
     procedure Perfil2Click(Sender: TObject);
     procedure Perfil1Click(Sender: TObject);
+    procedure Revestimento1Click(Sender: TObject);
+    procedure MnuArqCadSrvOperClick(Sender: TObject);
   protected
     procedure IniciaVariaveis;override;
   private
@@ -373,6 +377,8 @@ uses un_dm,
     sea_group_menu,
     sea_package,
     sea_uf,
+    sea_coating,
+    sea_service,
     sea_receipt, sea_profile, sea_oper_interface;
 
 
@@ -457,6 +463,11 @@ begin
   MenuPessoal;
 end;
 
+procedure TFrMain.Revestimento1Click(Sender: TObject);
+begin
+  ChamarTela(TSeaCoating);
+end;
+
 procedure TFrMain.MnuReciboClick(Sender: TObject);
 begin
   ChamarTela(TSeaReceipt);
@@ -465,6 +476,12 @@ end;
 procedure TFrMain.MnuAjdManuUsuOperClick(Sender: TObject);
 begin
   ChamarTela(TSeaUsers);
+end;
+
+procedure TFrMain.MnuArqCadSrvOperClick(Sender: TObject);
+begin
+  inherited;
+  ChamarTela(TSeaService);
 end;
 
 procedure TFrMain.MnuArqContaBcoClick(Sender: TObject);

@@ -3,7 +3,7 @@ inherited RegGroupMenu: TRegGroupMenu
   ClientHeight = 479
   ClientWidth = 579
   ExplicitWidth = 585
-  ExplicitHeight = 523
+  ExplicitHeight = 528
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -123,7 +123,7 @@ inherited RegGroupMenu: TRegGroupMenu
         TabOrder = 0
       end
       object E_Vl_Desconto: TEdit
-        Left = 464
+        Left = 468
         Top = 21
         Width = 92
         Height = 21

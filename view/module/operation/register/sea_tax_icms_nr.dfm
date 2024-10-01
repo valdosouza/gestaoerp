@@ -1,9 +1,9 @@
 inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
   Caption = 'Pesquisa de Situa'#231#245'es Tribut'#225'rias'
-  ClientHeight = 333
-  ClientWidth = 661
-  ExplicitWidth = 667
-  ExplicitHeight = 382
+  ClientHeight = 308
+  ClientWidth = 571
+  ExplicitWidth = 577
+  ExplicitHeight = 357
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel

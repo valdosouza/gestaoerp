@@ -1,85 +1,48 @@
-inherited SeaCoating: TSeaCoating
-  Caption = 'Pesquisa de Revestimento dos Produtos'
-  ClientHeight = 298
-  ClientWidth = 604
-  ExplicitWidth = 610
-  ExplicitHeight = 347
+inherited SeaDeadLine: TSeaDeadLine
+  Caption = 'Pesquisa de Formas de Pagto'
+  ClientHeight = 352
+  ClientWidth = 567
+  ExplicitWidth = 573
+  ExplicitHeight = 396
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
-    Top = 55
-    Width = 598
-    Height = 240
-    ExplicitTop = 55
-    ExplicitWidth = 598
-    ExplicitHeight = 240
+    Top = 76
+    Width = 561
+    Height = 273
     inherited Lb_ResultadoPesquisa: TLabel
-      Width = 594
+      Width = 557
     end
     inherited DBG_Pesquisa: TDBGrid
-      Width = 502
-      Height = 222
+      Width = 465
+      Height = 255
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'codigo'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'descricao'
-          Width = 371
-          Visible = True
-        end>
     end
     inherited pnl_pesq_right: TPanel
-      Left = 504
-      Height = 222
-      ExplicitLeft = 504
-      ExplicitHeight = 222
+      Left = 467
+      Height = 255
       inherited Sb_Sair_0: TSpeedButton
-        Top = 165
-        Height = 54
-        ExplicitLeft = 3
-        ExplicitTop = 166
-        ExplicitWidth = 86
-        ExplicitHeight = 54
+        Top = 192
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 109
-        Height = 53
-        ExplicitLeft = 3
-        ExplicitTop = 111
-        ExplicitWidth = 86
-        ExplicitHeight = 53
+        Top = 129
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 54
-        Height = 52
-        ExplicitLeft = 3
-        ExplicitTop = 57
-        ExplicitWidth = 86
-        ExplicitHeight = 52
+        Top = 66
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 0
-        Height = 51
-        ExplicitLeft = 3
-        ExplicitTop = 4
-        ExplicitWidth = 86
-        ExplicitHeight = 51
+        Top = 3
       end
     end
   end
   inherited Pnl_Parametros: TPanel
-    Width = 598
-    Height = 46
-    ExplicitWidth = 598
-    ExplicitHeight = 46
+    Width = 561
+    Height = 67
+    ExplicitWidth = 687
+    ExplicitHeight = 67
     object Lb_Codigo: TLabel
       Left = 7
-      Top = 4
+      Top = 16
       Width = 33
       Height = 14
       Caption = 'C'#243'digo'
@@ -92,7 +55,7 @@ inherited SeaCoating: TSeaCoating
     end
     object Lb_Descricao: TLabel
       Left = 59
-      Top = 4
+      Top = 16
       Width = 49
       Height = 14
       Caption = 'Descri'#231#227'o'
@@ -105,7 +68,7 @@ inherited SeaCoating: TSeaCoating
     end
     object E_BuscaCodigo: TEdit
       Left = 7
-      Top = 20
+      Top = 32
       Width = 49
       Height = 22
       CharCase = ecUpperCase
@@ -119,7 +82,7 @@ inherited SeaCoating: TSeaCoating
     end
     object E_BuscaDescricao: TEdit
       Left = 59
-      Top = 20
+      Top = 32
       Width = 492
       Height = 22
       CharCase = ecUpperCase
@@ -134,13 +97,9 @@ inherited SeaCoating: TSeaCoating
   end
   inherited MnuBase: TMainMenu
     Left = 152
-    Top = 128
-  end
-  inherited ds_search: TDataSource
-    Top = 234
+    Top = 104
   end
   inherited cds_search: TClientDataSet
-    Top = 178
     object cds_searchcodigo: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'codigo'

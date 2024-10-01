@@ -18,10 +18,10 @@ Type
   public
     [KeyField('ID')]
     [FieldName('ID')]
-    property ID: Integer read FID write setFPID;
+    property Codigo: Integer read FID write setFPID;
 
     [FieldName('DESCRIPTION')]
-    property Description: String read FDESCRIPTION write setFDESCRIPTION;
+    property Descricao: String read FDESCRIPTION write setFDESCRIPTION;
 
   End;
 

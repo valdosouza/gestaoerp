@@ -2,10 +2,9 @@ inherited RegElectronicCard: TRegElectronicCard
   Caption = 'Cadastro de Cart'#245'es Eletr'#244'nicos'
   ClientHeight = 249
   ClientWidth = 566
-  ExplicitLeft = 3
-  ExplicitTop = 3
-  ExplicitWidth = 578
-  ExplicitHeight = 312
+  ExplicitWidth = 572
+  ExplicitHeight = 298
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 185

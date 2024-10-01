@@ -3,7 +3,7 @@ inherited RegCategory: TRegCategory
   ClientHeight = 384
   ClientWidth = 560
   ExplicitWidth = 566
-  ExplicitHeight = 428
+  ExplicitHeight = 433
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
@@ -162,7 +162,6 @@ inherited RegCategory: TRegCategory
     SortType = stText
     TabOrder = 2
     OnClick = Trw_CadastroClick
-    ExplicitTop = 56
   end
   inherited MnuBase: TMainMenu
     Left = 280
