@@ -7,13 +7,16 @@ uses  STDatabase,Classes, STQuery, SysUtils,ControllerBase,
       ControllerItensNFL, Generics.Collections, ControllerParcelamento,
       ControllerColaborador, System.Math,objOrderSale,tblOrderItem,ObjCustomer,
       ControllerFormaPagamento,ControllerCtrlEstoque, ControllerRestaurante,
-      FireDAC.Stan.Param, ACBrUtil.Math;
+      FireDAC.Stan.Param, ACBrUtil.Math, prm_order;
 
 Type
   TListaPedido = TObjectList<TPedido>;
   TControllerPedido = Class(TControllerBase)
 
   private
+    FParametros: TPrmOrder;
+    procedure setFParametros(const Value: TPrmOrder);
+
   protected
 
   public
@@ -78,15 +81,19 @@ Type
     procedure deleteByCodigoWeb(Id:Integer);
     function ValidaParcelamento(ValorCredito:Real):Boolean;
     function LiberaEmUso:boolean;
+    procedure Retonar;
     function  CorrigirSequenciaItens:Boolean;
+    procedure pC_AutorizarPedido;
+
+    procedure Search;
+    property Parametros : TPrmOrder read FParametros write setFParametros;
   End;
 
 implementation
 
 { ControllerPedido }
 
-uses Un_Regra_Negocio;
-
+uses Un_Regra_Negocio, env;
 
 procedure TControllerPedido.alteraStatus;
 Var
@@ -298,6 +305,7 @@ begin
   Cliente.clear;
   Itens.clear;
   Parcelamento.Clear;
+  FParametros.Clear;
 end;
 
 
@@ -380,6 +388,7 @@ begin
   ExportGestaoWeb := TControllerGestaoWeb.create(Self);
   Cliente := TcontrollerCliente.create(Self);
   Restaurante := TControllerRestaurante.create(Self);
+  FParametros := TPrmOrder.Create;
 end;
 
 function TControllerPedido.CriaPedidoOrcamento: Boolean;
@@ -503,6 +512,7 @@ begin
   CtrlEstoque.DisposeOf;
   ExportGestaoWeb.DisposeOf;
   Restaurante.DisposeOf;
+  FParametros.DisposeOf;
   inherited;
 end;
 
@@ -621,8 +631,26 @@ Begin
     Begin
       SQL.Add('UPDATE tb_pedido SET PED_emuso = null where ped_codigo =:ped_codigo');
       ParamByName('PED_CODIGO').AsInteger := Registro.codigo;
-      Active := True;
-      FetchAll;
+      ExecSQL;
+    end;
+  finally
+    FinalizaQuery(Lc_Qry);
+  end;
+end;
+
+procedure TControllerPedido.Retonar;
+Var
+  Lc_Qry : TSTQuery;
+Begin
+  Lc_Qry := GeraQuery;
+  try
+    with Lc_Qry do
+    Begin
+      SQL.Add('UPDATE tb_pedido SET PED_DATA = :PED_DATA, PED_FATURADO = :PED_FATURADO where ped_codigo =:ped_codigo');
+      ParamByName('PED_DATA').AsDate := Date;
+      ParamByName('PED_FATURADO').AsString := Sigla_N;
+      ParamByName('PED_CODIGO').AsInteger := Registro.codigo;
+      ExecSQL;
     end;
   finally
     FinalizaQuery(Lc_Qry);
@@ -663,6 +691,123 @@ begin
 
 end;
 
+procedure TControllerPedido.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TPedido;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text :=
+        'SELECT Tb_pedido.*, tb_formapagto.FPT_DESCRICAO, Tb_empresa.EMP_NOME, tb_usuario.USU_NOME ' +
+        '  FROM TB_PEDIDO ' +
+        '  JOIN TB_EMPRESA Tb_empresa ON Tb_empresa.EMP_CODIGO = Tb_pedido.PED_CODEMP ' +
+        '  LEFT OUTER JOIN TB_FORMAPAGTO tb_formapagto ON tb_formapagto.FPT_CODIGO = Tb_pedido.PED_CODFPG ' +
+        '  LEFT OUTER JOIN TB_USUARIO tb_usuario on tb_usuario.USU_CODIGO = Tb_pedido.PED_CODUSU ' +
+        ' WHERE PED_CODIGO IS NOT NULL ';
+
+      if FParametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND TB_PEDIDO.PED_CODIGO = :PED_CODIGO';
+        ParamByName('PED_CODIGO').AsInteger := FParametros.FieldName.Codigo;
+      end;
+
+      if FParametros.FieldName.DataIni > 0 then
+      begin
+        SQL.Text := SQL.Text + 'AND TB_PEDIDO.PED_DATA BETWEEN :PED_DATAINI AND :PED_DATAFIM ';
+        ParamByName('PED_DATAINI').AsDate := FParametros.FieldName.DataIni;
+        ParamByName('PED_DATAFIM').AsDate := FParametros.FieldName.DataFim;
+      end;
+
+      if FParametros.FieldName.Numero > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND TB_PEDIDO.PED_NUMERO = :PED_NUMERO';
+        ParamByName('PED_NUMERO').AsInteger := FParametros.FieldName.Numero;
+      end;
+
+      if FParametros.FieldName.EMP_NOME <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND Tb_empresa.EMP_NOME LIKE :EMP_NOME';
+        ParamByName('EMP_NOME').AsString := Concat('%',FParametros.FieldName.EMP_NOME,'%');
+      end;
+
+      if FParametros.FieldName.EMP_FANTASIA <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND Tb_empresa.EMP_FANTASIA LIKE :EMP_FANTASIA';
+        ParamByName('EMP_FANTASIA').AsString := Concat('%',FParametros.FieldName.EMP_FANTASIA,'%');
+      end;
+
+      if FParametros.FieldName.Faturado <> EmptyStr then
+      begin
+        if FParametros.FieldName.Faturado = SIGLA_S then
+          SQL.Text := SQL.Text + ' AND TB_PEDIDO.PED_FATURADO <> :PED_FATURADO'
+        else
+          SQL.Text := SQL.Text + ' AND TB_PEDIDO.PED_FATURADO = :PED_FATURADO';
+        ParamByName('PED_FATURADO').AsString := FParametros.FieldName.Faturado;
+      end;
+
+      if FParametros.FieldName.Tipo in [1,2,3] then
+      begin
+        SQL.Text := SQL.Text + ' AND TB_PEDIDO.PED_TIPO = :PED_TIPO';
+        ParamByName('PED_TIPO').AsInteger := FParametros.FieldName.Tipo;
+      end;
+
+      if FParametros.FieldName.EmUso <> EmptyStr then
+        SQL.Text := SQL.Text + ' AND TB_PEDIDO.PED_EMUSO <> ''''  ';
+
+      SQL.Text := SQL.Text + ' ORDER BY Tb_empresa.EMP_FANTASIA ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TPedido.Create;
+        get(Lc_Qry, LITem);
+
+        LITem.FPT_DESCRICAO := Lc_Qry.FieldByName('FPT_DESCRICAO').AsString;
+        LITem.EMP_NOME := Lc_Qry.FieldByName('EMP_NOME').AsString;
+        LITem.USU_NOME := Lc_Qry.FieldByName('USU_NOME').AsString;
+
+        Lista.add(LITem);
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerPedido.pC_AutorizarPedido;
+Var
+  Lc_Qry : TSTQuery;
+Begin
+  Lc_Qry := GeraQuery;
+  try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' UPDATE TB_PEDIDO SET '+
+                  ' PED_APROVADO =:PED_APROVADO '+
+                  ' WHERE PED_CODIGO =:PED_CODIGO '+
+                  ' and ped_codmha = :ped_codmha';
+      ParamByName('ped_codmha').AsInteger := Gb_CodMha;
+      ParamByName('PED_APROVADO').AsAnsiString := SIGLA_S;
+      ParamByName('PED_CODIGO').AsInteger := Registro.Codigo;
+      ExecSQL;
+    end;
+  finally
+    FinalizaQuery(Lc_Qry);
+  end;
+end;
+
+procedure TControllerPedido.setFParametros(const Value: TPrmOrder);
+begin
+  FParametros := Value;
+end;
 
 procedure TControllerPedido.setSequencia;
 begin

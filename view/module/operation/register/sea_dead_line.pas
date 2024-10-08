@@ -16,6 +16,9 @@ type
     E_BuscaDescricao: TEdit;
     cds_searchcodigo: TIntegerField;
     cds_searchdescricao: TStringField;
+    cds_searchValorMinimo: TFloatField;
+    procedure cds_searchValorMinimoGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   protected
     procedure openRegister(pCodigo: Integer);Override;
     procedure CriarVariaveis; override;
@@ -35,6 +38,13 @@ implementation
 uses reg_dead_line;
 
 {$R *.dfm}
+
+procedure TSeaDeadLine.cds_searchValorMinimoGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  Text := FloatToStrF(cds_searchValorMinimo.AsFloat, ffFixed, 10, 2);
+end;
 
 procedure TSeadeadline.CriarVariaveis;
 begin
@@ -85,7 +95,7 @@ begin
   cds_search.DisableControls;
 
   for i := 0 to Pred(deadline.Lista.Count) do
-    cds_search.AppendRecord([deadline.Lista[i].Codigo, deadline.Lista[i].Descricao]);
+    cds_search.AppendRecord([deadline.Lista[i].Codigo, deadline.Lista[i].Descricao, deadline.Lista[i].ValorMinimo]);
 
   cds_search.EnableControls;
 

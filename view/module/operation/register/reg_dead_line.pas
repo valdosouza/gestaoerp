@@ -96,7 +96,7 @@ begin
   with deadline do
   Begin
     Registro.Descricao :=  E_Nr_Parcelas.Text + ' - ' + E_Descricao.Text;
-    Registro.ValorMinima := StrToFloatDef(E_VL_MMINIMO.Text,0);
+    Registro.ValorMinimo := StrToFloatDef(E_VL_MMINIMO.Text,0);
     salva;
   End;
   CodigoRegistro := deadline.Registro.Codigo;
@@ -113,7 +113,7 @@ begin
 
     E_Descricao.Text := ExtrairDescricao(Registro.Descricao);
 
-    E_VL_MMINIMO.Text  := FloatToStrF(Registro.ValorMinima, ffFixed, 10, 2);
+    E_VL_MMINIMO.Text  := FloatToStrF(Registro.ValorMinimo, ffFixed, 10, 2);
   End;
   inherited;
 end;

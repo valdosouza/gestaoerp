@@ -35,6 +35,10 @@ Type
     FIMP_APROX   : Real;
     FNR_PECAS    : Real;
     FITF_SEQUENCIA: Integer;
+    FCodigoEstabelecimento: Integer;
+    FDescricaoProduto: String;
+    FSubTotal: Real;
+    FCodigoFabrica: string;
 
     procedure setFCODIGO( Value      : Integer);
     procedure setFCODPED( Value      : Integer);
@@ -61,6 +65,10 @@ Type
     procedure setFIMP_APROX( Value   : Real);
     procedure setFNR_PECAS( Value    : Real);
     procedure setFITF_SEQUENCIA(const Value: Integer);
+    procedure setFCodigoEstabelecimento(const Value: Integer);
+    procedure setFCodigoFabrica(const Value: string);
+    procedure setFDescricaoProduto(const Value: String);
+    procedure setFSubTotal(const Value: Real);
 
   public
 
@@ -140,11 +148,20 @@ Type
     [FieldName('ITF_NR_PECAS')]
     property NumeroPecas: Real read FNR_PECAS write setFNR_PECAS;
 
+    //(ITF_QTDE * ITF_VL_UNIT) ITF_VL_SUBTOTAL
+    property SubTotal: Real read FSubTotal write setFSubTotal;
 
+    //[FieldName('PRO_CODIGOFAB')]
+    property CodigoFabrica: string read FCodigoFabrica write setFCodigoFabrica;
+
+    //[FieldName('PRO_DESCRICAO')]
+    property DescricaoProduto: String read FDescricaoProduto write setFDescricaoProduto;
+
+    //[FieldName('PED_CODMHA')]
+    property CodigoEstabelecimento: Integer read FCodigoEstabelecimento write setFCodigoEstabelecimento;
   End;
 
 implementation
-
 
 { TItensNFL }
 
@@ -183,6 +200,16 @@ begin
   FCODIGO  := Value;
 end;
 
+procedure TItensNFL.setFCodigoEstabelecimento(const Value: Integer);
+begin
+  FCodigoEstabelecimento := Value;
+end;
+
+procedure TItensNFL.setFCodigoFabrica(const Value: string);
+begin
+  FCodigoFabrica := Value;
+end;
+
 procedure TItensNFL.setFCODNFL(Value: Integer);
 begin
   FCODNFL := Value;
@@ -206,6 +233,11 @@ end;
 procedure TItensNFL.setFCOMPRA(Value: String);
 begin
   FCOMPRA := Value;
+end;
+
+procedure TItensNFL.setFDescricaoProduto(const Value: String);
+begin
+  FDescricaoProduto := Value;
 end;
 
 procedure TItensNFL.setFDESPACHO(Value: String);
@@ -256,6 +288,11 @@ end;
 procedure TItensNFL.setFSENTIDO(Value: String);
 begin
   FSENTIDO := Value;
+end;
+
+procedure TItensNFL.setFSubTotal(const Value: Real);
+begin
+  FSubTotal := Value;
 end;
 
 procedure TItensNFL.setFVL_CUSTO(Value: Real);
