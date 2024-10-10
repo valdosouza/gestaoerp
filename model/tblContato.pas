@@ -31,6 +31,7 @@ Type
     FCto_Msn: String;
     FCto_Observ: String;
     FCto_Aniver: TDateTime;
+    FCRG_DESCRICAO: string;
     procedure setFCto_Aniver(const Value: TDateTime);
     procedure setFCto_Cadastro(const Value: TDateTime);
     procedure setFCto_Cargo(const Value: Integer);
@@ -52,6 +53,7 @@ Type
     procedure setFCto_Sexo(const Value: String);
     procedure setFFCto_Codemp(const Value: Integer);
     procedure setFCto_Bairro(const Value: String);
+    procedure setFCRG_DESCRICAO(const Value: string);
 
   public
 
@@ -118,6 +120,8 @@ Type
 
     [FieldName('Cto_Aniver')]
     property Aniver: TDateTime read FCto_Aniver write setFCto_Aniver;
+
+    property CRG_DESCRICAO: string read FCRG_DESCRICAO write setFCRG_DESCRICAO;
   End;
 
   implementation
@@ -125,6 +129,11 @@ Type
 
 
 { TContato }
+
+procedure TContato.setFCRG_DESCRICAO(const Value: string);
+begin
+  FCRG_DESCRICAO := Value;
+end;
 
 procedure TContato.setFCto_Aniver(const Value: TDateTime);
 begin
