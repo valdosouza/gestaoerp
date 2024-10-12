@@ -2,14 +2,15 @@ inherited RegTaxation: TRegTaxation
   Caption = 'Cadastros de Tributa'#231#245'es para Nota Fiscal Eletr'#244'nica'
   ClientHeight = 489
   ClientWidth = 613
-  ExplicitWidth = 625
-  ExplicitHeight = 552
+  ExplicitWidth = 619
+  ExplicitHeight = 533
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 425
     Width = 613
-    ExplicitTop = 416
-    ExplicitWidth = 607
+    ExplicitTop = 425
+    ExplicitWidth = 613
     inherited SB_Inserir: TSpeedButton
       Left = -14
       ExplicitLeft = -14
@@ -38,8 +39,8 @@ inherited RegTaxation: TRegTaxation
   inherited pnl_fundo: TPanel
     Width = 613
     Height = 425
-    ExplicitWidth = 607
-    ExplicitHeight = 416
+    ExplicitWidth = 613
+    ExplicitHeight = 425
     object pl_fundo: TPanel
       Left = 2
       Top = 2
@@ -49,8 +50,6 @@ inherited RegTaxation: TRegTaxation
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 603
-      ExplicitHeight = 412
       DesignSize = (
         609
         421)
@@ -153,8 +152,8 @@ inherited RegTaxation: TRegTaxation
       object L_Situacao_Tributaria: TLabel
         Left = 5
         Top = 44
-        Width = 207
-        Height = 14
+        Width = 206
+        Height = 13
         Caption = 'CST - C'#243'digo de Situa'#231#227'o Tribut'#225'ria Normal'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -166,8 +165,8 @@ inherited RegTaxation: TRegTaxation
       object L_Modal_ICMS_ST: TLabel
         Left = 300
         Top = 120
-        Width = 212
-        Height = 14
+        Width = 213
+        Height = 13
         Caption = 'Determina'#231#227'o da Base de C'#225'lculo - ICMS ST'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -180,7 +179,7 @@ inherited RegTaxation: TRegTaxation
         Left = 8
         Top = 120
         Width = 196
-        Height = 14
+        Height = 13
         Caption = 'Determina'#231#227'o da Base de C'#225'lculo - ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -193,7 +192,7 @@ inherited RegTaxation: TRegTaxation
         Left = 8
         Top = 160
         Width = 117
-        Height = 14
+        Height = 13
         Caption = 'Motivo da Desonera'#231#227'o '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -205,8 +204,8 @@ inherited RegTaxation: TRegTaxation
       object L_Simples_Nacional: TLabel
         Left = 6
         Top = 83
-        Width = 289
-        Height = 14
+        Width = 288
+        Height = 13
         Caption = 'CSOSN - C'#243'digo de Situa'#231#227'o da Opera'#231#227'o Simples Nacional'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clNavy
@@ -298,7 +297,6 @@ inherited RegTaxation: TRegTaxation
         Height = 21
         Anchors = [akLeft, akBottom]
         TabOrder = 10
-        ExplicitTop = 506
       end
       object E_Red_Aliq: TEdit
         Left = 373
@@ -321,7 +319,6 @@ inherited RegTaxation: TRegTaxation
         Height = 21
         Anchors = [akLeft, akBottom]
         TabOrder = 11
-        ExplicitTop = 546
       end
       object Pnl_Outros: TGroupBox
         Left = 4
@@ -542,7 +539,7 @@ inherited RegTaxation: TRegTaxation
         Top = 197
         Width = 592
         Height = 82
-        ActivePage = tbs_outros
+        ActivePage = tbs_ipi
         TabOrder = 8
         object tbs_ipi: TTabSheet
           Caption = 'IPI'
@@ -572,8 +569,8 @@ inherited RegTaxation: TRegTaxation
             object L_Situacao_tributaria_IPI: TLabel
               Left = 5
               Top = 6
-              Width = 171
-              Height = 14
+              Width = 170
+              Height = 13
               Caption = 'CST - C'#243'digo de Situa'#231#227'o Tribut'#225'ria'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
@@ -641,8 +638,8 @@ inherited RegTaxation: TRegTaxation
             object L_Situacao_tributaria_PIS: TLabel
               Left = 5
               Top = 6
-              Width = 171
-              Height = 14
+              Width = 170
+              Height = 13
               Caption = 'CST - C'#243'digo de Situa'#231#227'o Tribut'#225'ria'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
@@ -710,8 +707,8 @@ inherited RegTaxation: TRegTaxation
             object L__Situacao_tributaria_CFS: TLabel
               Left = 5
               Top = 6
-              Width = 171
-              Height = 14
+              Width = 170
+              Height = 13
               Caption = 'CST - C'#243'digo de Situa'#231#227'o Tribut'#225'ria'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clNavy
@@ -989,8 +986,8 @@ inherited RegTaxation: TRegTaxation
       end
     end
   end
-  inherited Menu: TMainMenu
-    Left = 528
-    Top = 352
+  inherited MnuBase: TMainMenu
+    Left = 408
+    Top = 216
   end
 end
