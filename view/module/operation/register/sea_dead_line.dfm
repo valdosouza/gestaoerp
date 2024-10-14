@@ -10,6 +10,9 @@ inherited SeaDeadLine: TSeaDeadLine
     Top = 76
     Width = 561
     Height = 273
+    ExplicitTop = 76
+    ExplicitWidth = 561
+    ExplicitHeight = 273
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 557
     end
@@ -17,28 +20,51 @@ inherited SeaDeadLine: TSeaDeadLine
       Width = 465
       Height = 255
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 276
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ValorMinimo'
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 467
       Height = 255
+      ExplicitLeft = 467
+      ExplicitHeight = 255
       inherited Sb_Sair_0: TSpeedButton
         Top = 192
+        ExplicitTop = 192
       end
       inherited SB_Visualizar: TSpeedButton
         Top = 129
+        ExplicitTop = 129
       end
       inherited SB_Buscar: TSpeedButton
         Top = 66
+        ExplicitTop = 66
       end
       inherited SB_Cadastrar: TSpeedButton
         Top = 3
+        ExplicitTop = 3
       end
     end
   end
   inherited Pnl_Parametros: TPanel
     Width = 561
     Height = 67
-    ExplicitWidth = 687
+    ExplicitWidth = 561
     ExplicitHeight = 67
     object Lb_Codigo: TLabel
       Left = 7
@@ -107,6 +133,10 @@ inherited SeaDeadLine: TSeaDeadLine
     object cds_searchdescricao: TStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'descricao'
+    end
+    object cds_searchValorMinimo: TFloatField
+      FieldName = 'ValorMinimo'
+      OnGetText = cds_searchValorMinimoGetText
     end
   end
 end
