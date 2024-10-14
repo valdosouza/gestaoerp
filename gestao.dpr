@@ -83,7 +83,8 @@ uses
   reg_electronic_card in 'view\module\banking\register\reg_electronic_card.pas' {RegElectronicCard},
   sea_category in 'view\module\operation\register\sea_category.pas' {SeaCategory},
   sea_kind_profitability in 'view\module\operation\register\sea_kind_profitability.pas' {Seakindprofitability},
-  reg_subgroup in 'view\module\operation\register\reg_subgroup.pas' {RegSubgroup};
+  reg_subgroup in 'view\module\operation\register\reg_subgroup.pas' {RegSubgroup},
+  sea_service in 'view\module\operation\register\sea_service.pas' {SeaService};
 
 {$R *.res}
 
@@ -98,5 +99,6 @@ begin
   Application.CreateForm(TSeaCategory, SeaCategory);
   Application.CreateForm(TSeakindprofitability, Seakindprofitability);
   Application.CreateForm(TRegSubgroup, RegSubgroup);
+  Application.CreateForm(TSeaService, SeaService);
   Application.Run;
 end.

@@ -3,7 +3,7 @@ inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
   ClientHeight = 333
   ClientWidth = 569
   ExplicitWidth = 575
-  ExplicitHeight = 377
+  ExplicitHeight = 382
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
@@ -13,9 +13,6 @@ inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
     ExplicitTop = 71
     ExplicitWidth = 563
     ExplicitHeight = 246
-    inherited Lb_ResultadoPesquisa: TLabel
-      Width = 559
-    end
     inherited DBG_Pesquisa: TDBGrid
       Width = 467
       Height = 241
