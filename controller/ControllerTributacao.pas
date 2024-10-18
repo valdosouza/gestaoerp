@@ -24,6 +24,7 @@ Type
     function migra:Boolean;
     procedure getList;
     procedure Clear;
+    Function delete:boolean;
 
     property Parametros : TPrmTaxation read FParametros write setFParametros;
     procedure search;
@@ -49,6 +50,16 @@ begin
   FParametros := TPrmTaxation.Create;
 end;
 
+function TControllerTributacao.delete: boolean;
+begin
+  Try
+    deleteObj(Registro);
+    Result := True;
+  Except
+    Result := False;
+  End;
+end;
+
 destructor TControllerTributacao.Destroy;
 begin
   Registro.DisposeOf;
@@ -56,7 +67,6 @@ begin
   FParametros.DisposeOf;
   inherited;
 end;
-
 
 procedure TControllerTributacao.getById;
 begin

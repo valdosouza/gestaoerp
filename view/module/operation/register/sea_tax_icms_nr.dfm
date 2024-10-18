@@ -1,29 +1,45 @@
 inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
   Caption = 'Pesquisa de Situa'#231#245'es Tribut'#225'rias'
-  ClientHeight = 308
-  ClientWidth = 571
-  ExplicitWidth = 577
-  ExplicitHeight = 357
+  ClientHeight = 333
+  ClientWidth = 661
+  ExplicitWidth = 667
+  ExplicitHeight = 377
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
-    Width = 565
-    Height = 234
+    Width = 655
+    Height = 259
     ExplicitTop = 71
-    ExplicitWidth = 559
-    ExplicitHeight = 230
+    ExplicitWidth = 565
+    ExplicitHeight = 234
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 651
+    end
     inherited DBG_Pesquisa: TDBGrid
-      Width = 469
-      Height = 216
+      Width = 559
+      Height = 241
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 453
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
-      Left = 471
-      Height = 216
-      ExplicitLeft = 465
-      ExplicitHeight = 212
+      Left = 561
+      Height = 241
+      ExplicitLeft = 471
+      ExplicitHeight = 216
       inherited Sb_Sair_0: TSpeedButton
-        Top = 158
+        Top = 183
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 183
@@ -31,7 +47,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
         ExplicitHeight = 55
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 100
+        Top = 125
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 120
@@ -39,7 +55,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
         ExplicitHeight = 55
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 42
+        Top = 67
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = 57
@@ -47,7 +63,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
         ExplicitHeight = 55
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -16
+        Top = 9
         Height = 55
         ExplicitLeft = 3
         ExplicitTop = -6
@@ -57,14 +73,14 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
     end
   end
   inherited Pnl_Parametros: TPanel
-    Width = 565
+    Width = 655
     Height = 62
-    ExplicitWidth = 559
+    ExplicitWidth = 565
     ExplicitHeight = 62
     object GroupBox2: TGroupBox
       Left = 2
       Top = 2
-      Width = 561
+      Width = 651
       Height = 61
       Align = alTop
       Caption = ' Digite sua op'#231#227'o de busca '
@@ -75,7 +91,7 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 555
+      ExplicitWidth = 561
       object L_BuscaDescricao: TLabel
         Left = 57
         Top = 16
@@ -130,6 +146,21 @@ inherited SeaTaxIcmsNr: TSeaTaxIcmsNr
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited ds_search: TDataSource
+    Top = 202
+  end
+  inherited cds_search: TClientDataSet
+    Top = 146
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+      Size = 100
     end
   end
 end

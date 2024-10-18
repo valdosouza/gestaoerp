@@ -5,7 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_registry, Vcl.Menus, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, ControllerTributacao, System.StrUtils;
+  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.Mask, System.StrUtils,
+  ControllerTributacao, ControllerTaxIcmsSn, ControllerTaxIcmsNr, ControllerTaxModeDetBcIcmsSt,
+  ControllerTaxModeDetBcIcms, ControllerTaxRelievesIcms;
 
 type
   TRegTaxation = class(TBaseRegistry)
@@ -106,6 +108,18 @@ type
     procedure Save; Override;
   private
     taxation : TControllerTributacao;
+
+    TaxIcmsSn : TControllerTaxIcmsSn;
+    TaxIcmsNr : TControllerTaxIcmsNr;
+    TaxModeDetBcIcms : TControllerTaxModeDetBcIcms;
+    TaxModeDetBcIcmsSt : TControllerTaxModeDetBcIcmsSt;
+    TaxRelievesIcms: TControllerTaxRelievesIcms;
+
+    procedure carregarComboBoxSitTrib;
+    procedure carregarComboBoxSimplesNacional;
+    procedure carregarComboBoxBaseCalculoICMS;
+    procedure carregarComboBoxBaseCalculoICMSST;
+    procedure carregarComboBoxDesoneracao;
   end;
 
 var
@@ -117,10 +131,47 @@ uses UN_MSG;
 
 {$R *.dfm}
 
+procedure TRegTaxation.CriarVariaveis;
+begin
+  inherited;
+  taxation := TControllerTributacao.create(self);
+  TaxIcmsSn := TControllerTaxIcmsSn.create(self);
+  TaxIcmsNr := TControllerTaxIcmsNr.create(self);
+  TaxModeDetBcIcms := TControllerTaxModeDetBcIcms.create(self);
+  TaxModeDetBcIcmsSt := TControllerTaxModeDetBcIcmsSt.create(self);
+  TaxRelievesIcms  := TControllerTaxRelievesIcms.create(self);
+end;
+
+procedure TRegTaxation.FinalizaVariaveis;
+begin
+  inherited;
+  taxation.DisposeOf;
+  TaxIcmsSn.DisposeOf;
+  TaxIcmsNr.DisposeOf;
+  TaxModeDetBcIcms.DisposeOf;
+  TaxModeDetBcIcmsSt.DisposeOf;
+  TaxRelievesIcms.DisposeOf;
+end;
+
+procedure TRegTaxation.IniciaVariaveis;
+begin
+  carregarComboBoxSitTrib;
+  carregarComboBoxSimplesNacional;
+  carregarComboBoxBaseCalculoICMS;
+  carregarComboBoxBaseCalculoICMSST;
+
+  if Self.CodigoRegistro > 0 then
+  Begin
+    taxation.Registro.Codigo := Self.CodigoRegistro;
+    taxation.getbyId;
+  End;
+  inherited;
+end;
+
 procedure TRegTaxation.Change;
 begin
   inherited;
-  E_Descricao.SetFocus;
+  //E_Descricao.SetFocus;
 end;
 
 procedure TRegTaxation.ClearAllFields;
@@ -129,31 +180,9 @@ begin
   taxation.clear;
 end;
 
-procedure TRegTaxation.CriarVariaveis;
-begin
-  inherited;
-  taxation := TControllerTributacao.create(self);
-end;
-
 procedure TRegTaxation.Delete;
 begin
   taxation.delete;
-  inherited;
-end;
-
-procedure TRegTaxation.FinalizaVariaveis;
-begin
-  inherited;
-  FreeAndNil(taxation);
-end;
-
-procedure TRegTaxation.IniciaVariaveis;
-begin
-  if Self.CodigoRegistro > 0 then
-  Begin
-    taxation.Registro.Codigo := Self.CodigoRegistro;
-    taxation.getbyId;
-  End;
   inherited;
 end;
 
@@ -359,6 +388,66 @@ begin
   end;
 end;
 }
+end;
+
+procedure TRegTaxation.carregarComboBoxSimplesNacional;
+var
+  i : Integer;
+begin
+  TaxIcmsSn.search;
+
+  Dblcb_Simples_Nacional.Items.Clear;
+
+  for i := 0 to Pred(TaxIcmsSn.lista.Count) do
+    Dblcb_Simples_Nacional.Items.Add(TaxIcmsSn.lista[I].Descricao);
+end;
+
+procedure TRegTaxation.carregarComboBoxSitTrib;
+var
+  i : Integer;
+begin
+  TaxIcmsNr.search;
+
+  Dblcb_Situacao_tributaria.Items.Clear;
+
+  for i := 0 to Pred(TaxIcmsNr.lista.Count) do
+    Dblcb_Situacao_tributaria.Items.Add(TaxIcmsNr.lista[I].Descricao);
+end;
+
+procedure TRegTaxation.carregarComboBoxBaseCalculoICMS;
+var
+  i : Integer;
+begin
+  TaxModeDetBcIcms.search;
+
+  Dblcb_Modal_ICMS.Items.Clear;
+
+  for i := 0 to Pred(TaxModeDetBcIcms.lista.Count) do
+    Dblcb_Modal_ICMS.Items.Add(TaxModeDetBcIcms.lista[I].Descricao);
+end;
+
+procedure TRegTaxation.carregarComboBoxBaseCalculoICMSST;
+var
+  i : Integer;
+begin
+  TaxModeDetBcIcmsSt.search;
+
+  Dblcb_Modal_ICMS_ST.Items.Clear;
+
+  for i := 0 to Pred(TaxModeDetBcIcmsSt.lista.Count) do
+    Dblcb_Modal_ICMS_ST.Items.Add(TaxModeDetBcIcmsSt.lista[I].Descricao);
+end;
+
+procedure TRegTaxation.carregarComboBoxDesoneracao;
+var
+  i : Integer;
+begin
+  TaxRelievesIcms.search;
+
+  Dblcb_Desoneracao.Items.Clear;
+
+  for i := 0 to Pred(TaxRelievesIcms.lista.Count) do
+    Dblcb_Desoneracao.Items.Add(TaxRelievesIcms.lista[I].Descricao);
 end;
 
 end.
