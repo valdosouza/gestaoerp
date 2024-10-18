@@ -1,83 +1,50 @@
-inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
-  Caption = 'Pesquisa de Situa'#231#227'o do Simples Nacional '
-  ClientHeight = 333
-  ClientWidth = 569
-  ExplicitWidth = 575
-  ExplicitHeight = 382
+inherited SeaContacts: TSeaContacts
+  Caption = 'SeaContacts'
+  ClientHeight = 372
+  ClientWidth = 667
+  ExplicitWidth = 673
+  ExplicitHeight = 416
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
-    Top = 71
-    Width = 563
-    Height = 259
-    ExplicitTop = 71
-    ExplicitWidth = 563
-    ExplicitHeight = 246
+    Top = 81
+    Width = 661
+    Height = 288
+    inherited Lb_ResultadoPesquisa: TLabel
+      Width = 657
+    end
     inherited DBG_Pesquisa: TDBGrid
-      Width = 467
-      Height = 241
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'codigo'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'descricao'
-          Width = 337
-          Visible = True
-        end>
+      Width = 565
+      Height = 270
     end
     inherited pnl_pesq_right: TPanel
-      Left = 469
-      Height = 241
-      ExplicitLeft = 469
-      ExplicitHeight = 228
+      Left = 567
+      Height = 270
       inherited Sb_Sair_0: TSpeedButton
-        Top = 183
-        Height = 55
-        ExplicitLeft = 3
-        ExplicitTop = 176
-        ExplicitWidth = 86
-        ExplicitHeight = 55
+        Top = 207
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 125
-        Height = 55
-        ExplicitLeft = 3
-        ExplicitTop = 113
-        ExplicitWidth = 86
-        ExplicitHeight = 55
+        Top = 144
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 67
-        Height = 55
-        ExplicitLeft = 3
-        ExplicitTop = 50
-        ExplicitWidth = 86
-        ExplicitHeight = 55
+        Top = 81
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = 9
-        Height = 55
-        ExplicitLeft = 3
-        ExplicitTop = -13
+        Top = 18
+        ExplicitLeft = 6
+        ExplicitTop = 152
         ExplicitWidth = 86
-        ExplicitHeight = 55
       end
     end
   end
   inherited Pnl_Parametros: TPanel
-    Width = 563
-    Height = 62
-    ExplicitWidth = 563
-    ExplicitHeight = 62
-    object GroupBox2: TGroupBox
+    Width = 661
+    Height = 72
+    ExplicitHeight = 72
+    object GroupBox1: TGroupBox
       Left = 2
       Top = 2
-      Width = 559
+      Width = 657
       Height = 61
       Align = alTop
       Caption = ' Digite sua op'#231#227'o de busca '
@@ -88,12 +55,15 @@ inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      object L_BuscaDescricao: TLabel
-        Left = 57
+      ExplicitLeft = 4
+      ExplicitTop = 10
+      ExplicitWidth = 875
+      object Label1: TLabel
+        Left = 441
         Top = 16
-        Width = 49
+        Width = 29
         Height = 14
-        Caption = 'Descri'#231#227'o'
+        Caption = 'Cargo'
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -101,12 +71,12 @@ inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
         Font.Style = []
         ParentFont = False
       end
-      object L_BuscaCodigo: TLabel
-        Left = 10
+      object Label2: TLabel
+        Left = 9
         Top = 16
-        Width = 33
+        Width = 88
         Height = 14
-        Caption = 'C'#243'digo'
+        Caption = 'Contato / Empresa'
         Font.Charset = ANSI_CHARSET
         Font.Color = clNavy
         Font.Height = -11
@@ -114,24 +84,10 @@ inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
         Font.Style = []
         ParentFont = False
       end
-      object E_BuscaDescricao: TEdit
-        Left = 57
-        Top = 32
-        Width = 492
-        Height = 22
-        CharCase = ecUpperCase
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-      end
-      object E_BuscaCodigo: TEdit
-        Left = 7
-        Top = 32
-        Width = 49
+      object E_BuscaCargo: TEdit
+        Left = 439
+        Top = 36
+        Width = 212
         Height = 22
         CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
@@ -142,7 +98,25 @@ inherited SeaTaxIcmsSn: TSeaTaxIcmsSn
         ParentFont = False
         TabOrder = 0
       end
+      object E_BuscaContato: TEdit
+        Left = 6
+        Top = 32
+        Width = 427
+        Height = 22
+        CharCase = ecUpperCase
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+      end
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 224
+    Top = 200
   end
   inherited cds_search: TClientDataSet
     object cds_searchcodigo: TIntegerField

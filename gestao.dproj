@@ -396,11 +396,9 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_coating.pas">
             <Form>RegCoating</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_coating.pas">
             <Form>SeaCoating</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_button_image.pas">
             <Form>SeaButtonImage</Form>
@@ -416,10 +414,12 @@
         </DCCReference>
         <DCCReference Include="view\module\operation\register\sea_kind_profitability.pas">
             <Form>Seakindprofitability</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="view\module\operation\register\reg_subgroup.pas">
             <Form>RegSubgroup</Form>
+        </DCCReference>
+        <DCCReference Include="view\module\operation\register\sea_service.pas">
+            <Form>SeaService</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

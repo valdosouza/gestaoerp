@@ -5,8 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, base_search, Data.DB, Datasnap.DBClient,
-  Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Mask, Vcl.DBCtrls, controllertaxicmssn;
+  Vcl.Menus, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.Mask, Vcl.DBCtrls, controllertaxicmssn, Vcl.ExtCtrls;
 
 type
   TSeaTaxIcmsSn = class(TBaseSearch)

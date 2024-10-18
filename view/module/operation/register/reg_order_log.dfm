@@ -2,8 +2,10 @@ inherited RegOrderLog: TRegOrderLog
   Caption = 'Log de Pedido'
   ClientHeight = 588
   ClientWidth = 751
-  ExplicitWidth = 763
-  ExplicitHeight = 651
+  ExplicitTop = -2
+  ExplicitWidth = 757
+  ExplicitHeight = 632
+  PixelsPerInch = 96
   TextHeight = 13
   object Label12: TLabel [0]
     Left = 0
@@ -39,7 +41,6 @@ inherited RegOrderLog: TRegOrderLog
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 745
     object L_Pedido: TLabel
       Left = 173
       Top = 14
@@ -89,7 +90,7 @@ inherited RegOrderLog: TRegOrderLog
       Height = 43
       Caption = 'Situa'#231#227'o do Documento'
       Columns = 3
-      ItemIndex = 0
+      ItemIndex = 2
       Items.Strings = (
         'Excluidos'
         'Ativos'
@@ -97,9 +98,9 @@ inherited RegOrderLog: TRegOrderLog
       TabOrder = 3
     end
     object E_Pedido: TMaskEdit
-      Left = 165
+      Left = 169
       Top = 31
-      Width = 71
+      Width = 68
       Height = 22
       CharCase = ecUpperCase
       Font.Charset = ANSI_CHARSET
@@ -118,7 +119,7 @@ inherited RegOrderLog: TRegOrderLog
       Height = 43
       Caption = 'Tipo do Documento'
       Columns = 4
-      ItemIndex = 0
+      ItemIndex = 3
       Items.Strings = (
         'Venda'
         'Compra'
@@ -131,8 +132,8 @@ inherited RegOrderLog: TRegOrderLog
       Top = 31
       Width = 81
       Height = 22
-      Date = 39580.000000000000000000
-      Time = 0.356281493062852000
+      Date = 39580.356281493060000000
+      Time = 39580.356281493060000000
       Checked = False
       TabOrder = 0
     end
@@ -141,8 +142,8 @@ inherited RegOrderLog: TRegOrderLog
       Top = 31
       Width = 81
       Height = 22
-      Date = 39580.000000000000000000
-      Time = 0.356281493062852000
+      Date = 39580.356281493060000000
+      Time = 39580.356281493060000000
       Checked = False
       TabOrder = 1
     end
@@ -160,8 +161,6 @@ inherited RegOrderLog: TRegOrderLog
       Width = 128
       Height = 12
       Caption = 'Somente Bloqueados'
-      Checked = True
-      State = cbChecked
       TabOrder = 6
     end
     object E_BuscaRazao: TMaskEdit
@@ -202,6 +201,7 @@ inherited RegOrderLog: TRegOrderLog
     Height = 147
     Align = alTop
     Color = clCream
+    DataSource = dsPedido
     Font.Charset = ANSI_CHARSET
     Font.Color = clNavy
     Font.Height = -11
@@ -284,6 +284,7 @@ inherited RegOrderLog: TRegOrderLog
         Title.Font.Height = -11
         Title.Font.Name = 'MS Sans Serif'
         Title.Font.Style = []
+        Width = 117
         Visible = True
       end>
   end
@@ -296,6 +297,7 @@ inherited RegOrderLog: TRegOrderLog
     Align = alBottom
     Anchors = [akTop, akBottom]
     Color = clCream
+    DataSource = dsDetalhesPedido
     Font.Charset = ANSI_CHARSET
     Font.Color = clNavy
     Font.Height = -11
@@ -314,7 +316,6 @@ inherited RegOrderLog: TRegOrderLog
       item
         Expanded = False
         FieldName = 'PRO_CODIGOFAB'
-        Title.Caption = 'C'#243'digo'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clNavy
         Title.Font.Height = -11
@@ -325,7 +326,6 @@ inherited RegOrderLog: TRegOrderLog
       item
         Expanded = False
         FieldName = 'PRO_DESCRICAO'
-        Title.Caption = 'Descri'#231#227'o'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clNavy
         Title.Font.Height = -11
@@ -337,7 +337,6 @@ inherited RegOrderLog: TRegOrderLog
       item
         Expanded = False
         FieldName = 'ITF_QTDE'
-        Title.Caption = 'Quantidade'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clNavy
         Title.Font.Height = -11
@@ -349,7 +348,6 @@ inherited RegOrderLog: TRegOrderLog
       item
         Expanded = False
         FieldName = 'ITF_VL_UNIT'
-        Title.Caption = 'Valor Unit'#225'rio'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clNavy
         Title.Font.Height = -11
@@ -361,7 +359,6 @@ inherited RegOrderLog: TRegOrderLog
       item
         Expanded = False
         FieldName = 'ITF_VL_SUBTOTAL'
-        Title.Caption = 'SubTotal'
         Title.Font.Charset = DEFAULT_CHARSET
         Title.Font.Color = clNavy
         Title.Font.Height = -11
@@ -380,8 +377,6 @@ inherited RegOrderLog: TRegOrderLog
     BevelInner = bvRaised
     BevelOuter = bvLowered
     TabOrder = 3
-    ExplicitTop = 515
-    ExplicitWidth = 745
     object SB_Buscar: TSpeedButton
       AlignWithMargins = True
       Left = 546
@@ -501,9 +496,8 @@ inherited RegOrderLog: TRegOrderLog
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       Layout = blGlyphTop
       ParentFont = False
-      ExplicitLeft = 536
-      ExplicitTop = 5
-      ExplicitHeight = 54
+      OnClick = SB_BuscarClick
+      ExplicitTop = 4
     end
     object SB_Sair: TSpeedButton
       AlignWithMargins = True
@@ -748,6 +742,7 @@ inherited RegOrderLog: TRegOrderLog
         FFFFD3D3D95757BED7D7DCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       Layout = blGlyphTop
       ParentFont = False
+      OnClick = SB_ExcluirClick
       ExplicitLeft = 334
       ExplicitTop = 6
       ExplicitHeight = 54
@@ -788,6 +783,7 @@ inherited RegOrderLog: TRegOrderLog
       Margin = 15
       NumGlyphs = 2
       ParentFont = False
+      OnClick = SB_RetonarClick
       ExplicitLeft = 436
       ExplicitTop = 5
       ExplicitHeight = 54
@@ -828,9 +824,8 @@ inherited RegOrderLog: TRegOrderLog
       Margin = 15
       NumGlyphs = 2
       ParentFont = False
-      ExplicitLeft = 235
-      ExplicitTop = 5
-      ExplicitHeight = 54
+      OnClick = sb_autorizaPedidoClick
+      ExplicitTop = 4
     end
     object Sb_Desbloqueia: TSpeedButton
       AlignWithMargins = True
@@ -868,9 +863,104 @@ inherited RegOrderLog: TRegOrderLog
       Margin = 15
       NumGlyphs = 2
       ParentFont = False
+      OnClick = Sb_DesbloqueiaClick
       ExplicitLeft = 134
       ExplicitTop = 5
       ExplicitHeight = 54
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 344
+    Top = 152
+  end
+  object memDetalhesPedido: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 368
+    Top = 304
+    object memDetalhesPedidoPRO_CODIGOFAB: TStringField
+      FieldName = 'PRO_CODIGOFAB'
+      Size = 15
+    end
+    object memDetalhesPedidoPRO_DESCRICAO: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'PRO_DESCRICAO'
+      Size = 100
+    end
+    object memDetalhesPedidoITF_QTDE: TCurrencyField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'ITF_QTDE'
+    end
+    object memDetalhesPedidoITF_VL_UNIT: TCurrencyField
+      DisplayLabel = 'Valor Unit'#225'rio'
+      FieldName = 'ITF_VL_UNIT'
+    end
+    object memDetalhesPedidoITF_VL_SUBTOTAL: TCurrencyField
+      DisplayLabel = 'SubTotal'
+      FieldName = 'ITF_VL_SUBTOTAL'
+    end
+  end
+  object dsDetalhesPedido: TDataSource
+    DataSet = memDetalhesPedido
+    Left = 368
+    Top = 352
+  end
+  object memPedido: TFDMemTable
+    AfterScroll = memPedidoAfterScroll
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 200
+    Top = 152
+    object memPedidoPED_NUMERO: TIntegerField
+      FieldName = 'PED_NUMERO'
+    end
+    object memPedidoFPT_DESCRICAO: TStringField
+      FieldName = 'FPT_DESCRICAO'
+      Size = 51
+    end
+    object memPedidoPED_DATA: TDateField
+      FieldName = 'PED_DATA'
+    end
+    object memPedidoEMP_NOME: TStringField
+      FieldName = 'EMP_NOME'
+      Size = 100
+    end
+    object memPedidoUSU_NOME: TStringField
+      FieldName = 'USU_NOME'
+      Size = 100
+    end
+    object memPedidoPED_DT_ALTERA: TDateTimeField
+      FieldName = 'PED_DT_ALTERA'
+    end
+    object memPedidoPED_CODIGO: TIntegerField
+      FieldName = 'PED_CODIGO'
+    end
+    object memPedidoPED_FATURADO: TStringField
+      FieldName = 'PED_FATURADO'
+      Size = 1
+    end
+    object memPedidoPED_APROVADO: TStringField
+      FieldName = 'PED_APROVADO'
+      Size = 1
+    end
+    object memPedidoPED_TIPO: TIntegerField
+      FieldName = 'PED_TIPO'
+    end
+  end
+  object dsPedido: TDataSource
+    DataSet = memPedido
+    OnDataChange = dsPedidoDataChange
+    Left = 200
+    Top = 200
   end
 end

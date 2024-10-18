@@ -7,7 +7,7 @@ uses STDatabase,Classes, STQuery, SysUtils,ControllerBase,
        ControllerItensCofins,ControllerItensII,FireDAC.Stan.Param,
       Generics.Collections,controllerProduto,ControllerItensISSQN,
     ControllerItensNFLTributacao,ControllerExchangeBasis,
-    ControllerItensRTR,ControllerItensAvulso;
+    ControllerItensRTR,ControllerItensAvulso, prm_ItensNFL;
 
 
 Type
@@ -16,11 +16,10 @@ Type
   TControllerItensNFL = Class(TControllerBase)
 
   private
+    FParametros: TPrmItensNFL;
     function nextCodigo:Integer;
     function getSequencia:Integer;
-  protected
-
-
+    procedure setFParametros(const Value: TPrmItensNFL);
   public
     Registro : TItensNFL;
     Lista: TListaOrdemItem;
@@ -55,12 +54,53 @@ Type
     procedure setITF_Estoque;
     function ExisteItemNoPedido(Pc_Tp_Operacao:String): Boolean;
     function Fc_ValidaExclusao(iCodigoProduto: Integer): boolean;
+
+    procedure Search;
+    property Parametros : TPrmItensNFL read FParametros write setFParametros;
   End;
 
 implementation
 
 
 uses Un_Regra_Negocio, UN_Sistema;
+
+constructor TControllerItensNFL.Create(AOwner: TComponent);
+begin
+  inherited;
+  Registro := TItensNFL.Create;
+  Lista := TListaOrdemItem.Create;
+  Produto := TControllerProduto.create(Self);
+  ItensIcms := TControllerItensICMS.Create(Self);
+  ItensIpi  := TControllerItensIpi.Create(Self);
+  ItensPis := TControllerItensPis.Create(Self);
+  ItensCofins := TControllerItensCofins.Create(Self);
+  ItensII := TControllerItensII.Create(Self);
+  ItensISSQN := TControllerItensISSQN.Create(Self);
+  Tributacao := TControllerItensNFLTributacao.Create(Self);
+  BaseTroca := TControllerExchangeBasis.Create(Self);
+  ItensRTR := TControllerItensRTR.Create(Self);
+  ItensAvulso := TControllerItensAvulso.Create(Self);
+  FParametros := TPrmItensNFL.Create;
+end;
+
+destructor TControllerItensNFL.Destroy;
+begin
+  ItensAvulso.DisposeOf;
+  ItensRTR.DisposeOf;
+  BaseTroca.DisposeOf;
+  Tributacao.DisposeOf;
+  ItensISSQN.DisposeOf;
+  Lista.DisposeOf;
+  ItensII.DisposeOf;
+  ItensCofins.DisposeOf;
+  ItensIcms.DisposeOf;
+  ItensIpi.DisposeOf;
+  ItensPis.DisposeOf;
+  Produto.DisposeOf;
+  Registro.DisposeOf;
+  FParametros.DisposeOf;
+  inherited;
+end;
 
 function TControllerItensNFL.atualiza: boolean;
 begin
@@ -127,24 +167,6 @@ begin
   Lista.Clear;
 end;
 
-constructor TControllerItensNFL.Create(AOwner: TComponent);
-begin
-  inherited;
-  Registro := TItensNFL.Create;
-  Lista := TListaOrdemItem.Create;
-  Produto := TControllerProduto.create(Self);
-  ItensIcms := TControllerItensICMS.Create(Self);
-  ItensIpi  := TControllerItensIpi.Create(Self);
-  ItensPis := TControllerItensPis.Create(Self);
-  ItensCofins := TControllerItensCofins.Create(Self);
-  ItensII := TControllerItensII.Create(Self);
-  ItensISSQN := TControllerItensISSQN.Create(Self);
-  Tributacao := TControllerItensNFLTributacao.Create(Self);
-  BaseTroca := TControllerExchangeBasis.Create(Self);
-  ItensRTR := TControllerItensRTR.Create(Self);
-  ItensAvulso := TControllerItensAvulso.Create(Self);
-end;
-
 function TControllerItensNFL.delete: Boolean;
 begin
   Result := true;
@@ -174,25 +196,6 @@ begin
     FinalizaQuery(Lc_Qry);
   end;
 end;
-
-destructor TControllerItensNFL.Destroy;
-begin
-  ItensAvulso.DisposeOf;
-  ItensRTR.DisposeOf;
-  BaseTroca.DisposeOf;
-  Tributacao.DisposeOf;
-  ItensISSQN.DisposeOf;
-  Lista.DisposeOf;
-  ItensII.DisposeOf;
-  ItensCofins.DisposeOf;
-  ItensIcms.DisposeOf;
-  ItensIpi.DisposeOf;
-  ItensPis.DisposeOf;
-  Produto.DisposeOf;
-  Registro.DisposeOf;
-  inherited;
-end;
-
 
 function TControllerItensNFL.ExisteItemNoPedido(
   Pc_Tp_Operacao: String): Boolean;
@@ -480,6 +483,70 @@ Begin
 
 end;
 
+
+procedure TControllerItensNFL.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TItensNFL;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text :=
+        'SELECT TB_ITENS_NFL.*, ' +//(ITF_QTDE * ITF_VL_UNIT) ITF_VL_SUBTOTAL, ' +
+        '       Tb_produto.PRO_CODIGOFAB, Tb_produto.PRO_DESCRICAO, Tb_pedido.PED_CODMHA ' +
+        'FROM TB_ITENS_NFL ' +
+        'JOIN TB_PEDIDO Tb_pedido ON Tb_itens_nfl.ITF_CODPED = Tb_pedido.PED_CODIGO ' +
+        'JOIN TB_PRODUTO Tb_produto ON Tb_produto.PRO_CODIGO = Tb_itens_nfl.ITF_CODPRO ' +
+        'WHERE 1=1 ';
+
+      if FParametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND Tb_itens_nfl.ITF_CODIGO = :ITF_CODIGO';
+        ParamByName('ITF_CODIGO').AsInteger := FParametros.FieldName.Codigo;
+      end;
+
+      if FParametros.FieldName.CodigoPedido > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND Tb_itens_nfl.ITF_CODPED = :ITF_CODPED';
+        ParamByName('ITF_CODPED').AsInteger := FParametros.FieldName.CodigoPedido;
+      end;
+
+      if FParametros.FieldName.CodigoEstabelecimento > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND Tb_pedido.PED_CODMHA = :PED_CODMHA';
+        ParamByName('PED_CODMHA').AsInteger := FParametros.FieldName.CodigoEstabelecimento;
+      end;
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TItensNFL.Create;
+        get(Lc_Qry, LITem);
+
+        LITem.SubTotal := Lc_Qry.FieldByName('ITF_QTDE').AsFloat * Lc_Qry.FieldByName('ITF_VL_UNIT').AsFloat;//Lc_Qry.FieldByName('ITF_VL_SUBTOTAL').AsFloat;
+        LITem.CodigoFabrica := Lc_Qry.FieldByName('PRO_CODIGOFAB').AsString;
+        LITem.DescricaoProduto := Lc_Qry.FieldByName('PRO_DESCRICAO').AsString;
+        LITem.CodigoEstabelecimento := Lc_Qry.FieldByName('PED_CODMHA').AsInteger;
+
+        Lista.add(LITem);
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+end;
+
+procedure TControllerItensNFL.setFParametros(const Value: TPrmItensNFL);
+begin
+  FParametros := Value;
+end;
 
 procedure TControllerItensNFL.setITF_Estoque;
 var

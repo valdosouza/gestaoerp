@@ -56,6 +56,12 @@ Type
     FPED_NUMWEB: Integer;
     FPED_TERMINAL: Integer;
     FPED_HORA: TTime;
+    FUSU_NOME: String;
+    FEMP_NOME: String;
+    FFPT_DESCRICAO: String;
+    FEMP_FANTASIA: String;
+    FDataIni: TDate;
+    FDataFim: TDate;
 
 
     procedure setFPED_CODIGO( Value : INTEGER);
@@ -105,6 +111,12 @@ Type
     procedure setFPED_NUMWEB(const Value: Integer);
     procedure setFPED_TERMINAL(const Value: Integer);
     procedure setFPED_HORA(const Value: TTime);
+    procedure setFEMP_NOME(const Value: String);
+    procedure setFFPT_DESCRICAO(const Value: String);
+    procedure setFUSU_NOME(const Value: String);
+    procedure setFEMP_FANTASIA(const Value: String);
+    procedure setFDataFim(const Value: TDate);
+    procedure setFDataIni(const Value: TDate);
   public
 
     [FieldName('PED_CODIGO')]
@@ -249,13 +261,43 @@ Type
     [FieldName('PED_HORA')]
     property Hora: TTime read FPED_HORA write setFPED_HORA;
 
+    property FPT_DESCRICAO: String read FFPT_DESCRICAO write setFFPT_DESCRICAO;
+    property EMP_NOME: String read FEMP_NOME write setFEMP_NOME;
+    property USU_NOME: String read FUSU_NOME write setFUSU_NOME;
+    property EMP_FANTASIA: String read FEMP_FANTASIA write setFEMP_FANTASIA;
+
+    property DataIni: TDate read FDataIni write setFDataIni;
+    property DataFim: TDate read FDataFim write setFDataFim;
   End;
 
 implementation
 
-
-
 { TPedido }
+
+procedure TPedido.setFDataFim(const Value: TDate);
+begin
+  FDataFim := Value;
+end;
+
+procedure TPedido.setFDataIni(const Value: TDate);
+begin
+  FDataIni := Value;
+end;
+
+procedure TPedido.setFEMP_FANTASIA(const Value: String);
+begin
+  FEMP_FANTASIA := Value;
+end;
+
+procedure TPedido.setFEMP_NOME(const Value: String);
+begin
+  FEMP_NOME := Value;
+end;
+
+procedure TPedido.setFFPT_DESCRICAO(const Value: String);
+begin
+  FFPT_DESCRICAO := Value;
+end;
 
 procedure TPedido.setFPED_ALIQ_DESCONTO(Value: Real);
 begin
@@ -493,6 +535,11 @@ end;
 procedure TPedido.setFPED_VL_ST(Value: Real);
 begin
   FPED_VL_ST := Value;
+end;
+
+procedure TPedido.setFUSU_NOME(const Value: String);
+begin
+  FUSU_NOME := Value;
 end;
 
 end.
