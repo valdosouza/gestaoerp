@@ -35,6 +35,8 @@ type
     procedure SetRegister; override;
   private
     taxation : TControllerTributacao;
+
+    procedure Pc_FormataTela;
   end;
 
 var
@@ -42,7 +44,7 @@ var
 
 implementation
 
-uses reg_taxation, env;
+uses reg_taxation, env, un_dm, un_regra_negocio;
 
 {$R *.dfm}
 
@@ -74,6 +76,26 @@ begin
   Finally
     FreeAndNil(Lc_form);
   End;
+end;
+
+procedure TSeaTaxation.Pc_FormataTela;
+Var
+ It_Cd_CRT : Integer;
+begin
+  Pc_AtivaEstabelecimento;
+
+  It_Cd_CRT := StrToIntDef(DM.Qr_Estabelecimento.FieldByname('EMP_CRT').AsAnsiString,3);
+
+  if (It_Cd_CRT = 3) or (It_Cd_CRT = 2) then
+  Begin
+    DBG_Pesquisa.Columns[4].Title.Caption := 'C.S.T.';
+    DBG_Pesquisa.Columns[4].FieldName := 'TRB_CST';
+  end
+  else
+  Begin
+    DBG_Pesquisa.Columns[4].Title.Caption := 'C.S.O.S.N.';
+    DBG_Pesquisa.Columns[4].FieldName := 'TRB_CSOSN';
+  end;
 end;
 
 procedure TSeaTaxation.Search;

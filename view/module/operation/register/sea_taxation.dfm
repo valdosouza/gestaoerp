@@ -11,7 +11,7 @@ inherited SeaTaxation: TSeaTaxation
     Width = 806
     Height = 265
     ExplicitTop = 79
-    ExplicitWidth = 417
+    ExplicitWidth = 806
     ExplicitHeight = 265
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 802
@@ -88,7 +88,7 @@ inherited SeaTaxation: TSeaTaxation
     inherited pnl_pesq_right: TPanel
       Left = 712
       Height = 247
-      ExplicitLeft = 323
+      ExplicitLeft = 712
       ExplicitHeight = 247
       inherited Sb_Sair_0: TSpeedButton
         Top = 184
@@ -111,7 +111,7 @@ inherited SeaTaxation: TSeaTaxation
   inherited Pnl_Parametros: TPanel
     Width = 806
     Height = 70
-    ExplicitWidth = 417
+    ExplicitWidth = 806
     ExplicitHeight = 70
     object GroupBox2: TGroupBox
       Left = 2
@@ -127,7 +127,6 @@ inherited SeaTaxation: TSeaTaxation
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 413
       DesignSize = (
         802
         95)
@@ -158,7 +157,6 @@ inherited SeaTaxation: TSeaTaxation
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        ExplicitLeft = 156
       end
       object E_Busca_NCM: TEdit
         Left = 7

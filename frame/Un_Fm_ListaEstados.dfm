@@ -34,7 +34,7 @@ object Fm_ListaEstados: TFm_ListaEstados
     Left = 3
     Top = 13
     Width = 65
-    Height = 23
+    Height = 21
     Anchors = [akLeft, akTop, akRight]
     KeyField = 'UFE_CODIGO'
     ListField = 'UFE_SIGLA'
@@ -43,6 +43,7 @@ object Fm_ListaEstados: TFm_ListaEstados
     OnKeyDown = DBLCB_UFKeyDown
   end
   object Qr_Uf: TSTQuery
+    Active = True
     Connection = DM.IBD_Gestao
     Transaction = DM.IB_Transacao
     SQL.Strings = (
