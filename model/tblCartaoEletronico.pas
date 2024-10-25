@@ -2,7 +2,7 @@ unit tblCartaoEletronico;
 
 interface
 
-Uses GenericEntity,CAtribEntity, System.Classes, System.SysUtils;
+Uses TEntity,CAtribEntity;
 
 Type
   //nome da classe de entidade
@@ -38,7 +38,6 @@ Type
     procedure setFcte_przo_debi(const Value: Integer);
     procedure setFcte_tipo(const Value: String);
     procedure setFcte_validade(const Value: TDateTime);
-
 
   public
 

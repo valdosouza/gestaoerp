@@ -103,6 +103,7 @@ type
     procedure Sb_DesoneracaoClick(Sender: TObject);
     procedure SB_NaturezaClick(Sender: TObject);
     procedure Fm_ListaEstadosDBLCB_UFExit(Sender: TObject);
+    procedure Sb_ObservacaoClick(Sender: TObject);
   protected
     procedure ClearAllFields; Override;
     procedure CriarVariaveis; Override;
@@ -159,8 +160,9 @@ var
 
 implementation
 
-uses UN_MSG, env, un_sistema, un_regra_negocio, sea_tax_icms_sn, sea_tax_icms_nr, sea_cfop,
- sea_tax_mode_det_bc_icms, sea_tax_mode_det_bc_icms_st, sea_tax_relieves_icms;
+uses UN_MSG, env, un_sistema, un_regra_negocio, sea_tax_icms_sn, sea_tax_icms_nr,
+     sea_cfop, sea_note, sea_tax_mode_det_bc_icms, sea_tax_mode_det_bc_icms_st,
+     sea_tax_relieves_icms;
 
 {$R *.dfm}
 
@@ -452,6 +454,18 @@ Var
   Form : TSeaCFOP;
 begin
   Form := TSeaCFOP.Create(self);
+  Try
+    Form.ShowModal;
+  Finally
+    FreeAndNil(Form);
+  End;
+end;
+
+procedure TRegTaxation.Sb_ObservacaoClick(Sender: TObject);
+Var
+  Form : TSeaNote;
+begin
+  Form := TSeaNote.Create(self);
   Try
     Form.ShowModal;
   Finally

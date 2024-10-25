@@ -9,8 +9,8 @@ inherited RegTaxation: TRegTaxation
   inherited pnl_botao: TPanel
     Top = 511
     Width = 628
-    ExplicitTop = 526
-    ExplicitWidth = 613
+    ExplicitTop = 511
+    ExplicitWidth = 628
     inherited SB_Inserir: TSpeedButton
       Left = 1
       ExplicitLeft = -14
@@ -39,8 +39,8 @@ inherited RegTaxation: TRegTaxation
   inherited pnl_fundo: TPanel
     Width = 628
     Height = 511
-    ExplicitWidth = 613
-    ExplicitHeight = 526
+    ExplicitWidth = 628
+    ExplicitHeight = 511
     object pl_fundo: TPanel
       Left = 2
       Top = 2
@@ -50,10 +50,6 @@ inherited RegTaxation: TRegTaxation
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 3
-      ExplicitWidth = 672
-      ExplicitHeight = 640
       DesignSize = (
         624
         507)
@@ -104,6 +100,7 @@ inherited RegTaxation: TRegTaxation
         Width = 23
         Height = 22
         Caption = '...'
+        OnClick = Sb_ObservacaoClick
       end
       object L_Red_Aliq: TLabel
         Left = 376
@@ -495,13 +492,12 @@ inherited RegTaxation: TRegTaxation
           ExplicitWidth = 211
           inherited Sb_Uf: TSpeedButton
             Left = 184
+            ExplicitLeft = 184
           end
           inherited DBLCB_UF: TDBLookupComboBox
             Width = 178
             OnExit = Fm_ListaEstadosDBLCB_UFExit
-          end
-          inherited Qr_Uf: TSTQuery
-            Active = False
+            ExplicitWidth = 178
           end
         end
       end
