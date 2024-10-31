@@ -1,66 +1,68 @@
 inherited SeaCustomerOrigin: TSeaCustomerOrigin
   Caption = 'Pesquisa de Origem de Clientes'
-  ClientHeight = 272
+  ClientHeight = 323
   ClientWidth = 565
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 581
-  ExplicitHeight = 331
+  ExplicitWidth = 571
+  ExplicitHeight = 367
+  PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 559
-    Height = 198
-    StyleElements = [seFont, seClient, seBorder]
+    Height = 249
+    ExplicitTop = 71
+    ExplicitWidth = 559
+    ExplicitHeight = 198
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 555
-      StyleElements = [seFont, seClient, seBorder]
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 463
-      Height = 180
+      Height = 231
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
     end
     inherited pnl_pesq_right: TPanel
       Left = 465
-      Height = 180
-      StyleElements = [seFont, seClient, seBorder]
+      Height = 231
+      ExplicitLeft = 465
+      ExplicitHeight = 180
       inherited Sb_Sair_0: TSpeedButton
-        Top = 134
-        Height = 43
+        Top = 178
+        Height = 50
         ExplicitLeft = 3
-        ExplicitTop = 200
+        ExplicitTop = 170
         ExplicitWidth = 86
-        ExplicitHeight = 43
+        ExplicitHeight = 50
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 86
-        Height = 45
+        Top = 123
+        Height = 52
         ExplicitLeft = 3
-        ExplicitTop = 152
+        ExplicitTop = 116
         ExplicitWidth = 86
-        ExplicitHeight = 45
+        ExplicitHeight = 52
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 37
-        Height = 46
+        Top = 67
+        Height = 53
         ExplicitLeft = 3
-        ExplicitTop = 88
+        ExplicitTop = 61
         ExplicitWidth = 86
-        ExplicitHeight = 46
+        ExplicitHeight = 53
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -13
-        Height = 47
+        Top = 10
+        Height = 54
         ExplicitLeft = 3
-        ExplicitTop = 24
+        ExplicitTop = 5
         ExplicitWidth = 86
-        ExplicitHeight = 47
+        ExplicitHeight = 54
       end
     end
   end
   inherited Pnl_Parametros: TPanel
     Width = 559
     Height = 62
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 559
     ExplicitHeight = 62
     object L_BuscaCodigo: TLabel
@@ -116,6 +118,26 @@ inherited SeaCustomerOrigin: TSeaCustomerOrigin
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 216
+    Top = 32
+  end
+  inherited ds_search: TDataSource
+    Left = 160
+    Top = 186
+  end
+  inherited cds_search: TClientDataSet
+    Left = 160
+    Top = 138
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
     end
   end
 end
