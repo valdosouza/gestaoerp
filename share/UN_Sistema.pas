@@ -3679,8 +3679,8 @@ procedure Pc_Filtra_CFOP(Pc_Sentido: String; Pc_Alcada: String);
 begin
   with DM.Qr_Filtra_CFOP do
   Begin
-    if Transaction.InTransaction then Transaction.Commit;
-    if not Transaction.InTransaction then Transaction.StartTransaction;
+//    if Transaction.InTransaction then Transaction.Commit;
+//    if not Transaction.InTransaction then Transaction.StartTransaction;
     Active := False;
     ParamByName('NAT_SENTIDO').AsString := Pc_Sentido;
     ParamByName('NAT_ALCADA').AsString := Pc_Alcada;

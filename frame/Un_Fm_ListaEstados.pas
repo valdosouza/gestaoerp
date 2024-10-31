@@ -5,10 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, Variants, Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.DBCtrls, Vcl.StdCtrls,
-  Vcl.Buttons,Un_Estado, Data.DB, STQuery, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  Vcl.Buttons,sea_uf, Data.DB, IBX.IBCustomDataSet, STQuery, IBX.IBQuery,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFm_ListaEstados = class(TFrame)
@@ -56,11 +56,14 @@ end;
 
 procedure TFm_ListaEstados.Sb_UfClick(Sender: TObject);
 Var
-  Form : TFr_Estado;
+  Form : TSeaUf;
 begin
-  Form := TFr_Estado.Create(self);
-  Form.ShowModal;
-  FreeAndNil(Form);
+  Form := TSeaUf.Create(self);
+  Try
+    Form.ShowModal;
+  Finally
+    FreeAndNil(Form);
+  End;
 end;
 
 end.

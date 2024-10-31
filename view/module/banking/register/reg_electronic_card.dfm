@@ -3,14 +3,14 @@ inherited RegElectronicCard: TRegElectronicCard
   ClientHeight = 249
   ClientWidth = 566
   ExplicitWidth = 572
-  ExplicitHeight = 298
+  ExplicitHeight = 293
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 185
     Width = 566
-    ExplicitTop = 329
-    ExplicitWidth = 560
+    ExplicitTop = 185
+    ExplicitWidth = 566
     inherited SB_Inserir: TSpeedButton
       Left = 17
       Width = 86
@@ -57,8 +57,8 @@ inherited RegElectronicCard: TRegElectronicCard
   inherited pnl_fundo: TPanel
     Width = 566
     Height = 185
-    ExplicitWidth = 560
-    ExplicitHeight = 329
+    ExplicitWidth = 566
+    ExplicitHeight = 185
     object pnl_fundos: TPanel
       Left = 2
       Top = 2
@@ -68,8 +68,6 @@ inherited RegElectronicCard: TRegElectronicCard
       BevelInner = bvRaised
       BevelOuter = bvLowered
       TabOrder = 0
-      ExplicitWidth = 556
-      ExplicitHeight = 325
       object Label1: TLabel
         Left = 8
         Top = 4
@@ -126,6 +124,20 @@ inherited RegElectronicCard: TRegElectronicCard
         Font.Style = []
         ParentFont = False
       end
+      object L_Descricao: TLabel
+        Left = 55
+        Top = 4
+        Width = 49
+        Height = 14
+        Caption = 'Descri'#231#227'o'
+        FocusControl = E_Descricao
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clNavy
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
       object E_Codigo: TEdit
         Left = 8
         Top = 20
@@ -153,7 +165,7 @@ inherited RegElectronicCard: TRegElectronicCard
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 3
         object Label4: TLabel
           Left = 5
           Top = 13
@@ -225,7 +237,7 @@ inherited RegElectronicCard: TRegElectronicCard
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 4
         object Label9: TLabel
           Left = 4
           Top = 12
@@ -297,7 +309,7 @@ inherited RegElectronicCard: TRegElectronicCard
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 5
       end
       object E_Fone: TEdit
         Left = 345
@@ -311,13 +323,14 @@ inherited RegElectronicCard: TRegElectronicCard
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 6
       end
       object E_Validade: TEdit
         Left = 452
         Top = 121
         Width = 101
         Height = 22
+        Hint = 'Formato aceito: DD/MM/AAAA'
         CharCase = ecUpperCase
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -325,7 +338,9 @@ inherited RegElectronicCard: TRegElectronicCard
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
-        TabOrder = 6
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 7
       end
       object dbrg_tipo: TRadioGroup
         Left = 7
@@ -343,8 +358,26 @@ inherited RegElectronicCard: TRegElectronicCard
           'Cr'#233'dito'
           'D'#233'bito')
         ParentFont = False
+        TabOrder = 2
+      end
+      object E_Descricao: TEdit
+        Left = 55
+        Top = 20
+        Width = 501
+        Height = 22
+        CharCase = ecUpperCase
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 1
       end
     end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 464
+    Top = 65520
   end
 end

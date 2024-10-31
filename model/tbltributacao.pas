@@ -46,6 +46,12 @@ Type
     FTRB_MICRO: String;
     FTRB_AQ_COFINS: Real;
     FTRB_CODDSI_ICMS: Integer;
+    FUFE_SIGLA: String;
+    FOBS_DESCRICAO: String;
+    FTRB_CST: String;
+    FTRB_CSOSN: String;
+    FNAT_CFOP: String;
+    FTRB_CODEMP: String;
     procedure setFTRB_AQ_AFRMM(const Value: Real);
     procedure setFTRB_AQ_COFINS(const Value: Real);
     procedure setFTRB_AQ_CSLL(const Value: Real);
@@ -83,6 +89,12 @@ Type
     procedure setFTRB_SENTIDO(const Value: String);
     procedure setFTRB_ST_ICMS(const Value: String);
     procedure setFTRB_SUB_TRI(const Value: String);
+    procedure setFNAT_CFOP(const Value: String);
+    procedure setFOBS_DESCRICAO(const Value: String);
+    procedure setFTRB_CSOSN(const Value: String);
+    procedure setFTRB_CST(const Value: String);
+    procedure setNAT_CFOP(const Value: String);
+    procedure setFTRB_CODEMP(const Value: String);
 
   public
     [KeyField('TRB_CODIGO')]
@@ -197,12 +209,30 @@ Type
     [FieldName('TRB_SENTIDO')]
     property Sentido: String  read FTRB_SENTIDO write setFTRB_SENTIDO;
 
+    [FieldName('TRB_CODEMP')]
+    property Empresa: String  read FTRB_CODEMP write setFTRB_CODEMP;
+
+    property NAT_CFOP: String read FNAT_CFOP write setFNAT_CFOP;
+    property UFE_SIGLA: String read FUFE_SIGLA write setNAT_CFOP;
+    property TRB_CST: String read FTRB_CST write setFTRB_CST;
+    property TRB_CSOSN: String read FTRB_CSOSN write setFTRB_CSOSN;
+    property OBS_DESCRICAO: String read FOBS_DESCRICAO write setFOBS_DESCRICAO;
   End;
 
 implementation
 
 
 { TTributacao }
+
+procedure TTributacao.setFNAT_CFOP(const Value: String);
+begin
+  FNAT_CFOP := Value;
+end;
+
+procedure TTributacao.setFOBS_DESCRICAO(const Value: String);
+begin
+  FOBS_DESCRICAO := Value;
+end;
 
 procedure TTributacao.setFTRB_AQ_AFRMM(const Value: Real);
 begin
@@ -257,6 +287,11 @@ end;
 procedure TTributacao.setFTRB_CODDSI_ICMS(const Value: Integer);
 begin
   FTRB_CODDSI_ICMS := Value;
+end;
+
+procedure TTributacao.setFTRB_CODEMP(const Value: String);
+begin
+  FTRB_CODEMP := Value;
 end;
 
 procedure TTributacao.setFTRB_CODIGO(const Value: Integer);
@@ -329,6 +364,16 @@ begin
   FTRB_CONSUMIDOR := Value;
 end;
 
+procedure TTributacao.setFTRB_CSOSN(const Value: String);
+begin
+  FTRB_CSOSN := Value;
+end;
+
+procedure TTributacao.setFTRB_CST(const Value: String);
+begin
+  FTRB_CST := Value;
+end;
+
 procedure TTributacao.setFTRB_DESTAQUE(const Value: String);
 begin
   FTRB_DESTAQUE := Value;
@@ -387,6 +432,11 @@ end;
 procedure TTributacao.setFTRB_SUB_TRI(const Value: String);
 begin
   FTRB_SUB_TRI := Value;
+end;
+
+procedure TTributacao.setNAT_CFOP(const Value: String);
+begin
+  FUFE_SIGLA := Value;
 end;
 
 end.

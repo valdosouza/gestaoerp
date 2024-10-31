@@ -1,15 +1,15 @@
 inherited SeaEletronicCard: TSeaEletronicCard
   Caption = 'Pesquisa de Cart'#245'es Eletronicos'
-  ClientHeight = 339
+  ClientHeight = 357
   ClientWidth = 550
   ExplicitWidth = 556
-  ExplicitHeight = 388
+  ExplicitHeight = 401
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 544
-    Height = 265
+    Height = 283
     ExplicitTop = 71
     ExplicitWidth = 544
     ExplicitHeight = 265
@@ -18,27 +18,39 @@ inherited SeaEletronicCard: TSeaEletronicCard
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 448
-      Height = 247
+      Height = 265
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 318
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 450
-      Height = 247
+      Height = 265
       ExplicitLeft = 450
       ExplicitHeight = 247
       inherited Sb_Sair_0: TSpeedButton
-        Top = 184
+        Top = 202
         ExplicitTop = 184
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 121
+        Top = 139
         ExplicitTop = 121
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 58
+        Top = 76
         ExplicitTop = 58
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -5
+        Top = 13
         ExplicitTop = -5
       end
     end
@@ -48,7 +60,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
     Height = 62
     ExplicitWidth = 544
     ExplicitHeight = 62
-    object GroupBox2: TGroupBox
+    object gbxOpcoesFiltro: TGroupBox
       Left = 2
       Top = 2
       Width = 540
@@ -89,7 +101,7 @@ inherited SeaEletronicCard: TSeaEletronicCard
         ParentFont = False
       end
       object E_Descricao: TEdit
-        Left = 56
+        Left = 59
         Top = 32
         Width = 473
         Height = 22
@@ -116,6 +128,19 @@ inherited SeaEletronicCard: TSeaEletronicCard
         ParentFont = False
         TabOrder = 0
       end
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 224
+  end
+  inherited cds_search: TClientDataSet
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
     end
   end
 end
