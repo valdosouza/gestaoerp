@@ -2,42 +2,40 @@ inherited RegStocks: TRegStocks
   Caption = 'Cadastro de Estoques'
   ClientHeight = 172
   ClientWidth = 641
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 657
-  ExplicitHeight = 231
+  ExplicitWidth = 647
+  ExplicitHeight = 216
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 108
     Width = 641
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 108
-    ExplicitWidth = 638
+    ExplicitWidth = 641
     inherited SB_Inserir: TSpeedButton
-      Left = 2
+      Left = 80
       Width = 78
       ExplicitLeft = -6
       ExplicitTop = 5
       ExplicitWidth = 78
     end
     inherited SB_Alterar: TSpeedButton
-      Left = 82
+      Left = 160
       Width = 78
       ExplicitLeft = 73
       ExplicitTop = 5
       ExplicitWidth = 78
     end
     inherited SB_Excluir: TSpeedButton
-      Left = 162
+      Left = 240
       Width = 78
       ExplicitLeft = 154
       ExplicitTop = 5
       ExplicitWidth = 78
     end
     inherited SB_Cancelar: TSpeedButton
-      Left = 322
+      Left = 400
       Width = 78
-      ExplicitLeft = 312
-      ExplicitTop = 5
+      ExplicitLeft = 400
       ExplicitWidth = 78
     end
     inherited SB_Sair_0: TSpeedButton
@@ -48,34 +46,11 @@ inherited RegStocks: TRegStocks
       ExplicitWidth = 78
     end
     inherited SB_Gravar: TSpeedButton
-      Left = 242
+      Left = 320
       Width = 78
       ExplicitLeft = 230
       ExplicitTop = 5
       ExplicitWidth = 78
-    end
-    object Sb_Pesquisar: TSpeedButton
-      AlignWithMargins = True
-      Left = 401
-      Top = 3
-      Width = 78
-      Height = 58
-      Margins.Left = 0
-      Margins.Top = 1
-      Margins.Right = 0
-      Margins.Bottom = 1
-      Align = alRight
-      Caption = 'Pesquisar- F7'
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'Arial'
-      Font.Style = []
-      Layout = blGlyphTop
-      ParentFont = False
-      ExplicitLeft = 395
-      ExplicitTop = -5
     end
     object Sb_Iten_Estoque: TSpeedButton
       AlignWithMargins = True
@@ -112,15 +87,14 @@ inherited RegStocks: TRegStocks
       NumGlyphs = 2
       ParentFont = False
       Transparent = False
-      ExplicitLeft = 470
-      ExplicitTop = 4
+      OnClick = Sb_Iten_EstoqueClick
+      ExplicitHeight = 59
     end
   end
   inherited pnl_fundo: TPanel
     Width = 641
     Height = 108
-    StyleElements = [seFont, seClient, seBorder]
-    ExplicitWidth = 638
+    ExplicitWidth = 641
     ExplicitHeight = 108
     object L_Codigo: TLabel
       Left = 8
@@ -190,5 +164,10 @@ inherited RegStocks: TRegStocks
   end
   inherited MnuBase: TMainMenu
     Left = 152
+  end
+  object STQuery1: TSTQuery
+    ForcedRefresh = False
+    Left = 352
+    Top = 56
   end
 end

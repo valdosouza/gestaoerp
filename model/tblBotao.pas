@@ -18,6 +18,7 @@ Type
     Fbtn_path: String;
     Fbtn_imagem: String;
     Fbtn_mrg_sup: Integer;
+    Fbtn_sequencia: Integer;
     procedure setFbtn_altura(const Value: Integer);
     procedure setFbtn_codigo(const Value: Integer);
     procedure setFbtn_descricao(const Value: String);
@@ -26,6 +27,7 @@ Type
     procedure setFbtn_largura(const Value: Integer);
     procedure setFbtn_mrg_sup(const Value: Integer);
     procedure setFbtn_path(const Value: String);
+    procedure setFbtn_sequencia(const Value: Integer);
 
 
    public
@@ -54,13 +56,11 @@ Type
     [FieldName('btn_mrg_sup')]
     property MrgSup: Integer read Fbtn_mrg_sup write setFbtn_mrg_sup;
 
-
+    [FieldName('btn_sequencia')]
+    property Sequencia: Integer read Fbtn_sequencia write setFbtn_sequencia;
   End;
 
-
   implementation
-
-
 
 { TBotao }
 
@@ -102,6 +102,11 @@ end;
 procedure TBotao.setFbtn_path(const Value: String);
 begin
   Fbtn_path := Value;
+end;
+
+procedure TBotao.setFbtn_sequencia(const Value: Integer);
+begin
+  Fbtn_sequencia := Value;
 end;
 
 end.
