@@ -12,7 +12,7 @@ inherited SeaPackage: TSeaPackage
     Height = 272
     ExplicitTop = 71
     ExplicitWidth = 561
-    ExplicitHeight = 259
+    ExplicitHeight = 272
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 557
     end
@@ -25,7 +25,7 @@ inherited SeaPackage: TSeaPackage
       Left = 467
       Height = 254
       ExplicitLeft = 467
-      ExplicitHeight = 241
+      ExplicitHeight = 254
       inherited Sb_Sair_0: TSpeedButton
         Top = 191
         ExplicitTop = 178
