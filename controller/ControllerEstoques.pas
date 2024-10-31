@@ -2,9 +2,8 @@ unit ControllerEstoques;
 
 interface
 
-uses STDatabase,System.Classes, STQuery, System.SysUtils,ControllerBase,
-      tblEstoques,tblEstoque,Un_MSg,System.Generics.Collections,FireDAC.Stan.Param,
-  ControllerEstoque;
+uses System.Classes, System.SysUtils, Generics.Collections, FireDAC.Stan.Param,
+     STQuery, ControllerBase, tblEstoques, prm_stocks, Vcl.Forms;
 
 Type
   TListaEstoques  = TObjectList<TEstoques>;
@@ -12,10 +11,12 @@ Type
   TControllerEstoques = Class(TControllerBase)
 
   private
+    FParametros: TPrmStocks;
+    procedure setFParametros(const Value: TPrmStocks);
+
   public
     Registro : TEstoques;
     Lista : TListaEstoques;
-    SaldoEstoque : TControllerEstoque;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure getbyId;
@@ -28,6 +29,12 @@ Type
     function Replace:boolean;
     procedure GetList;
     function IsPrincipal:Boolean;
+    procedure Pc_CriaRegistroEstoque(Pc_Cd_Estoque: Integer);
+
+    procedure clear;
+    function salva:boolean;
+    procedure Search;
+    property Parametros : TPrmStocks read FParametros write setFParametros;
   End;
 
 implementation
@@ -35,12 +42,17 @@ implementation
 uses Un_sistema, Un_Regra_Negocio;
 
 
+procedure TControllerEstoques.clear;
+begin
+  clearObj(Registro);
+end;
+
 constructor TControllerEstoques.Create(AOwner: TComponent);
 begin
   inherited;
   Registro := TEstoques.Create;
   Lista := TListaEstoques.Create;
-  SaldoEstoque := TControllerEstoque.Create(nil);
+  FParametros := TPrmStocks.Create;
 end;
 
 function TControllerEstoques.delete: boolean;
@@ -55,9 +67,9 @@ end;
 
 destructor TControllerEstoques.Destroy;
 begin
-  SaldoEstoque.DisposeOf;
-  Registro.DisposeOf;
-  Lista.DisposeOf;
+ FreeAndNil(Registro);
+  FreeAndNil(Lista);
+  FreeAndNil(FParametros);
   inherited;
 end;
 
@@ -72,7 +84,6 @@ begin
     Result := False;
   End;
 end;
-
 
 function TControllerEstoques.IsPrincipal: Boolean;
 VAr
@@ -123,6 +134,14 @@ begin
   End;
 end;
 
+function TControllerEstoques.salva: boolean;
+begin
+  Result := True;
+  if Registro.Codigo = 0 then
+    Registro.Codigo := getNextByField(Registro,'ETS_CODIGO',0);
+  SaveObj(Registro);
+end;
+
 function TControllerEstoques.save: boolean;
 begin
   Result := True;
@@ -133,6 +152,57 @@ begin
   Except
     Result := False;
   End;
+end;
+
+procedure TControllerEstoques.Search;
+var
+  Lc_Qry : TSTQuery;
+  LITem : TEstoques;
+begin
+  Lc_Qry := GeraQuery;
+  Try
+    with Lc_Qry do
+    Begin
+      SQL.Text := ' SELECT * FROM tb_estoques where ETS_CODMHA =:ETS_CODMHA ';
+      ParamByName('ETS_CODMHA').AsInteger := FParametros.FieldName.Estabelecimento;
+
+      if FParametros.FieldName.Codigo > 0 then
+      begin
+        SQL.Text := SQL.Text + ' AND ETS_CODIGO = :ETS_CODIGO';
+        ParamByName('ETS_CODIGO').AsInteger := FParametros.FieldName.Codigo;
+      end;
+
+      if FParametros.FieldName.Descricao <> EmptyStr then
+      begin
+        SQL.Text := SQL.Text + ' AND ETS_DESCRICAO LIKE :ETS_DESCRICAO';
+        ParamByName('ETS_DESCRICAO').AsString := Concat('%',FParametros.FieldName.Descricao,'%');
+      end;
+
+      SQL.Text := SQL.Text + ' ORDER BY ETS_DESCRICAO ';
+
+      Active := True;
+      FetchAll;
+      First;
+      Lista.Clear;
+
+      while not Eof do
+      Begin
+        LITem := TEstoques.Create;
+        get(Lc_Qry, LITem);
+        Lista.add(LITem);
+
+        Next;
+      end;
+    end;
+  Finally
+    FinalizaQuery(Lc_Qry);
+  End;
+
+end;
+
+procedure TControllerEstoques.setFParametros(const Value: TPrmStocks);
+begin
+  FParametros := Value;
 end;
 
 function TControllerEstoques.update: boolean;
@@ -213,5 +283,65 @@ begin
   End;
 end;
 
+procedure TControllerEstoques.Pc_CriaRegistroEstoque(Pc_Cd_Estoque : Integer);
+Var
+  Lc_Qry_Produtos : TSTQuery;
+  Lc_Qry_Insere : TSTQuery;
+  Lc_SqlTxt : String;
+begin
+  Lc_Qry_Produtos := GeraQuery;
+  Lc_Qry_Insere := GeraQuery;
+
+    try
+    //Cria a Consulta de Estoques Disponiveis
+    Lc_Qry_Produtos.Active := False;
+    Lc_Qry_Produtos.SQL.Clear;
+    Lc_SqlTxt := ' SELECT PRO_CODIGO FROM TB_PRODUTO tb_produto '+
+                 ' where '+
+                 ' not exists (select est_codpro from tb_estoque '+
+                 '             where  '+
+                 '             tb_estoque.est_codpro = tb_produto.pro_codigo AND '+
+                 '             tb_estoque.est_codets = :est_codets ) ';
+    Lc_Qry_Produtos.SQL.Add(Lc_SqlTxt);
+    Lc_Qry_Produtos.ParamByName('est_codets').AsInteger:= Pc_Cd_Estoque;
+    Lc_Qry_Produtos.Active := True;
+    Lc_Qry_Produtos.FetchAll;
+    Lc_Qry_Produtos.First;
+
+    //Cria a Sql que insere a registro de estoque
+    Lc_Qry_Insere.Active := False;
+    Lc_Qry_Insere.SQL.Clear;
+    Lc_SqlTxt := 'INSERT INTO TB_ESTOQUE( '+
+                 '  EST_CODIGO, '+
+                 '  EST_CODETS, '+
+                 '  EST_CODPRO, '+
+                 '  EST_QTDE, '+
+                 '  EST_QTDE_MIN) '+
+                 'VALUES( '+
+                 '  :EST_CODIGO, '+
+                 '  :EST_CODETS, '+
+                 '  :EST_CODPRO, '+
+                 '  :EST_QTDE, '+
+                 '  :EST_QTDE_MIN) ';
+    Lc_Qry_Insere.SQL.Add(Lc_SqlTxt);
+    while not Lc_Qry_Produtos.Eof do
+    Begin
+
+      Lc_Qry_Insere.Active := False;
+      Lc_Qry_Insere.ParamByName('EST_CODIGO').AsInteger := Fc_Generator('GN_ESTOQUE','TB_ESTOQUE','EST_CODIGO');
+      Lc_Qry_Insere.ParamByName('EST_CODETS').AsInteger := Pc_Cd_Estoque;
+      Lc_Qry_Insere.ParamByName('EST_CODPRO').AsInteger := Lc_Qry_Produtos.FieldByName('PRO_CODIGO').AsInteger;
+      Lc_Qry_Insere.ParamByName('EST_QTDE').AsFloat := 0;
+      Lc_Qry_Insere.ParamByName('EST_QTDE_MIN').AsInteger := 0;
+      Lc_Qry_Insere.ExecSQL;
+
+      Application.ProcessMessages;
+      Lc_Qry_Produtos.Next;
+    end;
+  finally
+    FreeAndNil(Lc_Qry_Produtos);
+    FreeAndNil(Lc_Qry_Insere);
+  end;
+end;
 
 end.

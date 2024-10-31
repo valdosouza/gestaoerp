@@ -2,14 +2,13 @@ inherited RegButtonImage: TRegButtonImage
   Caption = 'Cadastro de Bot'#227'o'
   ClientHeight = 287
   ClientWidth = 640
-  StyleElements = [seFont, seClient, seBorder]
-  ExplicitWidth = 656
-  ExplicitHeight = 346
+  ExplicitWidth = 646
+  ExplicitHeight = 331
+  PixelsPerInch = 96
   TextHeight = 13
   inherited pnl_botao: TPanel
     Top = 223
     Width = 640
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 223
     ExplicitWidth = 640
     inherited SB_Inserir: TSpeedButton
@@ -47,7 +46,6 @@ inherited RegButtonImage: TRegButtonImage
   inherited pnl_fundo: TPanel
     Width = 640
     Height = 223
-    StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 640
     ExplicitHeight = 223
     object L_Codigo: TLabel
@@ -154,6 +152,7 @@ inherited RegButtonImage: TRegButtonImage
       NumGlyphs = 2
       ParentFont = False
       Spacing = 0
+      OnClick = Sb_LoadClick
     end
     object Sb_Path_Botao: TSpeedButton
       Left = 422
@@ -168,6 +167,7 @@ inherited RegButtonImage: TRegButtonImage
       Font.Style = []
       NumGlyphs = 2
       ParentFont = False
+      OnClick = Sb_Path_BotaoClick
     end
     object Sb_unload: TSpeedButton
       Left = 470
@@ -196,6 +196,7 @@ inherited RegButtonImage: TRegButtonImage
       NumGlyphs = 2
       ParentFont = False
       Spacing = 0
+      OnClick = Sb_unloadClick
     end
     object L_Sequencia: TLabel
       Left = 499
@@ -299,22 +300,6 @@ inherited RegButtonImage: TRegButtonImage
       Height = 21
       TabOrder = 3
     end
-    object UpDown1: TUpDown
-      Left = 619
-      Top = 7
-      Width = 16
-      Height = 21
-      Associate = E_Mrg_Botao
-      TabOrder = 4
-    end
-    object E_Mrg_Botao: TEdit
-      Left = 588
-      Top = 7
-      Width = 31
-      Height = 21
-      TabOrder = 5
-      Text = '0'
-    end
     object E_Altura: TEdit
       Left = 399
       Top = 20
@@ -327,7 +312,7 @@ inherited RegButtonImage: TRegButtonImage
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 4
     end
     object E_Largura: TEdit
       Left = 445
@@ -341,7 +326,7 @@ inherited RegButtonImage: TRegButtonImage
       Font.Name = 'Arial'
       Font.Style = []
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 5
     end
     object GroupBox1: TGroupBox
       Left = 5
@@ -355,7 +340,7 @@ inherited RegButtonImage: TRegButtonImage
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 6
       object Sb_Amostra: TSpeedButton
         Left = 79
         Top = 16
@@ -382,5 +367,23 @@ inherited RegButtonImage: TRegButtonImage
         TabOrder = 0
       end
     end
+    object E_Mrg_Botao: TSpinEdit
+      Left = 588
+      Top = 7
+      Width = 41
+      Height = 22
+      MaxValue = 0
+      MinValue = 0
+      TabOrder = 7
+      Value = 0
+    end
+  end
+  inherited MnuBase: TMainMenu
+    Left = 384
+    Top = 96
+  end
+  object OpenDialog: TOpenDialog
+    Left = 288
+    Top = 96
   end
 end

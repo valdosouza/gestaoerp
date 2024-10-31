@@ -1,44 +1,56 @@
 inherited SeaStocks: TSeaStocks
   Caption = 'Pesquisa de Estoques'
-  ClientHeight = 332
+  ClientHeight = 357
   ClientWidth = 564
   ExplicitWidth = 570
-  ExplicitHeight = 381
+  ExplicitHeight = 401
   PixelsPerInch = 96
   TextHeight = 13
   inherited Pnl_Fundo: TPanel
     Top = 71
     Width = 558
-    Height = 258
+    Height = 283
     ExplicitTop = 71
     ExplicitWidth = 558
-    ExplicitHeight = 258
+    ExplicitHeight = 283
     inherited Lb_ResultadoPesquisa: TLabel
       Width = 554
     end
     inherited DBG_Pesquisa: TDBGrid
       Width = 462
-      Height = 240
+      Height = 265
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 333
+          Visible = True
+        end>
     end
     inherited pnl_pesq_right: TPanel
       Left = 464
-      Height = 240
+      Height = 265
       ExplicitLeft = 464
-      ExplicitHeight = 240
+      ExplicitHeight = 265
       inherited Sb_Sair_0: TSpeedButton
-        Top = 177
+        Top = 202
         ExplicitTop = 177
       end
       inherited SB_Visualizar: TSpeedButton
-        Top = 114
+        Top = 139
         ExplicitTop = 114
       end
       inherited SB_Buscar: TSpeedButton
-        Top = 51
+        Top = 76
         ExplicitTop = 51
       end
       inherited SB_Cadastrar: TSpeedButton
-        Top = -12
+        Top = 13
         ExplicitTop = -12
       end
     end
@@ -114,5 +126,13 @@ inherited SeaStocks: TSeaStocks
   inherited cds_search: TClientDataSet
     Left = 272
     Top = 186
+    object cds_searchcodigo: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'codigo'
+    end
+    object cds_searchdescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+    end
   end
 end
